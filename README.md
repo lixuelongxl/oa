@@ -27,12 +27,12 @@
 2.  若有问题请联系：QQ:68311718 WX:13814042966 邮件：cyunoa@qq.com
 3.  本产品的工作流手册与用户使用手册请联系我们索取。
 
-#### 参与贡献
+#### 项目界面预览
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+1.  ![image](http://www.cyunsoft.com/main0.png)
+2.  ![image](http://www.cyunsoft.com/main1.png)
+3.  ![image](http://www.cyunsoft.com/main2.png)
+4.  ![image](http://www.cyunsoft.com/main3.png)
 
 
 #### 码云特技
