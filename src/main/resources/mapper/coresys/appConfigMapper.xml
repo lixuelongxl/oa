@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core136.mapper.sys.AppConfigMapper">
+<resultMap id="AppConfig" type="com.core136.bean.sys.AppConfig" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="APP_ID" property="appId" jdbcType="VARCHAR" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="SORT_NO" property="sortNo" jdbcType="INTEGER" />
+    <result column="MODULE" property="module" jdbcType="VARCHAR" />
+    <result column="IMG" property="img" jdbcType="VARCHAR" />
+    <result column="APP_URL" property="appUrl" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="GROUP_TITLE" property="groupTitle" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+    <result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
+    <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+  </resultMap>
+  
+	<select id="getMyAppList" resultType="java.util.HashMap">
+		SELECT APP_ID AS appId,TITLE AS title,MODULE AS module,IMG AS img,APP_URL AS appUrl,STATUS AS status,GROUP_TITLE AS groupTitle
+		FROM APP_CONFIG 
+		WHERE ORG_ID=#{orgId} AND GROUP_TITLE=#{groupTitle}
+		<if test="list!=null">
+			AND APP_ID IN
+			<foreach collection="list" index="index" item="item" open="("
+				separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		ORDER BY SORT_NO ASC
+	</select>
+	
+	
+	<select id="getMyAppMenuList" resultType="java.util.HashMap">
+		SELECT DISTINCT GROUP_TITLE AS groupTitle
+		FROM APP_CONFIG 
+		WHERE ORG_ID=#{orgId} 
+		<if test="list!=null">
+			AND APP_ID IN
+			<foreach collection="list" index="index" item="item" open="("
+				separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		ORDER BY SORT_NO ASC 
+	</select>
+	
+
+
+	<select id="getAllAppList" resultType="java.util.HashMap">
+		SELECT APP_ID AS appId,TITLE AS title,MODULE AS module,IMG AS img,REMARK AS remark,APP_URL AS appUrl,GROUP_TITLE AS groupTitle
+		FROM APP_CONFIG 
+		WHERE ORG_ID=#{orgId} 
+		AND STATUS!='1' 
+		ORDER BY SORT_NO ASC
+	</select>
+
+</mapper>
+

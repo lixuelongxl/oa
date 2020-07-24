@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core136.mapper.account.UserInfoMapper">
+<resultMap id="UserInfo" type="com.core136.bean.account.UserInfo" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="USER_INFO_ID" property="userInfoId" jdbcType="VARCHAR" />
+    <result column="SORT_NO" property="sortNo" jdbcType="INTEGER" />
+    <result column="ACCOUNT_ID" property="accountId" jdbcType="VARCHAR" />
+    <result column="PIN_YIN" property="pinyin" jdbcType="VARCHAR" />
+    <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+    <result column="DEPT_ID" property="deptId" jdbcType="VARCHAR" />
+    <result column="PARENT_DEPT_IDS" property="parentDeptIds" jdbcType="VARCHAR" />
+    <result column="LEAD_ID" property="leadId" jdbcType="VARCHAR" />
+    <result column="HOME_ADD" property="homeAdd" jdbcType="VARCHAR" />
+    <result column="HOME_TEL" property="homeTel" jdbcType="VARCHAR" />
+    <result column="MOBILE_NO" property="mobileNo" jdbcType="VARCHAR" />
+    <result column="QQ" property="qq" jdbcType="VARCHAR" />
+    <result column="E_MAIL" property="eMail" jdbcType="VARCHAR" />
+    <result column="BIRTHDAY" property="birthday" jdbcType="VARCHAR" />
+    <result column="SIGN" property="sign" jdbcType="VARCHAR" />
+    <result column="WORK_ID" property="workId" jdbcType="VARCHAR" />
+    <result column="SEX" property="sex" jdbcType="VARCHAR" />
+    <result column="LEAD_LEAVE" property="leadLeave" jdbcType="VARCHAR" />
+    <result column="ATTEND_CONFIG_ID" property="attendConfigId" jdbcType="VARCHAR" />
+    <result column="SECRETARY_ID" property="secretaryId" jdbcType="VARCHAR" />
+    <result column="WX_NO" property="wxNo" jdbcType="VARCHAR" />
+    <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+  </resultMap>
+
+<delete id="deleteUserInfoByAccountIds">
+    DELETE FROM USER_INFO WHERE 
+    ORG_ID=#{orgId}
+    <if test="list!=null">
+			AND ACCOUNT_ID IN
+			<foreach collection="list" index="index" item="item" open="("
+				separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+</delete>
+
+<select id="getUserInfoDeatilsByAccountId" resultType="java.util.HashMap">
+     SELECT U.ACCOUNT_ID AS accountId,U.USER_NAME AS userName,U.DEPT_ID AS deptId,
+     (SELECT D.DEPT_NAME FROM UNIT_DEPT D WHERE D.ORG_ID=#{orgId} AND D.DEPT_ID=U.DEPT_ID) AS deptName,
+     U.LEAD_ID AS leadId,U.HOME_ADD AS homeAdd,U.HOME_TEL AS homeTel,U.MOBILE_NO AS mobileNo,U.QQ AS qq,U.E_MAIL AS eMail,
+     U.BIRTHDAY AS birthday,U.SIGN AS sign,U.WORK_ID AS workId,U.SEX AS sex,U.LEAD_LEAVE AS leadLeave,
+     (SELECT L.LEVEL_NAME FROM USER_LEVEL L WHERE L.ORG_ID=#{orgId} AND U.LEAD_LEAVE=LEVEL_ID) AS levelName,
+     U.NICK AS nick,U.WX_NO AS wxNo,A.HEAD_IMG AS headImg,U.SIGN AS sign,U.PIN_YIN AS pinYin 
+     FROM USER_INFO U LEFT JOIN ACCOUNT A ON U.ORG_ID=A.ORG_ID AND U.ACCOUNT_ID=A.ACCOUNT_ID
+     WHERE 
+     U.ACCOUNT_ID=#{accountId} AND U.ORG_ID=#{orgId}
+</select>
+
+
+<select id="getUserInfoByAccountId" resultMap="UserInfo">
+     SELECT ID,USER_INFO_ID,ACCOUNT_ID,USER_NAME,DEPT_ID,
+			LEAD_ID,HOME_ADD,HOME_TEL,
+			MOBILE_NO,QQ,E_MAIL,BIRTHDAY,SIGN,WORK_ID,SEX,LEAD_LEAVE,NICK,ATTEND_CONFIG_ID,SECRETARY_ID,WX_NO,ORG_ID
+     FROM USER_INFO 
+     WHERE ACCOUNT_ID=#{accountId} AND ORG_ID=#{orgId}
+</select>
+
+<select id="isExistChild" resultType="Integer">
+	SELECT COUNT(1) AS ZS FROM USER_INFO WHERE DEPT_ID=#{deptId} AND ORG_ID=#{orgId}
+</select>
+ 
+ <select id="userInfoIsExist" resultType="Integer">
+	SELECT COUNT(1) FROM USER_INFO WHERE ACCOUNT_ID=#{accountId}
+</select>
+ 
+ <select id="getDingDingUserInfoByDeptId" resultType="java.util.HashMap">
+ SELECT A.ACCOUNT_ID AS accountId,A.D_ACCOUNT_ID AS dAccountId,U.USER_NAME AS userName,U.SEX AS sex,
+ (SELECT TMP1.LEVEL_NAME FROM USER_LEVEL TMP1 WHERE TMP1.LEVEL_ID=U.LEAD_LEAVE) AS postion,
+ A.NOT_LOGIN AS status,A.USER_PRIV AS userPriv,A.D_STATUS AS dStatus,U.MOBILE_NO AS mobileNo
+ FROM 
+ ACCOUNT A LEFT JOIN USER_INFO U ON A.ACCOUNT_ID=U.ACCOUNT_ID AND A.ORG_ID=U.ORG_ID 
+ WHERE 
+U.ORG_ID=#{orgId} 
+AND A.NOT_LOGIN!='1'
+<if test="deptId!=''.toString() and deptId!=null">
+AND  U.DEPT_ID=#{deptId}
+</if>
+<if test="search !='%%' and search!=null and search !=''.toString()">
+AND (U.USER_NAME LIKE #{search} OR U.ACCOUNT_ID LIKE #{search})
+</if>
+</select>
+ 
+  <select id="getWeiXinUserInfoByDeptId" resultType="java.util.HashMap">
+ SELECT A.ACCOUNT_ID AS accountId,A.W_ACCOUNT_ID AS wAccountId,U.USER_NAME AS userName,U.SEX AS sex,
+ (SELECT TMP1.LEVEL_NAME FROM USER_LEVEL TMP1 WHERE TMP1.LEVEL_ID=U.LEAD_LEAVE) AS postion,
+ A.NOT_LOGIN AS status,A.USER_PRIV AS userPriv,A.W_STATUS AS wStatus,U.MOBILE_NO AS mobileNo
+ FROM 
+ ACCOUNT A LEFT JOIN USER_INFO U ON A.ACCOUNT_ID=U.ACCOUNT_ID AND A.ORG_ID=U.ORG_ID 
+ WHERE 
+U.ORG_ID=#{orgId} 
+AND A.NOT_LOGIN!='1'
+<if test="deptId!=''.toString() and deptId!=null">
+AND  U.DEPT_ID=#{deptId}
+</if>
+<if test="search !='%%' and search!=null and search !=''.toString()">
+AND (U.USER_NAME LIKE #{search} OR U.ACCOUNT_ID LIKE #{search})
+</if>
+</select>
+ 
+ <select id="getUserInfoByDeptId" resultType="java.util.HashMap">
+ SELECT A.ACCOUNT_ID AS accountId,U.USER_NAME AS userName,U.SEX AS sex,(SELECT TMP1.LEVEL_NAME FROM USER_LEVEL TMP1 WHERE TMP1.LEVEL_ID=U.LEAD_LEAVE) AS postion,
+ A.NOT_LOGIN AS status,A.USER_PRIV AS userPriv
+ FROM 
+ ACCOUNT A LEFT JOIN USER_INFO U ON A.ACCOUNT_ID=U.ACCOUNT_ID AND A.ORG_ID=U.ORG_ID 
+ WHERE 
+U.ORG_ID=#{orgId} 
+<if test="deptId!=''.toString() and deptId!=null">
+AND  U.DEPT_ID=#{deptId}
+</if>
+<if test="search !='%%' and search!=null and search !=''.toString()">
+AND (U.USER_NAME LIKE #{search} OR U.ACCOUNT_ID LIKE #{search})
+</if>
+</select>
+
+ <select id="getSelectUserByDeptId"  resultType="java.util.HashMap">
+	SELECT ACCOUNT_ID AS accountId,USER_NAME AS userName,SEX AS sex 
+	FROM USER_INFO WHERE DEPT_ID=#{deptId} AND ORG_ID=#{orgId} AND ACCOUNT_ID IN 
+	(SELECT ACCOUNT_ID FROM ACCOUNT WHERE NOT_LOGIN='0') ORDER BY SORT_NO ASC
+ </select>
+ 
+  <select id="getSelectUserByLevelId"  resultType="java.util.HashMap">
+	SELECT ACCOUNT_ID AS accountId,USER_NAME AS userName,SEX AS sex 
+	FROM USER_INFO WHERE LEAD_LEAVE=#{levelId} AND ORG_ID=#{orgId} AND ACCOUNT_ID IN 
+	(SELECT ACCOUNT_ID FROM ACCOUNT WHERE NOT_LOGIN='0') ORDER BY SORT_NO ASC
+ </select>
+ 
+ 
+   <select id="getSelectUserByGroupId"  resultType="java.util.HashMap">
+	SELECT ACCOUNT_ID AS accountId,USER_NAME AS userName,SEX AS sex 
+	FROM USER_INFO WHERE
+	ORG_ID=#{orgId} 
+	<if test="list!=null and list.size()>0">
+	  	AND ACCOUNT_ID IN
+	  	<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+		    #{item}
+		</foreach>
+	</if>
+	AND ACCOUNT_ID IN 
+	(SELECT ACCOUNT_ID FROM ACCOUNT WHERE NOT_LOGIN='0') ORDER BY SORT_NO ASC
+ </select>
+
+ <select id="getAccountAndUserInfo"  resultType="java.util.HashMap">
+	SELECT U.SORT_NO AS sortNo,A.ACCOUNT_ID AS accountId,U.USER_NAME AS userName,A.PASSWORD_TYPE AS passwordType,
+	A.USER_PRIV AS userPriv,U.SEX AS sex,U.DEPT_ID as deptId,(SELECT DEPT_NAME FROM UNIT_DEPT WHERE DEPT_ID=deptId) AS deptName,
+	U.LEAD_ID AS leadId,(SELECT USER_NAME FROM USER_INFO WHERE ACCOUNT_ID=leadId) AS leadName,U.WORK_ID AS workId,
+	A.MANAGE_DEPT AS manageDept,(SELECT DEPT_NAME FROM UNIT_DEPT WHERE DEPT_ID=manageDept) AS manageDeptName,
+	U.LEAD_LEAVE AS leadLeave,(SELECT LEVEL_NAME FROM USER_LEVEL WHERE LEVEL_ID=leadLeave) AS leadLevelName,
+	A.ACCOUNT_ID AS accountId,A.APP_PRIV AS appPriv,A.ORG_ID AS orgId,HOME_TEL AS tel,U.MOBILE_NO AS mobileNo,U.WX_NO as wxNo,
+	(SELECT S.ORG_NAME FROM UNIT S WHERE S.ORG_ID=U.ORG_ID) AS orgName,U.BIRTHDAY AS birthday,U.WORK_ID AS workId,
+	A.HEAD_IMG AS headImg,U.BIRTHDAY AS birthday,U.MOBILE_NO As mobileNo,U.E_MAIL AS eMail,U.SIGN AS sign,U.NICK AS nick,A.D_ACCOUNT_ID AS dAccountId,A.W_ACCOUNT_ID AS wAccountId
+	FROM ACCOUNT A LEFT JOIN USER_INFO U ON A.ACCOUNT_ID=U.ACCOUNT_ID AND A.ORG_ID=U.ORG_ID WHERE A.ACCOUNT_ID=#{accountId} AND A.ORG_ID=#{orgId}
+ </select>
+ 
+ <select id="getUserInfoByProcess"  resultType="java.util.HashMap">
+		SELECT U.ACCOUNT_ID AS accountId,U.SEX AS sex,U.DEPT_ID AS deptId,U.USER_NAME AS userName,
+		(SELECT D.DEPT_NAME FROM UNIT_DEPT D WHERE D.ORG_ID=U.ORG_ID AND D.DEPT_ID=U.DEPT_ID) AS deptName 
+		FROM 
+		USER_INFO U 
+		WHERE U.ORG_ID=#{orgId} 
+		AND FUN_INTE_ARRAY(U.DEPT_ID,#{deptId})>0
+		<if test="list!=null and list.size()>0">
+	  	AND ACCOUNT_ID IN
+	  	<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+		    #{item}
+		</foreach>
+	</if>
+ </select>
+ 
+   <select id="getAllUserInfo"  resultType="java.util.HashMap">
+   	SELECT USER_NAME AS userName, ACCOUNT_ID AS accountId
+   	FROM USER_INFO WHERE
+  	ORG_ID = #{orgId}
+   </select>
+ 
+    <select id="getAllUserInfoByAccountList"  resultType="java.util.HashMap">
+   	SELECT USER_NAME AS userName, ACCOUNT_ID AS accountId
+   	FROM USER_INFO WHERE
+  	ORG_ID = #{orgId}
+  	AND ACCOUNT_ID IN(SELECT A.ACCOUNT_ID FROM ACCOUNT A WHERE A.ORG_ID=#{orgId} AND A.NOT_LOGIN='0')
+  	<if test="list!=null">
+	  	AND ACCOUNT_ID IN
+	  	<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+		    #{item}
+		</foreach>
+	</if>
+   </select>
+ 
+<select id="getUserInfoInPriv"  resultType="java.util.HashMap">
+	SELECT  U.ACCOUNT_ID AS accountId, U.SEX AS sex, U.DEPT_ID AS deptId,U.USER_NAME AS userName,PIN_YIN AS pinYin,
+		(SELECT D.DEPT_NAME FROM UNIT_DEPT D WHERE D.ORG_ID= U.ORG_ID AND D.DEPT_ID= U.DEPT_ID)  AS deptName 
+		FROM 
+		USER_INFO U 
+		WHERE U.ORG_ID=#{orgId}
+		<if test="deptId!=''.toString() and deptId!=null">
+			AND U.DEPT_ID=#{deptId}
+		</if>
+		<if test="userPriv!='@all'.toString() and deptPriv!='@all'.toString() and leavePriv!='@all'.toString()">
+			AND 
+			(
+					FUN_INTE_ARRAY(U.ACCOUNT_ID,#{userPriv})
+					OR FUN_INTE_ARRAY(U.DEPT_ID,#{deptPriv})
+					OR FUN_INTE_ARRAY(U.LEAD_LEAVE,#{leavePriv})
+			)
+		</if>
+		ORDER BY SORT_NO DESC
+ </select>
+ 
+ 
+ <select id="getAccountIdInPriv"  resultType="java.util.HashMap">
+	SELECT DISTINCT U.ACCOUNT_ID AS accountId FROM USER_INFO U 
+		WHERE U.ORG_ID=#{orgId}
+		<if test="userPriv!='@all'.toString() and deptPriv!='@all'.toString() and leavePriv!='@all'.toString()">
+			AND 
+			(
+				FUN_INTE_ARRAY(U.ACCOUNT_ID,#{userPriv})
+				OR FUN_INTE_ARRAY(U.DEPT_ID,#{deptPriv})
+				OR FUN_INTE_ARRAY(U.LEAD_LEAVE,#{leavePriv})
+			)
+		</if>
+		ORDER BY SORT_NO DESC
+ </select>
+ 
+  <select id="getAllAccountId"  resultType="java.util.HashMap">
+	SELECT  U.ACCOUNT_ID AS accountId FROM USER_INFO U 
+	WHERE U.ORG_ID=#{orgId}
+	ORDER BY SORT_NO DESC
+ </select>
+ 
+ 
+   <select id="isInUserPriv"  resultType="Integer">
+   SELECT COUNT(1) AS ZS FROM
+   (
+   SELECT ACCOUNT_ID FROM USER_INFO
+   WHERE 
+   ORG_ID=#{orgId}
+   AND ACCOUNT_ID IN(SELECT A.ACCOUNT_ID FROM ACCOUNT A WHERE A.ORG_ID=#{orgId} AND A.NOT_LOGIN='0')
+   <if test="accountIds!='@all' and deptIds!='@all' and leaveIds!='@all'">
+   	<if test="accountIds ==''.toString() and accountIds!=null">
+			OR FUN_INTE_ARRAY(ACCOUNT_ID,#{accountIds}) > 0
+		</if>
+		 <if test="deptIds ==''.toString() and deptIds!=null">
+			OR FUN_INTE_ARRAY(DEPT_ID,#{deptIdS}) > 0
+		</if>
+		  <if test="leaveIds ==''.toString() and leaveIds!=null">
+			OR FUN_INTE_ARRAY(LEAD_LEAVE,#{leaveIds}) > 0
+		</if>
+	</if>
+	) TMP
+	WHERE TMP.ACCOUNT_ID=#{accountId}
+   </select>
+ 
+ <select id="getMyUserInfo" resultType="java.util.HashMap">
+ 	SELECT A.THMEM AS thmem,U.E_MAIL AS eMail,U.BIRTHDAY AS birthday,U.WX_NO as wxNo,U.MOBILE_NO AS mobileNo,U.SIGN AS sign,U.NICK AS nick,U.USER_NAME AS userName 
+ 	FROM ACCOUNT A LEFT JOIN USER_INFO U ON A.ORG_ID=U.ORG_ID AND A.ACCOUNT_ID=U.ACCOUNT_ID
+ 	WHERE 
+ 	A.ORG_ID=#{orgId}
+ 	AND A.ACCOUNT_ID=#{accountId}
+ </select>
+ 
+ <select id="getUserInfoInPrivForMobile" resultType="java.util.HashMap">
+ 		SELECT  U.ACCOUNT_ID AS accountId, U.SEX AS sex, U.DEPT_ID AS deptId,U.USER_NAME AS userName,PIN_YIN AS pinYin,
+		(SELECT D.DEPT_NAME FROM UNIT_DEPT D WHERE D.ORG_ID= U.ORG_ID AND D.DEPT_ID= U.DEPT_ID)  AS deptName 
+		FROM 
+		USER_INFO U 
+		WHERE U.ORG_ID=#{orgId}
+		<if test="userPriv!='@all'.toString() and deptPriv!='@all'.toString() and leavePriv!='@all'.toString()">
+			AND 
+			(
+					<if test="userPriv!=null and userPriv!=''.toString()">
+					FUN_INTE_ARRAY(U.ACCOUNT_ID,#{userPriv})
+					</if>
+					<if test="deptPriv!=null and deptPriv!=''.toString()">
+					OR FUN_INTE_ARRAY(U.DEPT_ID,#{deptPriv})
+					</if>
+					<if test="leavePriv!=null and leavePriv!=''.toString()">
+					OR FUN_INTE_ARRAY(U.LEAD_LEAVE,#{leavePriv})
+					</if>
+			)
+		</if>
+ 	<if test="search!='%%'.toString() and search!=null">
+ 		AND (U.PIN_YIN LIKE #{search} OR U.USER_NAME LIKE #{search})
+ 	</if>
+ 		ORDER BY U.PIN_YIN ASC
+ 
+ </select>
+ 
+  <select id="getSearchUserForMobile" resultType="java.util.HashMap">
+ 		SELECT  U.ACCOUNT_ID AS accountId, U.SEX AS sex, U.DEPT_ID AS deptId,U.USER_NAME AS userName,PIN_YIN AS pinYin,
+		(SELECT D.DEPT_NAME FROM UNIT_DEPT D WHERE D.ORG_ID= U.ORG_ID AND D.DEPT_ID= U.DEPT_ID)  AS deptName 
+		FROM 
+		USER_INFO U 
+		WHERE U.ORG_ID=#{orgId}
+ 	<if test="search!='%%'.toString() and search!=null">
+ 		AND (U.PIN_YIN LIKE #{search} OR U.USER_NAME LIKE #{search})
+ 	</if>
+ 		ORDER BY U.PIN_YIN ASC
+ 
+ </select>
+ 
+ 
+</mapper>
+

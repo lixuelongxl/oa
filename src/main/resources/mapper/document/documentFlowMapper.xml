@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core136.mapper.document.DocumentFlowMapper">
+	<resultMap id="Document" type="com.core136.bean.document.DocumentFlow">
+		<id column="ID" property="id" jdbcType="BIGINT"/>
+		<result column="FLOW_ID" property="flowId" jdbcType="VARCHAR"/>
+		<result column="SORT_NO" property="sortNo" jdbcType="INTEGER"/>
+		<result column="FLOW_NAME" property="flowName" jdbcType="VARCHAR"/>
+		<result column="FORM_ID" property="formId" jdbcType="VARCHAR"/>
+		<result column="DOCUMENT_TYPE" property="documentType" jdbcType="VARCHAR"/>
+		<result column="READ_FLAG" property="readFlag" jdbcType="VARCHAR"/>
+		<result column="FLOW_LOCK" property="flowLock" jdbcType="VARCHAR" />
+		<result column="FREE_TO_OTHER" property="freeToOther" jdbcType="VARCHAR" />
+		<result column="DOC_NUM_RULE" property="docNumRule" jdbcType="VARCHAR" />
+		<result column="BEGIN_DOC_NUM" property="beginDocNum" jdbcType="VARCHAR" />
+		<result column="END_TO_SEND" property="endToSend" jdbcType="VARCHAR" />
+		<result column="QUERY_PRIV" property="queryPriv" jdbcType="VARCHAR" />
+		<result column="MANAGE_PRIV" property="managePriv" jdbcType="VARCHAR" />
+		<result column="REMARK" property="remark" jdbcType="VARCHAR" />
+		<result column="PRINT_FIELD" property="printField" jdbcType="VARCHAR" />
+		<result column="AUTO_STYLE" property="autoStyle" jdbcType="VARCHAR" />
+		<result column="FLOW_CACHE" property="flowCache" jdbcType="VARCHAR" />
+		<result column="ATTACH_PRIV" property="attachPriv" jdbcType="VARCHAR"/>
+		<result column="PRINT_FLAG" property="printFlag" jdbcType="VARCHAR"/>
+		<result column="STATUS" property="status" jdbcType="VARCHAR"/>
+		<result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+		<result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
+		<result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+	</resultMap>
+<select id="getDocumentFlowList" resultType="java.util.HashMap">
+SELECT F.FLOW_ID AS flowId,F.FLOW_NAME AS flowName,F.FORM_ID AS formId,F.DOCUMENT_TYPE AS documentType,R.FORM_TITLE AS formTitle,
+F.MANAGE_PRIV AS managePriv,F.STATUS AS status,F.CREATE_USER AS createUser, F.CREATE_TIME AS createTime
+FROM DOCUMENT_FLOW F LEFT JOIN DOCUMENT_FORM R ON F.ORG_ID=R.ORG_ID AND F.FORM_ID=R.FORM_ID
+WHERE F.ORG_ID=#{orgId}
+</select>
+
+<select id="isExist" resultType="Integer">
+	SELECT COUNT(1) AS ZS FROM
+	DOCUMENT_FLOW WHERE FLOW_ID=#{flowId} AND ORG_ID=#{orgId}
+</select>
+
+<select id="getAllDocumentFlowListByManage" resultType="java.util.HashMap">
+SELECT FLOW_ID AS flowId,FLOW_NAME AS flowName FROM DOCUMENT_FLOW WHERE ORG_ID=#{orgId}
+</select>
+<select id="getDocumentFlowInByManage" resultType="java.util.HashMap">
+SELECT FLOW_ID AS flowId,FLOW_NAME AS flowName FROM DOCUMENT_FLOW WHERE ORG_ID=#{orgId}
+AND FUN_INTE_ARRAY(MANAGE_PRIV,#{accountId}) > 0 
+</select>
+
+<select id="getMyDocumentDispatchFlowList" resultType="java.util.HashMap">
+		SELECT B.ID AS id, B.FLOW_ID AS flowId,B.FLOW_NAME AS flowName,B.FORM_ID AS formId,B.CREATE_TIME AS createTime,U.USER_NAME AS createUserName 
+		FROM 
+		DOCUMENT_FLOW B,USER_INFO U
+		WHERE
+		B.ORG_ID = U.ORG_ID AND
+		B.CREATE_USER = U.ACCOUNT_ID AND
+		B.ORG_ID=#{orgId} AND B.STATUS!='1' AND
+		B.DOCUMENT_TYPE='2' 
+		AND B.FLOW_ID IN(
+		SELECT DISTINCT FLOW_ID
+		FROM
+		DOCUMENT_PROCESS
+		WHERE ORG_ID=#{orgId} AND PRCS_TYPE='1'
+		AND(
+		FUN_INTE_ARRAY(USER_PRIV,#{accountId}) > 0
+		<if test="deptId!=''.toString() and deptId!=null">
+			OR FUN_INTE_ARRAY(DEPT_PRIV,#{deptId}) > 0
+		</if>
+		<if test="levelId!=''.toString() and levelId!=null">
+			OR FUN_INTE_ARRAY(LEAVE_PRIV,#{levelId}) > 0
+		</if>
+		OR USER_PRIV = '@all'
+		OR DEPT_PRIV = '@all'
+		OR LEAVE_PRIV = '@all'
+		)
+	)
+	</select>
+	
+	
+	<select id="getMyDocumentReceiptFlowList" resultType="java.util.HashMap">
+		SELECT B.ID AS id, B.FLOW_ID AS flowId,B.FLOW_NAME AS flowName,B.FORM_ID AS formId,B.CREATE_TIME AS createTime,U.USER_NAME AS createUserName 
+		FROM 
+		DOCUMENT_FLOW B,USER_INFO U
+		WHERE
+		B.ORG_ID = U.ORG_ID AND
+		B.CREATE_USER = U.ACCOUNT_ID AND
+		B.ORG_ID=#{orgId} AND B.STATUS!='1' AND
+		B.DOCUMENT_TYPE='1' 
+		AND B.FLOW_ID IN(
+		SELECT DISTINCT FLOW_ID
+		FROM
+		DOCUMENT_PROCESS
+		WHERE ORG_ID=#{orgId} AND PRCS_TYPE='1'
+		AND(
+		FUN_INTE_ARRAY(USER_PRIV,#{accountId}) > 0
+		<if test="deptId!=''.toString() and deptId!=null">
+			OR FUN_INTE_ARRAY(DEPT_PRIV,#{deptId}) > 0
+		</if>
+		<if test="levelId!=''.toString() and levelId!=null">
+			OR FUN_INTE_ARRAY(LEAVE_PRIV,#{levelId}) > 0
+		</if>
+		OR USER_PRIV = '@all'
+		OR DEPT_PRIV = '@all'
+		OR LEAVE_PRIV = '@all'
+		)
+	)
+	</select>
+	
+	
+	<select id="getCorssDocumentFlowList" resultType="java.util.HashMap">
+		SELECT FLOW_ID AS flowId,FLOW_NAME AS flowName
+		FROM DOCUMENT_FLOW
+		WHERE
+		ORG_ID = #{orgId}
+		AND
+		FLOW_ID IN
+		(
+		SELECT DISTINCT FLOW_ID FROM DOCUMENT_LIST WHERE
+		ORG_ID =
+		#{orgId}
+		AND
+		FUN_INTE_ARRAY(OP_USER_STR,#{accountId})>0
+		)
+		AND FLOW_ID IN(SELECT F.FLOW_ID FROM DOCUMENT_FLOW F WHERE F.ORG_ID=#{orgId} AND F.DOCUMENT_TYPE='2')
+	</select>
+	
+	<select id="getCorssDocumentFlowList1" resultType="java.util.HashMap">
+		SELECT FLOW_ID AS flowId,FLOW_NAME AS flowName
+		FROM DOCUMENT_FLOW
+		WHERE
+		ORG_ID = #{orgId}
+		AND
+		FLOW_ID IN
+		(
+		SELECT DISTINCT FLOW_ID FROM DOCUMENT_LIST WHERE
+		ORG_ID =
+		#{orgId}
+		AND
+		FUN_INTE_ARRAY(OP_USER_STR,#{accountId})>0
+		)
+		AND FLOW_ID IN(SELECT F.FLOW_ID FROM DOCUMENT_FLOW F WHERE F.ORG_ID=#{orgId} AND F.DOCUMENT_TYPE='1')
+	</select>
+	
+	<select id="getMyAllDocumentFlowList" resultType="java.util.HashMap">
+		SELECT FLOW_ID AS flowId,FLOW_NAME AS flowName
+		FROM DOCUMENT_FLOW A
+		WHERE
+		FLOW_ID IN(
+		SELECT DISTINCT FLOW_ID
+		FROM DOCUMENT_PROCESS
+		WHERE
+		ORG_ID=#{orgId} AND PRCS_TYPE!='1' AND PRCS_TYPE!='2'
+		AND(
+		FUN_INTE_ARRAY(USER_PRIV,#{accountId}) > 0
+		<if test="deptId!=''.toString() and deptId!=null">
+			OR FUN_INTE_ARRAY(DEPT_PRIV,#{deptId}) > 0
+		</if>
+		<if test="leaveId!=''.toString() and leaveId!=null">
+			OR FUN_INTE_ARRAY(LEAVE_PRIV,#{leaveId}) > 0
+		</if>
+		OR USER_PRIV = '@all'
+		OR DEPT_PRIV = '@all'
+		OR LEAVE_PRIV = '@all'
+		)
+		)
+		AND A.FREE_TO_OTHER !='0'
+	</select>
+	
+</mapper>

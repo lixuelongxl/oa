@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core136.mapper.sys.DdConfigMapper">
+<resultMap id="DdConfig" type="com.core136.bean.sys.DdConfig" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="CONFIG_ID" property="configId" jdbcType="VARCHAR" />
+    <result column="DINGDING_CORP_ID" property="dingdingCorpId" jdbcType="VARCHAR" />
+    <result column="DINGDING_AGENT_ID" property="dingdingAgentId" jdbcType="VARCHAR" />
+    <result column="DINGDING_APP_KEY" property="dingdingAppKey" jdbcType="VARCHAR" />
+    <result column="DINGDING_APP_SECRET" property="dingdingAppSecret" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+    <result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
+    <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+  </resultMap>
+
+<select id="isExist" resultType="Integer">
+	SELECT COUNT(1) FROM DD_CONFIG WHERE ORG_ID=#{orgId}
+</select>
+
+</mapper>
+

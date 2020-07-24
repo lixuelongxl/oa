@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core136.mapper.bpm.BpmTableMapper">
+     <select id="tableIsExist" resultType="String">
+        	SHOW TABLES LIKE #{tableName}
+      </select>
+      
+      <select id="getTableColumn" resultType="java.util.HashMap">
+       		SELECT COLUMN_NAME AS columnName,DATA_TYPE AS dataType,COLUMN_TYPE AS columnType,COLUMN_COMMENT AS remark FROM information_schema.COLUMNS where TABLE_SCHEMA = (select database()) and TABLE_NAME=#{tableName}
+      </select>
+      
+       <update id="alterBpmTable">
+      		ALTER TABLE ${tableName} ADD COLUMN(${columuList});
+      </update>
+      
+      <update id="createBpmTable">
+        CREATE TABLE ${tableName} (
+        ID bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+        RUN_ID varchar(50) DEFAULT NULL COMMENT 'BPM流水标识',
+        ${columuList}
+        ORG_ID varchar(50) DEFAULT NULL COMMENT '组织机构识别码',
+        PRIMARY KEY (ID)
+        )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+      </update>
+      
+      <select id="getTableDatas" resultType="java.util.HashMap">
+      		SELECT ${fields} FROM ${tableName} WHERE ORG_ID=#{orgId} AND RUN_ID=#{runId}
+      </select>
+      
+      <select id="getTableData" resultType="java.util.HashMap">
+      		SELECT ${fields} FROM ${tableName} WHERE ORG_ID=#{orgId} AND RUN_ID=#{runId}
+      </select>
+      
+      <update id="saveFormData">
+      	UPDATE ${tableName} SET ${vk} RUN_ID=#{runId} WHERE ORG_ID=#{orgId} AND RUN_ID=#{runId}
+      </update>
+      
+      <insert id="insertFormData">
+      	INSERT INTO ${tableName} (RUN_ID,ORG_ID) VALUES(#{runId},#{orgId})
+      </insert>
+      
+      <insert id="insertFormDataKVList">
+      	INSERT INTO ${tableName} 
+      	<foreach collection="kList" index="index" item="item" open="(" separator="," close=")">
+				${item}
+		</foreach>
+		VALUES
+		<foreach collection="vList" index="index" item="item" open="(" separator="," close=")">
+				#{item}
+		</foreach>
+      </insert>
+      
+      
+      <select id="isExistChildTable" resultType="Integer">
+		SELECT COUNT(1) AS ZS FROM ${tableName} WHERE ORG_ID=#{orgId} AND RUN_ID=#{runId} AND UNIQUE_ID=#{uniqueId}
+	 </select>
+	 
+       <insert id="insertChildTable">
+      	INSERT INTO ${tableName} (${klist}) VALUES(${vlist})
+      </insert>
+      
+      	<update id="updateChildTable">
+      	UPDATE ${tableName} SET ${vk} WHERE ORG_ID=#{orgId} AND RUN_ID=#{runId} AND UNIQUE_ID=#{uniqueId}
+      </update>
+      
+      <update id="clearChildTableData">
+      	DELETE FROM ${tableName} WHERE ORG_ID=#{orgId} AND RUN_ID=#{runId} 
+      	<if test="uniqueIdList!=null">
+			AND UNIQUE_ID NOT IN
+			<foreach collection="uniqueIdList" index="index" item="item" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+      </update>
+      
+      <update id="deleteChildTable">
+      	DELETE FROM ${tableName} WHERE ORG_ID=#{orgId} AND RUN_ID=#{runId} AND UNIQUE_ID=#{uniqueId}
+      </update>
+      
+      <delete id="deleteAllChildTable">
+      	DELETE FROM ${tableName} WHERE ORG_ID=#{orgId} AND RUN_ID=#{runId}
+      </delete>
+      
+      <delete id="deleteBpmTableData">
+      	DELETE FROM ${tableName} WHERE ORG_ID=#{orgId}
+      </delete>
+      
+     <select id="getChildTable" resultType="java.util.HashMap">
+      		SELECT ${fields} FROM ${tableName} WHERE ORG_ID=#{orgId} AND RUN_ID=#{runId}
+      </select>
+      
+      <select id="getAllFieldsChildTable" resultType="java.util.HashMap">
+      		SELECT * FROM ${tableName} WHERE ORG_ID=#{orgId} AND RUN_ID=#{runId}
+      </select>
+      
+      <select id="getOneChildTable" resultType="java.util.HashMap">
+      		SELECT ${fields} FROM ${tableName} WHERE ORG_ID=#{orgId} AND RUN_ID=#{runId} AND UNIQUE_ID=#{uniqueId}
+      </select>
+      
+      <select id="getTableDataList" resultType="java.util.HashMap">
+      		SELECT ${fields} FROM ${tableName} WHERE ORG_ID=#{orgId}
+      		<if test="whereStr!=''.toString() and whereStr!=null">
+      			${whereStr}
+      		</if>
+      </select>      
+      
+      <select id="queryBpmFormData" resultType="java.util.HashMap">
+      		SELECT ${fields} 
+      		FROM ${tableName} TMP ,BPM_LIST B
+      		WHERE 
+      		TMP.ORG_ID=B.ORG_ID AND TMP.RUN_ID=B.RUN_ID AND TMP.ORG_ID=#{orgId} AND B.FLOW_ID=#{flowId}
+      		<if test="whereStr!=''.toString() and whereStr!=null">
+      			${whereStr}
+      		</if>
+      		<if test="publicAttach !='%%' and publicAttach !=''.toString() and publicAttach !=null">
+      			AND B.ATTACH IN (SELECT A.ATTACH_ID FROM ATTACH A WHERE A.ORG_ID=#{orgId} AND A.ATTACH_ID IS NOT NULL AND A.MODULES='bpm' AND OLD_NAME LIKE #{publicAttach})
+      		</if>
+      </select>
+      
+      <select id="queryBpmListByFormData" resultType="java.util.HashMap">
+      		SELECT B.ID AS id,B.RUN_ID AS runId,B.FLOW_TITLE AS flowTitle,B.DEL_FLAG AS delFlag,B.URGENCY AS urgency,B.FOLLOW AS follow,B.OP_USER_STR AS opUserStr,B.STATUS AS status,
+      		B.CREATE_TIME AS createTime,B.CREATE_USER AS createUser
+      		FROM ${tableName} TMP ,BPM_LIST B
+      		WHERE 
+      		TMP.ORG_ID=B.ORG_ID AND TMP.RUN_ID=B.RUN_ID AND TMP.ORG_ID=#{orgId} AND B.FLOW_ID=#{flowId}
+      		<if test="whereStr!=''.toString() and whereStr!=null">
+      			${whereStr}
+      		</if>
+      		<if test="search !='%%' and search !=''.toString() and search!=null">
+				AND B.FLOW_TITLE LIKE #{search}
+			</if>
+			<if test="publicAttach !='%%' and publicAttach !=''.toString() and publicAttach !=null">
+      			AND B.ATTACH IN (SELECT A.ATTACH_ID FROM ATTACH A WHERE A.ORG_ID=#{orgId} AND A.ATTACH_ID IS NOT NULL AND A.MODULES='bpm' AND OLD_NAME LIKE #{publicAttach})
+      		</if>
+      </select> 
+      
+</mapper>
+

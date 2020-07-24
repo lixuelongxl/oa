@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core136.mapper.sys.SysMenuMapper">
+<resultMap id="SysMenu" type="com.core136.bean.sys.SysMenu" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="SYS_MENU_ID" property="sysMenuId" jdbcType="VARCHAR" />
+    <result column="SORT_NO" property="sortNo" jdbcType="INTEGER" />
+    <result column="SYS_MENU_NAME" property="sysMenuName" jdbcType="VARCHAR" />
+    <result column="SYS_MENU_URL" property="sysMenuUrl" jdbcType="VARCHAR" />
+    <result column="SYS_MENU_CODE" property="sysMenuCode" jdbcType="VARCHAR" />
+    <result column="SYS_MENU_PARM" property="sysMenuParm" jdbcType="VARCHAR" />
+    <result column="SYS_MENU_OPEN" property="sysMenuOpen" jdbcType="VARCHAR" />
+    <result column="SYS_MENU_LEAVE" property="sysMenuLeave" jdbcType="VARCHAR" />
+    <result column="SYS_MENU_PIC" property="sysMenuPic" jdbcType="VARCHAR" />
+    <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+  </resultMap>
+
+<select id="getSysMenuByAccount" resultMap="SysMenu">
+	SELECT ID,SYS_MENU_ID,SORT_NO,SYS_MENU_NAME,SYS_MENU_URL,SYS_MENU_CODE,
+		   SYS_MENU_PARM,SYS_MENU_OPEN,SYS_MENU_LEAVE,SYS_MENU_PIC,ORG_ID
+	FROM SYS_MENU WHERE 
+		   ID IN
+			<foreach collection="sysMenuIdList" index="index" item="item" open="(" separator="," close=")">
+			 #{item}       
+			</foreach>  
+	AND ORG_ID=#{orgId} ORDER BY SORT_NO ASC
+</select>
+
+<select id="getSysMenuInPriv" resultMap="SysMenu">
+	SELECT ID,SYS_MENU_ID,SORT_NO,SYS_MENU_NAME,SYS_MENU_URL,SYS_MENU_CODE,
+		   SYS_MENU_PARM,SYS_MENU_OPEN,SYS_MENU_LEAVE,SYS_MENU_PIC,ORG_ID
+	FROM SYS_MENU WHERE 
+		   ID IN
+			<foreach collection="sysMenuIdList" index="index" item="item" open="(" separator="," close=")">
+			 #{item}       
+			</foreach>  
+	AND ORG_ID=#{orgId} 
+	AND SYS_MENU_URL !='' 
+	ORDER BY ID ASC
+</select>
+
+<select id="getSysMenuByLeave" resultType="java.util.HashMap">
+	SELECT SYS_MENU_ID as sysMenuId,SYS_MENU_NAME as sysMenuName,
+		   CASE WHEN (SELECT COUNT(1) FROM SYS_MENU TMP WHERE TMP.SYS_MENU_LEAVE=sysMenuId)=0 then 'false' else 'true' END AS  isParent
+	FROM SYS_MENU WHERE SYS_MENU_LEAVE=#{sysMenuLeave}
+	AND ORG_ID=#{orgId} ORDER BY SORT_NO ASC
+</select>
+
+
+<select id="isExistChild" resultType="Integer">
+SELECT COUNT(1) AS ZS FROM SYS_MENU WHERE SYS_MENU_LEAVE=#{sysMenuLeave} AND ORG_ID=#{orgId}
+</select>
+
+<select id="getUserPrivTree" resultType="java.util.HashMap">
+SELECT SYS_MENU_ID as id,SYS_MENU_NAME as name,SYS_MENU_LEAVE as pId,
+CASE WHEN (SELECT COUNT(1) FROM USER_PRIV P WHERE POSITION(CONCAT(',',S.SYS_MENU_ID,',') IN CONCAT(',',P.USER_PRIV_STR,','))>0 AND P.USER_PRIV_ID=#{userPrivId})>0 THEN 'true' ELSE 'false' END AS checked,
+CASE WHEN (SELECT COUNT(1) FROM SYS_MENU TMP WHERE TMP.SYS_MENU_LEAVE=S.SYS_MENU_ID)=0 then 'false' else 'true' END AS  isParent
+FROM SYS_MENU S WHERE S.ORG_ID=#{orgId} ORDER BY S.SORT_NO ASC
+</select>
+
+<select id="sysMenuIsExist" resultType="Integer">
+SELECT COUNT(1) AS ZS FROM SYS_MENU WHERE ORG_ID=#{orgId}
+</select>
+
+<select id="getIncrementIdValue" resultType="Integer">
+select auto_increment from information_schema.`TABLES` where table_name='sys_menu' and TABLE_SCHEMA=(select database())
+</select>
+
+
+</mapper>
+

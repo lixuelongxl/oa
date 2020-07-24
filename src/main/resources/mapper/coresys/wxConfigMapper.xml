@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core136.mapper.sys.WxConfigMapper">
+<resultMap id="WxConfig" type="com.core136.bean.sys.WxConfig" >
+    <id column="ID" property="id" jdbcType="BIGINT"/>
+    <result column="CONFIG_ID" property="configId" jdbcType="VARCHAR"/>
+    <result column="WX_CORP_ID" property="wxCorpId" jdbcType="VARCHAR"/>
+    <result column="WX_AGENT_ID" property="wxAgentId" jdbcType="VARCHAR"/>
+    <result column="WX_APP_SECRET" property="wxAppSecret" jdbcType="VARCHAR"/>
+    <result column="WX_SYNC_SECRET" property="wxSyncSecret" jdbcType="VARCHAR"/>
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+    <result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
+    <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+  </resultMap>
+
+<select id="isExist" resultType="Integer">
+	SELECT COUNT(1) FROM WX_CONFIG WHERE ORG_ID=#{orgId}
+</select>
+
+</mapper>
+

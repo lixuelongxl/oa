@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core136.mapper.document.DocumentEntrustMapper">
+	<resultMap id="DocumentEntrust" type="com.core136.bean.document.DocumentEntrust">
+		<id column="ID" property="id" jdbcType="BIGINT" />
+		<result column="ENTRUST_ID" property="entrustId" jdbcType="VARCHAR" />
+		<result column="FLOW_ID" property="flowId" jdbcType="INTEGER" />
+		<result column="BEGIN_TIME" property="beginTime" jdbcType="VARCHAR" />
+		<result column="END_TIME" property="endTime" jdbcType="VARCHAR" />
+		<result column="FROM_ID" property="fromId" jdbcType="VARCHAR" />
+		<result column="TO_ID" property="toId" jdbcType="VARCHAR" />
+		<result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+		<result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
+		<result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+	</resultMap>
+	<select id="getDocumentEntrustList" resultType="java.util.HashMap">
+		SELECT E.ID AS id,E.ENTRUST_ID AS entrustId, E.FLOW_ID AS flowId, 
+		(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=E.ORG_ID AND U.ACCOUNT_ID=E.TO_ID) AS toUserName,
+		B.FLOW_NAME AS flowName,E.STATUS AS status,
+		E.CREATE_TIME AS createTime,E.TO_ID AS toId,E.BEGIN_TIME AS beginTime,E.END_TIME AS endTime,
+		(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=E.ORG_ID AND U.ACCOUNT_ID=E.CREATE_USER) AS createUserName 
+		FROM 
+		DOCUMENT_ENTRUST E LEFT JOIN DOCUMENT_FLOW B ON E.ORG_ID=B.ORG_ID AND E.FLOW_ID=B.FLOW_ID
+		WHERE 
+		E.ORG_ID=#{orgId}
+		AND E.FROM_ID=#{accountId}
+		<if test="search!='%%'.toString() and search!=null">
+			AND B.FLOW_NAME LIKE #{search}
+		</if>
+	</select>
+	
+	<select id="isExist" resultType="Integer">
+		SELECT COUNT(1) AS ZS FROM DOCUMENT_ENTRUST WHERE ORG_ID=#{orgId} AND FLOW_ID=#{flowId} AND FROM_ID=#{accountId}
+	</select>
+	
+	
+	
+</mapper>
+

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core136.mapper.document.DocumentFormMapper">
+	<resultMap id="DocumentForm" type="com.core136.bean.document.DocumentForm">
+		<id column="ID" property="id" jdbcType="BIGINT" />
+		<result column="FORM_ID" property="fromId" jdbcType="VARCHAR" />
+		<result column="DOCUMENT_TYPE" property="documentType" jdbcType="VARCHAR"/>
+		<result column="SORT_NO" property="sortNo" jdbcType="INTEGER" />
+		<result column="FORM_TITLE" property="formTitle" jdbcType="VARCHAR" />
+		<result column="TABLE_NAME" property="tableName" jdbcType="VARCHAR" />
+		<result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
+		<result column="CREATE_DEPT" property="createDept" jdbcType="VARCHAR" />
+		<result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+		<result column="HTML_CODE" property="htmlCode" jdbcType="VARCHAR" />
+		<result column="MOBILE_HTML_CODE" property="mobileHtmlCode" jdbcType="VARCHAR" />
+		<result column="MOBILE_SCRIPT" property="mobileScript" jdbcType="VARCHAR" />
+		<result column="MOBILE_STYLE" property="mobileStyle" jdbcType="VARCHAR" />
+		<result column="STYLE" property="style" jdbcType="VARCHAR" />
+		<result column="SCRIPT" property="script" jdbcType="VARCHAR" />
+		<result column="VERSION" property="servion" jdbcType="VARCHAR" />
+		<result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<select id="getDocumentFormList" resultType="java.util.HashMap">
+		SELECT FORM_ID AS formId,FORM_TITLE AS formTitle,TABLE_NAME AS tableName,DOCUMENT_TYPE AS documentType,VERSION AS version,
+		CREATE_TIME AS createTime,CREATE_USER AS createUser,(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=#{orgId} AND U.ACCOUNT_ID=CREATE_USER) AS createUserName
+		FROM DOCUMENT_FORM
+		WHERE ORG_ID=#{orgId}
+		<if test="search !='%%' and search !=''.toString() and search!=null">
+			AND FORM_TITLE LIKE #{search}
+		</if>
+	</select>
+	
+	
+	<select id="getDocumentFormSelectList" resultType="java.util.HashMap">
+	SELECT FORM_ID AS formId,FORM_TITLE AS formTitle
+	FROM DOCUMENT_FORM
+	WHERE ORG_ID=#{orgId}
+	ORDER BY SORT_NO DESC
+	</select>
+	
+	
+	<select id="isExistMoblieHtmlCode" resultType="Integer">
+		SELECT COUNT(1) AS total 
+		FROM 
+		DOCUMENT_FORM 
+		WHERE
+		ORG_ID=#{orgId}
+		AND FORM_ID=#{formId}
+		AND (MOBILE_HTML_CODE IS NULL OR MOBILE_HTML_CODE ='')
+</select>
+
+</mapper>
+

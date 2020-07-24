@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core136.mapper.account.UnitDeptMapper">
+<resultMap id="UnitDept" type="com.core136.bean.account.UnitDept" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="DEPT_ID" property="deptId" jdbcType="VARCHAR" />
+    <result column="SORT_NO" property="sortNo" jdbcType="INTEGER" />
+    <result column="DEPT_NAME" property="deptName" jdbcType="VARCHAR" />
+    <result column="ORG_LEAVE_ID" property="orgLeaveId" jdbcType="VARCHAR" />
+    <result column="DEPT_TEL" property="deptTel" jdbcType="VARCHAR" />
+    <result column="DEPT_EMAIL" property="deptEmail" jdbcType="VARCHAR" />
+    <result column="DEPT_LEAD" property="deptLead" jdbcType="VARCHAR" />
+    <result column="D_DEPT_ID" property="dDeptId" jdbcType="VARCHAR" />
+    <result column="W_DEPT_ID" property="wDeptId" jdbcType="VARCHAR" />
+    <result column="DEPT_FUNCTION" property="deptFunction" jdbcType="VARCHAR" />
+    <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+  </resultMap>
+
+<select id="getUnitDeptTree" resultType="java.util.HashMap">
+SELECT DEPT_ID as deptId, DEPT_NAME as deptName,
+CASE WHEN (SELECT COUNT(1) FROM UNIT_DEPT TMP WHERE TMP.ORG_LEAVE_ID=deptId)=0 then 'false' else 'true' END
+AS  isParent,'/gobal/img/org/dept.png' as icon 
+FROM UNIT_DEPT WHERE ORG_LEAVE_ID=#{orgLeaveId} AND ORG_ID=#{orgId} ORDER BY SORT_NO ASC
+</select>
+
+<select id="getUnitDeptForUserInfoTree" resultType="java.util.HashMap">
+SELECT DEPT_ID as deptId, DEPT_NAME as deptName,'true' AS  isParent,'/gobal/img/org/dept.png' as icon 
+FROM UNIT_DEPT WHERE ORG_LEAVE_ID=#{orgLeaveId} AND ORG_ID=#{orgId} ORDER BY SORT_NO ASC
+</select>
+
+<select id="isExistChild" resultType="Integer">
+SELECT COUNT(1) AS ZS FROM UNIT_DEPT WHERE ORG_LEAVE_ID=#{orgLeaveId} AND ORG_ID=#{orgId}
+</select>
+
+<select id="getUnitDeptByDeptIds"  resultType="java.util.HashMap">
+ SELECT DEPT_ID AS deptId,DEPT_NAME AS deptName
+ FROM UNIT_DEPT WHERE DEPT_ID IN
+ 		<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+                #{item}       
+        </foreach>  
+ AND ORG_ID=#{orgId}
+ </select>
+ 
+ <select id="getUnitDeptBySearchdept"  resultType="java.util.HashMap">
+ SELECT DEPT_ID AS deptId,DEPT_NAME AS deptName
+ FROM UNIT_DEPT
+ WHERE 
+ 	ORG_ID=#{orgId}
+ <if test="searchdept != '%%'">
+	AND	DEPT_NAME LIKE #{searchdept} 
+ </if>
+</select>
+
+<select id="getUnitDeptInfo" resultType="java.util.HashMap">
+SELECT 
+D.ID AS id,D.DEPT_ID AS deptId,D.SORT_NO AS sortNo,D.DEPT_NAME as deptName,D.ORG_LEAVE_ID AS orgLeaveId,D.DEPT_TEL AS deptTel,
+D.DEPT_EMAIL AS deptEmail,D.DEPT_FAX AS deptFax,D.DEPT_LEAD AS deptLead,D.DEPT_FUNCTION AS deptFunction,D.ORG_ID AS orgId,
+(
+	SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=D.ORG_ID AND U.ACCOUNT_ID=D.DEPT_LEAD
+) AS deptLeadUserName
+FROM 
+	UNIT_DEPT D
+WHERE 
+	D.ORG_ID=#{orgId} AND D.DEPT_ID=#{deptId}
+</select>
+
+<select id="getDeptIdListByAccountIds" resultType="java.util.HashMap">
+SELECT DISTINCT DEPT_ID AS deptId FROM USER_INFO WHERE 
+ORG_ID = #{orgId} AND FUN_INTE_ARRAY(#{accountIds},ACCOUNT_ID)>0
+</select>
+
+
+<select id="getDeptIdListByUserLeaveIds" resultType="java.util.HashMap">
+SELECT DISTINCT DEPT_ID AS deptId FROM USER_INFO WHERE 
+ORG_ID = #{orgId} AND FUN_INTE_ARRAY(#{userLeaveIds},LEAD_LEAVE)>0
+</select>
+
+
+<select id="getBpmOpUserDept" resultType="java.util.HashMap">
+SELECT DEPT_ID as deptId, DEPT_NAME as deptName,
+CASE WHEN (SELECT COUNT(1) FROM UNIT_DEPT TMP WHERE TMP.ORG_LEAVE_ID=deptId)=0 then 'false' else 'true' END
+AS  isParent,'/gobal/img/org/dept.png' as icon 
+FROM UNIT_DEPT WHERE ORG_ID=#{orgId} AND ORG_LEAVE_ID=#{orgLeaveId} 
+<if test="list!=null">
+	<if test="list.size>0">
+	AND DEPT_ID IN
+	<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+	   #{item}       
+	</foreach>  
+	</if>
+</if>
+ORDER BY SORT_NO ASC
+</select>
+
+<select id="getDocumentOpUserDept" resultType="java.util.HashMap">
+SELECT DEPT_ID as deptId, DEPT_NAME as deptName,
+CASE WHEN (SELECT COUNT(1) FROM UNIT_DEPT TMP WHERE TMP.ORG_LEAVE_ID=deptId)=0 then 'false' else 'true' END
+AS  isParent,'/gobal/img/org/dept.png' as icon 
+FROM UNIT_DEPT WHERE ORG_ID=#{orgId} AND ORG_LEAVE_ID=#{orgLevelId} 
+<if test="list!=null">
+	<if test="list.size>0">
+	AND DEPT_ID IN
+	<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+	   #{item}       
+	</foreach>  
+	</if>
+</if>
+ORDER BY SORT_NO ASC
+</select>
+
+<select id="getDeptTableTreeList" resultType="java.util.HashMap">
+SELECT DEPT_ID AS id,ORG_LEAVE_ID AS pid,DEPT_NAME AS name,DEPT_LEAD AS deptLead,D_DEPT_ID AS dDeptId,W_DEPT_ID AS wDeptId
+FROM UNIT_DEPT
+WHERE ORG_ID=#{orgId} ORDER BY SORT_NO ASC
+</select>
+
+
+<select id="getPartentUnitDept" resultMap="UnitDept">
+SELECT * 
+FROM 
+UNIT_DEPT
+WHERE 
+ORG_ID=#{orgId}
+AND DEPT_ID=(SELECT D.ORG_LEAVE_ID FROM UNIT_DEPT D WHERE D.ORG_ID=#{orgId} AND D.DEPT_ID=#{deptId})
+</select>
+
+</mapper>
+

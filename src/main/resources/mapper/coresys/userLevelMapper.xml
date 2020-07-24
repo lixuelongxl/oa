@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core136.mapper.account.UserLevelMapper">
+<resultMap id="UserLevel" type="com.core136.bean.account.UserLevel" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="LEVEL_ID" property="levelId" jdbcType="VARCHAR" />
+    <result column="LEVEL_NO_ID" property="levelNoId" jdbcType="VARCHAR" />
+    <result column="LEVEL_NAME" property="levelName" jdbcType="VARCHAR" />
+    <result column="SUPERIOR" property="superior" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+    <result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
+    <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+  </resultMap>
+<select id="getUserLevelChart" resultType="java.util.HashMap">
+	SELECT LEVEL_ID AS id,LEVEL_NO_ID AS levelNoId,LEVEL_NAME AS name,SUPERIOR AS superior, '101' AS relationship
+	FROM USER_LEVEL
+	WHERE ORG_ID=#{orgId}
+	AND SUPERIOR=#{levelId}
+</select>
+
+<select id="getUserLevelById" resultType="java.util.HashMap">
+	SELECT
+	L.LEVEL_ID AS levelId,
+	L.LEVEL_NO_ID AS levelNoId,
+	L.LEVEL_NAME AS levelName,
+	L.SUPERIOR AS superior,
+	(
+		SELECT
+			U.LEVEL_NAME
+		FROM
+			USER_LEVEL U
+		WHERE
+			U.ORG_ID = L.ORG_ID
+		AND U.LEVEL_ID = L.SUPERIOR
+	) AS superiorName
+	FROM
+	USER_LEVEL L
+	WHERE L.ORG_ID=#{orgId}
+	AND L.LEVEL_ID=#{levelId}
+</select>
+
+
+<select id="getUserLevelByLevelIds" resultType="java.util.HashMap">
+	SELECT LEVEL_ID AS id,LEVEL_NAME AS name
+	FROM USER_LEVEL
+	WHERE ORG_ID=#{orgId}
+	AND LEVEL_ID IN
+	<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+          #{item}       
+    </foreach>  
+</select>
+
+</mapper>
+

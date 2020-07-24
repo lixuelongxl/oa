@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core136.mapper.bpm.BpmTemplateMapper">
+<resultMap id="BpmTemplate" type="com.core136.bean.bpm.BpmTemplate" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="SORT_NO" property="sortNo" jdbcType="INTEGER" />
+    <result column="TEMPLATE_ID" property="templateId" jdbcType="VARCHAR" />
+    <result column="FLOW_ID" property="flowId" jdbcType="VARCHAR" />
+    <result column="PROCESS_ID" property="processId" jdbcType="VARCHAR" />
+    <result column="TEMPLATE_NAME" property="templateName" jdbcType="VARCHAR" />
+	<result column="ATTACH" property="attach" jdbcType="VARCHAR" />
+	<result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+	<result column="CREATE_NAME" property="createName" jdbcType="VARCHAR" />
+    <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+  </resultMap>
+<select id="getBpmTemplateList" resultType="java.util.HashMap">
+SELECT ID AS id,TEMPLATE_ID AS templateId,FLOW_ID AS flowId,TEMPLATE_NAME AS templateName,PROCESS_ID AS processId,
+ATTACH AS attach,CREATE_TIME AS createTime,CREATE_USER AS createUser,ATTACH AS attach,
+(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID = ORG_ID AND U.ACCOUNT_ID = CREATE_USER ) AS createUserName
+FROM BPM_TEMPLATE
+WHERE ORG_ID = #{orgId}
+<if test="search !='%%' and search !=''.toString() and search!=null">
+AND TEMPLATE_NAME LIKE #{search}
+</if>
+</select>
+
+
+
+
+</mapper>
+

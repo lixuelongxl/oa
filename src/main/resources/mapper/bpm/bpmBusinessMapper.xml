@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core136.mapper.bpm.BpmBusinessMapper">
+	<resultMap id="BpmBusiness" type="com.core136.bean.bpm.BpmBusiness">
+		<id column="ID" property="id" jdbcType="BIGINT" />
+		<result column="SORT_NO" property="sortNo" jdbcType="INTEGER" />
+		<result column="BUSINESS_ID" property="businessId" jdbcType="VARCHAR" />
+		<result column="TITLE" property="title" jdbcType="VARCHAR" />
+		<result column="FLOW_ID" property="flowId" jdbcType="VARCHAR" />
+		<result column="PROCESS_ID" property="processId" jdbcType="VARCHAR" />
+		<result column="SQL_STR" property="sqlStr" jdbcType="VARCHAR" />
+		<result column="DB_SOURCE_ID" property="dbSourceId" jdbcType="VARCHAR" />
+		<result column="REMARK" property="remark" jdbcType="VARCHAR" />
+		<result column="STATUS" property="status" jdbcType="VARCHAR" />
+		<result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+		<result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
+		<result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="getBpmBusinessList" resultType="java.util.HashMap">
+	SELECT B.BUSINESS_ID AS businessId, B.TITLE AS title,B.FLOW_ID AS flowId,F.FLOW_NAME AS flowName,B.CREATE_TIME AS createTime,B.STATUS AS status,
+	DB_SOURCE_ID AS dbSourceId,(SELECT S.DB_SOURCE_NAME FROM SYS_DB_SOURCE S WHERE S.ORG_ID=#{orgId} AND S.DB_SOURCE_ID=B.DB_SOURCE_ID) AS dbSourceName,
+	B.CREATE_USER AS createUser,(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=#{orgId} AND U.ACCOUNT_ID=B.CREATE_USER) AS createUserName,
+	B.PROCESS_ID AS processId,(SELECT P.PRCS_NAME FROM BPM_PROCESS P WHERE P.ORG_ID=#{orgId} AND B.PROCESS_ID=P.PROCESS_ID) AS prcsName	
+	FROM BPM_BUSINESS B , BPM_FLOW F 
+	WHERE B.ORG_ID=F.ORG_ID AND B.FLOW_ID=F.FLOW_ID AND B.ORG_ID=#{orgId}
+	</select>
+	
+	<select id="selectBpmBusiness"  resultMap="BpmBusiness">
+		SELECT *
+		FROM
+		BPM_BUSINESS
+		WHERE ORG_ID=#{orgId}
+		AND FLOW_ID=#{flowId}
+		AND PROCESS_ID=#{processId}
+		AND STATUS='1' ORDER BY SORT_NO ASC
+	</select>
+
+</mapper>
+

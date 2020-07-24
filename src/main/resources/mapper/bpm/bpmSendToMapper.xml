@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core136.mapper.bpm.BpmSendToMapper">
+	<resultMap id="BpmSendTo" type="com.core136.bean.bpm.BpmSendTo">
+		<id column="ID" property="id" jdbcType="BIGINT" />
+		<result column="SEND_TO_ID" property="sendToId" jdbcType="VARCHAR" />
+		<result column="RUN_ID" property="runId" jdbcType="VARCHAR" />
+		<result column="ACCOUNT_ID" property="accountId" jdbcType="VARCHAR" />
+		<result column="STATUS" property="status" jdbcType="VARCHAR" />
+		<result column="REV_TIME" property="revTime" jdbcType="VARCHAR" />
+		<result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+		<result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
+		<result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+	</resultMap>
+
+<select id="getSendToMeBpmList" resultType="java.util.HashMap">
+SELECT S.SEND_TO_ID AS sendToId, L.ID AS id,L.FLOW_ID AS flowId,L.RUN_ID AS runId,L.FLOW_TITLE AS flowTitle, S.CREATE_TIME AS senToTime,
+L.URGENCY AS urgency,ATTACH AS attach,L.CREATE_USER AS createUser,L.OP_USER_STR AS opUserStr,S.STATUS AS status,S.REV_TIME AS revTime,
+(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=S.ORG_ID AND U.ACCOUNT_ID = S.CREATE_USER) AS sendUserName
+FROM BPM_SEND_TO S LEFT JOIN BPM_LIST L ON S.ORG_ID=L.ORG_ID AND S.RUN_ID=L.RUN_ID
+WHERE
+L.ORG_ID=#{orgId}
+AND L.DEL_FLAG ='0'
+AND S.ACCOUNT_ID=#{accountId}
+<if test = "beginTime!=''.toString() and beginTime!=null">
+	AND S.CREATE_TIME &gt;=#{beginTime}
+</if>
+<if test = "endTime!=''.toString() and endTime!=null">
+	AND S.CREATE_TIME &lt;=#{endTime}
+</if>
+<if test="status!=''.toString and status!=null">
+	AND S.STATUS = #{status}
+</if>
+<if test="search !='%%'.toString() and search !=''.toString() and search!=null">
+	AND L.FLOW_TITLE LIKE #{search}
+</if>
+<if test="flowId!=''.toString() and flowId!=null">
+	AND L.FLOW_ID = #{flowId}
+</if>
+</select>
+
+<select id="getSendToMeBpmListForMobile" resultType="java.util.HashMap">
+SELECT S.SEND_TO_ID AS sendToId, L.ID AS id,L.FLOW_ID AS flowId,L.RUN_ID AS runId,L.FLOW_TITLE AS flowTitle, S.CREATE_TIME AS senToTime,
+L.URGENCY AS urgency,ATTACH AS attach,L.CREATE_USER AS createUser,L.OP_USER_STR AS opUserStr,S.STATUS AS status,S.REV_TIME AS revTime,
+(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=S.ORG_ID AND U.ACCOUNT_ID = S.CREATE_USER) AS sendUserName
+FROM BPM_SEND_TO S LEFT JOIN BPM_LIST L ON S.ORG_ID=L.ORG_ID AND S.RUN_ID=L.RUN_ID
+WHERE
+L.ORG_ID=#{orgId}
+AND L.DEL_FLAG ='0'
+AND S.ACCOUNT_ID=#{accountId}
+ORDER BY S.STATUS ASC,S.CREATE_TIME DESC LIMIT ${page},10
+</select>
+
+</mapper>
+

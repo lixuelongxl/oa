@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core136.mapper.account.UserPrivMapper">
+<resultMap id="UserPriv" type="com.core136.bean.account.UserPriv" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="SORT_NO" property="sortNo" jdbcType="INTEGER" />
+    <result column="USER_PRIV_ID" property="userPrivId" jdbcType="VARCHAR" />
+    <result column="USER_PRIV_NAME" property="userPrivName" jdbcType="VARCHAR" />
+    <result column="USER_PRIV_STR" property="userPrivStr" jdbcType="VARCHAR" />
+    <result column="MOBILE_PRIV" property="mobilePriv" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="APP_PRIV" property="appPriv" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+    <result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
+    <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+  </resultMap>
+
+<select id="getUserPrivByPrivId" resultMap="UserPriv">
+        SELECT ID,USER_PRIV_ID,SORT_NO,USER_PRIV_NAME,USER_PRIV_STR,REMARK,MOBILE_PRIV,ORG_ID 
+        FROM USER_PRIV WHERE USER_PRIV_ID=#{userPrivId} AND ORG_ID=#{orgId}
+</select>
+
+
+<select id="getAllUserPriv" resultMap="UserPriv">
+        SELECT ID,USER_PRIV_ID,SORT_NO,USER_PRIV_NAME,USER_PRIV_STR,MOBILE_PRIV,REMARK,ORG_ID 
+        FROM USER_PRIV WHERE ORG_ID=#{orgId}
+        <if test="search !='%%' and search !=''.toString() and search!=null">
+        AND USER_PRIV_NAME LIKE #{search}
+        </if>
+</select>
+
+<select id="getUserPrivNamesByIds"  resultMap="UserPriv">
+ SELECT USER_PRIV_ID,SORT_NO,USER_PRIV_NAME,USER_PRIV_STR,REMARK,ORG_ID
+ FROM USER_PRIV
+ WHERE ORG_ID=#{orgId}
+  <if test="list.size()>0">
+ AND USER_PRIV_ID IN 
+<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+#{item}       
+</foreach>
+</if> 
+ </select>
+ 
+ 
+ <select id="getSelectPrivList"  resultMap="UserPriv">
+ SELECT USER_PRIV_ID,SORT_NO,USER_PRIV_NAME,USER_PRIV_STR,REMARK,ORG_ID
+ FROM USER_PRIV
+ WHERE ORG_ID=#{orgId}
+ <if test="list.size()>0">
+AND USER_PRIV_ID NOT IN 
+<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+#{item}       
+</foreach>
+</if>
+ </select>
+
+
+ <select id="getSelectedPrivList"  resultMap="UserPriv">
+ SELECT USER_PRIV_ID,SORT_NO,USER_PRIV_NAME,USER_PRIV_STR,REMARK,ORG_ID
+ FROM USER_PRIV
+ WHERE ORG_ID=#{orgId}
+ <if test="list.size()>0">
+AND USER_PRIV_ID IN 
+<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+#{item}       
+</foreach>
+</if>
+ </select> 
+ 
+ <select id="userPrivIsExist" resultType="Integer">
+	SELECT COUNT(1) AS ZS FROM USER_PRIV WHERE ORG_ID=#{orgId}
+</select>
+ 
+</mapper>
+

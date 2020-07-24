@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core136.mapper.bpm.BpmChildProcessMapper">
+	<resultMap id="BpmChildProcess" type="com.core136.bean.bpm.BpmChildProcess">
+		<id column="ID" property="id" jdbcType="BIGINT" />
+		<result column="CHILD_PROCESS_ID" property="childProcessId" jdbcType="VARCHAR" />
+		<result column="PROCESS_ID" property="processId" jdbcType="VARCHAR" />
+		<result column="CHILD_FLOW_ID" property="childFlowId" jdbcType="VARCHAR" />
+		<result column="SORT_NO" property="sortNo" jdbcType="INTEGER" />
+		<result column="DATA_MAPPING" property="dataMapping" jdbcType="VARCHAR" />
+		<result column="END_OPT" property="childEndOpt" jdbcType="VARCHAR" />
+		<result column="COPY_PUBLIC_FILE" property="copyPublicFile" jdbcType="VARCHAR" />
+		<result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+		<result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
+		<result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+	</resultMap>
+	<select id="getBpmChildProcessPrcs" resultType="java.util.HashMap">
+		SELECT P.SORT_NO AS childSortNo,P.PRCS_NAME AS childPrcsName,C.CHILD_FLOW_ID AS childFlowId,C.END_OPT AS childEndOpt,P.S_PRCS_AUTO AS childSPrcsAuto,
+		P.PROCESS_ID AS childProcessId,P.NEXT_PRCS AS childNextPrcs,P.AUTO_USER_MODEL AS childAutoUserModel,PRCS_CONDITION AS childPrcsCondition,
+		C.COPY_PUBLIC_FILE AS childCopyPublicFile,C.DATA_MAPPING AS childDataMapping,P.AUTO_SEND_TYPE AS childAutoSendType,P.AUTO_SEND_USER AS childAutoSendUser
+		FROM 
+		BPM_PROCESS P LEFT JOIN BPM_CHILD_PROCESS C ON P.ORG_ID=C.ORG_ID AND C.PROCESS_ID=P.PROCESS_ID
+		WHERE P.ORG_ID=#{orgId} AND p.PROCESS_ID=#{processId}
+	</select>
+	
+	
+	
+	
+</mapper>
+

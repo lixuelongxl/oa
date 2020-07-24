@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core136.mapper.account.AccountMapper">
+	<resultMap id="Account" type="com.core136.bean.account.Account">
+		<id column="ID" property="id" jdbcType="BIGINT" />
+		<result column="ACCOUNT_ID" property="accountId" jdbcType="VARCHAR" />
+		<result column="D_ACCOUNT_ID" property="dAccountId" jdbcType="VARCHAR" />
+		<result column="W_ACCOUNT_ID" property="wAccountId" jdbcType="VARCHAR" />
+		<result column="PASS_WORD" property="passWord" jdbcType="VARCHAR" />
+		<result column="PASSWORD_TYPE" property="passwordType" jdbcType="VARCHAR" />
+		<result column="THMEM" property="thmem" jdbcType="VARCHAR" />
+		<result column="USER_PRIV" property="userPriv" jdbcType="VARCHAR" />
+		<result column="PAGE_PRIV" property="pagePriv" jdbcType="VARCHAR" />
+		<result column="MANAGE_DEPT" property="manageDept" jdbcType="VARCHAR" />
+		<result column="NOT_LOGIN" property="notLogin" jdbcType="VARCHAR" />
+		<result column="LAST_VISIT_TIME" property="lastVisitTime" jdbcType="VARCHAR" />
+		<result column="LANGUAGE" property="language" jdbcType="VARCHAR" />
+		<result column="BY_NAME" property="byName" jdbcType="VARCHAR" />
+		<result column="LOGIN_NUM" property="loginNum" jdbcType="INTEGER" />
+		<result column="LAST_LOGIN_TIME" property="lastLoginTime" jdbcType="VARCHAR" />
+		<result column="UPDATE_PASSWORD_TIME" property="updatePasswordTime" jdbcType="VARCHAR" />
+		<result column="IM_FLAG" property="imFlag" jdbcType="VARCHAR" />
+		<result column="APP_PRIV" property="appPriv" jdbcType="VARCHAR" />
+		<result column="HEAD_IMG" property="headImg" jdbcType="VARCHAR" />
+		<result column="NO_IP" property="noIp" jdbcType="VARCHAR" />
+		<result column="OP_FLAG" property="opFlag" jdbcType="VARCHAR" />
+		<result column="D_STATUS" property="dStatus" jdbcType="VARCHAR" />
+		<result column="W_STATUS" property="wStatus" jdbcType="VARCHAR" />
+		<result column="HOME_PAGE" property="homePage" jdbcType="VARCHAR" />
+		<result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+	</resultMap>
+
+<delete id="deleteAccountByAccountIds">
+    DELETE FROM ACCOUNT WHERE 
+    ORG_ID=#{orgId}
+    <if test="list!=null">
+			AND ACCOUNT_ID IN
+			<foreach collection="list" index="index" item="item" open="("
+				separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+</delete>
+
+<select id="getAccountInPriv"  resultMap="Account">
+		SELECT *
+		FROM 
+		ACCOUNT A 
+		WHERE A.ORG_ID=#{orgId}
+		AND A.NOT_LOGIN = '0'
+		<if test="userPriv!='@all'.toString() and deptPriv!='@all'.toString() and leavePriv!='@all'.toString()">
+		AND ACCOUNT_ID IN (SELECT U.ACCOUNT_ID FROM USER_INFO U WHERE U.ORG_ID=#{orgId}
+			AND 
+			(
+				FUN_INTE_ARRAY(U.ACCOUNT_ID,#{userPriv})
+				OR FUN_INTE_ARRAY(U.DEPT_ID,#{deptPriv})
+				OR FUN_INTE_ARRAY(U.LEAD_LEAVE,#{leavePriv})
+			)
+		)
+		</if>
+ </select>
+
+
+	<select id="login" resultMap="Account">
+		SELECT ID,ACCOUNT_ID,PASS_WORD,PASSWORD_TYPE,
+		THMEM,USER_PRIV,PAGE_PRIV,NOT_LOGIN,HEAD_IMG,
+		LAST_VISIT_TIME,LANGUAGE,BY_NAME,LOGIN_NUM,LAST_LOGIN_TIME,
+		UPDATE_PASSWORD_TIME,UPDATE_PASSWORD_TIME,IM_FLAG,APP_PRIV,NO_IP,
+		OP_FLAG,HOME_PAGE,MANAGE_DEPT,ORG_ID
+		FROM ACCOUNT WHERE ACCOUNT_ID=#{accountId} AND PASS_WORD=#{passWord} AND NOT_LOGIN ='0'
+	</select>
+
+	<select id="getUserNameByAccountId" resultType="java.util.HashMap">
+		SELECT B.USER_NAME AS USER_NAME,A.ACCOUNT_ID AS ACCOUNT_ID
+		FROM ACCOUNT A LEFT JOIN USER_INFO B ON A.ORG_ID=B.ORG_ID AND A.ACCOUNT_ID=B.ACCOUNT_ID
+		WHERE
+		A.ACCOUNT_ID=#{accountId} AND A.ORG_ID=#{orgId}
+	</select>
+
+	<select id="getUserNamesByAccountIds" resultType="java.util.HashMap">
+		SELECT B.USER_NAME AS userName,A.ACCOUNT_ID AS accountId,B.SEX AS sex
+		,B.MOBILE_NO AS mobileNo,B.E_MAIL AS eMail
+		FROM ACCOUNT A,USER_INFO B
+		WHERE
+		A.ACCOUNT_ID=B.ACCOUNT_ID
+		<if test="list!=null">
+			AND A.ACCOUNT_ID IN
+			<foreach collection="list" index="index" item="item" open="("
+				separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		AND A.ORG_ID=#{orgId} AND A.NOT_LOGIN='0'
+	</select>
+
+	<select id="getSelect2UserListByIds" resultType="java.util.HashMap">
+		SELECT B.USER_NAME AS userName,A.ACCOUNT_ID AS accountId,B.SEX AS sex
+		,B.MOBILE_NO AS mobileNo,B.E_MAIL AS eMail
+		FROM ACCOUNT A,USER_INFO B
+		WHERE
+		A.ACCOUNT_ID=B.ACCOUNT_ID
+		<if test="list!=null">
+			AND A.ACCOUNT_ID IN
+			<foreach collection="list" index="index" item="item" open="("
+				separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		AND A.ORG_ID=#{orgId} AND A.NOT_LOGIN='0'
+		<if test="search !='%%' and search !=''.toString() and search!=null">
+			AND (B.USER_NAME LIKE #{search} OR B.MOBILE_NO LIKE #{search})
+		</if>
+	</select>
+
+
+	<select id="getMySubordinates" resultType="java.util.HashMap">
+		SELECT B.USER_NAME AS userName,A.ACCOUNT_ID AS accountId,A.HEAD_IMG AS headImg,B.LEAD_LEAVE AS leadLeave,
+		(SELECT L.LEVEL_NAME FROM USER_LEVEL L WHERE L.ORG_ID=A.ORG_ID AND
+		L.LEVEL_ID=B.LEAD_LEAVE) AS leadLevelName
+		FROM ACCOUNT A,USER_INFO B
+		WHERE
+		A.ORG_ID=B.ORG_ID AND A.ACCOUNT_ID=B.ACCOUNT_ID AND B.LEAD_ID=#{accountId} AND
+		A.ORG_ID=#{orgId}
+	</select>
+
+
+	<select id="getCrmSaleList" resultType="java.util.HashMap">
+		SELECT B.USER_NAME AS userName,A.ACCOUNT_ID AS accountId,B.SEX AS sex
+		FROM ACCOUNT A LEFT JOIN USER_INFO B ON A.ORG_ID=B.ORG_ID AND A.ACCOUNT_ID=B.ACCOUNT_ID
+		WHERE
+		A.ACCOUNT_ID=B.ACCOUNT_ID
+		<if test="list!=null">
+			AND A.ACCOUNT_ID IN
+			<foreach collection="list" index="index" item="item" open="("
+				separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+		AND A.ORG_ID=#{orgId} AND A.NOT_LOGIN='0'
+		<if test="search !='%%' and search !=''.toString() and search!=null">
+			AND B.USER_NAME LIKE #{search}
+		</if>
+	</select>
+
+
+<select id="accountIsExist" resultType="Integer">
+		SELECT COUNT(1) FROM ACCOUNT WHERE ACCOUNT_ID=#{accountId}
+</select>
+
+
+ <select id="getUserInfoBySearchuser"  resultType="java.util.HashMap">
+	SELECT ACCOUNT_ID AS accountId,USER_NAME AS userName,SEX AS sex,
+	(SELECT A.HEAD_IMG FROM ACCOUNT A WHERE A.ORG_ID=#{orgId} AND A.ACCOUNT_ID=ACCOUNT_ID) AS headImg 
+	FROM USER_INFO 
+	WHERE
+	ORG_ID=#{orgId} 
+	<if test="searchuser !='%%' and searchuser !=''.toString() and searchuser!=null">
+			AND(USER_NAME LIKE #{searchuser} OR PIN_YIN LIKE #{searchuser})
+	</if>
+	AND ACCOUNT_ID IN 
+	(SELECT ACCOUNT_ID FROM ACCOUNT WHERE NOT_LOGIN='0') ORDER BY SORT_NO ASC
+ </select>
+
+
+</mapper>
+

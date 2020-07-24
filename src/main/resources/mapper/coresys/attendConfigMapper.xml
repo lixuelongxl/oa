@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core136.mapper.attend.AttendConfigMapper">
+<resultMap id="AttendConfig" type="com.core136.bean.attend.AttendConfig" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="CONFIG_ID" property="configId" jdbcType="VARCHAR" />
+    <result column="SORT_NO" property="sortNo" jdbcType="INTEGER" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="BEGIN_TIME" property="beginTime" jdbcType="VARCHAR" />
+    <result column="END_TIME" property="endTime" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+    <result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
+    <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+  </resultMap>
+	<select id="getAllAttendConfigList" resultType="java.util.HashMap">
+		SELECT CONFIG_ID AS configId,TITLE AS title
+		FROM ATTEND_CONFIG
+		WHERE ORG_ID=#{orgId}
+	</select>
+	
+<select id="getMyAttendConfigList" resultType="java.util.HashMap">
+	SELECT C.CONFIG_ID AS configId,C.TITLE AS title,C.BEGIN_TIME AS beginTime,C.END_TIME AS endTime,C.REMARK AS remark,
+(SELECT COUNT(1) FROM ATTEND A WHERE curdate() = A.NOW_TIME AND A.STATUS='1') AS beginTimeStatus,
+(SELECT COUNT(1) FROM ATTEND A WHERE curdate() = A.NOW_TIME AND A.STATUS='2') AS endTimeStatus
+FROM 
+ATTEND_CONFIG C 
+WHERE 
+C.ORG_ID='8EADB678-A646-1E51-3E87-75A547B8AF19'
+</select>	
+</mapper>
+

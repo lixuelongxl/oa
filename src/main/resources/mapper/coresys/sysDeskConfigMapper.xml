@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core136.mapper.sys.SysDeskConfigMapper">
+<resultMap id="SysDeskConfig" type="com.core136.bean.sys.SysDeskConfig" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="DESK_CONFIG_ID" property="deskConfigId" jdbcType="VARCHAR" />
+    <result column="MODULE" property="module" jdbcType="VARCHAR" />
+    <result column="MODULE_NAME" property="moduleName" jdbcType="VARCHAR" />
+    <result column="SORT_NO" property="sortNo" jdbcType="INTEGER" />
+    <result column="USE_USER_PRIV" property="useUserPriv" jdbcType="VARCHAR" />
+    <result column="USE_DEPT_PRIV" property="useDeptPriv" jdbcType="VARCHAR" />
+    <result column="USE_LEAVE_PRIV" property="useLeavePriv" jdbcType="VARCHAR" />
+    <result column="MUST_USE_USER_PRIV" property="mustUseUserPriv" jdbcType="VARCHAR" />
+    <result column="MUST_USE_DEPT_PRIV" property="mustUseDeptPriv" jdbcType="VARCHAR" />
+    <result column="MUST_USE_LEAVE_PRIV" property="mustUseLeavePriv" jdbcType="VARCHAR" />
+    <result column="UN_USE_USER_PRIV" property="unUseUserPriv" jdbcType="VARCHAR" />
+    <result column="UN_USE_DEPT_PRIV" property="unUseDeptPriv" jdbcType="VARCHAR" />
+    <result column="UN_USE_LEAVE_PRIV" property="unUseLeavePriv" jdbcType="VARCHAR" />
+    <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+  </resultMap>
+  
+<select id="getDeskConfigList" resultType="java.util.HashMap">
+SELECT ID AS id,DESK_CONFIG_ID AS deskConfigId,MODULE AS module,MODULE_NAME AS moduleName
+FROM 
+SYS_DESK_CONFIG 
+WHERE ORG_ID=#{orgId}
+AND FUN_INTE_ARRAY(UN_USE_USER_PRIV,#{accountId}) &lt;= 0
+<if test="deptId!=null and deptId=!''">
+	AND FUN_INTE_ARRAY(UN_USE_DEPT_PRIV,#{deptId})&lt;= 0
+</if>
+<if test="leaveId!='' and leaveId!=null">
+	AND FUN_INTE_ARRAY(UN_USE_LEAVE_PRIV,#{leaveId}) &lt;= 0
+</if>
+	AND UN_USE_USER_PRIV != '@all'
+	AND UN_USE_DEPT_PRIV != '@all'
+	AND UN_USE_LEAVE_PRIV != '@all'
+
+</select>
+
+
+<select id="getAllSysDeskConfig" resultType="java.util.HashMap">
+		SELECT ID AS id,DESK_CONFIG_ID AS deskConfigId,MODULE AS module,MODULE_NAME AS moduleName,
+		SORT_NO AS sortNo,USE_USER_PRIV AS useUserPriv,USE_DEPT_PRIV AS useDeptPriv,USE_LEAVE_PRIV AS useLeavePriv,
+		MUST_USE_USER_PRIV AS mustUseUserPriv,MUST_USE_DEPT_PRIV AS mustUseDeptPriv,MUST_USE_LEAVE_PRIV AS mustUseLeavePriv,
+		UN_USE_USER_PRIV AS unUseUserPriv,UN_USE_DEPT_PRIV AS unUseDeptPriv,UN_USE_LEAVE_PRIV AS unUseLeavePriv
+		FROM 
+		SYS_DESK_CONFIG 
+		WHERE ORG_ID=#{orgId}
+		<if test="search !='%%' and search !=''.toString() and search!=null">
+		AND MODULE_NAME LIKE #{search}
+		</if>
+</select>
+ 
+    
+</mapper>
+

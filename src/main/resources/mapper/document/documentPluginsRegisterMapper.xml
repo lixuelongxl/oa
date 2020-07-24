@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core136.mapper.document.DocumentPluginsRegisterMapper">
+<resultMap id="DocumentPluginsRegister" type="com.core136.bean.document.DocumentPluginsRegister" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="PLUGINS_ID" property="pluginsId" jdbcType="VARCHAR" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="SORT_NO" property="sortNo" jdbcType="INTEGER" />
+    <result column="PACK_NAME" property="packName" jdbcType="VARCHAR" />
+    <result column="CLASS_NAME" property="className" jdbcType="VARCHAR" />
+    <result column="METHOD" property="method" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+    <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+  </resultMap>
+<select id="getDocumentPluginsList" resultType="java.util.HashMap">
+SELECT PLUGINS_ID AS pluginsId,TITLE AS title,PACK_NAME AS packName,CLASS_NAME AS className,METHOD AS method,REMARK AS remark,STATUS AS status,
+(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=#{orgId} AND U.ACCOUNT_ID=CREATE_USER) AS createUserName,CREATE_TIME AS createTime,CREATE_USER AS createUser
+FROM DOCUMENT_PLUGINS_REGISTER 
+WHERE ORG_ID=#{orgId} ORDER BY SORT_NO ASC;
+</select>
+
+<select id="getDocumentPluginsListForProcess" resultType="java.util.HashMap">
+SELECT PLUGINS_ID AS pluginsId,TITLE AS title, PACK_NAME AS packName,CLASS_NAME AS className,METHOD AS method
+FROM DOCUMENT_PLUGINS_REGISTER 
+WHERE ORG_ID=#{orgId} AND STATUS='0' ORDER BY SORT_NO ASC;
+</select>
+
+</mapper>
+
