@@ -9,7 +9,7 @@
 
 #### 安装教程
 
-1.  xxxx
+1.  mvn install lib/目录中的jar 文件
 2.  xxxx
 3.  xxxx
 
