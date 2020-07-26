@@ -41,5 +41,5 @@
 2.  技术交流群QQ:660214195 群内不定时的发放技术文档。
 3. 	开源项目不容易，大家感觉可以加个星。
 4.  项目都是晚上牺牲休息时间整理上传的，如果感觉我的付对您有价值，就打赏点饮料和烟钱。
-![image](http://www.cyunsoft.com/wx.png)![image](http://www.cyunsoft.com/zfb.png)
+![image](http://www.cyunsoft.com/ds.png)
 
