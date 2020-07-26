@@ -3,15 +3,19 @@ package com.core136.controller.dataupload;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.core136.bean.account.UserInfo;
+import com.core136.service.account.AccountService;
 
 @Controller
 @RequestMapping("/app/core/dataupload")
 public class DataPageController {
+	@Autowired
+	private AccountService accountService;
 	/**
 	 * 
 	 * @Title: goQueryInfo   
@@ -78,7 +82,7 @@ public class DataPageController {
 	@RequestMapping("/uploadinfo")
 	public ModelAndView  goUploadInfo(HttpServletRequest request,String view)
 	{
-		UserInfo userInfo=(UserInfo)request.getSession().getAttribute("USER_INFO");
+		UserInfo userInfo = accountService.getRedisUserInfo(request);
 		ModelAndView mv = null;
 		try
 		{

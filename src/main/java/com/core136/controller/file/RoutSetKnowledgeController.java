@@ -12,6 +12,7 @@ import com.core136.bean.account.Account;
 import com.core136.bean.file.Knowledge;
 import com.core136.bean.file.KnowledgeLearn;
 import com.core136.bean.file.KnowledgeSort;
+import com.core136.service.account.AccountService;
 import com.core136.service.file.KnowledgeLearnService;
 import com.core136.service.file.KnowledgeSearchService;
 import com.core136.service.file.KnowledgeService;
@@ -33,7 +34,8 @@ public class RoutSetKnowledgeController {
 	private KnowledgeLearnService knowledgeLearnService;
 	@Autowired
 	private KnowledgeSearchService knowledgeSearchService;
-	
+	@Autowired
+	private AccountService accountService;
 	
 	
 	
@@ -53,7 +55,7 @@ public class RoutSetKnowledgeController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(!account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.NotOk("您不是系统管理员,请与管理员联系!");
@@ -85,7 +87,7 @@ public class RoutSetKnowledgeController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(!account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.NotOk("您不是系统管理员,请与管理员联系!");
@@ -116,7 +118,7 @@ public class RoutSetKnowledgeController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(!account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.NotOk("您不是系统管理员,请与管理员联系!");
@@ -148,7 +150,7 @@ public class RoutSetKnowledgeController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(!account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.NotOk("您不是系统管理员,请与管理员联系!");
@@ -181,7 +183,7 @@ public class RoutSetKnowledgeController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			knowledge.setKnowledgeId(SysTools.getGUID());
 			knowledge.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			knowledge.setCreateUser(account.getAccountId());
@@ -209,7 +211,7 @@ public class RoutSetKnowledgeController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(!account.getOpFlag().equals("1"))
 			{
 				knowledge.setCreateUser(account.getAccountId());

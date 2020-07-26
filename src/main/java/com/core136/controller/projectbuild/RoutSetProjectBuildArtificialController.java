@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.core136.bean.account.Account;
 import com.core136.bean.projectbuild.ProjectBuildArtificialSort;
+import com.core136.service.account.AccountService;
 import com.core136.service.projectbuild.ProjectBuildArtificialSortService;
 import com.core136.service.projectbuild.ProjectBuildTeamService;
 import com.core136.service.projectbuild.ProjectBuildWorkerService;
@@ -28,7 +29,8 @@ public class RoutSetProjectBuildArtificialController {
 	private ProjectBuildTeamService projectBuildTeamService;
 	@Autowired
 	private ProjectBuildWorkerService projectBuildWorkerService;
-	
+	@Autowired
+	private AccountService accountService;
 	/**
 	 * 
 	 * @Title: delProjectBuildArtificialSort   
@@ -48,7 +50,7 @@ public class RoutSetProjectBuildArtificialController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			projectBuildArtificialSort.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("分类删除成功!",projectBuildArtificialSortService.deleteProjectBuildArtificialSort(projectBuildArtificialSort));
 		}catch (Exception e) {
@@ -71,7 +73,7 @@ public class RoutSetProjectBuildArtificialController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			projectBuildArtificialSort.setSortId(SysTools.getGUID());
 			projectBuildArtificialSort.getSortLeave();
 			projectBuildArtificialSort.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -107,7 +109,7 @@ public class RoutSetProjectBuildArtificialController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(ProjectBuildArtificialSort.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("sortId",projectBuildArtificialSort.getSortId());
 			return RetDataTools.Ok("分类修改成功!",projectBuildArtificialSortService.updateProjectBuildArtificialSort(example,projectBuildArtificialSort));

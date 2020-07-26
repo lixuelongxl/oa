@@ -29,6 +29,7 @@ import com.core136.bean.fixedassets.FixedAssetsRepair;
 import com.core136.bean.fixedassets.FixedAssetsSort;
 import com.core136.bean.fixedassets.FixedAssetsStorage;
 import com.core136.bean.sys.PageParam;
+import com.core136.service.account.AccountService;
 import com.core136.service.fixedassets.FixedAssetsApplyService;
 import com.core136.service.fixedassets.FixedAssetsApprovalService;
 import com.core136.service.fixedassets.FixedAssetsRepairService;
@@ -59,7 +60,8 @@ private FixedAssetsApplyService fixedAssetApplayService;
 private FixedAssetsApprovalService fixedAssetsApprovalService;
 @Autowired
 private FixedAssetsRepairService fixedAssetsRepairService;
-
+@Autowired
+private AccountService accountService;
 
 /**
  * 
@@ -76,7 +78,7 @@ public RetDataBean getApplyAndApproveInfo(HttpServletRequest request,String appl
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!",fixedAssetApplayService.getApplyAndApproveInfo(account.getOrgId(),applyId));
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -118,7 +120,7 @@ public RetDataBean getFixedAssetsApplyList(
 		}
 		
 		String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrderBy(orderBy);
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOrgId(account.getOrgId());
@@ -165,7 +167,7 @@ public RetDataBean getFixedAssetsRepairList(
 		}
 		
 		String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrderBy(orderBy);
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOrgId(account.getOrgId());
@@ -194,7 +196,7 @@ public RetDataBean getFixedAssetsRepairById(HttpServletRequest request,FixedAsse
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		fixedAssetsRepair.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!",fixedAssetsRepairService.selectOneFixedAssetsRepair(fixedAssetsRepair));
 	}catch (Exception e) {
@@ -217,7 +219,7 @@ public RetDataBean getFixedAssetsApprovalById(HttpServletRequest request,FixedAs
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		fixedAssetsApproval.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!",fixedAssetsApprovalService.selectOneFixedAssetsApproval(fixedAssetsApproval));
 	}catch (Exception e) {
@@ -240,7 +242,7 @@ public RetDataBean getFixedAssetsApplyById(HttpServletRequest request,FixedAsset
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		fixedAssetsApply.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!",fixedAssetApplayService.selectOneFixedAssetsApply(fixedAssetsApply));
 	}catch (Exception e) {
@@ -281,7 +283,7 @@ public RetDataBean getApplyFixedAssetsList(
 			pageParam.setSortOrder("asc");
 		}
 		
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -331,7 +333,7 @@ public RetDataBean queryFixedAssetsList(
 			pageParam.setSortOrder("asc");
 		}
 		
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -377,7 +379,7 @@ public RetDataBean getAllocationList(
 			pageParam.setSortOrder("asc");
 		}
 		
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -423,7 +425,7 @@ public RetDataBean getFixedAssetsList(
 			pageParam.setSortOrder("asc");
 		}
 		
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -450,7 +452,7 @@ public RetDataBean getFixedAssetsSortById(HttpServletRequest request,FixedAssets
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		fixedAssetsSort.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!",fixedAssetsSortService.selectOneFixedAssetsSort(fixedAssetsSort));
 	}catch (Exception e) {
@@ -473,7 +475,7 @@ public RetDataBean getFixedAssetsStorageById(HttpServletRequest request,FixedAss
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		fixedAssetsStorage.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!",fixedAssetsStorageService.selectOneFixedAssetsStorage(fixedAssetsStorage));
 	}catch (Exception e) {
@@ -495,7 +497,7 @@ public RetDataBean getAllFixedAssetsStorageList(HttpServletRequest request,Fixed
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!",fixedAssetsStorageService.getAllFixedAssetsStorageList(account.getOrgId()));
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -517,7 +519,7 @@ public RetDataBean getFixedAssetsById(HttpServletRequest request,FixedAssets fix
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		fixedAssets.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!",fixedAssetsService.selectOneFixedAssets(fixedAssets));
 	}catch (Exception e) {
@@ -545,7 +547,7 @@ public List<Map<String,String>> getFixedAssetSortTree(HttpServletRequest request
 		{
 			parentId = sortId;
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return fixedAssetsSortService.getFixedAssetSortTree(account.getOrgId(), parentId);
 	}catch (Exception e) {
 		return null;
@@ -578,7 +580,7 @@ public RetDataBean getFixedAssetsStorageList(HttpServletRequest request,PagePara
 		{
 			pageParam.setSortOrder("asc");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 	PageInfo<Map<String, String>> pageInfo=fixedAssetsStorageService.getFixedAssetsStorageList(pageParam);

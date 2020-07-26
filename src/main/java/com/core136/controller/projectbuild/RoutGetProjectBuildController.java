@@ -16,6 +16,7 @@ import com.core136.bean.projectbuild.ProjectBuildDetails;
 import com.core136.bean.projectbuild.ProjectBuildSort;
 import com.core136.bean.projectbuild.ProjectBuildStage;
 import com.core136.bean.sys.PageParam;
+import com.core136.service.account.AccountService;
 import com.core136.service.projectbuild.ProjectBuildDetailsService;
 import com.core136.service.projectbuild.ProjectBuildSortService;
 import com.core136.service.projectbuild.ProjectBuildStageService;
@@ -42,7 +43,8 @@ public class RoutGetProjectBuildController {
 	private ProjectBuildDetailsService projectBuildDetailsService;
 	@Autowired
 	private ProjectBuildStageService projectBuildStageService;
-
+	@Autowired
+	private AccountService accountService;
 	/**
 	 * 
 	 * @Title: getProjectBuildSortTree   
@@ -63,7 +65,7 @@ public class RoutGetProjectBuildController {
 			{
 				sortLeave = sortId;
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return projectBuildSortService.getProjectBuildSortTree(account.getOrgId(), sortLeave);
 		}catch (Exception e) {
 			return null;
@@ -88,7 +90,7 @@ public class RoutGetProjectBuildController {
 			{
 				return null;
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return projectBuildDetailsService.getProjectBuildListForTree(account.getOrgId(), sortId);
 		}catch (Exception e) {
 			return null;
@@ -115,7 +117,7 @@ public class RoutGetProjectBuildController {
 			{
 				sortLeave = sortId;
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return projectBuildSortService.getProjectBuildSortAllParentTree(account.getOrgId(), sortLeave);
 		}catch (Exception e) {
 			return null;
@@ -137,7 +139,7 @@ public class RoutGetProjectBuildController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			projectBuildSort.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!",projectBuildSortService.selectOneProjectBuildSort(projectBuildSort));
 		}catch (Exception e) {
@@ -176,7 +178,7 @@ public class RoutGetProjectBuildController {
 				pageParam.setSortOrder("asc");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		PageInfo<Map<String, String>> pageInfo=projectBuildDetailsService.getprojectbuilddetailslist(pageParam,sortId);
@@ -201,7 +203,7 @@ public class RoutGetProjectBuildController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			projectBuildDetails.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!",projectBuildDetailsService.selectOneProjectBuildDetails(projectBuildDetails));
 		}catch (Exception e) {
@@ -220,7 +222,7 @@ public class RoutGetProjectBuildController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			projectBuildStage.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!",projectBuildStageService.selectOneProjectBuildStage(projectBuildStage));
 		}catch (Exception e) {
@@ -243,7 +245,7 @@ public class RoutGetProjectBuildController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!",projectBuildStageService.getprojectbuildStageOpenlist(account.getOrgId(),projectId));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -282,7 +284,7 @@ public class RoutGetProjectBuildController {
 				pageParam.setSortOrder("asc");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		PageInfo<Map<String, String>> pageInfo=projectBuildStageService.getprojectbuildStagelist(pageParam,projectId);
@@ -307,7 +309,7 @@ public class RoutGetProjectBuildController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求数据成功!",projectBuildDetailsService.selectProjectBuild2ByTitle(account.getOrgId(),"%"+projectTitle+"%"));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());

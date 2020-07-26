@@ -8,9 +8,11 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.lang.StringUtils;
 import org.core136.common.SessionMap;
 import org.core136.common.SysRunConfig;
+import org.core136.common.auth.LoginAccountInfo;
 import org.core136.common.enums.EventTypeEnums;
 import org.core136.common.utils.StrTools;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.core136.bean.account.Account;
@@ -25,10 +27,13 @@ import com.core136.service.account.UserInfoService;
 import com.core136.service.account.UserPrivService;
 import com.core136.service.sys.SysLogService;
 import com.core136.service.sys.SysMenuService;
+import com.core136.unit.RedisUtil;
 import com.taobao.api.ApiException;
 
 @Service
 public class WeiXinLoginService {
+	@Value("${validity.landing}")
+	private Integer validity;
 	@Autowired
 	private AccountService accountService;
 	@Autowired
@@ -41,7 +46,8 @@ public class WeiXinLoginService {
 	private SysMenuService sysMenuService;
 	@Autowired
 	private UserPrivService userPrivService;
-	
+	@Autowired
+	private RedisUtil redisUtil;
 	/**
 	 * 
 	 * @Title: weiXinLogin   
@@ -55,6 +61,7 @@ public class WeiXinLoginService {
 	 */
 	public void weiXinLogin(HttpServletRequest request,String wAccountId,String orgId) throws ApiException
 	{
+		LoginAccountInfo loginAccountInfo = new LoginAccountInfo();
 		boolean isRegist = SysRunConfig.getIsRegist();
 		if(isRegist)
 		{
@@ -79,24 +86,26 @@ public class WeiXinLoginService {
 				List<String> sysMenuIdList = StrTools.strToList(sysMenuIds);
 				List<String> mobilePrivList = StrTools.strToList(mobilePrivIds);
 				List<SysMenu> sysMenuList = sysMenuService.getSysMenuByAccount(sysMenuIdList, account.getOrgId());
-				session.setAttribute("SYS_MENU_LIST", sysMenuList);
-				session.setAttribute("SYS_APP_LIST", mobilePrivList);
+				loginAccountInfo.setSysMenuList(sysMenuList);
+				loginAccountInfo.setMobilePrivList(mobilePrivList);
 				}
 				Unit unit  = new Unit();
 				unit.setOrgId(orgId);
 				unit = unitService.selectOne(unit);
 				session.setAttribute("UNIT", unit);
+				loginAccountInfo.setUnit(unit);
 				if(unit.getOrgName().equals(""))
 				{
-					session.setAttribute("SOFT_NAME",AppGobalConstant.SOFT_NAME);
+					loginAccountInfo.setSoftName(AppGobalConstant.SOFT_NAME);
 				}else
 				{
-					session.setAttribute("SOFT_NAME",unit.getOrgName());
+					loginAccountInfo.setSoftName(unit.getOrgName());
 				}
-				session.setAttribute("LOGIN_USER", account);
+				loginAccountInfo.setAccount(account);
 				UserInfo userInfo  = userInfoService.getUserInfoByAccountId(account.getAccountId(), account.getOrgId());
-				session.setAttribute("USER_INFO", userInfo);
-				SessionMap.addSession(session);
+				loginAccountInfo.setUserInfo(userInfo);
+				redisUtil.set("account_"+session.getId(), loginAccountInfo);
+				redisUtil.expire("account_"+session.getId(), validity*60);
 				accountService.updateLastLoginTime(account);
 				sysLogService.createLog(request, account,EventTypeEnums.SYS_LOG_LOGIN,"微信登陆成功");
 		}else

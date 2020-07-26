@@ -27,6 +27,7 @@ import com.core136.bean.task.Task;
 import com.core136.bean.task.TaskGanttData;
 import com.core136.bean.task.TaskGanttLink;
 import com.core136.bean.task.TaskProcess;
+import com.core136.service.account.AccountService;
 import com.core136.service.task.TaskGanttDataService;
 import com.core136.service.task.TaskGanttLinkService;
 import com.core136.service.task.TaskProcessService;
@@ -56,7 +57,8 @@ public class RoutGetTaskController {
 	private TaskGanttLinkService taskGanttLinkService;
 	@Autowired
 	private TaskProcessService taskProcessService;
-
+	@Autowired
+	private AccountService accountService;
 	/**
 	 * 
 	 * @Title: getTaskProcessInfo   
@@ -76,7 +78,7 @@ public class RoutGetTaskController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!",taskProcessService.getProcessInfo(account.getOrgId(), processId, account.getAccountId()));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -102,7 +104,7 @@ public class RoutGetTaskController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			taskProcess.setCreateUser(account.getAccountId());
 			return RetDataTools.Ok("请求成功!",taskProcessService.selectOneTaskProcess(taskProcess));
 		}catch (Exception e) {
@@ -129,7 +131,7 @@ public class RoutGetTaskController {
 		pageParam.setSortOrder("ASC");
 		pageParam.setPageNumber(1);
 		pageParam.setPageSize(10);
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOrgId(account.getOrgId());
@@ -145,7 +147,7 @@ public class RoutGetTaskController {
 	{
 		try
 		{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求数据成功!", taskGanttDataService.getTaskListForDesk2(account.getOrgId(),account.getAccountId()));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -187,7 +189,7 @@ public class RoutGetTaskController {
 				pageParam.setSortOrder("ASC");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOpFlag(account.getOpFlag());
@@ -232,7 +234,7 @@ public class RoutGetTaskController {
 			{
 				pageParam.setSortOrder("ASC");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOpFlag(account.getOpFlag());
@@ -280,7 +282,7 @@ public class RoutGetTaskController {
 				pageParam.setSortOrder("ASC");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOpFlag(account.getOpFlag());
@@ -312,7 +314,7 @@ public class RoutGetTaskController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!",taskService.getParticipantUserList(account.getOrgId(),taskId));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -338,7 +340,7 @@ public class RoutGetTaskController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!",taskGanttDataService.getTaskGantInfo(account.getOrgId(),taskId));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -366,7 +368,7 @@ public class RoutGetTaskController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			taskGanttLink.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!",taskGanttLinkService.selectOneTaskGanttLink(taskGanttLink));
 		}catch (Exception e) {
@@ -394,7 +396,7 @@ public class RoutGetTaskController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			taskGanttData.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!",taskGanttDataService.selectOneTaskGanttData(taskGanttData));
 		}catch (Exception e) {
@@ -422,7 +424,7 @@ public class RoutGetTaskController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			task.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!",taskService.selectOneTask(task));
 		}catch (Exception e) {
@@ -461,7 +463,7 @@ public class RoutGetTaskController {
 				pageParam.setSortOrder("ASC");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOpFlag(account.getOpFlag());
@@ -508,7 +510,7 @@ public class RoutGetTaskController {
 				pageParam.setSortOrder("ASC");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOrgId(account.getOrgId());
@@ -554,7 +556,7 @@ public class RoutGetTaskController {
 				pageParam.setSortOrder("ASC");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOrgId(account.getOrgId());
@@ -598,7 +600,7 @@ public class RoutGetTaskController {
 				pageParam.setSortOrder("ASC");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOpFlag(account.getOpFlag());

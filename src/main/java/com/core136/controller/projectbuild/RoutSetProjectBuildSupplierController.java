@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.core136.bean.account.Account;
 import com.core136.bean.projectbuild.ProjectBuildSupplier;
+import com.core136.service.account.AccountService;
 import com.core136.service.projectbuild.ProjectBuildSupplierService;
 import org.core136.common.retdataunit.RetDataBean;
 import org.core136.common.retdataunit.RetDataTools;
@@ -22,6 +23,8 @@ import tk.mybatis.mapper.entity.Example;
 public class RoutSetProjectBuildSupplierController {
 @Autowired
 private ProjectBuildSupplierService projectBuildSupplierService;
+@Autowired
+private AccountService accountService;
 /**
  * 
  * @Title: delSupplier   
@@ -41,7 +44,7 @@ public RetDataBean delSupplier(HttpServletRequest request,ProjectBuildSupplier p
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		projectBuildSupplier.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!",projectBuildSupplierService.deleteProjectBuildSupplier(projectBuildSupplier));
 	}catch (Exception e) {
@@ -64,7 +67,7 @@ public RetDataBean insertSupplier(HttpServletRequest request,ProjectBuildSupplie
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		projectBuildSupplier.setSupplierId(SysTools.getGUID());
 		projectBuildSupplier.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 		projectBuildSupplier.setCreateUser(account.getAccountId());
@@ -94,7 +97,7 @@ public RetDataBean updateSupplier(HttpServletRequest request,ProjectBuildSupplie
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		Example example = new Example(ProjectBuildSupplier.class);
 		example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("supplierId",projectBuildSupplier.getSupplierId());
 		return RetDataTools.Ok("请求成功!",projectBuildSupplierService.updateProjectBuildSupplier(example, projectBuildSupplier));

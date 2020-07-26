@@ -68,8 +68,6 @@ public class RoutGetCrmController {
 	@Autowired
 	private CrmPrivService crmPrivService;
 	@Autowired
-	private AccountService accountService;
-	@Autowired
 	private CrmIndustryService crmIndustryService;
 	@Autowired
 	private CrmTagsService crmTagsService;
@@ -85,6 +83,8 @@ public class RoutGetCrmController {
 	private CrmQuotationService crmQuotationService;
 	@Autowired
 	private CrmQuotationMxService crmQuotationMxService;
+	@Autowired
+	private AccountService accountService;
 	/**
 	 * 
 	 * @Title: getCrmQuotationMxById   
@@ -100,7 +100,7 @@ public class RoutGetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			crmQuotationMx.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", crmQuotationMxService.selectOneCrmQuotationMx(crmQuotationMx));
 		}catch (Exception e) {
@@ -124,7 +124,7 @@ public class RoutGetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			crmQuotation.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", crmQuotationService.selectOneCrmQuotation(crmQuotation));
 		}catch (Exception e) {
@@ -178,7 +178,7 @@ public class RoutGetCrmController {
 				sortOrder="asc";
 			}
 		String orderBy = sort+ " " + sortOrder;
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		Example example = new Example(CrmCustomer.class);
 		example.setOrderByClause(orderBy);
 		Criteria criteria = example.createCriteria();
@@ -342,7 +342,7 @@ public class RoutGetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			crmCustomer.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", crmCustomerService.selectOne(crmCustomer));
 		}catch (Exception e) {
@@ -365,7 +365,7 @@ public class RoutGetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!", crmLinkManService.getCrmLinkManList(account.getOrgId(), customerId));
 		}catch (Exception e) {
 			
@@ -386,7 +386,7 @@ public class RoutGetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			crmLinkMan.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", crmLinkManService.selectOne(crmLinkMan));
 		}catch (Exception e) {
@@ -408,7 +408,7 @@ public class RoutGetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			crmLinkMan.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", crmLinkManService.getCrmLinkManInfo(crmLinkMan.getOrgId(), crmLinkMan.getLinkManId()));
 		}catch (Exception e) {
@@ -431,7 +431,7 @@ public class RoutGetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			crmLinkMan.setOrgId(account.getOrgId());
 			Example example = new Example(CrmLinkMan.class);
 			example.createCriteria().andEqualTo("orgId",crmLinkMan.getOrgId()).andEqualTo("customerId",crmLinkMan.getCustomerId());
@@ -462,7 +462,7 @@ public class RoutGetCrmController {
 		{
 		try
 		{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		PageInfo<Map<String, Object>> pageInfo=crmContactRecordService.getRecordListByCustomerId(pageNumber, pageSize,account.getOrgId(),customerId);
 		return RetDataTools.Ok("请求数据成功!", pageInfo);
 		}catch (Exception e) {
@@ -504,7 +504,7 @@ public class RoutGetCrmController {
 				pageParam.setSortOrder("DESC");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOpFlag(account.getOpFlag());
 		String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
 		pageParam.setOrderBy(orderBy);
@@ -552,7 +552,7 @@ public class RoutGetCrmController {
 			}
 			
 			String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrderBy(orderBy);
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOrgId(account.getOrgId());
@@ -620,7 +620,7 @@ public class RoutGetCrmController {
 			}
 			
 			String orderBy = sort+ " " + sortOrder;
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求数据成功!", crmLinkManService.getMyCrmLinkManAllList(pageNumber, pageSize, orderBy, account.getOrgId(),account.getAccountId() ,"%"+search+"%"));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -641,7 +641,7 @@ public class RoutGetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			CrmPriv crmPriv = new CrmPriv();
 			crmPriv.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", crmPrivService.selectOneCrmPriv(crmPriv));
@@ -714,7 +714,7 @@ public class RoutGetCrmController {
 				list = Arrays.asList(tagsArr);
 			}
 		String orderBy = sort+ " " + sortOrder;
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			CrmPriv crmPriv = new CrmPriv();
@@ -756,7 +756,7 @@ public class RoutGetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			CrmPriv crmPriv = new CrmPriv();
 			crmPriv.setOrgId(account.getOrgId());
 			crmPriv = crmPrivService.selectOneCrmPriv(crmPriv);
@@ -792,7 +792,7 @@ public class RoutGetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			CrmPriv crmPriv = new CrmPriv();
 			crmPriv.setOrgId(account.getOrgId());
 			crmPriv=crmPrivService.selectOneCrmPriv(crmPriv);
@@ -838,7 +838,7 @@ public class RoutGetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!", crmTagsService.getAllTags(account.getOrgId(),industryId));
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -860,7 +860,7 @@ public class RoutGetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!", crmTagsService.getAllTags(account.getOrgId(),industryId));
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -882,7 +882,7 @@ public class RoutGetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(CrmIndustry.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId());
 			return RetDataTools.Ok("请求成功!", crmIndustryService.selectCrmIndustry(example));
@@ -908,7 +908,7 @@ public class RoutGetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!", crmMyProductService.getAllMyProduct(account.getOrgId()));
 		}catch (Exception e) {
 			
@@ -932,7 +932,7 @@ public class RoutGetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			String [] productIdArr;
 			if(StringUtils.isNotBlank(productIds))
 			{
@@ -996,7 +996,7 @@ public class RoutGetCrmController {
 				sortOrder="asc";
 			}
 			String orderBy = sort+ " " + sortOrder;
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求数据成功!",crmMyProductService.getAllProductList(pageNumber, pageSize, orderBy, account.getOrgId(), "%"+search+"%"));	
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -1018,7 +1018,7 @@ public class RoutGetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			crmMyProduct.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", crmMyProductService.selectOneCrmMyProdcut(crmMyProduct));
 		}catch (Exception e) {
@@ -1043,7 +1043,7 @@ public class RoutGetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			crmTags.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", crmTagsService.selectOneCrmTags(crmTags));
 		}catch (Exception e) {
@@ -1094,7 +1094,7 @@ public class RoutGetCrmController {
 				sortOrder="DESC";
 			}
 			String orderBy = sort+ " " + sortOrder;
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求数据成功!",crmTagsService.getAllTagsList(pageNumber, pageSize, orderBy, account.getOrgId(), "%"+search+"%"));	
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -1115,7 +1115,7 @@ public class RoutGetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			crmIndustry.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", crmIndustryService.selectOneCrmIndustry(crmIndustry));
 		}catch (Exception e) {
@@ -1165,7 +1165,7 @@ public class RoutGetCrmController {
 				sortOrder="DESC";
 			}
 			String orderBy = sort+ " " + sortOrder;
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求数据成功!",crmIndustryService.getAllIndustryList(pageNumber, pageSize, orderBy, account.getOrgId(), "%"+search+"%"));	
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -1212,7 +1212,7 @@ public class RoutGetCrmController {
 			{
 				sortOrder="asc";
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		String orderBy = sort+ " " + sortOrder;
 		PageInfo<Map<String, Object>> pageInfo=crmContractInfoService.getCrmContractInfoList(pageNumber, pageSize, orderBy, account.getOrgId(), "%"+search+"%");
 		return RetDataTools.Ok("请求数据成功!", pageInfo);
@@ -1236,7 +1236,7 @@ public class RoutGetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			crmContractInfo.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", crmContractInfoService.selectOneCrmContractInfo(crmContractInfo));
 		}catch (Exception e) {
@@ -1260,7 +1260,7 @@ public class RoutGetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			crmContractInfo.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", crmContractInfoService.selectCrmContractInfoList(crmContractInfo));
 		}catch (Exception e) {
@@ -1286,7 +1286,7 @@ public class RoutGetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!", crmContractInfoService.getContractInfoById(account.getOrgId(),contractInfoId));
 		}catch (Exception e) {
 			
@@ -1310,7 +1310,7 @@ public class RoutGetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!", crmPrivService.getAllSender(account.getOrgId(),"%"+search+"%"));
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -1351,7 +1351,7 @@ public class RoutGetCrmController {
 			{
 				pageParam.setSortOrder("desc");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOpFlag(account.getOpFlag());
 		pageParam.setOrgId(account.getOrgId());
@@ -1384,7 +1384,7 @@ public class RoutGetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			crmInquiry.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", crmInquiryService.selectOneCrmInquiry(crmInquiry));
 		}catch (Exception e) {

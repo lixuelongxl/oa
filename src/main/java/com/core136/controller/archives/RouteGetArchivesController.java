@@ -19,6 +19,7 @@ import com.core136.bean.archives.ArchivesFile;
 import com.core136.bean.archives.ArchivesRepository;
 import com.core136.bean.archives.ArchivesVolume;
 import com.core136.bean.sys.PageParam;
+import com.core136.service.account.AccountService;
 import com.core136.service.archives.ArchivesBorrowFileService;
 import com.core136.service.archives.ArchivesBorrowVolumeService;
 import com.core136.service.archives.ArchivesDestroyRecordService;
@@ -44,6 +45,8 @@ private ArchivesBorrowFileService archivesBorrowFileService;
 private ArchivesBorrowVolumeService archivesBorrowVolumeService;
 @Autowired
 private ArchivesDestroyRecordService archivesDestroyRecordService;
+@Autowired
+private AccountService accountService;
 
 /**
  * 
@@ -71,7 +74,7 @@ public RetDataBean getArchivesDestoryVolumeList(HttpServletRequest request,PageP
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setAccountId(createUer);
 	pageParam.setOpFlag(account.getOpFlag());
@@ -109,7 +112,7 @@ public RetDataBean getArchivesDestoryFileList(HttpServletRequest request,PagePar
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setAccountId(createUer);
 	pageParam.setOpFlag(account.getOpFlag());
@@ -137,7 +140,7 @@ public RetDataBean getApprovalVolumeFile(HttpServletRequest request,ArchivesBorr
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		archivesBorrowVolume.setOrgId(account.getOrgId());
 		archivesFile.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!", archivesBorrowVolumeService.getApprovalVolumeFile(account,archivesBorrowVolume,archivesFile));
@@ -171,7 +174,7 @@ public RetDataBean getBorrowArchivesFileList(HttpServletRequest request,PagePara
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 	PageInfo<Map<String, String>> pageInfo=archivesFileService.getBorrowArchivesFileList(pageParam,volumeId);
@@ -195,7 +198,7 @@ public RetDataBean getApprovalFile(HttpServletRequest request,ArchivesBorrowFile
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		archivesBorrowFile.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!", archivesBorrowFileService.getApprovalFile(account,archivesBorrowFile));
 	}catch (Exception e) {
@@ -227,7 +230,7 @@ public RetDataBean getArchivesBorrowVolumeApprovalList(HttpServletRequest reques
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOpFlag(account.getOpFlag());
@@ -262,7 +265,7 @@ public RetDataBean getArchivesBorrowFileApprovalList(HttpServletRequest request,
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOpFlag(account.getOpFlag());
@@ -301,7 +304,7 @@ public RetDataBean getArchivesFileQueryList(HttpServletRequest request,PageParam
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -336,7 +339,7 @@ public RetDataBean getArchivesBorrowVolumeList(HttpServletRequest request,PagePa
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOpFlag(account.getOpFlag());
@@ -363,7 +366,7 @@ public RetDataBean getArchivesBorrowVolumeById(HttpServletRequest request,Archiv
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		archivesBorrowVolume.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!", archivesBorrowVolumeService.selectOneArchivesBorrowVolume(archivesBorrowVolume));
 	}catch (Exception e) {
@@ -395,7 +398,7 @@ public RetDataBean getArchivesBorrowFileList(HttpServletRequest request,PagePara
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOpFlag(account.getOpFlag());
@@ -422,7 +425,7 @@ public RetDataBean getArchivesBorrowById(HttpServletRequest request,ArchivesBorr
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		archivesBorrowFile.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!", archivesBorrowFileService.selectOneArchivesBorrowFile(archivesBorrowFile));
 	}catch (Exception e) {
@@ -454,7 +457,7 @@ public RetDataBean getArchivesFileList(HttpServletRequest request,PageParam page
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOpFlag(account.getOpFlag());
@@ -480,7 +483,7 @@ public RetDataBean getArchivesVolumeListForSelect(HttpServletRequest request)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", archivesVolumeService.getArchivesVolumeListForSelect(account.getOrgId(),account.getOpFlag(),account.getAccountId()));
 	}catch (Exception e) {
 		
@@ -502,7 +505,7 @@ public RetDataBean getArchivesVolumeByRepositoryId(HttpServletRequest request,St
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", archivesVolumeService.getArchivesVolumeByRepositoryId(account.getOrgId(),repositoryId));
 	}catch (Exception e) {
 		
@@ -524,7 +527,7 @@ public RetDataBean getArchivesFileById(HttpServletRequest request,ArchivesFile a
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		archivesFile.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!", archivesFileService.selectOneArchivesFile(archivesFile));
 	}catch (Exception e) {
@@ -547,7 +550,7 @@ public RetDataBean getArchivesVolumeById(HttpServletRequest request,ArchivesVolu
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		archivesVolume.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!", archivesVolumeService.selectOneArchivesVolume(archivesVolume));
 	}catch (Exception e) {
@@ -578,7 +581,7 @@ public RetDataBean getArchivesVolumeList(HttpServletRequest request,PageParam pa
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOpFlag(account.getOpFlag());
@@ -605,7 +608,7 @@ public RetDataBean getArchivesRepositoryById(HttpServletRequest request,Archives
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		archivesRepository.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!", archivesRepositoryService.selectOneArchivesRepository(archivesRepository));
 	}catch (Exception e) {
@@ -628,7 +631,7 @@ public RetDataBean getArchivesRepositoryList(HttpServletRequest request)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", archivesRepositoryService.getArchivesRepositoryList(account.getOrgId(),account.getOpFlag(),account.getAccountId()));
 	}catch (Exception e) {
 		

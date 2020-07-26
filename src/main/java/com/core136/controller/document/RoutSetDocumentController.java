@@ -34,6 +34,7 @@ import com.core136.bean.document.DocumentEntrust;
 import com.core136.bean.document.DocumentFlow;
 import com.core136.bean.document.DocumentForm;
 import com.core136.bean.document.DocumentSort;
+import com.core136.service.account.AccountService;
 import com.core136.service.document.DocumentChildProcessService;
 import com.core136.service.document.DocumentEntrustService;
 import com.core136.service.document.DocumentFlowService;
@@ -85,7 +86,8 @@ public class RoutSetDocumentController {
 	private DocumentSendToService documentSendToService;
 	@Autowired
 	private DocumentFormVersionService documentFormVersionService;
-	
+	@Autowired
+	private AccountService accountService;
 
 	/**
 	 * 
@@ -102,7 +104,7 @@ public class RoutSetDocumentController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(!account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.NotOk("您不是管理员,不能进行BPM克隆操作!");
@@ -136,7 +138,7 @@ public class RoutSetDocumentController {
 		try
 		{
 			String formId = request.getParameter("formId");
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			DocumentForm documentForm = new DocumentForm();
 			documentForm.setFormId(formId);
 			documentForm.setOrgId(account.getOrgId());
@@ -175,7 +177,7 @@ public class RoutSetDocumentController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentSendTo.setRevTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			documentSendTo.setStatus("1");
 			Example example = new Example(DocumentSendTo.class);
@@ -207,7 +209,7 @@ public class RoutSetDocumentController {
 				return RetDataTools.NotOk("请求参数有问题!");
 			}else
 			{
-				Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+				Account account=accountService.getRedisAccount(request);
 				return RetDataTools.Ok("流程结束",documentRunProcessService.doNotPassEndDocument(account, runId, runProcessId));
 			}
 	}catch (Exception e) {
@@ -232,7 +234,7 @@ public class RoutSetDocumentController {
 	{
 			try
 			{
-				Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+				Account account=accountService.getRedisAccount(request);
 				if(StringUtils.isNotBlank(documentEntrust.getEntrustId()))
 				{
 					documentEntrust.setFromId(account.getAccountId());
@@ -261,7 +263,7 @@ public class RoutSetDocumentController {
 	{
 			try
 			{
-				Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+				Account account=accountService.getRedisAccount(request);
 				if(StringUtils.isNotBlank(documentEntrust.getEntrustId()))
 				{
 					documentEntrust.setStatus("1");
@@ -291,7 +293,7 @@ public class RoutSetDocumentController {
 	{
 			try
 			{
-				Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+				Account account=accountService.getRedisAccount(request);
 				if(StringUtils.isNotBlank(documentEntrust.getFlowId()))
 				{
 					if(documentEntrustService.isExist(account.getOrgId(), documentEntrust.getFlowId(), account.getAccountId())>0)
@@ -336,7 +338,7 @@ public class RoutSetDocumentController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentPluginsRegister.setPluginsId(SysTools.getGUID());
 			documentPluginsRegister.setCreateUser(account.getAccountId());
 			documentPluginsRegister.setStatus("0");
@@ -368,7 +370,7 @@ public class RoutSetDocumentController {
 			{
 				return RetDataTools.NotOk("请求参数出错,请与系统管理联系!");
 			}
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentPluginsRegister.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除插件成功!", documentPluginsRegisterService.deleteDocumentPluginsRegist(documentPluginsRegister));
 		}catch (Exception e) {
@@ -397,7 +399,7 @@ public class RoutSetDocumentController {
 			{
 				return RetDataTools.NotOk("请求参数出错,请与系统管理联系!");
 			}
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentPluginsRegister.setOrgId(account.getOrgId());
 			Example example = new Example(DocumentPluginsRegister.class);
 			example.createCriteria().andEqualTo("orgId", account.getOrgId()).andEqualTo("pluginsId",documentPluginsRegister.getPluginsId());
@@ -423,7 +425,7 @@ public class RoutSetDocumentController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentNumber.setConfigId(SysTools.getGUID());
 			documentNumber.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			documentNumber.setCreateUser(account.getAccountId());
@@ -452,7 +454,7 @@ public class RoutSetDocumentController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentNumber.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除成功!",documentNumberService.deleteDocumentNumber(documentNumber));
 		}catch (Exception e) {
@@ -479,7 +481,7 @@ public class RoutSetDocumentController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(DocumentNumber.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("configId",documentNumber.getConfigId());
 			return RetDataTools.Ok("更新成功!",documentNumberService.updateDocumentNumber(example, documentNumber));
@@ -508,7 +510,7 @@ public class RoutSetDocumentController {
 				{
 					return RetDataTools.NotOk("对不起，您请求的参数有问题！");
 				}
-					Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+					Account account=accountService.getRedisAccount(request);
 					DocumentList documentList = new DocumentList();
 					documentList.setOrgId(account.getOrgId());
 					documentList.setRunId(runId);
@@ -539,7 +541,7 @@ public class RoutSetDocumentController {
 				{
 					return RetDataTools.NotOk("对不起，您请求的参数有问题！");
 				}
-					Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+					Account account=accountService.getRedisAccount(request);
 				if(!account.getOpFlag().equals("1"))
 				{
 					return RetDataTools.NotOk("您不是管理员，请与管理员联系！");
@@ -575,8 +577,8 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 			return RetDataTools.NotOk("参数有问题!");
 		}else
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
-			UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+			Account account=accountService.getRedisAccount(request);
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			if(!account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.NotOk("您无权限转交流程,请与系统管理员联系!");
@@ -611,7 +613,7 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 	{
 			try
 			{
-				Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+				Account account=accountService.getRedisAccount(request);
 				documentList.setOrgId(account.getOrgId());
 				if(account.getOpFlag().equals("1"))
 				{
@@ -637,7 +639,7 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 	@RequestMapping("/doTaskBack")
 	public RetDataBean doTaskBack(HttpServletRequest request,DocumentRunProcess documentRunProcess) {
 		try {
-			UserInfo userInfo=(UserInfo)request.getSession().getAttribute("USER_INFO");
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			if(StringUtils.isBlank(documentRunProcess.getRunProcessId())) {
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
@@ -665,8 +667,8 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 			if(StringUtils.isBlank(runIds)) {
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
-			UserInfo userInfo=(UserInfo)request.getSession().getAttribute("USER_INFO");
+			Account account=accountService.getRedisAccount(request);
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			documentOptService.doDocumentUrge(account,userInfo, runIds);
 			return RetDataTools.Ok("催办信息已发送!","");
 		} catch (Exception e) {
@@ -691,7 +693,7 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentTemplate.setTemplateId(SysTools.getGUID());
 			documentTemplate.setCreateUser(account.getAccountId());
 			documentTemplate.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -722,7 +724,7 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 			{
 				return RetDataTools.NotOk("请求的参数有问题！请与管理员联系");
 			}
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentTemplate.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("模版删除成功!", documentTemplateService.deleteDocumentTemplate(documentTemplate));
 		}catch (Exception e) {
@@ -749,7 +751,7 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 			{
 				return RetDataTools.NotOk("请求的参数有问题！请与管理员联系");
 			}
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(DocumentTemplate.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("templateId",documentTemplate.getTemplateId());
 			documentTemplate.setOrgId(account.getOrgId());
@@ -777,7 +779,7 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(addAccountId))
 			{
 				return RetDataTools.NotOk("加签人员不能为空!");
@@ -816,7 +818,7 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(addAccountId))
 			{
 				return RetDataTools.NotOk("加签人员不能为空!");
@@ -859,7 +861,7 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 				return RetDataTools.NotOk("请求参数有问题!");
 			}else
 			{
-				Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+				Account account=accountService.getRedisAccount(request);
 				documentRunProcess.setOrgId(account.getOrgId());
 				documentRunProcess.setAccountId(account.getAccountId());
 				documentRunProcess = documentRunProcessService.selectOne(documentRunProcess);
@@ -889,7 +891,7 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 			{
 				return RetDataTools.NotOk("参数有问题!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentList.setOrgId(account.getOrgId());
 			Example example = new Example(DocumentList.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("runId",documentList.getRunId());
@@ -918,7 +920,7 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 			{
 				return RetDataTools.NotOk("参数有问题!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentList.setOrgId(account.getOrgId());
 			documentList = documentListService.selectOne(documentList);
 			return RetDataTools.Ok("关注更新!",documentListService.setFollow(documentList, isFollow,account));	
@@ -945,7 +947,7 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 				if(StringUtils.isNotBlank(runId)&&StringUtils.isNotBlank(runProcessId))
 				{
 					String createTime = SysTools.getTime("yyyy-MM-dd HH:mm:ss");
-					Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+					Account account=accountService.getRedisAccount(request);
 					DocumentList documentList = new DocumentList();
 					documentList.setRunId(runId);
 					documentList.setOrgId(account.getOrgId());
@@ -995,7 +997,7 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 			{
 				JSONObject formDataJson = JSONObject.parseObject(formData);
 				Map<String,String> formDataMap =(Map)formDataJson;
-				Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+				Account account=accountService.getRedisAccount(request);
 				documentRunProcess.setOrgId(account.getOrgId());
 				documentList.setOrgId(account.getOrgId());
 				
@@ -1053,8 +1055,8 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 	public RetDataBean goNextProcess(HttpServletRequest request,String nextPrcsInfo,String runId,
 			String runProcessId,String remindNextUser,String remindCreateUser,String remindParticipant,String msgContent,String autoSendUser)
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
-		UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+		Account account=accountService.getRedisAccount(request);
+		UserInfo userInfo = accountService.getRedisUserInfo(request);
 		return documentRunProcessService.goNextProcess(userInfo,account, nextPrcsInfo, runId, runProcessId, remindNextUser,remindCreateUser,remindParticipant, msgContent,autoSendUser);
 	}
 	
@@ -1073,7 +1075,7 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 	{
 			try
 			{
-				Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+				Account account=accountService.getRedisAccount(request);
 				documentList.setRunId(SysTools.getGUID());
 				documentList.setDelFlag("0");
 				documentList.setStatus("0");
@@ -1108,7 +1110,7 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(documentChildProcess.getProcessId()))
 			{
 				return RetDataTools.NotOk("请求的参数有问题,请与管理员联系");
@@ -1134,7 +1136,7 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 	{
 	try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("更新布局成功！", documentProcessService.saveDocumentProcessLayout(documentProcessList, account));
 		}catch (Exception e) {
 				return RetDataTools.Error(e.getMessage());
@@ -1153,7 +1155,7 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 	@RequestMapping(value="/toEndProcess",method=RequestMethod.POST)
 	public RetDataBean toEndProcess(HttpServletRequest request,DocumentProcess documentProcess)
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return documentProcessService.toEndProcess(account, documentProcess);
 	}	
 	
@@ -1175,7 +1177,7 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 				{
 					return RetDataTools.NotOk("请求参数有问题,请检查!");
 				}
-				Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+				Account account=accountService.getRedisAccount(request);
 				documentProcess.setOrgId(account.getOrgId());
 				if(StringUtils.isNotBlank(documentProcess.getProcessId()))
 				{
@@ -1203,7 +1205,7 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 	@RequestMapping(value="/updateDocumentProcess",method=RequestMethod.POST)
 	public RetDataBean updateDocumentProcess(HttpServletRequest request,DocumentProcess documentProcess)
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return  documentProcessService.doUpdateDocumentProcess(account,documentProcess);
 	}
 	/**
@@ -1221,7 +1223,7 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentChildProcess.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求数据成功!", documentChildProcessService.getDocumentChildProcessPrcs(account.getOrgId(),documentChildProcess.getProcessId()));
 			}catch (Exception e) {
@@ -1243,7 +1245,7 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 	@RequestMapping(value="/insertDocumentProcess",method=RequestMethod.POST)
 	public RetDataBean insertDocumentProcess(HttpServletRequest request,DocumentProcess documentProcess,String parentId)
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return documentProcessService.createProcessNormal(account,documentProcess,parentId);
 	}
 
@@ -1262,7 +1264,7 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentFlow.setFlowId(SysTools.getGUID());
 			documentFlow.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			documentFlow.setCreateUser(account.getAccountId());
@@ -1294,7 +1296,7 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}else
 			{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentFlow.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除收发文成功!",documentFlowService.deleteDocumentFlow(documentFlow));
 			}
@@ -1323,7 +1325,7 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}else
 			{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(DocumentFlow.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("flowId",documentFlow.getFlowId());
 			return RetDataTools.Ok("更新公文流程成功!", documentFlowService.updateDocumentFlow(example,documentFlow));
@@ -1346,7 +1348,7 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 	@RequestMapping(value="/updateDocumentFormHtmlCode",method=RequestMethod.POST)
 	public RetDataBean updateDocumentFormHtmlCode(HttpServletRequest request,DocumentForm documentForm)
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return documentFormService.updateDocumentFormHtmlCode(account,documentForm);
 }
 	/**
@@ -1364,7 +1366,7 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentForm.setFormId(SysTools.getGUID());
 			documentForm.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			documentForm.setCreateUser(account.getAccountId());
@@ -1396,7 +1398,7 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}else
 			{
-				Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+				Account account=accountService.getRedisAccount(request);
 				DocumentFlow documentFlow = new DocumentFlow();
 				documentFlow.setFormId(documentForm.getFormId());
 				documentFlow.setOrgId(account.getOrgId());
@@ -1437,7 +1439,7 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}else
 			{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(DocumentForm.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("formId",documentForm.getFormId());
 			return RetDataTools.Ok("更新公文表单成功!", documentFormService.updateDocumentForm(example,documentForm));
@@ -1463,7 +1465,7 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentSort.setSortId(SysTools.getGUID());
 			documentSort.setCreateTime("yyyy-MM-dd HH:mm:ss");
 			documentSort.setCreateUser(account.getAccountId());
@@ -1494,7 +1496,7 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}else
 			{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentSort.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除公文分类成功!",documentSortService.deleteDocumentSort(documentSort));
 			}
@@ -1525,7 +1527,7 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}else
 			{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(DocumentSort.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("sortId",documentSort.getSortId());
 			return RetDataTools.Ok("更新公文分类成功!", documentSortService.updateDocumentSort(example,documentSort));
@@ -1549,8 +1551,8 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 			if(StringUtils.isBlank(runIds)) {
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
-			UserInfo userInfo=(UserInfo)request.getSession().getAttribute("USER_INFO");
+			Account account=accountService.getRedisAccount(request);
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			documentOptService.doDocumentUrge(account,userInfo, runIds);
 			return RetDataTools.Ok("催办信息已发送!","");
 		} catch (Exception e) {
@@ -1575,7 +1577,7 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentForm.setOrgId(account.getOrgId());
 			documentForm = documentFormService.selectOneDocumentForm(documentForm);
 			return RetDataTools.Ok("生成版本成功!", documentFormVersionService.setDocumentFormVersion(account,documentForm,title,remark));
@@ -1601,7 +1603,7 @@ public RetDataBean changeDocumentUser(HttpServletRequest request,String runId,St
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(!account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.NotOk("您不是管理员,不能进行BPM初始化操作!");

@@ -28,6 +28,7 @@ import com.core136.bean.email.Email;
 import com.core136.bean.email.EmailBody;
 import com.core136.bean.email.EmailBox;
 import com.core136.bean.email.EmailConfig;
+import com.core136.service.account.AccountService;
 import com.core136.service.email.EmailBodyService;
 import com.core136.service.email.EmailBoxService;
 import com.core136.service.email.EmailConfigService;
@@ -60,6 +61,8 @@ public class RoutSetEmailController {
 	private EmailService emailService;
 	@Autowired
 	private EmailConfigService emailConfigService;
+	@Autowired
+	private AccountService accountService;
 	/**
 	 * 
 	 * @Title createEmailBox   
@@ -74,7 +77,7 @@ public class RoutSetEmailController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			emailBox.setBoxId(SysTools.getGUID());
 			emailBox.setAccountId(account.getAccountId());
 			emailBox.setOrgId(account.getOrgId());
@@ -99,8 +102,8 @@ public class RoutSetEmailController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
-			UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+			Account account=accountService.getRedisAccount(request);
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			emailBody.setSendTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			emailBody.setFromId(account.getAccountId());
 			Document htmlDoc = Jsoup.parse(emailBody.getContent());
@@ -143,7 +146,7 @@ public class RoutSetEmailController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			emailBody.setSendTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			emailBody.setFromId(account.getAccountId());
 			emailBody.setSendFlag("0");
@@ -175,7 +178,7 @@ public class RoutSetEmailController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(Email.class);
 			example.createCriteria().andEqualTo("emailId",email.getEmailId()).andEqualTo("orgId",account.getOrgId());
 			return RetDataTools.Ok("设置成功!", emailService.updateEmail(email, example));
@@ -204,7 +207,7 @@ public class RoutSetEmailController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			emailBox.setAccountId(account.getAccountId());
 			emailBox.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除文件夹成功!", emailBoxService.deleteEmailBox(emailBox));
@@ -234,7 +237,7 @@ public class RoutSetEmailController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(EmailBox.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("accountId",account.getAccountId()).andEqualTo("boxId",emailBox.getBoxId());
 			return RetDataTools.Ok("文件夹修改成功!", emailBoxService.updateEmailBox(emailBox,example));
@@ -261,7 +264,7 @@ public class RoutSetEmailController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			email.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除邮件成功!", emailService.deleteEmail(email));
 		}catch (Exception e) {
@@ -298,7 +301,7 @@ public class RoutSetEmailController {
 				emailIdsArr = new String[] {emailIds};
 			}
 			List<String> list = Arrays.asList(emailIdsArr);
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("删除个人邮件成功!", emailService.delMyEmail(account.getOrgId(), account.getAccountId(), list));
 			}
 		}catch (Exception e) {
@@ -336,7 +339,7 @@ public class RoutSetEmailController {
 				emailIdsArr = new String[] {emailIds};
 			}
 			List<String> list = Arrays.asList(emailIdsArr);
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("恢复已删除的邮件成功!", emailService.recoveryMyEmail(account.getOrgId(), account.getAccountId(), list));
 			}
 		}catch (Exception e) {
@@ -379,7 +382,7 @@ public class RoutSetEmailController {
 				emailIdsArr = new String[] {emailIds};
 			}
 			List<String> list = Arrays.asList(emailIdsArr);
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("邮件转移成功!", emailService.setMyEmailBox(boxId,account.getOrgId(), account.getAccountId(), list));
 			}
 		}catch (Exception e) {
@@ -417,7 +420,7 @@ public class RoutSetEmailController {
 				emailIdsArr = new String[] {emailIds};
 			}
 			List<String> list = Arrays.asList(emailIdsArr);
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("删除个人邮件成功!", emailService.delMyEmailPhysics(account.getOrgId(), account.getAccountId(), list));
 			}
 		}catch (Exception e) {
@@ -455,7 +458,7 @@ public class RoutSetEmailController {
 				emailIdsArr = new String[] {emailIds};
 			}
 			List<String> list = Arrays.asList(emailIdsArr);
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("取消邮件星标记成功!", emailService.updateSetStars(account.getOrgId(), account.getAccountId(), list));
 			}
 		}catch (Exception e) {
@@ -491,7 +494,7 @@ public class RoutSetEmailController {
 				emailIdsArr = new String[] {emailBodyIds};
 			}
 			List<String> list = Arrays.asList(emailIdsArr);
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("删除邮件成功!", emailBodyService.delMySendEmail(account.getOrgId(), account.getAccountId(), list));
 			}
 		}catch (Exception e) {
@@ -515,7 +518,7 @@ public class RoutSetEmailController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			emailConfig.setAccountId(account.getAccountId());
 			emailConfig.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("邮件醒置修改成功!", emailConfigService.setEmailConfig(emailConfig));

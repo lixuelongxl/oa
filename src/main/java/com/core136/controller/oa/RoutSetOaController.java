@@ -35,6 +35,7 @@ import com.core136.bean.oa.LeadActivity;
 import com.core136.bean.oa.News;
 import com.core136.bean.oa.NewsComments;
 import com.core136.bean.sys.Sms;
+import com.core136.service.account.AccountService;
 import com.core136.service.attend.AttendConfigService;
 import com.core136.service.attend.AttendService;
 import com.core136.service.oa.CalendarService;
@@ -86,7 +87,8 @@ public class RoutSetOaController {
 	private AttendService attendService;
 	@Autowired
 	private LeadActivityService leadActivityService;
-	
+	@Autowired
+	private AccountService accountService;
 	/**
 	 * 
 	 * @Title: sendSms   
@@ -103,7 +105,7 @@ public class RoutSetOaController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("消息发送成功!",smsService.sendSms(account,toUser,content));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -125,7 +127,7 @@ public class RoutSetOaController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			leadActivity.setRecordId(SysTools.getGUID());
 			leadActivity.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			leadActivity.setCreateUser(account.getAccountId());
@@ -154,7 +156,7 @@ public class RoutSetOaController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			leadActivity.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除成功!",leadActivityService.deleteLeadActivity(leadActivity));
 		}catch (Exception e) {
@@ -181,7 +183,7 @@ public class RoutSetOaController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(LeadActivity.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("recordId",leadActivity.getRecordId());
 			return RetDataTools.Ok("更新成功!",leadActivityService.updateLeadActivity(example, leadActivity));
@@ -206,7 +208,7 @@ public class RoutSetOaController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			diaryComments.setCommId(SysTools.getGUID());
 			diaryComments.setCreateUser(account.getAccountId());
 			diaryComments.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -239,7 +241,7 @@ public class RoutSetOaController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			diary.setCreateUser(account.getAccountId());
 			diary.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("日志删除成功!", diaryService.delDiary(diary));
@@ -265,7 +267,7 @@ public class RoutSetOaController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			newsComments.setCommId(SysTools.getGUID());
 			newsComments.setCreateUser(account.getAccountId());
 			newsComments.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -294,7 +296,7 @@ public class RoutSetOaController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			attend.setAttendId(SysTools.getGUID());
 			attend.setCreateUser(account.getAccountId());
 			attend.setType("0");
@@ -331,7 +333,7 @@ public class RoutSetOaController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			news.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			Document htmlDoc = Jsoup.parse(news.getContent());
 			String subheading = htmlDoc.text();
@@ -362,8 +364,8 @@ public class RoutSetOaController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
-			UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+			Account account=accountService.getRedisAccount(request);
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			news.setNewsId(SysTools.getGUID());
 			String createTime = SysTools.getTime("yyyy-MM-dd HH:mm:ss");
 			news.setCreateUser(account.getAccountId());
@@ -408,7 +410,7 @@ public class RoutSetOaController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			news.setOrgId(account.getOrgId());
 			if(!account.getOpFlag().equals("1"))
 			{
@@ -438,7 +440,7 @@ public class RoutSetOaController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			news.setOrgId(account.getOrgId());
 			news.setStatus("1");
 			Example example = new Example(News.class);
@@ -479,7 +481,7 @@ public class RoutSetOaController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			news.setDelFlag("1");
 			Example example = new Example(News.class);
 			if(!account.getOpFlag().equals("1"))
@@ -514,7 +516,7 @@ public class RoutSetOaController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			sms.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除消息成功!", smsService.deleteSms(sms));
 		}catch (Exception e) {
@@ -541,7 +543,7 @@ public class RoutSetOaController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			sms.setOrgId(account.getOrgId());
 			Example example = new Example(Sms.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("smsId",sms.getSmsId());
@@ -567,7 +569,7 @@ public class RoutSetOaController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			calendar.setCalendarId(SysTools.getGUID());
 			calendar.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			calendar.setAccountId(account.getAccountId());
@@ -630,7 +632,7 @@ public class RoutSetOaController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			calendar.setAccountId(account.getAccountId());
 			calendar.setOrgId(account.getOrgId());
 			String smsTime="";
@@ -695,7 +697,7 @@ public class RoutSetOaController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			calendar.setAccountId(account.getAccountId());
 			calendar.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除日程成功!", calendarService.deleteCalendar(calendar));
@@ -721,7 +723,7 @@ public class RoutSetOaController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(!account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.NotOk("您没有权限设置,请与系统管理员联系!");
@@ -749,8 +751,8 @@ public class RoutSetOaController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
-			UserInfo userInfo=(UserInfo)request.getSession().getAttribute("USER_INFO");
+			Account account=accountService.getRedisAccount(request);
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			DiaryPriv diaryPriv = new DiaryPriv();
 			diaryPriv.setOrgId(account.getOrgId());
 			diaryPriv=diaryPrivService.selectOneDiaryPriv(diaryPriv);
@@ -780,12 +782,12 @@ public class RoutSetOaController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(diary.getDiaryId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			UserInfo userInfo=(UserInfo)request.getSession().getAttribute("USER_INFO");
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			diary.setCreateUser(account.getAccountId());
 			diary.setOrgId(account.getOrgId());
 			DiaryPriv diaryPriv = new DiaryPriv();
@@ -816,7 +818,7 @@ public class RoutSetOaController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			attendConfig.setConfigId(SysTools.getGUID());;
 			attendConfig.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			attendConfig.setCreateUser(account.getAccountId());
@@ -847,7 +849,7 @@ public class RoutSetOaController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			attendConfig.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			Example example = new Example(AttendConfig.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("configId",attendConfig.getConfigId());
@@ -873,7 +875,7 @@ public class RoutSetOaController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(attendConfig.getConfigId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");

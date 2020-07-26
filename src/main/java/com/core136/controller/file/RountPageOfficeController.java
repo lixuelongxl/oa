@@ -24,9 +24,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.core136.bean.account.Account;
 import com.core136.bean.account.UserInfo;
 import com.core136.bean.file.Attach;
 import com.core136.bean.file.NetDisk;
+import com.core136.service.account.AccountService;
 import com.core136.service.file.AttachService;
 import com.core136.service.file.NetDiskService;
 import com.zhuozhengsoft.pageoffice.FileSaver;
@@ -53,10 +55,12 @@ public class RountPageOfficeController {
 private AttachService attachService;
 @Autowired
 private NetDiskService netDiskService;
+@Autowired
+private AccountService accountService;
 
 @RequestMapping(value="/openppt", method=RequestMethod.GET)
 public ModelAndView openppt(HttpServletRequest request,Attach attach,String openModeType, Map<String,Object> map,NetDisk netDisk,String path){
-	UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+	UserInfo userInfo = accountService.getRedisUserInfo(request);
 	String filePath="";
 	if(StringUtils.isBlank(attach.getAttachId()))
 	{
@@ -114,7 +118,7 @@ public ModelAndView openppt(HttpServletRequest request,Attach attach,String open
 	 */
 	@RequestMapping(value="/openpdf", method=RequestMethod.GET)
 	public ModelAndView openPdf(HttpServletRequest request,Attach attach,String openModeType, Map<String,Object> map,NetDisk netDisk,String path){
-		UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+		UserInfo userInfo = accountService.getRedisUserInfo(request);
 		String filePath="";
 		if(StringUtils.isBlank(attach.getAttachId()))
 		{
@@ -187,7 +191,7 @@ public ModelAndView openppt(HttpServletRequest request,Attach attach,String open
 	 */
 	@RequestMapping(value="/openexcel", method=RequestMethod.GET)
 	public ModelAndView openExcel(HttpServletRequest request,Attach attach,String openModeType, Map<String,Object> map,NetDisk netDisk,String path){
-		UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+		UserInfo userInfo = accountService.getRedisUserInfo(request);
 		String filePath="";
 		if(StringUtils.isBlank(attach.getAttachId()))
 		{
@@ -247,7 +251,7 @@ public ModelAndView openppt(HttpServletRequest request,Attach attach,String open
 	 */
 	@RequestMapping(value="/taohongword", method=RequestMethod.GET)
 	public ModelAndView taohongword(HttpServletRequest request,Attach attach,String openModeType,String runId,String mb, Map<String,Object> map){
-		UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+		UserInfo userInfo = accountService.getRedisUserInfo(request);
 		attach.setOrgId(userInfo.getOrgId());
 		attach = attachService.selectOne(attach);
 		String filePath = attach.getPath();
@@ -337,7 +341,7 @@ public ModelAndView openppt(HttpServletRequest request,Attach attach,String open
  */
 	@RequestMapping(value="/openword", method=RequestMethod.GET)
 	public ModelAndView openWord(HttpServletRequest request,Attach attach,String openModeType, Map<String,Object> map,NetDisk netDisk,String path){
-		UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+		UserInfo userInfo = accountService.getRedisUserInfo(request);
 		String filePath="";
 		if(StringUtils.isBlank(attach.getAttachId()))
 		{
@@ -393,7 +397,7 @@ public ModelAndView openppt(HttpServletRequest request,Attach attach,String open
 	 */
 	@RequestMapping(value="/wordsave", method=RequestMethod.POST)
 	public void wordSaveFile(HttpServletRequest request, HttpServletResponse response){
-		UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+		UserInfo userInfo = accountService.getRedisUserInfo(request);
 		FileSaver fs = new FileSaver(request, response);
 		String attachId = fs.getFormField("attachId");
 		String extName = fs.getFileExtName();
@@ -423,7 +427,7 @@ public ModelAndView openppt(HttpServletRequest request,Attach attach,String open
  */
 	@RequestMapping(value="/excelsave", method=RequestMethod.POST)
 	public void excelSaveFile(HttpServletRequest request, HttpServletResponse response){
-		UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+		UserInfo userInfo = accountService.getRedisUserInfo(request);
 		FileSaver fs = new FileSaver(request, response);
 		String attachId = fs.getFormField("attachId");
 		Attach attach = new Attach();
@@ -448,7 +452,7 @@ public ModelAndView openppt(HttpServletRequest request,Attach attach,String open
 	 */
 	@RequestMapping(value="/pptsave", method=RequestMethod.POST)
 	public void pptSaveFile(HttpServletRequest request, HttpServletResponse response){
-		UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+		UserInfo userInfo = accountService.getRedisUserInfo(request);
 		FileSaver fs = new FileSaver(request, response);
 		String attachId = fs.getFormField("attachId");
 		Attach attach = new Attach();

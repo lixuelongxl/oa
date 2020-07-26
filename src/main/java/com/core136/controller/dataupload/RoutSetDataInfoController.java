@@ -15,6 +15,7 @@ import com.core136.bean.account.Account;
 import com.core136.bean.account.UserInfo;
 import com.core136.bean.dataupload.DataUploadHandle;
 import com.core136.bean.dataupload.DataUploadInfo;
+import com.core136.service.account.AccountService;
 import com.core136.service.dataupload.DataUploadHandleService;
 import com.core136.service.dataupload.DataUploadInfoService;
 
@@ -27,7 +28,8 @@ public class RoutSetDataInfoController {
 	private DataUploadInfoService dataUploadInfoService;
 	@Autowired
 	private DataUploadHandleService dataUploadHandleService;
-	
+	@Autowired
+	private AccountService accountService;
 	/**
 	 * 
 	 * @Title: insertDataUploadHandle
@@ -43,7 +45,7 @@ public class RoutSetDataInfoController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			dataUploadHandle.setProcessId(SysTools.getGUID());
 			dataUploadHandle.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			dataUploadHandle.setCreateUser(account.getAccountId());
@@ -72,7 +74,7 @@ public class RoutSetDataInfoController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			dataUploadHandle.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("处理结果删除成功!",dataUploadHandleService.deleteDataUploadHandle(dataUploadHandle));
 		}catch (Exception e) {
@@ -99,7 +101,7 @@ public class RoutSetDataInfoController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(DataUploadHandle.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("processId",dataUploadHandle.getProcessId());
 			return RetDataTools.Ok("更新成功!",dataUploadHandleService.updateDataUploadHandle(example, dataUploadHandle));
@@ -123,8 +125,8 @@ public class RoutSetDataInfoController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
-			UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+			Account account=accountService.getRedisAccount(request);
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			dataUploadInfo.setRecordId(SysTools.getGUID());
 			dataUploadInfo.setStatus("0");
 			dataUploadInfo.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -154,7 +156,7 @@ public class RoutSetDataInfoController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			dataUploadInfo.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("上报信息删除成功!",dataUploadInfoService.deleteDataUploadInfo(dataUploadInfo));
 		}catch (Exception e) {
@@ -181,8 +183,8 @@ public class RoutSetDataInfoController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
-			UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_LOGIN");
+			Account account=accountService.getRedisAccount(request);
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			Example example = new Example(DataUploadInfo.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("recordId",dataUploadInfo.getRecordId());
 			return RetDataTools.Ok("更新成功!",dataUploadInfoService.updateDataUploadInfo(account,userInfo,example, dataUploadInfo));

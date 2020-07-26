@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.core136.bean.account.Account;
 import com.core136.bean.projectbuild.ProjectBuildContract;
 import com.core136.bean.projectbuild.ProjectBuildContractSort;
+import com.core136.service.account.AccountService;
 import com.core136.service.projectbuild.ProjectBuildContractService;
 import com.core136.service.projectbuild.ProjectBuildContractSortService;
 import org.core136.common.retdataunit.RetDataBean;
@@ -26,6 +27,8 @@ public class RoutSetProjectBuildContractController {
 private ProjectBuildContractSortService projectBuildContractSortService;
 @Autowired
 private ProjectBuildContractService projectBuildContractService;
+@Autowired
+private AccountService accountService;
 /**
  * 
  * @Title: delProjectBuildContractSort   
@@ -45,7 +48,7 @@ public RetDataBean delProjectBuildContractSort(HttpServletRequest request,Projec
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		projectBuildContractSort.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("删除合同分类成功!",projectBuildContractSortService.deleteProjectBuildContractSort(projectBuildContractSort));
 	}catch (Exception e) {
@@ -67,7 +70,7 @@ public RetDataBean insertProjectBuildContractSort(HttpServletRequest request,Pro
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		projectBuildContractSort.setSortId(SysTools.getGUID());
 		projectBuildContractSort.getSortLeave();
 		projectBuildContractSort.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -102,7 +105,7 @@ public RetDataBean updateProjectBuildContractSort(HttpServletRequest request,Pro
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		Example example = new Example(ProjectBuildContractSort.class);
 		example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("sortId",projectBuildContractSort.getSortId());
 		return RetDataTools.Ok("更新合同成功!",projectBuildContractSortService.updateProjectBuildContractSort(example,projectBuildContractSort));
@@ -129,7 +132,7 @@ public RetDataBean delProjectBuildContract(HttpServletRequest request,ProjectBui
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		projectBuildContract.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("删除合同成功!",projectBuildContractService.deleteProjectBuildContract(projectBuildContract));
 	}catch (Exception e) {
@@ -152,7 +155,7 @@ public RetDataBean insertProjectBuildContract(HttpServletRequest request,Project
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		projectBuildContract.setContractId(SysTools.getGUID());
 		projectBuildContract.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 		projectBuildContract.setCreateUser(account.getAccountId());
@@ -182,7 +185,7 @@ public RetDataBean updateProjectBuildContract(HttpServletRequest request,Project
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		Example example = new Example(ProjectBuildContract.class);
 		example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("contractId",projectBuildContract.getContractId());
 		return RetDataTools.Ok("更新合同成功!",projectBuildContractService.updateProjectBuildContract(example,projectBuildContract));

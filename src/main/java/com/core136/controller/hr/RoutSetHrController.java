@@ -45,6 +45,7 @@ import com.core136.bean.hr.HrWagesLevel;
 import com.core136.bean.hr.HrWelfareRecord;
 import com.core136.bean.hr.HrWorkRecord;
 import com.core136.bean.hr.HrWorkSkills;
+import com.core136.service.account.AccountService;
 import com.core136.service.hr.HrCareRecordService;
 import com.core136.service.hr.HrClassCodeService;
 import com.core136.service.hr.HrContractService;
@@ -131,7 +132,8 @@ public class RoutSetHrController {
 	private HrWelfareRecordService hrWelfareRecordService;
 	@Autowired
 	private HrEvaluateService hrEvaluateService;
-	
+	@Autowired
+	private AccountService accountService;
 	/**
 	 * 
 	 * @Title: insertHrKpiPlan
@@ -147,7 +149,7 @@ public class RoutSetHrController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrKpiPlan.setPlanId(SysTools.getGUID());
 			hrKpiPlan.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			hrKpiPlan.setCreateUser(account.getAccountId());
@@ -176,7 +178,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrKpiPlan.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除成功!",hrKpiPlanService.deleteHrKpiPlan(hrKpiPlan));
 		}catch (Exception e) {
@@ -203,7 +205,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(HrKpiPlan.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("planId",hrKpiPlan.getPlanId());
 			return RetDataTools.Ok("更新成功!",hrKpiPlanService.updateHrKpiPlan(example, hrKpiPlan));
@@ -227,7 +229,7 @@ public class RoutSetHrController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrEvaluate.setRecordId(SysTools.getGUID());
 			hrEvaluate.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			hrEvaluate.setCreateUser(account.getAccountId());
@@ -256,7 +258,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrEvaluate.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除成功!",hrEvaluateService.deleteHrEvaluate(hrEvaluate));
 		}catch (Exception e) {
@@ -283,7 +285,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(HrEvaluate.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("recordId",hrEvaluate.getRecordId());
 			return RetDataTools.Ok("更新成功!",hrEvaluateService.updateHrEvaluate(example, hrEvaluate));
@@ -309,7 +311,7 @@ public class RoutSetHrController {
 		ModelAndView mv = null;
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			mv = new ModelAndView("app/core/hr/salary/welfareimport");
 			RetDataBean retDataBean = hrWelfareRecordService.importHrWelfareRecord(account,file);
 			mv.addObject("retDataBean",retDataBean);
@@ -335,7 +337,7 @@ public class RoutSetHrController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrWelfareRecord.setRecordId(SysTools.getGUID());
 			hrWelfareRecord.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			hrWelfareRecord.setCreateUser(account.getAccountId());
@@ -364,7 +366,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrWelfareRecord.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除成功!",hrWelfareRecordService.deleteHrWelfareRecord(hrWelfareRecord));
 		}catch (Exception e) {
@@ -391,7 +393,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(HrWelfareRecord.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("recordId",hrWelfareRecord.getRecordId());
 			return RetDataTools.Ok("更新成功!",hrWelfareRecordService.updateHrWelfareRecord(example, hrWelfareRecord));
@@ -416,7 +418,7 @@ public class RoutSetHrController {
 		ModelAndView mv = null;
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			mv = new ModelAndView("app/core/hr/salary/salaryimport");
 			RetDataBean retDataBean = hrSalaryRecordService.importHrSalaryRecord(account,file);
 			mv.addObject("retDataBean",retDataBean);
@@ -442,7 +444,7 @@ public class RoutSetHrController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrSalaryRecord.setRecordId(SysTools.getGUID());
 			hrSalaryRecord.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			hrSalaryRecord.setCreateUser(account.getAccountId());
@@ -471,7 +473,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrSalaryRecord.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除成功!",hrSalaryRecordService.deleteHrSalaryRecord(hrSalaryRecord));
 		}catch (Exception e) {
@@ -498,7 +500,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(HrSalaryRecord.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("recordId",hrSalaryRecord.getRecordId());
 			return RetDataTools.Ok("更新成功!",hrSalaryRecordService.updateHrSalaryRecord(example, hrSalaryRecord));
@@ -523,7 +525,7 @@ public class RoutSetHrController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrKpiItem.setItemId(SysTools.getGUID());
 			hrKpiItem.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			hrKpiItem.setCreateUser(account.getAccountId());
@@ -552,7 +554,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrKpiItem.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除成功!",hrKpiItemService.deleteHrKpiItem(hrKpiItem));
 		}catch (Exception e) {
@@ -579,7 +581,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(HrKpiItem.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("itemId",hrKpiItem.getItemId());
 			return RetDataTools.Ok("更新成功!",hrKpiItemService.updateHrKpiItem(example, hrKpiItem));
@@ -603,7 +605,7 @@ public class RoutSetHrController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrRecruitPlan.setPlanId(SysTools.getGUID());
 			hrRecruitPlan.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			hrRecruitPlan.setCreateUser(account.getAccountId());
@@ -632,7 +634,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrRecruitPlan.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除成功!",hrRecruitPlanService.deleteHrRecruitPlan(hrRecruitPlan));
 		}catch (Exception e) {
@@ -659,7 +661,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(HrRecruitPlan.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("planId",hrRecruitPlan.getPlanId());
 			return RetDataTools.Ok("更新成功!",hrRecruitPlanService.updateHrRecruitPlan(example, hrRecruitPlan));
@@ -683,7 +685,7 @@ public class RoutSetHrController {
 		ModelAndView mv = null;
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			mv = new ModelAndView("app/core/hr/work/import");
 			RetDataBean retDataBean = hrWorkSkillsService.importHrWorkSkills(account,file);
 			mv.addObject("retDataBean",retDataBean);
@@ -711,7 +713,7 @@ public class RoutSetHrController {
 		ModelAndView mv = null;
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			mv = new ModelAndView("app/core/hr/work/import");
 			RetDataBean retDataBean = hrWorkRecordService.importHrWorkRecord(account,file);
 			mv.addObject("retDataBean",retDataBean);
@@ -738,7 +740,7 @@ public class RoutSetHrController {
 		ModelAndView mv = null;
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			mv = new ModelAndView("app/core/hr/learn/import");
 			RetDataBean retDataBean = hrLearnRecordService.importHrLearnRecord(account,file);
 			mv.addObject("retDataBean",retDataBean);
@@ -766,7 +768,7 @@ public class RoutSetHrController {
 		ModelAndView mv = null;
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			mv = new ModelAndView("app/core/hr/licence/import");
 			RetDataBean retDataBean = hrLicenceService.importHrLicence(account,file);
 			mv.addObject("retDataBean",retDataBean);
@@ -794,7 +796,7 @@ public class RoutSetHrController {
 		ModelAndView mv = null;
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			mv = new ModelAndView("app/core/hr/incentive/import");
 			RetDataBean retDataBean = hrIncentiveService.importHrIncentive(account,file);
 			mv.addObject("retDataBean",retDataBean);
@@ -822,7 +824,7 @@ public class RoutSetHrController {
 		ModelAndView mv = null;
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			mv = new ModelAndView("app/core/hr/contract/import");
 			RetDataBean retDataBean = hrContractService.importHrContract(account,file);
 			mv.addObject("retDataBean",retDataBean);
@@ -850,7 +852,7 @@ public class RoutSetHrController {
 		ModelAndView mv = null;
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			mv = new ModelAndView("app/core/hr/baseinfo/baseinfoimport");
 			RetDataBean retDataBean = hrUserInfoService.importHrUserInfo(account,file);
 			mv.addObject("retDataBean",retDataBean);
@@ -877,7 +879,7 @@ public class RoutSetHrController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrRecruitNeeds.setRecordId(SysTools.getGUID());
 			hrRecruitNeeds.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			hrRecruitNeeds.setCreateUser(account.getAccountId());
@@ -907,7 +909,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrRecruitNeeds.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除成功!",hrRecruitNeedsService.deleteHrRecruitNeeds(hrRecruitNeeds));
 		}catch (Exception e) {
@@ -934,7 +936,7 @@ public class RoutSetHrController {
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
 			hrRecruitNeeds.setApprovedTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(HrRecruitNeeds.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("recordId",hrRecruitNeeds.getRecordId());
 			return RetDataTools.Ok("审批成功!",hrRecruitNeedsService.updateHrRecruitNeeds(example, hrRecruitNeeds));
@@ -962,7 +964,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(HrRecruitNeeds.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("recordId",hrRecruitNeeds.getRecordId());
 			return RetDataTools.Ok("更新成功!",hrRecruitNeedsService.updateHrRecruitNeeds(example, hrRecruitNeeds));
@@ -985,7 +987,7 @@ public class RoutSetHrController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrTrainRecord.setRecordId(SysTools.getGUID());
 			hrTrainRecord.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			hrTrainRecord.setCreateUser(account.getAccountId());
@@ -1014,7 +1016,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrTrainRecord.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除成功!",hrTrainRecordService.deleteHrTrainRecord(hrTrainRecord));
 		}catch (Exception e) {
@@ -1041,7 +1043,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(HrTrainRecord.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("recordId",hrTrainRecord.getRecordId());
 			return RetDataTools.Ok("更新成功!",hrTrainRecordService.updateHrTrainRecord(example, hrTrainRecord));
@@ -1069,7 +1071,7 @@ public class RoutSetHrController {
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
 			hrTrainRecord.setApprovedTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(HrTrainRecord.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("recordId",hrTrainRecord.getRecordId());
 			return RetDataTools.Ok("更新成功!",hrTrainRecordService.updateHrTrainRecord(example, hrTrainRecord));
@@ -1094,7 +1096,7 @@ public class RoutSetHrController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrCareRecord.setRecordId(SysTools.getGUID());
 			hrCareRecord.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			hrCareRecord.setCreateUser(account.getAccountId());
@@ -1123,7 +1125,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrCareRecord.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除成功!",hrCareRecordService.deleteHrCareRecord(hrCareRecord));
 		}catch (Exception e) {
@@ -1150,7 +1152,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(HrCareRecord.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("recordId",hrCareRecord.getRecordId());
 			return RetDataTools.Ok("更新成功!",hrCareRecordService.updateHrCareRecord(example, hrCareRecord));
@@ -1174,7 +1176,7 @@ public class RoutSetHrController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrTitleEvaluation.setRecordId(SysTools.getGUID());
 			hrTitleEvaluation.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			hrTitleEvaluation.setCreateUser(account.getAccountId());
@@ -1203,7 +1205,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrTitleEvaluation.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除成功!",hrTitleEvaluationService.deleteHrTitleEvaluation(hrTitleEvaluation));
 		}catch (Exception e) {
@@ -1230,7 +1232,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(HrTitleEvaluation.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("recordId",hrTitleEvaluation.getRecordId());
 			return RetDataTools.Ok("更新成功!",hrTitleEvaluationService.updateHrTitleEvaluation(example, hrTitleEvaluation));
@@ -1255,7 +1257,7 @@ public class RoutSetHrController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrReinstatement.setRecordId(SysTools.getGUID());
 			hrReinstatement.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			hrReinstatement.setCreateUser(account.getAccountId());
@@ -1284,7 +1286,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrReinstatement.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除成功!",hrReinstatementService.deleteHrReinstatement(hrReinstatement));
 		}catch (Exception e) {
@@ -1311,7 +1313,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(HrReinstatement.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("recordId",hrReinstatement.getRecordId());
 			return RetDataTools.Ok("更新成功!",hrReinstatementService.updateHrReinstatement(example, hrReinstatement));
@@ -1336,7 +1338,7 @@ public class RoutSetHrController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrLeaveRecord.setRecordId(SysTools.getGUID());
 			hrLeaveRecord.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			hrLeaveRecord.setCreateUser(account.getAccountId());
@@ -1365,7 +1367,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrLeaveRecord.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除成功!",hrLeaveRecordService.deleteHrLeaveRecord(hrLeaveRecord));
 		}catch (Exception e) {
@@ -1392,7 +1394,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(HrPersonnelTransfer.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("recordId",hrLeaveRecord.getRecordId());
 			return RetDataTools.Ok("更新成功!",hrLeaveRecordService.updateHrLeaveRecord(example, hrLeaveRecord));
@@ -1417,7 +1419,7 @@ public class RoutSetHrController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrPersonnelTrans.setTransferId(SysTools.getGUID());
 			hrPersonnelTrans.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			hrPersonnelTrans.setCreateUser(account.getAccountId());
@@ -1446,7 +1448,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrPersonnelTrans.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除成功!",hrPersonnelTransferService.deleteHrPersonnelTransfer(hrPersonnelTrans));
 		}catch (Exception e) {
@@ -1473,7 +1475,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(HrPersonnelTransfer.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("transferId",hrPersonnelTrans.getTransferId());
 			return RetDataTools.Ok("更新成功!",hrPersonnelTransferService.updateHrPersonnelTransfer(example, hrPersonnelTrans));
@@ -1497,7 +1499,7 @@ public class RoutSetHrController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrWorkSkills.setRecordId(SysTools.getGUID());
 			hrWorkSkills.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			hrWorkSkills.setCreateUser(account.getAccountId());
@@ -1526,7 +1528,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrWorkSkills.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除成功!",hrWorkSkillsService.deleteHrWorkSkills(hrWorkSkills));
 		}catch (Exception e) {
@@ -1553,7 +1555,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(HrWorkSkills.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("recordId",hrWorkSkills.getRecordId());
 			return RetDataTools.Ok("更新成功!",hrWorkSkillsService.updateHrWorkSkills(example, hrWorkSkills));
@@ -1577,7 +1579,7 @@ public class RoutSetHrController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrWorkRecord.setRecordId(SysTools.getGUID());
 			hrWorkRecord.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			hrWorkRecord.setCreateUser(account.getAccountId());
@@ -1606,7 +1608,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrWorkRecord.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除成功!",hrWorkRecordService.deleteHrWorkRecord(hrWorkRecord));
 		}catch (Exception e) {
@@ -1633,7 +1635,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(HrWorkRecord.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("recordId",hrWorkRecord.getRecordId());
 			return RetDataTools.Ok("更新成功!",hrWorkRecordService.updateHrWorkRecord(example, hrWorkRecord));
@@ -1658,7 +1660,7 @@ public class RoutSetHrController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrLearnRecord.setRecordId(SysTools.getGUID());
 			hrLearnRecord.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			hrLearnRecord.setCreateUser(account.getAccountId());
@@ -1687,7 +1689,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrLearnRecord.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除成功!",hrLearnRecordService.deleteHrLearnRecord(hrLearnRecord));
 		}catch (Exception e) {
@@ -1714,7 +1716,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(HrLearnRecord.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("recordId",hrLearnRecord.getRecordId());
 			return RetDataTools.Ok("更新成功!",hrLearnRecordService.updateHrLearnRecord(example, hrLearnRecord));
@@ -1738,7 +1740,7 @@ public class RoutSetHrController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrLicence.setLicenceId(SysTools.getGUID());
 			hrLicence.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			hrLicence.setCreateUser(account.getAccountId());
@@ -1767,7 +1769,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrLicence.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除成功!",hrLicenceService.deleteHrLicence(hrLicence));
 		}catch (Exception e) {
@@ -1794,7 +1796,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(HrLicence.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("licenceId",hrLicence.getLicenceId());
 			return RetDataTools.Ok("更新成功!",hrLicenceService.updateHrLicence(example, hrLicence));
@@ -1819,7 +1821,7 @@ public class RoutSetHrController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrIncentive.setIncentiveId(SysTools.getGUID());
 			hrIncentive.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			hrIncentive.setCreateUser(account.getAccountId());
@@ -1848,7 +1850,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrIncentive.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除成功!",hrIncentiveService.deleteHrIncentive(hrIncentive));
 		}catch (Exception e) {
@@ -1875,7 +1877,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(HrIncentive.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("incentiveId",hrIncentive.getIncentiveId());
 			return RetDataTools.Ok("更新成功!",hrIncentiveService.updateHrIncentive(example, hrIncentive));
@@ -1901,7 +1903,7 @@ public class RoutSetHrController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrContract.setContractId(SysTools.getGUID());
 			hrContract.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			hrContract.setCreateUser(account.getAccountId());
@@ -1930,7 +1932,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrContract.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除成功!",hrContractService.deleteHrContract(hrContract));
 		}catch (Exception e) {
@@ -1957,7 +1959,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(HrContract.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("contractId",hrContract.getContractId());
 			return RetDataTools.Ok("更新成功!",hrContractService.updateHrContract(example, hrContract));
@@ -1981,7 +1983,7 @@ public class RoutSetHrController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrWagesLevel.setWagesId(SysTools.getGUID());
 			hrWagesLevel.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			hrWagesLevel.setCreateUser(account.getAccountId());
@@ -2012,7 +2014,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrWagesLevel.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除成功!",hrWagesLevelService.deleteHrWagesLevel(hrWagesLevel));
 		}catch (Exception e) {
@@ -2039,7 +2041,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(HrWagesLevel.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("wagesId",hrWagesLevel.getWagesId());
 			return RetDataTools.Ok("更新成功!",hrWagesLevelService.updateHrWagesLevel(example, hrWagesLevel));
@@ -2063,7 +2065,7 @@ public class RoutSetHrController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrUserInfo.setUserId(SysTools.getGUID());
 			hrUserInfo.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			hrUserInfo.setCreateUser(account.getAccountId());
@@ -2093,7 +2095,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrUserInfo.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除成功!",hrUserInfoService.deleteHrUserInfo(hrUserInfo));
 		}catch (Exception e) {
@@ -2120,7 +2122,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(HrUserInfo.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("userId",hrUserInfo.getUserId());
 			return RetDataTools.Ok("更新成功!",hrUserInfoService.updateHrUserInfo(example, hrUserInfo));
@@ -2144,7 +2146,7 @@ public class RoutSetHrController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrDepartment.setDeptId(SysTools.getGUID());
 			hrDepartment.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("添加成功!",hrDepartmentService.insertHrDepartment(hrDepartment));
@@ -2172,7 +2174,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrDepartment.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除成功!",hrDepartmentService.deleteHrDepartment(hrDepartment));
 		}catch (Exception e) {
@@ -2199,7 +2201,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(HrDepartment.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("deptId",hrDepartment.getDeptId());
 			return RetDataTools.Ok("更新成功!",hrDepartmentService.updateHrDepartment(example, hrDepartment));
@@ -2224,7 +2226,7 @@ public class RoutSetHrController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(hrUserLevel.getSuperior()))
 			{
 				hrUserLevel.setSuperior("0");
@@ -2258,7 +2260,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrUserLevel.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除成功!",hrUserLevelService.deleteHrUserLevel(hrUserLevel));
 		}catch (Exception e) {
@@ -2285,7 +2287,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(HrUserLevel.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("sortId",hrUserLevel.getLevelId());
 			return RetDataTools.Ok("更新成功!",hrUserLevelService.updateHrUserLevel(example, hrUserLevel));
@@ -2309,7 +2311,7 @@ public class RoutSetHrController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(hrClassCode.getParentId()))
 			{
 				hrClassCode.setParentId("");
@@ -2344,7 +2346,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(HrClassCode.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("codeId",hrClassCode.getCodeId());
 			return RetDataTools.Ok("更新成功!",hrClassCodeService.updateHrClassCode(example, hrClassCode));
@@ -2372,7 +2374,7 @@ public class RoutSetHrController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			hrClassCode.setOrgId(account.getOrgId());
 			hrClassCode = hrClassCodeService.selectOneHrClassCode(hrClassCode);
 			HrClassCode hrClassCode1 = new HrClassCode();

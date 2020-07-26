@@ -20,6 +20,7 @@ import com.core136.bean.erp.ErpOrder;
 import com.core136.bean.erp.ErpOrderDetail;
 import com.core136.bean.erp.ErpProduct;
 import com.core136.bean.erp.ErpProductSort;
+import com.core136.service.account.AccountService;
 import com.core136.service.erp.ErpBomDetailService;
 import com.core136.service.erp.ErpBomService;
 import com.core136.service.erp.ErpBomSortService;
@@ -72,6 +73,8 @@ private ErpOrderDetailService erpOrderDetailService;
 private ErpEquipmentService erpEquipmentService;
 @Autowired
 private ErpEquipmentSortService erpEquipmentSortService;
+@Autowired
+private AccountService accountService;
 /**
  * 
  * @Title: addMaterielSort   
@@ -87,7 +90,7 @@ private ErpEquipmentSortService erpEquipmentSortService;
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(erpMaterielSort.getSortLeave()))
 			{
 				erpMaterielSort.setSortLeave("0");
@@ -122,7 +125,7 @@ public RetDataBean delErpMaterielSort(HttpServletRequest request,ErpMaterielSort
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			return RetDataTools.NotOk("对不起,您不是系统管理员!"); 
@@ -158,7 +161,7 @@ public RetDataBean updateErpMaterielSort(HttpServletRequest request,ErpMaterielS
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			return RetDataTools.NotOk("对不起,您不是系统管理员!"); 
@@ -201,7 +204,7 @@ public RetDataBean updateErpProductSort(HttpServletRequest request,ErpProductSor
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			return RetDataTools.NotOk("对不起,您不是系统管理员!"); 
@@ -238,7 +241,7 @@ public RetDataBean insertErpProductSort(HttpServletRequest request,ErpProductSor
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isBlank(erpProductSort.getSortLeave()))
 		{
 			erpProductSort.setSortLeave("0");
@@ -273,7 +276,7 @@ public RetDataBean delErpProductSort(HttpServletRequest request,ErpProductSort e
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			return RetDataTools.NotOk("对不起,您不是系统管理员!"); 
@@ -316,7 +319,7 @@ public RetDataBean delErpProduct(HttpServletRequest request,ErpProduct erpProduc
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			return RetDataTools.NotOk("对不起,您不是系统管理员!"); 
@@ -351,7 +354,7 @@ public RetDataBean insertErpMateriel(HttpServletRequest request,ErpMateriel erpM
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		erpMateriel.setMaterielId(SysTools.getGUID());
 		erpMateriel.setCreateUser(account.getAccountId());
 		erpMateriel.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -380,7 +383,7 @@ public RetDataBean delErpMateriel(HttpServletRequest request,ErpMateriel erpMate
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			return RetDataTools.NotOk("对不起,您不是系统管理员!"); 
@@ -420,7 +423,7 @@ public RetDataBean updateErpMateriel(HttpServletRequest request,ErpMateriel erpM
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		erpMateriel.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 		erpMateriel.setCreateUser(account.getAccountId());
 		erpMateriel.setOrgId(account.getOrgId());
@@ -446,7 +449,7 @@ public RetDataBean insertErpBomSort(HttpServletRequest request,ErpBomSort ErpBom
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isBlank(ErpBomSort.getSortLeave()))
 		{
 			ErpBomSort.setSortLeave("0");
@@ -480,7 +483,7 @@ public RetDataBean updateErpBomSort(HttpServletRequest request,ErpBomSort erpBom
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			return RetDataTools.NotOk("对不起,您不是系统管理员!"); 
@@ -521,7 +524,7 @@ public RetDataBean delErpBomSort(HttpServletRequest request,ErpBomSort erpBomSor
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			return RetDataTools.NotOk("对不起,您不是系统管理员!"); 
@@ -559,7 +562,7 @@ public RetDataBean insertErpBom(HttpServletRequest request,ErpBom erpBom)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		erpBom.setBomId(SysTools.getGUID());
 		erpBom.setCreateUser(account.getAccountId());
 		erpBom.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -589,7 +592,7 @@ public RetDataBean updateErpBom(HttpServletRequest request,ErpBom erpBom)
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			return RetDataTools.NotOk("对不起,您不是系统管理员!"); 
@@ -625,7 +628,7 @@ public RetDataBean delErpBom(HttpServletRequest request,ErpBom erpBom)
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			return RetDataTools.NotOk("对不起,您不是系统管理员!"); 
@@ -657,7 +660,7 @@ public RetDataBean insertErpBomDetail(HttpServletRequest request,ErpBomDetail er
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isNotBlank(erpBomDetail.getMaterielCode()))
 		{
 			if(erpBomDetailService.isExistMaterielCode(erpBomDetail.getBomId(), erpBomDetail.getMaterielCode(), account.getOrgId())>0)
@@ -705,7 +708,7 @@ public RetDataBean deleteErpBomDetail(HttpServletRequest request,ErpBomDetail er
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isNotBlank(erpBomDetail.getBomDetailId()))
 		{
 			erpBomDetail.setOrgId(account.getOrgId());
@@ -739,7 +742,7 @@ public RetDataBean updateErpBomDetail(HttpServletRequest request,ErpBomDetail er
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			return RetDataTools.NotOk("对不起,您不是系统管理员!"); 
@@ -772,7 +775,7 @@ public RetDataBean insertErpProduct(HttpServletRequest request,ErpProduct erpPro
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		erpProduct.setProductId(SysTools.getGUID());
 		erpProduct.setCreateUser(account.getAccountId());
 		erpProduct.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -800,7 +803,7 @@ public RetDataBean insertErpOrder(HttpServletRequest request,ErpOrder erpOrder)
 	{
 		if(StringUtils.isNotBlank(erpOrder.getOrderCode()))
 		{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		erpOrder.setOrderId(SysTools.getGUID());
 		erpOrder.setCreateUser(account.getAccountId());
 		erpOrder.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -836,7 +839,7 @@ public RetDataBean updateErpOrder(HttpServletRequest request,ErpOrder erpOrder)
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		erpOrder.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 		erpOrder.setCreateUser(account.getAccountId());
 		erpOrder.setOrgId(account.getOrgId());
@@ -858,7 +861,7 @@ public RetDataBean deleteErpOrder(HttpServletRequest request,ErpOrder erpOrder)
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			erpOrder.setCreateUser(account.getAccountId());
@@ -893,7 +896,7 @@ public RetDataBean insertErpOrderDetail(HttpServletRequest request,ErpOrderDetai
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		erpOrderDetail.setDetailId(SysTools.getGUID());
 		erpOrderDetail.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("添加产品成功!", erpOrderDetailService.insertErpOrderDetail(erpOrderDetail));
@@ -920,7 +923,7 @@ public RetDataBean deleteErpOrderDetail(HttpServletRequest request,ErpOrderDetai
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isNotBlank(erpOrderDetail.getOrderId()))
 		{
 			erpOrderDetail.setOrgId(account.getOrgId());
@@ -954,7 +957,7 @@ public RetDataBean updateErpProduct(HttpServletRequest request,ErpProduct erpPro
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		erpProduct.setOrgId(account.getOrgId());
 		Example example = new Example(ErpProduct.class);
 		example.createCriteria().andEqualTo("productId",erpProduct.getProductId()).andEqualTo("orgId",account.getOrgId());
@@ -977,7 +980,7 @@ public RetDataBean importmaterielsort(HttpServletRequest request,@RequestParam M
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("导入物料分类成功!",erpMaterielSortService.importMaterielSort(file,account));
 	}catch (Exception e) {
 		e.printStackTrace();
@@ -998,7 +1001,7 @@ public RetDataBean insertErpEquipmentSort(HttpServletRequest request,ErpEquipmen
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isBlank(erpEquipmentSort.getSortLeave()))
 		{
 			erpEquipmentSort.setSortLeave("0");
@@ -1031,7 +1034,7 @@ public RetDataBean updateErpEquipmentSort(HttpServletRequest request,ErpEquipmen
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			return RetDataTools.NotOk("对不起,您不是系统管理员!"); 
@@ -1072,7 +1075,7 @@ public RetDataBean delErpEquipmentSort(HttpServletRequest request,ErpEquipmentSo
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			return RetDataTools.NotOk("对不起,您不是系统管理员!"); 

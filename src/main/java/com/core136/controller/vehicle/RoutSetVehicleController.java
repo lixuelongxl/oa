@@ -16,6 +16,7 @@ import com.core136.bean.vehicle.VehicleApply;
 import com.core136.bean.vehicle.VehicleInfo;
 import com.core136.bean.vehicle.VehicleOilCard;
 import com.core136.bean.vehicle.VehicleRepairRecord;
+import com.core136.service.account.AccountService;
 import com.core136.service.vehicle.VehicleApplyService;
 import com.core136.service.vehicle.VehicleInfoService;
 import com.core136.service.vehicle.VehicleOilCardService;
@@ -37,7 +38,8 @@ public class RoutSetVehicleController {
 	private VehicleOilCardService vehicleOilCardService;
 	@Autowired
 	private VehicleRepairRecordService vehicleRepairRecordService;
-	
+	@Autowired
+	private AccountService accountService;
 	
 	/**
 	 * 
@@ -54,7 +56,7 @@ public class RoutSetVehicleController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			vehicleRepairRecord.setRecordId(SysTools.getGUID());
 			vehicleRepairRecord.setCreateUser(account.getAccountId());
 			vehicleRepairRecord.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -79,7 +81,7 @@ public class RoutSetVehicleController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(vehicleRepairRecord.getRecordId()))
 			{
 				return RetDataTools.NotOk("请求参数不正确！请检查相关参数！");
@@ -106,7 +108,7 @@ public class RoutSetVehicleController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(vehicleRepairRecord.getRecordId()))
 			{
 				return RetDataTools.NotOk("请求参数不正确！请检查相关参数！");
@@ -135,7 +137,7 @@ public class RoutSetVehicleController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			vehicleOilCard.setCardId(SysTools.getGUID());
 			vehicleOilCard.setCreateUser(account.getAccountId());
 			vehicleOilCard.setStatus("0");
@@ -162,7 +164,7 @@ public class RoutSetVehicleController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(vehicleOilCard.getCardId()))
 			{
 				return RetDataTools.NotOk("请求参数不正确！请检查相关参数！");
@@ -190,7 +192,7 @@ public class RoutSetVehicleController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(vehicleOilCard.getCardId()))
 			{
 				return RetDataTools.NotOk("请求参数不正确！请检查相关参数！");
@@ -220,7 +222,7 @@ public class RoutSetVehicleController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return vehicleOperatorService.setVehicleOperator(account,optUser);
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -242,7 +244,7 @@ public class RoutSetVehicleController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			vehicleApply.setApplyId(SysTools.getGUID());
 			vehicleApply.setCreateUser(account.getAccountId());
 			vehicleApply.setStatus("0");
@@ -269,7 +271,7 @@ public class RoutSetVehicleController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(vehicleApply.getApplyId()))
 			{
 				return RetDataTools.NotOk("请求参数不正确！请检查相关参数！");
@@ -297,7 +299,7 @@ public class RoutSetVehicleController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(vehicleApply.getApplyId()))
 			{
 				return RetDataTools.NotOk("请求参数不正确！请检查相关参数！");
@@ -328,7 +330,7 @@ public class RoutSetVehicleController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			vehicleInfo.setVehicleId(SysTools.getGUID());
 			vehicleInfo.setCreateUser(account.getAccountId());
 			vehicleInfo.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -354,7 +356,7 @@ public class RoutSetVehicleController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(vehicleInfo.getVehicleId()))
 			{
 				return RetDataTools.NotOk("请求参数不正确！请检查相关参数！");
@@ -382,7 +384,7 @@ public class RoutSetVehicleController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(vehicleInfo.getVehicleId()))
 			{
 				return RetDataTools.NotOk("请求参数不正确！请检查相关参数！");

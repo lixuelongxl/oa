@@ -10,12 +10,15 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.core136.bean.sys.SysInterface;
 import com.core136.config.AppGobalConstant;
+import com.core136.service.account.AccountService;
 import com.core136.service.sys.SysInterfaceService;
 
 @Controller
 public class SysPageController {
 	@Autowired
 	private SysInterfaceService sysInterfaceService;
+	@Autowired
+	private AccountService accountService;
 	
 	/**
 	 * 

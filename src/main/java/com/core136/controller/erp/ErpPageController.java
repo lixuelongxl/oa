@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.core136.bean.account.Account;
 import com.core136.bean.erp.ErpBom;
 import com.core136.bean.erp.ErpOrder;
+import com.core136.service.account.AccountService;
 import com.core136.service.erp.ErpBomService;
 import com.core136.service.erp.ErpOrderService;
 import org.core136.common.utils.SysTools;
@@ -22,7 +23,8 @@ public class ErpPageController {
 private ErpBomService erpBomService;
 @Autowired
 private ErpOrderService erpOrderService;
-
+@Autowired
+private AccountService accountService;
 	/**
 	 * 
 	 * @Title goBommange   
@@ -138,7 +140,7 @@ private ErpOrderService erpOrderService;
 			{
 				try
 				{
-				Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+				Account account=accountService.getRedisAccount(request);
 				erpBom.setOrgId(account.getOrgId());
 				ModelAndView mv = new ModelAndView("app/core/erp/cost/bom/bomdetail");
 				mv.addObject("erpBom",erpBomService.selectOne(erpBom));
@@ -185,7 +187,7 @@ private ErpOrderService erpOrderService;
 				ErpOrder erpOrder1 = new ErpOrder();
 				try
 				{
-				Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+				Account account=accountService.getRedisAccount(request);
 				ModelAndView mv = new ModelAndView("app/core/erp/cost/order/index");
 				if(StringUtils.isNotEmpty(erpOrder.getOrderId()))
 				{
@@ -194,7 +196,7 @@ private ErpOrderService erpOrderService;
 					erpOrder1= erpOrderService.selectOne(erpOrder);
 				}else
 				{
-					orderCode = SysTools.getCode(request,"[yyyy][MM][dd]-[HH][mm][ss]-[R]"); 
+					orderCode = SysTools.getCode(accountService.getRedisAccount(request),"[yyyy][MM][dd]-[HH][mm][ss]-[R]"); 
 					erpOrder1.setOrderCode(orderCode);
 				}
 				mv.addObject("erpOrder",erpOrder1);
@@ -241,7 +243,7 @@ private ErpOrderService erpOrderService;
 			{
 				try
 				{
-				Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+				Account account=accountService.getRedisAccount(request);
 				erpOrder.setOrgId(account.getOrgId());
 				erpOrder = erpOrderService.selectOne(erpOrder);
 				ModelAndView mv = new ModelAndView("app/core/erp/cost/order/orderproduct");

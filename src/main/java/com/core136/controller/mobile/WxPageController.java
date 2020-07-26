@@ -19,6 +19,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.core136.bean.account.Account;
 import com.core136.bean.sys.DdConfig;
 import com.core136.bean.sys.WxConfig;
+import com.core136.service.account.AccountService;
 import com.core136.service.sys.AppConfigService;
 import com.core136.service.sys.WxConfigService;
 import com.core136.service.weixin.WeiXinLoginService;
@@ -36,7 +37,8 @@ public class WxPageController {
 	private AppConfigService appConfigService;
 	@Autowired
 	private WeiXinLoginService weiXinLoginService;
-	
+	@Autowired
+	private AccountService accountService;
 	/**
 	 * 
 	 * @Title: goWXIndex   
@@ -93,7 +95,7 @@ public class WxPageController {
 	{
 		try
 		{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(account==null)
 		{
 			WxConfig wxConfig = new WxConfig();
@@ -101,9 +103,9 @@ public class WxPageController {
 			AccessToken accessToken = WXutils.getAccessToken(wxConfig.getWxCorpId(), wxConfig.getWxAppSecret());
 			WUserIdInfo wUserIdInfo = WXutils.getUserId(accessToken.getAccessToken(), code);
 			weiXinLoginService.weiXinLogin(request, wUserIdInfo.getUserId(), orgId);
-			account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			account=accountService.getRedisAccount(request);
 		}
-		List<String> appList = (List<String>)request.getSession().getAttribute("SYS_APP_LIST");
+		List<String> appList = accountService.getRedisLoginAccountInfo(request).getMobilePrivList();
 		JSONObject appMenuList = appConfigService.getMyAppList(account.getOrgId(),appList);
 		ModelAndView mv = new ModelAndView("app/mobile/main/index");
 		mv.addObject("appMenuList",appMenuList);
@@ -132,7 +134,7 @@ public class WxPageController {
 		System.out.println(detailsUrl);
 		try
 		{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(account==null)
 		{
 			WxConfig wxConfig = new WxConfig();

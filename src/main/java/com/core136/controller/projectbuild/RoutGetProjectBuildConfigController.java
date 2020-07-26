@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.core136.bean.account.Account;
+import com.core136.service.account.AccountService;
 import com.core136.service.projectbuild.ProjectBuildBpmConfigService;
 import org.core136.common.retdataunit.RetDataBean;
 import org.core136.common.retdataunit.RetDataTools;
@@ -31,7 +32,8 @@ import org.core136.common.retdataunit.RetDataTools;
 public class RoutGetProjectBuildConfigController {
 	@Autowired
 	private ProjectBuildBpmConfigService projectBuildBpmConfigService;
-
+	@Autowired
+	private AccountService accountService;
 	/**
 	 * 
 	 * @Title: getAllProjectBuildBpmConfig   
@@ -47,7 +49,7 @@ public class RoutGetProjectBuildConfigController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!",projectBuildBpmConfigService.getAllProjectBuildBpmConfig(account.getOrgId()));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());

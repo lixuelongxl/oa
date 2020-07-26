@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.core136.unit.Init.listen.AuthInterceptor;
+import com.core136.service.sys.AuthInterceptor;
 import com.github.pagehelper.PageHelper;
 import com.zhuozhengsoft.pageoffice.poserver.AdminSeal;
 import com.zhuozhengsoft.pageoffice.poserver.Server;
@@ -27,7 +27,7 @@ public class AppConfig implements WebMvcConfigurer{
 	
     @Override
     public void addInterceptors(InterceptorRegistry registry){
-        registry.addInterceptor(new AuthInterceptor()).addPathPatterns("/**");
+        registry.addInterceptor(getAuthInterceptor()).addPathPatterns("/**");
     }
     
     @Override
@@ -36,7 +36,19 @@ public class AppConfig implements WebMvcConfigurer{
         matcher.setCaseSensitive(false);
         configurer.setPathMatcher(matcher);
     }
-	
+/**
+ * 
+ * @Title: getAuthInterceptor   
+ * @Description: TODO 延时加载拦截器
+ * @return
+ * AuthInterceptor    
+ * @throws
+ */
+    @Bean
+	public AuthInterceptor getAuthInterceptor() {
+		return new AuthInterceptor();
+	}
+
     /**
      * 
      * @Title: pageHelper   

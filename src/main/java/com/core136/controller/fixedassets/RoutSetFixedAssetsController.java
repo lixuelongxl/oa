@@ -25,6 +25,7 @@ import com.core136.bean.fixedassets.FixedAssetsApproval;
 import com.core136.bean.fixedassets.FixedAssetsRepair;
 import com.core136.bean.fixedassets.FixedAssetsSort;
 import com.core136.bean.fixedassets.FixedAssetsStorage;
+import com.core136.service.account.AccountService;
 import com.core136.service.fixedassets.FixedAssetsApplyService;
 import com.core136.service.fixedassets.FixedAssetsApprovalService;
 import com.core136.service.fixedassets.FixedAssetsRepairService;
@@ -56,6 +57,8 @@ public class RoutSetFixedAssetsController {
 	private FixedAssetsApprovalService fixedAssetsApprovalService;
 	@Autowired
 	private FixedAssetsRepairService fixedAssetsRepairService;
+	@Autowired
+	private AccountService accountService;
 	/**
 	 * 
 	 * @Title: insertFixedAssetsRepair   
@@ -71,7 +74,7 @@ public class RoutSetFixedAssetsController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			fixedAssetsRepair.setRepairId(SysTools.getGUID());
 			fixedAssetsRepair.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			fixedAssetsRepair.setCreateUser(account.getAccountId());
@@ -96,7 +99,7 @@ public class RoutSetFixedAssetsController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(fixedAssetsRepair.getRepairId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -127,7 +130,7 @@ public class RoutSetFixedAssetsController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(FixedAssetsRepair.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("repairId",fixedAssetsRepair.getRepairId());
 			return RetDataTools.Ok("更新成功!",fixedAssetsRepairService.updateFixedAssetsRepair(example,fixedAssetsRepair));
@@ -155,7 +158,7 @@ public class RoutSetFixedAssetsController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(FixedAssetsApproval.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("approvalId",fixedAssetsApproval.getApprovalId());
 			return RetDataTools.Ok("更新成功!",fixedAssetsApprovalService.updateFixedAssetsApproval(example,fixedAssetsApproval));
@@ -179,7 +182,7 @@ public class RoutSetFixedAssetsController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(fixedAssetsApproval.getApprovalId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -210,7 +213,7 @@ public class RoutSetFixedAssetsController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			fixedAssetsApproval.setApprovalId(SysTools.getGUID());
 			fixedAssetsApproval.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			fixedAssetsApproval.setCreateUser(account.getAccountId());
@@ -241,7 +244,7 @@ public class RoutSetFixedAssetsController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(FixedAssetsApply.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("applyId",fixedAssetsApply.getApplyId());
 			return RetDataTools.Ok("更新成功!",fixedAssetApplayService.updateFixedAssetsApply(example,fixedAssetsApply));
@@ -265,7 +268,7 @@ public class RoutSetFixedAssetsController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(fixedAssetsApply.getApplyId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -293,7 +296,7 @@ public class RoutSetFixedAssetsController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			fixedAssetsApply.setApplyId(SysTools.getGUID());
 			fixedAssetsApply.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			fixedAssetsApply.setCreateUser(account.getAccountId());
@@ -320,7 +323,7 @@ public class RoutSetFixedAssetsController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			fixedAssetsStorage.setStorageId(SysTools.getGUID());
 			fixedAssetsStorage.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			fixedAssetsStorage.setCreateUser(account.getAccountId());
@@ -345,7 +348,7 @@ public class RoutSetFixedAssetsController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(fixedAssetsStorage.getStorageId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -375,7 +378,7 @@ public class RoutSetFixedAssetsController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(FixedAssetsStorage.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("storageId",fixedAssetsStorage.getStorageId());
 			return RetDataTools.Ok("更新成功!",fixedAssetsStorageService.updateFixedAssetsStorage(example,fixedAssetsStorage));
@@ -390,7 +393,7 @@ public class RoutSetFixedAssetsController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			fixedAssets.setAssetsId(SysTools.getGUID());
 			fixedAssets.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			fixedAssets.setCreateUser(account.getAccountId());
@@ -407,7 +410,7 @@ public class RoutSetFixedAssetsController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(fixedAssets.getAssetsId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -429,7 +432,7 @@ public class RoutSetFixedAssetsController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(FixedAssets.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("assetsId",fixedAssets.getAssetsId());
 			return RetDataTools.Ok("更新成功!",fixedAssetsService.updateFixedAssets(example,fixedAssets));
@@ -446,7 +449,7 @@ public class RoutSetFixedAssetsController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			fixedAssetsSort.setSortId(SysTools.getGUID());
 			fixedAssetsSort.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			fixedAssetsSort.setCreateUser(account.getAccountId());
@@ -462,7 +465,7 @@ public class RoutSetFixedAssetsController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(fixedAssetsSort.getSortId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -484,7 +487,7 @@ public class RoutSetFixedAssetsController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(FixedAssetsSort.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("sortId",fixedAssetsSort.getSortId());
 			return RetDataTools.Ok("更新成功!",fixedAssetsSortService.updateFixedAssetsSort(example,fixedAssetsSort));

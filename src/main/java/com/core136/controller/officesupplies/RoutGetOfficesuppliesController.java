@@ -29,6 +29,7 @@ import com.core136.bean.officesupplies.OfficeSuppliesApproval;
 import com.core136.bean.officesupplies.OfficeSuppliesSort;
 import com.core136.bean.officesupplies.OfficeSuppliesUnit;
 import com.core136.bean.sys.PageParam;
+import com.core136.service.account.AccountService;
 import com.core136.service.officesupplies.OfficeSuppliesApplyService;
 import com.core136.service.officesupplies.OfficeSuppliesApprovalService;
 import com.core136.service.officesupplies.OfficeSuppliesService;
@@ -56,7 +57,8 @@ public class RoutGetOfficesuppliesController {
 	private OfficeSuppliesApprovalService officeSuppliesApprovalService;
 	@Autowired
 	private OfficeSuppliesApplyService officeSuppliesApplyService;
-	
+	@Autowired
+	private AccountService accountService;
 	/**
 	 * 
 	 * @Title: getApplyOfficeSuppliesList   
@@ -92,7 +94,7 @@ public class RoutGetOfficesuppliesController {
 			{
 				pageParam.setSortOrder("asc");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		PageInfo<Map<String, String>> pageInfo=officeSuppliesApplyService.getApplyOfficeSuppliesList(pageParam,begTime,endTime,status);
@@ -135,7 +137,7 @@ public class RoutGetOfficesuppliesController {
 			{
 				pageParam.setSortOrder("asc");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		PageInfo<Map<String, String>> pageInfo=officeSuppliesApplyService.getGrantOfficeSuppliesList(pageParam,begTime,endTime);
@@ -179,7 +181,7 @@ public class RoutGetOfficesuppliesController {
 			{
 				pageParam.setSortOrder("asc");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		pageParam.setAccountId(account.getAccountId());
@@ -205,7 +207,7 @@ public class RoutGetOfficesuppliesController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			officeSuppliesApply.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!",officeSuppliesApplyService.selectOneOfficeSuppliesApply(officeSuppliesApply));
 		}catch (Exception e) {
@@ -228,7 +230,7 @@ public class RoutGetOfficesuppliesController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			officeSuppliesApproval.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!",officeSuppliesApprovalService.selectOneOfficeSuppliesApproval(officeSuppliesApproval));
 		}catch (Exception e) {
@@ -267,7 +269,7 @@ public class RoutGetOfficesuppliesController {
 			{
 				pageParam.setSortOrder("asc");
 			}
-		UserInfo userInfo=(UserInfo)request.getSession().getAttribute("USER_INFO");
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 		pageParam.setOrgId(userInfo.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		PageInfo<Map<String, String>> pageInfo=officeSuppliesService.getApplyOfficeSupplieslist(pageParam,sortId,userInfo.getDeptId());
@@ -308,7 +310,7 @@ public class RoutGetOfficesuppliesController {
 				pageParam.setSortOrder("asc");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		PageInfo<Map<String, String>> pageInfo=officeSuppliesService.getOfficeSupplieslistBySortId(pageParam,sortId);
@@ -348,7 +350,7 @@ public class RoutGetOfficesuppliesController {
 				pageParam.setSortOrder("asc");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		PageInfo<Map<String, String>> pageInfo=officeSuppliesUnitService.getOfficeSuppliesUnitList(pageParam);
@@ -374,7 +376,7 @@ public class RoutGetOfficesuppliesController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			officeSuppliesUnit.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!",officeSuppliesUnitService.selectOneOfficeSuppliesUnit(officeSuppliesUnit));
 		}catch (Exception e) {
@@ -396,7 +398,7 @@ public class RoutGetOfficesuppliesController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!",officeSuppliesUnitService.getAllUnit(account.getOrgId()));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -423,7 +425,7 @@ public class RoutGetOfficesuppliesController {
 			{
 				parentId = sortId;
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return officeSuppliesSortService.getOfficeSuppliesSortTree(account.getOrgId(), parentId);
 		}catch (Exception e) {
 			return null;
@@ -445,7 +447,7 @@ public class RoutGetOfficesuppliesController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			officeSupplies.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!",officeSuppliesService.selectOneOfficeSupplies(officeSupplies));
 		}catch (Exception e) {
@@ -467,7 +469,7 @@ public class RoutGetOfficesuppliesController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			officeSuppliesSort.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!",officeSuppliesSortService.selectOneOfficeSuppliesSort(officeSuppliesSort));
 		}catch (Exception e) {

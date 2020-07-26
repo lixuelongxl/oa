@@ -24,6 +24,7 @@ import com.core136.bean.email.Email;
 import com.core136.bean.email.EmailBody;
 import com.core136.bean.email.EmailBox;
 import com.core136.bean.email.EmailConfig;
+import com.core136.service.account.AccountService;
 import com.core136.service.email.EmailBodyService;
 import com.core136.service.email.EmailBoxService;
 import com.core136.service.email.EmailConfigService;
@@ -55,6 +56,8 @@ public class RoutGetEmailController {
 	private EmailBodyService emailBodyService;
 	@Autowired
 	private EmailConfigService emailConfigService;
+	@Autowired
+	private AccountService accountService;
 	/**
 	 * 
 	* @Title: getMyEmailConfig 
@@ -68,7 +71,7 @@ public class RoutGetEmailController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			EmailConfig emailConfig = new EmailConfig();
 			emailConfig.setOrgId(account.getOrgId());
 			emailConfig.setAccountId(account.getAccountId());
@@ -93,7 +96,7 @@ public class RoutGetEmailController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!", emailBoxService.getEmailBoxList(account.getOrgId(),account.getAccountId()));
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -116,7 +119,7 @@ public class RoutGetEmailController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			emailBox.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", emailBoxService.selectOneEmailBox(emailBox));
 		}catch (Exception e) {
@@ -140,7 +143,7 @@ public class RoutGetEmailController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!", emailService.getEmailListForDesk(account.getOrgId(),account.getAccountId()));
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -180,7 +183,7 @@ public class RoutGetEmailController {
 			{
 				sortOrder="asc";
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!", emailService.getMyEmailAll(account, pageNumber, pageSize, sort+" "+sortOrder ,"%"+search+"%", boxId));
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -227,7 +230,7 @@ public class RoutGetEmailController {
 			{
 				sortOrder="asc";
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!", emailService.getMyStarEmail(account, pageNumber, pageSize, sort+" "+sortOrder ,"%"+search+"%"));
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -273,7 +276,7 @@ public class RoutGetEmailController {
 			{
 				sortOrder="asc";
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!", emailService.getMyDelEmailAll(account, pageNumber, pageSize, sort+" "+sortOrder ,"%"+search+"%"));
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -313,7 +316,7 @@ public class RoutGetEmailController {
 			{
 				sortOrder="asc";
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!", emailBodyService.getsendBoxEmail(account, pageNumber, pageSize, sort+" "+sortOrder ,"%"+search+"%"));
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -358,7 +361,7 @@ public class RoutGetEmailController {
 			{
 				sortOrder="asc";
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!", emailBodyService.getDraftBoxEmail(account, pageNumber, pageSize, sort+" "+sortOrder ,"%"+search+"%"));
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -404,7 +407,7 @@ public class RoutGetEmailController {
 			{
 				sortOrder="DESC";
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!", emailBoxService.getEmailBoxManageList(account, pageNumber, pageSize, sort+" "+sortOrder ,"%"+search+"%"));
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -427,7 +430,7 @@ public class RoutGetEmailController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			emailBody.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", emailBodyService.selectOneEmailBody(emailBody));
 		}catch (Exception e) {
@@ -450,7 +453,7 @@ public class RoutGetEmailController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Email email = new Email();
 			email.setEmailId(emailId);
 			email.setReadTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -478,7 +481,7 @@ public class RoutGetEmailController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!", emailService.getEmailCount(account.getOrgId(), account.getAccountId()));
 		}catch (Exception e) {
 			// TODO: handle exception

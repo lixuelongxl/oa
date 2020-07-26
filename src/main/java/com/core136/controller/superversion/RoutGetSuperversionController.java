@@ -28,6 +28,7 @@ import com.core136.bean.superversion.SuperversionDelay;
 import com.core136.bean.superversion.SuperversionProcess;
 import com.core136.bean.superversion.SuperversionScore;
 import com.core136.bean.sys.PageParam;
+import com.core136.service.account.AccountService;
 import com.core136.service.superversion.SuperversionConfigService;
 import com.core136.service.superversion.SuperversionDelayService;
 import com.core136.service.superversion.SuperversionProcessService;
@@ -55,13 +56,14 @@ private SuperversionDelayService superversionDelayService;
 private SuperversionProcessService superversionProcessService;
 @Autowired
 private SuperversionScoreService superversionScoreService;
-
+@Autowired
+private AccountService accountService;
 @RequestMapping(value="/getSuperversionScoreById",method=RequestMethod.POST)
 public RetDataBean getSuperversionScoreById(HttpServletRequest request,SuperversionScore superversionScore)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		superversionScore.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!",superversionScoreService.selectOneSuperversionScore(superversionScore));
 	}catch (Exception e) {
@@ -74,7 +76,7 @@ public RetDataBean getSuperversionProcessById(HttpServletRequest request,Superve
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		superversionProcess.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!",superversionProcessService.selectOneSuperversionProcess(superversionProcess));
 	}catch (Exception e) {
@@ -88,7 +90,7 @@ public RetDataBean getSuperversionDelayById(HttpServletRequest request,Supervers
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		superversionDelay.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!",superversionDelayService.selectOneSuperversionDelay(superversionDelay));
 	}catch (Exception e) {
@@ -110,7 +112,7 @@ public RetDataBean getSuperversionConfigById(HttpServletRequest request,Superver
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		superversionConfig.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!",superversionConfigService.selectOneSuperversionConfig(superversionConfig));
 	}catch (Exception e) {
@@ -133,7 +135,7 @@ public RetDataBean getSuperversionById(HttpServletRequest request,Superversion s
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		superversion.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!",superversionService.selectOneSuperversion(superversion));
 	}catch (Exception e) {
@@ -156,7 +158,7 @@ public RetDataBean getSuperversionConfigList(HttpServletRequest request)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!",superversionConfigService.getAllSuperversionConfigList(account.getOrgId()));
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -176,7 +178,7 @@ public RetDataBean getMySuperversionConfigList(HttpServletRequest request)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!",superversionConfigService.getMySuperversionConfigList(account.getOrgId(),account.getAccountId()));
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -213,7 +215,7 @@ public RetDataBean getSuperversionConfigList(
 			pageParam.setSortOrder("asc");
 		}
 		
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 	PageInfo<SuperversionConfig> pageInfo=superversionConfigService.getSuperversionConfigList(pageParam);
@@ -262,7 +264,7 @@ public RetDataBean getLeadManageSupperversionList(
 			pageParam.setSortOrder("asc");
 		}
 		
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -313,7 +315,7 @@ public RetDataBean getSupperversionList(
 			pageParam.setSortOrder("asc");
 		}
 		
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -363,7 +365,7 @@ public RetDataBean getDelayApplyList(
 			pageParam.setSortOrder("asc");
 		}
 		
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -413,7 +415,7 @@ public RetDataBean getSupperversionPorcessList(
 			pageParam.setSortOrder("asc");
 		}
 		
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -457,7 +459,7 @@ public RetDataBean getMyCompleteProcessList(
 			pageParam.setSortOrder("asc");
 		}
 		
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -505,7 +507,7 @@ public RetDataBean getControlProcessList(
 			pageParam.setSortOrder("asc");
 		}
 		
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -530,7 +532,7 @@ public RetDataBean getQuerySuperversionForDept(HttpServletRequest request)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功！",superversionService.getQuerySuperversionForDept(account.getOrgId()));
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -551,7 +553,7 @@ public RetDataBean getQuerySuperversionForType(HttpServletRequest request)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功！",superversionConfigService.getQuerySuperversionForType(account.getOrgId()));
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());

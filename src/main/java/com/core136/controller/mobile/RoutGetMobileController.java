@@ -30,6 +30,7 @@ import com.core136.bean.im.Dynamic;
 import com.core136.bean.im.Inquiry;
 import com.core136.bean.im.UserFriends;
 import com.core136.bean.oa.News;
+import com.core136.service.account.AccountService;
 import com.core136.service.bpm.BpmFlowService;
 import com.core136.service.bpm.BpmListService;
 import com.core136.service.bpm.BpmRunProcessService;
@@ -96,6 +97,8 @@ public class RoutGetMobileController {
 	private DocumentSendToService documentSendToService;
 	@Autowired
 	private MeetingService meetingService;
+	@Autowired
+	private AccountService accountService;
 	/**
 	 * 
 	 * @Title: doMobileLogin   
@@ -110,7 +113,7 @@ public class RoutGetMobileController {
 	public RetDataBean doMobileLogin(HttpServletRequest request,String code)
 	{
 		try {
-			Account account =(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account = accountService.getRedisAccount(request);
 			if(account!=null)
 			{
 				if(StringUtils.isNotBlank(account.getAccountId()))
@@ -169,7 +172,7 @@ public class RoutGetMobileController {
 		try
 		{
 		page = (page-1)*10;
-		UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+		UserInfo userInfo = accountService.getRedisUserInfo(request);
 		List<Map<String, String>> pageInfo=emailService.getMyEmailAllForMobile(userInfo.getOrgId(),userInfo.getAccountId(), page);
 		return RetDataTools.Ok("请求数据成功!", pageInfo);
 		}catch (Exception e) {
@@ -192,7 +195,7 @@ public class RoutGetMobileController {
 		try
 		{
 		page = (page-1)*10;
-		UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+		UserInfo userInfo = accountService.getRedisUserInfo(request);
 		List<Map<String, String>> pageInfo=bpmSendToService.getSendToMeBpmListForMobile(userInfo.getOrgId(),userInfo.getAccountId(), page);
 		return RetDataTools.Ok("请求数据成功!", pageInfo);
 		}catch (Exception e) {
@@ -207,7 +210,7 @@ public class RoutGetMobileController {
 		try
 		{
 		page = (page-1)*10;
-		UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+		UserInfo userInfo = accountService.getRedisUserInfo(request);
 		List<Map<String, String>> pageInfo=documentSendToService.getSendToMeDocumentListForMobile(userInfo.getOrgId(),userInfo.getAccountId(), page);
 		return RetDataTools.Ok("请求数据成功!", pageInfo);
 		}catch (Exception e) {
@@ -236,7 +239,7 @@ public class RoutGetMobileController {
 		try
 		{
 		page = (page-1)*10;
-		UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+		UserInfo userInfo = accountService.getRedisUserInfo(request);
 		List<Map<String, Object>> pageInfo=bpmListService.searchBpmListForMobile(userInfo.getOrgId(), userInfo.getAccountId(), flowId, id, createUser, status, managePriv, title, page);
 		return RetDataTools.Ok("请求数据成功!", pageInfo);
 		}catch (Exception e) {
@@ -250,7 +253,7 @@ public class RoutGetMobileController {
 		try
 		{
 		page = (page-1)*10;
-		UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+		UserInfo userInfo = accountService.getRedisUserInfo(request);
 		List<Map<String, Object>> pageInfo=documentListService.searchDocumentListForMobile(userInfo.getOrgId(), userInfo.getAccountId(), flowId, id, createUser, status, managePriv, title, page);
 		return RetDataTools.Ok("请求数据成功!", pageInfo);
 		}catch (Exception e) {
@@ -277,7 +280,7 @@ public class RoutGetMobileController {
 		try
 		{
 		page = (page-1)*10;
-		UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+		UserInfo userInfo = accountService.getRedisUserInfo(request);
 		List<Map<String, String>> pageInfo=newsService.getMobileMyNewsList(userInfo.getOrgId(),userInfo.getAccountId(),userInfo.getDeptId(), userInfo.getLeadLeave(), page);
 		return RetDataTools.Ok("请求数据成功!", pageInfo);
 		}catch (Exception e) {
@@ -300,7 +303,7 @@ public RetDataBean getMobileMyNoticeList(HttpServletRequest request,Integer page
 	try
 	{
 	page = (page-1)*10;
-	UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+	UserInfo userInfo = accountService.getRedisUserInfo(request);
 	List<Map<String, String>> pageInfo=noticeService.getMobileMyNoticeList(userInfo.getOrgId(),userInfo.getAccountId(),userInfo.getDeptId(), userInfo.getLeadLeave(), page);
 	return RetDataTools.Ok("请求数据成功!", pageInfo);
 	}catch (Exception e) {
@@ -320,7 +323,7 @@ public RetDataBean getMobileMyNoticeList(HttpServletRequest request,Integer page
 public RetDataBean getMobileMyBpmFlowList(HttpServletRequest request,Integer page) {
 	try {
 		page = (page-1)*10;
-		UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+		UserInfo userInfo = accountService.getRedisUserInfo(request);
 		List<Map<String, String>> pageInfo=bpmFlowService.getMobileMyBpmFlowList(userInfo.getOrgId(),userInfo.getAccountId(),userInfo.getDeptId(), userInfo.getLeadLeave(), page);
 		return RetDataTools.Ok("请求数据成功!", pageInfo);
 	} catch (Exception e) {
@@ -343,7 +346,7 @@ public RetDataBean getMobileMyBpmFlowList(HttpServletRequest request,Integer pag
 	public RetDataBean getMobileProcessList(HttpServletRequest request,Integer page) {
 		try {
 			page = (page-1)*10;
-			UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			List<Map<String, String>> pageInfo=bpmRunProcessService.getGoMobileProcessList(userInfo.getOrgId(),userInfo.getAccountId(), page);
 			return RetDataTools.Ok("请求数据成功!", pageInfo);
 		} catch (Exception e) {
@@ -366,7 +369,7 @@ public RetDataBean getMobileMyBpmFlowList(HttpServletRequest request,Integer pag
 	public RetDataBean getMobileMyMeetingList(HttpServletRequest request,Integer page) {
 		try {
 			page = (page-1)*10;
-			UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			List<Map<String, String>> pageInfo=meetingService.getMobileMyMeetingList(userInfo.getOrgId(),userInfo.getAccountId(),userInfo.getDeptId(),userInfo.getLeadLeave(), page);
 			return RetDataTools.Ok("请求数据成功!", pageInfo);
 		} catch (Exception e) {
@@ -390,7 +393,7 @@ public RetDataBean getMobileMyBpmFlowList(HttpServletRequest request,Integer pag
 	public RetDataBean getGoMobileDocumentProcessList(HttpServletRequest request,Integer page) {
 		try {
 			page = (page-1)*10;
-			UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			List<Map<String, String>> pageInfo=documentRunProcessService.getGoMobileProcessList(userInfo.getOrgId(),userInfo.getAccountId(), page);
 			return RetDataTools.Ok("请求数据成功!", pageInfo);
 		} catch (Exception e) {

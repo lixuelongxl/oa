@@ -35,6 +35,7 @@ import com.core136.bean.bpm.BpmSealSign;
 import com.core136.bean.bpm.BpmSort;
 import com.core136.bean.bpm.BpmTemplate;
 import com.core136.bean.sys.PageParam;
+import com.core136.service.account.AccountService;
 import com.core136.service.account.UserInfoService;
 import com.core136.service.bpm.BpmBiTemplateService;
 import com.core136.service.bpm.BpmBusinessService;
@@ -118,7 +119,8 @@ public class RouteGetBpmController {
 	private BpmBusinessService bpmBusinessService;
 	@Autowired
 	private BpmBiTemplateService bpmBiTemplateService;
-	
+	@Autowired
+	private AccountService accountService;
 	/**
 	 * 
 	 * @Title: getBiFormDataToFile   
@@ -136,7 +138,7 @@ public class RouteGetBpmController {
 	{
 		try
 		{
-			Account account = (Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmBiTemplate.setOrgId(account.getOrgId());
 			bpmBiTemplate = bpmBiTemplateService.selectOneBpmBiTemplate(bpmBiTemplate);
 			bpmBiTemplateService.getBiFormDataToFile(response,bpmBiTemplate,conditionJson);
@@ -177,7 +179,7 @@ public class RouteGetBpmController {
 			{
 				pageParam.setSortOrder("asc");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		bpmBiTemplate.setOrgId(account.getOrgId());
 		bpmBiTemplate = bpmBiTemplateService.selectOneBpmBiTemplate(bpmBiTemplate);
 		String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
@@ -206,8 +208,8 @@ public class RouteGetBpmController {
 	{
 		try
 		{
-			Account account = (Account)request.getSession().getAttribute("LOGIN_USER");
-			UserInfo userInfo = (UserInfo) request.getSession().getAttribute("USER_INFO");
+			Account account=accountService.getRedisAccount(request);
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			return RetDataTools.Ok("请求数据成功!", bpmBiTemplateService.getBpmBiTemplateListByPriv(account.getOrgId(),account.getOpFlag(),account.getAccountId(),userInfo.getDeptId(),userInfo.getLeadLeave()));
 			}catch (Exception e) {
 				return RetDataTools.Error(e.getMessage());
@@ -243,7 +245,7 @@ public class RouteGetBpmController {
 			{
 				pageParam.setSortOrder("asc");
 			}
-		UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+		UserInfo userInfo = accountService.getRedisUserInfo(request);;
 		pageParam.setOrgId(userInfo.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		PageInfo<Map<String, String>> pageInfo=bpmBiTemplateService.getBpmBiTemplateList(pageParam,flowId);
@@ -269,7 +271,7 @@ public class RouteGetBpmController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmBiTemplate.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求数据成功!", bpmBiTemplateService.selectOneBpmBiTemplate(bpmBiTemplate));
 			}catch (Exception e) {
@@ -304,7 +306,7 @@ public class RouteGetBpmController {
 				pageParam.setSortOrder("asc");
 			}
 			
-		UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+			UserInfo userInfo = accountService.getRedisUserInfo(request);;
 		pageParam.setOrgId(userInfo.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		PageInfo<Map<String, String>> pageInfo=bpmBusinessService.getBpmBusinessList(pageParam);
@@ -329,7 +331,7 @@ public class RouteGetBpmController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmBusiness.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求数据成功!", bpmBusinessService.selectOneBpmBusiness(bpmBusiness));
 			}catch (Exception e) {
@@ -359,7 +361,7 @@ public class RouteGetBpmController {
 			if (StringUtils.isBlank(pageParam.getSortOrder())) {
 				pageParam.setSortOrder("asc");
 			}
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			String orderBy = pageParam.getSort() + " " + pageParam.getSortOrder();
 			pageParam.setOrgId(account.getOrgId());
 			pageParam.setOrderBy(orderBy);
@@ -385,7 +387,7 @@ public class RouteGetBpmController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmProcess.setOrgId(account.getOrgId());
 			bpmProcess = bpmProcessService.selectOne(bpmProcess);
 			return RetDataTools.Ok("请求数据成功!", bpmProcessService.getUserInfoInPrivForMobile(bpmProcess,search));
@@ -410,7 +412,7 @@ public class RouteGetBpmController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmForm.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求数据成功!", bpmMobileFormService.getBpmMobileFormFieldsForSet(bpmForm));
 			}catch (Exception e) {
@@ -443,7 +445,7 @@ public class RouteGetBpmController {
 			if (StringUtils.isBlank(pageParam.getSortOrder())) {
 				pageParam.setSortOrder("asc");
 			}
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			String orderBy = pageParam.getSort() + " " + pageParam.getSortOrder();
 			pageParam.setOrgId(account.getOrgId());
 			pageParam.setOrderBy(orderBy);
@@ -476,7 +478,7 @@ public class RouteGetBpmController {
 			if (StringUtils.isBlank(pageParam.getSortOrder())) {
 				pageParam.setSortOrder("asc");
 			}
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			String orderBy = pageParam.getSort() + " " + pageParam.getSortOrder();
 			pageParam.setOrderBy(orderBy);
 			pageParam.setAccountId(account.getAccountId());
@@ -504,7 +506,7 @@ public class RouteGetBpmController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmTemplate.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求数据成功!", bpmTemplateService.selectOneBpmTemplate(bpmTemplate));
 			}catch (Exception e) {
@@ -549,7 +551,7 @@ public class RouteGetBpmController {
 			{
 				pageParam.setSortOrder("asc");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOrgId(account.getOrgId());
@@ -577,7 +579,7 @@ public class RouteGetBpmController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmChildProcess.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求数据成功!", bpmChildProcessService.getBpmChildProcessPrcs(account.getOrgId(),bpmChildProcess.getProcessId()));
 			}catch (Exception e) {
@@ -599,7 +601,7 @@ public class RouteGetBpmController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(bpmFlow.getFlowId()))
 			{
 				return;
@@ -632,7 +634,7 @@ public class RouteGetBpmController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(bpmForm.getFormId()))
 			{
 				return;
@@ -666,7 +668,7 @@ public class RouteGetBpmController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(bpmForm.getFormId()))
 			{
 				return RetDataTools.NotOk("请求有参数有问题,请与管理员联系!");
@@ -716,7 +718,7 @@ public class RouteGetBpmController {
 			{
 				pageParam.setSortOrder("asc");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -752,7 +754,7 @@ public class RouteGetBpmController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(bpmForm.getFormId()))
 			{
 				return RetDataTools.NotOk("请求有参数有问题,请与管理员联系!");
@@ -799,7 +801,7 @@ public class RouteGetBpmController {
 			{
 				pageParam.setSortOrder("asc");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -838,7 +840,7 @@ public class RouteGetBpmController {
 			{
 				pageParam.setSortOrder("asc");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -866,7 +868,7 @@ public class RouteGetBpmController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmOptService.getFromDataForHtml(request, response, account, bpmList);
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -888,7 +890,7 @@ public class RouteGetBpmController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmOptService.getFromDataForWord(request, response, account, bpmList);
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -909,7 +911,7 @@ public class RouteGetBpmController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmOptService.getFromDataForPdf(request, response, account, bpmList);
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -932,7 +934,7 @@ public class RouteGetBpmController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!", bpmPluginsRegisterService.getBpmPluginsListForProcess(account.getOrgId()));
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -965,7 +967,7 @@ public class RouteGetBpmController {
 			{
 				pageParam.setSortOrder("asc");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		PageInfo<Map<String, String>> pageInfo=bpmPluginsRegisterService.getBpmPluginsList(pageParam);
@@ -990,7 +992,7 @@ public class RouteGetBpmController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmPluginsRegister.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", bpmPluginsRegisterService.selectOneBpmPluginsRegister(bpmPluginsRegister));
 		}catch (Exception e) {
@@ -1018,7 +1020,7 @@ public class RouteGetBpmController {
 			{
 				return RetDataTools.NotOk("您请求的参数有问题,请与管理员联系!");
 			}
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!", bpmRunProcessService.isCantTaskBackFlag(account.getOrgId(),runId,account.getAccountId()));
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -1041,7 +1043,7 @@ public class RouteGetBpmController {
 	@RequestMapping(value = "/queryExcel", method = RequestMethod.POST)
 	public void queryExcel(HttpServletResponse response,HttpServletRequest request, String resFieldsJson,String whereListMapJson, BpmAdvTableQueryParam bpmAdvTableQueryParam) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isNotBlank(resFieldsJson))
 			{
 				List<Map<String, String>> tmpList = new ArrayList<Map<String,String>>();
@@ -1091,7 +1093,7 @@ public class RouteGetBpmController {
 			PageParam pageParam,
 			BpmAdvTableQueryParam bpmAdvTableQueryParam) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isNotBlank(whereListMapJson))
 			{
 				List<Map<String, String>> tmpList = new ArrayList<Map<String,String>>();
@@ -1138,7 +1140,7 @@ public class RouteGetBpmController {
 	public ModelAndView queryHtmlBi(HttpServletRequest request, String resFieldsJson,String whereListMapJson, BpmAdvTableQueryParam bpmAdvTableQueryParam) {
 		ModelAndView mv=null;
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isNotBlank(resFieldsJson))
 			{
 				List<Map<String, String>> tmpList = new ArrayList<Map<String,String>>();
@@ -1205,7 +1207,7 @@ public class RouteGetBpmController {
 			{
 				pageParam.setSortOrder("asc");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		PageInfo<Map<String, String>> pageInfo=bpmSealSignService.getAllBpmSealSignList(pageParam);
@@ -1229,7 +1231,7 @@ public class RouteGetBpmController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(!account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.NotOk("您不是管理员,请与管理员联系!");
@@ -1286,7 +1288,7 @@ public class RouteGetBpmController {
 				pageParam.setSortOrder("asc");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -1313,7 +1315,7 @@ public class RouteGetBpmController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!", bpmProcessService.getAllBpmProcessList(account.getOrgId(),flowId));
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -1336,7 +1338,7 @@ public class RouteGetBpmController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmSealSign.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", bpmSealSignService.selectOneBpmSealSign(bpmSealSign));
 		}catch (Exception e) {
@@ -1360,7 +1362,7 @@ public class RouteGetBpmController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!", bpmRunProcessService.getRunPrcsStep(account.getOrgId(),runId));
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -1382,7 +1384,7 @@ public class RouteGetBpmController {
 	{
 		try
 		{
-			UserInfo userInfo=(UserInfo)request.getSession().getAttribute("USER_INFO");
+			UserInfo userInfo = accountService.getRedisUserInfo(request);;
 			String nowTime = SysTools.getTime("yyyy-MM-dd");
 			return RetDataTools.Ok("请求成功!", bpmRunProcessService.getMyProcessListForDesk(userInfo.getOrgId(),userInfo.getAccountId(),nowTime));
 		}catch (Exception e) {
@@ -1406,7 +1408,7 @@ public class RouteGetBpmController {
 	public List<Map<String, Object>> getBpmOpUserDept(HttpServletRequest request, String deptId,
 			BpmProcess bpmProcess) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmProcess.setOrgId(account.getOrgId());
 			bpmProcess = bpmProcessService.selectOne(bpmProcess);
 			String orgLeaveId = "0";
@@ -1434,7 +1436,7 @@ public class RouteGetBpmController {
 	@RequestMapping(value = "/getBpmOpUseByPorcess", method = RequestMethod.POST)
 	public RetDataBean getBpmOpUseByPorcess(HttpServletRequest request, String deptId, BpmProcess bpmProcess) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmProcess.setOrgId(account.getOrgId());
 			bpmProcess = bpmProcessService.selectOne(bpmProcess);
 			if (StringUtils.isBlank(deptId)) {
@@ -1458,7 +1460,7 @@ public class RouteGetBpmController {
 	@RequestMapping(value = "/getEntrustUser", method = RequestMethod.POST)
 	public RetDataBean getEntrustUser(HttpServletRequest request, BpmRunProcess bpmRunProcess) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmRunProcess.setOrgId(account.getOrgId());
 			bpmRunProcess = bpmRunProcessService.selectOne(bpmRunProcess);
 			return RetDataTools.Ok("请求成功！", bpmProcessService.getEntrustUser(bpmRunProcess));
@@ -1484,7 +1486,7 @@ public class RouteGetBpmController {
 			if (StringUtils.isNotBlank(bpmSortId)) {
 				levelId = bpmSortId;
 			}
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return bpmSortService.getBpmSortTree(levelId, account.getOrgId());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -1508,7 +1510,7 @@ public class RouteGetBpmController {
 		try {
 			List<Map<String, Object>> tmplist1 = new ArrayList<Map<String, Object>>();
 			List<Map<String, Object>> tmplist2 = new ArrayList<Map<String, Object>>();
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if (StringUtils.isNotBlank(bpmSortId)) {
 				levelId = bpmSortId;
 				if (!levelId.equals("0")) {
@@ -1537,7 +1539,7 @@ public class RouteGetBpmController {
 	@RequestMapping(value = "/getBpmSortById", method = RequestMethod.POST)
 	public RetDataBean getBpmSortById(HttpServletRequest request, BpmSort bpmSort) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmSort.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功！", bpmSortService.selectOne(bpmSort));
 		} catch (Exception e) {
@@ -1559,7 +1561,7 @@ public class RouteGetBpmController {
 	@RequestMapping(value = "/getBpmForm", method = RequestMethod.POST)
 	public RetDataBean getBpmForm(HttpServletRequest request, BpmForm bpmForm) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmForm.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功！", bpmFormService.selectOneBpmForm(bpmForm));
 		} catch (Exception e) {
@@ -1580,7 +1582,7 @@ public class RouteGetBpmController {
 	@RequestMapping(value = "/getBpmFlowSortTree", method = RequestMethod.POST)
 	public List<Map<String, String>> getBpmFlowSortTree(HttpServletRequest request) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			BpmFlow bpmFlow = new BpmFlow();
 			bpmFlow.setOrgId(account.getOrgId());
 			List<BpmFlow> bpmFlowList = new ArrayList<BpmFlow>();
@@ -1601,7 +1603,7 @@ public class RouteGetBpmController {
 	@RequestMapping(value = "/getAllBpmFlowListByManage", method = RequestMethod.POST)
 	public RetDataBean getAllBpmFlowListByManage(HttpServletRequest request) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.Ok("请求成功！", bpmFlowService.getAllBpmFlowListByManage(account.getOrgId()));
@@ -1626,7 +1628,7 @@ public class RouteGetBpmController {
 	@RequestMapping(value = "/getAllBpmFlowList", method = RequestMethod.POST)
 	public RetDataBean getAllBpmFlowList(HttpServletRequest request) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功！", bpmFlowService.getAllBpmFlowListByManage(account.getOrgId()));
 		} catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -1645,7 +1647,7 @@ public class RouteGetBpmController {
 	@RequestMapping(value = "/getQueryAdvFlowList", method = RequestMethod.POST)
 	public RetDataBean getQueryAdvFlowList(HttpServletRequest request) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.Ok("请求成功！", bpmFlowService.getQueryAdvFlowList(account.getOrgId(),null));
@@ -1669,7 +1671,7 @@ public class RouteGetBpmController {
 	@RequestMapping(value = "/getBpmFlow", method = RequestMethod.POST)
 	public RetDataBean getBpmFlow(HttpServletRequest request, BpmFlow bpmFlow) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmFlow.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功！", bpmFlowService.selectOne(bpmFlow));
 		} catch (Exception e) {
@@ -1688,7 +1690,7 @@ public class RouteGetBpmController {
 	 */
 	@RequestMapping(value = "/getBpmProcess", method = RequestMethod.POST)
 	public RetDataBean getBpmProcess(HttpServletRequest request, BpmProcess bpmProcess) {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 			return bpmProcessService.getBpmProcess(account, bpmProcess);
 	}
 
@@ -1703,7 +1705,7 @@ public class RouteGetBpmController {
 	@RequestMapping(value = "/getBpmProcessPrcs", method = RequestMethod.POST)
 	public RetDataBean getBpmProcessPrcs(HttpServletRequest request, BpmProcess bpmProcess) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmProcess.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功！", bpmProcessService.selectOne(bpmProcess));
 		} catch (Exception e) {
@@ -1722,7 +1724,7 @@ public class RouteGetBpmController {
 	@RequestMapping(value = "/getBpmFormFieldByFlowId", method = RequestMethod.POST)
 	public RetDataBean getBpmFormFieldByFlowId(HttpServletRequest request, BpmFlow bpmFlow) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmFlow.setOrgId(account.getOrgId());
 			bpmFlow = bpmFlowService.selectOne(bpmFlow);
 			BpmForm bpmForm = new BpmForm();
@@ -1749,7 +1751,7 @@ public class RouteGetBpmController {
 	@RequestMapping(value = "/getBpmFlowListByPriv", method = RequestMethod.POST)
 	public List<Map<String,String>> getBpmFlowListByPriv(HttpServletRequest request) {
 		try {
-			UserInfo userInfo = (UserInfo) request.getSession().getAttribute("USER_INFO");
+			UserInfo userInfo = accountService.getRedisUserInfo(request);;
 			List<BpmFlow> bpmFlowList = bpmFlowService.getBpmFlowListByAccount(userInfo.getAccountId(),userInfo.getDeptId(), userInfo.getLeadLeave(), userInfo.getOrgId());
 			return bpmFlowService.getBpmFlowListByPriv(bpmFlowList);
 		} catch (Exception e) {
@@ -1770,7 +1772,7 @@ public class RouteGetBpmController {
 	@RequestMapping(value = "/getCommonBpmFlowListByAccount", method = RequestMethod.POST)
 	public RetDataBean getCommonBpmFlowListByAccount(HttpServletRequest request) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			List<BpmFlow> bpmFlowList = bpmFlowService.getCommonBpmFlowListByAccount(account.getOrgId(),account.getAccountId());
 			return RetDataTools.Ok("请求成功！", bpmFlowList);
 		} catch (Exception e) {
@@ -1789,7 +1791,7 @@ public class RouteGetBpmController {
 	@RequestMapping(value = "/getBpmFormFieldByFormId", method = RequestMethod.POST)
 	public RetDataBean getBpmFormFieldByFormId(HttpServletRequest request, String formId) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			BpmForm bpmForm = new BpmForm();
 			bpmForm.setFormId(formId);
 			bpmForm.setOrgId(account.getOrgId());
@@ -1811,7 +1813,7 @@ public class RouteGetBpmController {
 	@RequestMapping(value = "/getNowStep", method = RequestMethod.POST)
 	public RetDataBean getNowStep(HttpServletRequest request, String runId) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			String orgId = account.getOrgId();
 			List<Map<String, String>> btbList = bpmRunProcessService.getNowStep(orgId, runId);
 			return RetDataTools.Ok("请求成功！", btbList);
@@ -1831,7 +1833,7 @@ public class RouteGetBpmController {
 	@RequestMapping(value = "/getChangeBpmUserStep", method = RequestMethod.POST)
 	public RetDataBean getChangeBpmUserStep(HttpServletRequest request, String runId) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			String orgId = account.getOrgId();
 			List<Map<String, String>> btbList = bpmRunProcessService.getChangeBpmUserStep(orgId, runId);
 			return RetDataTools.Ok("请求成功！", btbList);
@@ -1868,7 +1870,7 @@ public class RouteGetBpmController {
 				sortOrder = "asc";
 			}
 			String orderBy = sort + " " + sortOrder;
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			PageInfo<Map<String, Object>> pageInfo = bpmRunProcessService.getGoProcessList(pageNumber, pageSize,
 					orderBy, account.getAccountId(), account.getOrgId(),bpmRunNo, createUser,flowId,"%" + search + "%");
 			return RetDataTools.Ok("请求数据成功!", pageInfo);
@@ -1891,7 +1893,7 @@ public class RouteGetBpmController {
 	@RequestMapping(value = "/getProcessInfo", method = RequestMethod.POST)
 	public RetDataBean getProcessInfo(HttpServletRequest request, BpmList bpmList, BpmRunProcess bpmRunProcess) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmList.setOrgId(account.getOrgId());
 			bpmList = bpmListService.selectOne(bpmList);
 			bpmRunProcess=bpmRunProcessService.getBpmRunProcess(account.getOrgId(),bpmRunProcess.getRunId(),bpmRunProcess.getRunProcessId(),account.getAccountId());
@@ -1914,7 +1916,7 @@ public class RouteGetBpmController {
 	@RequestMapping(value = "/getBpmPrintData", method = RequestMethod.POST)
 	public RetDataBean getBpmPrintData(HttpServletRequest request, BpmList bpmList) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmList.setOrgId(account.getOrgId());
 			bpmList = bpmListService.selectOne(bpmList);
 			if(SysTools.isMobileDevice(request))
@@ -1972,7 +1974,7 @@ public class RouteGetBpmController {
 			}
 			String orderBy = pageParam.getSort() + " " + pageParam.getSortOrder();
 			pageParam.setOrderBy(orderBy);
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			pageParam.setOrgId(account.getOrgId());
 			pageParam.setAccountId(account.getAccountId());
 			PageInfo<Map<String, Object>> pageInfo = bpmListService.searchBpmList(pageParam,flowId,id,createUser,status,managePriv);
@@ -2003,7 +2005,7 @@ public class RouteGetBpmController {
 			if (StringUtils.isBlank(pageParam.getSortOrder())) {
 				pageParam.setSortOrder("ASC");
 			}
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			String orderBy = pageParam.getSort() + " " + pageParam.getSortOrder();
 			pageParam.setAccountId(account.getAccountId());
 			pageParam.setOrgId(account.getOrgId());
@@ -2026,7 +2028,7 @@ public class RouteGetBpmController {
 	@RequestMapping(value = "/getMyAllBpmFlowList", method = RequestMethod.POST)
 	public RetDataBean getMyAllBpmFlowList(HttpServletRequest request) {
 		try {
-			UserInfo userInfo = (UserInfo) request.getSession().getAttribute("USER_INFO");
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			return RetDataTools.Ok("请求成功！", bpmFlowService.getMyAllBpmFlowList(userInfo.getOrgId(), userInfo.getAccountId(), userInfo.getDeptId(), userInfo.getLeadLeave()));
 		} catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -2044,7 +2046,7 @@ public class RouteGetBpmController {
 	@RequestMapping(value = "/getCorssBpmFlowList", method = RequestMethod.POST)
 	public RetDataBean getCorssBpmFlowList(HttpServletRequest request) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功！", bpmFlowService.getCorssBpmFlowList(account.getOrgId(),account.getAccountId()));
 		} catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -2086,7 +2088,7 @@ public class RouteGetBpmController {
 			{
 				pageParam.setSortOrder("asc");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOrgId(account.getOrgId());
@@ -2139,7 +2141,7 @@ public class RouteGetBpmController {
 			{
 				pageParam.setSortOrder("asc");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOrgId(account.getOrgId());
@@ -2199,7 +2201,7 @@ public class RouteGetBpmController {
 			{
 				sortOrder="asc";
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		String orderBy = sort+ " " + sortOrder;
 		PageInfo<Map<String, String>> pageInfo =  bpmListService.getBpmMaintainList(pageNumber, pageSize, orderBy,  account.getOrgId(),bpmRunNo,createUser, flowId, beginTime, endTime, "%"+search+"%");
 		return RetDataTools.Ok("请求数据成功!", pageInfo);
@@ -2235,7 +2237,7 @@ public class RouteGetBpmController {
 			}
 			String orderBy = pageParam.getSort() + " " + pageParam.getSortOrder();
 			pageParam.setOrderBy(orderBy);
-			UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+			UserInfo userInfo = accountService.getRedisUserInfo(request);;
 			pageParam.setOrgId(userInfo.getOrgId());
 			pageParam.setAccountId(userInfo.getAccountId());
 			PageInfo<Map<String, String>> pageInfo = bpmFlowService.getMyBpmFlowList(pageParam,flowSort,userInfo.getDeptId(),userInfo.getLeadLeave());
@@ -2288,7 +2290,7 @@ public class RouteGetBpmController {
 			{
 				sortOrder="desc";
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		String orderBy = sort+ " " + sortOrder;
 		PageInfo<Map<String, String>> pageInfo = new PageInfo<Map<String, String>>();
 		if(searchType.equals("1"))
@@ -2354,7 +2356,7 @@ public class RouteGetBpmController {
 				sortOrder = "asc";
 			}
 			String orderBy = sort + " " + sortOrder;
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			PageInfo<Map<String, String>> pageInfo = bpmRunProcessService.getBpmRunProcessForMonitor(pageNumber, pageSize, orderBy,
 					account.getOrgId(),account.getOpFlag(),account.getAccountId(),id, createUser, beginTime, endTime, flowId ,"%" + search + "%");
 			return RetDataTools.Ok("请求数据成功!", pageInfo);
@@ -2376,7 +2378,7 @@ public class RouteGetBpmController {
 	@RequestMapping(value = "/getDocNumByBpmFlow", method = RequestMethod.POST)
 	public RetDataBean getDocNumByBpmFlow(HttpServletRequest request,BpmFlow bpmFlow) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmFlow.setOrgId(account.getOrgId());
 			bpmFlow = bpmFlowService.selectOne(bpmFlow);
 			return RetDataTools.Ok("请求成功！", bpmUnitsService.getDocNumByBpmFlow(request, bpmFlow));
@@ -2401,7 +2403,7 @@ public class RouteGetBpmController {
 	@RequestMapping(value = "/getBpmChileTableData", method = RequestMethod.POST)
 	public RetDataBean getBpmChileTableData(HttpServletRequest request, String eName, String runId) {
 		try {
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			BpmList bpmList = new BpmList();
 			bpmList.setRunId(runId);
 			bpmList.setOrgId(account.getOrgId());
@@ -2436,8 +2438,7 @@ public class RouteGetBpmController {
 		try {
 			if(StringUtils.isNotBlank(flowId)&&StringUtils.isNotBlank(processId))
 			{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
-			
+				Account account=accountService.getRedisAccount(request);
 			String[] prcsArr;
 			if(processIds.indexOf(",")>0)
 			{
@@ -2472,7 +2473,7 @@ public class RouteGetBpmController {
 	@RequestMapping(value = "/getCanTaskBackRunProcessList", method = RequestMethod.POST)
 	public RetDataBean getCanTaskBackRunProcessList(HttpServletRequest request, String runId) {
 		try {
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求数据成功!", bpmRunProcessService.getCanTaskBackRunProcessList(account.getOrgId(), runId, account.getAccountId()));
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -2493,7 +2494,7 @@ public class RouteGetBpmController {
 	@RequestMapping(value = "/getCanGoBckProcessList", method = RequestMethod.POST)
 	public RetDataBean getCanGoBckProcessList(HttpServletRequest request, String runId) {
 		try {
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求数据成功!", bpmRunProcessService.getCanGoBckProcessList(account.getOrgId(), runId));
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -2515,7 +2516,7 @@ public class RouteGetBpmController {
 	@RequestMapping(value = "/getBpmFormCacheFile", method = RequestMethod.POST)
 	public RetDataBean getBpmFormCacheFile(HttpServletRequest request, String type,BpmProcess bpmProcess) {
 		try {
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(account.getOpFlag().equals("1"))
 			{
 			JSONObject jsonObject = new JSONObject();

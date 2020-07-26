@@ -16,6 +16,7 @@ import com.core136.bean.bpm.BpmForm;
 import com.core136.bean.bpm.BpmFormVersion;
 import com.core136.bean.bpm.BpmList;
 import com.core136.bean.bpm.BpmProcess;
+import com.core136.service.account.AccountService;
 import com.core136.service.bpm.BpmFlowService;
 import com.core136.service.bpm.BpmFormCacheService;
 import com.core136.service.bpm.BpmFormService;
@@ -42,6 +43,8 @@ public class BpmPageController {
 	private BpmFormCacheService bpmFormCacheService;
 	@Autowired
 	private BpmFormVersionService bpmFormVersionService;
+	@Autowired
+	private AccountService accountService;
 	@Value("${app.bpmtable}")
 	private String bpmtable;
 	
@@ -166,7 +169,7 @@ public class BpmPageController {
 		try
 		{
 			BpmFormVersion bpmFormVersion = new BpmFormVersion();
-			Account account = (Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmFormVersion.setVersionId(versionId);
 			bpmFormVersion.setOrgId(account.getOrgId());
 			bpmFormVersion = bpmFormVersionService.selectOneBpmFormVserion(bpmFormVersion);
@@ -483,7 +486,7 @@ private String bpmfield;
 		try
 		{
 		ModelAndView mv = new ModelAndView("app/core/bpm/process/process_designer");
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		BpmFlow bpmFlow = new BpmFlow();
 		bpmFlow.setFlowId(flowId);
 		bpmFlow.setOrgId(account.getOrgId());
@@ -512,7 +515,7 @@ private String bpmfield;
 	{
 		try
 		{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		ModelAndView mv = new ModelAndView("app/core/bpm/work/createbpm");
 		mv.addObject("accountId",account.getAccountId());
 		return mv;
@@ -539,7 +542,7 @@ private String bpmfield;
 		ModelAndView mv=null;
 		try
 		{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(SysTools.isMobileDevice(request))
 		{
 			mv = new ModelAndView("app/core/bpm/search/mread");
@@ -607,7 +610,7 @@ private String bpmfield;
 		{
 		if(SysTools.isMobileDevice(request))
 			{
-				Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+				Account account=accountService.getRedisAccount(request);
 				BpmFormDataBean bpmFormDataBean = bpmOptService.doMWork(request,account, runId, runProcessId);
 				if(bpmFormDataBean==null)
 				{
@@ -620,7 +623,7 @@ private String bpmfield;
 				return mv;
 			}else
 			{
-				Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+				Account account=accountService.getRedisAccount(request);
 				BpmFormDataBean bpmFormDataBean = bpmOptService.doWork(request,account, runId, runProcessId);
 				if(bpmFormDataBean==null)
 				{
@@ -782,7 +785,7 @@ private String bpmfield;
 		ModelAndView mv = null;
 		try
 		{
-		Account account = (Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 		bpmForm.setOrgId(account.getOrgId());
 		bpmForm = bpmFormService.selectOneBpmForm(bpmForm);
 		mv = new ModelAndView("app/core/bpm/form/formtemplate");
@@ -812,7 +815,7 @@ private String bpmfield;
 		ModelAndView mv = null;
 		try
 		{
-		Account account = (Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 		bpmProcess.setOrgId(account.getOrgId());
 		bpmProcess = bpmProcessService.selectOne(bpmProcess);
 		mv = new ModelAndView("app/core/bpm/form/formtemplatecache");
@@ -841,7 +844,7 @@ private String bpmfield;
 		ModelAndView mv = null;
 		try
 		{
-		Account account = (Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		bpmProcess.setOrgId(account.getOrgId());
 		bpmProcess = bpmProcessService.selectOne(bpmProcess);
 		mv = new ModelAndView("app/core/bpm/form/formmobiletemplatecache");

@@ -47,6 +47,7 @@ import com.core136.bean.hr.HrWelfareRecord;
 import com.core136.bean.hr.HrWorkRecord;
 import com.core136.bean.hr.HrWorkSkills;
 import com.core136.bean.sys.PageParam;
+import com.core136.service.account.AccountService;
 import com.core136.service.hr.HrCareRecordService;
 import com.core136.service.hr.HrClassCodeService;
 import com.core136.service.hr.HrContractService;
@@ -133,7 +134,8 @@ private HrSalaryRecordService hrSalaryRecordService;
 private HrWelfareRecordService hrWelfareRecordService;
 @Autowired
 private HrEvaluateService hrEvaluateService;
-
+@Autowired
+private AccountService accountService;
 
 
 /**
@@ -159,7 +161,7 @@ public RetDataBean getMyHrSalaryRecordList(HttpServletRequest request,PageParam 
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -192,7 +194,7 @@ public RetDataBean getMyHrPersonnelTransferList(HttpServletRequest request,PageP
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -225,7 +227,7 @@ public RetDataBean getMyHrWorkRecordList(HttpServletRequest request,PageParam pa
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -259,7 +261,7 @@ public RetDataBean getMyHrLearnRecordList(HttpServletRequest request,PageParam p
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -293,7 +295,7 @@ public RetDataBean getMyHrLicenceList(HttpServletRequest request,PageParam pageP
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -328,7 +330,7 @@ public RetDataBean getMyHrIncentiveList(HttpServletRequest request,PageParam pag
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -363,7 +365,7 @@ public RetDataBean getMyHrContractList(HttpServletRequest request,PageParam page
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -387,7 +389,7 @@ public RetDataBean getDeskHrContractList(HttpServletRequest request)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("数据请求成功!",hrContractService.getDeskHrContractList(account.getOrgId()));
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -408,7 +410,7 @@ public RetDataBean getDeskHrUserInfo(HttpServletRequest request)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("数据请求成功!",hrUserInfoService.getDeskHrUserInfo(account.getOrgId()));
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -430,7 +432,7 @@ public RetDataBean getHrKpiPlanById(HttpServletRequest request,HrKpiPlan hrKpiPl
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		hrKpiPlan.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("数据请求成功!",hrKpiPlanService.selectOneHrKpiPlan(hrKpiPlan));
 	}catch (Exception e) {
@@ -454,7 +456,7 @@ public RetDataBean getHrEvaluateById(HttpServletRequest request,HrEvaluate hrEva
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		hrEvaluate.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("数据请求成功!",hrEvaluateService.selectOneHrEvaluate(hrEvaluate));
 	}catch (Exception e) {
@@ -477,7 +479,7 @@ public RetDataBean getHrWelfareRecordById(HttpServletRequest request,HrWelfareRe
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		hrWelfareRecord.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("数据请求成功!",hrWelfareRecordService.selectOneHrWelfareRecord(hrWelfareRecord));
 	}catch (Exception e) {
@@ -500,7 +502,7 @@ public RetDataBean getHrSalaryRecordById(HttpServletRequest request,HrSalaryReco
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		hrSalaryRecord.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("数据请求成功!",hrSalaryRecordService.selectOneHrSalaryRecord(hrSalaryRecord));
 	}catch (Exception e) {
@@ -522,7 +524,7 @@ public RetDataBean getHrRecruitPlanById(HttpServletRequest request,HrRecruitPlan
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		hrRecruitPlan.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("数据请求成功!",hrRecruitPlanService.selectOneHrRecruitPlan(hrRecruitPlan));
 	}catch (Exception e) {
@@ -545,7 +547,7 @@ public RetDataBean getHrRecruitPlanForSelect(HttpServletRequest request,HrRecrui
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("数据请求成功!",hrRecruitPlanService.getHrRecruitPlanForSelect(account.getOrgId()));
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -566,7 +568,7 @@ public RetDataBean getHrKpiItemById(HttpServletRequest request,HrKpiItem hrKpiIt
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		hrKpiItem.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("数据请求成功!",hrKpiItemService.selectOneHrKpiItem(hrKpiItem));
 	}catch (Exception e) {
@@ -589,7 +591,7 @@ public RetDataBean getHrRecruitNeedsById(HttpServletRequest request,HrRecruitNee
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		hrRecruitNeeds.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("数据请求成功!",hrRecruitNeedsService.selectOneHrRecruitNeeds(hrRecruitNeeds));
 	}catch (Exception e) {
@@ -612,7 +614,7 @@ public RetDataBean getHrTrainRecordById(HttpServletRequest request,HrTrainRecord
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		hrTrainRecord.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("数据请求成功!",hrTrainRecordService.selectOneHrTrainRecord(hrTrainRecord));
 	}catch (Exception e) {
@@ -635,7 +637,7 @@ public RetDataBean getHrCareRecordById(HttpServletRequest request,HrCareRecord h
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		hrCareRecord.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("数据请求成功!",hrCareRecordService.selectOneHrCareRecord(hrCareRecord));
 	}catch (Exception e) {
@@ -657,7 +659,7 @@ public RetDataBean getHrTitleEvaluationById(HttpServletRequest request,HrTitleEv
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		hrTitleEvaluation.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("数据请求成功!",hrTitleEvaluationService.selectOneHrTitleEvaluation(hrTitleEvaluation));
 	}catch (Exception e) {
@@ -681,7 +683,7 @@ public RetDataBean getHrReinstatementById(HttpServletRequest request,HrReinstate
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		hrReinstatement.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("数据请求成功!",hrReinstatementService.selectOneHrReinstatement(hrReinstatement));
 	}catch (Exception e) {
@@ -704,7 +706,7 @@ public RetDataBean getHrLeaveRecordById(HttpServletRequest request,HrLeaveRecord
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		hrLeaveRecord.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("数据请求成功!",hrLeaveRecordService.selectOneHrLeaveRecord(hrLeaveRecord));
 	}catch (Exception e) {
@@ -727,7 +729,7 @@ public RetDataBean getHrPersonnelTransferById(HttpServletRequest request,HrPerso
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		hrPersonnelTransfer.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("数据请求成功!",hrPersonnelTransferService.selectOneHrPersonnelTransfer(hrPersonnelTransfer));
 	}catch (Exception e) {
@@ -750,7 +752,7 @@ public RetDataBean getHrWorkSkillsById(HttpServletRequest request,HrWorkSkills h
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		hrWorkSkills.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("数据请求成功!",hrWorkSkillsService.selectOneHrWorkSkills(hrWorkSkills));
 	}catch (Exception e) {
@@ -773,7 +775,7 @@ public RetDataBean getHrWorkRecordById(HttpServletRequest request,HrWorkRecord h
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		hrWorkRecord.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("数据请求成功!",hrWorkRecordService.selectOneHrWorkRecord(hrWorkRecord));
 	}catch (Exception e) {
@@ -796,7 +798,7 @@ public RetDataBean getHrLearnRecordById(HttpServletRequest request,HrLearnRecord
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		hrLearnRecord.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("数据请求成功!",hrLearnRecordService.selectOneHrLearnRecord(hrLearnRecord));
 	}catch (Exception e) {
@@ -819,7 +821,7 @@ public RetDataBean getHrLicenceById(HttpServletRequest request,HrLicence hrLicen
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		hrLicence.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("数据请求成功!",hrLicenceService.selectOneHrLicence(hrLicence));
 	}catch (Exception e) {
@@ -843,7 +845,7 @@ public RetDataBean getHrIncentiveById(HttpServletRequest request,HrIncentive hrI
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		hrIncentive.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("数据请求成功!",hrIncentiveService.selectOneHrIncentive(hrIncentive));
 	}catch (Exception e) {
@@ -866,7 +868,7 @@ public RetDataBean getHrContractById(HttpServletRequest request,HrContract hrCon
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		hrContract.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("数据请求成功!",hrContractService.selectOneHrContract(hrContract));
 	}catch (Exception e) {
@@ -889,7 +891,7 @@ public RetDataBean getHrUserInfoBySearchuser(HttpServletRequest request,String s
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("获取数据成功!",hrUserInfoService.getHrUserInfoBySearchuser(account.getOrgId(),searchuser));
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -910,7 +912,7 @@ public RetDataBean getUserNamesByUserIds(HttpServletRequest request,String userI
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("获取数据成功!",hrUserInfoService.getUserNamesByUserIds(account.getOrgId(),userIds));
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -931,7 +933,7 @@ public RetDataBean getWagesLevelListForSelect(HttpServletRequest request)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("获取数据成功!",hrWagesLevelService.getWagesLevelListForSelect(account.getOrgId()));
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -962,7 +964,7 @@ public RetDataBean getWagesLevelList(HttpServletRequest request,PageParam pagePa
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 	PageInfo<Map<String, String>> pageInfo=hrWagesLevelService.getWagesLevelList(pageParam);
@@ -997,7 +999,7 @@ public RetDataBean getHrUserInfoByBeptIdInWorkList(HttpServletRequest request,Pa
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setDeptId(deptId);
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -1023,7 +1025,7 @@ public RetDataBean getHrWagesLevelById(HttpServletRequest request,HrWagesLevel h
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		hrWagesLevel.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("获取数据成功!",hrWagesLevelService.selectOneHrWagesLevel(hrWagesLevel));
 	}catch (Exception e) {
@@ -1047,7 +1049,7 @@ public RetDataBean getHrUserInfoByDeptId(HttpServletRequest request,String deptI
 {
 	try
 	{
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	return RetDataTools.Ok("请求数据成功!", hrUserInfoService.getHrUserInfoByDeptId(account.getOrgId(),deptId));
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -1073,7 +1075,7 @@ public List<Map<String,String>> getHrUserInfoDepartmentTree(HttpServletRequest r
 		{
 			orgLevelId = deptId;
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return hrDepartmentService.getHrUserInfoDepartmentTree(account.getOrgId(),orgLevelId);
 	}catch (Exception e) {
 		// TODO: handle exception
@@ -1102,7 +1104,7 @@ public List<Map<String,String>> getHrDepartmentTree(HttpServletRequest request,S
 		{
 			orgLevelId = deptId;
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return hrDepartmentService.getHrDepartmentTree(account.getOrgId(),orgLevelId);
 	}catch (Exception e) {
 		// TODO: handle exception
@@ -1125,7 +1127,7 @@ public RetDataBean getHrDepartmentById(HttpServletRequest request,HrDepartment h
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		hrDepartment.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("获取数据成功!",hrDepartmentService.selectOneHrDepartment(hrDepartment));
 	}catch (Exception e) {
@@ -1147,7 +1149,7 @@ public RetDataBean getHrUserInfoById(HttpServletRequest request,HrUserInfo hrUse
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		hrUserInfo.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("获取数据成功!",hrUserInfoService.selectOneHrUserInfo(hrUserInfo));
 	}catch (Exception e) {
@@ -1169,7 +1171,7 @@ public RetDataBean getMyHrUserInfo(HttpServletRequest request)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		HrUserInfo hrUserInfo = new HrUserInfo();
 		hrUserInfo.setAccountId(account.getAccountId());
 		hrUserInfo.setOrgId(account.getOrgId());
@@ -1196,7 +1198,7 @@ public RetDataBean getHrUserInfoForTree(HttpServletRequest request,String deptId
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("获取部门下人员成功!",hrUserInfoService.getHrUserInfoForTree(account.getOrgId(),deptId));
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -1219,7 +1221,7 @@ public RetDataBean getHrUserLevelById(HttpServletRequest request,HrUserLevel hrU
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		hrUserLevel.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("数据请求成功!",hrUserLevelService.selectOneHrUserLevel(hrUserLevel));
 	}catch (Exception e) {
@@ -1246,7 +1248,7 @@ public Object getHrUserLevelChart(HttpServletRequest request,String leaveId)
 		{
 			leaveId = "0";
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		List<Map<String, Object>> ListMaper = hrUserLevelService.getAllHrUserLevelChart(account.getOrgId(),leaveId);
 		if(ListMaper.size()>0)
 		{
@@ -1277,7 +1279,7 @@ public RetDataBean getHrUserLevelList(HttpServletRequest request)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		Example example = new Example(HrUserLevel.class);
 		example.setOrderByClause("LEVEL_NO_ID ASC");
 		example.createCriteria().andEqualTo("orgId",account.getOrgId());
@@ -1303,7 +1305,7 @@ public RetDataBean getAllParentCodeList(HttpServletRequest request)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("获取数据成功!",hrClassCodeService.getAllParentCodeList(account.getOrgId()));
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -1324,7 +1326,7 @@ public RetDataBean getCodeListByModule(HttpServletRequest request,String module)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("获取数据成功!",hrClassCodeService.getCodeListByModule(account.getOrgId(),module));
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -1346,7 +1348,7 @@ public RetDataBean getHrClassCodeById(HttpServletRequest request,HrClassCode hrC
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		hrClassCode.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("获取数据成功!",hrClassCodeService.selectOneHrClassCode(hrClassCode));
 	}catch (Exception e) {
@@ -1368,7 +1370,7 @@ public RetDataBean getHrDeptList(HttpServletRequest request,HrDepartment hrDepar
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		Example example = new Example(HrDepartment.class);
 		example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("orgLevelId",hrDepartment.getOrgLevelId());
 		return RetDataTools.Ok("请求成功！",hrDepartmentService.getHrDeptList(example));
@@ -1391,7 +1393,7 @@ public RetDataBean getHrDeptNameByStr(HttpServletRequest request,String deptIds)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功！",hrDepartmentService.getHrDeptNameByStr(account.getOrgId(),deptIds));
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -1413,7 +1415,7 @@ public RetDataBean getHrUserLevelByStr(HttpServletRequest request,String levelId
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功！",hrUserLevelService.getHrUserLevelByStr(account.getOrgId(),levelIds));
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -1434,7 +1436,7 @@ public RetDataBean getHrDeptBySearchdept(HttpServletRequest request,String searc
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功！",hrDepartmentService.getHrDeptBySearchdept(account.getOrgId(),searchdept));
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -1471,7 +1473,7 @@ public RetDataBean getHrContractList(HttpServletRequest request,PageParam pagePa
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 	PageInfo<Map<String, String>> pageInfo=hrContractService.getHrContractList(pageParam,userId,beginTime,endTime,enterpries,contractType);
@@ -1511,7 +1513,7 @@ public RetDataBean getHrIncentiveList(HttpServletRequest request,PageParam pageP
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 	PageInfo<Map<String, String>> pageInfo=hrIncentiveService.getHrIncentiveList(pageParam,userId,beginTime,endTime,incentiveType,incentiveItem);
@@ -1536,7 +1538,7 @@ public RetDataBean getHrClassCodeName(HttpServletRequest request,String module,S
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功！",hrClassCodeService.getHrClassCodeName(account.getOrgId(),module,codeValue));
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -1571,7 +1573,7 @@ public RetDataBean getHrLicenceList(HttpServletRequest request,PageParam pagePar
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 	PageInfo<Map<String, String>> pageInfo=hrLicenceService.getHrLicenceList(pageParam,userId,beginTime,endTime,licenceType);
@@ -1607,7 +1609,7 @@ public RetDataBean getHrLearnRecordList(HttpServletRequest request,PageParam pag
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 	PageInfo<Map<String, String>> pageInfo=hrLearnRecordService.getHrLearnRecordList(pageParam,userId,beginTime,endTime);
@@ -1645,7 +1647,7 @@ public RetDataBean getHrWorkRecordList(HttpServletRequest request,PageParam page
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 	PageInfo<Map<String, String>> pageInfo=hrWorkRecordService.getHrWorkRecordList(pageParam,userId,beginTime,endTime,nature);
@@ -1684,7 +1686,7 @@ public RetDataBean getHrReinstatementList(HttpServletRequest request,PageParam p
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 	PageInfo<Map<String, String>> pageInfo=hrReinstatementService.getHrReinstatementList(pageParam,userId,beginTime,endTime,reinstatementType);
@@ -1722,7 +1724,7 @@ public RetDataBean getHrWorkSkillsList(HttpServletRequest request,PageParam page
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 	PageInfo<Map<String, String>> pageInfo=hrWorkSkillsService.getHrWorkSkillsList(pageParam,userId,beginTime,endTime,skillsLevel);
@@ -1761,7 +1763,7 @@ public RetDataBean getHrPersonnelTransferList(HttpServletRequest request,PagePar
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 	PageInfo<Map<String, String>> pageInfo=hrPersonnelTransferService.getHrPersonnelTransferList(pageParam,userId,beginTime,endTime,transferType);
@@ -1799,7 +1801,7 @@ public RetDataBean getHrSalaryRecordList(HttpServletRequest request,PageParam pa
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 	PageInfo<Map<String, String>> pageInfo=hrSalaryRecordService.getHrSalaryRecordList(pageParam,userId,year,month);
@@ -1837,7 +1839,7 @@ public RetDataBean getHrWelfareRecordList(HttpServletRequest request,PageParam p
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 	PageInfo<Map<String, String>> pageInfo=hrWelfareRecordService.getHrWelfareRecordList(pageParam,beginTime,endTime,userId,type);
@@ -1876,7 +1878,7 @@ public RetDataBean getHrLeaveRecordList(HttpServletRequest request,PageParam pag
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 	PageInfo<Map<String, String>> pageInfo=hrLeaveRecordService.getHrLeaveRecordList(pageParam,userId,beginTime,endTime,leaveType);
@@ -1915,7 +1917,7 @@ public RetDataBean getHrTitleEvaluationList(HttpServletRequest request,PageParam
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 	PageInfo<Map<String, String>> pageInfo=hrTitleEvaluationService.getHrTitleEvaluationList(pageParam,userId,beginTime,endTime,getType);
@@ -1953,7 +1955,7 @@ public RetDataBean getHrCareRecordList(HttpServletRequest request,PageParam page
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 	PageInfo<Map<String, String>> pageInfo=hrCareRecordService.getHrCareRecordList(pageParam,userId,beginTime,endTime,careType);
@@ -1994,7 +1996,7 @@ public RetDataBean getHrTrainRecordList(HttpServletRequest request,PageParam pag
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -2033,7 +2035,7 @@ public RetDataBean getHrTrainRecordApprovedList(HttpServletRequest request,PageP
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -2073,7 +2075,7 @@ public RetDataBean getHrTrainRecordApprovedOldList(HttpServletRequest request,Pa
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -2114,7 +2116,7 @@ public RetDataBean getHrRecruitNeedsList(HttpServletRequest request,PageParam pa
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -2153,7 +2155,7 @@ public RetDataBean getApprovedHrRecruitNeedsList(HttpServletRequest request,Page
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -2193,7 +2195,7 @@ public RetDataBean getOldApprovedHrRecruitNeedsList(HttpServletRequest request,P
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -2230,7 +2232,7 @@ public RetDataBean getHrRecruitPlanList(HttpServletRequest request,PageParam pag
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOpFlag(account.getOpFlag());
 	pageParam.setAccountId(account.getAccountId());
@@ -2267,7 +2269,7 @@ public RetDataBean getHrKpiItemList(HttpServletRequest request,PageParam pagePar
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 	PageInfo<Map<String, String>> pageInfo=hrKpiItemService.getHrKpiItemList(pageParam, createUser, kpiType);
@@ -2301,7 +2303,7 @@ public RetDataBean getHrUserInfoListByDeptId(HttpServletRequest request,PagePara
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setDeptId(deptId);
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -2335,7 +2337,7 @@ public RetDataBean getHrEvaluateByUserIdList(HttpServletRequest request,PagePara
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 	PageInfo<Map<String, String>> pageInfo=hrEvaluateService.getHrEvaluateByUserIdList(pageParam,userId);
@@ -2371,7 +2373,7 @@ public RetDataBean getHrEvaluateQueryList(HttpServletRequest request,PageParam p
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 	PageInfo<Map<String, String>> pageInfo=hrEvaluateService.getHrEvaluateQueryList(pageParam,userId,beginTime,endTime,status);

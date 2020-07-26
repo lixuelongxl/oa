@@ -25,6 +25,7 @@ import com.core136.bean.superversion.SuperversionConfig;
 import com.core136.bean.superversion.SuperversionDelay;
 import com.core136.bean.superversion.SuperversionProcess;
 import com.core136.bean.superversion.SuperversionScore;
+import com.core136.service.account.AccountService;
 import com.core136.service.superversion.SuperversionConfigService;
 import com.core136.service.superversion.SuperversionDelayService;
 import com.core136.service.superversion.SuperversionProcessService;
@@ -53,13 +54,24 @@ public class RoutSetSuperversionController {
 	private SuperversionProcessService superversionProcessService;
 	@Autowired
 	private SuperversionScoreService superversionScoreService;
-	
+	@Autowired
+	private AccountService accountService;
+	/**
+	 * 
+	 * @Title: insertSuperversionScore   
+	 * @Description: TODO 添加
+	 * @param request
+	 * @param superversionScore
+	 * @return
+	 * RetDataBean    
+	 * @throws
+	 */
 	@RequestMapping(value="/insertSuperversionScore",method=RequestMethod.POST)
 	public RetDataBean insertSuperversionScore(HttpServletRequest request,SuperversionScore superversionScore)
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			superversionScore.setScoreId(SysTools.getGUID());
 			superversionScore.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			superversionScore.setCreateUser(account.getAccountId());
@@ -75,7 +87,7 @@ public class RoutSetSuperversionController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(superversionScore.getScoreId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -97,7 +109,7 @@ public class RoutSetSuperversionController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(SuperversionScore.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("scoreId",superversionScore.getProcessId());
 			return RetDataTools.Ok("更新评分成功!",superversionScoreService.updateSuperversionScore(example,superversionScore));
@@ -111,7 +123,7 @@ public class RoutSetSuperversionController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			superversionProcess.setProcessId(SysTools.getGUID());
 			superversionProcess.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			superversionProcess.setCreateUser(account.getAccountId());
@@ -127,7 +139,7 @@ public class RoutSetSuperversionController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(superversionProcess.getProcessId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -149,7 +161,7 @@ public class RoutSetSuperversionController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(SuperversionProcess.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("processId",superversionProcess.getProcessId());
 			return RetDataTools.Ok("更新延期成功!",superversionProcessService.updateSuperversionProcess(example,superversionProcess));
@@ -172,7 +184,7 @@ public class RoutSetSuperversionController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Superversion superversion = new Superversion();
 			superversion.setOrgId(account.getOrgId());
 			superversion.setSuperversionId(superversionDelay.getSuperversionId());
@@ -194,7 +206,7 @@ public class RoutSetSuperversionController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(superversionDelay.getDelayId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -216,7 +228,7 @@ public class RoutSetSuperversionController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			
 			if(superversionDelay.getPassStatus().equals("1"))
 			{
@@ -257,7 +269,7 @@ public class RoutSetSuperversionController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			superversionConfig.setConfigId(SysTools.getGUID());
 			superversionConfig.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			superversionConfig.setCreateUser(account.getAccountId());
@@ -282,7 +294,7 @@ public class RoutSetSuperversionController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(superversionConfig.getConfigId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -313,7 +325,7 @@ public class RoutSetSuperversionController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(SuperversionConfig.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("configId",superversionConfig.getConfigId());
 			return RetDataTools.Ok("更新成功!",superversionConfigService.updateSuperversionConfig(example,superversionConfig));
@@ -338,8 +350,8 @@ public class RoutSetSuperversionController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
-			UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+			Account account=accountService.getRedisAccount(request);
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			superversion.setSuperversionId(SysTools.getGUID());
 			superversion.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			superversion.setStatus("0");
@@ -369,7 +381,7 @@ public class RoutSetSuperversionController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			superversion.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除督查项目成功!",superversionService.deleteSuperversion(superversion));
 		}catch (Exception e) {
@@ -395,8 +407,8 @@ public class RoutSetSuperversionController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
-			UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+			Account account=accountService.getRedisAccount(request);
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			Example example = new Example(Superversion.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("superversionId",superversion.getSuperversionId());
 			return RetDataTools.Ok("更新成功!",superversionService.updateSuperversion(account,userInfo,example,superversion));

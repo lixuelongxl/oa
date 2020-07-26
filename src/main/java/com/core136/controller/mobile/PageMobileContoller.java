@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.alibaba.fastjson.JSONObject;
 import com.core136.bean.account.Account;
 import com.core136.bean.sys.DdConfig;
+import com.core136.service.account.AccountService;
 import com.core136.service.sys.AppConfigService;
 
 @Controller
@@ -20,7 +21,8 @@ import com.core136.service.sys.AppConfigService;
 public class PageMobileContoller {
 	@Autowired
 	private AppConfigService appConfigService;
-	
+	@Autowired
+	private AccountService accountService;
 	/**
 	 * 
 	 * @Title: goToMobileIndex   
@@ -34,8 +36,8 @@ public class PageMobileContoller {
 	{
 		try
 		{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
-		List<String> appList = (List<String>)request.getSession().getAttribute("SYS_APP_LIST");
+		Account account=accountService.getRedisAccount(request);
+		List<String> appList = accountService.getRedisLoginAccountInfo(request).getMobilePrivList();
 		JSONObject appMenuList = appConfigService.getMyAppList(account.getOrgId(),appList);
 		ModelAndView mv = new ModelAndView("app/mobile/main/index");
 		mv.addObject("appMenuList",appMenuList);
@@ -63,7 +65,7 @@ public class PageMobileContoller {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			System.out.println(account.getAccountId());
 			ModelAndView mv = new ModelAndView("app/mobile/main/bpm/mybpmlist");
 			return mv;
@@ -88,7 +90,7 @@ public class PageMobileContoller {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			System.out.println(account.getAccountId());
 			ModelAndView mv = new ModelAndView("app/mobile/main/document/mydocumentlist");
 			return mv;

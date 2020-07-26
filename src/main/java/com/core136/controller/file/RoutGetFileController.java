@@ -27,6 +27,7 @@ import com.core136.service.file.PersonalFileService;
 import com.core136.service.file.PhotoService;
 import com.core136.service.file.PublicFileFolderService;
 import com.core136.service.file.PublicFileService;
+import com.core136.service.account.AccountService;
 import com.core136.service.file.AttachService;
 import com.core136.unit.fileutils.DownUtils;
 import org.core136.common.retdataunit.RetDataBean;
@@ -56,6 +57,8 @@ public class RoutGetFileController {
 	private PublicFileService publicFileService;
 	@Autowired
 	private PhotoService photoService;
+	@Autowired
+	private AccountService accountService;
 	/**
 	 * 
 	 * @Title: getMyPublicFolderInPrivForDesk   
@@ -70,7 +73,7 @@ public class RoutGetFileController {
 		{
 			try
 			{
-				UserInfo userInfo=(UserInfo)request.getSession().getAttribute("USER_INFO");
+				UserInfo userInfo = accountService.getRedisUserInfo(request);
 				return  RetDataTools.Ok("请求数据成功!",publicFileFolderService.getMyPublicFolderInPrivForDesk(userInfo.getOrgId(),userInfo.getAccountId(),userInfo.getDeptId(),userInfo.getLeadLeave()));
 			}catch (Exception e) {
 				// TODO: handle exception
@@ -116,7 +119,7 @@ public class RoutGetFileController {
 				sortOrder="asc";
 			}
 		String orderStr=sort +" "+sortOrder;	
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		Example example = new Example(NetDisk.class);
 		Criteria criteria = example.createCriteria();
 		if(account.getOpFlag().equals("1"))
@@ -146,7 +149,7 @@ public class RoutGetFileController {
 		{
 			try
 			{
-				Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+				Account account=accountService.getRedisAccount(request);
 				netDisk.setOrgId(account.getOrgId());
 				return  RetDataTools.Ok("请求数据成功!",netDiskService.selectOneNetDisk(netDisk));
 			}catch (Exception e) {
@@ -169,7 +172,7 @@ public class RoutGetFileController {
 		{
 			try
 			{
-				Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+				Account account=accountService.getRedisAccount(request);
 				photo.setOrgId(account.getOrgId());
 				return  RetDataTools.Ok("请求数据成功!",photoService.getPhotoFileList(photo));
 			}catch (Exception e) {
@@ -194,7 +197,7 @@ public class RoutGetFileController {
 		{
 			try
 			{
-				Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+				Account account=accountService.getRedisAccount(request);
 				photo.setOrgId(account.getOrgId());
 				return  RetDataTools.Ok("请求数据成功!",photoService.selectOnePhoto(photo));
 			}catch (Exception e) {
@@ -216,7 +219,7 @@ public class RoutGetFileController {
 		{
 			try
 			{
-				UserInfo userInfo=(UserInfo)request.getSession().getAttribute("USER_INFO");
+				UserInfo userInfo = accountService.getRedisUserInfo(request);
 				return  RetDataTools.Ok("请求数据成功!",photoService.getMyPhotoList(userInfo.getOrgId(),userInfo.getAccountId(),userInfo.getDeptId(),userInfo.getLeadLeave()));
 			}catch (Exception e) {
 				// TODO: handle exception
@@ -239,7 +242,7 @@ public class RoutGetFileController {
 		{
 			try
 			{
-				Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+				Account account=accountService.getRedisAccount(request);
 				photo.setOrgId(account.getOrgId());
 				photo = photoService.selectOnePhoto(photo);
 				return  RetDataTools.Ok("请求数据成功!",photoService.getMyPhotoFileList(photo));
@@ -281,7 +284,7 @@ public class RoutGetFileController {
 				pageParam.setSortOrder("asc");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			pageParam.setAccountId(account.getAccountId());
@@ -309,7 +312,7 @@ public List<Map<String,Object>> getNetDiskTree(HttpServletRequest request)
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return netDiskService.getNetDiskTree(account);
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -332,7 +335,7 @@ public List<Map<String,Object>> getNetDiskDirs(HttpServletRequest request,String
 		try
 		{
 			netDisk.setRootPath(null);
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			netDisk.setOrgId(account.getOrgId());
 			netDisk = netDiskService.selectOneNetDisk(netDisk);
 			return netDiskService.getNetDiskDirs(rootPath,netDisk);
@@ -361,7 +364,7 @@ public RetDataBean getNetDiskPriv(HttpServletRequest request,String netDiskId)
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}else
 			{
-				Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+				Account account=accountService.getRedisAccount(request);
 				return RetDataTools.Ok("请求成功!", netDiskService.getNetDiskPrivByAccount(account, netDiskId));
 			}
 		}catch (Exception e) {
@@ -384,7 +387,7 @@ public RetDataBean getNetDiskFiles(HttpServletRequest request,String rootPath,Ne
 		try
 		{
 			netDisk.setRootPath(null);
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			netDisk.setOrgId(account.getOrgId());
 			netDisk = netDiskService.selectOneNetDisk(netDisk);
 			rootPath = netDisk.getRootPath()+rootPath;
@@ -410,7 +413,7 @@ public RetDataBean getNetDiskFileInfo(HttpServletRequest request,String sourcePa
 		try
 		{
 			netDisk.setRootPath(null);
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			netDisk.setOrgId(account.getOrgId());
 			netDisk = netDiskService.selectOneNetDisk(netDisk);
 			return RetDataTools.Ok("请求数据成功!",netDiskService.getFolderInfo(sourcePath,netDisk));
@@ -438,7 +441,7 @@ public List<Map<String,Object>> getPersonalFolderForSelect(HttpServletRequest re
 		{
 			folderId="0";
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return personalFileFolderService.getPersonalFolderForSelect(folderId,account.getAccountId(),account.getOrgId());
 	}catch (Exception e) {
 		// TODO: handle exception
@@ -463,7 +466,7 @@ public List<Map<String,Object>> getPersonalDir(HttpServletRequest request,String
 		{
 			folderId="0";
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return personalFileFolderService.getPersonalDir(folderId,account.getAccountId(),account.getOrgId());
 	}catch (Exception e) {
 		// TODO: handle exception
@@ -485,7 +488,7 @@ public RetDataBean getPublicFilelist(HttpServletRequest request,String folderId)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		List<Map<String, String>> list1 = publicFileFolderService.getChildFolderList(account.getOrgId(), folderId);
 		List<Map<String, String>> list2 = publicFileService.getPublicFilelist(account.getOrgId(),folderId);
 		list1.addAll(list2);
@@ -509,8 +512,8 @@ public List<Map<String,Object>> getMyPublicFolderInPrivForSelect(HttpServletRequ
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
-		UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+		Account account=accountService.getRedisAccount(request);
+		UserInfo userInfo = accountService.getRedisUserInfo(request);
 		return publicFileFolderService.getMyPublicFolderInPriv(account.getOrgId(), folderId, account.getAccountId(), userInfo.getDeptId(), userInfo.getLeadLeave(), account.getOpFlag());
 	}catch (Exception e) {
 		return null;
@@ -531,7 +534,7 @@ public RetDataBean getPublicFileByFolderId(HttpServletRequest request,String fol
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求数据成功!",publicFileService.getPublicFileByFolderId(account.getOrgId(),folderId));
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -552,7 +555,7 @@ public RetDataBean getfilelist(HttpServletRequest request,String folderId)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求数据成功!",personalFileService.getfilelist(folderId,account.getAccountId(),account.getOrgId()));
 	}catch (Exception e) {
 		// TODO: handle exception
@@ -574,7 +577,7 @@ public RetDataBean getFileListForSelect(HttpServletRequest request,String folder
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求数据成功!",personalFileService.getFileListForSelect(folderId,account.getAccountId(),account.getOrgId()));
 	}catch (Exception e) {
 		// TODO: handle exception
@@ -595,7 +598,7 @@ public List<Map<String,Object>> getPublicFileFolderTree(HttpServletRequest reque
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return publicFileFolderService.getPublicFileFolderAllDir(account.getOrgId(), folderId, account.getAccountId(),account.getOpFlag());
 	}catch (Exception e) {
 		return null;
@@ -616,7 +619,7 @@ public RetDataBean getPublicFileFolderById(HttpServletRequest request,PublicFile
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		publicFileFolder.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求数据成功!",publicFileFolderService.selectOnePublicFileFolder(publicFileFolder));
 	}catch (Exception e) {
@@ -638,8 +641,8 @@ public List<Map<String,Object>> getMyPublicFolderInPriv(HttpServletRequest reque
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
-		UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+		Account account=accountService.getRedisAccount(request);
+		UserInfo userInfo = accountService.getRedisUserInfo(request);
 		return publicFileFolderService.getMyPublicFolderInPriv(account.getOrgId(), folderId, account.getAccountId(), userInfo.getDeptId(), userInfo.getLeadLeave(), account.getOpFlag());
 	}catch (Exception e) {
 		return null;
@@ -660,8 +663,8 @@ public RetDataBean getPublicFolderPrivInfo(HttpServletRequest request,String fol
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
-		UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+		Account account=accountService.getRedisAccount(request);
+		UserInfo userInfo = accountService.getRedisUserInfo(request);
 		return RetDataTools.Ok("请求数据成功!",publicFileFolderService.getPublicFolderPrivInfo(account,folderId,account.getAccountId(),userInfo.getDeptId(),userInfo.getLeadLeave()));
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -685,7 +688,7 @@ public RetDataBean getPersonalFileFolderChild(HttpServletRequest request,Persona
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		personalFileFolder.setCreateUser(account.getAccountId());
 		personalFileFolder.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求数据成功!",personalFileFolderService.getPersonalFileFolderChild(personalFileFolder));
@@ -708,7 +711,7 @@ public void getFileDown(HttpServletResponse response,HttpServletRequest request,
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		personalFile.setOrgId(account.getOrgId());
 		personalFile = personalFileService.selectOnePersonalFile(personalFile);
 		Attach attach = new Attach();
@@ -761,7 +764,7 @@ public RetDataBean getAttachManageList(
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 	PageInfo<Map<String, String>> pageInfo=attachService.getAttachManageList(pageParam, createAccount, modules, beginTime, endTime, extName);

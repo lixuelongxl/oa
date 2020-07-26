@@ -33,6 +33,7 @@ import com.core136.bean.contract.ContractReceivablesRecord;
 import com.core136.bean.contract.ContractSendgoods;
 import com.core136.bean.contract.ContractSort;
 import com.core136.bean.sys.PageParam;
+import com.core136.service.account.AccountService;
 import com.core136.service.contract.ContractBillService;
 import com.core136.service.contract.ContractDetailsService;
 import com.core136.service.contract.ContractPayableRecordService;
@@ -81,7 +82,8 @@ private ContractSendgoodsService contractSendgoodsService;
 private ContractReceivablesRecordService contractReceivablesRecordService;
 @Autowired
 private ContractPayableRecordService contractPayableRecordService;
-
+@Autowired
+private AccountService accountService;
 /**
  * 
  * @Title: getContractTop   
@@ -94,7 +96,7 @@ private ContractPayableRecordService contractPayableRecordService;
 @RequestMapping(value = "/getContractTop", method = RequestMethod.POST)
 public RetDataBean getContractTop(HttpServletRequest request) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", contractService.getContractTop(account.getOrgId()));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -113,7 +115,7 @@ public RetDataBean getContractTop(HttpServletRequest request) {
 @RequestMapping(value = "/getContractBillTop", method = RequestMethod.POST)
 public RetDataBean getContractBillTop(HttpServletRequest request) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", contractBillService.getContractBillTop(account.getOrgId()));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -133,7 +135,7 @@ public RetDataBean getContractBillTop(HttpServletRequest request) {
 @RequestMapping(value = "/getPayableRecordTop", method = RequestMethod.POST)
 public RetDataBean getPayableRecordTop(HttpServletRequest request) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", contractPayableRecordService.getPayableRecordTop(account.getOrgId()));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -152,7 +154,7 @@ public RetDataBean getPayableRecordTop(HttpServletRequest request) {
 @RequestMapping(value = "/getReceivRecordTop", method = RequestMethod.POST)
 public RetDataBean getReceivRecordTop(HttpServletRequest request) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", contractReceivablesRecordService.getReceivRecordTop(account.getOrgId()));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -172,7 +174,7 @@ public RetDataBean getReceivRecordTop(HttpServletRequest request) {
 @RequestMapping(value = "/getDeskBillList", method = RequestMethod.POST)
 public RetDataBean getDeskBillList(HttpServletRequest request) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", contractBillService.getDeskBillList(account.getOrgId()));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -194,7 +196,7 @@ public RetDataBean getDeskPayableList(HttpServletRequest request)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		String beginTime = SysTools.getTime("yyyy-MM-dd HH:mm:ss");
 		return RetDataTools.Ok("请求成功!",contractPayableService.getDeskPayableList(account.getOrgId(),beginTime,account.getOpFlag(),account.getAccountId()));
 	}catch (Exception e) {
@@ -215,7 +217,7 @@ public RetDataBean getDeskReceivablesList(HttpServletRequest request)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		String beginTime = SysTools.getTime("yyyy-MM-dd HH:mm:ss");
 		return RetDataTools.Ok("请求成功!",contractReceivablesService.getDeskReceivablesList(account.getOrgId(),beginTime,account.getOpFlag(),account.getAccountId()));
 	}catch (Exception e) {
@@ -238,7 +240,7 @@ public RetDataBean getContractPayableRecordById(HttpServletRequest request,Contr
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		contractPayableRecord.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!",contractPayableRecordService.selectOneContractPayableRecord(contractPayableRecord));
 	}catch (Exception e) {
@@ -261,7 +263,7 @@ public RetDataBean getContractReceivablesRecordById(HttpServletRequest request,C
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		contractReceivablesRecord.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!",contractReceivablesRecordService.selectOneContractReceivablesRecord(contractReceivablesRecord));
 	}catch (Exception e) {
@@ -304,7 +306,7 @@ public RetDataBean getContractSendgoodsList(
 			pageParam.setSortOrder("asc");
 		}
 	String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrderBy(orderBy);
 	pageParam.setOrgId(account.getOrgId());
 	PageInfo<Map<String, String>> pageInfo=contractSendgoodsService.getContractSendgoodsList(pageParam,contractType,beginTime,endTime);
@@ -347,7 +349,7 @@ public RetDataBean getContractReceivablesRecordList(
 			pageParam.setSortOrder("asc");
 		}
 	String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrderBy(orderBy);
 	pageParam.setOrgId(account.getOrgId());
 	PageInfo<Map<String, String>> pageInfo=contractReceivablesRecordService.getContractReceivablesRecordList(pageParam,receivablesId);
@@ -390,7 +392,7 @@ public RetDataBean getContractPayableRecordList(
 			pageParam.setSortOrder("asc");
 		}
 	String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrderBy(orderBy);
 	pageParam.setOrgId(account.getOrgId());
 	PageInfo<Map<String, String>> pageInfo=contractPayableRecordService.getContractPayableRecordList(pageParam,payableId);
@@ -418,7 +420,7 @@ public RetDataBean getContractSendgoodsById(HttpServletRequest request,ContractS
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		contractSendgoods.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!",contractSendgoodsService.selectOneContractSendgoods(contractSendgoods));
 	}catch (Exception e) {
@@ -464,7 +466,7 @@ public RetDataBean getContractBillList(
 			pageParam.setSortOrder("asc");
 		}
 	String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrderBy(orderBy);
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOpFlag(account.getOpFlag());
@@ -492,7 +494,7 @@ public RetDataBean getContractBillById(HttpServletRequest request,ContractBill c
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		contractBill.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!",contractBillService.selectOneContractBill(contractBill));
 	}catch (Exception e) {
@@ -537,7 +539,7 @@ public RetDataBean getContractPayableList(
 			pageParam.setSortOrder("asc");
 		}
 	String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrderBy(orderBy);
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOpFlag(account.getOpFlag());
@@ -565,7 +567,7 @@ public RetDataBean getContractPayableById(HttpServletRequest request,ContractPay
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		contractPayable.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!",contractPayableService.selectOneContractPayable(contractPayable));
 	}catch (Exception e) {
@@ -612,7 +614,7 @@ public RetDataBean getContractReceivablesList(
 			pageParam.setSortOrder("asc");
 		}
 	String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrderBy(orderBy);
 	pageParam.setOpFlag(account.getOpFlag());
 	pageParam.setOrgId(account.getOrgId());
@@ -639,7 +641,7 @@ public RetDataBean getSelect2ContractList(HttpServletRequest request,String sear
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!",contractService.getSelect2ContractList(account.getOrgId(),search));
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -661,7 +663,7 @@ public RetDataBean getContractReceivablesById(HttpServletRequest request,Contrac
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		contractReceivables.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!",contractReceivablesService.selectOneContractReceivables(contractReceivables));
 	}catch (Exception e) {
@@ -706,7 +708,7 @@ public RetDataBean getContractManageList(
 			pageParam.setSortOrder("asc");
 		}
 	String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrderBy(orderBy);
 	pageParam.setOpFlag(account.getOpFlag());
 	pageParam.setAccountId(account.getAccountId());
@@ -758,7 +760,7 @@ public RetDataBean queryContract(
 			pageParam.setSortOrder("asc");
 		}
 	String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrderBy(orderBy);
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOpFlag(account.getOpFlag());
@@ -791,7 +793,7 @@ public List<Map<String,String>> getContractSortTree(HttpServletRequest request,S
 		{
 			sortLeave = sortId;
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return contractSortService.getContractSortTree(account.getOrgId(), sortLeave);
 	}catch (Exception e) {
 		return null;
@@ -813,7 +815,7 @@ public RetDataBean getContractSortById(HttpServletRequest request,ContractSort c
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		contractSort.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!",contractSortService.selectOneContractSort(contractSort));
 	}catch (Exception e) {
@@ -852,7 +854,7 @@ public RetDataBean getContractDetailsList(
 			pageParam.setSortOrder("asc");
 		}
 	String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrderBy(orderBy);
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOrgId(account.getOrgId());
@@ -877,7 +879,7 @@ public RetDataBean createCode(HttpServletRequest request)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		String contractCode ="AIP-"+SysTools.getTime("yyyy")+SysTools.autoGenericCode((contractService.getContractCount(account.getOrgId())+""),3);
 		return RetDataTools.Ok("生成合同编号成功!",contractCode);
 	}catch (Exception e) {
@@ -892,7 +894,7 @@ public RetDataBean createCode(HttpServletRequest request)
 	@RequestMapping("/getContractById")
 	public RetDataBean getContractById(HttpServletRequest request,Contract contract) {
 		try {
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			contract.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", contractService.selectOneContract(contract));
 		} catch (Exception e) {
@@ -915,7 +917,7 @@ public RetDataBean createCode(HttpServletRequest request)
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			ContractPriv contractPriv = new ContractPriv();
 			contractPriv.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("生成合同编号成功!",contractPrivService.selectOneContractPriv(contractPriv));

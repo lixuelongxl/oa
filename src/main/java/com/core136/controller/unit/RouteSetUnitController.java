@@ -91,7 +91,7 @@ public RetDataBean insertUserGroup(HttpServletRequest request,UserGroup userGrou
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		userGroup.setGroupId(SysTools.getGUID());
 		userGroup.setOrgId(account.getOrgId());
 		userGroup.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -116,7 +116,7 @@ public RetDataBean deleteUserGroup(HttpServletRequest request,UserGroup userGrou
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isBlank(userGroup.getGroupId()))
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -143,7 +143,7 @@ public RetDataBean updateUserGroup(HttpServletRequest request,UserGroup userGrou
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isBlank(userGroup.getGroupId()))
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -173,7 +173,7 @@ public RetDataBean updateWxConfig(HttpServletRequest request,WxConfig wxConfig)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			return RetDataTools.NotOk("您不是管理,请与管理员联系！");
@@ -205,7 +205,7 @@ public RetDataBean updateDdConfig(HttpServletRequest request,DdConfig ddConfig)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			return RetDataTools.NotOk("您不是管理,请与管理员联系！");
@@ -237,7 +237,7 @@ public RetDataBean deleteWeiXinAccount(HttpServletRequest request,String account
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		Account account1 = new Account();
 		account1.setAccountId(accountId);
 		account1.setOrgId(account.getOrgId());
@@ -264,7 +264,7 @@ public RetDataBean deleteDingDingAccount(HttpServletRequest request,String accou
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		Account account1 = new Account();
 		account1.setAccountId(accountId);
 		account1.setOrgId(account.getOrgId());
@@ -290,7 +290,7 @@ public RetDataBean createWeiXinAccount(HttpServletRequest request,String account
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		UserInfo userInfo = new UserInfo();
 		userInfo.setAccountId(accountId);
 		userInfo.setOrgId(account.getOrgId());
@@ -325,7 +325,7 @@ public RetDataBean createDingDingAccount(HttpServletRequest request,String accou
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		UserInfo userInfo = new UserInfo();
 		userInfo.setAccountId(accountId);
 		userInfo.setOrgId(account.getOrgId());
@@ -360,7 +360,7 @@ public RetDataBean updateUnit(HttpServletRequest request, Unit unit)
 {
 	try
 	{
-		Account account = (Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			return RetDataTools.NotOk("对不起,您不是系统管理员!"); 
@@ -391,7 +391,7 @@ public RetDataBean stopAccount(HttpServletRequest request,String accountId)
 {
 	try
 	{
-		Account account = (Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			return RetDataTools.NotOk("对不起,您不是系统管理员!"); 
@@ -417,7 +417,7 @@ public RetDataBean openAccount(HttpServletRequest request,String accountId)
 {
 	try
 	{
-		Account account = (Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			return RetDataTools.NotOk("对不起,您不是系统管理员!"); 
@@ -449,7 +449,7 @@ public RetDataBean goWeiXinSyncUnitDept(HttpServletRequest request,UnitDept unit
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		unitDept.setOrgId(account.getOrgId());
 		unitDept = unitDeptService.selectOneUnitDept(unitDept);
 		return unitDeptService.wxSyncUnitDept(unitDept) ;
@@ -474,7 +474,7 @@ public RetDataBean goDingDingSyncUnitDept(HttpServletRequest request,UnitDept un
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		unitDept.setOrgId(account.getOrgId());
 		unitDept = unitDeptService.selectOneUnitDept(unitDept);
 		return unitDeptService.dingDingSyncUnitDept(unitDept) ;
@@ -498,7 +498,7 @@ public RetDataBean goDingDingUpdateUnitDept(HttpServletRequest request,UnitDept 
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		unitDept.setOrgId(account.getOrgId());
 		unitDept = unitDeptService.selectOneUnitDept(unitDept);
 		return unitDeptService.dingDingUpdateUnitDept(unitDept) ;
@@ -521,7 +521,7 @@ public RetDataBean goWxUpdateUnitDept(HttpServletRequest request,UnitDept unitDe
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		unitDept.setOrgId(account.getOrgId());
 		unitDept = unitDeptService.selectOneUnitDept(unitDept);
 		return unitDeptService.wxUpdateUnitDept(unitDept) ;
@@ -545,7 +545,7 @@ public RetDataBean addUnitDept(HttpServletRequest request,UnitDept unitDept)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		unitDept.setDeptId(SysTools.getGUID());
 		if(StringUtils.isBlank(unitDept.getOrgLeaveId()))
 		{
@@ -572,7 +572,7 @@ public RetDataBean importUnitDept(HttpServletRequest request,MultipartFile file)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return unitDeptService.importUnitDept(account,file);
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -594,7 +594,7 @@ public RetDataBean importUserInfo(HttpServletRequest request,MultipartFile file)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return userInfoService.importUserInfo(account,file);
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -620,7 +620,7 @@ public RetDataBean updateUnitDept(HttpServletRequest request,UnitDept unitDept)
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isBlank(unitDept.getOrgLeaveId()))
 		{
 			unitDept.setOrgLeaveId("0");
@@ -653,7 +653,7 @@ public RetDataBean delUnitDept(HttpServletRequest request,UnitDept unitDept)
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		unitDept.setOrgId(account.getOrgId());
 		if(!account.getOpFlag().equals("1"))
 		{
@@ -695,7 +695,7 @@ public RetDataBean delSysMenu(HttpServletRequest request,SysMenu sysMenu)
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		sysMenu.setOrgId(account.getOrgId());
 		if(!account.getOpFlag().equals("1"))
 		{
@@ -731,7 +731,7 @@ public RetDataBean updateSysMenu(HttpServletRequest request,SysMenu sysMenu)
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		sysMenu.setOrgId(account.getOrgId());
 		if(!account.getOpFlag().equals("1"))
 		{
@@ -760,7 +760,7 @@ public RetDataBean insertSysMenu(HttpServletRequest request,SysMenu sysMenu)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		//sysMenu.setSysMenuId(SysTools.getGUID());
 		if(StringUtils.isBlank(sysMenu.getSysMenuLeave()))
 		{
@@ -798,7 +798,7 @@ public RetDataBean deleteUserPriv(HttpServletRequest request,UserPriv userPriv)
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		userPriv.setOrgId(account.getOrgId());
 		if(!account.getOpFlag().equals("1"))
 		{
@@ -826,7 +826,7 @@ public RetDataBean insertUserPriv(HttpServletRequest request,UserPriv userPriv)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		userPriv.setOrgId(account.getOrgId());
 		if(!account.getOpFlag().equals("1"))
 		{
@@ -862,7 +862,7 @@ public RetDataBean updateUserPriv (HttpServletRequest request,UserPriv userPriv)
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		Example example = new Example(UserPriv.class);
 		example.createCriteria().andEqualTo("userPrivId",userPriv.getUserPrivId()).andEqualTo("orgId",account.getOrgId());
 		return RetDataTools.Ok("更新权限成功！",userPrivService.updateUserPriv(userPriv, example));
@@ -885,7 +885,7 @@ public RetDataBean copyPriv (HttpServletRequest request,UserPriv userPriv)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			return RetDataTools.NotOk("对不起,您不是系统管理员!"); 
@@ -931,7 +931,7 @@ public RetDataBean deleteUserInfos (HttpServletRequest request,String accountIds
 		{
 			return RetDataTools.NotOk("批量删除账号是不能包含系统管理员账号！");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			return RetDataTools.NotOk("对不起,您不是系统管理员!"); 
@@ -963,7 +963,7 @@ public RetDataBean deleteUserInfo (HttpServletRequest request,UserInfo userInfo,
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			return RetDataTools.NotOk("对不起,您不是系统管理员!"); 
@@ -999,7 +999,7 @@ public RetDataBean insertAccountAndUserInfo (HttpServletRequest request,UserInfo
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			return RetDataTools.NotOk("对不起,您不是系统管理员!"); 
@@ -1032,7 +1032,7 @@ public RetDataBean updateMyUserInfo (HttpServletRequest request,UserInfo userInf
 {
 	try
 	{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			userInfo.setOrgId(account.getOrgId());
 			userInfo.setPinYin(StrTools.getPingYin(userInfo.getUserName()));
 			userInfo.setAccountId(account.getAccountId());
@@ -1071,7 +1071,7 @@ public RetDataBean updateAccountAndUserInfo (HttpServletRequest request,UserInfo
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			return RetDataTools.NotOk("对不起,您不是系统管理员!"); 
@@ -1107,7 +1107,7 @@ public RetDataBean addUserLevel (HttpServletRequest request,UserLevel userLevel)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			return RetDataTools.NotOk("对不起,您不是系统管理员!"); 
@@ -1142,7 +1142,7 @@ public RetDataBean updateUserLevel (HttpServletRequest request,UserLevel userLev
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			return RetDataTools.NotOk("对不起,您不是系统管理员!"); 
@@ -1176,7 +1176,7 @@ public RetDataBean delUserLevel (HttpServletRequest request,UserLevel userLevel)
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			return RetDataTools.NotOk("对不起,您不是系统管理员!"); 
@@ -1204,7 +1204,7 @@ public RetDataBean resetPassWord (HttpServletRequest request,String firstPassWor
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return accountService.resetPassWord(account,firstPassWord,newPassWord);
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -1226,7 +1226,7 @@ public RetDataBean setDeskConfig (HttpServletRequest request,String homePage)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		Account newAccount = new Account();
 		newAccount.setHomePage(homePage);
 		newAccount.setOrgId(account.getOrgId());

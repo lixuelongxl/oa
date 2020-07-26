@@ -28,6 +28,7 @@ import com.core136.bean.meeting.MeetingDevice;
 import com.core136.bean.meeting.MeetingNotes;
 import com.core136.bean.meeting.MeetingRoom;
 import com.core136.bean.sys.PageParam;
+import com.core136.service.account.AccountService;
 import com.core136.service.meeting.MeetingDeviceService;
 import com.core136.service.meeting.MeetingNotesService;
 import com.core136.service.meeting.MeetingRoomService;
@@ -54,7 +55,8 @@ public class RoutGetMeetingController {
 	private MeetingDeviceService meetingDeviceService;
 	@Autowired
 	private MeetingNotesService meetingNotesService;
-	
+	@Autowired
+	private AccountService accountService;
 	/**
 	 * 
 	 * @Title: getMyMeetingListForDesk   
@@ -69,7 +71,7 @@ public class RoutGetMeetingController {
 	{
 		try
 		{
-			UserInfo userInfo=(UserInfo)request.getSession().getAttribute("USER_INFO");
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			return RetDataTools.Ok("请求成功!", meetingService.getMyMeetingListForDesk(userInfo.getOrgId(),userInfo.getAccountId(),userInfo.getDeptId(),userInfo.getLeadLeave()));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -91,7 +93,7 @@ public class RoutGetMeetingController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!", meetingNotesService.getMeetingNotesInfo(account.getOrgId(),neetingNotes.getNotesId()));
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -133,7 +135,7 @@ public class RoutGetMeetingController {
 				pageParam.setSortOrder("asc");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOpFlag(account.getOpFlag());
 		pageParam.setAccountId(account.getAccountId());
@@ -178,8 +180,8 @@ public class RoutGetMeetingController {
 			{
 				pageParam.setSortOrder("asc");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
-		UserInfo userInfo=(UserInfo)request.getSession().getAttribute("USER_INFO");
+		Account account=accountService.getRedisAccount(request);
+		UserInfo userInfo = accountService.getRedisUserInfo(request);
 		pageParam.setOrgId(userInfo.getOrgId());
 		pageParam.setOpFlag(account.getOpFlag());
 		pageParam.setAccountId(userInfo.getAccountId());
@@ -207,7 +209,7 @@ public class RoutGetMeetingController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!", meetingService.getNotNotesMeetingList(account.getOrgId(),account.getAccountId()));
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -230,7 +232,7 @@ public class RoutGetMeetingController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			meetingRoom.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", meetingRoomService.selectOneMeetingRoom(meetingRoom));
 		}catch (Exception e) {
@@ -253,7 +255,7 @@ public class RoutGetMeetingController {
 	{
 		try
 		{
-			UserInfo userInfo=(UserInfo)request.getSession().getAttribute("USER_INFO");
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			return RetDataTools.Ok("请求成功!", meetingRoomService.getCanUseMeetingRoomList(userInfo.getOrgId(),userInfo.getDeptId()));
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -287,7 +289,7 @@ public class RoutGetMeetingController {
 				pageParam.setSortOrder("asc");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		PageInfo<Map<String, String>> pageInfo=meetingRoomService.getMeetingRoomList(pageParam);
@@ -312,7 +314,7 @@ public class RoutGetMeetingController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			meetingDevice.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", meetingDeviceService.selectOneMeetingDevice(meetingDevice));
 		}catch (Exception e) {
@@ -335,7 +337,7 @@ public class RoutGetMeetingController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!", meetingDeviceService.getDeviceListName(account.getOrgId(),deviceIds));
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -357,8 +359,8 @@ public class RoutGetMeetingController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
-			UserInfo userInfo=(UserInfo)request.getSession().getAttribute("USER_INFO");
+			Account account=accountService.getRedisAccount(request);
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			if(account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.Ok("请求成功!", meetingDeviceService.getCanUseDeviceList(userInfo.getOrgId(), null));	
@@ -399,7 +401,7 @@ public class RoutGetMeetingController {
 				pageParam.setSortOrder("asc");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		PageInfo<Map<String, String>> pageInfo=meetingDeviceService.getMeetingDeviceList(pageParam);
@@ -424,7 +426,7 @@ public class RoutGetMeetingController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			meeting.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", meetingService.selectOneMeeting(meeting));
 		}catch (Exception e) {
@@ -465,7 +467,7 @@ public class RoutGetMeetingController {
 				pageParam.setSortOrder("asc");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		pageParam.setAccountId(account.getAccountId());
@@ -507,7 +509,7 @@ public class RoutGetMeetingController {
 				pageParam.setSortOrder("asc");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		pageParam.setAccountId(account.getAccountId());
@@ -549,7 +551,7 @@ public class RoutGetMeetingController {
 				pageParam.setSortOrder("asc");
 			}
 			
-		UserInfo userInfo=(UserInfo)request.getSession().getAttribute("USER_INFO");
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 		pageParam.setOrgId(userInfo.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		pageParam.setAccountId(userInfo.getAccountId());
@@ -591,7 +593,7 @@ public class RoutGetMeetingController {
 				pageParam.setSortOrder("asc");
 			}
 			
-		UserInfo userInfo=(UserInfo)request.getSession().getAttribute("USER_INFO");
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 		pageParam.setOrgId(userInfo.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		pageParam.setAccountId(userInfo.getAccountId());
@@ -635,7 +637,7 @@ public class RoutGetMeetingController {
 				pageParam.setSortOrder("asc");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		pageParam.setAccountId(account.getAccountId());
@@ -680,7 +682,7 @@ public class RoutGetMeetingController {
 				pageParam.setSortOrder("asc");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		pageParam.setAccountId(account.getAccountId());
@@ -707,7 +709,7 @@ public class RoutGetMeetingController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			meetingNotes.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", meetingNotesService.selectOneMeetingNotes(meetingNotes));
 		}catch (Exception e) {
@@ -735,7 +737,7 @@ public class RoutGetMeetingController {
 			{
 				dayStr = SysTools.getTime("yyyy-MM-dd");
 			}
-			UserInfo userInfo=(UserInfo)request.getSession().getAttribute("USER_INFO");
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			return RetDataTools.Ok("请求成功!", meetingService.getMeetingByDay(userInfo.getOrgId(),userInfo.getDeptId(),dayStr));
 		}catch (Exception e) {
 			// TODO: handle exception

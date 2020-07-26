@@ -4,10 +4,12 @@ package com.core136.controller.sys;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -36,8 +38,10 @@ import com.core136.service.sys.SysConfigService;
 import com.core136.service.sys.SysInterfaceService;
 import com.core136.service.sys.SysProfileService;
 import com.core136.service.sys.WxConfigService;
+import com.core136.unit.SpringUtils;
 
 import org.apache.commons.lang.StringUtils;
+import org.core136.common.auth.LoginAccountInfo;
 import org.core136.common.utils.SysTools;
 /**
  * 
@@ -97,7 +101,7 @@ public ModelAndView goWxConfig(HttpServletRequest request)
 	ModelAndView mv=null;
 	try
 	{
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	WxConfig wxConfig = new WxConfig();
 	wxConfig.setOrgId(account.getOrgId());
 	wxConfig = wxConfigService.selectOneWxConfig(wxConfig);
@@ -138,7 +142,7 @@ public ModelAndView goDdConfig(HttpServletRequest request)
 	ModelAndView mv=null;
 	try
 	{
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	DdConfig ddConfig = new DdConfig();
 	ddConfig.setOrgId(account.getOrgId());
 	ddConfig = ddConfigService.selectOneDdConfig(ddConfig);
@@ -229,20 +233,22 @@ public ModelAndView goSetOrg(HttpServletRequest request)
 		ModelAndView mv = null;
 		try
 		{
+		LoginAccountInfo loginAccountInfo=accountService.getRedisLoginAccountInfo(request);
 		if(SysTools.isMobileDevice(request))
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
-			List<String> appList = (List<String>)request.getSession().getAttribute("SYS_APP_LIST");
+			Account account=accountService.getRedisAccount(request);
+			List<String> appList = loginAccountInfo.getMobilePrivList();
 			JSONObject json = appConfigService.getMyAppList(account.getOrgId(),appList);
 			mv = new ModelAndView("app/mobile/main/index");
 			mv.addObject("appMenuList",json);
 		}else
 		{
 		mv = new ModelAndView("app/core/frame");
-		Account account = (Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		UserPriv userPriv = userPrivService.getUserPrivByPrivId(account.getUserPriv(), account.getOrgId());
 		mv.addObject("USER_INFO", userInfoService.getUserInfoByAccountId(account.getAccountId(), account.getOrgId()));
 		mv.addObject("USER_PRIV", userPriv);
+		mv.addObject("sysMenuList",loginAccountInfo.getSysMenuList());
 		mv.addObject("msgtime",msgtime);
 		}
 		return mv;
@@ -266,8 +272,8 @@ public ModelAndView goSetOrg(HttpServletRequest request)
 		ModelAndView mv = null;
 		try
 		{
-			UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
-			Account account = (Account)request.getSession().getAttribute("LOGIN_USER");
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
+			Account account=accountService.getRedisAccount(request);
 			List<Map<String,String>> sysProfileList = sysProfileService.getMySysProfileList(userInfo.getOrgId(),account.getOpFlag(), userInfo.getAccountId(), userInfo.getDeptId(), userInfo.getLeadLeave());
 			if(StringUtils.isBlank(view))
 			{
@@ -607,7 +613,7 @@ public ModelAndView goSetOrg(HttpServletRequest request)
 	public ModelAndView goUnitinfo(HttpServletRequest request) {
 		try
 		{
-		Account account = (Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 		ModelAndView mv = new ModelAndView("app/core/sysset/unit/index");
 		Unit unit = unitService.getUnitByOrgId(account.getOrgId());
 		mv.addObject("unit", unit);
@@ -633,8 +639,10 @@ public ModelAndView goSetOrg(HttpServletRequest request)
 	@RequestMapping("/sysinfo")
 	public ModelAndView sysInfo(HttpServletRequest request) throws Exception
 	{
+		ServletContext sc = request.getServletContext();
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("app/core/sysset/sysinfo/index");
+		mv.addObject("SERVERINFO",sc.getServerInfo());
 		mv.addObject("sysInfo", SysTools.getSysInfo(attach));
 		mv.addObject("ACCOUNT_COUNT",accountService.getAllUserCount());
 		return mv;
@@ -693,7 +701,7 @@ public ModelAndView goSetOrg(HttpServletRequest request)
 			}else {
 				if(view.equals("pcsetpriv"))
 				{
-					Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+					Account account=accountService.getRedisAccount(request);
 					mv = new ModelAndView("app/core/sysset/unit/setuserpriv");
 					UserPriv userPriv = new UserPriv();
 					userPriv.setUserPrivId(userPrivId);
@@ -702,7 +710,7 @@ public ModelAndView goSetOrg(HttpServletRequest request)
 					mv.addObject("userPriv",userPriv);
 				}else if(view.equals("mobilesetpriv"))
 				{
-					Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+					Account account=accountService.getRedisAccount(request);
 					mv = new ModelAndView("app/core/sysset/unit/mobilesetpriv");
 					UserPriv userPriv = new UserPriv();
 					userPriv.setUserPrivId(userPrivId);
@@ -854,7 +862,7 @@ public ModelAndView goSetOrg(HttpServletRequest request)
 	@RequestMapping("/sysconfig")
 	public ModelAndView goSysconfig(HttpServletRequest request)
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		SysConfig sysConfig = new SysConfig();
 		sysConfig.setOrgId(account.getOrgId());
 		sysConfig = sysConfigService.selectOne(sysConfig);
@@ -1007,7 +1015,7 @@ public ModelAndView goSetOrg(HttpServletRequest request)
 	@RequestMapping("/personseting")
 	public ModelAndView goPersonseting(HttpServletRequest request,String view)
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		SysConfig sysConfig = new SysConfig();
 		sysConfig.setOrgId(account.getOrgId());
 		sysConfig=sysConfigService.selectOne(sysConfig);
@@ -1231,7 +1239,7 @@ public ModelAndView goSetOrg(HttpServletRequest request)
 				mv= new ModelAndView("app/mobile/main/email/details");
 			}else
 			{
-				Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+				Account account=accountService.getRedisAccount(request);
 				mv= new ModelAndView("app/core/email/emaildetails");
 				Email email = new Email();
 				email.setEmailId(emailId);
@@ -1260,7 +1268,7 @@ public ModelAndView goSetOrg(HttpServletRequest request)
 	@RequestMapping("/oa/mysortemail")
 	public ModelAndView goMysortemail(HttpServletRequest request,String boxId)
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		ModelAndView mv = new ModelAndView();
 		EmailBox emailBox = new EmailBox();
 		emailBox.setOrgId(account.getOrgId());

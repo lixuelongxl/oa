@@ -26,6 +26,7 @@ import com.core136.bean.account.UserInfo;
 import com.core136.bean.notice.Notice;
 import com.core136.bean.notice.NoticeTemplate;
 import com.core136.bean.sys.PageParam;
+import com.core136.service.account.AccountService;
 import com.core136.service.notice.NoticeConfigService;
 import com.core136.service.notice.NoticeService;
 import com.core136.service.notice.NoticeTemplateService;
@@ -53,6 +54,8 @@ public class RoutGetNoticeController {
 	private NoticeConfigService noticeConfigService;
 	@Autowired
 	private NoticeService noticeService;
+	@Autowired
+	private AccountService accountService;
 	/**
 	 * 
 	 * @Title: getMyNoticeListForDesk   
@@ -67,7 +70,7 @@ public class RoutGetNoticeController {
 	{
 		try
 		{
-			UserInfo userInfo=(UserInfo)request.getSession().getAttribute("USER_INFO");
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			return RetDataTools.Ok("请求成功!", noticeService.getMyNoticeListForDesk(userInfo.getOrgId(),SysTools.getTime("yyyy-MM-dd"), userInfo.getAccountId(), userInfo.getDeptId(), userInfo.getLeadLeave()));
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -92,7 +95,7 @@ public class RoutGetNoticeController {
 	public RetDataBean getMobileNoticeInfo(HttpServletRequest request, Notice notice) {
 		try {
 			
-			Account account = (Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(notice.getNoticeId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题!");
@@ -141,7 +144,7 @@ public class RoutGetNoticeController {
 				pageParam.setSortOrder("asc");
 			}
 			
-		UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 		pageParam.setAccountId(userInfo.getAccountId());
 		pageParam.setDeptId(userInfo.getDeptId());
 		pageParam.setLevelId(userInfo.getLeadLeave());
@@ -166,7 +169,7 @@ public class RoutGetNoticeController {
 	@RequestMapping(value = "/getNoticeInfo", method = RequestMethod.POST)
 	public RetDataBean getNoticeInfo(HttpServletRequest request, Notice notice) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(notice.getNoticeId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题!");
@@ -191,7 +194,7 @@ public class RoutGetNoticeController {
 	@RequestMapping(value = "/getRedHeadListByType", method = RequestMethod.POST)
 	public RetDataBean getRedHeadListByType(HttpServletRequest request, String noticeType) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!", noticeTemplateService.getRedHeadListByType(account.getOrgId(), noticeType));
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -219,7 +222,7 @@ public class RoutGetNoticeController {
 			if (StringUtils.isBlank(pageParam.getSortOrder())) {
 				pageParam.setSortOrder("asc");
 			}
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			String orderBy = pageParam.getSort() + " " + pageParam.getSortOrder();
 			pageParam.setOrderBy(orderBy);
 			pageParam.setAccountId(account.getAccountId());
@@ -269,7 +272,7 @@ public class RoutGetNoticeController {
 				pageParam.setSortOrder("asc");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOpFlag(account.getOpFlag());
 		pageParam.setAccountId(account.getAccountId());
@@ -315,7 +318,7 @@ public class RoutGetNoticeController {
 				pageParam.setSortOrder("ASC");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOrgId(account.getOrgId());
@@ -339,7 +342,7 @@ public class RoutGetNoticeController {
 	@RequestMapping(value = "/getNoticeTemplate", method = RequestMethod.POST)
 	public RetDataBean getNoticeTemplate(HttpServletRequest request, NoticeTemplate noticeTemplate) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			noticeTemplate.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", noticeTemplateService.selectOneNoticeTemplate(noticeTemplate));
 		} catch (Exception e) {
@@ -373,7 +376,7 @@ public class RoutGetNoticeController {
 			if (StringUtils.isBlank(sortOrder)) {
 				sortOrder = "asc";
 			}
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			String orderBy = sort + " " + sortOrder;
 			PageInfo<Map<String, String>> pageInfo = noticeConfigService.getApproverUserList(pageNumber, pageSize,
 					orderBy, account.getOrgId());
@@ -408,7 +411,7 @@ public class RoutGetNoticeController {
 			if (StringUtils.isBlank(sortOrder)) {
 				sortOrder = "asc";
 			}
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			String orderBy = sort + " " + sortOrder;
 			PageInfo<Map<String, String>> pageInfo = noticeConfigService.getNotApproverUserList(pageNumber, pageSize,
 					orderBy, account.getOrgId());

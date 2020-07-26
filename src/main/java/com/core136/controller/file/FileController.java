@@ -261,7 +261,7 @@ public void getBpmSealSign(HttpServletResponse response,HttpServletRequest reque
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		bpmSealSign.setOrgId(account.getOrgId());
 		bpmSealSign = bpmSealSignService.selectOneBpmSealSign(bpmSealSign);
 		downUtils.getBpmSealSign(bpmSealSign,response);
@@ -347,7 +347,7 @@ public void getBpmSealSign(HttpServletResponse response,HttpServletRequest reque
 		try
 		{
 			String attachId = request.getParameter("attachId");
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Attach attach = new Attach();
 			attach.setAttachId(attachId);
 			attach.setOrgId(account.getOrgId());
@@ -373,7 +373,7 @@ public void getBpmSealSign(HttpServletResponse response,HttpServletRequest reque
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			String headImg = account.getHeadImg();
 			String path = attachpath+"/headimg/"+headImg;
 			downUtils.download(path, response);
@@ -446,7 +446,7 @@ public void getBpmSealSign(HttpServletResponse response,HttpServletRequest reque
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			String imgepath=SysTools.getAppDir()+"/static/gobal/img/error.jpg";
 			if(StringUtils.isBlank(attach.getAttachId()))
 			{
@@ -484,7 +484,7 @@ public void getBpmSealSign(HttpServletResponse response,HttpServletRequest reque
 		try
 		{
 			String attachIds = request.getParameter("attachIds");
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			List<String> attachList = new ArrayList<String>();
 			if(StringUtils.isNotEmpty(attachIds))
 			{
@@ -523,7 +523,7 @@ public void getBpmSealSign(HttpServletResponse response,HttpServletRequest reque
 	{
 		try
 		{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		attach.setOrgId(account.getOrgId());
 		if(!account.getOpFlag().equals("1"))
 		{
@@ -567,7 +567,7 @@ public void getBpmSealSign(HttpServletResponse response,HttpServletRequest reque
 		try
 		{
 			String attachPath="";
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isNotBlank(attach.getAttachId()))
 			{
 				attach.setOrgId(account.getOrgId());
@@ -702,7 +702,7 @@ public void getBpmSealSign(HttpServletResponse response,HttpServletRequest reque
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			photo.setOrgId(account.getOrgId());
 			photo = photoService.selectOnePhoto(photo);
 			String path = photo.getRootPath()+File.separator+fileName;

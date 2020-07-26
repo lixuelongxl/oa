@@ -24,6 +24,7 @@ import com.core136.bean.account.UserInfo;
 import com.core136.bean.notice.Notice;
 import com.core136.bean.notice.NoticeConfig;
 import com.core136.bean.notice.NoticeTemplate;
+import com.core136.service.account.AccountService;
 import com.core136.service.notice.NoticeConfigService;
 import com.core136.service.notice.NoticeService;
 import com.core136.service.notice.NoticeTemplateService;
@@ -55,6 +56,8 @@ public class RoutSetNoticeController {
 	private NoticeTemplateService noticeTemplateService;
 	@Autowired
 	private NoticeConfigService noticeConfigService;
+	@Autowired
+	private AccountService accountService;
 	/**
 	 * 
 	* @Title: sendNotice 
@@ -79,8 +82,8 @@ public class RoutSetNoticeController {
 			{
 				subheading = subheading.substring(0,50)+"...";
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
-			UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+			Account account=accountService.getRedisAccount(request);
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			notice.setNoticeId(SysTools.getGUID());
 			notice.setCreateUser(account.getAccountId());
 			notice.setDelFlag("0");
@@ -120,8 +123,8 @@ public class RoutSetNoticeController {
 				subheading = subheading.substring(0,50)+"...";
 			}
 			notice.setSubheading(subheading);
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
-			UserInfo userInfo=(UserInfo)request.getSession().getAttribute("USER_INFO");
+			Account account=accountService.getRedisAccount(request);
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			notice.setOrgId(account.getOrgId());
 			Example example = new Example(Notice.class);
 			Criteria criteria =example.createCriteria();
@@ -162,7 +165,7 @@ public class RoutSetNoticeController {
 			{
 				notice.setStatus("0");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			notice.setOrgId(account.getOrgId());
 			Example example = new Example(Notice.class);
 			example.createCriteria().andEqualTo("noticeId",notice.getNoticeId()).andEqualTo("orgId",notice.getOrgId());
@@ -187,7 +190,7 @@ public class RoutSetNoticeController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			noticeTemplate.setTemplateId(SysTools.getGUID());
 			noticeTemplate.setOrgId(account.getOrgId());
 			noticeTemplate.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -212,7 +215,7 @@ public class RoutSetNoticeController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(!account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.NotOk("您不是系统管理员,请与管理员联系!");
@@ -238,7 +241,7 @@ public class RoutSetNoticeController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(noticeTemplate.getTemplateId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -270,7 +273,7 @@ public class RoutSetNoticeController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(notice.getNoticeId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -300,7 +303,7 @@ public class RoutSetNoticeController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(noticeTemplate.getTemplateId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -340,7 +343,7 @@ public class RoutSetNoticeController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(!account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.NotOk("您不是系统管理员,请与管理员联系!");

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.core136.bean.account.Account;
 import com.core136.bean.projectbuild.ProjectBuildBpmConfig;
+import com.core136.service.account.AccountService;
 import com.core136.service.projectbuild.ProjectBuildBpmConfigService;
 import org.core136.common.retdataunit.RetDataBean;
 import org.core136.common.retdataunit.RetDataTools;
@@ -36,6 +37,8 @@ import tk.mybatis.mapper.entity.Example;
 public class RoutSetProjectBuildConfigController {
 	@Autowired
 	private ProjectBuildBpmConfigService projectBuildBpmConfigService;
+	@Autowired
+	private AccountService accountService;
 	/**
 	 * 
 	 * @Title: insertProjectBuildBpmConfig   
@@ -51,7 +54,7 @@ public class RoutSetProjectBuildConfigController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			
 			ProjectBuildBpmConfig pc = new ProjectBuildBpmConfig();
 			pc.setOrgId(account.getOrgId());
@@ -94,7 +97,7 @@ public class RoutSetProjectBuildConfigController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			projectBuildBpmConfig.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除BPM配置成功!",projectBuildBpmConfigService.deleteProjectBuildBpmConfig(projectBuildBpmConfig));
 		}catch (Exception e) {

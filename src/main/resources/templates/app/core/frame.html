@@ -126,7 +126,7 @@
 					<div class="searchhelper">全文检索</div>
 				</div>
 				<ul class="nav sidebar-menu">
-					<% var sysMenuList =session.SYS_MENU_LIST; for(item in sysMenuList) { if(item.sysMenuLeave=='0') { %>
+					<% for(item in sysMenuList) { if(item.sysMenuLeave=='0') { %>
 					<li><a href="#" class="menu-dropdown"> <i class="${item.sysMenuPic}"></i> <span class="menu-text"> ${item.sysMenuName}</span> <i class="menu-expand"></i></a>
 						<ul class="submenu">
 							<% for(item1 in sysMenuList) { if(item1.sysMenuLeave==item.sysMenuId) { %>

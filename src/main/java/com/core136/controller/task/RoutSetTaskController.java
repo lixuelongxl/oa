@@ -25,6 +25,7 @@ import com.core136.bean.task.Task;
 import com.core136.bean.task.TaskGanttData;
 import com.core136.bean.task.TaskGanttLink;
 import com.core136.bean.task.TaskProcess;
+import com.core136.service.account.AccountService;
 import com.core136.service.task.TaskGanttDataService;
 import com.core136.service.task.TaskGanttLinkService;
 import com.core136.service.task.TaskProcessService;
@@ -55,7 +56,8 @@ public class RoutSetTaskController {
 	private TaskGanttLinkService taskGanttLinkService;
 	@Autowired
 	private TaskProcessService taskProcessService;
-	
+	@Autowired
+	private AccountService accountService;
 	/**
 	 * 
 	 * @Title: insertTaskProcess   
@@ -71,7 +73,7 @@ public class RoutSetTaskController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			TaskGanttData taskGanttData = new TaskGanttData();
 			taskGanttData.setProgress(progress);
 			taskGanttData.setOrgId(account.getOrgId());
@@ -103,7 +105,7 @@ public class RoutSetTaskController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(taskProcess.getProcessId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -135,7 +137,7 @@ public class RoutSetTaskController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(taskProcess.getProcessId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -168,7 +170,7 @@ public class RoutSetTaskController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			taskGanttLink.setTaskLinkId(SysTools.getGUID());
 			taskGanttLink.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			taskGanttLink.setCreateUser(account.getAccountId());
@@ -195,7 +197,7 @@ public class RoutSetTaskController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(taskGanttLink.getTaskLinkId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -226,7 +228,7 @@ public class RoutSetTaskController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(taskGanttLink.getTaskLinkId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -263,7 +265,7 @@ public class RoutSetTaskController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			taskGanttData.setTaskDataId(SysTools.getGUID());
 			taskGanttData.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			taskGanttData.setCreateUser(account.getAccountId());
@@ -290,7 +292,7 @@ public class RoutSetTaskController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(taskGanttData.getTaskDataId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -323,7 +325,7 @@ public class RoutSetTaskController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(taskGanttData.getTaskDataId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -359,8 +361,8 @@ public class RoutSetTaskController {
 		try
 		{
 			task.setTaskId(SysTools.getGUID());
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
-			UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+			Account account=accountService.getRedisAccount(request);
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			task.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			task.setStatus("0");
 			task.setCreateUser(account.getAccountId());
@@ -388,7 +390,7 @@ public class RoutSetTaskController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(task.getTaskId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -420,8 +422,8 @@ public class RoutSetTaskController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
-			UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+			Account account=accountService.getRedisAccount(request);
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			if(StringUtils.isBlank(task.getTaskId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");

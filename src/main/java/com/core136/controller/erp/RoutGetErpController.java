@@ -21,6 +21,7 @@ import com.core136.bean.erp.ErpMaterielSort;
 import com.core136.bean.erp.ErpOrder;
 import com.core136.bean.erp.ErpProduct;
 import com.core136.bean.erp.ErpProductSort;
+import com.core136.service.account.AccountService;
 import com.core136.service.erp.DoCostService;
 import com.core136.service.erp.ErpBomDetailService;
 import com.core136.service.erp.ErpBomService;
@@ -81,7 +82,8 @@ private DoCostService doCostService;
 private ErpEquipmentService erpEquipmentService;
 @Autowired
 private ErpEquipmentSortService erpEquipmentSortService;
-
+@Autowired
+private AccountService accountService;
 /**
  * 
  * @Title getErpMaterielSortById   
@@ -97,7 +99,7 @@ public RetDataBean getErpMaterielSortById(HttpServletRequest request,ErpMateriel
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		erpMaterielSort.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!", erpMaterielSortService.selectOne(erpMaterielSort));
 	}catch (Exception e) {
@@ -125,7 +127,7 @@ public List<Map<String,Object>> getErpMaterielSortTree(HttpServletRequest reques
 		{
 			sortLeave = sortId;
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return erpMaterielSortService.getErpMaterielSortTree(sortLeave,account.getOrgId());
 	}catch (Exception e) {
 		// TODO: handle exception
@@ -152,7 +154,7 @@ public List<Map<String,Object>> getErpProductSortTree(HttpServletRequest request
 		{
 			sortLeave = sortId;
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return erpProductSortService.getErpProductSortTree(sortLeave,account.getOrgId());
 	}catch (Exception e) {
 		// TODO: handle exception
@@ -175,7 +177,7 @@ public RetDataBean getErpProductSortById(HttpServletRequest request,ErpProductSo
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		erpProductSort.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!", erpProductSortService.selectOne(erpProductSort));
 	}catch (Exception e) {
@@ -199,7 +201,7 @@ public RetDataBean getAllErpUnit(HttpServletRequest request)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", erpUnitService.getAllUnit(account.getOrgId()));
 	}catch (Exception e) {
 		// TODO: handle exception
@@ -246,7 +248,7 @@ public RetDataBean getErpMaterielBySort(
 			sortOrder="asc";
 		}
 		
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	Example example = new Example(ErpMateriel.class);
 	example.setOrderByClause(sort+" "+sortOrder);
 	Criteria criteria = example.createCriteria();
@@ -287,7 +289,7 @@ public List<Map<String,Object>> getErpBomSortTree(HttpServletRequest request,Str
 		{
 			sortLeave = sortId;
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return erpBomSortService.getErpBomSortTree(sortLeave,account.getOrgId());
 	}catch (Exception e) {
 		// TODO: handle exception
@@ -308,7 +310,7 @@ public RetDataBean getErpBomSortById(HttpServletRequest request,ErpBomSort erpBo
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		erpBomSort.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!", erpBomSortService.selectOne(erpBomSort));
 	}catch (Exception e) {
@@ -355,7 +357,7 @@ public RetDataBean getErpBomBySort(
 			sortOrder="asc";
 		}
 		
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	Example example = new Example(ErpBom.class);
 	example.setOrderByClause(sort+" "+sortOrder);
 	Criteria criteria = example.createCriteria();
@@ -390,7 +392,7 @@ public RetDataBean getErpBomById(HttpServletRequest request,ErpBom erpBom)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		erpBom.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!", erpBomService.selectOne(erpBom));
 	}catch (Exception e) {
@@ -412,7 +414,7 @@ public RetDataBean getErpMaterielById(HttpServletRequest request,ErpMateriel erp
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		erpMateriel.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!", erpMaterielService.selectOne(erpMateriel));
 	}catch (Exception e) {
@@ -434,7 +436,7 @@ public RetDataBean selectMateriel2ById(HttpServletRequest request,String materie
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", erpMaterielService.selectMateriel2ById(materielCode+"%", account.getOrgId()));
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -480,7 +482,7 @@ public RetDataBean getErpBomDetailById(
 			sortOrder="asc";
 		}
 	String orderBy = sort+ " " + sortOrder;
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	PageInfo<Map<String, Object>> pageInfo=erpBomDetailService.getBomDetailList(pageNumber,pageSize,orderBy,bomId,"%"+search+"%",account.getOrgId());
 	return RetDataTools.Ok("请求数据成功!", pageInfo);
 	}catch (Exception e) {
@@ -503,7 +505,7 @@ public RetDataBean getErpBomDetailByDetailId(HttpServletRequest request,ErpBomDe
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", erpBomDetailService.getBomDetailByDetailId(erpBomDetail.getBomId(),erpBomDetail.getBomDetailId(),account.getOrgId()));
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -535,7 +537,7 @@ public RetDataBean getErpProductBySort(
 			sortOrder="asc";
 		}
 		
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	Example example = new Example(ErpProduct.class);
 	example.setOrderByClause(sort+" "+sortOrder);
 	Criteria criteria = example.createCriteria();
@@ -571,7 +573,7 @@ public RetDataBean selectProductByName(HttpServletRequest request,String product
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", erpProductService.selectProductByName("%"+productName+"%",account.getOrgId()));
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -591,7 +593,7 @@ public RetDataBean getProductById(HttpServletRequest request,ErpProduct erpProdu
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		erpProduct.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("获取数据成功!", erpProductService.selectOne(erpProduct));
 	}catch (Exception e) {
@@ -614,7 +616,7 @@ public RetDataBean getErpBomTreeBySortId(HttpServletRequest request,String sortI
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", erpBomService.getErpBomTreeBySortId(sortId,account.getOrgId()));
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -658,7 +660,7 @@ public RetDataBean getErpOrderList(
 			sortOrder="asc";
 		}
 	String orderBy = sort+ " " + sortOrder;
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	Example example = new Example(ErpOrder.class);
 	example.setOrderByClause(orderBy);
 	Criteria criteria = example.createCriteria();
@@ -718,7 +720,7 @@ public RetDataBean getErpOrderDetail(
 			sortOrder="asc";
 		}
 	String orderBy = sort+ " " + sortOrder;
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	PageInfo<Map<String, Object>> pageInfo= erpOrderDetailService.getErpOrderDetailList(orderId, "%"+search+"%", account.getOrgId(),pageNumber, pageSize,orderBy);
 	return RetDataTools.Ok("请求数据成功!", pageInfo);
 	}catch (Exception e) {
@@ -741,7 +743,7 @@ public RetDataBean doCostByOrder(HttpServletRequest request,ErpOrder erpOrder)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		erpOrder.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!", doCostService.doCost(erpOrder));
 	}catch (Exception e) {
@@ -788,7 +790,7 @@ public RetDataBean getErpBomByBomIdList(
 			sortOrder="asc";
 		}
 	String orderBy = sort+ " " + sortOrder;
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	PageInfo<Map<String, Object>> pageInfo=erpBomDetailService.getErpBomByBomIdList(pageNumber,pageSize,orderBy,bomId,"%"+search+"%",account.getOrgId());
 	return RetDataTools.Ok("请求数据成功!", pageInfo);
 	}catch (Exception e) {
@@ -812,7 +814,7 @@ public RetDataBean selectBomList2ById(HttpServletRequest request,String bomName 
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", erpBomService.selectBomList2ById("%"+bomName+"%", account.getOrgId()));
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -832,7 +834,7 @@ public RetDataBean getProuctAndBomInfoByProductId(HttpServletRequest request,Str
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", erpProductService.getProuctAndBomInfoByProductId(productId, account.getOrgId()));
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -879,7 +881,7 @@ public RetDataBean getProductMaterielListByBomId(
 			sortOrder="asc";
 		}
 	String orderBy = sort+ " " + sortOrder;
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	PageInfo<Map<String, Object>> pageInfo=erpBomDetailService.getProductMaterielListByBomId(pageNumber,pageSize,orderBy,bomId,account.getOrgId());
 	return RetDataTools.Ok("请求数据成功!", pageInfo);
 	}catch (Exception e) {
@@ -902,7 +904,7 @@ public RetDataBean doCostByProduct(HttpServletRequest request,ErpProduct erpProd
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		erpProduct.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!", doCostService.doCostByProduct(erpProduct));
 	}catch (Exception e) {
@@ -924,7 +926,7 @@ public RetDataBean doCostByBom(HttpServletRequest request,ErpBom erpBom)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		erpBom.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!", doCostService.doCostByBom(erpBom));
 	}catch (Exception e) {
@@ -951,7 +953,7 @@ public List<Map<String,Object>> getErpEquipmentSortTree(HttpServletRequest reque
 		{
 			sortLeave = sortId;
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return erpEquipmentSortService.getErpEquipmentSortTree(sortLeave,account.getOrgId());
 	}catch (Exception e) {
 		// TODO: handle exception
@@ -972,7 +974,7 @@ public RetDataBean getErpEquipmentSortById(HttpServletRequest request,ErpEquipme
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		erpEquipmentSort.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!", erpEquipmentSortService.selectOne(erpEquipmentSort));
 	}catch (Exception e) {
@@ -994,7 +996,7 @@ public RetDataBean getProductSelect2(HttpServletRequest request,String search)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!",erpProductService.getProductSelect2(account.getOrgId(), "%"+search+"%"));
 	}catch (Exception e) {
 		// TODO: handle exception

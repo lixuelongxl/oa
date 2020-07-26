@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.core136.bean.account.Account;
 import com.core136.bean.bi.BiSort;
 import com.core136.bean.bi.BiTemplate;
+import com.core136.service.account.AccountService;
 import com.core136.service.bi.BiSortService;
 import com.core136.service.bi.BiTemplateService;
 import com.core136.service.bi.BiTypeService;
@@ -30,6 +31,8 @@ private BiSortService biSortService;
 private BiTypeService biTypeService;
 @Autowired
 private BiTemplateService biTemplateService;
+@Autowired
+private AccountService accountService;
 
 /**
  * 
@@ -50,7 +53,7 @@ private BiTemplateService biTemplateService;
 			{
 				levelId = sortId;
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return biSortService.getBiSortTree(levelId, account.getOrgId());
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -71,7 +74,7 @@ private BiTemplateService biTemplateService;
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			biSort.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功！", biSortService.selectOne(biSort));
 		}catch (Exception e) {
@@ -94,7 +97,7 @@ private BiTemplateService biTemplateService;
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功！", biTypeService.getAllBiType(account.getOrgId()));
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -137,7 +140,7 @@ private BiTemplateService biTemplateService;
 				sortOrder="asc";
 			}
 		String orderBy = sort+ " " + sortOrder;
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		PageInfo<Map<String, Object>> pageInfo=biTemplateService.getBiTemplateList(pageNumber,pageSize,orderBy,levelId,account.getOrgId(),"%"+search+"%");
 		return RetDataTools.Ok("请求数据成功!", pageInfo);
 		}catch (Exception e) {
@@ -159,7 +162,7 @@ private BiTemplateService biTemplateService;
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			biTemplate.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功！", biTemplateService.selectOne(biTemplate));
 		}catch (Exception e) {

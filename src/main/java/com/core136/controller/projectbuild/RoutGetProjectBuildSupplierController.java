@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.core136.bean.account.Account;
 import com.core136.bean.projectbuild.ProjectBuildSupplier;
 import com.core136.bean.sys.PageParam;
+import com.core136.service.account.AccountService;
 import com.core136.service.projectbuild.ProjectBuildSupplierService;
 import org.core136.common.retdataunit.RetDataBean;
 import org.core136.common.retdataunit.RetDataTools;
@@ -21,6 +22,8 @@ import org.core136.common.utils.StrTools;
 public class RoutGetProjectBuildSupplierController {
 	@Autowired
 	private ProjectBuildSupplierService projectBuildSupplierService;
+	@Autowired
+	private AccountService accountService;
 	/**
 	 * 
 	 * @Title: getSupplierList   
@@ -35,7 +38,7 @@ public class RoutGetProjectBuildSupplierController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			
 			if(StringUtils.isBlank(pageParam.getSortOrder()))
 			{
@@ -71,7 +74,7 @@ public class RoutGetProjectBuildSupplierController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			projectBuildSupplier.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!",projectBuildSupplierService.selectOneProjectBuildSupplier(projectBuildSupplier));
 		}catch (Exception e) {
@@ -93,7 +96,7 @@ public class RoutGetProjectBuildSupplierController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!",projectBuildSupplierService.getSelect2SupplierList(account.getOrgId(),search));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());

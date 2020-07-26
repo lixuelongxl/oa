@@ -32,6 +32,7 @@ import com.core136.bean.bpm.BpmSealSign;
 import com.core136.bean.bpm.BpmSendTo;
 import com.core136.bean.bpm.BpmSort;
 import com.core136.bean.bpm.BpmTemplate;
+import com.core136.service.account.AccountService;
 import com.core136.service.bpm.BpmBiTemplateService;
 import com.core136.service.bpm.BpmBusinessService;
 import com.core136.service.bpm.BpmChildProcessService;
@@ -95,6 +96,8 @@ public class RouteSetBpmController {
 	private BpmBusinessService bpmBusinessService;
 	@Autowired
 	private BpmBiTemplateService bpmBiTemplateService;
+	@Autowired
+	private AccountService accountService;
 	
 	/**
 	 * 
@@ -111,7 +114,7 @@ public class RouteSetBpmController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmBiTemplate.setTemplateId(SysTools.getGUID());
 			bpmBiTemplate.setCreateUser(account.getAccountId());
 			bpmBiTemplate.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -141,7 +144,7 @@ public class RouteSetBpmController {
 			{
 				return RetDataTools.NotOk("请求的参数有问题！请与管理员联系");
 			}
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmBiTemplate.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("BPM报表模版删除成功!", bpmBiTemplateService.deleteBpmBiTemplate(bpmBiTemplate));
 		}catch (Exception e) {
@@ -168,7 +171,7 @@ public class RouteSetBpmController {
 			{
 				return RetDataTools.NotOk("请求的参数有问题！请与管理员联系");
 			}
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(BpmBiTemplate.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("templateId",bpmBiTemplate.getTemplateId());
 			return RetDataTools.Ok("BPM报表模版更新成功!", bpmBiTemplateService.updateBpmBiTemplate(example, bpmBiTemplate));
@@ -193,7 +196,7 @@ public class RouteSetBpmController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmBusiness.setBusinessId(SysTools.getGUID());
 			bpmBusiness.setCreateUser(account.getAccountId());
 			bpmBusiness.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -224,7 +227,7 @@ public class RouteSetBpmController {
 			{
 				return RetDataTools.NotOk("请求的参数有问题！请与管理员联系");
 			}
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmBusiness.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("业务引擎删除成功!", bpmBusinessService.deleteBpmBusiness(bpmBusiness));
 		}catch (Exception e) {
@@ -251,7 +254,7 @@ public class RouteSetBpmController {
 			{
 				return RetDataTools.NotOk("请求的参数有问题！请与管理员联系");
 			}
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(BpmBusiness.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("businessId",bpmBusiness.getBusinessId());
 			bpmBusiness.setOrgId(account.getOrgId());
@@ -282,7 +285,7 @@ public class RouteSetBpmController {
 			{
 				return RetDataTools.NotOk("请求的参数有问题！请与管理员联系");
 			}
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmFormVersion.setOrgId(account.getOrgId());
 			bpmFormVersion = bpmFormVersionService.selectOneBpmFormVserion(bpmFormVersion);
 			return RetDataTools.Ok("表单恢复成功!", bpmFormVersionService.recoveryBpmFormVersion(bpmFormVersion));
@@ -310,7 +313,7 @@ public class RouteSetBpmController {
 			{
 				return RetDataTools.NotOk("请求的参数有问题！请与管理员联系");
 			}
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmFormVersion.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("表单版本删除成功!", bpmFormVersionService.deleteBpmFormVersion(bpmFormVersion));
 		}catch (Exception e) {
@@ -334,7 +337,7 @@ public class RouteSetBpmController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmForm.setOrgId(account.getOrgId());
 			bpmForm = bpmFormService.selectOneBpmForm(bpmForm);
 			return RetDataTools.Ok("生成版本成功!", bpmFormVersionService.setBpmFormVersion(account,bpmForm,title,remark));
@@ -358,7 +361,7 @@ public class RouteSetBpmController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmTemplate.setTemplateId(SysTools.getGUID());
 			bpmTemplate.setCreateUser(account.getAccountId());
 			bpmTemplate.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -389,7 +392,7 @@ public class RouteSetBpmController {
 			{
 				return RetDataTools.NotOk("请求的参数有问题！请与管理员联系");
 			}
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmTemplate.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("模版删除成功!", bpmTemplateService.deleteBpmTemplate(bpmTemplate));
 		}catch (Exception e) {
@@ -416,7 +419,7 @@ public class RouteSetBpmController {
 			{
 				return RetDataTools.NotOk("请求的参数有问题！请与管理员联系");
 			}
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(BpmTemplate.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("templateId",bpmTemplate.getTemplateId());
 			bpmTemplate.setOrgId(account.getOrgId());
@@ -442,7 +445,7 @@ public class RouteSetBpmController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmSendTo.setRevTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			bpmSendTo.setStatus("1");
 			Example example = new Example(BpmSendTo.class);
@@ -467,7 +470,7 @@ public class RouteSetBpmController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(!account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.NotOk("您不是管理员,不能进行导入操作!");
@@ -494,7 +497,7 @@ public class RouteSetBpmController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(!account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.NotOk("您不是管理员,不能进行BPM克隆操作!");
@@ -527,7 +530,7 @@ public class RouteSetBpmController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(!account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.NotOk("您不是管理员,不能进行BPM初始化操作!");
@@ -562,7 +565,7 @@ public class RouteSetBpmController {
 		try
 		{
 			String formId = request.getParameter("formId");
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			BpmForm bpmForm = new BpmForm();
 			bpmForm.setFormId(formId);
 			bpmForm.setOrgId(account.getOrgId());
@@ -602,7 +605,7 @@ public class RouteSetBpmController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(bpmChildProcess.getProcessId()))
 			{
 				return RetDataTools.NotOk("请求的参数有问题,请与管理员联系");
@@ -630,7 +633,7 @@ public class RouteSetBpmController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmPluginsRegister.setPluginsId(SysTools.getGUID());
 			bpmPluginsRegister.setCreateUser(account.getAccountId());
 			bpmPluginsRegister.setStatus("0");
@@ -662,7 +665,7 @@ public class RouteSetBpmController {
 			{
 				return RetDataTools.NotOk("请求参数出错,请与系统管理联系!");
 			}
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmPluginsRegister.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除插件成功!", bpmPluginsRegisterService.deleteBpmPluginsRegist(bpmPluginsRegister));
 		}catch (Exception e) {
@@ -690,7 +693,7 @@ public class RouteSetBpmController {
 			{
 				return RetDataTools.NotOk("请求参数出错,请与系统管理联系!");
 			}
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmPluginsRegister.setOrgId(account.getOrgId());
 			Example example = new Example(BpmPluginsRegister.class);
 			example.createCriteria().andEqualTo("orgId", account.getOrgId()).andEqualTo("pluginsId",bpmPluginsRegister.getPluginsId());
@@ -717,7 +720,7 @@ public class RouteSetBpmController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(addAccountId))
 			{
 				return RetDataTools.NotOk("加签人员不能为空!");
@@ -756,7 +759,7 @@ public class RouteSetBpmController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(addAccountId))
 			{
 				return RetDataTools.NotOk("加签人员不能为空!");
@@ -795,7 +798,7 @@ public class RouteSetBpmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(!account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.NotOk("您不是管理员,请与管理员联系!");
@@ -825,7 +828,7 @@ public class RouteSetBpmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(bpmSealSign.getSealSignId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -853,7 +856,7 @@ public class RouteSetBpmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(bpmSealSign.getSealSignId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -888,7 +891,7 @@ public class RouteSetBpmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(bpmSort.getLevelId()))
 			{
 				bpmSort.setLevelId("0");
@@ -927,7 +930,7 @@ public class RouteSetBpmController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmSort.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功！", bpmSortService.delBpmSort(bpmSort));
 		}catch (Exception e) {
@@ -955,7 +958,7 @@ public class RouteSetBpmController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(bpmSort.getLevelId()))
 			{
 				bpmSort.setLevelId("0");
@@ -985,7 +988,7 @@ public class RouteSetBpmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(!account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.NotOk("对不起,您不是系统管理员!"); 
@@ -1016,7 +1019,7 @@ public class RouteSetBpmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(!account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.NotOk("对不起,您不是系统管理员!"); 
@@ -1056,7 +1059,7 @@ public class RouteSetBpmController {
 	@RequestMapping(value="/updateBpmForm",method=RequestMethod.POST)
 	public RetDataBean updateBpmForm(HttpServletRequest request,BpmForm bpmForm)
 	{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return bpmFormService.doUpdateBpmForm(account,bpmForm);
 	}
 	/**
@@ -1078,7 +1081,7 @@ public class RouteSetBpmController {
 				{
 					return RetDataTools.NotOk("对不起，您请求的参数有问题！");
 				}
-					Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+					Account account=accountService.getRedisAccount(request);
 				if(!account.getOpFlag().equals("1"))
 				{
 					return RetDataTools.NotOk("您不是管理员，请与管理员联系！");
@@ -1106,7 +1109,7 @@ public class RouteSetBpmController {
 	@RequestMapping(value="/updateBpmFormHtmlCode",method=RequestMethod.POST)
 	public RetDataBean updateBpmFormHtmlCode(HttpServletRequest request,BpmForm bpmForm)
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return bpmFormService.updateBpmFormHtmlCode(account,bpmForm);
 }
 
@@ -1122,7 +1125,7 @@ public class RouteSetBpmController {
 @RequestMapping(value="/insertBpmProcess",method=RequestMethod.POST)
 public RetDataBean insertBpmProcess(HttpServletRequest request,BpmProcess bpmProcess,String parentId)
 {
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	return bpmProcessService.createProcessNormal(account,bpmProcess,parentId);
 }
 
@@ -1140,7 +1143,7 @@ public RetDataBean saveBpmProcessLayout(HttpServletRequest request,@RequestBody 
 {
 try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("更新布局成功！", bpmProcessService.saveBpmProcessLayout(bpmProcessList, account));
 	}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -1161,7 +1164,7 @@ public RetDataBean insertBpmFlow(HttpServletRequest request,BpmFlow bpmFlow)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		bpmFlow.setFlowId(SysTools.getGUID());
 		bpmFlow.setCreateUser(account.getAccountId());
 		bpmFlow.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -1189,7 +1192,7 @@ public RetDataBean insertBpmFlow(HttpServletRequest request,BpmFlow bpmFlow)
 @RequestMapping(value="/updateBpmFlow",method=RequestMethod.POST)
 public RetDataBean updateBpmFlow(HttpServletRequest request,BpmFlow bpmFlow)
 {
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	return bpmFlowService.doUpdateBpmFlow(account,bpmFlow);
 }
 
@@ -1211,7 +1214,7 @@ public RetDataBean deleteBpmFlow(HttpServletRequest request,BpmFlow bpmFlow)
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		bpmFlow.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("更新流程成功！", bpmFlowService.deleteBpmFlow(bpmFlow));
 	}catch (Exception e) {
@@ -1231,7 +1234,7 @@ public RetDataBean deleteBpmFlow(HttpServletRequest request,BpmFlow bpmFlow)
 @RequestMapping(value="/updateBpmProcess",method=RequestMethod.POST)
 public RetDataBean updateBpmProcess(HttpServletRequest request,BpmProcess bpmProcess)
 {
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	return  bpmProcessService.doUpdateBpmProcess(account,bpmProcess);
 }		
 /**
@@ -1252,7 +1255,7 @@ public RetDataBean deleteBpmProcess(HttpServletRequest request,BpmProcess bpmPro
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmProcess.setOrgId(account.getOrgId());
 			if(StringUtils.isNotBlank(bpmProcess.getProcessId()))
 			{
@@ -1280,7 +1283,7 @@ public RetDataBean deleteBpmProcess(HttpServletRequest request,BpmProcess bpmPro
 @RequestMapping(value="/toEndProcess",method=RequestMethod.POST)
 public RetDataBean toEndProcess(HttpServletRequest request,BpmProcess bpmProcess)
 {
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	return bpmProcessService.toEndProcess(account, bpmProcess);
 }	
 /**
@@ -1298,7 +1301,7 @@ public RetDataBean quickBpm(HttpServletRequest request,String flowId)
 {
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			BpmFlow bpmFlow = new BpmFlow();
 			bpmFlow.setOrgId(account.getOrgId());
 			bpmFlow.setFlowId(flowId);
@@ -1307,7 +1310,7 @@ public RetDataBean quickBpm(HttpServletRequest request,String flowId)
 			String title = bpmUnitsService.getDocNumByBpmFlow(request, bpmFlow);
 			if(StringUtils.isBlank(title))
 			{
-				UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+				UserInfo userInfo = accountService.getRedisUserInfo(request);;
 				bpmList.setFlowTitle(bpmFlow.getFlowName()+" "+userInfo.getUserName() +" "+SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			}else {
 				bpmList.setFlowTitle(title);
@@ -1343,7 +1346,7 @@ public RetDataBean startBpm(HttpServletRequest request,BpmList bpmList)
 {
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmList.setRunId(SysTools.getGUID());
 			bpmList.setDelFlag("0");
 			bpmList.setStatus("0");
@@ -1375,7 +1378,7 @@ public RetDataBean delBpmList(HttpServletRequest request,BpmList bpmList)
 {
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmList.setOrgId(account.getOrgId());
 			if(account.getOpFlag().equals("1"))
 			{
@@ -1403,7 +1406,7 @@ public RetDataBean stopEntrust(HttpServletRequest request,BpmEntrust bpmEntrust)
 {
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isNotBlank(bpmEntrust.getEntrustId()))
 			{
 				bpmEntrust.setStatus("1");
@@ -1433,7 +1436,7 @@ public RetDataBean delBpm(HttpServletRequest request,String runId, String runPro
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isNotBlank(runProcessId)&&StringUtils.isNotBlank(runId))
 		{
 			return bpmOptService.delBpm(account, runId, runProcessId);
@@ -1462,7 +1465,7 @@ public RetDataBean delEntrust(HttpServletRequest request,BpmEntrust bpmEntrust)
 {
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isNotBlank(bpmEntrust.getEntrustId()))
 			{
 				bpmEntrust.setFromId(account.getAccountId());
@@ -1482,7 +1485,7 @@ public RetDataBean createEntrust(HttpServletRequest request,BpmEntrust bpmEntrus
 {
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isNotBlank(bpmEntrust.getFlowId()))
 			{
 				if(bpmEntrustService.isExist(account.getOrgId(), bpmEntrust.getFlowId(), account.getAccountId())>0)
@@ -1528,7 +1531,7 @@ public RetDataBean goSaveFormData(HttpServletRequest request,BpmList bpmList,Bpm
 		{
 			JSONObject formDataJson = JSONObject.parseObject(formData);
 			Map<String,String> formDataMap =(Map)formDataJson;
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmRunProcess.setOrgId(account.getOrgId());
 			bpmList.setOrgId(account.getOrgId());
 			
@@ -1587,8 +1590,8 @@ public RetDataBean goSaveFormData(HttpServletRequest request,BpmList bpmList,Bpm
 public RetDataBean goNextProcess(HttpServletRequest request,String nextPrcsInfo,String runId,
 		String runProcessId,String remindNextUser,String remindCreateUser,String remindParticipant,String msgContent,String autoSendUser)
 {
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
-	UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+	Account account=accountService.getRedisAccount(request);
+	UserInfo userInfo = accountService.getRedisUserInfo(request);;
 	try
 	{
 	return bpmRunProcessService.goNextProcess(userInfo,account, nextPrcsInfo, runId, runProcessId, remindNextUser,remindCreateUser,remindParticipant, msgContent,autoSendUser);
@@ -1619,7 +1622,7 @@ public RetDataBean doNotPassEndBpm(HttpServletRequest request,String runId,Strin
 			return RetDataTools.NotOk("请求参数有问题!");
 		}else
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("流程结束",bpmRunProcessService.doNotPassEndBpm(account, runId, runProcessId));
 		}
 }catch (Exception e) {
@@ -1651,7 +1654,7 @@ public RetDataBean setGobackOpt(HttpServletRequest request,BpmRunProcess bpmRunP
 			return RetDataTools.NotOk("请求参数有问题!");
 		}else
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmRunProcess.setOrgId(account.getOrgId());
 			bpmRunProcess.setAccountId(account.getAccountId());
 			bpmRunProcess = bpmRunProcessService.selectOne(bpmRunProcess);
@@ -1683,7 +1686,7 @@ public RetDataBean setCanGobackOpt(HttpServletRequest request,String runId,Strin
 			return RetDataTools.NotOk("请求参数有问题!");
 		}else
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			BpmRunProcess bpmRunProcess = new BpmRunProcess();
 			bpmRunProcess.setRunProcessId(runProcessId);
 			bpmRunProcess.setRunId(runId);
@@ -1721,7 +1724,7 @@ public RetDataBean setMaintainGobackOpt(HttpServletRequest request,BpmRunProcess
 			return RetDataTools.NotOk("请求参数有问题!");
 		}else
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			bpmRunProcess.setOrgId(account.getOrgId());
 			bpmRunProcess = bpmRunProcessService.selectOne(bpmRunProcess);
 			return RetDataTools.Ok("管理员回退成功!",bpmRunProcessService.setMaintainGobackOpt(account,bpmRunProcess));
@@ -1750,7 +1753,7 @@ public RetDataBean doCompleteBpm(HttpServletRequest request,String runId,String 
 			if(StringUtils.isNotBlank(runId)&&StringUtils.isNotBlank(runProcessId))
 			{
 				String createTime = SysTools.getTime("yyyy-MM-dd HH:mm:ss");
-				Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+				Account account=accountService.getRedisAccount(request);
 				BpmList bpmList = new BpmList();
 				bpmList.setRunId(runId);
 				bpmList.setOrgId(account.getOrgId());
@@ -1801,8 +1804,8 @@ public RetDataBean changeBpmUser(HttpServletRequest request,String runId,String 
 			return RetDataTools.NotOk("参数有问题!");
 		}else
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
-			UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+			Account account=accountService.getRedisAccount(request);
+			UserInfo userInfo = accountService.getRedisUserInfo(request);;
 			if(!account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.NotOk("您无权限转交BPM流程,请与系统管理员联系!");
@@ -1842,7 +1845,7 @@ public RetDataBean updateBpmList(HttpServletRequest request,BpmList bpmList)
 		{
 			return RetDataTools.NotOk("参数有问题!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		bpmList.setOrgId(account.getOrgId());
 		Example example = new Example(BpmList.class);
 		example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("runId",bpmList.getRunId());
@@ -1870,7 +1873,7 @@ public RetDataBean setFollowOpt(HttpServletRequest request,BpmList bpmList,boole
 		{
 			return RetDataTools.NotOk("参数有问题!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		bpmList.setOrgId(account.getOrgId());
 		bpmList = bpmListService.selectOne(bpmList);
 		return RetDataTools.Ok("关注更新!",bpmListService.setFollow(bpmList, isFollow,account));	
@@ -1893,8 +1896,8 @@ public RetDataBean doBpmUrge(HttpServletRequest request,String runIds) {
 		if(StringUtils.isBlank(runIds)) {
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
-		UserInfo userInfo=(UserInfo)request.getSession().getAttribute("USER_INFO");
+		Account account=accountService.getRedisAccount(request);
+		UserInfo userInfo = accountService.getRedisUserInfo(request);;
 		bpmOptService.doBpmUrge(account,userInfo, runIds);
 		return RetDataTools.Ok("催办信息已发送!","");
 	} catch (Exception e) {
@@ -1917,7 +1920,7 @@ public RetDataBean doBpmUrge(HttpServletRequest request,String runIds) {
 @RequestMapping("/doTaskBack")
 public RetDataBean doTaskBack(HttpServletRequest request,BpmRunProcess bpmRunProcess) {
 	try {
-		UserInfo userInfo=(UserInfo)request.getSession().getAttribute("USER_INFO");
+		UserInfo userInfo = accountService.getRedisUserInfo(request);;
 		if(StringUtils.isBlank(bpmRunProcess.getRunProcessId())) {
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
@@ -1942,7 +1945,7 @@ public RetDataBean doTaskBack(HttpServletRequest request,BpmRunProcess bpmRunPro
 @RequestMapping("/batchUpdateFormCache")
 public RetDataBean batchUpdateFormCache(HttpServletRequest request,String paramStr) {
 	try {
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isBlank(paramStr)) {
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}else
@@ -1976,7 +1979,7 @@ public RetDataBean updateFormCache(HttpServletRequest request,String type,String
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}else
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(account.getOpFlag().equals("1"))
 			{
 				bpmProcess.setOrgId(account.getOrgId());

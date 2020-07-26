@@ -19,6 +19,7 @@ import com.core136.bean.vehicle.VehicleInfo;
 import com.core136.bean.vehicle.VehicleOilCard;
 import com.core136.bean.vehicle.VehicleOperator;
 import com.core136.bean.vehicle.VehicleRepairRecord;
+import com.core136.service.account.AccountService;
 import com.core136.service.vehicle.VehicleApplyService;
 import com.core136.service.vehicle.VehicleInfoService;
 import com.core136.service.vehicle.VehicleOilCardService;
@@ -39,7 +40,8 @@ public class RoutGetVehicleController {
 	private VehicleOilCardService vehicleOilCardService;
 	@Autowired
 	private VehicleRepairRecordService vehicleRepairRecordService;
-	
+	@Autowired
+	private AccountService accountService;
 	/**
 	 * 
 	 * @Title: getAllVehicleList   
@@ -54,7 +56,7 @@ public class RoutGetVehicleController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			VehicleInfo vehicleInfo = new VehicleInfo();
 			vehicleInfo.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", vehicleInfoService.getAllVehicleList(vehicleInfo));
@@ -78,7 +80,7 @@ public class RoutGetVehicleController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!", vehicleInfoService.getCanUsedVehicleList(account.getOrgId()));
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -101,7 +103,7 @@ public class RoutGetVehicleController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			vehicleRepairRecord.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", vehicleRepairRecordService.selectOneVehicleRepairRecord(vehicleRepairRecord));
 		}catch (Exception e) {
@@ -123,7 +125,7 @@ public class RoutGetVehicleController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			vehicleOilCard.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", vehicleOilCardService.selectOneVehicleOilCard(vehicleOilCard));
 		}catch (Exception e) {
@@ -144,7 +146,7 @@ public class RoutGetVehicleController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!", vehicleOilCardService.getCanUsedOilCardList(account.getOrgId()));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -164,7 +166,7 @@ public class RoutGetVehicleController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			VehicleOperator vehicleOperator = new VehicleOperator();
 			vehicleOperator.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", vehicleOperatorService.selectOneVehicleOperator(vehicleOperator));
@@ -188,7 +190,7 @@ public class RoutGetVehicleController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			vehicleApply.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", vehicleApplyService.selectOneVehicleApply(vehicleApply));
 		}catch (Exception e) {
@@ -211,7 +213,7 @@ public class RoutGetVehicleController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			vehicleInfo.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", vehicleInfoService.selectOneVehicleInfo(vehicleInfo));
 		}catch (Exception e) {
@@ -252,7 +254,7 @@ public class RoutGetVehicleController {
 			{
 				pageParam.setSortOrder("desc");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -292,7 +294,7 @@ public class RoutGetVehicleController {
 			{
 				pageParam.setSortOrder("desc");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -331,7 +333,7 @@ public class RoutGetVehicleController {
 			{
 				pageParam.setSortOrder("desc");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOpFlag(account.getOpFlag());
@@ -370,7 +372,7 @@ public class RoutGetVehicleController {
 			{
 				pageParam.setSortOrder("desc");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOpFlag(account.getOpFlag());
@@ -409,7 +411,7 @@ public class RoutGetVehicleController {
 			{
 				pageParam.setSortOrder("desc");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		PageInfo<Map<String, String>> pageInfo=vehicleOilCardService.getVehicleOilCardList(pageParam, oilType, beginTime, endTime);

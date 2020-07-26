@@ -15,6 +15,7 @@ import com.core136.bean.account.Account;
 import com.core136.bean.projectbuild.ProjectBuildContract;
 import com.core136.bean.projectbuild.ProjectBuildContractSort;
 import com.core136.bean.sys.PageParam;
+import com.core136.service.account.AccountService;
 import com.core136.service.projectbuild.ProjectBuildContractService;
 import com.core136.service.projectbuild.ProjectBuildContractSortService;
 import org.core136.common.retdataunit.RetDataBean;
@@ -29,7 +30,8 @@ public class RoutGetProjectBuildContractController {
 private ProjectBuildContractSortService projectBuildContractSortService;
 @Autowired
 private ProjectBuildContractService projectBuildContractService;
-
+@Autowired
+private AccountService accountService;
 /**
  * 
  * @Title: getProjectBuildContractSortTree   
@@ -50,7 +52,7 @@ public List<Map<String,String>> getProjectBuildContractSortTree(HttpServletReque
 		{
 			sortLeave = sortId;
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return projectBuildContractSortService.getProjectBuildContractSortTree(account.getOrgId(), sortLeave);
 	}catch (Exception e) {
 		return null;
@@ -72,7 +74,7 @@ public RetDataBean getProjectBuildContractSortById(HttpServletRequest request,Pr
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		projectBuildPontractSort.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!",projectBuildContractSortService.selectOneProjectBuildContractSort(projectBuildPontractSort));
 	}catch (Exception e) {
@@ -94,7 +96,7 @@ public RetDataBean getProjectBuildContractById(HttpServletRequest request,Projec
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		projectBuildPontract.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!",projectBuildContractService.selectOneProjectBuildContract(projectBuildPontract));
 	}catch (Exception e) {
@@ -135,7 +137,7 @@ public RetDataBean getcontractlist(
 			pageParam.setSortOrder("asc");
 		}
 		
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 	PageInfo<Map<String, String>> pageInfo=projectBuildContractService.getcontractlist(pageParam,sortId);
@@ -183,7 +185,7 @@ public RetDataBean querycontractlist(
 			pageParam.setSortOrder("asc");
 		}
 		
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 	PageInfo<Map<String, String>> pageInfo=projectBuildContractService.querycontractlist(pageParam,beginTime,endTime,signUser,type);

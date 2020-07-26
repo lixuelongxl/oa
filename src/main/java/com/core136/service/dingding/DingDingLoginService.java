@@ -8,9 +8,11 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.lang.StringUtils;
 import org.core136.common.SessionMap;
 import org.core136.common.SysRunConfig;
+import org.core136.common.auth.LoginAccountInfo;
 import org.core136.common.enums.EventTypeEnums;
 import org.core136.common.utils.StrTools;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.core136.bean.account.Account;
@@ -25,10 +27,13 @@ import com.core136.service.account.UserInfoService;
 import com.core136.service.account.UserPrivService;
 import com.core136.service.sys.SysLogService;
 import com.core136.service.sys.SysMenuService;
+import com.core136.unit.RedisUtil;
 import com.taobao.api.ApiException;
 
 @Service
 public class DingDingLoginService {
+	@Value("${validity.landing}")
+	private Integer validity;
 	@Autowired
 	private AccountService accountService;
 	@Autowired
@@ -41,6 +46,8 @@ public class DingDingLoginService {
 	private SysMenuService sysMenuService;
 	@Autowired
 	private UserPrivService userPrivService;
+	@Autowired
+	private RedisUtil redisUtil;
 
 /**
  * 
@@ -55,6 +62,7 @@ public class DingDingLoginService {
  */
 	public void dingDingLogin(HttpServletRequest request,String dAccountId,String orgId) throws ApiException
 	{
+		LoginAccountInfo loginAccountInfo = new LoginAccountInfo();
 		boolean isRegist = SysRunConfig.getIsRegist();
 		if(isRegist)
 		{
@@ -79,8 +87,8 @@ public class DingDingLoginService {
 				List<String> sysMenuIdList = StrTools.strToList(sysMenuIds);
 				List<String> mobilePrivList = StrTools.strToList(mobilePrivIds);
 				List<SysMenu> sysMenuList = sysMenuService.getSysMenuByAccount(sysMenuIdList, account.getOrgId());
-				session.setAttribute("SYS_MENU_LIST", sysMenuList);
-				session.setAttribute("SYS_APP_LIST", mobilePrivList);
+				loginAccountInfo.setSysMenuList(sysMenuList);
+				loginAccountInfo.setMobilePrivList(mobilePrivList);
 				}
 				Unit unit  = new Unit();
 				unit.setOrgId(orgId);
@@ -88,15 +96,16 @@ public class DingDingLoginService {
 				session.setAttribute("UNIT", unit);
 				if(unit.getOrgName().equals(""))
 				{
-					session.setAttribute("SOFT_NAME",AppGobalConstant.SOFT_NAME);
+					loginAccountInfo.setSoftName(AppGobalConstant.SOFT_NAME);
 				}else
 				{
-					session.setAttribute("SOFT_NAME",unit.getOrgName());
+					loginAccountInfo.setSoftName(unit.getOrgName());
 				}
-				session.setAttribute("LOGIN_USER", account);
+				loginAccountInfo.setAccount(account);
 				UserInfo userInfo  = userInfoService.getUserInfoByAccountId(account.getAccountId(), account.getOrgId());
-				session.setAttribute("USER_INFO", userInfo);
-				SessionMap.addSession(session);
+				loginAccountInfo.setUserInfo(userInfo);
+				redisUtil.set("account_"+session.getId(), loginAccountInfo);
+				redisUtil.expire("account_"+session.getId(), validity*60);
 				accountService.updateLastLoginTime(account);
 				sysLogService.createLog(request, account,EventTypeEnums.SYS_LOG_LOGIN,"钉钉登陆成功");
 		}else
@@ -124,11 +133,11 @@ public class DingDingLoginService {
 		Unit unit = new Unit();
 		unit.setOrgId(orgId);
 		unit = unitService.selectOne(unit);
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(account==null)
 		{
 			dingDingLogin(request,dAccountId,orgId);
-			account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			account=accountService.getRedisAccount(request);
 		}
 		return account;
 	}
@@ -148,11 +157,11 @@ public class DingDingLoginService {
 	 */
 	public UserInfo getDUserinfo(HttpServletRequest request,String dAccountId,String orgId) throws ApiException
 	{
-		UserInfo userInfo=(UserInfo)request.getSession().getAttribute("USER_INFO");
+		UserInfo userInfo = accountService.getRedisUserInfo(request);
 		if(userInfo==null)
 		{
 			dingDingLogin(request,dAccountId,orgId);
-			userInfo=(UserInfo)request.getSession().getAttribute("USER_INFO");
+			userInfo=accountService.getRedisUserInfo(request);
 		}
 		return userInfo;
 	}

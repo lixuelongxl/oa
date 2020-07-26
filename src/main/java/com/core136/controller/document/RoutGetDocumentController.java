@@ -32,6 +32,7 @@ import com.core136.bean.document.DocumentRunProcess;
 import com.core136.bean.document.DocumentSort;
 import com.core136.bean.document.DocumentTemplate;
 import com.core136.bean.sys.PageParam;
+import com.core136.service.account.AccountService;
 import com.core136.service.document.DocumentChildProcessService;
 import com.core136.service.document.DocumentEntrustService;
 import com.core136.service.document.DocumentFlowService;
@@ -99,7 +100,8 @@ public class RoutGetDocumentController {
 	private DocumentEntrustService documentEntrustService;
 	@Autowired
 	private DocumentSendToService documentSendToService;
-	
+	@Autowired
+	private AccountService accountService;
 	
 	/**
 	 * 
@@ -116,7 +118,7 @@ public class RoutGetDocumentController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(documentFlow.getFlowId()))
 			{
 				return;
@@ -171,7 +173,7 @@ public class RoutGetDocumentController {
 			{
 				pageParam.setSortOrder("asc");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOrgId(account.getOrgId());
@@ -197,7 +199,7 @@ public class RoutGetDocumentController {
 	@RequestMapping(value = "/getEntrustUser", method = RequestMethod.POST)
 	public RetDataBean getEntrustUser(HttpServletRequest request, DocumentRunProcess documentRunProcess) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentRunProcess.setOrgId(account.getOrgId());
 			documentRunProcess = documentRunProcessService.selectOne(documentRunProcess);
 			return RetDataTools.Ok("请求成功！", documentProcessService.getEntrustUser(documentRunProcess));
@@ -217,7 +219,7 @@ public class RoutGetDocumentController {
 	@RequestMapping(value = "/getMyAllDocumentFlowList", method = RequestMethod.POST)
 	public RetDataBean getMyAllDocumentFlowList(HttpServletRequest request) {
 		try {
-			UserInfo userInfo = (UserInfo) request.getSession().getAttribute("USER_INFO");
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			return RetDataTools.Ok("请求成功！",documentFlowService.getMyAllDocumentFlowList(userInfo.getOrgId(), userInfo.getAccountId(), userInfo.getDeptId(), userInfo.getLeadLeave()));
 		} catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -244,7 +246,7 @@ public class RoutGetDocumentController {
 			if (StringUtils.isBlank(pageParam.getSortOrder())) {
 				pageParam.setSortOrder("ASC");
 			}
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			String orderBy = pageParam.getSort() + " " + pageParam.getSortOrder();
 			pageParam.setAccountId(account.getAccountId());
 			pageParam.setOrgId(account.getOrgId());
@@ -270,7 +272,7 @@ public class RoutGetDocumentController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentPluginsRegister.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", documentPluginsRegisterService.selectOneDocumentPluginsRegister(documentPluginsRegister));
 		}catch (Exception e) {
@@ -304,7 +306,7 @@ public class RoutGetDocumentController {
 			{
 				pageParam.setSortOrder("asc");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		PageInfo<Map<String, String>> pageInfo=documentPluginsRegisterService.getDocumentPluginsList(pageParam);
@@ -327,7 +329,7 @@ public class RoutGetDocumentController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account = accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求数据成功!", documentNumberService.getDocumentNumberListForSelect(account.getOrgId()));
 			}catch (Exception e) {
 				return RetDataTools.Error(e.getMessage());
@@ -349,7 +351,7 @@ public class RoutGetDocumentController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentNumber.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求数据成功!", documentNumberService.selectOneDocumentNumber(documentNumber));
 			}catch (Exception e) {
@@ -386,7 +388,7 @@ public class RoutGetDocumentController {
 				pageParam.setSortOrder("asc");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -413,7 +415,7 @@ public class RoutGetDocumentController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(documentForm.getFormId()))
 			{
 				return RetDataTools.NotOk("请求有参数有问题,请与管理员联系!");
@@ -470,7 +472,7 @@ public class RoutGetDocumentController {
 				pageParam.setSortOrder("asc");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -496,7 +498,7 @@ public class RoutGetDocumentController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentForm.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求数据成功!", documentMobileFormService.getDocumentMobileFormFieldsForSet(documentForm));
 			}catch (Exception e) {
@@ -546,7 +548,7 @@ public class RoutGetDocumentController {
 				pageParam.setSortOrder("asc");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -571,7 +573,7 @@ public class RoutGetDocumentController {
 	{
 		try
 		{
-			UserInfo userInfo=(UserInfo)request.getSession().getAttribute("USER_INFO");
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			return RetDataTools.Ok("请求成功!", documentListService.getDocumentSummary(userInfo.getOrgId(),flowId));
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -592,7 +594,7 @@ public class RoutGetDocumentController {
 	{
 		try
 		{
-			UserInfo userInfo=(UserInfo)request.getSession().getAttribute("USER_INFO");
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			String nowTime = SysTools.getTime("yyyy-MM-dd");
 			return RetDataTools.Ok("请求成功!", documentRunProcessService.getMyProcessListForDesk(userInfo.getOrgId(),userInfo.getAccountId(),nowTime));
 		}catch (Exception e) {
@@ -648,7 +650,7 @@ public class RoutGetDocumentController {
 			{
 				sortOrder="asc";
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		String orderBy = sort+ " " + sortOrder;
 		PageInfo<Map<String, String>> pageInfo =  documentListService.getDocumentMaintainList(pageNumber, pageSize, orderBy,  account.getOrgId(),documentRunNo,createUser, flowId, beginTime, endTime, "%"+search+"%");
 		return RetDataTools.Ok("请求数据成功!", pageInfo);
@@ -705,7 +707,7 @@ public class RoutGetDocumentController {
 			{
 				sortOrder="asc";
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		String orderBy = sort+ " " + sortOrder;
 		PageInfo<Map<String, String>> pageInfo =  documentListService.getDocumentToFilingList(pageNumber, pageSize, orderBy,  account.getOrgId(),documentRunNo,createUser, flowId, beginTime, endTime, "%"+search+"%");
 		return RetDataTools.Ok("请求数据成功!", pageInfo);
@@ -742,7 +744,7 @@ public class RoutGetDocumentController {
 			}
 			String orderBy = pageParam.getSort() + " " + pageParam.getSortOrder();
 			pageParam.setOrderBy(orderBy);
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			pageParam.setOrgId(account.getOrgId());
 			pageParam.setAccountId(account.getAccountId());
 			PageInfo<Map<String, Object>> pageInfo = documentListService.searchDocumentList(pageParam,flowId,id,createUser,status,managePriv);
@@ -790,7 +792,7 @@ public class RoutGetDocumentController {
 				{
 					pageParam.setSortOrder("asc");
 				}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
 			pageParam.setAccountId(account.getAccountId());
 			pageParam.setOrgId(account.getOrgId());
@@ -839,7 +841,7 @@ public class RoutGetDocumentController {
 				{
 					pageParam.setSortOrder("asc");
 				}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
 			pageParam.setAccountId(account.getAccountId());
 			pageParam.setOrgId(account.getOrgId());
@@ -872,7 +874,7 @@ public class RoutGetDocumentController {
 			{
 				return RetDataTools.NotOk("您请求的参数有问题,请与管理员联系!");
 			}
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!", documentRunProcessService.isCantTaskBackFlag(account.getOrgId(),runId,account.getAccountId()));
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -892,7 +894,7 @@ public class RoutGetDocumentController {
 	@RequestMapping(value = "/getCanTaskBackRunProcessList", method = RequestMethod.POST)
 	public RetDataBean getCanTaskBackRunProcessList(HttpServletRequest request, String runId) {
 		try {
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求数据成功!", documentRunProcessService.getCanTaskBackRunProcessList(account.getOrgId(), runId, account.getAccountId()));
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -940,7 +942,7 @@ public class RoutGetDocumentController {
 			{
 				pageParam.setSortOrder("asc");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOrgId(account.getOrgId());
@@ -993,7 +995,7 @@ public class RoutGetDocumentController {
 			{
 				pageParam.setSortOrder("asc");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOrgId(account.getOrgId());
@@ -1016,7 +1018,7 @@ public class RoutGetDocumentController {
 	@RequestMapping(value = "/getCorssDocumentFlowList", method = RequestMethod.POST)
 	public RetDataBean getCorssDocumentFlowList(HttpServletRequest request) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功！", documentFlowService.getCorssDocumentFlowList(account.getOrgId(),account.getAccountId()));
 		} catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -1034,7 +1036,7 @@ public class RoutGetDocumentController {
 	@RequestMapping(value = "/getCorssDocumentFlowList1", method = RequestMethod.POST)
 	public RetDataBean getCorssDocumentFlowList1(HttpServletRequest request) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功！", documentFlowService.getCorssDocumentFlowList(account.getOrgId(),account.getAccountId()));
 		} catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -1056,7 +1058,7 @@ public class RoutGetDocumentController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!", documentRunProcessService.getRunPrcsStep(account.getOrgId(),runId));
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -1100,7 +1102,7 @@ public class RoutGetDocumentController {
 	@RequestMapping(value = "/getAllDocumentFlowList", method = RequestMethod.POST)
 	public RetDataBean getAllDocumentFlowList(HttpServletRequest request) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功！", documentFlowService.getAllDocumentFlowListByManage(account.getOrgId()));
 		} catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -1121,7 +1123,7 @@ public class RoutGetDocumentController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			doucmentTemplate.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求数据成功!", documentTemplateService.selectOneDocumentTemplate(doucmentTemplate));
 			}catch (Exception e) {
@@ -1151,7 +1153,7 @@ public class RoutGetDocumentController {
 			if (StringUtils.isBlank(pageParam.getSortOrder())) {
 				pageParam.setSortOrder("asc");
 			}
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			String orderBy = pageParam.getSort() + " " + pageParam.getSortOrder();
 			pageParam.setOrderBy(orderBy);
 			pageParam.setAccountId(account.getAccountId());
@@ -1179,7 +1181,7 @@ public class RoutGetDocumentController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentProcess.setOrgId(account.getOrgId());
 			documentProcess = documentProcessService.selectOne(documentProcess);
 			return RetDataTools.Ok("请求数据成功!", documentProcessService.getUserInfoInPrivForMobile(documentProcess,search));
@@ -1201,7 +1203,7 @@ public class RoutGetDocumentController {
 	@RequestMapping(value = "/getDocumentPrintData", method = RequestMethod.POST)
 	public RetDataBean getDocumentPrintData(HttpServletRequest request, DocumentList documentList) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentList.setOrgId(account.getOrgId());
 			documentList = documentListService.selectOne(documentList);
 			if(SysTools.isMobileDevice(request))
@@ -1233,7 +1235,7 @@ public class RoutGetDocumentController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentOptService.getFromDataForHtml(request, response, account, documentList);
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -1255,7 +1257,7 @@ public class RoutGetDocumentController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentOptService.getFromDataForWord(request, response, account, documentList);
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -1277,7 +1279,7 @@ public class RoutGetDocumentController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentOptService.getFromDataForPdf(request, response, account, documentList);
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -1297,7 +1299,7 @@ public class RoutGetDocumentController {
 	@RequestMapping(value = "/getDocumentFlow", method = RequestMethod.POST)
 	public RetDataBean getDocumentFlow(HttpServletRequest request, DocumentFlow documentFlow) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentFlow.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功！", documentFlowService.selectOneDocumentFlow(documentFlow));
 		} catch (Exception e) {
@@ -1321,7 +1323,7 @@ public class RoutGetDocumentController {
 	@RequestMapping(value = "/getDocumentOpUseByPorcess", method = RequestMethod.POST)
 	public RetDataBean getDocumentOpUseByPorcess(HttpServletRequest request, String deptId, DocumentProcess documentProcess) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentProcess.setOrgId(account.getOrgId());
 			documentProcess = documentProcessService.selectOne(documentProcess);
 			if (StringUtils.isBlank(deptId)) {
@@ -1346,7 +1348,7 @@ public class RoutGetDocumentController {
 	public List<Map<String, Object>> getDocumentOpUserDept(HttpServletRequest request, String deptId,
 			DocumentProcess documentProcess) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentProcess.setOrgId(account.getOrgId());
 			documentProcess = documentProcessService.selectOne(documentProcess);
 			String orgLeaveId = "0";
@@ -1375,7 +1377,7 @@ public class RoutGetDocumentController {
 	@RequestMapping(value = "/getDocumentChileTableData", method = RequestMethod.POST)
 	public RetDataBean getDocumentChileTableData(HttpServletRequest request, String eName, String runId) {
 		try {
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			DocumentList documentList = new DocumentList();
 			documentList.setRunId(runId);
 			documentList.setOrgId(account.getOrgId());
@@ -1438,7 +1440,7 @@ public class RoutGetDocumentController {
 			{
 				sortOrder="desc";
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		String orderBy = sort+ " " + sortOrder;
 		PageInfo<Map<String, String>> pageInfo = new PageInfo<Map<String, String>>();
 		if(searchType.equals("1"))
@@ -1477,7 +1479,7 @@ public class RoutGetDocumentController {
 	@RequestMapping(value = "/getChangeDocumentUserStep", method = RequestMethod.POST)
 	public RetDataBean getChangeDocumentUserStep(HttpServletRequest request, String runId) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			String orgId = account.getOrgId();
 			List<Map<String, String>> btbList = documentRunProcessService.getChangeDocumentUserStep(orgId, runId);
 			return RetDataTools.Ok("请求成功！", btbList);
@@ -1497,7 +1499,7 @@ public class RoutGetDocumentController {
 		@RequestMapping(value = "/getNowStep", method = RequestMethod.POST)
 		public RetDataBean getNowStep(HttpServletRequest request, String runId) {
 			try {
-				Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+				Account account=accountService.getRedisAccount(request);
 				String orgId = account.getOrgId();
 				List<Map<String, String>> btbList = documentRunProcessService.getNowStep(orgId, runId);
 				return RetDataTools.Ok("请求成功！", btbList);
@@ -1519,7 +1521,7 @@ public class RoutGetDocumentController {
 	@RequestMapping(value = "/getCanGoBckProcessList", method = RequestMethod.POST)
 	public RetDataBean getCanGoBckProcessList(HttpServletRequest request, String runId) {
 		try {
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求数据成功!", documentRunProcessService.getCanGoBckProcessList(account.getOrgId(), runId));
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -1569,7 +1571,7 @@ public class RoutGetDocumentController {
 				pageParam.setSortOrder("asc");
 			}
 			String orderBy = pageParam.getSort() + " " + pageParam.getSortOrder();
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			pageParam.setOrderBy(orderBy);
 			pageParam.setAccountId(account.getAccountId());
 			pageParam.setOrgId(account.getOrgId());
@@ -1609,7 +1611,7 @@ public class RoutGetDocumentController {
 				pageParam.setSortOrder("asc");
 			}
 			String orderBy = pageParam.getSort() + " " + pageParam.getSortOrder();
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			pageParam.setOrderBy(orderBy);
 			pageParam.setAccountId(account.getAccountId());
 			pageParam.setOrgId(account.getOrgId());
@@ -1635,7 +1637,7 @@ public class RoutGetDocumentController {
 	@RequestMapping(value = "/getProcessInfo", method = RequestMethod.POST)
 	public RetDataBean getProcessInfo(HttpServletRequest request, DocumentList documentList, DocumentRunProcess documentRunProcess) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentList.setOrgId(account.getOrgId());
 			documentList = documentListService.selectOne(documentList);
 			documentRunProcess=documentRunProcessService.getDocumentRunProcess(account.getOrgId(),documentRunProcess.getRunId(),documentRunProcess.getRunProcessId(),account.getAccountId());
@@ -1659,7 +1661,7 @@ public class RoutGetDocumentController {
 	@RequestMapping(value = "/getDocNumByDocumentFlow", method = RequestMethod.POST)
 	public RetDataBean getDocNumByDocumentFlow(HttpServletRequest request,DocumentFlow documentFlow) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentFlow.setOrgId(account.getOrgId());
 			documentFlow = documentFlowService.selectOneDocumentFlow(documentFlow);
 			return RetDataTools.Ok("请求成功！", documentUnitsService.getDocNumByDocumentFlow(request, documentFlow));
@@ -1682,7 +1684,7 @@ public class RoutGetDocumentController {
 	{
 		try
 		{
-			UserInfo userInfo = (UserInfo) request.getSession().getAttribute("USER_INFO");
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			return RetDataTools.Ok("请求成功!", documentFlowService.getMyDocumentReceiptFlowList(userInfo.getOrgId(),userInfo.getAccountId(),userInfo.getDeptId(),userInfo.getLeadId()));
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -1704,7 +1706,7 @@ public class RoutGetDocumentController {
 	{
 		try
 		{
-			UserInfo userInfo = (UserInfo) request.getSession().getAttribute("USER_INFO");
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			return RetDataTools.Ok("请求成功!", documentFlowService.getMyDocumentDispatchFlowList(userInfo.getOrgId(),userInfo.getAccountId(),userInfo.getDeptId(),userInfo.getLeadId()));
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -1724,7 +1726,7 @@ public class RoutGetDocumentController {
 		@RequestMapping(value = "/getAllDocumentFlowListByManage", method = RequestMethod.POST)
 		public RetDataBean getAllDocumentFlowListByManage(HttpServletRequest request) {
 			try {
-				Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+				Account account=accountService.getRedisAccount(request);
 				if(account.getOpFlag().equals("1"))
 				{
 					return RetDataTools.Ok("请求成功！", documentFlowService.getAllDocumentFlowListByManage(account.getOrgId()));
@@ -1751,7 +1753,7 @@ public class RoutGetDocumentController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!", documentPluginsRegisterService.getDocumentPluginsListForProcess(account.getOrgId()));
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -1770,7 +1772,7 @@ public class RoutGetDocumentController {
 	@RequestMapping(value = "/getDocumentProcessPrcs", method = RequestMethod.POST)
 	public RetDataBean getDocumentProcessPrcs(HttpServletRequest request, DocumentProcess documentProcess) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentProcess.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功！", documentProcessService.selectOne(documentProcess));
 		} catch (Exception e) {
@@ -1793,7 +1795,7 @@ public class RoutGetDocumentController {
 	{
 		try
 		{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentChildProcess.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求数据成功!", documentChildProcessService.getDocumentChildProcessPrcs(account.getOrgId(),documentChildProcess.getProcessId()));
 			}catch (Exception e) {
@@ -1815,8 +1817,7 @@ public class RoutGetDocumentController {
 		try {
 			if(StringUtils.isNotBlank(flowId)&&StringUtils.isNotBlank(processId))
 			{
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
-			
+			Account account=accountService.getRedisAccount(request);
 			String[] prcsArr;
 			if(processIds.indexOf(",")>0)
 			{
@@ -1851,7 +1852,7 @@ public class RoutGetDocumentController {
 	 */
 	@RequestMapping(value = "/getDocumentProcess", method = RequestMethod.POST)
 	public RetDataBean getDocumentProcess(HttpServletRequest request, DocumentProcess documentProcess) {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 			return documentProcessService.getDocumentProcess(account, documentProcess);
 	}
 	
@@ -1868,7 +1869,7 @@ public class RoutGetDocumentController {
 	@RequestMapping(value = "/getDocumentFormFieldByFlowId", method = RequestMethod.POST)
 	public RetDataBean getDocumentFormFieldByFlowId(HttpServletRequest request, DocumentFlow documentFlow) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentFlow.setOrgId(account.getOrgId());
 			documentFlow = documentFlowService.selectOneDocumentFlow(documentFlow);
 			DocumentForm documentForm = new DocumentForm();
@@ -1900,7 +1901,7 @@ public class RoutGetDocumentController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentFlow.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", documentFlowService.selectOneDocumentFlow(documentFlow));
 		}catch (Exception e) {
@@ -1920,7 +1921,7 @@ public class RoutGetDocumentController {
 	@RequestMapping(value = "/getDocumentFlowList", method = RequestMethod.POST)
 	public RetDataBean getDocumentFlowList(HttpServletRequest request) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功！", documentFlowService.getDocumentFlowList(account.getOrgId()));
 		} catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -1940,7 +1941,7 @@ public class RoutGetDocumentController {
 	@RequestMapping(value = "/getDocumentFormFieldByFormId", method = RequestMethod.POST)
 	public RetDataBean getDocumentFormFieldByFormId(HttpServletRequest request, String formId) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			DocumentForm documentForm = new DocumentForm();
 			documentForm.setFormId(formId);
 			documentForm.setOrgId(account.getOrgId());
@@ -1963,7 +1964,7 @@ public class RoutGetDocumentController {
 	@RequestMapping(value = "/getDocumentFormSelectList", method = RequestMethod.POST)
 	public RetDataBean getDocumentFormSelectList(HttpServletRequest request) {
 		try {
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功！", documentFormService.getDocumentFormSelectList(account.getOrgId()));
 		} catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -1999,7 +2000,7 @@ public class RoutGetDocumentController {
 				pageParam.setSortOrder("asc");
 			}
 			
-		Account account = (Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -2025,7 +2026,7 @@ public class RoutGetDocumentController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentForm.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", documentFormService.selectOneDocumentForm(documentForm));
 		}catch (Exception e) {
@@ -2048,7 +2049,7 @@ public class RoutGetDocumentController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			documentSort.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", documentSortService.selectOneDocumentSort(documentSort));
 		}catch (Exception e) {
@@ -2075,7 +2076,7 @@ public class RoutGetDocumentController {
 			if (StringUtils.isNotBlank(sortId)) {
 			levelId = sortId;
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return documentSortService.getDocumentSortTree(account.getOrgId(),levelId);
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -2099,7 +2100,7 @@ public class RoutGetDocumentController {
 		try {
 			List<Map<String, Object>> tmplist1 = new ArrayList<Map<String, Object>>();
 			List<Map<String, Object>> tmplist2 = new ArrayList<Map<String, Object>>();
-			Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if (StringUtils.isNotBlank(sortId)) {
 				levelId = sortId;
 				if (!levelId.equals("0")) {

@@ -17,6 +17,7 @@ import com.core136.bean.file.Knowledge;
 import com.core136.bean.file.KnowledgeSearch;
 import com.core136.bean.file.KnowledgeSort;
 import com.core136.bean.sys.PageParam;
+import com.core136.service.account.AccountService;
 import com.core136.service.file.KnowledgeLearnService;
 import com.core136.service.file.KnowledgeSearchService;
 import com.core136.service.file.KnowledgeService;
@@ -38,7 +39,8 @@ public class RoutGetKnowledgeController {
 	private KnowledgeLearnService knowledgeLearnService;
 	@Autowired
 	private KnowledgeSearchService knowledgeSearchService;
-	
+	@Autowired
+	private AccountService accountService;
 	
 	/**
 	 * 
@@ -54,7 +56,7 @@ public class RoutGetKnowledgeController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return  RetDataTools.Ok("请求数据成功!",knowledgeSortService.getAllKnowledgeSortMap(account.getOrgId()));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -76,7 +78,7 @@ public class RoutGetKnowledgeController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return  RetDataTools.Ok("请求数据成功!",knowledgeSearchService.getHostKeyWords(account.getOrgId()));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -120,8 +122,8 @@ public class RoutGetKnowledgeController {
 				pageParam.setSortOrder("asc");
 			}
 			
-		UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
-		Account account = (Account)request.getSession().getAttribute("LOGIN_USER");
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setAccountId(userInfo.getAccountId());
 		pageParam.setOpFlag(account.getOpFlag());
 		pageParam.setOrgId(userInfo.getOrgId());
@@ -169,8 +171,8 @@ public class RoutGetKnowledgeController {
 				pageParam.setSortOrder("asc");
 			}
 			
-		UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
-		Account account = (Account)request.getSession().getAttribute("LOGIN_USER");
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setAccountId(userInfo.getAccountId());
 		pageParam.setDeptId(userInfo.getDeptId());
 		pageParam.setLevelId(userInfo.getLeadLeave());
@@ -200,7 +202,7 @@ public class RoutGetKnowledgeController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			KnowledgeSearch knowledgeSearch = new KnowledgeSearch();
 			knowledgeSearch.setKeyWord(keywords);
 			knowledgeSearch.setOrgId(account.getOrgId());
@@ -226,7 +228,7 @@ public class RoutGetKnowledgeController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			knowledge.setOrgId(account.getOrgId());
 			return  RetDataTools.Ok("请求数据成功!",knowledgeService.selectOneKnowledge(knowledge));
 		}catch (Exception e) {
@@ -255,7 +257,7 @@ public class RoutGetKnowledgeController {
 			{
 				sortLeave = sortId;
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return knowledgeSortService.getKnowledgeSortTree(account.getOrgId(), sortLeave);
 		}catch (Exception e) {
 			return null;
@@ -278,7 +280,7 @@ public class RoutGetKnowledgeController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			knowledgeSort.setOrgId(account.getOrgId());
 			return  RetDataTools.Ok("请求数据成功!",knowledgeSortService.selectOneKnowledgeSort(knowledgeSort));
 		}catch (Exception e) {

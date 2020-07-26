@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.core136.bean.account.Account;
+import com.core136.service.account.AccountService;
 import com.core136.service.echarts.EchartsBpmService;
 
 @RestController
@@ -17,6 +18,8 @@ import com.core136.service.echarts.EchartsBpmService;
 public class RouteGetBiBpmController {
 @Autowired
 private EchartsBpmService echartsBpmService;
+@Autowired
+private AccountService accountService;
 /**
  * 
  * @Title: getBiBpmLowByMonthLine   
@@ -29,7 +32,7 @@ private EchartsBpmService echartsBpmService;
 @RequestMapping(value = "/getBiBpmLowByMonthLine", method = RequestMethod.POST)
 public RetDataBean getBiBpmLowByMonthLine(HttpServletRequest request) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsBpmService.getBiBpmLowByMonthLine(account));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -49,7 +52,7 @@ public RetDataBean getBiBpmLowByMonthLine(HttpServletRequest request) {
 @RequestMapping(value = "/getBiBpmFlowByAccountPie", method = RequestMethod.POST)
 public RetDataBean getBiBpmFlowByAccountPie(HttpServletRequest request) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsBpmService.getBiBpmFlowByAccountPie(account));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -69,7 +72,7 @@ public RetDataBean getBiBpmFlowByAccountPie(HttpServletRequest request) {
 @RequestMapping(value = "/getBiBpmFlowPie", method = RequestMethod.POST)
 public RetDataBean getBiBpmFlowPie(HttpServletRequest request) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsBpmService.getBiBpmFlowPie(account));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -89,7 +92,7 @@ public RetDataBean getBiBpmFlowPie(HttpServletRequest request) {
 @RequestMapping(value = "/getBiBpmFlowByDeptPie", method = RequestMethod.POST)
 public RetDataBean getBiBpmFlowByDeptPie(HttpServletRequest request) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsBpmService.getBiBpmFlowByDeptPie(account));
 	} catch (Exception e) {
 		e.printStackTrace();

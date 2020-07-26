@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.core136.bean.account.Account;
 import com.core136.bean.bi.BiSort;
 import com.core136.bean.bi.BiTemplate;
+import com.core136.service.account.AccountService;
 import com.core136.service.bi.BiSortService;
 import com.core136.service.bi.BiTemplateService;
 import org.core136.common.retdataunit.RetDataBean;
@@ -26,6 +27,8 @@ public class RouteSetBiController {
 private BiSortService biSortService;
 @Autowired
 private BiTemplateService biTemplateService;
+@Autowired
+private AccountService accountService;
 /**
  * 
  * @Title insertBiSort   
@@ -40,7 +43,7 @@ private BiTemplateService biTemplateService;
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			biSort.setSortId(SysTools.getGUID());
 			if(StringUtils.isBlank(biSort.getLevelId()))
 			{
@@ -74,7 +77,7 @@ private BiTemplateService biTemplateService;
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			biSort.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除BI分类成功！", biSortService.deleteBiSort(biSort));
 		}catch (Exception e) {
@@ -101,7 +104,7 @@ private BiTemplateService biTemplateService;
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			biSort.setOrgId(account.getOrgId());
 			Example example = new Example(BiSort.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("sortId",biSort.getSortId());
@@ -130,7 +133,7 @@ private BiTemplateService biTemplateService;
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			biTemplate.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("模版删除成功！", biTemplateService.deleteBiTemplate(biTemplate));
 		}catch (Exception e) {
@@ -153,7 +156,7 @@ private BiTemplateService biTemplateService;
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			biTemplate.setTemplateId(SysTools.getGUID());
 			biTemplate.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			biTemplate.setCreateUser(account.getAccountId());
@@ -183,7 +186,7 @@ private BiTemplateService biTemplateService;
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			biTemplate.setOrgId(account.getOrgId());
 			Example example = new Example(BiTemplate.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("templateId",biTemplate.getTemplateId());

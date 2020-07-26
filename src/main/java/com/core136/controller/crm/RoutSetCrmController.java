@@ -23,6 +23,7 @@ import com.core136.bean.crm.CrmMyProduct;
 import com.core136.bean.crm.CrmPriv;
 import com.core136.bean.crm.CrmQuotation;
 import com.core136.bean.crm.CrmTags;
+import com.core136.service.account.AccountService;
 import com.core136.service.crm.CrmContactRecordService;
 import com.core136.service.crm.CrmContractInfoService;
 import com.core136.service.crm.CrmCustomerService;
@@ -74,7 +75,8 @@ public class RoutSetCrmController {
 	private CrmQuotationService crmQuotationService;
 	@Autowired
 	private CrmQuotationMxService crmQuotationMxService;
-	
+	@Autowired
+	private AccountService accountService;
 	
 	/**
 	 * 
@@ -91,7 +93,7 @@ public class RoutSetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			crmQuotation.setQuotationId(SysTools.getGUID());
 			crmQuotation.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			crmQuotation.setCreateUser(account.getAccountId());
@@ -122,7 +124,7 @@ public class RoutSetCrmController {
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}else
 			{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			crmQuotation.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除报价单成功!",crmQuotationService.deleteCrmQuotation(crmQuotation));
 			}
@@ -153,7 +155,7 @@ public class RoutSetCrmController {
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}else
 			{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(CrmQuotation.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("quotationId",crmQuotation.getQuotationId());
 			return RetDataTools.Ok("更新报价单成功!", crmQuotationService.updateCrmQuotation(example,crmQuotation));
@@ -178,7 +180,7 @@ public class RoutSetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			crmCustomer.setCustomerId(SysTools.getGUID());
 			crmCustomer.setCreateUser(account.getAccountId());
 			crmCustomer.setKeepUser(account.getAccountId());
@@ -208,7 +210,7 @@ public class RoutSetCrmController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(!account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.NotOk("对不起,您不是系统管理员!"); 
@@ -237,7 +239,7 @@ public class RoutSetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(!account.getOpFlag().equals("1"))
 			{
 				CrmPriv crmPriv = new CrmPriv();
@@ -295,7 +297,7 @@ public class RoutSetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			crmLinkMan.setLinkManId(SysTools.getGUID());
 			crmLinkMan.setCreateUser(account.getAccountId());
 			crmLinkMan.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -324,7 +326,7 @@ public class RoutSetCrmController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			crmLinkMan.setOrgId(account.getOrgId());
 			if(account.getOpFlag().equals("1"))
 			{
@@ -382,7 +384,7 @@ public class RoutSetCrmController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			crmLinkMan.setOrgId(account.getOrgId());
 			if(account.getOpFlag().equals("1"))
 			{
@@ -441,7 +443,7 @@ public class RoutSetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			crmContactRecord.setRecordId(SysTools.getGUID());
 			crmContactRecord.setCreateUser(account.getAccountId());
 			crmContactRecord.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -470,7 +472,7 @@ public class RoutSetCrmController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			crmCustomer.setOrgId(account.getOrgId());
 			Example example = new Example(CrmCustomer.class);
 			example.createCriteria().andEqualTo("customerId",crmCustomer.getCustomerId()).andEqualTo("orgId",crmCustomer.getOrgId());
@@ -494,7 +496,7 @@ public class RoutSetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(account.getOpFlag().equals("1"))
 			{
 				CrmPriv newCrmPriv = new CrmPriv();
@@ -533,8 +535,8 @@ public class RoutSetCrmController {
 	@RequestMapping(value="/sendWebMail",method=RequestMethod.POST)
 	public RetDataBean sendWebMail(HttpServletRequest request,String to,String subject,String content,String attachId,String sendServiceType)
 	{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
-			UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+			Account account=accountService.getRedisAccount(request);
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			return crmLinkManService.sendWebMail(account, to, subject, content, attachId, sendServiceType,userInfo);
 	}
 	
@@ -553,7 +555,7 @@ public class RoutSetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			crmMyProduct.setProductId(SysTools.getGUID());
 			crmMyProduct.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("添加产品成功!", crmMyProductService.insertCrmMyProduct(crmMyProduct));
@@ -583,7 +585,7 @@ public class RoutSetCrmController {
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}else
 			{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			crmMyProduct.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除产品成功!", crmMyProductService.deleteCrmMyProduct(crmMyProduct));
 			}
@@ -614,7 +616,7 @@ public class RoutSetCrmController {
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}else
 			{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(CrmMyProduct.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("productId",crmMyProduct.getProductId());
 			return RetDataTools.Ok("更新产品成功!", crmMyProductService.updateCrmMyProduct(crmMyProduct, example));
@@ -640,7 +642,7 @@ public class RoutSetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			crmTags.setTagsId(SysTools.getGUID());
 			crmTags.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("添加企业标签成功!", crmTagsService.insertCrmTags(crmTags));
@@ -670,7 +672,7 @@ public class RoutSetCrmController {
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}else
 			{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			crmTags.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除企业标签成功!", crmTagsService.deleteCrmTags(crmTags));
 			}
@@ -700,7 +702,7 @@ public class RoutSetCrmController {
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}else
 			{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(CrmTags.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("tagsId",crmTags.getTagsId());
 			return RetDataTools.Ok("更新企业标签成功!", crmTagsService.updateCrmTags(crmTags, example));
@@ -726,7 +728,7 @@ public class RoutSetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			crmIndustry.setIndustryId(SysTools.getGUID());
 			crmIndustry.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("添加行业分类成功!", crmIndustryService.insertCrmIndustry(crmIndustry));
@@ -755,7 +757,7 @@ public class RoutSetCrmController {
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}else
 			{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			crmIndustry.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除行业分类成功!", crmIndustryService.deleteCrmIndustry(crmIndustry));
 			}
@@ -785,7 +787,7 @@ public class RoutSetCrmController {
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}else
 			{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(CrmIndustry.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("industryId",crmIndustry.getIndustryId());
 			return RetDataTools.Ok("更新行业分类成功!", crmIndustryService.updateCrmIndustry(crmIndustry, example));
@@ -810,7 +812,7 @@ public class RoutSetCrmController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			crmContractInfo.setContractInfoId(SysTools.getGUID());
 			crmContractInfo.setCreateUser(account.getAccountId());
 			crmContractInfo.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -842,7 +844,7 @@ public class RoutSetCrmController {
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}else
 			{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			crmContractInfo.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除银行信息成功!", crmContractInfoService.deleteCrmContractInfo(crmContractInfo));
 			}
@@ -871,7 +873,7 @@ public class RoutSetCrmController {
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}else
 			{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			crmContractInfo.setOrgId(account.getOrgId());
 			Example example =  new Example(CrmContractInfo.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("contractInfoId",crmContractInfo.getContractInfoId());
@@ -899,7 +901,7 @@ public class RoutSetCrmController {
 		try
 		{
 			JSONArray jsonArr = JSONObject.parseArray(detail);
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			crmInquiry.setInquiryId(SysTools.getGUID());
 			crmInquiry.setCreateUser(account.getAccountId());
 			crmInquiry.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -931,7 +933,7 @@ public class RoutSetCrmController {
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}else
 			{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			crmInquiry.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除银行信息成功!", crmInquiryService.deleteCrmInquiry(crmInquiry));
 			}
@@ -962,7 +964,7 @@ public class RoutSetCrmController {
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}else
 			{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			crmInquiry.setOrgId(account.getOrgId());
 			Example example =  new Example(CrmInquiry.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("inquiryId",crmInquiry.getInquiryId());

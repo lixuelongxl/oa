@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.core136.bean.account.Account;
+import com.core136.service.account.AccountService;
 import com.core136.service.echarts.EchartsCrmService;
 
 @RestController
@@ -17,7 +18,8 @@ import com.core136.service.echarts.EchartsCrmService;
 public class RouteGetBiCrmController {
 @Autowired
 private EchartsCrmService echartsCrmService;
-
+@Autowired
+private AccountService accountService;
 /**
  * 
  * @Title: getBiCustomerIndustryPie   
@@ -30,7 +32,7 @@ private EchartsCrmService echartsCrmService;
 @RequestMapping(value = "/getBiCustomerIndustryPie", method = RequestMethod.POST)
 public RetDataBean getBiCustomerIndustryPie(HttpServletRequest request) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsCrmService.getBiCustomerIndustryPie(account));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -50,7 +52,7 @@ public RetDataBean getBiCustomerIndustryPie(HttpServletRequest request) {
 @RequestMapping(value = "/getBiCustomerKeepUserPie", method = RequestMethod.POST)
 public RetDataBean getBiCustomerKeepUserPie(HttpServletRequest request) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsCrmService.getBiCustomerKeepUserPie(account));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -70,7 +72,7 @@ public RetDataBean getBiCustomerKeepUserPie(HttpServletRequest request) {
 @RequestMapping(value = "/getBiCustomerAreaPie", method = RequestMethod.POST)
 public RetDataBean getBiCustomerAreaPie(HttpServletRequest request) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsCrmService.getBiCustomerAreaPie(account));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -89,7 +91,7 @@ public RetDataBean getBiCustomerAreaPie(HttpServletRequest request) {
 @RequestMapping(value = "/getBiCustomerLevelPie", method = RequestMethod.POST)
 public RetDataBean getBiCustomerLevelPie(HttpServletRequest request) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsCrmService.getBiCustomerLevelPie(account));
 	} catch (Exception e) {
 		e.printStackTrace();

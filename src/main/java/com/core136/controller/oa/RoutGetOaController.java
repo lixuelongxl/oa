@@ -90,7 +90,8 @@ private AccountService accountservice;
 private MobileSmsService mobileSmsService;
 @Autowired
 private LeadActivityService leadActivityService;
-
+@Autowired
+private AccountService accountService;
 /**
  * 
  * @Title: getLeadActivityLsit   
@@ -127,7 +128,7 @@ public RetDataBean getLeadActivityLsit(
 			pageParam.setSortOrder("DESC");
 		}
 		
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOpFlag(account.getOpFlag());
 	String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
 	pageParam.setOrderBy(orderBy);
@@ -154,7 +155,7 @@ public RetDataBean getLeadActivityById(HttpServletRequest request,LeadActivity l
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		leadActivity.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("数据请求成功!",leadActivityService.selectOneLeadActivity(leadActivity));
 	}catch (Exception e) {
@@ -175,7 +176,7 @@ public RetDataBean getMyDiaryInfo(HttpServletRequest request)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", diaryService.getMyDiaryInfo(account.getOrgId(),account.getAccountId()));
 	}catch (Exception e) {
 		// TODO: handle exception
@@ -197,7 +198,7 @@ public RetDataBean getDiaryCommentsList(HttpServletRequest request,String diaryI
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", diaryCommentsService.getDiaryCommentsList(account.getOrgId(),diaryId));
 	}catch (Exception e) {
 		// TODO: handle exception
@@ -221,7 +222,7 @@ public RetDataBean getCommentsList(HttpServletRequest request,String newsId)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", newsCommentsService.getCommentsList(account.getOrgId(),newsId));
 	}catch (Exception e) {
 		// TODO: handle exception
@@ -268,7 +269,7 @@ public RetDataBean getTotalAttendList(
 			pageParam.setSortOrder("DESC");
 		}
 		
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOpFlag(account.getOpFlag());
 	String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
 	pageParam.setOrderBy(orderBy);
@@ -312,8 +313,8 @@ public RetDataBean getShowDiaryList(
 		{
 			pageParam.setSortOrder("asc");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
-		UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+		Account account=accountService.getRedisAccount(request);
+		UserInfo userInfo = accountService.getRedisUserInfo(request);
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setDeptId(userInfo.getDeptId());
 	pageParam.setLevelId(userInfo.getLeadLeave());
@@ -349,7 +350,7 @@ public RetDataBean getMySubordinatesDiaryList(
 		{
 			pageParam.setSortOrder("asc");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		List<String> list = new ArrayList<String>();
 		if(StringUtils.isBlank(accountId))
 		{
@@ -394,7 +395,7 @@ public RetDataBean getAttendYearList(HttpServletRequest request)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", attendService.getAttendYearList(account.getOrgId(),account.getAccountId()));
 	}catch (Exception e) {
 		// TODO: handle exception
@@ -417,7 +418,7 @@ public RetDataBean getMonthList(HttpServletRequest request,String year)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", attendService.getMonthList(account.getOrgId(),year,account.getAccountId()));
 	}catch (Exception e) {
 		// TODO: handle exception
@@ -440,7 +441,7 @@ public RetDataBean getMyAllAttendList(HttpServletRequest request,String year,Str
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", attendService.getMyAllAttendList(account.getOrgId(),year,account.getAccountId(),type));
 	}catch (Exception e) {
 		// TODO: handle exception
@@ -462,7 +463,7 @@ public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
 {
 	try
 	{
-		UserInfo userInfo=(UserInfo)request.getSession().getAttribute("USER_INFO");
+		UserInfo userInfo = accountService.getRedisUserInfo(request);
 		return RetDataTools.Ok("请求成功!", newsService.getMyNewsListForDesk(userInfo.getOrgId(),SysTools.getTime("yyyy-MM-dd"), userInfo.getAccountId(), userInfo.getDeptId(), userInfo.getLeadLeave()));
 	}catch (Exception e) {
 		// TODO: handle exception
@@ -503,7 +504,7 @@ public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
 				pageParam.setSortOrder("DESC");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOpFlag(account.getOpFlag());
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOrgId(account.getOrgId());
@@ -551,7 +552,7 @@ public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
 				pageParam.setSortOrder("ASC");
 			}
 		String endTime = SysTools.getTime("yyyy-MM-dd");
-		UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+		UserInfo userInfo = accountService.getRedisUserInfo(request);
 		String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
 		pageParam.setOrgId(userInfo.getOrgId());
 		pageParam.setAccountId(userInfo.getAccountId());
@@ -577,7 +578,7 @@ public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
 	{
 		try
 		{
-			UserInfo userInfo=(UserInfo)request.getSession().getAttribute("USER_INFO");
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			return RetDataTools.Ok("请求成功!", newsService.getReadNews(userInfo.getOrgId(),userInfo.getAccountId(), userInfo.getDeptId(), userInfo.getLeadLeave(), news.getNewsId()));
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -598,7 +599,7 @@ public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			String nowDate = SysTools.getTime("yyyy-MM-dd")+" 00:00:00";
 			return RetDataTools.Ok("请求成功!", calendarService.getMyCalendarList(account.getOrgId(), account.getAccountId(), nowDate));
 		}catch (Exception e) {
@@ -621,7 +622,7 @@ public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			String beginTime = SysTools.getTime("yyyy-MM-dd")+" 00:00:00";
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
 			Date date = sdf.parse(beginTime); 
@@ -649,7 +650,7 @@ public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			calendar.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", calendarService.selectOneCalendar(calendar));
 		}catch (Exception e) {
@@ -690,7 +691,7 @@ public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
 			{
 				pageParam.setSortOrder("desc");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -715,7 +716,7 @@ public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			news.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", newsService.selectOneNews(news));
 		}catch (Exception e) {
@@ -738,8 +739,8 @@ public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
 	public RetDataBean getMobileNewsInfo(HttpServletRequest request, News news) {
 		try {
 			
-			Account account = (Account)request.getSession().getAttribute("LOGIN_USER");
-			UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+			Account account=accountService.getRedisAccount(request);
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			if(StringUtils.isBlank(news.getNewsId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题!");
@@ -786,7 +787,7 @@ public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
 			{
 				pageParam.setSortOrder("ASC");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setAccountId(account.getAccountId());
@@ -833,7 +834,7 @@ public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
 			{
 				pageParam.setSortOrder("ASC");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setAccountId(account.getAccountId());
@@ -860,7 +861,7 @@ public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			DiaryPriv diaryPriv = new DiaryPriv();
 			diaryPriv.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!",diaryPrivService.selectOneDiaryPriv(diaryPriv));
@@ -905,7 +906,7 @@ public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
 			{
 				pageParam.setSortOrder("asc");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
 		pageParam.setOrgId(account.getOrgId());
 		if(StringUtils.isNotBlank(accountId))
@@ -964,7 +965,7 @@ public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
 			{
 				sortOrder="asc";
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		String orderBy = sort+ " " + sortOrder;
 		PageInfo<Map<String, Object>> pageInfo=diaryService.getOtherDiaryList(pageNumber, pageSize, orderBy, account.getOrgId(),accountId,beginTime,endTime,"%"+search+"%");
 		return RetDataTools.Ok("请求数据成功!", pageInfo);
@@ -991,7 +992,7 @@ public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			diary.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!",diaryService.selectOneDiary(diary));
 		}catch (Exception e) {
@@ -1015,7 +1016,7 @@ public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			attendConfig.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!", attendConfigService.selectOneAttendConfig(attendConfig));
 		}catch (Exception e) {
@@ -1037,7 +1038,7 @@ public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!", attendConfigService.getAllAttendConfigList(account.getOrgId()));
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -1059,7 +1060,7 @@ public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!", attendConfigService.getMyAttendConfigList(account.getOrgId()));
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -1098,7 +1099,7 @@ public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
 				pageParam.setSortOrder("asc");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		AttendConfig attendConfig = new AttendConfig();

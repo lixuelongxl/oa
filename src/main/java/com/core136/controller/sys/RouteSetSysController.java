@@ -25,6 +25,7 @@ import com.core136.bean.sys.SysInterface;
 import com.core136.bean.sys.SysOrgConfig;
 import com.core136.bean.sys.SysProfile;
 import com.core136.bean.sys.SysTimingTask;
+import com.core136.service.account.AccountService;
 import com.core136.service.oa.ShortcutService;
 import com.core136.service.sys.AppConfigService;
 import com.core136.service.sys.CodeClassService;
@@ -77,7 +78,8 @@ private ShortcutService shortcutService;
 private SysTimingTaskService sysTimingTaskService;
 @Autowired
 private SysProfileService sysProfileService;
-
+@Autowired
+private AccountService accountService;
 /**
  * 
  * @Title: updateAppConfig   
@@ -97,7 +99,7 @@ public RetDataBean updateAppConfig(HttpServletRequest request,AppConfig appConfi
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			return RetDataTools.NotOk("您不是管理员，请与管理员联系!");
@@ -129,7 +131,7 @@ public RetDataBean deleteAppConfig(HttpServletRequest request,AppConfig appConfi
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			return RetDataTools.NotOk("您不是管理员，请与管理员联系!");
@@ -156,7 +158,7 @@ public RetDataBean insertAppConfig(HttpServletRequest request,AppConfig appConfi
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		appConfig.setAppId(SysTools.getGUID());
 		appConfig.setCreateUser(account.getAccountId());
 		appConfig.setStatus("0");
@@ -206,7 +208,7 @@ public RetDataBean addOrgConfig(HttpServletRequest request,SysOrgConfig sysOrgCo
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isBlank(orgName))
 		{
 			return RetDataTools.NotOk("新机构名称不能为空!");	
@@ -242,7 +244,7 @@ public RetDataBean addOrgConfig(HttpServletRequest request,SysOrgConfig sysOrgCo
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			sysDbSource.setDbSourceId(SysTools.getGUID());
 			sysDbSource.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			sysDbSource.setOrgId(account.getOrgId());
@@ -269,7 +271,7 @@ public RetDataBean addOrgConfig(HttpServletRequest request,SysOrgConfig sysOrgCo
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			sysDbSource.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			sysDbSource.setOrgId(account.getOrgId());
 			Example example = new Example(SysDbSource.class);
@@ -297,7 +299,7 @@ public RetDataBean addOrgConfig(HttpServletRequest request,SysOrgConfig sysOrgCo
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(!account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.NotOk("您不是管理员，请与管理员联系!");
@@ -323,7 +325,7 @@ public RetDataBean addOrgConfig(HttpServletRequest request,SysOrgConfig sysOrgCo
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			sysConfig.setOrgId(account.getOrgId());
 			SysConfig newSysConfig = new SysConfig();
 			newSysConfig.setOrgId(sysConfig.getOrgId());
@@ -362,7 +364,7 @@ public RetDataBean addOrgConfig(HttpServletRequest request,SysOrgConfig sysOrgCo
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			codeClass.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除成功！",codeClassService.deleteCodeClass(codeClass));
 		}catch (Exception e) {
@@ -389,7 +391,7 @@ public RetDataBean addOrgConfig(HttpServletRequest request,SysOrgConfig sysOrgCo
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(!account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.NotOk("对不起,您不是系统管理员,请与管理员联系!");
@@ -417,7 +419,7 @@ public RetDataBean addOrgConfig(HttpServletRequest request,SysOrgConfig sysOrgCo
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			codeClass.setCodeClassId(SysTools.getGUID());
 			codeClass.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("添加成功！",codeClassService.insertCodeClass(codeClass));
@@ -444,7 +446,7 @@ public RetDataBean addOrgConfig(HttpServletRequest request,SysOrgConfig sysOrgCo
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(CodeClass.class);
 			example.createCriteria().andEqualTo("codeClassId",codeClass.getCodeClassId()).andEqualTo("orgId",account.getOrgId());
 			return RetDataTools.Ok("更新成功！",codeClassService.updateCodeClass(codeClass, example));
@@ -467,7 +469,7 @@ public RetDataBean addOrgConfig(HttpServletRequest request,SysOrgConfig sysOrgCo
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(account.getOpFlag().equals("1"))
 			{
 			SmsConfig smsConfig = new SmsConfig();
@@ -507,7 +509,7 @@ public RetDataBean addOrgConfig(HttpServletRequest request,SysOrgConfig sysOrgCo
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(!account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.NotOk("非系统管理员,请与系统管理员联系!");
@@ -544,7 +546,7 @@ public RetDataBean addOrgConfig(HttpServletRequest request,SysOrgConfig sysOrgCo
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(sysDeskConfig.getDeskConfigId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题!");
@@ -578,7 +580,7 @@ public RetDataBean addOrgConfig(HttpServletRequest request,SysOrgConfig sysOrgCo
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(sysDeskConfig.getDeskConfigId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题!");
@@ -611,7 +613,7 @@ public RetDataBean addOrgConfig(HttpServletRequest request,SysOrgConfig sysOrgCo
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Shortcut shortcut1 = new Shortcut();
 			shortcut1.setCreateUser(account.getAccountId());
 			shortcut1.setOrgId(account.getOrgId());
@@ -649,7 +651,7 @@ public RetDataBean addOrgConfig(HttpServletRequest request,SysOrgConfig sysOrgCo
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			sysTimingTask.setTaskId(SysTools.getGUID());
 			sysTimingTask.setCreateUser(account.getAccountId());
 			sysTimingTask.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -675,7 +677,7 @@ public RetDataBean addOrgConfig(HttpServletRequest request,SysOrgConfig sysOrgCo
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(sysTimingTask.getTaskId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题!");
@@ -708,7 +710,7 @@ public RetDataBean addOrgConfig(HttpServletRequest request,SysOrgConfig sysOrgCo
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(sysTimingTask.getTaskId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题!");
@@ -749,7 +751,7 @@ public RetDataBean addOrgConfig(HttpServletRequest request,SysOrgConfig sysOrgCo
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(!account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.NotOk("您不是管理员，请与管理员联系!");

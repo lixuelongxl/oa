@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.core136.bean.account.Account;
+import com.core136.service.account.AccountService;
 import com.core136.service.echarts.EchartsHrService;
 
 @RestController
@@ -17,6 +18,8 @@ import com.core136.service.echarts.EchartsHrService;
 public class RouteGetBiHrController {
 @Autowired
 private EchartsHrService echartsHrService;
+@Autowired
+private AccountService accountService;
 
 /**
  * 
@@ -32,7 +35,7 @@ private EchartsHrService echartsHrService;
 @RequestMapping(value = "/getCareTableForAnalysis", method = RequestMethod.POST)
 public RetDataBean getCareTableForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getCareTableForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -53,7 +56,7 @@ public RetDataBean getCareTableForAnalysis(HttpServletRequest request,String dep
 @RequestMapping(value = "/getCareBarForAnalysis", method = RequestMethod.POST)
 public RetDataBean getCareBarForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getCareBarForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -76,7 +79,7 @@ public RetDataBean getCareBarForAnalysis(HttpServletRequest request,String deptI
 @RequestMapping(value = "/getCarePieForAnalysis", method = RequestMethod.POST)
 public RetDataBean getCarePieForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getCarePieForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -98,7 +101,7 @@ public RetDataBean getCarePieForAnalysis(HttpServletRequest request,String deptI
 @RequestMapping(value = "/getReinstatTableForAnalysis", method = RequestMethod.POST)
 public RetDataBean getReinstatTableForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getReinstatTableForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -119,7 +122,7 @@ public RetDataBean getReinstatTableForAnalysis(HttpServletRequest request,String
 @RequestMapping(value = "/getReinstatBarForAnalysis", method = RequestMethod.POST)
 public RetDataBean getReinstatBarForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getReinstatBarForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -142,7 +145,7 @@ public RetDataBean getReinstatBarForAnalysis(HttpServletRequest request,String d
 @RequestMapping(value = "/getReinstatPieForAnalysis", method = RequestMethod.POST)
 public RetDataBean getReinstatPieForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getReinstatPieForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -163,7 +166,7 @@ public RetDataBean getReinstatPieForAnalysis(HttpServletRequest request,String d
 @RequestMapping(value = "/getEvaluationTableForAnalysis", method = RequestMethod.POST)
 public RetDataBean getEvaluationTableForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getEvaluationTableForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -184,7 +187,7 @@ public RetDataBean getEvaluationTableForAnalysis(HttpServletRequest request,Stri
 @RequestMapping(value = "/getEvaluationBarForAnalysis", method = RequestMethod.POST)
 public RetDataBean getEvaluationBarForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getEvaluationBarForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -207,7 +210,7 @@ public RetDataBean getEvaluationBarForAnalysis(HttpServletRequest request,String
 @RequestMapping(value = "/getEvaluationPieForAnalysis", method = RequestMethod.POST)
 public RetDataBean getEvaluationPieForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getEvaluationPieForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -230,7 +233,7 @@ public RetDataBean getEvaluationPieForAnalysis(HttpServletRequest request,String
 @RequestMapping(value = "/getLeaveTableForAnalysis", method = RequestMethod.POST)
 public RetDataBean getLeaveTableForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getLeaveTableForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -251,7 +254,7 @@ public RetDataBean getLeaveTableForAnalysis(HttpServletRequest request,String de
 @RequestMapping(value = "/getLeaveBarForAnalysis", method = RequestMethod.POST)
 public RetDataBean getLeaveBarForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getLeaveBarForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -274,7 +277,7 @@ public RetDataBean getLeaveBarForAnalysis(HttpServletRequest request,String dept
 @RequestMapping(value = "/getLeavePieForAnalysis", method = RequestMethod.POST)
 public RetDataBean getLeavePieForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getLeavePieForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -296,7 +299,7 @@ public RetDataBean getLeavePieForAnalysis(HttpServletRequest request,String dept
 @RequestMapping(value = "/getTransferTableForAnalysis", method = RequestMethod.POST)
 public RetDataBean getTransferTableForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getTransferTableForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -317,7 +320,7 @@ public RetDataBean getTransferTableForAnalysis(HttpServletRequest request,String
 @RequestMapping(value = "/getTransferBarForAnalysis", method = RequestMethod.POST)
 public RetDataBean getTransferBarForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getTransferBarForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -340,7 +343,7 @@ public RetDataBean getTransferBarForAnalysis(HttpServletRequest request,String d
 @RequestMapping(value = "/getTransferPieForAnalysis", method = RequestMethod.POST)
 public RetDataBean getTransferPieForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getTransferPieForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -364,7 +367,7 @@ public RetDataBean getTransferPieForAnalysis(HttpServletRequest request,String d
 @RequestMapping(value = "/getSkillsTableForAnalysis", method = RequestMethod.POST)
 public RetDataBean getSkillsTableForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getSkillsTableForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -385,7 +388,7 @@ public RetDataBean getSkillsTableForAnalysis(HttpServletRequest request,String d
 @RequestMapping(value = "/getSkillsBarForAnalysis", method = RequestMethod.POST)
 public RetDataBean getSkillsBarForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getSkillsBarForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -408,7 +411,7 @@ public RetDataBean getSkillsBarForAnalysis(HttpServletRequest request,String dep
 @RequestMapping(value = "/getSkillsPieForAnalysis", method = RequestMethod.POST)
 public RetDataBean getSkillsPieForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getSkillsPieForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -430,7 +433,7 @@ public RetDataBean getSkillsPieForAnalysis(HttpServletRequest request,String dep
 @RequestMapping(value = "/getLearnTableForAnalysis", method = RequestMethod.POST)
 public RetDataBean getLearnTableForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getLearnTableForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -451,7 +454,7 @@ public RetDataBean getLearnTableForAnalysis(HttpServletRequest request,String de
 @RequestMapping(value = "/getLearnBarForAnalysis", method = RequestMethod.POST)
 public RetDataBean getLearnBarForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getLearnBarForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -474,7 +477,7 @@ public RetDataBean getLearnBarForAnalysis(HttpServletRequest request,String dept
 @RequestMapping(value = "/getLearnPieForAnalysis", method = RequestMethod.POST)
 public RetDataBean getLearnPieForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getLearnPieForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -498,7 +501,7 @@ public RetDataBean getLearnPieForAnalysis(HttpServletRequest request,String dept
 @RequestMapping(value = "/getLicenceTableForAnalysis", method = RequestMethod.POST)
 public RetDataBean getLicenceTableForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getLicenceTableForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -519,7 +522,7 @@ public RetDataBean getLicenceTableForAnalysis(HttpServletRequest request,String 
 @RequestMapping(value = "/getLicenceBarForAnalysis", method = RequestMethod.POST)
 public RetDataBean getLicenceBarForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getLicenceBarForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -542,7 +545,7 @@ public RetDataBean getLicenceBarForAnalysis(HttpServletRequest request,String de
 @RequestMapping(value = "/getLicencePieForAnalysis", method = RequestMethod.POST)
 public RetDataBean getLicencePieForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getLicencePieForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -564,7 +567,7 @@ public RetDataBean getLicencePieForAnalysis(HttpServletRequest request,String de
 @RequestMapping(value = "/getIncentiveTableForAnalysis", method = RequestMethod.POST)
 public RetDataBean getIncentiveTableForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getIncentiveTableForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -585,7 +588,7 @@ public RetDataBean getIncentiveTableForAnalysis(HttpServletRequest request,Strin
 @RequestMapping(value = "/getIncentiveBarForAnalysis", method = RequestMethod.POST)
 public RetDataBean getIncentiveBarForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getIncentiveBarForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -608,7 +611,7 @@ public RetDataBean getIncentiveBarForAnalysis(HttpServletRequest request,String 
 @RequestMapping(value = "/getIncentivePieForAnalysis", method = RequestMethod.POST)
 public RetDataBean getIncentivePieForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getIncentivePieForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -630,7 +633,7 @@ public RetDataBean getIncentivePieForAnalysis(HttpServletRequest request,String 
 @RequestMapping(value = "/getContractTableForAnalysis", method = RequestMethod.POST)
 public RetDataBean getContractTableForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getContractTableForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -651,7 +654,7 @@ public RetDataBean getContractTableForAnalysis(HttpServletRequest request,String
 @RequestMapping(value = "/getContractBarForAnalysis", method = RequestMethod.POST)
 public RetDataBean getContractBarForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getContractBarForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -674,7 +677,7 @@ public RetDataBean getContractBarForAnalysis(HttpServletRequest request,String d
 @RequestMapping(value = "/getContractPieForAnalysis", method = RequestMethod.POST)
 public RetDataBean getContractPieForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getContractPieForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -697,7 +700,7 @@ public RetDataBean getContractPieForAnalysis(HttpServletRequest request,String d
 @RequestMapping(value = "/getBaseInfoTableForAnalysis", method = RequestMethod.POST)
 public RetDataBean getBaseInfoTableForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getBaseInfoTableForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -719,7 +722,7 @@ public RetDataBean getBaseInfoTableForAnalysis(HttpServletRequest request,String
 @RequestMapping(value = "/getBaseInfoBarForAnalysis", method = RequestMethod.POST)
 public RetDataBean getBaseInfoBarForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getBaseInfoBarForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -742,7 +745,7 @@ public RetDataBean getBaseInfoBarForAnalysis(HttpServletRequest request,String d
 @RequestMapping(value = "/getBaseInfoPieForAnalysis", method = RequestMethod.POST)
 public RetDataBean getBaseInfoPieForAnalysis(HttpServletRequest request,String deptId,String dataType) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getBaseInfoPieForAnalysis(account.getOrgId(),deptId,dataType));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -762,7 +765,7 @@ public RetDataBean getBaseInfoPieForAnalysis(HttpServletRequest request,String d
 @RequestMapping(value = "/getNativePlacePie", method = RequestMethod.POST)
 public RetDataBean getNativePlacePie(HttpServletRequest request) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getNativePlacePie(account));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -782,7 +785,7 @@ public RetDataBean getNativePlacePie(HttpServletRequest request) {
 @RequestMapping(value = "/getWorkTypeBar", method = RequestMethod.POST)
 public RetDataBean getWorkTypeBar(HttpServletRequest request) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getWorkTypeBar(account));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -801,7 +804,7 @@ public RetDataBean getWorkTypeBar(HttpServletRequest request) {
 @RequestMapping(value = "/getHighsetShoolPie", method = RequestMethod.POST)
 public RetDataBean getHighsetShoolPie(HttpServletRequest request) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsHrService.getHighsetShoolPie(account));
 	} catch (Exception e) {
 		e.printStackTrace();

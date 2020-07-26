@@ -18,6 +18,7 @@ import com.core136.bean.projectbuild.ProjectBuildMaterialPurchase;
 import com.core136.bean.projectbuild.ProjectBuildMaterialSort;
 import com.core136.bean.projectbuild.ProjectBuildMaterialStage;
 import com.core136.bean.sys.PageParam;
+import com.core136.service.account.AccountService;
 import com.core136.service.projectbuild.ProjectBuildMaterialInService;
 import com.core136.service.projectbuild.ProjectBuildMaterialMxService;
 import com.core136.service.projectbuild.ProjectBuildMaterialOutService;
@@ -56,7 +57,8 @@ public class RoutGetProjectBuildMaterialController {
 	private ProjectBuildMaterialInService projectBuildMaterialInService;
 	@Autowired
 	private ProjectBuildMaterialOutService projectBuildMaterialOutService;
-	
+	@Autowired
+	private AccountService accountService;
 	/**
 	 * 
 	 * @Title: getMaterialSortTree   
@@ -77,7 +79,7 @@ public class RoutGetProjectBuildMaterialController {
 			{
 				sortLeave = sortId;
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return projectBuildMaterialSortService.getMaterialSortTree(account.getOrgId(), sortLeave);
 		}catch (Exception e) {
 			return null;
@@ -99,7 +101,7 @@ public class RoutGetProjectBuildMaterialController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			projectBuildMaterialSort.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!",projectBuildMaterialSortService.selectOneProjectBuildMaterialSort(projectBuildMaterialSort));
 		}catch (Exception e) {
@@ -138,7 +140,7 @@ public class RoutGetProjectBuildMaterialController {
 				pageParam.setSortOrder("asc");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		PageInfo<Map<String, String>> pageInfo=projectBuildMaterialService.getmateriallist(pageParam,sortId);
@@ -164,7 +166,7 @@ public class RoutGetProjectBuildMaterialController {
 	{
 		try
 		{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求数据成功!", projectBuildMaterialService.getMaterialListForSelet2(account.getOrgId(),"%"+search+"%"));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -185,7 +187,7 @@ public class RoutGetProjectBuildMaterialController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			projectBuildMaterial.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!",projectBuildMaterialService.selectOneProjectBuildMaterial(projectBuildMaterial));
 		}catch (Exception e) {
@@ -208,7 +210,7 @@ public class RoutGetProjectBuildMaterialController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			projectBuildMaterialStage.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!",projectBuildMaterialStageService.selectOneProjectBuildMaterialStage(projectBuildMaterialStage));
 		}catch (Exception e) {
@@ -232,7 +234,7 @@ public class RoutGetProjectBuildMaterialController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!",projectBuildMaterialStageService.getMaterialListInStage(account.getOrgId(),stageId,search));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -271,7 +273,7 @@ public class RoutGetProjectBuildMaterialController {
 				pageParam.setSortOrder("asc");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		PageInfo<Map<String, String>> pageInfo=projectBuildMaterialStageService.getMaterialStageList(pageParam,stageId);
@@ -296,7 +298,7 @@ public class RoutGetProjectBuildMaterialController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			projectBuildMaterialPurchase.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!",projectBuildMaterialPurchaseService.selectOneProjectBuildMaterialPurchase(projectBuildMaterialPurchase));
 		}catch (Exception e) {
@@ -320,7 +322,7 @@ public class RoutGetProjectBuildMaterialController {
 	{
 		try
 		{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求数据成功!", projectBuildMaterialPurchaseService.getMaterialPurchaseList(account.getOrgId(),search));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -360,7 +362,7 @@ public class RoutGetProjectBuildMaterialController {
 				pageParam.setSortOrder("asc");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		PageInfo<Map<String, String>> pageInfo=projectBuildMaterialMxService.getPurchaseMaterialMxList(pageParam,purchaseId);
@@ -385,7 +387,7 @@ public class RoutGetProjectBuildMaterialController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			projectBuildMaterialMx.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!",projectBuildMaterialMxService.selectOneProjectBuildMaterialMx(projectBuildMaterialMx));
 		}catch (Exception e) {
@@ -409,7 +411,7 @@ public class RoutGetProjectBuildMaterialController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功!",projectBuildMaterialInService.sumMaterialById(account.getOrgId(), purchaseId, materialId));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -448,7 +450,7 @@ public class RoutGetProjectBuildMaterialController {
 				pageParam.setSortOrder("asc");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		PageInfo<Map<String, String>> pageInfo=projectBuildMaterialInService.getMaterialByProjectId(pageParam, projectId);
@@ -492,7 +494,7 @@ public class RoutGetProjectBuildMaterialController {
 				pageParam.setSortOrder("asc");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		PageInfo<Map<String, String>> pageInfo=projectBuildMaterialInService.getMaterialInList(pageParam,projectId,materialId);
@@ -539,7 +541,7 @@ public class RoutGetProjectBuildMaterialController {
 				pageParam.setSortOrder("desc");
 			}
 		pageParam.setAccountId(createUser);	
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		PageInfo<Map<String, String>> pageInfo=projectBuildMaterialPurchaseService.getQueryPurchaseList(pageParam,projectTitle,beginTime,endTime,companyName);
@@ -586,7 +588,7 @@ public class RoutGetProjectBuildMaterialController {
 			{
 				pageParam.setSortOrder("desc");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		PageInfo<Map<String, String>> pageInfo=projectBuildMaterialInService.getQueryMaterialInList(pageParam,inUser,beginTime,endTime,materialName,purchaseTitle);
@@ -632,7 +634,7 @@ public class RoutGetProjectBuildMaterialController {
 			{
 				pageParam.setSortOrder("desc");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		PageInfo<Map<String, String>> pageInfo=projectBuildMaterialOutService.getQueryMaterialOutList(pageParam, beginTime, endTime, materialName, projectTitle, outUser);

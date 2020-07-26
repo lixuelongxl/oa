@@ -29,6 +29,7 @@ import com.core136.bean.contract.ContractReceivables;
 import com.core136.bean.contract.ContractReceivablesRecord;
 import com.core136.bean.contract.ContractSendgoods;
 import com.core136.bean.contract.ContractSort;
+import com.core136.service.account.AccountService;
 import com.core136.service.contract.ContractBillService;
 import com.core136.service.contract.ContractPayableRecordService;
 import com.core136.service.contract.ContractPayableService;
@@ -74,7 +75,8 @@ private ContractSendgoodsService contractSendgoodsService;
 private ContractReceivablesRecordService contractReceivablesRecordService;
 @Autowired
 private ContractPayableRecordService contractPayableRecordService;
-
+@Autowired
+private AccountService accountService;
 /**
  * 
  * @Title: insertContractPayableRecord
@@ -90,7 +92,7 @@ public RetDataBean insertContractPayableRecord(HttpServletRequest request,Contra
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		contractPayableRecord.setRecordId(SysTools.getGUID());
 		contractPayableRecord.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 		contractPayableRecord.setCreateUser(account.getAccountId());
@@ -119,7 +121,7 @@ public RetDataBean deleteContractPayableRecord(HttpServletRequest request,Contra
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		contractPayableRecord.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("删除成功!",contractPayableRecordService.deleteContractPayableRecord(contractPayableRecord));
 		}catch (Exception e) {
@@ -145,7 +147,7 @@ public RetDataBean updateContractPayableRecord(HttpServletRequest request,Contra
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		Example example = new Example(ContractPayableRecord.class);
 		example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("recordId",contractPayableRecord.getRecordId());
 		return RetDataTools.Ok("更新成功!",contractPayableRecordService.updateContractPayableRecord(example,contractPayableRecord));
@@ -170,7 +172,7 @@ public RetDataBean insertContractReceivablesRecord(HttpServletRequest request,Co
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		contractReceivablesRecord.setRecordId(SysTools.getGUID());
 		contractReceivablesRecord.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 		contractReceivablesRecord.setCreateUser(account.getAccountId());
@@ -199,7 +201,7 @@ public RetDataBean deleteContractReceivablesRecord(HttpServletRequest request,Co
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		contractReceivablesRecord.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("删除成功!",contractReceivablesRecordService.deleteContractReceivablesRecord(contractReceivablesRecord));
 		}catch (Exception e) {
@@ -225,7 +227,7 @@ public RetDataBean updateContractReceivablesRecord(HttpServletRequest request,Co
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		Example example = new Example(ContractReceivablesRecord.class);
 		example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("recordId",contractReceivablesRecord.getRecordId());
 		return RetDataTools.Ok("更新成功!",contractReceivablesRecordService.updateContractReceivablesRecord(example,contractReceivablesRecord));
@@ -250,7 +252,7 @@ public RetDataBean insertContractSendgoods(HttpServletRequest request,ContractSe
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		contractSendgoods.setRecordId(SysTools.getGUID());
 		contractSendgoods.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 		contractSendgoods.setCreateUser(account.getAccountId());
@@ -279,7 +281,7 @@ public RetDataBean deleteContractSendgoods(HttpServletRequest request,ContractSe
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		contractSendgoods.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("删除成功!",contractSendgoodsService.deleteContractSendgoods(contractSendgoods));
 		}catch (Exception e) {
@@ -305,7 +307,7 @@ public RetDataBean updateContractSendgoods(HttpServletRequest request,ContractSe
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		Example example = new Example(ContractSendgoods.class);
 		example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("recordId",contractSendgoods.getRecordId());
 		return RetDataTools.Ok("更新成功!",contractSendgoodsService.updateContractSendgoods(example,contractSendgoods));
@@ -330,7 +332,7 @@ public RetDataBean insertContractBill(HttpServletRequest request,ContractBill co
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		contractBill.setBillId(SysTools.getGUID());
 		contractBill.setStatus("1");
 		contractBill.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -360,7 +362,7 @@ public RetDataBean deleteContractBill(HttpServletRequest request,ContractBill co
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(account.getOpFlag().equals("1"))
 		{
 			contractBill.setOrgId(account.getOrgId());
@@ -392,7 +394,7 @@ public RetDataBean updatContractBill(HttpServletRequest request,ContractBill con
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		Example example = new Example(ContractBill.class);
 		example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("billId",contractBill.getBillId());
 		return RetDataTools.Ok("票据更新成功!",contractBillService.updateContractBill(contractBill, example));
@@ -418,7 +420,7 @@ public RetDataBean insertContractPayable(HttpServletRequest request,ContractPaya
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		contractPayable.setPayableId(SysTools.getGUID());
 		contractPayable.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 		contractPayable.setCreateUser(account.getAccountId());
@@ -448,7 +450,7 @@ public RetDataBean deleteContractPayable(HttpServletRequest request,ContractPaya
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(account.getOpFlag().equals("1"))
 		{
 			contractPayable.setOrgId(account.getOrgId());
@@ -480,7 +482,7 @@ public RetDataBean updateContractPayable(HttpServletRequest request,ContractPaya
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		Example example = new Example(ContractPayable.class);
 		example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("payableId",contractPayable.getPayableId());
 		return RetDataTools.Ok("应付款更新成功!",contractPayableService.updateContractPayable(contractPayable, example));
@@ -506,7 +508,7 @@ public RetDataBean insertContractReceivables(HttpServletRequest request,Contract
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		contractReceivables.setReceivablesId(SysTools.getGUID());
 		contractReceivables.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 		contractReceivables.setCreateUser(account.getAccountId());
@@ -536,7 +538,7 @@ public RetDataBean deleteContractReceivables(HttpServletRequest request,Contract
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(account.getOpFlag().equals("1"))
 		{
 			contractReceivables.setOrgId(account.getOrgId());
@@ -568,7 +570,7 @@ public RetDataBean updateContractReceivables(HttpServletRequest request,Contract
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		Example example = new Example(ContractReceivables.class);
 		example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("receivablesId",contractReceivables.getReceivablesId());
 		return RetDataTools.Ok("应付款更新成功!",contractReceivablesService.updateContractReceivables(contractReceivables, example));
@@ -596,7 +598,7 @@ public RetDataBean delContractSort(HttpServletRequest request,ContractSort contr
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		contractSort.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("删除合同公类成功!",contractSortService.deleteContractSort(contractSort));
 	}catch (Exception e) {
@@ -619,7 +621,7 @@ public RetDataBean insertContractSort(HttpServletRequest request,ContractSort co
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		contractSort.setSortId(SysTools.getGUID());
 		contractSort.getSortLeave();
 		contractSort.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -654,7 +656,7 @@ public RetDataBean updateContractSort(HttpServletRequest request,ContractSort co
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		Example example = new Example(ContractSort.class);
 		example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("sortId",contractSort.getSortId());
 		return RetDataTools.Ok("更新合同分类成功!",contractSortService.updateContractSort(contractSort, example));
@@ -671,7 +673,7 @@ public RetDataBean updateContractSort(HttpServletRequest request,ContractSort co
 	@RequestMapping("/addContract")
 	public RetDataBean addContract(HttpServletRequest request,Contract contract) {
 		try {
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			contract.setOrgId(account.getOrgId());
 			contract.setCreateUser(account.getAccountId());
 			contract.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -699,7 +701,7 @@ public RetDataBean updateContractSort(HttpServletRequest request,ContractSort co
 			if(StringUtils.isBlank(contract.getContractId())) {
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(!account.getOpFlag().equals("1"))
 			{
 				contract.setCreateUser(account.getAccountId());
@@ -721,7 +723,7 @@ public RetDataBean updateContractSort(HttpServletRequest request,ContractSort co
 	@RequestMapping("/updateContract")
 	public RetDataBean updateContract(HttpServletRequest request,Contract contract) {
 		try {
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(contract.getContractId())) {
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
@@ -750,7 +752,7 @@ public RetDataBean updateContractSort(HttpServletRequest request,ContractSort co
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(account.getOpFlag().equals("1"))
 			{
 				contractPriv.setOrgId(account.getOrgId());

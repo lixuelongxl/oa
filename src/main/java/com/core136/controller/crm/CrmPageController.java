@@ -3,9 +3,13 @@ package com.core136.controller.crm;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.core136.bean.account.Account;
+import com.core136.service.account.AccountService;
 
 import org.apache.commons.lang3.StringUtils;
 import org.core136.common.utils.SysTools;
@@ -13,6 +17,8 @@ import org.core136.common.utils.SysTools;
 @Controller
 @RequestMapping("/app/core/crm")
 public class CrmPageController {
+	@Autowired
+	private AccountService accountService;
 	
 	/**
 	 * 
@@ -357,7 +363,8 @@ public ModelAndView  goInquiry(HttpServletRequest request,String inquiryId)
 	{
 	try
 	{
-		String inquiryCode=SysTools.getCode(request,"[yyyy][MM][dd]-[HH][mm][ss]-[R]");
+		Account account = accountService.getRedisAccount(request);
+		String inquiryCode=SysTools.getCode(account,"[yyyy][MM][dd]-[HH][mm][ss]-[R]");
 		ModelAndView mv = new ModelAndView("app/core/crm/inquiry/create");
 		mv.addObject("inquiryCode",inquiryCode);
 		mv.addObject("inquiryId",inquiryId);

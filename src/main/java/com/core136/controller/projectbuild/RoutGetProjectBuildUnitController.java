@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.core136.bean.account.Account;
 import com.core136.bean.projectbuild.ProjectBuildUnit;
 import com.core136.bean.sys.PageParam;
+import com.core136.service.account.AccountService;
 import com.core136.service.projectbuild.ProjectBuildUnitService;
 import org.core136.common.retdataunit.RetDataBean;
 import org.core136.common.retdataunit.RetDataTools;
@@ -24,7 +25,8 @@ import com.github.pagehelper.PageInfo;
 public class RoutGetProjectBuildUnitController {
 @Autowired
 private ProjectBuildUnitService projectBuildUnitService;
-
+@Autowired
+private AccountService accountService;
 /**
  * 
  * @Title: getAllUnit   
@@ -39,7 +41,7 @@ public RetDataBean getAllUnit(HttpServletRequest request)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!",projectBuildUnitService.getAllUnit(account.getOrgId()));
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -61,7 +63,7 @@ public RetDataBean getunit(HttpServletRequest request,ProjectBuildUnit projectBu
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		projectBuildUnit.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("请求成功!",projectBuildUnitService.selectOne(projectBuildUnit));
 	}catch (Exception e) {
@@ -102,7 +104,7 @@ public RetDataBean getProjectBuildUnitList(
 			pageParam.setSortOrder("asc");
 		}
 		
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 	PageInfo<Map<String, String>> pageInfo=projectBuildUnitService.getProjectBuildUnitList(pageParam,type);

@@ -17,6 +17,7 @@ import com.core136.bean.account.UserInfo;
 import com.core136.bean.sys.PageParam;
 import com.core136.bean.workplan.WorkPlan;
 import com.core136.bean.workplan.WorkPlanProcess;
+import com.core136.service.account.AccountService;
 import com.core136.service.workplan.WorkPlanProcessService;
 import com.core136.service.workplan.WorkPlanService;
 import com.github.pagehelper.PageInfo;
@@ -28,6 +29,8 @@ public class RoutGetWorkPlanController {
 	private WorkPlanService workPlanService;
 	@Autowired 
 	private WorkPlanProcessService workPlanProcessService;
+	@Autowired
+	private AccountService accountService;
 	/**
 	 * 
 	 * @Title: getWorkPlanProcessById   
@@ -43,7 +46,7 @@ public class RoutGetWorkPlanController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			workPlanProcess.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("数据请求成功!",workPlanProcessService.selectOneWorkPlanProcess(workPlanProcess));
 		}catch (Exception e) {
@@ -65,7 +68,7 @@ public class RoutGetWorkPlanController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			workPlan.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("数据请求成功!",workPlanService.selectOneWorkPlan(workPlan));
 		}catch (Exception e) {
@@ -102,7 +105,7 @@ public class RoutGetWorkPlanController {
 			{
 				pageParam.setSortOrder("desc");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOpFlag(account.getOpFlag());
@@ -143,7 +146,7 @@ public class RoutGetWorkPlanController {
 			{
 				pageParam.setSortOrder("desc");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOpFlag(account.getOpFlag());
@@ -184,7 +187,7 @@ public class RoutGetWorkPlanController {
 			{
 				pageParam.setSortOrder("desc");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOpFlag(account.getOpFlag());
@@ -225,7 +228,7 @@ public class RoutGetWorkPlanController {
 			{
 				pageParam.setSortOrder("desc");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOpFlag(account.getOpFlag());
@@ -261,7 +264,7 @@ public class RoutGetWorkPlanController {
 			{
 				pageParam.setSortOrder("desc");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOpFlag(account.getOpFlag());
@@ -297,7 +300,7 @@ public class RoutGetWorkPlanController {
 			{
 				pageParam.setSortOrder("desc");
 			}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setAccountId(account.getAccountId());
 		pageParam.setOpFlag(account.getOpFlag());
@@ -338,8 +341,8 @@ public class RoutGetWorkPlanController {
 			{
 				pageParam.setSortOrder("desc");
 			}
-		UserInfo userInfo=(UserInfo)request.getSession().getAttribute("USER_INFO");
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
+		Account account=accountService.getRedisAccount(request);
 		pageParam.setOrgId(userInfo.getOrgId());
 		pageParam.setAccountId(userInfo.getAccountId());
 		pageParam.setLevelId(userInfo.getLeadLeave());

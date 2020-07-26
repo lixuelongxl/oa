@@ -12,6 +12,7 @@ import com.core136.bean.account.Account;
 import com.core136.bean.projectbuild.ProjectBuildDetails;
 import com.core136.bean.projectbuild.ProjectBuildSort;
 import com.core136.bean.projectbuild.ProjectBuildStage;
+import com.core136.service.account.AccountService;
 import com.core136.service.projectbuild.ProjectBuildDetailsService;
 import com.core136.service.projectbuild.ProjectBuildSortService;
 import com.core136.service.projectbuild.ProjectBuildStageService;
@@ -40,7 +41,8 @@ private ProjectBuildSortService projectBuildSortService;
 private ProjectBuildDetailsService projectBuildDetailsService;
 @Autowired
 private ProjectBuildStageService projectBuildStageService;
-
+@Autowired
+private AccountService accountService;
 /**
  * 
  * @Title: insertProjectBuildDetails   
@@ -56,7 +58,7 @@ public RetDataBean insertProjectBuildDetails(HttpServletRequest request,ProjectB
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		projectBuildDetails.setProjectId(SysTools.getGUID());
 		projectBuildDetails.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 		projectBuildDetails.setCreateUser(account.getAccountId());
@@ -87,7 +89,7 @@ public RetDataBean delProjectBuildDetails(HttpServletRequest request,ProjectBuil
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		projectBuildDetails.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("删除项目成功!",projectBuildDetailsService.deleteProjectBuildDetails(projectBuildDetails));
 	}catch (Exception e) {
@@ -114,7 +116,7 @@ public RetDataBean updateProjectBuildDetails(HttpServletRequest request,ProjectB
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		Example example = new Example(ProjectBuildDetails.class);
 		example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("projectId",projectBuildDetails.getProjectId());
 		return RetDataTools.Ok("更新成功!",projectBuildDetailsService.updateProjectBuildDetails(example,projectBuildDetails));
@@ -143,7 +145,7 @@ public RetDataBean delProjectBuildSort(HttpServletRequest request,ProjectBuildSo
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		projectBuildSort.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("删除操作成功!",projectBuildSortService.deleteProjectBuildSort(projectBuildSort));
 	}catch (Exception e) {
@@ -166,7 +168,7 @@ public RetDataBean insertProjectBuildSort(HttpServletRequest request,ProjectBuil
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		projectBuildSort.setSortId(SysTools.getGUID());
 		projectBuildSort.getSortLeave();
 		projectBuildSort.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -201,7 +203,7 @@ public RetDataBean updateProjectBuildSort(HttpServletRequest request,ProjectBuil
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		Example example = new Example(ProjectBuildSort.class);
 		example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("sortId",projectBuildSort.getSortId());
 		return RetDataTools.Ok("更新成功!",projectBuildSortService.updateProjectBuildSort(example,projectBuildSort));
@@ -222,7 +224,7 @@ public RetDataBean insertProjectBuildStage(HttpServletRequest request,ProjectBui
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		projectBuildStage.setStatus("0");
 		projectBuildStage.setStageId(SysTools.getGUID());
 		projectBuildStage.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -248,7 +250,7 @@ public RetDataBean delProjectBuildStage(HttpServletRequest request,ProjectBuildS
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		projectBuildStage.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("删除项目节点成功!",projectBuildStageService.deleteProjectBuildStage(projectBuildStage));
 	}catch (Exception e) {
@@ -270,7 +272,7 @@ public RetDataBean updateProjectBuildStage(HttpServletRequest request,ProjectBui
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		Example example = new Example(ProjectBuildStage.class);
 		example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("stageId",projectBuildStage.getStageId());
 		return RetDataTools.Ok("更新成功!",projectBuildStageService.updateProjectBuildStage(example,projectBuildStage));

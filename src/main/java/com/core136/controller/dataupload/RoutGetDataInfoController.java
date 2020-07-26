@@ -17,6 +17,7 @@ import com.core136.bean.dataupload.DataUploadHandle;
 import com.core136.bean.dataupload.DataUploadInfo;
 import com.core136.bean.hr.HrRecruitPlan;
 import com.core136.bean.sys.PageParam;
+import com.core136.service.account.AccountService;
 import com.core136.service.dataupload.DataUploadHandleService;
 import com.core136.service.dataupload.DataUploadInfoService;
 import com.github.pagehelper.PageInfo;
@@ -28,7 +29,8 @@ public class RoutGetDataInfoController {
 private DataUploadInfoService dataUploadInfoService;
 @Autowired
 private DataUploadHandleService dataUploadHandleService;
-
+@Autowired
+private AccountService accountService;
 /**
  * 
  * @Title: getDataUploadHandleById   
@@ -44,7 +46,7 @@ public RetDataBean getDataUploadHandleById(HttpServletRequest request,DataUpload
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		dataUploadHandle.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("数据请求成功!",dataUploadHandleService.selectOneDataUploadHandle(dataUploadHandle));
 	}catch (Exception e) {
@@ -67,7 +69,7 @@ public RetDataBean getDataUploadInfoById(HttpServletRequest request,DataUploadIn
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		dataUploadInfo.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("数据请求成功!",dataUploadInfoService.selectOneDataUploadInfo(dataUploadInfo));
 	}catch (Exception e) {
@@ -105,7 +107,7 @@ public RetDataBean getDataUploadInfoList(HttpServletRequest request,PageParam pa
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 	PageInfo<Map<String, String>> pageInfo=dataUploadInfoService.getDataUploadInfoList(pageParam, deptId, fromAccountId, beginTime, endTime, dataType, approvedType);
@@ -146,7 +148,7 @@ public RetDataBean getToProcessInfoList(HttpServletRequest request,PageParam pag
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -188,7 +190,7 @@ public RetDataBean getOldProcessInfoList(HttpServletRequest request,PageParam pa
 		{
 			pageParam.setSortOrder("desc");
 		}
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());

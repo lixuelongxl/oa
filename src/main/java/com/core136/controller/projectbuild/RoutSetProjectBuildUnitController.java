@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.core136.bean.account.Account;
 import com.core136.bean.projectbuild.ProjectBuildUnit;
+import com.core136.service.account.AccountService;
 import com.core136.service.projectbuild.ProjectBuildUnitService;
 import org.core136.common.retdataunit.RetDataBean;
 import org.core136.common.retdataunit.RetDataTools;
@@ -37,13 +38,15 @@ import tk.mybatis.mapper.entity.Example;
 public class RoutSetProjectBuildUnitController {
 @Autowired
 private ProjectBuildUnitService projectBuildUnitService;
+@Autowired
+private AccountService accountService;
 	
 	@RequestMapping(value="/insertProjectBuildUnit",method=RequestMethod.POST)
 	public RetDataBean insertSupplier(HttpServletRequest request,ProjectBuildUnit projectBuildUnit)
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			projectBuildUnit.setUnitId(SysTools.getGUID());
 			projectBuildUnit.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			projectBuildUnit.setCreateUser(account.getAccountId());
@@ -70,7 +73,7 @@ private ProjectBuildUnitService projectBuildUnitService;
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(projectBuildUnit.getUnitId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -97,7 +100,7 @@ private ProjectBuildUnitService projectBuildUnitService;
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(projectBuildUnit.getUnitId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");

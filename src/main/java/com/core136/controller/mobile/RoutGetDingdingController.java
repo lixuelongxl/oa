@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.core136.bean.account.Account;
 import com.core136.bean.account.UserInfo;
 import com.core136.bean.sys.DdConfig;
+import com.core136.service.account.AccountService;
 import com.core136.service.bpm.BpmFlowService;
 import com.core136.service.bpm.BpmRunProcessService;
 import com.core136.service.dingding.DingDingLoginService;
@@ -42,7 +43,8 @@ public class RoutGetDingdingController {
 private DingDingLoginService dingDingLoginService;
 @Autowired
 private DdConfigService ddConfigService;
-
+@Autowired
+private AccountService accountService;
 /**
  * 
  * @Title: getUserInfo   
@@ -59,7 +61,7 @@ private DdConfigService ddConfigService;
 	{
 		try
 		{
-			Account account =(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(account!=null)
 			{
 				if(StringUtils.isNotBlank(account.getAccountId()))

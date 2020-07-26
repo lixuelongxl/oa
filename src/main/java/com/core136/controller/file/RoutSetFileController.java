@@ -23,6 +23,7 @@ import com.core136.bean.file.Photo;
 import com.core136.bean.file.PublicFile;
 import com.core136.bean.file.PublicFileFolder;
 import com.core136.bean.file.Attach;
+import com.core136.service.account.AccountService;
 import com.core136.service.account.UserInfoService;
 import com.core136.service.file.NetDiskService;
 import com.core136.service.file.PersonalFileFolderService;
@@ -66,7 +67,8 @@ private PublicFileService publicFileService;
 private AttachService attachService;
 @Autowired
 private PhotoService phoroService;
-
+@Autowired
+private AccountService accountService;
 
 @Value("${app.notallow}")  
 private  String notallow;
@@ -86,7 +88,7 @@ public RetDataBean insertPhoto(HttpServletRequest request,Photo photo)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		photo.setPhotoId(SysTools.getGUID());
 		photo.setCreateUser(account.getAccountId());
 		photo.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -113,7 +115,7 @@ public RetDataBean updatePhoto(HttpServletRequest request,Photo photo)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			return RetDataTools.NotOk("您不是系统管理,请与管理员联系!");
@@ -137,7 +139,7 @@ public RetDataBean delPhoto(HttpServletRequest request,Photo photo)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			return RetDataTools.NotOk("您不是系统管理,请与管理员联系!");
@@ -168,7 +170,7 @@ public RetDataBean insertPersonalFileFolder(HttpServletRequest request,PersonalF
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isBlank(personalFileFolder.getFolderLeave()))
 		{
 			personalFileFolder.setFolderLeave("0");
@@ -199,7 +201,7 @@ public RetDataBean updatePersonalFileFolder(HttpServletRequest request,String ty
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isNotBlank(type)&&StringUtils.isNotBlank(fileId)&&StringUtils.isNotBlank(fileName))
 		{
 			if(type.equals("file"))
@@ -246,7 +248,7 @@ public RetDataBean insertPersonalFile(HttpServletRequest request,PersonalFile pe
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isBlank(personalFile.getAttach()))
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -283,7 +285,7 @@ public RetDataBean shearPersonalFile(HttpServletRequest request,String fileId,St
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isNotBlank(fileId)&&StringUtils.isNotBlank(currentLocation)&&StringUtils.isNotBlank(fType))
 		{
 			if(fType.equals("file"))
@@ -325,7 +327,7 @@ public RetDataBean delPersonalFolder(HttpServletRequest request,PersonalFileFold
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		personalFileFolder.setOrgId(account.getOrgId());
 		if(personalFileService.isExistChild(personalFileFolder.getFolderId(), account.getAccountId(), account.getOrgId())>0)
 		{
@@ -356,7 +358,7 @@ public RetDataBean delPersonalFile(HttpServletRequest request,PersonalFile perso
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		personalFile.setOrgId(account.getOrgId());
 		if(StringUtils.isBlank(personalFile.getFileId()))
 		{
@@ -385,7 +387,7 @@ public RetDataBean pastePersonalFile(HttpServletRequest request,String currentLo
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isNotBlank(currentLocation)&&StringUtils.isNotBlank(fileId)&&StringUtils.isNotBlank(type))
 		{
 			if(type.equals("file"))
@@ -425,7 +427,7 @@ public RetDataBean createNetDisk(HttpServletRequest request,NetDisk netDisk)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		netDisk.setNetDiskId(SysTools.getGUID());
 		netDisk.setDiskCreateUser(account.getAccountId());
 		netDisk.setDiskCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -457,7 +459,7 @@ public RetDataBean createNetDisk(HttpServletRequest request,NetDisk netDisk)
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			netDisk.setOrgId(account.getOrgId());
 			UserInfo userInfo = userInfoService.getUserInfoByAccountId(account.getAccountId(), account.getOrgId());
 			if(account.getOpFlag().equals("1"))
@@ -496,7 +498,7 @@ public RetDataBean createNetDisk(HttpServletRequest request,NetDisk netDisk)
 	 */
 	@RequestMapping("/createNetDiskFile")
     public RetDataBean createNetDiskFile(HttpServletRequest request,String sourcePath, NetDisk netDisk) throws UploadException {
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		netDisk.setOrgId(account.getOrgId());
 		netDisk = netDiskService.selectOneNetDisk(netDisk);
         Collection<Part> parts = null;
@@ -548,7 +550,7 @@ public RetDataBean createNetDisk(HttpServletRequest request,NetDisk netDisk)
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			netDisk.setOrgId(account.getOrgId());
 			UserInfo userInfo = userInfoService.getUserInfoByAccountId(account.getAccountId(), account.getOrgId());
 			if(account.getOpFlag().equals("1"))
@@ -587,7 +589,7 @@ public RetDataBean deleteNetDisk(HttpServletRequest request,NetDisk netDisk)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isBlank(netDisk.getNetDiskId()))
 		{
 			return RetDataTools.NotOk("请求的参数有问题,请检查!");
@@ -615,7 +617,7 @@ public RetDataBean renameNetDiskFileName(HttpServletRequest request,NetDisk netD
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isBlank(netDisk.getNetDiskId()))
 		{
 			return RetDataTools.NotOk("请求的参数有问题,请检查!");
@@ -649,7 +651,7 @@ public RetDataBean updateNetDisk(HttpServletRequest request,NetDisk netDisk)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isBlank(netDisk.getNetDiskId()))
 		{
 			return RetDataTools.NotOk("请求的参数有问题,请检查!");
@@ -682,7 +684,7 @@ public RetDataBean copyFile(HttpServletRequest request,String sourcePath,String 
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isBlank(sourceNetDiskId)||StringUtils.isBlank(targetNetDiskId))
 		{
 			return RetDataTools.NotOk("请求的参数有问题,请检查!");
@@ -736,7 +738,7 @@ public RetDataBean addNetDiskPriv(HttpServletRequest request,
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isBlank(netDiskId))
 		{
 			return RetDataTools.NotOk("请求的参数有问题,请检查!");
@@ -774,7 +776,7 @@ public RetDataBean removeNetDiskPriv(HttpServletRequest request,
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isBlank(netDiskId))
 		{
 			return RetDataTools.NotOk("请求的参数有问题,请检查!");
@@ -799,8 +801,8 @@ public RetDataBean createPublicFile(HttpServletRequest request,PublicFile public
 {
 	try
 	{
-		Account account = (Account)request.getSession().getAttribute("LOGIN_USER");
-		UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+		Account account = accountService.getRedisAccount(request);
+		UserInfo userInfo = accountService.getRedisUserInfo(request);
 		if(StringUtils.isBlank(publicFile.getAttach()))
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -834,7 +836,7 @@ public RetDataBean deletePublicFile(HttpServletRequest request,PublicFile public
 {
 	try
 	{
-		UserInfo userInfo=(UserInfo)request.getSession().getAttribute("USER_INFO");
+		UserInfo userInfo = accountService.getRedisUserInfo(request);
 		if(StringUtils.isBlank(publicFile.getFileId()))
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -866,7 +868,7 @@ public RetDataBean createPublicFileFolder(HttpServletRequest request,PublicFileF
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		publicFileFolder.setFolderId(SysTools.getGUID());
 		publicFileFolder.setCreateUser(account.getAccountId());
 		publicFileFolder.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -902,7 +904,7 @@ public RetDataBean setPublicFilePriv(HttpServletRequest request,PublicFileFolder
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isBlank(publicFileFolder.getFolderId()))
 		{
 			return RetDataTools.NotOk("参数有问题，请检查！");
@@ -951,7 +953,7 @@ public RetDataBean addPublicFolderPriv(HttpServletRequest request,
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isBlank(folderId))
 		{
 			return RetDataTools.NotOk("请求的参数有问题,请检查!");
@@ -987,7 +989,7 @@ public RetDataBean removePublicFolderPriv(HttpServletRequest request,
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isBlank(folderId))
 		{
 			return RetDataTools.NotOk("请求的参数有问题,请检查!");

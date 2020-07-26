@@ -25,6 +25,7 @@ import com.core136.bean.officesupplies.OfficeSuppliesApproval;
 import com.core136.bean.officesupplies.OfficeSuppliesGrant;
 import com.core136.bean.officesupplies.OfficeSuppliesSort;
 import com.core136.bean.officesupplies.OfficeSuppliesUnit;
+import com.core136.service.account.AccountService;
 import com.core136.service.officesupplies.OfficeSuppliesApplyService;
 import com.core136.service.officesupplies.OfficeSuppliesApprovalService;
 import com.core136.service.officesupplies.OfficeSuppliesGrantService;
@@ -56,7 +57,8 @@ public class RoutSetOfficesuppliesController {
 	private OfficeSuppliesApplyService officeSuppliesApplyService;
 	@Autowired
 	private OfficeSuppliesGrantService officeSuppliesGrantService;
-	
+	@Autowired
+	private AccountService accountService;
 	/**
 	 * 
 	 * @Title: insertOfficeSuppliesGrant   
@@ -72,7 +74,7 @@ public class RoutSetOfficesuppliesController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			OfficeSuppliesApply officeSuppliesApply = new OfficeSuppliesApply();
 			officeSuppliesApply.setOrgId(account.getOrgId());
 			officeSuppliesApply.setApplyId(officeSuppliesGrant.getApplyId());
@@ -109,7 +111,7 @@ public class RoutSetOfficesuppliesController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			officeSuppliesApproval.setApprovalId(SysTools.getGUID());
 			officeSuppliesApproval.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			officeSuppliesApproval.setCreateUser(account.getAccountId());
@@ -134,7 +136,7 @@ public class RoutSetOfficesuppliesController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(officeSuppliesApproval.getApprovalId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -165,7 +167,7 @@ public class RoutSetOfficesuppliesController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(OfficeSuppliesApproval.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("approvalId",officeSuppliesApproval.getApprovalId());
 			return RetDataTools.Ok("更新成功!",officeSuppliesApprovalService.updateOfficeSuppliesApproval(example,officeSuppliesApproval));
@@ -189,7 +191,7 @@ public class RoutSetOfficesuppliesController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			officeSuppliesApply.setApplyId(SysTools.getGUID());
 			officeSuppliesApply.setStatus("0");
 			officeSuppliesApply.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -215,7 +217,7 @@ public class RoutSetOfficesuppliesController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(officeSuppliesApply.getApplyId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -246,7 +248,7 @@ public class RoutSetOfficesuppliesController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(OfficeSuppliesApply.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("applyId",officeSuppliesApply.getApplyId());
 			return RetDataTools.Ok("更新成功!",officeSuppliesApplyService.updateOfficeSuppliesApply(example,officeSuppliesApply));
@@ -271,7 +273,7 @@ public class RoutSetOfficesuppliesController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			officeSuppliesUnit.setUnitId(SysTools.getGUID());
 			officeSuppliesUnit.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			officeSuppliesUnit.setCreateUser(account.getAccountId());
@@ -287,7 +289,7 @@ public class RoutSetOfficesuppliesController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(officeSuppliesUnit.getUnitId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -309,7 +311,7 @@ public class RoutSetOfficesuppliesController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(OfficeSuppliesUnit.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("unitId",officeSuppliesUnit.getUnitId());
 			return RetDataTools.Ok("更新成功!",officeSuppliesUnitService.updateOfficeSuppliesUnit(example,officeSuppliesUnit));
@@ -324,7 +326,7 @@ public class RoutSetOfficesuppliesController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			officeSuppliesSort.setSortId(SysTools.getGUID());
 			officeSuppliesSort.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			officeSuppliesSort.setCreateUser(account.getAccountId());
@@ -340,7 +342,7 @@ public class RoutSetOfficesuppliesController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(officeSuppliesSort.getSortId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -362,7 +364,7 @@ public class RoutSetOfficesuppliesController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(OfficeSuppliesSort.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("sortId",officeSuppliesSort.getSortId());
 			return RetDataTools.Ok("更新成功!",officeSuppliesSortService.updateOfficeSuppliesSort(example,officeSuppliesSort));
@@ -386,7 +388,7 @@ public class RoutSetOfficesuppliesController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			officeSupplies.setSuppliesId(SysTools.getGUID());
 			officeSupplies.setStatus("0");
 			officeSupplies.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -412,7 +414,7 @@ public class RoutSetOfficesuppliesController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(officeSupplies.getSuppliesId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
@@ -443,7 +445,7 @@ public class RoutSetOfficesuppliesController {
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(OfficeSupplies.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("suppliesId",officeSupplies.getSuppliesId());
 			return RetDataTools.Ok("更新成功!",officeSuppliesService.updateOfficeSupplies(example,officeSupplies));

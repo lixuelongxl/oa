@@ -14,6 +14,7 @@ import com.core136.bean.account.Account;
 import com.core136.bean.document.DocumentFlow;
 import com.core136.bean.document.DocumentForm;
 import com.core136.bean.document.DocumentList;
+import com.core136.service.account.AccountService;
 import com.core136.service.document.DocumentFlowService;
 import com.core136.service.document.DocumentFormService;
 import com.core136.service.document.DocumentListService;
@@ -35,7 +36,8 @@ public class DocumetPageController {
 	private DocumentOptService documentOptService;
 	@Autowired
 	private DocumentListService documentListService;
-	
+	@Autowired
+	private AccountService accountService;
 	/**
 	 * 
 	 * @Title: goSendtome   
@@ -324,7 +326,7 @@ public class DocumetPageController {
 		ModelAndView mv=null;
 		try
 		{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(SysTools.isMobileDevice(request))
 		{
 			mv = new ModelAndView("app/core/document/work/mread");
@@ -370,7 +372,7 @@ public class DocumetPageController {
 		{
 		if(SysTools.isMobileDevice(request))
 			{
-				Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+				Account account=accountService.getRedisAccount(request);
 				DocumentFormDataBean documentFormDataBean = documentOptService.doMWork(request,account, runId, runProcessId);
 				if(documentFormDataBean==null)
 				{
@@ -383,7 +385,7 @@ public class DocumetPageController {
 				return mv;
 			}else
 			{
-				Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+				Account account=accountService.getRedisAccount(request);
 				DocumentFormDataBean documentFormDataBean = documentOptService.doWork(request,account, runId, runProcessId);
 				if(documentFormDataBean==null)
 				{
@@ -607,7 +609,7 @@ public class DocumetPageController {
 	{
 		try
 		{
-		Account account = (Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 		documentFlow.setOrgId(account.getOrgId());
 		documentFlow = documentFlowService.selectOneDocumentFlow(documentFlow);
 		ModelAndView mv = new ModelAndView("app/core/document/set/documentflowdesigner");
@@ -680,7 +682,7 @@ public class DocumetPageController {
 		ModelAndView mv = null;
 		try
 		{
-		Account account = (Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 		documentForm.setOrgId(account.getOrgId());
 		documentForm = documentFormService.selectOneDocumentForm(documentForm);
 		mv = new ModelAndView("app/core/bpm/form/formtemplate");

@@ -109,7 +109,7 @@ public RetDataBean getAllAppList(HttpServletRequest request)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功！",appConfigService.getAllAppList(account.getOrgId()));
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
@@ -177,7 +177,7 @@ public RetDataBean getAppConfigList(
 			sortOrder="asc";
 		}
 	String orderBy = sort+ " " + sortOrder;
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	Example example = new Example(AppConfig.class);
 	example.setOrderByClause(orderBy);
 	Criteria criteria = example.createCriteria();
@@ -298,7 +298,7 @@ public RetDataBean getAllSysLogList(
 			pageParam.setSortOrder("desc");
 		}
 		
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setAccountId(accountId);
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -345,7 +345,7 @@ public RetDataBean getMySysLogList(
 			pageParam.setSortOrder("desc");
 		}
 		
-	Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+	Account account=accountService.getRedisAccount(request);
 	pageParam.setOrgId(account.getOrgId());
 	pageParam.setAccountId(account.getAccountId());
 	pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
@@ -370,7 +370,7 @@ public RetDataBean getMySysLogList(
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功！",smsService.getNoReadSms(account.getAccountId(),account.getOrgId()));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -389,7 +389,7 @@ public RetDataBean getMySysLogList(
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功！",accountService.getMySubordinates(account.getOrgId(),account.getAccountId()));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -408,7 +408,7 @@ public RetDataBean getMySysLogList(
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功！",smsService.getNoReadSmsCount(account.getAccountId(),account.getOrgId()));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -428,7 +428,7 @@ public RetDataBean getMySysLogList(
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功！",sysDbSourceService.getDbSourceList(account.getOrgId()));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -464,7 +464,7 @@ public RetDataBean getMySysLogList(
 			{
 				pageParam.setSortOrder("desc");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		pageParam.setOrgId(account.getOrgId());
 		PageInfo<Map<String, String>> pageInfo=sysProfileService.getAllSysProfileList(pageParam);
@@ -513,7 +513,7 @@ public RetDataBean getMySysLogList(
 				sortOrder="asc";
 			}
 		String orderBy = sort+ " " + sortOrder;
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		Example example = new Example(SysDbSource.class);
 		example.setOrderByClause(orderBy);
 		Criteria criteria = example.createCriteria();
@@ -549,7 +549,7 @@ public RetDataBean getMySysLogList(
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			sysDbSource.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功！",sysDbSourceService.selectOne(sysDbSource));
 		}catch (Exception e) {
@@ -583,7 +583,7 @@ public RetDataBean getMySysLogList(
 				sortOrder="asc";
 			}
 		String orderBy = sort+ " " + sortOrder;
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		Example example = new Example(CodeClass.class);
 		example.setOrderByClause(orderBy);
 		Criteria criteria = example.createCriteria();
@@ -616,7 +616,7 @@ public RetDataBean getMySysLogList(
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功！",codeClassService.getCodeClassByModule(account.getOrgId(), module));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -628,7 +628,7 @@ public RetDataBean getMySysLogList(
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			codeClass.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功！",codeClassService.selectOne(codeClass));
 		}catch (Exception e) {
@@ -649,7 +649,7 @@ public RetDataBean getMySysLogList(
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			SmsConfig smsConfig = new SmsConfig();
 			smsConfig.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功！",smsConfigService.selectOne(smsConfig));
@@ -676,7 +676,7 @@ public RetDataBean getMySysLogList(
 			{
 				return RetDataTools.NotOk("请求参数有问题!");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			sysDeskConfig.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功！",sysDeskConfigService.selectOneSysDeskConfig(sysDeskConfig));
 		}catch (Exception e) {
@@ -698,7 +698,7 @@ public RetDataBean getMySysLogList(
 	{
 		try
 		{
-			UserInfo userInfo=(UserInfo)request.getSession().getAttribute("USER_INFO");
+			UserInfo userInfo = accountService.getRedisUserInfo(request);
 			return RetDataTools.Ok("请求成功！",sysDeskConfigService.getDeskConfigList(userInfo.getOrgId(),userInfo.getAccountId(),userInfo.getDeptId(),userInfo.getLeadId()));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -745,7 +745,7 @@ public RetDataBean getMySysLogList(
 				sortOrder="asc";
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			return RetDataTools.NotOk("您不是管理员,请与管理员联系!");
@@ -773,7 +773,7 @@ public RetDataBean getMySysLogList(
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(!account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.NotOk("请求参数有问题!");
@@ -798,7 +798,7 @@ public RetDataBean getMySysLogList(
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(!account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.NotOk("请求参数有问题!");
@@ -823,7 +823,7 @@ public RetDataBean getMySysLogList(
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(!account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.NotOk("请求参数有问题!");
@@ -848,7 +848,7 @@ public RetDataBean getMySysLogList(
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(!account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.NotOk("请求参数有问题!");
@@ -874,7 +874,7 @@ public RetDataBean getMySysLogList(
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			String userPrivIds = account.getUserPriv();
 			if(StringUtils.isNotBlank(userPrivIds))
 			{
@@ -914,7 +914,7 @@ public RetDataBean getMySysLogList(
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Shortcut shortcut = new Shortcut();
 			shortcut.setCreateUser(account.getAccountId());
 			shortcut.setOrgId(account.getOrgId());
@@ -953,7 +953,7 @@ public RetDataBean getMySysLogList(
 			{
 				pageParam.setSortOrder("desc");
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
 		pageParam.setOrgId(account.getOrgId());
 		PageInfo<Map<String, String>> pageInfo=sysTimingTaskService.getSysTimingTaskList(pageParam);
@@ -978,7 +978,7 @@ public RetDataBean getMySysLogList(
 	{
 		try
 		{	
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			sysTimingTask.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功！",sysTimingTaskService.selectOneSysTimingTask(sysTimingTask));
 		}catch (Exception e) {

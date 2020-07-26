@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.core136.bean.account.Account;
+import com.core136.service.account.AccountService;
 import com.core136.service.echarts.EchartsFinanceService;
 
 @RestController
@@ -17,7 +18,8 @@ import com.core136.service.echarts.EchartsFinanceService;
 public class RouteGetBiFinanceController {
 @Autowired
 private EchartsFinanceService echartsFinanceService;
-
+@Autowired
+private AccountService accountService;
 /**
  * 
  * @Title: getARAPOptionConfig   
@@ -30,7 +32,7 @@ private EchartsFinanceService echartsFinanceService;
 @RequestMapping(value = "/getARAPOptionConfig", method = RequestMethod.POST)
 public RetDataBean getARAPOptionConfig(HttpServletRequest request) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsFinanceService.getARAPOptionConfig(account));
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -51,7 +53,7 @@ public RetDataBean getARAPOptionConfig(HttpServletRequest request) {
 @RequestMapping(value = "/getPayReceivTotalData", method = RequestMethod.POST)
 public RetDataBean getPayReceivTotalData(HttpServletRequest request) {
 	try {
-		Account account = (Account) request.getSession().getAttribute("LOGIN_USER");
+		Account account = accountService.getRedisAccount(request);
 		return RetDataTools.Ok("请求成功!", echartsFinanceService.getPayReceivTotalData(account.getOrgId()));
 	} catch (Exception e) {
 		e.printStackTrace();

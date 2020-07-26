@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.core136.bean.account.Account;
 import com.core136.bean.projectbuild.ProjectBuildArtificialSort;
+import com.core136.service.account.AccountService;
 import com.core136.service.projectbuild.ProjectBuildArtificialSortService;
 import com.core136.service.projectbuild.ProjectBuildTeamService;
 import com.core136.service.projectbuild.ProjectBuildWorkerService;
@@ -27,6 +28,8 @@ public class RoutGetProjectBuildArtificialController {
 	private ProjectBuildTeamService projectBuildTeamService;
 	@Autowired
 	private ProjectBuildWorkerService projectBuildWorkerService;
+	@Autowired
+	private AccountService accountService;
 	/**
 	 * 
 	 * @Title: getProjectBuildArtificialSortTree   
@@ -47,7 +50,7 @@ public class RoutGetProjectBuildArtificialController {
 			{
 				sortLeave = sortId;
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return projectBuildArtificialSortService.getProjectBuildArtificialSortTree(account.getOrgId(), sortLeave);
 		}catch (Exception e) {
 			return null;
@@ -69,7 +72,7 @@ public class RoutGetProjectBuildArtificialController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			projectBuildArtificialSort.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功!",projectBuildArtificialSortService.selectOneProjectBuildArtificialSort(projectBuildArtificialSort));
 		}catch (Exception e) {

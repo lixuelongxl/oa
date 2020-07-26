@@ -17,6 +17,7 @@ import com.core136.bean.projectbuild.ProjectBuildMaterialOut;
 import com.core136.bean.projectbuild.ProjectBuildMaterialPurchase;
 import com.core136.bean.projectbuild.ProjectBuildMaterialSort;
 import com.core136.bean.projectbuild.ProjectBuildMaterialStage;
+import com.core136.service.account.AccountService;
 import com.core136.service.projectbuild.ProjectBuildMaterialInService;
 import com.core136.service.projectbuild.ProjectBuildMaterialMxService;
 import com.core136.service.projectbuild.ProjectBuildMaterialOutService;
@@ -57,7 +58,8 @@ private ProjectBuildMaterialMxService projectBuildMaterialMxService;
 private ProjectBuildMaterialInService projectBuildMaterialInService;
 @Autowired
 private ProjectBuildMaterialOutService projectBuildMaterialOutService;
-
+@Autowired
+private AccountService accountService;
 
 /**
  * 
@@ -78,7 +80,7 @@ public RetDataBean delMaterialSort(HttpServletRequest request,ProjectBuildMateri
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		projectBuildMaterialSort.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("删除成功!",projectBuildMaterialSortService.deleteProjectBuildMaterialSort(projectBuildMaterialSort));
 	}catch (Exception e) {
@@ -101,7 +103,7 @@ public RetDataBean insertMaterialSort(HttpServletRequest request,ProjectBuildMat
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		projectBuildMaterialSort.setSortId(SysTools.getGUID());
 		projectBuildMaterialSort.getSortLeave();
 		projectBuildMaterialSort.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -137,7 +139,7 @@ public RetDataBean updateMaterialSort(HttpServletRequest request,ProjectBuildMat
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		Example example = new Example(ProjectBuildMaterialSort.class);
 		example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("sortId",projectBuildMaterialSort.getSortId());
 		return RetDataTools.Ok("更新成功!",projectBuildMaterialSortService.updateProjectBuildMaterialSort(example,projectBuildMaterialSort));
@@ -161,7 +163,7 @@ public RetDataBean insertMaterial(HttpServletRequest request,ProjectBuildMateria
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		projectBuildMaterial.setMaterialId(SysTools.getGUID());
 		projectBuildMaterial.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 		projectBuildMaterial.setCreateUser(account.getAccountId());
@@ -191,7 +193,7 @@ public RetDataBean delMaterial(HttpServletRequest request,ProjectBuildMaterial p
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		projectBuildMaterial.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("删除成功!",projectBuildMaterialService.deleteProjectBuildMaterial(projectBuildMaterial));
 	}catch (Exception e) {
@@ -218,7 +220,7 @@ public RetDataBean updateMaterial(HttpServletRequest request,ProjectBuildMateria
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		Example example = new Example(ProjectBuildMaterial.class);
 		example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("materialId",projectBuildMaterial.getMaterialId());
 		return RetDataTools.Ok("更新成功!",projectBuildMaterialService.updateProjectBuildMaterial(example,projectBuildMaterial));
@@ -244,7 +246,7 @@ public RetDataBean insertMaterialStage(HttpServletRequest request,ProjectBuildMa
 	try
 	{
 		
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		projectBuildMaterialStage.setMaterialStageId(SysTools.getGUID());
 		projectBuildMaterialStage.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 		projectBuildMaterialStage.setCreateUser(account.getAccountId());
@@ -282,7 +284,7 @@ public RetDataBean delMaterialStage(HttpServletRequest request,ProjectBuildMater
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		projectBuildMaterialStage.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("删除成功!",projectBuildMaterialStageService.deleteProjectBuildMaterialStage(projectBuildMaterialStage));
 	}catch (Exception e) {
@@ -309,7 +311,7 @@ public RetDataBean updateMaterialStage(HttpServletRequest request,ProjectBuildMa
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		Example example = new Example(ProjectBuildMaterialStage.class);
 		example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("materialStageId",projectBuildMaterialStage.getMaterialStageId());
 		return RetDataTools.Ok("更新成功!",projectBuildMaterialStageService.updateProjectBuildMaterialStage(example,projectBuildMaterialStage));
@@ -333,7 +335,7 @@ public RetDataBean insertMaterialPurchase(HttpServletRequest request,ProjectBuil
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		projectBuildMaterialPurchase.setPurchaseId(SysTools.getGUID());
 		projectBuildMaterialPurchase.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 		projectBuildMaterialPurchase.setCreateUser(account.getAccountId());
@@ -363,7 +365,7 @@ public RetDataBean delMaterialPurchase(HttpServletRequest request,ProjectBuildMa
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		projectBuildMaterialPurchase.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("删除成功!",projectBuildMaterialPurchaseService.deleteProjectBuildMaterialPurchase(projectBuildMaterialPurchase));
 	}catch (Exception e) {
@@ -390,7 +392,7 @@ public RetDataBean updateMaterialPurchase(HttpServletRequest request,ProjectBuil
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		Example example = new Example(ProjectBuildMaterialPurchase.class);
 		example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("purchaseId",projectBuildMaterialPurchase.getPurchaseId());
 		return RetDataTools.Ok("更新成功!",projectBuildMaterialPurchaseService.updateProjectBuildMaterialPurchase(example,projectBuildMaterialPurchase));
@@ -413,7 +415,7 @@ public RetDataBean insertMaterialMx(HttpServletRequest request,ProjectBuildMater
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		projectBuildMaterialMx.setMaterialMxId(SysTools.getGUID());
 		projectBuildMaterialMx.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 		projectBuildMaterialMx.setCreateUser(account.getAccountId());
@@ -443,7 +445,7 @@ public RetDataBean delMaterialMx(HttpServletRequest request,ProjectBuildMaterial
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		projectBuildMaterialMx.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("删除成功!",projectBuildMaterialMxService.deleteProjectBuildMaterialMx(projectBuildMaterialMx));
 	}catch (Exception e) {
@@ -470,7 +472,7 @@ public RetDataBean updateMaterialMx(HttpServletRequest request,ProjectBuildMater
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		Example example = new Example(ProjectBuildMaterialMx.class);
 		example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("materialMxId",projectBuildMaterialMx.getMaterialMxId());
 		return RetDataTools.Ok("更新成功!",projectBuildMaterialMxService.updateProjectBuildMaterialMx(example,projectBuildMaterialMx));
@@ -493,7 +495,7 @@ public RetDataBean insertMaterialIn(HttpServletRequest request,ProjectBuildMater
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		projectBuildMaterialIn.setInId(SysTools.getGUID());
 		projectBuildMaterialIn.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 		projectBuildMaterialIn.setCreateUser(account.getAccountId());
@@ -519,7 +521,7 @@ public RetDataBean insertMaterialOut(HttpServletRequest request,ProjectBuildMate
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		projectBuildMaterialIOut.setOutId(SysTools.getGUID());
 		projectBuildMaterialIOut.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 		projectBuildMaterialIOut.setCreateUser(account.getAccountId());

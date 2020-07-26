@@ -15,6 +15,7 @@ import com.core136.bean.account.Account;
 import com.core136.bean.account.UserInfo;
 import com.core136.bean.workplan.WorkPlan;
 import com.core136.bean.workplan.WorkPlanProcess;
+import com.core136.service.account.AccountService;
 import com.core136.service.workplan.WorkPlanProcessService;
 import com.core136.service.workplan.WorkPlanService;
 
@@ -27,7 +28,8 @@ public class RoutSetWorkPlanController {
 @Autowired 
 private WorkPlanService workPlanService;
 @Autowired 
-private WorkPlanProcessService workPlanProcessService;
+private WorkPlanProcessService workPlanProcessService;@Autowired
+private AccountService accountService;
 
 /**
  * 
@@ -44,7 +46,7 @@ public RetDataBean insertWorkPlanProcess (HttpServletRequest request,WorkPlanPro
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		workPlanProcess.setProcessId(SysTools.getGUID());
 		workPlanProcess.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 		workPlanProcess.setCreateUser(account.getAccountId());
@@ -73,7 +75,7 @@ public RetDataBean deleteWorkPlanProcess(HttpServletRequest request,WorkPlanProc
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		workPlanProcess.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("删除成功!",workPlanProcessService.deleteWorkPlanProcess(workPlanProcess));
 	}catch (Exception e) {
@@ -100,7 +102,7 @@ public RetDataBean updateWorkPlanProcess(HttpServletRequest request,WorkPlanProc
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		Example example = new Example(WorkPlanProcess.class);
 		example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("processId",workPlanProcess.getProcessId());
 		return RetDataTools.Ok("更新成功!",workPlanProcessService.updateWorkPlanProcess(example, workPlanProcess));
@@ -124,8 +126,8 @@ public RetDataBean insertWorkPlan (HttpServletRequest request,WorkPlan workPlan)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
-		UserInfo userInfo = (UserInfo)request.getSession().getAttribute("USER_INFO");
+		Account account=accountService.getRedisAccount(request);
+		UserInfo userInfo = accountService.getRedisUserInfo(request);
 		workPlan.setPlanId(SysTools.getGUID());
 		workPlan.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 		workPlan.setCreateUser(account.getAccountId());
@@ -155,7 +157,7 @@ public RetDataBean deleteWorkPlan(HttpServletRequest request,WorkPlan workPlan)
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		workPlan.setOrgId(account.getOrgId());
 		return RetDataTools.Ok("删除成功!",workPlanService.deleteWorkPlan(workPlan));
 	}catch (Exception e) {
@@ -182,7 +184,7 @@ public RetDataBean updateWorkPlan(HttpServletRequest request,WorkPlan workPlan)
 		{
 			return RetDataTools.NotOk("请求参数有问题,请检查!");
 		}
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		Example example = new Example(WorkPlan.class);
 		example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("planId",workPlan.getPlanId());
 		return RetDataTools.Ok("更新成功!",workPlanService.updateWorkPlan(example, workPlan));

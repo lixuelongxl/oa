@@ -137,7 +137,7 @@ public class RouteGetUnitController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			userGroup.setOrgId(account.getOrgId());
 			userGroup = userGroupService.selectOneUserGroup(userGroup);
 			return RetDataTools.Ok("请求成功！",userInfoService.getSelectUserByGroupId(account.getOrgId(),userGroup));
@@ -160,7 +160,7 @@ public class RouteGetUnitController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功！",userGroupService.getUserGroupListByAccountId(account.getOrgId(),account.getAccountId()));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -182,7 +182,7 @@ public class RouteGetUnitController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功！",userInfoService.getSelectUserByLevelId(account.getOrgId(),levelId));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -203,7 +203,7 @@ public class RouteGetUnitController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功！",userGroupService.getMyUserGroup(account.getOrgId(),account.getAccountId()));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -225,7 +225,7 @@ public class RouteGetUnitController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			userGroup.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功！",userGroupService.selectOneUserGroup(userGroup));
 		}catch (Exception e) {
@@ -248,7 +248,7 @@ public class RouteGetUnitController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功！",userInfoService.getSearchUserForMobile(account.getOrgId(),search));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -270,7 +270,7 @@ public class RouteGetUnitController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功！",diaryService.getHomePageByAccountId(account.getOrgId(),accountId));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -293,7 +293,7 @@ public class RouteGetUnitController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功！",unitDeptService.getDeptTableTreeList(account.getOrgId()));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -315,7 +315,7 @@ public class RouteGetUnitController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功！",JSONObject.parse(account.getHomePage()));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -337,7 +337,7 @@ public class RouteGetUnitController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isNotBlank(accountStrs))
 			{
 				List<String> list = new ArrayList<String>();
@@ -374,7 +374,7 @@ public class RouteGetUnitController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Unit unit = new Unit();
 			unit.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功！",unitService.selectOne(unit));
@@ -403,7 +403,7 @@ public class RouteGetUnitController {
 			{
 				orgLeaveId = deptId;
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return unitDeptService.getUnitDeptTree(orgLeaveId,account.getOrgId());
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -432,7 +432,7 @@ public class RouteGetUnitController {
 			{
 				orgLeaveId = deptId;
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return unitDeptService.getUnitDeptForUserInfoTree(orgLeaveId,account.getOrgId());
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -454,7 +454,7 @@ public RetDataBean getUserPrivNamesByIds(HttpServletRequest request,String userP
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isBlank(userPrivIds))
 			{
 				return RetDataTools.Error("参数错误！");
@@ -483,7 +483,7 @@ public RetDataBean getUserPrivNamesByIds(HttpServletRequest request,String userP
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			unitDept.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("后台请求成功！",unitDeptService.getUnitDeptInfo(unitDept.getOrgId(),unitDept.getDeptId())) ;
 		}catch (Exception e) {
@@ -526,7 +526,7 @@ public RetDataBean getUserPrivNamesByIds(HttpServletRequest request,String userP
 				pageParam.setSortOrder("asc");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(orderBy);
@@ -571,7 +571,7 @@ public RetDataBean getUserPrivNamesByIds(HttpServletRequest request,String userP
 				pageParam.setSortOrder("asc");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(orderBy);
@@ -614,7 +614,7 @@ public RetDataBean getUserPrivNamesByIds(HttpServletRequest request,String userP
 				pageParam.setSortOrder("asc");
 			}
 			
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
 		pageParam.setOrgId(account.getOrgId());
 		pageParam.setOrderBy(orderBy);
@@ -639,7 +639,7 @@ public RetDataBean getUserPrivNamesByIds(HttpServletRequest request,String userP
 	public List<Map<String,Object>> getSysMenuTree(HttpServletRequest request)
 	{
 		String sysMenuLeave = request.getParameter("sysMenuId");
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(!account.getOpFlag().equals("1"))
 		{
 			return null;
@@ -670,7 +670,7 @@ public RetDataBean getUserPrivNamesByIds(HttpServletRequest request,String userP
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			sysMenu.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功！",sysMenuService.selectOne(sysMenu));
 		}catch (Exception e) {
@@ -693,7 +693,7 @@ public RetDataBean getUserPrivNamesByIds(HttpServletRequest request,String userP
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功！",userInfoService.getSelectUserByDeptId(deptId, account.getOrgId()));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -714,7 +714,7 @@ public RetDataBean getUserPrivNamesByIds(HttpServletRequest request,String userP
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			return RetDataTools.Ok("请求成功！",userInfoService.getMyUserInfo(account.getOrgId(),account.getAccountId()));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -735,7 +735,7 @@ public RetDataBean getUserPrivNamesByIds(HttpServletRequest request,String userP
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isNotBlank(accountIds))
 			{	
 				String[] paramsList;
@@ -770,7 +770,7 @@ public RetDataBean getUserPrivNamesByIds(HttpServletRequest request,String userP
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isNotBlank(searchuser))
 			{
 				return RetDataTools.Ok("请求成功！",accountService.getUserInfoBySearchuser(searchuser, account.getOrgId()));
@@ -799,7 +799,7 @@ public RetDataBean getUserPrivNamesByIds(HttpServletRequest request,String userP
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(UnitDept.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("orgLeaveId",unitDept.getOrgLeaveId());
 			return RetDataTools.Ok("请求成功！",unitDeptService.getDeptList(example));
@@ -822,7 +822,7 @@ public RetDataBean getUserPrivNamesByIds(HttpServletRequest request,String userP
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isNotBlank(deptIds))
 			{
 				String[] paramsList = deptIds.split(",");
@@ -852,7 +852,7 @@ public RetDataBean getUserPrivNamesByIds(HttpServletRequest request,String userP
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isNotBlank(searchdept))
 			{
 				return RetDataTools.Ok("请求成功！",unitDeptService.getUnitDeptBySearchdept("%"+searchdept+"%", account.getOrgId()));
@@ -879,7 +879,7 @@ public RetDataBean getUserPrivNamesByIds(HttpServletRequest request,String userP
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			List<String> list = new ArrayList<String>();
 			if(StringUtils.isNotBlank(privIds))
 			{
@@ -919,7 +919,7 @@ public RetDataBean getUserPrivNamesByIds(HttpServletRequest request,String userP
 				pageParam.setSortOrder("asc");
 			}
 		 pageParam.setOrderBy(pageParam.getSort()+" "+pageParam.getSortOrder());
-		 Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		 Account account=accountService.getRedisAccount(request);
 		 pageParam.setAccountId(account.getAccountId());
 		 pageParam.setOrgId(account.getOrgId());
 		 pageParam.setOpFlag(account.getOpFlag());
@@ -953,7 +953,7 @@ public RetDataBean getUserPrivNamesByIds(HttpServletRequest request,String userP
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(!account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.NotOk("您不是系统管理员，请与系统管理员联系！");
@@ -981,7 +981,7 @@ public RetDataBean getUserPrivNamesByIds(HttpServletRequest request,String userP
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(!account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.NotOk("您不是系统管理员，请与系统管理员联系！");
@@ -1009,7 +1009,7 @@ public RetDataBean getUserPrivNamesByIds(HttpServletRequest request,String userP
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(!account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.NotOk("您不是系统管理员，请与系统管理员联系！");
@@ -1041,7 +1041,7 @@ public RetDataBean getUserPrivNamesByIds(HttpServletRequest request,String userP
 			{
 				levelId = "0";
 			}
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			List<Map<String, Object>> ListMaper = userLevelService.getAllUserLevelChart(account.getOrgId(),levelId);
 			if(ListMaper.size()>0)
 			{
@@ -1072,7 +1072,7 @@ public RetDataBean getUserPrivNamesByIds(HttpServletRequest request,String userP
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(UserLevel.class);
 			example.setOrderByClause("LEVEL_NO_ID DESC");
 			example.createCriteria().andEqualTo("orgId",account.getOrgId());
@@ -1097,7 +1097,7 @@ public RetDataBean getUserPrivNamesByIds(HttpServletRequest request,String userP
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			userLevel.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("请求成功！",userLevelService.selectOne(userLevel));
 		}catch (Exception e) {
@@ -1119,7 +1119,7 @@ public RetDataBean getUserPrivNamesByIds(HttpServletRequest request,String userP
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			if(StringUtils.isNotBlank(userLevelIds))
 			{
 				String [] leaveArr;
@@ -1156,7 +1156,7 @@ public RetDataBean getUserPrivNamesByIds(HttpServletRequest request,String userP
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 				return RetDataTools.Ok("获取用户详情成功！",userInfoService.getUserInfoDeatilsByAccountId(account.getOrgId(),accountId));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());

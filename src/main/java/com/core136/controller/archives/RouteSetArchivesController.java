@@ -18,6 +18,7 @@ import com.core136.bean.archives.ArchivesDestroyRecord;
 import com.core136.bean.archives.ArchivesFile;
 import com.core136.bean.archives.ArchivesRepository;
 import com.core136.bean.archives.ArchivesVolume;
+import com.core136.service.account.AccountService;
 import com.core136.service.archives.ArchivesBorrowFileService;
 import com.core136.service.archives.ArchivesBorrowVolumeService;
 import com.core136.service.archives.ArchivesDestroyRecordService;
@@ -42,7 +43,8 @@ public class RouteSetArchivesController {
 	private ArchivesBorrowVolumeService archivesBorrowVolumeService;
 	@Autowired
 	private ArchivesDestroyRecordService archivesDestroyRecordService;
-	
+	@Autowired
+	private AccountService accountService;
 	
 	/**
 	 * 
@@ -59,7 +61,7 @@ public class RouteSetArchivesController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			archivesDestroyRecord.setRecordId(SysTools.getGUID());
 			archivesDestroyRecord.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			archivesDestroyRecord.setCreateUser(account.getAccountId());
@@ -90,7 +92,7 @@ public class RouteSetArchivesController {
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}else
 			{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(ArchivesBorrowVolume.class);
 			archivesBorrowVolume.setApprovalStatus(status);
 			archivesBorrowVolume.setApprovalTime("yyyy-MM-dd HH:mm:ss");
@@ -126,7 +128,7 @@ public class RouteSetArchivesController {
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}else
 			{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(ArchivesBorrowFile.class);
 			archivesBorrowFile.setApprovalStatus(status);
 			archivesBorrowFile.setApprovalTime("yyyy-MM-dd HH:mm:ss");
@@ -154,7 +156,7 @@ public class RouteSetArchivesController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			archivesBorrowVolume.setRecordId(SysTools.getGUID());
 			archivesBorrowVolume.setApprovalStatus("0");
 			archivesBorrowVolume.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -186,7 +188,7 @@ public class RouteSetArchivesController {
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}else
 			{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			archivesBorrowVolume.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("撤销申请成功!",archivesBorrowVolumeService.deleteArchivesBorrowVolume(archivesBorrowVolume));
 			}
@@ -215,7 +217,7 @@ public class RouteSetArchivesController {
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}else
 			{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(ArchivesBorrowVolume.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("recordId",archivesBorrowVolume.getRecordId());
 			return RetDataTools.Ok("更新文件成功!", archivesBorrowVolumeService.updateArchivesBorrowVolume(example,archivesBorrowVolume));
@@ -241,7 +243,7 @@ public class RouteSetArchivesController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			archivesBorrowFile.setRecordId(SysTools.getGUID());
 			archivesBorrowFile.setApprovalStatus("0");
 			archivesBorrowFile.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -273,7 +275,7 @@ public class RouteSetArchivesController {
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}else
 			{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			archivesBorrowFile.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("撤销申请成功!",archivesBorrowFileService.deleteArchivesBorrowFile(archivesBorrowFile));
 			}
@@ -302,7 +304,7 @@ public class RouteSetArchivesController {
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}else
 			{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(ArchivesBorrowFile.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("recordId",archivesBorrowFile.getRecordId());
 			return RetDataTools.Ok("更新文件成功!", archivesBorrowFileService.updateArchivesBorrowFile(example,archivesBorrowFile));
@@ -327,7 +329,7 @@ public class RouteSetArchivesController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			archivesFile.setFileId(SysTools.getGUID());
 			archivesFile.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			archivesFile.setCreateUser(account.getAccountId());
@@ -359,7 +361,7 @@ public class RouteSetArchivesController {
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}else
 			{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			archivesFile.setOrgId(account.getOrgId());
 			return RetDataTools.Ok("删除文件成功!",archivesFileService.deleteArchivesFile(archivesFile));
 			}
@@ -389,7 +391,7 @@ public class RouteSetArchivesController {
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}else
 			{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(ArchivesFile.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("fileId",archivesFile.getFileId());
 			return RetDataTools.Ok("更新文件成功!", archivesFileService.updateArchivesFile(example,archivesFile));
@@ -414,7 +416,7 @@ public class RouteSetArchivesController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			archivesVolume.setVolumeId(SysTools.getGUID());
 			archivesVolume.setCreateTime("yyyy-MM-dd HH:mm:ss");
 			archivesVolume.setCreateUser(account.getAccountId());
@@ -446,7 +448,7 @@ public class RouteSetArchivesController {
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}else
 			{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			archivesVolume.setOrgId(account.getOrgId());
 			ArchivesFile  archivesFile = new ArchivesFile();
 			archivesFile.setOrgId(account.getOrgId());
@@ -485,7 +487,7 @@ public class RouteSetArchivesController {
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}else
 			{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(ArchivesVolume.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("volumeId",archivesVolume.getVolumeId());
 			return RetDataTools.Ok("更新案卷成功!", archivesVolumeService.updateArchivesVolume(example,archivesVolume));
@@ -510,7 +512,7 @@ public class RouteSetArchivesController {
 	{
 		try
 		{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			archivesRepository.setRepositoryId(SysTools.getGUID());
 			archivesRepository.setCreateTime("yyyy-MM-dd HH:mm:ss");
 			archivesRepository.setCreateUser(account.getAccountId());
@@ -541,7 +543,7 @@ public class RouteSetArchivesController {
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}else
 			{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			archivesRepository.setOrgId(account.getOrgId());
 			ArchivesVolume archivesVolume = new ArchivesVolume();
 			archivesVolume.setOrgId(account.getOrgId());
@@ -580,7 +582,7 @@ public class RouteSetArchivesController {
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}else
 			{
-			Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+			Account account=accountService.getRedisAccount(request);
 			Example example = new Example(ArchivesRepository.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("repositoryId",archivesRepository.getRepositoryId());
 			return RetDataTools.Ok("更新卷库成功!", archivesRepositoryService.updateArchivesRepository(example,archivesRepository));

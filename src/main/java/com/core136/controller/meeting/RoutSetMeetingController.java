@@ -24,6 +24,7 @@ import com.core136.bean.meeting.Meeting;
 import com.core136.bean.meeting.MeetingDevice;
 import com.core136.bean.meeting.MeetingNotes;
 import com.core136.bean.meeting.MeetingRoom;
+import com.core136.service.account.AccountService;
 import com.core136.service.meeting.MeetingDeviceService;
 import com.core136.service.meeting.MeetingNotesService;
 import com.core136.service.meeting.MeetingRoomService;
@@ -49,6 +50,8 @@ private MeetingRoomService meetingRoomService;
 private MeetingDeviceService meetingDeviceService;
 @Autowired
 private MeetingNotesService meetingNotesService;
+@Autowired
+private AccountService accountService;
 /**
  * 
  * @Title: cancelmeeting   
@@ -65,7 +68,7 @@ public RetDataBean cancelmeeting(HttpServletRequest request,Meeting meeting,Stri
 {
 	try
 	{
-		UserInfo userInfo=(UserInfo)request.getSession().getAttribute("USER_INFO");
+		UserInfo userInfo = accountService.getRedisUserInfo(request);
 		meeting.setOrgId(userInfo.getOrgId());
 		meeting = meetingService.selectOneMeeting(meeting);
 		meeting.setStatus("3");
@@ -95,7 +98,7 @@ public RetDataBean sendMeetingMsg(HttpServletRequest request,Meeting meeting)
 {
 	try
 	{
-		UserInfo userInfo=(UserInfo)request.getSession().getAttribute("USER_INFO");
+		UserInfo userInfo = accountService.getRedisUserInfo(request);
 		meeting.setOrgId(userInfo.getOrgId());
 		meeting = meetingService.selectOneMeeting(meeting);
 		meetingService.sendMeetingMsg(userInfo,meeting);
@@ -121,7 +124,7 @@ public RetDataBean insertMeetingRoom(HttpServletRequest request,MeetingRoom meet
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		meetingRoom.setRoomId(SysTools.getGUID());
 		meetingRoom.setStatus("0");
 		meetingRoom.setCreateUser(account.getAccountId());
@@ -149,7 +152,7 @@ public RetDataBean deleteMeetingRoom(HttpServletRequest request,MeetingRoom meet
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isBlank(meetingRoom.getRoomId()))
 		{
 			return RetDataTools.NotOk("请求参数不正确！请检查相关参数！");
@@ -177,7 +180,7 @@ public RetDataBean updateMeetingRoom(HttpServletRequest request,MeetingRoom meet
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isBlank(meetingRoom.getRoomId()))
 		{
 			return RetDataTools.NotOk("请求参数不正确！请检查相关参数！");
@@ -209,7 +212,7 @@ public RetDataBean insertMeetingDevice(HttpServletRequest request,MeetingDevice 
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		meetingDevice.setDeviceId(SysTools.getGUID());
 		meetingDevice.setStatus("0");
 		meetingDevice.setCreateUser(account.getAccountId());
@@ -237,7 +240,7 @@ public RetDataBean deleteMeetingDevice(HttpServletRequest request,MeetingDevice 
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isBlank(meetingDevice.getDeviceId()))
 		{
 			return RetDataTools.NotOk("请求参数不正确！请检查相关参数！");
@@ -265,7 +268,7 @@ public RetDataBean updateMeetingDevice(HttpServletRequest request,MeetingDevice 
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isBlank(meetingDevice.getDeviceId()))
 		{
 			return RetDataTools.NotOk("请求参数不正确！请检查相关参数！");
@@ -295,7 +298,7 @@ public RetDataBean insertMeeting(HttpServletRequest request,Meeting meeting)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		meeting.setMeetingId(SysTools.getGUID());
 		meeting.setCreateUser(account.getAccountId());
 		meeting.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -323,7 +326,7 @@ public RetDataBean deleteMeeting(HttpServletRequest request,Meeting meeting)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isBlank(meeting.getMeetingId()))
 		{
 			return RetDataTools.NotOk("请求参数不正确！请检查相关参数！"); 
@@ -350,7 +353,7 @@ public RetDataBean updateMeeting(HttpServletRequest request,Meeting meeting)
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isBlank(meeting.getMeetingId()))
 		{
 			return RetDataTools.NotOk("请求参数不正确！请检查相关参数！"); 
@@ -385,7 +388,7 @@ public RetDataBean insertMeetingNotes(HttpServletRequest request,MeetingNotes me
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		meetingNotes.setNotesId(SysTools.getGUID());
 		meetingNotes.setCreateUser(account.getAccountId());
 		meetingNotes.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -412,7 +415,7 @@ public RetDataBean deleteMeetingNotes(HttpServletRequest request,MeetingNotes me
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isBlank(meetingNotes.getNotesId()))
 		{
 			return RetDataTools.NotOk("请求参数不正确！请检查相关参数！"); 
@@ -440,7 +443,7 @@ public RetDataBean updateMeetingNotes(HttpServletRequest request,MeetingNotes me
 {
 	try
 	{
-		Account account=(Account)request.getSession().getAttribute("LOGIN_USER");
+		Account account=accountService.getRedisAccount(request);
 		if(StringUtils.isBlank(meetingNotes.getNotesId()))
 		{
 			return RetDataTools.NotOk("请求参数不正确！请检查相关参数！"); 
