@@ -1,6 +1,7 @@
 package com.core136.controller.sys;
 
 import org.apache.commons.lang.StringUtils;
+import org.core136.common.enums.AppGobalConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.core136.bean.sys.SysInterface;
-import com.core136.config.AppGobalConstant;
 import com.core136.service.account.AccountService;
 import com.core136.service.sys.SysInterfaceService;
 

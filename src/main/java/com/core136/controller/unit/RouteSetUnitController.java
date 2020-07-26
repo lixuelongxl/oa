@@ -18,7 +18,6 @@ import com.core136.bean.account.UserGroup;
 import com.core136.bean.account.UserInfo;
 import com.core136.bean.account.UserLevel;
 import com.core136.bean.account.UserPriv;
-import com.core136.bean.notice.NoticeTemplate;
 import com.core136.bean.sys.DdConfig;
 import com.core136.bean.sys.SysMenu;
 import com.core136.bean.sys.WxConfig;
@@ -30,10 +29,11 @@ import com.core136.service.account.UserInfoService;
 import com.core136.service.account.UserLevelService;
 import com.core136.service.account.UserPrivService;
 import com.core136.service.sys.DdConfigService;
-import com.core136.service.sys.SysConfigService;
 import com.core136.service.sys.SysMenuService;
 import com.core136.service.sys.WxConfigService;
+import com.core136.unit.RedisUtil;
 
+import org.core136.common.auth.LoginAccountInfo;
 import org.core136.common.retdataunit.RetDataBean;
 import org.core136.common.retdataunit.RetDataTools;
 import org.core136.common.utils.StrTools;
@@ -72,9 +72,9 @@ private UserLevelService userLevelService;
 @Autowired
 private DdConfigService dbConfigService;
 @Autowired
-private SysConfigService sysConfigService;
-@Autowired
 private WxConfigService wxConfigService;
+@Autowired
+private RedisUtil redisUtil;
 
 /**
  * 
@@ -1237,7 +1237,9 @@ public RetDataBean setDeskConfig (HttpServletRequest request,String homePage)
 		{
 		HttpSession session = request.getSession(true);
 		account.setHomePage(homePage);
-		session.setAttribute("LOGIN_USER", account);
+		LoginAccountInfo loginAccountInfo = accountService.getRedisLoginAccountInfo(request);
+		loginAccountInfo.setAccount(account);
+		redisUtil.set("account_"+session.getId(), loginAccountInfo);
 		}
 		return RetDataTools.Ok("桌面设置成功!","");
 	}catch (Exception e) {
