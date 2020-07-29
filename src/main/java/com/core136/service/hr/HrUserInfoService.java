@@ -311,7 +311,6 @@ public RetDataBean importHrUserInfo(Account account,MultipartFile file) throws I
 		valueString+="'"+account.getAccountId()+"',";
 		valueString+="'"+account.getOrgId()+"'";
 		String insertSql = "INSERT INTO HR_USER_INFO(USER_ID,"+fieldString+",CREATE_TIME,CREATE_USER,ORG_ID) values"+ "("+valueString+")";
-		System.out.println(insertSql);
 		jdbcTemplate.execute(insertSql);
 	}
 	return RetDataTools.Ok("批量导入人事档案成功！");

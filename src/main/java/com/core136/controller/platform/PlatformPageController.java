@@ -1,10 +1,8 @@
 package com.core136.controller.platform;
 
-import java.io.File;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,7 +30,7 @@ public class PlatformPageController {
 		{
 			if(StringUtils.isBlank(view))
 			{
-				mv = new ModelAndView("app/core/platform/form/design");
+				mv = new ModelAndView("app/core/platform/form/designmanage");
 			}else
 			{
 				if(view.equals("design"))

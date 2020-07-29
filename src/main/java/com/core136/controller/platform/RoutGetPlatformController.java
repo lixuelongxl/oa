@@ -1,7 +1,11 @@
 package com.core136.controller.platform;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.StringUtils;
 import org.core136.common.retdataunit.RetDataBean;
 import org.core136.common.retdataunit.RetDataTools;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +30,34 @@ public class RoutGetPlatformController {
 	private PlatformPageService platformPageService;
 	@Autowired
 	private AccountService accountService;
+	
+	/**
+	 * 
+	 * @Title: getknowledgeSortTree   
+	 * @Description: TODO 获取平台菜单树结构
+	 * @param request
+	 * @param sortId
+	 * @return
+	 * List<Map<String,String>>    
+	 * @throws
+	 */
+	@RequestMapping(value="/getknowledgeSortTree",method=RequestMethod.POST)
+	public List<Map<String,String>> getknowledgeSortTree(HttpServletRequest request,String sortId)
+	{
+		try
+		{
+			String levelId = "0";
+			if(StringUtils.isNotBlank(sortId))
+			{
+				levelId = sortId;
+			}
+			Account account=accountService.getRedisAccount(request);
+			return platformMenuService.getPlatformMenuTree(account.getOrgId(), levelId);
+		}catch (Exception e) {
+			return null;
+		}
+	}
+	
 	/**
 	 * 
 	 * @Title: getDataUploadHandleById   

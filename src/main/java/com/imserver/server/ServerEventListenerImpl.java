@@ -201,7 +201,7 @@ public class ServerEventListenerImpl implements ServerEventListener
 		int typeu = p.getTypeu();
 		try {
 		Long new_time=System.currentTimeMillis();
-		redisUtil.sSet("msg_"+p.getTo(), JSONObject.toJSONString(p));
+		redisUtil.lSet("msg_"+p.getTo(), JSONObject.toJSONString(p));
 		flag = true;
 		logger.debug("【DEBUG_回调通知】[typeu="+typeu+"]客户端"+from_user_id+"发给客户端"+userId+"的消息：str="+dataContent
 				+"，离线存存储成功！");

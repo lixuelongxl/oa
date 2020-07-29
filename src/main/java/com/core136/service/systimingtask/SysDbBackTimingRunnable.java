@@ -19,7 +19,7 @@ public class SysDbBackTimingRunnable implements Runnable{
 	public void run() {
 		Environment env = SysRunConfig.getEnv();
 		String mysqlPath = SysRunConfig.getDbSetUpPath();
-		if (env.getProperty("spring.datasource.driver-class-name").equals("com.mysql.jdbc.Driver")) {
+		if (env.getProperty("spring.datasource.driver-class-name").equals("com.mysql.cj.jdbc.Driver")) {
 			//MySql备份
 			String root = env.getProperty("spring.datasource.username");
 			String pwd = env.getProperty("spring.datasource.password");

@@ -36,6 +36,7 @@ import com.core136.unit.RedisUtil;
 import org.core136.common.auth.LoginAccountInfo;
 import org.core136.common.retdataunit.RetDataBean;
 import org.core136.common.retdataunit.RetDataTools;
+import org.core136.common.utils.Md5CaculateUtil;
 import org.core136.common.utils.StrTools;
 import org.core136.common.utils.SysTools;
 
@@ -1009,6 +1010,7 @@ public RetDataBean insertAccountAndUserInfo (HttpServletRequest request,UserInfo
 			userInfo.setPinYin(StrTools.getPingYin(userInfo.getUserName()));
 			userInfo.setOrgId(account.getOrgId());
 			uAccount.setOrgId(account.getOrgId());
+			uAccount.setPassWord(Md5CaculateUtil.MD5(uAccount.getAccountId()+uAccount.getPassWord()));
 			uAccount.setNotLogin("0");
 			return userInfoService.insertAccountAndUserInfo(uAccount,userInfo);
 		}
@@ -1079,6 +1081,11 @@ public RetDataBean updateAccountAndUserInfo (HttpServletRequest request,UserInfo
 		{
 			userInfo.setOrgId(account.getOrgId());
 			uAccount.setOrgId(account.getOrgId());
+			if(StringUtils.isBlank(uAccount.getPassWord()))
+			{
+				uAccount.setPassWord("123456");
+			}
+			uAccount.setPassWord(Md5CaculateUtil.MD5(uAccount.getAccountId()+uAccount.getPassWord()));
 			if(StringUtils.isBlank(uAccount.getPassWord()))
 			{
 				uAccount.setPassWord(null);
@@ -1205,7 +1212,8 @@ public RetDataBean resetPassWord (HttpServletRequest request,String firstPassWor
 	try
 	{
 		Account account=accountService.getRedisAccount(request);
-		return accountService.resetPassWord(account,firstPassWord,newPassWord);
+		String accountId = account.getAccountId();
+		return accountService.resetPassWord(account,Md5CaculateUtil.MD5(accountId+firstPassWord),newPassWord);
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());
 	}
