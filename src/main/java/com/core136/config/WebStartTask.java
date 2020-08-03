@@ -20,7 +20,8 @@ import com.core136.service.account.UnitService;
 import com.core136.service.sys.SysOrgConfigService;
 import com.core136.service.sys.SysTimingTaskService;
 import com.core136.unit.dbunit.DBInfoTools;
-import com.imserver.server.ServerLauncherImpl;
+
+import net.core136.service.ImService;
 
 import org.core136.common.utils.SysTools;
 /**
@@ -70,7 +71,7 @@ public class WebStartTask implements CommandLineRunner{
 	        startSysTimingTask();
 	        System.out.println("---------------------启动系统定时任务---------------------");
 	        System.out.println("---------------------正在启动IM服务---------------------");
-	        new ServerLauncherImpl().startup();
+	        new ImService().startup();
 	        System.out.println("---------------------启动IM服务完成---------------------");
 	        System.out.println("智能办公系统已启动,相关初始化工作已完成,欢迎您对本系统的支持！");
 		}catch (Exception e) {

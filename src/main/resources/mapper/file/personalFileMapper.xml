@@ -22,9 +22,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getfilelist" resultType="java.util.HashMap">
 	SELECT P.FILE_ID AS fileId,P.FILE_NAME AS fileName,P.ATTACH AS attach,P.VERSION AS version,'true' AS isFile,A.FILE_SIZE AS fileSize,A.EXT_NAME AS extName
 	FROM 
-	PERSONAL_FILE P LEFT JOIN ATTACH A ON A.ORG_ID=#{orgId} AND A.ATTACH_ID=P.ATTACH
+	PERSONAL_FILE P,ATTACH A
 	WHERE 
-	P.FOLDER_ID=#{folderId} 
+	P.ORG_ID=A.ORG_ID 
+	AND P.ORG_ID=#{orgId} 
+	AND A.ATTACH_ID=P.ATTACH
+	AND A.DEL_FLAG='0'
+	AND P.FOLDER_ID=#{folderId} 
 	AND P.CREATE_USER=#{createUser} 
 	AND P.ORG_ID=#{orgId} 
 	ORDER BY P.SORT_NO ASC

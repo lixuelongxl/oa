@@ -2,8 +2,8 @@ var zTree;
 var setting = {
 	async : {
 		enable : true,// 设置 zTree 是否开启异步加载模式
-		url : "/ret/knowledgeget/getknowledgeSortTree",// Ajax 获取数据的 URL 地址
-		autoParam : [ "sortId" ],// 异步加载时需要自动提交父节点属性的参数
+		url : "/ret/platformget/getPlatformMenuTree",// Ajax 获取数据的 URL 地址
+		autoParam : [ "menuId" ],// 异步加载时需要自动提交父节点属性的参数
 	},
 	callback : {
 		onClick : zTreeOnClick
@@ -11,12 +11,12 @@ var setting = {
 	data : {
 		simpleData : {
 			enable : true,
-			idKey : "sortId",
-			pIdKey : "sortLeave",
+			idKey : "menuId",
+			pIdKey : "levelId",
 			rootPId : "0"
 		},
 		key : {
-			name : "sortName"
+			name : "menuName"
 		}
 	}
 };
@@ -24,7 +24,7 @@ var setting = {
 var setting1 = {
 	async : {
 		enable : true,// 设置 zTree 是否开启异步加载模式
-		url : "/ret/knowledgeget/getknowledgeSortTree",// Ajax 获取数据的 URL 地址
+		url : "/ret/platformget/getPlatformMenuTree",// Ajax 获取数据的 URL 地址
 		autoParam : [ "sortId" ],// 异步加载时需要自动提交父节点属性的参数
 	},
 	view : {
@@ -35,12 +35,12 @@ var setting1 = {
 	data : {
 		simpleData : {
 			enable : true,
-			idKey : "sortId",
-			pIdKey : "sortLeave",
+			idKey : "menuId",
+			pIdKey : "levelId",
 			rootPId : "0"
 		},
 		key : {
-			name : "sortName"
+			name : "menuName"
 		}
 	},
 	callback : {
@@ -51,8 +51,8 @@ var setting1 = {
 				return a.id - b.id;
 			});
 			for (var i = 0, l = nodes.length; i < l; i++) {
-				v += nodes[i].sortName + ",";
-				vid += nodes[i].sortId + ",";
+				v += nodes[i].menuName + ",";
+				vid += nodes[i].menuId + ",";
 			}
 			if (v.length > 0)
 				v = v.substring(0, v.length - 1);
@@ -68,15 +68,15 @@ var setting1 = {
 
 $(function() {
 	$.ajax({
-		url : "/ret/knowledgeget/getknowledgeSortTree",
+		url : "/ret/platformget/getPlatformMenuTree",
 		type : "post",
 		dataType : "json",
 		success : function(data) {
 			zTree = $.fn.zTree.init($("#tree"), setting, data);// 初始化树节点时，添加同步获取的数据
 			var topNode = [ {
-				sortName : "TOP分类",
+				menuName : "TOP分类",
 				isParent : "fase",
-				sortId : ""
+				menuId : ""
 			} ];
 			var newTreeNodes = topNode.concat(data);
 			$.fn.zTree.init($("#menuTree"), setting1, newTreeNodes);
@@ -95,7 +95,7 @@ $(function() {
 		delsort();
 	});
 	$("#updatabut").unbind("click").click(function() {
-		updateErpBomSort();
+		updateMenu();
 	});
 
 	$("#sortLeaveName").unbind("click").click(function(e) {
@@ -114,28 +114,28 @@ $(function() {
 });
 function zTreeOnClick(event, treeId, treeNode) {
 	$.ajax({
-		url : "/ret/knowledgeget/getKnowledgeSortById",
+		url : "/ret/platformget/getPlatformMenuById",
 		type : "post",
 		dataType : "json",
 		data : {
-			sortId : treeNode.sortId
+			menuId : treeNode.menuId
 		},
 		success : function(data) {
 			if (data.status == "200") {
 				var v = data.list;
 				for (name in v) {
-					if (name == "sortLeave") {
+					if (name == "levelId") {
 						$.ajax({
-							url : "/ret/knowledgeget/getKnowledgeSortById",
+							url : "/ret/platformget/getPlatformMenuById",
 							type : "post",
 							dataType : "json",
 							data : {
-								sortId : v["sortLeave"]
+								menuId : v["levelId"]
 							},
 							success : function(data) {
 								if (data.status == "200") {
 									if (data.list) {
-										$("#sortLeaveName").val(data.list.sortName);
+										$("#sortLeaveName").val(data.list.menuName);
 									} else {
 										$("#sortLeaveName").val("");
 									}
@@ -158,11 +158,11 @@ function zTreeOnClick(event, treeId, treeNode) {
 function delsort() {
 	if (confirm("确定删除当前分类吗？")) {
 		$.ajax({
-			url : "/set/knowledgeset/deleteKnowledgeSort",
+			url : "/set/platformset/deletePlatformMenu",
 			type : "post",
 			dataType : "json",
 			data : {
-				sortId : $("#sortId").val()
+				menuId : $("#menuId").val()
 			},
 			success : function(data) {
 				if (data.status == 200) {
@@ -180,14 +180,16 @@ function delsort() {
 
 function addsort() {
 	$.ajax({
-		url : "/set/knowledgeset/insertKnowledgeSort",
+		url : "/set/platformset/insertPlatformMenu",
 		type : "post",
 		dataType : "json",
 		data : {
 			sortNo : $("#sortNo").val(),
-			sortName : $("#sortName").val(),
-			sortLeave : $("#sortLeave").val(),
-			sortRemark : $("#sortRemark").val()
+			menuName : $("#menuName").val(),
+			appCode : $("#appCode").val(),
+			pageId:$("#pageId").val(),
+			levelId : $("#levelId").val(),
+			remark : $("#renark").val()
 		},
 		success : function(data) {
 			if (data.status == 200) {
@@ -200,19 +202,19 @@ function addsort() {
 	});
 }
 
-function updateErpBomSort() {
+function updateMenu(menuId) {
 	$.ajax({
-		url : "/set/knowledgeset/updateKnowledgeSort",
+		url : "/set/platformset/updatePlatformMenu",
 		type : "post",
 		dataType : "json",
 		data : {
-			sortId : $("#sortId").val(),
+			menuId : $("#menuId").val(),
 			sortNo : $("#sortNo").val(),
-			sortName : $("#sortName").val(),
-			sortCode : $("#sortCode").val(),
-			sortLeave : $("#sortLeave").val(),
-			sortRemark : $("#sortRemark").val(),
-			sortImg : $("#sortImg").attr("data_value")
+			menuName : $("#menuName").val(),
+			appCode : $("#appCode").val(),
+			pageId:$("#pageId").val(),
+			levelId : $("#levelId").val(),
+			remark : $("#renark").val()
 		},
 		success : function(data) {
 			if (data.status == 200) {

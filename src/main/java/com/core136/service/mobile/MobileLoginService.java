@@ -59,7 +59,7 @@ public class MobileLoginService {
 	 * void    
 	 * @throws
 	 */
-	public void mobileLogin(HttpServletRequest request,String accountId,String passWord) throws ApiException
+	public boolean mobileLogin(HttpServletRequest request,String accountId,String passWord) throws ApiException
 	{
 		LoginAccountInfo loginAccountInfo = new LoginAccountInfo();
 		boolean isRegist = SysRunConfig.getIsRegist();
@@ -111,10 +111,15 @@ public class MobileLoginService {
 				session.setAttribute("onLinUser", new OnLineUser(account.getAccountId()));
 				accountService.updateLastLoginTime(account);
 				sysLogService.createLog(request, account,EventTypeEnums.SYS_LOG_LOGIN,"移动端登陆成功");
+				return true;
 		}else
 			{
 				sysLogService.createLog(request, account,EventTypeEnums.SYS_LOG_LOGIN,"移动端登陆失败");
+				return false;
 			}
+		}else
+		{
+			return false;
 		}
 	}
 }

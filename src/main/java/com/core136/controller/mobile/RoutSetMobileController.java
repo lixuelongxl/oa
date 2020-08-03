@@ -24,12 +24,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.core136.bean.account.Account;
 import com.core136.bean.im.Dynamic;
 import com.core136.bean.im.Inquiry;
+import com.core136.bean.im.UserFriends;
 import com.core136.bean.file.Attach;
 import com.core136.service.account.AccountService;
 import com.core136.service.im.DynamicService;
 import com.core136.service.im.InquiryService;
+import com.core136.service.im.UserFriendsService;
 import com.core136.unit.fileutils.UploadUtils;
-
+import com.dingtalk.api.response.OapiCalendarListResponse.User;
 
 import org.core136.common.retdataunit.RetDataBean;
 import org.core136.common.retdataunit.RetDataTools;
@@ -59,6 +61,29 @@ public class RoutSetMobileController {
 	private AccountService accountService;
 	@Autowired
 	private InquiryService inquiryService;
+	@Autowired
+	private UserFriendsService userFriendsService;
+	
+	/**
+	 * 
+	 * @Title: addUserFriends   
+	 * @Description: TODO 添加好友
+	 * @param request
+	 * @param userFriends
+	 * @return
+	 * RetDataBean    
+	 * @throws
+	 */
+	@RequestMapping(value = "/addUserFriends", method = RequestMethod.POST)
+	public RetDataBean addUserFriends(HttpServletRequest request, UserFriends userFriends) {
+		try {
+			return RetDataTools.Ok("好友添加成功!", userFriendsService.addUserFriends(userFriends));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return RetDataTools.Error(e.getMessage());
+		}
+	}
+	
 	
 	
 /**

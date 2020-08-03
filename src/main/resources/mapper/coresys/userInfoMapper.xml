@@ -120,9 +120,15 @@ AND (U.USER_NAME LIKE #{search} OR U.ACCOUNT_ID LIKE #{search})
 </select>
 
  <select id="getSelectUserByDeptId"  resultType="java.util.HashMap">
-	SELECT ACCOUNT_ID AS accountId,USER_NAME AS userName,SEX AS sex 
-	FROM USER_INFO WHERE DEPT_ID=#{deptId} AND ORG_ID=#{orgId} AND ACCOUNT_ID IN 
-	(SELECT ACCOUNT_ID FROM ACCOUNT WHERE NOT_LOGIN='0') ORDER BY SORT_NO ASC
+	SELECT U.ACCOUNT_ID AS accountId,U.USER_NAME AS userName,U.SEX AS sex,A.HEAD_IMG AS headImg
+	FROM USER_INFO U,ACCOUNT A
+	WHERE 
+	U.ORG_ID=A.ORG_ID
+	AND U.ACCOUNT_ID = A.ACCOUNT_ID
+	AND U.DEPT_ID=#{deptId} 
+	AND U.ORG_ID=#{orgId} 
+	AND A.NOT_LOGIN='0' 
+	ORDER BY U.SORT_NO ASC
  </select>
  
   <select id="getSelectUserByLevelId"  resultType="java.util.HashMap">
@@ -154,7 +160,8 @@ AND (U.USER_NAME LIKE #{search} OR U.ACCOUNT_ID LIKE #{search})
 	U.LEAD_LEAVE AS leadLeave,(SELECT LEVEL_NAME FROM USER_LEVEL WHERE LEVEL_ID=leadLeave) AS leadLevelName,
 	A.ACCOUNT_ID AS accountId,A.APP_PRIV AS appPriv,A.ORG_ID AS orgId,HOME_TEL AS tel,U.MOBILE_NO AS mobileNo,U.WX_NO as wxNo,
 	(SELECT S.ORG_NAME FROM UNIT S WHERE S.ORG_ID=U.ORG_ID) AS orgName,U.BIRTHDAY AS birthday,U.WORK_ID AS workId,
-	A.HEAD_IMG AS headImg,U.BIRTHDAY AS birthday,U.MOBILE_NO As mobileNo,U.E_MAIL AS eMail,U.SIGN AS sign,U.NICK AS nick,A.D_ACCOUNT_ID AS dAccountId,A.W_ACCOUNT_ID AS wAccountId
+	A.HEAD_IMG AS headImg,U.BIRTHDAY AS birthday,U.MOBILE_NO As mobileNo,U.E_MAIL AS eMail,U.SIGN AS sign,
+	U.NICK AS nick,A.D_ACCOUNT_ID AS dAccountId,A.W_ACCOUNT_ID AS wAccountId,A.ORG_ID AS orgId
 	FROM ACCOUNT A LEFT JOIN USER_INFO U ON A.ACCOUNT_ID=U.ACCOUNT_ID AND A.ORG_ID=U.ORG_ID WHERE A.ACCOUNT_ID=#{accountId} AND A.ORG_ID=#{orgId}
  </select>
  

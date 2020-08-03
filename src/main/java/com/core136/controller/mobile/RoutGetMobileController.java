@@ -44,8 +44,11 @@ import com.core136.service.im.InquiryService;
 import com.core136.service.im.UserFriendsService;
 import com.core136.service.meeting.MeetingService;
 import com.core136.service.mobile.MobileLoginService;
+import com.core136.service.mobile.MobileOrgService;
 import com.core136.service.notice.NoticeService;
 import com.core136.service.oa.NewsService;
+
+import oracle.net.aso.m;
 
 import org.core136.common.retdataunit.RetDataBean;
 import org.core136.common.retdataunit.RetDataTools;
@@ -99,6 +102,34 @@ public class RoutGetMobileController {
 	private MeetingService meetingService;
 	@Autowired
 	private AccountService accountService;
+	@Autowired
+	private MobileOrgService mobileOrgService;
+	
+	/**
+	 * 
+	 * @Title: getDeptAndUserInfoForMobile   
+	 * @Description: TODO APP获取组织机构
+	 * @param request
+	 * @param orgId
+	 * @param deptId
+	 * @return
+	 * RetDataBean    
+	 * @throws
+	 */
+	@RequestMapping(value="/getDeptAndUserInfoForMobile",method=RequestMethod.POST)
+	public RetDataBean getDeptAndUserInfoForMobile(HttpServletRequest request,String orgId,String deptId)
+	{
+		try
+		{
+		return RetDataTools.Ok("请求数据成功!", mobileOrgService.getDeptAndUserInfoForMobile(orgId,deptId));
+		}catch (Exception e) {
+			return RetDataTools.Error(e.getMessage());
+		}
+	}	
+	
+	
+	
+	
 	/**
 	 * 
 	 * @Title: doMobileLogin   
@@ -127,8 +158,13 @@ public class RoutGetMobileController {
 						String[] codeArr = code.split("&");
 						String accountId = codeArr[0];
 						String passWord = codeArr[2];
-						mobileLoginService.mobileLogin(request, accountId, passWord);
-						return RetDataTools.Ok("请求成功!");
+						if(mobileLoginService.mobileLogin(request, accountId, passWord))
+						{
+							return RetDataTools.Ok("请求成功!");
+						}else
+						{
+							return RetDataTools.NotOk("登陆失败!");
+						}
 					}else
 					{
 						return RetDataTools.NotOk("登陆失败!");
@@ -137,14 +173,19 @@ public class RoutGetMobileController {
 			}else
 			{
 				code = SysTools.decode(code);
-				System.out.println(code);
 				if(StringUtils.isNotBlank(code))
 				{
 					String[] codeArr = code.split("&");
 					String accountId = codeArr[0];
 					String passWord = codeArr[2];
-					mobileLoginService.mobileLogin(request, accountId, passWord);
-					return RetDataTools.Ok("请求成功!");
+					if(mobileLoginService.mobileLogin(request, accountId, passWord))
+					{
+						return RetDataTools.Ok("请求成功!");
+					}else
+					{
+						return RetDataTools.NotOk("登陆失败!");
+					}
+					
 				}else
 				{
 					return RetDataTools.NotOk("登陆失败!");

@@ -36,6 +36,7 @@ import org.core136.common.retdataunit.RetDataBean;
 import org.core136.common.retdataunit.RetDataTools;
 
 import org.core136.common.enums.FileExt;
+import org.core136.common.utils.Md5CaculateUtil;
 import org.core136.common.utils.SysTools;
 /**
  * 
@@ -627,7 +628,7 @@ public void getBpmSealSign(HttpServletResponse response,HttpServletRequest reque
     public RetDataBean imAudioUpload(HttpServletRequest request,String module,String accountId,String passWord) throws UploadException {
         String targetpath = SysTools.greateAttachDir(attachpath, module);
         try {
-        	Account account = accountService.login(accountId, passWord);
+        	Account account = accountService.login(accountId, Md5CaculateUtil.MD5(accountId+passWord));
             return RetDataTools.Ok("文件上传成功!", uploadUtils.ImAudioUpload(request,account,notallow, targetpath));
         } catch (IOException e) {
             return RetDataTools.Error(e.getMessage());

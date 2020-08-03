@@ -188,10 +188,11 @@ function query()
 	}
 function createOptBtn(runId,flowId,status)
 {
-	var html="<a href=\"javascript:void(0);toNext('"+runId+"')\" class=\"btn btn-sky btn-xs\" >转交</a>&nbsp;&nbsp;";
+	var html="";
 	if(status!="1")
 	{
-		html+="<a href=\"javascript:void(0);goback('"+runId+"')\" class=\"btn btn-primary btn-xs\">回退</a>&nbsp;&nbsp;";
+		html+="<a href=\"javascript:void(0);toNext('"+runId+"')\" class=\"btn btn-sky btn-xs\" >转交</a>&nbsp;&nbsp;" +
+			  "<a href=\"javascript:void(0);goback('"+runId+"')\" class=\"btn btn-primary btn-xs\">回退</a>&nbsp;&nbsp;";
 	}
 	html+="<a href=\"javascript:void(0);del('"+runId+"')\" class=\"btn btn-darkorange btn-xs\" >删除</a>&nbsp;&nbsp;" +
 			"<a href=\"javascript:void(0);read('" + runId + "','" + flowId + "')\" class=\"btn btn-primary btn-xs\">查看</a>";
