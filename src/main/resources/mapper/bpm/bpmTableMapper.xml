@@ -3,7 +3,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core136.mapper.bpm.BpmTableMapper">
-     <select id="tableIsExist" resultType="String">
+     <select id="isExistTable" resultType="String">
         	SHOW TABLES LIKE #{tableName}
       </select>
       
@@ -65,7 +65,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       	UPDATE ${tableName} SET ${vk} WHERE ORG_ID=#{orgId} AND RUN_ID=#{runId} AND UNIQUE_ID=#{uniqueId}
       </update>
       
-      <update id="clearChildTableData">
+      <update id="deleteChildTableData">
       	DELETE FROM ${tableName} WHERE ORG_ID=#{orgId} AND RUN_ID=#{runId} 
       	<if test="uniqueIdList!=null">
 			AND UNIQUE_ID NOT IN
@@ -135,6 +135,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       			AND B.ATTACH IN (SELECT A.ATTACH_ID FROM ATTACH A WHERE A.ORG_ID=#{orgId} AND A.ATTACH_ID IS NOT NULL AND A.MODULES='bpm' AND OLD_NAME LIKE #{publicAttach})
       		</if>
       </select> 
+      
+      
+      <update id="alterBpmTableFieldComment">
+        ALTER TABLE ${tableName} MODIFY COLUMN ${columu} ${dataType} comment #{comment}
+      </update>
+      
       
 </mapper>
 

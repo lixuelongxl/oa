@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core136.mapper.platform.PlatformPageTableMapper">
+     <select id="isExistTable" resultType="String">
+        	SHOW TABLES LIKE #{tableName}
+      </select>
+      <select id="getTableColumn" resultType="java.util.HashMap">
+       		SELECT COLUMN_NAME AS columnName,DATA_TYPE AS dataType,COLUMN_TYPE AS columnType,COLUMN_COMMENT AS remark FROM information_schema.COLUMNS where TABLE_SCHEMA = (select database()) and TABLE_NAME=#{tableName}
+      </select>
+      <update id="alterPlatformPageTable">
+      		ALTER TABLE ${tableName} ADD COLUMN(${columuList});
+      </update>
+       <update id="createPlatformPageTable">
+        CREATE TABLE ${tableName} (
+        ID bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+        RECORD_ID varchar(50) DEFAULT NULL COMMENT 'BPM流水标识',
+        ${columuList}
+        ORG_ID varchar(50) DEFAULT NULL COMMENT '组织机构识别码',
+        PRIMARY KEY (ID)
+        )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+      </update>
+      
+       <update id="alterPlatformPageTableFieldComment">
+        ALTER TABLE ${tableName} MODIFY COLUMN ${columu} ${dataType} comment #{comment}
+      </update>
+</mapper>
+

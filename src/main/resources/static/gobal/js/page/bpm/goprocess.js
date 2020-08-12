@@ -173,7 +173,6 @@ function createOptBtn(runId,runProcessId,sendId,freeToOther,flowId)
 function read(runId,flowId)
 {
 	open("/app/core/bpm/bpmread?runId=" + runId + "&flowId=" + flowId,"_self");
-
 }
 
 

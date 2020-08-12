@@ -105,7 +105,7 @@ public class RoutSetMobileController {
 		dynamic.setCreateTime(SysTools.getTime("yyyy-MM-dd HH-mm:ss"));
 		String targetpath = SysTools.greateAttachDir(attachpath, "imdynamic");
 		try {
-			Account account = accountService.login(accountId, passWord);
+			Account account = accountService.getLoginAccount(accountId, passWord);
 			List<Attach> list = uploadUtils.ImUpload(request,account, notallow, targetpath);
 			StringBuffer stringBuffer = new StringBuffer();
             for (int i = 0; i < list.size(); i++) {
@@ -114,37 +114,6 @@ public class RoutSetMobileController {
             String imgPaths = stringBuffer.substring(0, stringBuffer.length() - 1).toString();
             dynamic.setAttach(imgPaths);
 			return RetDataTools.Ok("文件上传成功!", dynamicService.insertDynamic(dynamic));
-		} catch (Exception e) {
-			e.printStackTrace();
-			return RetDataTools.Error(e.getMessage());
-		}
-	}
-	/**
-	 * 
-	* @Title: sendInquiry 
-	* @Description: TODO 发布询价单
-	* @param @param request
-	* @param @param inquiry
-	* @param @param accountId
-	* @param @param passWord
-	* @param @param module
-	* @param @return 设定文件 
-	* @return RetDataBean 返回类型
-	 */
-	@RequestMapping(value = "/sendInquiry", method = RequestMethod.POST)
-	public RetDataBean sendInquiry(HttpServletRequest request, Inquiry inquiry,String accountId,String passWord,String module) {
-		inquiry.setCreateTime(SysTools.getTime("yyyy-MM-dd HH-mm:ss"));
-		String targetpath = SysTools.greateAttachDir(attachpath, module);
-		try {
-			Account account = accountService.login(accountId, passWord);
-			List<Attach> list = uploadUtils.ImUpload(request,account, notallow, targetpath);
-			StringBuffer stringBuffer = new StringBuffer();
-            for (int i = 0; i < list.size(); i++) {
-                stringBuffer.append(list.get(i).getAttachId()+ ":");
-            }
-            String imgPaths = stringBuffer.substring(0, stringBuffer.length() - 1).toString();
-            inquiry.setAttach(imgPaths);
-			return RetDataTools.Ok("文件上传成功!", inquiryService.insertInquiry(inquiry));
 		} catch (Exception e) {
 			e.printStackTrace();
 			return RetDataTools.Error(e.getMessage());

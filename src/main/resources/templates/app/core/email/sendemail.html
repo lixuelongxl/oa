@@ -142,6 +142,7 @@
 <script type="text/javascript">
 var runId = "${parameter.runId}";
 var flowId = "${parameter.flowId}";
+var isDocument=${parameter.isDocument};
 </script>
 <!--Bootstrap  wysiwig Scripts-->
 <script type="text/javascript" src="/module/fileupload/pageoffice.js" id="po_js_main"></script>
@@ -165,27 +166,54 @@ var flowId = "${parameter.flowId}";
         	$(".js-saveemail").unbind("click").click(function(){
         		saveEmail();
         	});
-        	if(runId!=null&&runId!=""&&flowId!=null&&flowId!="")
+        	if(isDocument)
         	{
-        		$.ajax({
-        			url : '/ret/bpmget/getBpmPrintData',
-        			type : "post",
-        			dataType : "json",
-        			data : {
-        				flowId : flowId,
-        				runId : runId
-        			},
-        			success : function(data) {
-        				if (data.status == "500") {
-        					console.log(data.msg);
-        				} else if (data.status == "100") {
-        					top.layer.msg(data.msg);
-        				} else {
-        					$("#content").code(data.list.bpmFormHtml);
-        				}
-        			}
-        	});
+        		if(runId!=null&&runId!=""&&flowId!=null&&flowId!="")
+            	{
+            		$.ajax({
+            			url : '/ret/documentget/getDocumentPrintData',
+            			type : "post",
+            			dataType : "json",
+            			data : {
+            				flowId : flowId,
+            				runId : runId
+            			},
+            			success : function(data) {
+            				if (data.status == "500") {
+            					console.log(data.msg);
+            				} else if (data.status == "100") {
+            					top.layer.msg(data.msg);
+            				} else {
+            					$("#content").code(data.list.documentFormHtml);
+            				}
+            			}
+            	});
+            	}
+        	}else
+        	{
+        		if(runId!=null&&runId!=""&&flowId!=null&&flowId!="")
+            	{
+            		$.ajax({
+            			url : '/ret/bpmget/getBpmPrintData',
+            			type : "post",
+            			dataType : "json",
+            			data : {
+            				flowId : flowId,
+            				runId : runId
+            			},
+            			success : function(data) {
+            				if (data.status == "500") {
+            					console.log(data.msg);
+            				} else if (data.status == "100") {
+            					top.layer.msg(data.msg);
+            				} else {
+            					$("#content").code(data.list.bpmFormHtml);
+            				}
+            			}
+            	});
+            	}
         	}
+        	
         })
         
     </script>

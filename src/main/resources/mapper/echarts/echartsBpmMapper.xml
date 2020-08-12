@@ -23,13 +23,13 @@ B.ORG_ID=#{orgId} GROUP BY U.deptId ORDER BY value DESC LIMIT 0,10
 
 
 <select id="getBiBpmFlowByAccountPie" resultType="java.util.HashMap">
-SELECT U.USER_NAME as name,count(c.account_id) as value
+SELECT U.USER_NAME AS name,count(C.ACCOUNT_ID) AS value
 FROM BPM_RUN_PROCESS C LEFT JOIN USER_INFO U ON C.ORG_ID=U.ORG_ID AND C.ACCOUNT_ID=U.ACCOUNT_ID
 WHERE 
 C.ORG_ID=#{orgId} GROUP BY C.ACCOUNT_ID ORDER BY value DESC LIMIT 0,10
 </select>
 
-<select id="getBiBpmLowByMonthLine" resultType="java.util.HashMap">
+<select id="getBiBpmFlowByMonthLine" resultType="java.util.HashMap">
 SELECT COUNT(1) AS total,createTime
 FROM
 (SELECT LEFT(CREATE_TIME, 7) AS createTime

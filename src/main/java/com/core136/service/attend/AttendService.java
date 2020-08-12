@@ -140,6 +140,181 @@ public PageInfo<Map<String, String>> getTotalAttendList(PageParam pageParam,Stri
 	return pageInfo;
 }
 
+/**
+ * 
+ * @Title: getMyLeaveList   
+ * @Description: TODO 获取人员请假列表
+ * @param orgId
+ * @param accountId
+ * @param beginTime
+ * @param endTime
+ * @return
+ * List<Map<String,String>>    
+ * @throws
+ */
+public List<Map<String, String>>getMyLeaveList(String orgId,String accountId,String beginTime,String endTime,String type)
+{
+	return attendMapper.getMyLeaveList(orgId, accountId,beginTime,endTime,type);
+}
+
+/**
+ * 
+ * @Title: getMyLeaveList   
+ * @Description: TODO 获取人员请假列表
+ * @param pageParam
+ * @param beginTime
+ * @param endTime
+ * @return
+ * PageInfo<Map<String,String>>    
+ * @throws
+ */
+public PageInfo<Map<String, String>> getMyLeaveList(PageParam pageParam,String beginTime,String endTime,String type)
+{
+	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
+	List<Map<String, String>> datalist= getMyLeaveList(pageParam.getOrgId(),pageParam.getAccountId(),beginTime,endTime,type);
+	PageInfo<Map<String, String>> pageInfo = new PageInfo<Map<String, String>>(datalist);
+	return pageInfo;
+}
+/**
+ * 
+ * @Title: getMyTravelList   
+ * @Description: TODO 获取出差列表
+ * @param orgId
+ * @param accountId
+ * @param beginTime
+ * @param endTime
+ * @return
+ * List<Map<String,String>>    
+ * @throws
+ */
+public List<Map<String, String>>getMyTravelList(String orgId,String accountId,String beginTime,String endTime)
+{
+	return attendMapper.getMyTravelList(orgId, accountId,beginTime,endTime);
+}
+
+/**
+ * 
+ * @Title: getMyTravelList   
+ * @Description: TODO 获取出差列表
+ * @param pageParam
+ * @param beginTime
+ * @param endTime
+ * @return
+ * PageInfo<Map<String,String>>    
+ * @throws
+ */
+public PageInfo<Map<String, String>> getMyTravelList(PageParam pageParam,String beginTime,String endTime)
+{
+	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
+	List<Map<String, String>> datalist= getMyTravelList(pageParam.getOrgId(),pageParam.getAccountId(),beginTime,endTime);
+	PageInfo<Map<String, String>> pageInfo = new PageInfo<Map<String, String>>(datalist);
+	return pageInfo;
+}
+
+/**
+ * 
+ * @Title: getMyOutattendList   
+ * @Description: TODO 获取外出列表
+ * @param orgId
+ * @param accountId
+ * @param beginTime
+ * @param endTime
+ * @return
+ * List<Map<String,String>>    
+ * @throws
+ */
+public List<Map<String, String>>getMyOutattendList(String orgId,String accountId,String beginTime,String endTime)
+{
+	return attendMapper.getMyOutattendList(orgId, accountId,beginTime,endTime);
+}
+/**
+ * 
+ * @Title: getMyOutattendList   
+ * @Description: TODO 获取外出列表
+ * @param pageParam
+ * @param beginTime
+ * @param endTime
+ * @return
+ * PageInfo<Map<String,String>>    
+ * @throws
+ */
+public PageInfo<Map<String, String>> getMyOutattendList(PageParam pageParam,String beginTime,String endTime)
+{
+	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
+	List<Map<String, String>> datalist= getMyOutattendList(pageParam.getOrgId(),pageParam.getAccountId(),beginTime,endTime);
+	PageInfo<Map<String, String>> pageInfo = new PageInfo<Map<String, String>>(datalist);
+	return pageInfo;
+}
+/**
+ * 
+ * @Title: getMyOverTimeList   
+ * @Description: TODO 获取加班列表
+ * @param orgId
+ * @param accountId
+ * @param beginTime
+ * @param endTime
+ * @return
+ * List<Map<String,String>>    
+ * @throws
+ */
+public List<Map<String, String>>getMyOverTimeList(String orgId,String accountId,String beginTime,String endTime)
+{
+	return attendMapper.getMyOverTimeList(orgId, accountId,beginTime,endTime);
+}
+
+/**
+ * 
+ * @Title: getMyOverTimeList   
+ * @Description: TODO 获取加班列表
+ * @param pageParam
+ * @param beginTime
+ * @param endTime
+ * @return
+ * PageInfo<Map<String,String>>    
+ * @throws
+ */
+public PageInfo<Map<String, String>> getMyOverTimeList(PageParam pageParam,String beginTime,String endTime)
+{
+	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
+	List<Map<String, String>> datalist= getMyOverTimeList(pageParam.getOrgId(),pageParam.getAccountId(),beginTime,endTime);
+	PageInfo<Map<String, String>> pageInfo = new PageInfo<Map<String, String>>(datalist);
+	return pageInfo;
+}
+
+/**
+ * 
+ * @Title: getMyDutyList   
+ * @Description: TODO获取值班列表
+ * @param orgId
+ * @param accountId
+ * @param beginTime
+ * @param endTime
+ * @return
+ * List<Map<String,String>>    
+ * @throws
+ */
+public List<Map<String, String>>getMyDutyList(String orgId,String accountId,String beginTime,String endTime)
+{
+	return attendMapper.getMyDutyList(orgId, accountId,beginTime,endTime);
+}
+/**
+ * 
+ * @Title: getMyDutyList   
+ * @Description: TODO 获取值班列表
+ * @param pageParam
+ * @param beginTime
+ * @param endTime
+ * @return
+ * PageInfo<Map<String,String>>    
+ * @throws
+ */
+public PageInfo<Map<String, String>> getMyDutyList(PageParam pageParam,String beginTime,String endTime)
+{
+	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
+	List<Map<String, String>> datalist= getMyDutyList(pageParam.getOrgId(),pageParam.getAccountId(),beginTime,endTime);
+	PageInfo<Map<String, String>> pageInfo = new PageInfo<Map<String, String>>(datalist);
+	return pageInfo;
+}
 
 /**
  * 

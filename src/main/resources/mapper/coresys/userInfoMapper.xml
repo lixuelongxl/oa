@@ -108,9 +108,9 @@ AND (U.USER_NAME LIKE #{search} OR U.ACCOUNT_ID LIKE #{search})
  SELECT A.ACCOUNT_ID AS accountId,U.USER_NAME AS userName,U.SEX AS sex,(SELECT TMP1.LEVEL_NAME FROM USER_LEVEL TMP1 WHERE TMP1.LEVEL_ID=U.LEAD_LEAVE) AS postion,
  A.NOT_LOGIN AS status,A.USER_PRIV AS userPriv
  FROM 
- ACCOUNT A LEFT JOIN USER_INFO U ON A.ACCOUNT_ID=U.ACCOUNT_ID AND A.ORG_ID=U.ORG_ID 
+ ACCOUNT A LEFT JOIN USER_INFO U ON A.ACCOUNT_ID=U.ACCOUNT_ID AND A.ORG_ID=U.ORG_ID
  WHERE 
-U.ORG_ID=#{orgId} 
+U.ORG_ID=#{orgId}
 <if test="deptId!=''.toString() and deptId!=null">
 AND  U.DEPT_ID=#{deptId}
 </if>
@@ -118,6 +118,23 @@ AND  U.DEPT_ID=#{deptId}
 AND (U.USER_NAME LIKE #{search} OR U.ACCOUNT_ID LIKE #{search})
 </if>
 </select>
+
+
+ <select id="getLeaveUserInfoList" resultType="java.util.HashMap">
+ SELECT U.ACCOUNT_ID AS accountId,U.USER_NAME AS userName,U.SEX AS sex,
+ (SELECT TMP1.LEVEL_NAME FROM USER_LEVEL TMP1 WHERE TMP1.LEVEL_ID=U.LEAD_LEAVE) AS postion,
+ A.NOT_LOGIN AS status,A.USER_PRIV AS userPriv
+ FROM 
+ ACCOUNT A LEFT JOIN USER_INFO U ON A.ACCOUNT_ID=U.ACCOUNT_ID AND A.ORG_ID=U.ORG_ID
+ WHERE 
+U.ORG_ID=#{orgId}
+AND DEPT_ID NOT IN(SELECT D.DEPT_ID FROM UNIT_DEPT D WHERE D.ORG_ID=#{orgId})
+<if test="search !='%%' and search!=null and search !=''.toString()">
+	AND (U.USER_NAME LIKE #{search} OR U.ACCOUNT_ID LIKE #{search})
+</if>
+</select>
+
+
 
  <select id="getSelectUserByDeptId"  resultType="java.util.HashMap">
 	SELECT U.ACCOUNT_ID AS accountId,U.USER_NAME AS userName,U.SEX AS sex,A.HEAD_IMG AS headImg
@@ -241,7 +258,7 @@ AND (U.USER_NAME LIKE #{search} OR U.ACCOUNT_ID LIKE #{search})
  </select>
  
  
-   <select id="isInUserPriv"  resultType="Integer">
+   <select id="getIsInUserPriv"  resultType="Integer">
    SELECT COUNT(1) AS ZS FROM
    (
    SELECT ACCOUNT_ID FROM USER_INFO

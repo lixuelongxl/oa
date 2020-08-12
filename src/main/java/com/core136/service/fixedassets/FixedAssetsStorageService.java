@@ -46,7 +46,7 @@ public int deleteFixedAssetsStorage(FixedAssetsStorage fixedAssetsStorage)
 
 public int updateFixedAssetsStorage(Example example, FixedAssetsStorage fixedAssetsStorage)
 {
-	return fixedAssetsStorageMapper.updateByExample(fixedAssetsStorage, example);
+	return fixedAssetsStorageMapper.updateByExampleSelective(fixedAssetsStorage, example);
 }
 
 public FixedAssetsStorage selectOneFixedAssetsStorage(FixedAssetsStorage fixedAssetsStorage)

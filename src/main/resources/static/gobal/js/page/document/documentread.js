@@ -40,11 +40,11 @@ $(function() {
 			}
 	});
 	$(".js-sendtoemail").unbind("click").click(function(){
-		window.open("/app/core/oa/email?view=sendemail?runId="+runId+"&flowId="+flowId);
+		window.open("/app/core/oa/email?view=sendemail&isDocument=true&runId="+runId+"&flowId="+flowId);
 	})
 	
 	$(".js-sendtonotice").unbind("click").click(function(){
-		window.open("/app/core/notice/index?runId="+runId+"&flowId="+flowId);
+		window.open("/app/core/notice/index?isDocument=true&runId="+runId+"&flowId="+flowId);
 	})
 	$.ajax({
 		url : '/ret/documentget/getDocumentPrintData',

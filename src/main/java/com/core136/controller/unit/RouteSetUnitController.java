@@ -670,7 +670,7 @@ public RetDataBean delUnitDept(HttpServletRequest request,UnitDept unitDept)
 				return RetDataTools.NotOk("当前部门下还有用户,若要删除,请先删除用户!");
 			}else
 			{
-				return RetDataTools.Ok("删除部门成功！",unitDeptService.delUnitDept(unitDept));
+				return RetDataTools.Ok("删除部门成功！",unitDeptService.deleteUnitDept(unitDept));
 			}
 		}
 	}catch (Exception e) {
@@ -806,7 +806,7 @@ public RetDataBean deleteUserPriv(HttpServletRequest request,UserPriv userPriv)
 			return RetDataTools.NotOk("对不起,您不是系统管理员!"); 
 		}else
 		{
-			return RetDataTools.Ok("删除权限成功！",userPrivService.delUserPriv(userPriv));
+			return RetDataTools.Ok("删除权限成功！",userPrivService.deleteUserPriv(userPriv));
 		}
 	}catch (Exception e) {
 		return RetDataTools.Error(e.getMessage());

@@ -83,4 +83,76 @@ public interface AttendMapper extends MyMapper<Attend>{
 			@Param(value="endTime") String endTime,@Param(value="deptId") String deptId,@Param(value="createUser") String createUser);
 	
 
+	/**
+	 * 
+	 * @Title: getMyLeaveList   
+	 * @Description: TODO 获取人员请假列表
+	 * @param orgId
+	 * @param accountId
+	 * @param beginTime
+	 * @param endTime
+	 * @param type
+	 * @return
+	 * List<Map<String,String>>    
+	 * @throws
+	 */
+	public List<Map<String, String>>getMyLeaveList(@Param(value="orgId")String orgId,@Param(value="accountId")String accountId,@Param(value="beginTime")String beginTime,@Param(value="endTime")String endTime,@Param(value="type")String type);
+	
+	/**
+	 * 
+	 * @Title: getMyTravelList   
+	 * @Description: TODO 获取出差列表
+	 * @param orgId
+	 * @param accountId
+	 * @param beginTime
+	 * @param endTime
+	 * @return
+	 * List<Map<String,String>>    
+	 * @throws
+	 */
+	public List<Map<String, String>>getMyTravelList(@Param(value="orgId")String orgId,@Param(value="accountId")String accountId,@Param(value="beginTime")String beginTime,@Param(value="endTime")String endTime);
+
+	/**
+	 * 
+	 * @Title: getMyOverTimeList   
+	 * @Description: TODO 获取加班列表
+	 * @param orgId
+	 * @param accountId
+	 * @param beginTime
+	 * @param endTime
+	 * @return
+	 * List<Map<String,String>>    
+	 * @throws
+	 */
+	public List<Map<String, String>>getMyOverTimeList(@Param(value="orgId")String orgId,@Param(value="accountId")String accountId,@Param(value="beginTime")String beginTime,@Param(value="endTime")String endTime);
+
+	/**
+	 * 
+	 * @Title: getMyDutyList   
+	 * @Description: TODO 获取值班列表
+	 * @param orgId
+	 * @param accountId
+	 * @param beginTime
+	 * @param endTime
+	 * @return
+	 * List<Map<String,String>>    
+	 * @throws
+	 */
+	public List<Map<String, String>>getMyDutyList(@Param(value="orgId")String orgId,@Param(value="accountId")String accountId,@Param(value="beginTime")String beginTime,@Param(value="endTime")String endTime);
+
+	/**
+	 * 
+	 * @Title: getMyOutattendList   
+	 * @Description: TODO 获取外出列表
+	 * @param orgId
+	 * @param accountId
+	 * @param beginTime
+	 * @param endTime
+	 * @return
+	 * List<Map<String,String>>    
+	 * @throws
+	 */
+	public List<Map<String, String>>getMyOutattendList(@Param(value="orgId")String orgId,@Param(value="accountId")String accountId,@Param(value="beginTime")String beginTime,@Param(value="endTime")String endTime);
+
+	
 }

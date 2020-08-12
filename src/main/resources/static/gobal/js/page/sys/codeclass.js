@@ -149,6 +149,7 @@ function edit(codeClassId)
 					}else
 						{
 						top.layer.msg(data.msg);
+						$("#myTable").bootstrapTable("refresh");
 						}
 			}
 		});
@@ -173,7 +174,7 @@ function del(codeClassId)
 			console.log(data.msg);
 			}else
 				{
-				location.reload();
+				$("#myTable").bootstrapTable("refresh");
 				top.layer.msg(data.msg);
 				}
 		}
@@ -206,6 +207,7 @@ $(".js-save").unbind("click").click(function(){
 				}else
 					{
 					top.layer.msg(data.msg);
+					$("#myTable").bootstrapTable("refresh");
 					}
 		}
 	});
@@ -244,6 +246,7 @@ function dodelAll()
 					}else
 					{
 					console.log(data.msg);
+					$("#myTable").bootstrapTable("refresh");
 					}
 			}
 		});

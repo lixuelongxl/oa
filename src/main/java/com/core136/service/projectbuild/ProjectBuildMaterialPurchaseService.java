@@ -191,7 +191,7 @@ public RetDataBean purchaseAndSendBpm(ProjectBuildMaterialPurchase projectBuildM
 	bpmProcess.setFlowId(bpmList.getFlowId());
 	bpmProcess.setPrcsType("1");
 	bpmProcess.setOrgId(bpmList.getOrgId());
-	BpmProcess retBpmProcess = bpmProcessService.selectOne(bpmProcess);
+	BpmProcess retBpmProcess = bpmProcessService.selectOneBpmProcess(bpmProcess);
 	bpmListService.insertBpmList(bpmList);
 	BpmRunProcess bpmRunProcess = new BpmRunProcess();
 	bpmRunProcess.setRunProcessId(SysTools.getGUID());

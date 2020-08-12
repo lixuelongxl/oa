@@ -329,7 +329,7 @@ public RetDataBean addOrgConfig(HttpServletRequest request,SysOrgConfig sysOrgCo
 			sysConfig.setOrgId(account.getOrgId());
 			SysConfig newSysConfig = new SysConfig();
 			newSysConfig.setOrgId(sysConfig.getOrgId());
-			newSysConfig =sysConfigService.selectOne(newSysConfig);
+			newSysConfig =sysConfigService.selectOneSysConfig(newSysConfig);
 			if(newSysConfig!=null)
 			{
 				Example example = new Example(SysConfig.class);

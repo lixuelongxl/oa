@@ -2,7 +2,7 @@ $(function() {
 	getBiBpmFlowByDeptPie();
 	getBiBpmFlowPie();
 	getBiBpmFlowByAccountPie();
-	getBiBpmLowByMonthLine();
+	getBiBpmFlowByMonthLine();
 });
 function getBiBpmFlowPie()
 {
@@ -82,10 +82,10 @@ function getBiBpmFlowByDeptPie()
 	})
 }
 
-function getBiBpmLowByMonthLine()
+function getBiBpmFlowByMonthLine()
 {
 	$.ajax({
-		url : "/ret/echartsbpmget/getBiBpmLowByMonthLine",
+		url : "/ret/echartsbpmget/getBiBpmFlowByMonthLine",
 		type : "post",
 		dataType : "json",
 		success : function(data) {

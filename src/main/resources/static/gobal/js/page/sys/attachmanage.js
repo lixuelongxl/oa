@@ -104,7 +104,7 @@ function query()
 		       align:'center',
 		       title: '操作',
 	    	   formatter:function(value,row,index){
-	                return createOptBtn(row.attachId);
+	                return createOptBtn(row.attachId,row.extName);
 	            }
 		      }],
 		      onClickCell: function (field, value, row, $element) {
@@ -142,9 +142,39 @@ function queryParams(params) {
     };
     return temp;
 };
-function createOptBtn(attachId)
+function createOptBtn(attachId,extName)
 {
-	var html="<a href=\"javascript:void(0);readdetails('"+attachId+"')\" class=\"btn btn-sky btn-xs\" >详情</a>&nbsp;&nbsp;";
-	html+="<a href=\"javascript:void(0);del('"+attachId+"')\" class=\"btn btn-darkorange btn-xs\" >删除</a>";
+	var html="<a href=\"javascript:void(0);readdetails('"+attachId+"','"+extName+"')\" class=\"btn btn-sky btn-xs\" >详情</a>&nbsp;&nbsp;";
+	html+="<a href=\"javascript:void(0);delfile('"+attachId+"')\" class=\"btn btn-darkorange btn-xs\" >删除</a>";
 	return html;
+}
+
+function readdetails(attachId,extName)
+{
+	openFileOnLine(extName,attachId,1);
+}
+
+function delfile(attachId)
+{
+	if(confirm("确定删除当前文件记录吗？"))
+    {
+	$.ajax({
+		url : "/sys/file/delAttch",
+		type : "post",
+		dataType : "json",
+		data : {
+			attachId : attachId
+		},
+		success : function(data) {
+			if (data.status == "200") {
+				top.layer.msg(data.msg);
+				$("#myTable").bootstrapTable("refresh");
+			} else if (data.status == "100") {
+				top.layer.msg(data.msg);
+			} else {
+				console.log(data.msg);
+			}
+		}
+	});
+    }
 }

@@ -88,20 +88,28 @@ $(function() {
 	$("#cbut").unbind("click").click(function(){
 		document.getElementById("form").reset();
 		$("#datalist").hide();
+		$("#updatabut").hide();
+		$("#delbut").hide();
 		$("#creatediv").show();
 		$("#createbut").show();
-		$("#updatabut").hide();
 		$("#accountId").removeAttr("readonly");
-		$("#delbut").hide();
 	});
 	$("#delbut").unbind("click").click(function(){
 		deleteUserInfo("");
 	});
 	$("#cquery").unbind("click").click(function(){
 		$("#creatediv").hide();
+		$("#datalist1").hide();
 		$("#datalist").show();
 		query("");
-	})
+	});
+	$("#notLoginQuery").unbind("click").click(function(){
+		$("#creatediv").hide();
+		$("#datalist").hide();
+		$("#datalist1").show();
+		querynotlogin();
+	});
+	notLoginQuery
 	$("#deptName").unbind("click").click(function(e){
 		e.stopPropagation();
 		$("#menuContent").css({
@@ -161,6 +169,7 @@ $(function() {
 function zTreeOnClick(event, treeId, treeNode)
 {
 	$("#creatediv").hide();
+	$("#datalist1").hide();
 	$("#datalist").show();
 	$("#myTable").bootstrapTable('destroy');
 	if(treeNode.deptId=="0")
@@ -283,7 +292,8 @@ function query(deptId)
 
 function createOptBtn(accountId,deptId,notLogin)
 {
-	var html="<a href=\"javascript:void(0);edit('"+accountId+"')\" class=\"btn btn-primary btn-xs\">编辑</a>&nbsp;&nbsp;<a href=\"javascript:void(0);deleteUserInfo('"+accountId+"')\" class=\"btn btn-darkorange btn-xs\" >删除</a>&nbsp;&nbsp;";
+	var html="<a href=\"javascript:void(0);edit('"+accountId+"')\" class=\"btn btn-primary btn-xs\">编辑</a>&nbsp;&nbsp;" +
+			"<a href=\"javascript:void(0);deleteUserInfo('"+accountId+"')\" class=\"btn btn-darkorange btn-xs\" >删除</a>&nbsp;&nbsp;";
 	if(notLogin=="0")
 	{
 		html+="<a href=\"javascript:void(0);stopAccount('"+accountId+"','"+deptId+"')\" class=\"btn btn-darkorange btn-xs\" >禁用</a>";
@@ -423,7 +433,6 @@ function edit(accountId)
 		}
 	});
 	}
-
 
 function deleteUserInfo(accountId)
 {
@@ -596,4 +605,112 @@ function importUserInfoForExcel(){
         	console.log(data.msg);
          }
     });
+}
+
+function querynotlogin()
+{
+	 $("#myTable1").bootstrapTable({
+	      url: '/ret/unitget/getLeaveUserInfo',
+	      method: 'post',
+	      contentType:'application/x-www-form-urlencoded',
+	      toolbar: '#toobar1',//工具列
+	      striped: true,//隔行换色
+	      cache: false,//禁用缓存
+	      pagination: true,//启动分页
+	      sidePagination: 'server',//分页方式
+	      pageNumber: 1,//初始化table时显示的页码
+	      pageSize: 10,//每页条目
+	      showFooter: false,//是否显示列脚
+	      showPaginationSwitch: true,//是否显示 数据条数选择框
+	      sortable: true,//排序
+	      search: true,//启用搜索
+	      showColumns: true,//是否显示 内容列下拉框
+	      showRefresh: true,//显示刷新按钮
+	      idField: 'accountId',//key值栏位
+	      clickToSelect: true,//点击选中checkbox
+	      pageList : [10, 20, 30, 50],//可选择单页记录数
+	      queryParams:queryParams,
+	      columns: [ {
+	      checkbox: true
+	      },
+		    {
+		    	field: 'num',
+				title: '序号',//标题  可不加
+				width:'50px',
+				formatter: function (value, row, index) {
+				return index+1;
+			}
+		    },
+	     {
+	       field: 'accountId',
+	       title: '账号',
+	       sortable : true,
+	       width:'150px'
+	      },
+	      {
+	       field: 'userName',
+	       width:'100px',
+	       title: '姓名'
+	     },
+	     {
+		   field: 'sex',
+		   width:'50px',
+		   title: '性别'
+		  },
+		  {
+			field: 'postion',
+			width:'200px',
+			title: '职务'
+		 },
+	     {
+	       field: 'userPriv',
+	       title: '权限',
+	       width:'200px',
+	       formatter:function(value,row,index){
+	    	   var str=getUserPrivNamesByIds(row.userPriv);
+               return str.substring(0,str.length-1);
+           }
+	      },
+		   {
+		       field: 'manage',
+		       title: '管理范围'
+		   },
+		   {
+		       field: 'status',
+		       title: '人员状态',
+		       formatter:function(value,row,index){
+		    	   if(value=="0")
+		    		   {
+		    		   return "正常登陆";
+		    		   }else
+		    			   {
+		    			   return "禁止登陆";
+		    			   }
+		       }
+		   },
+	      {
+	       field: 'opt',
+	       title: '操作',
+	       align:'center',
+	       width:'180px',
+    	   formatter:function(value,row,index){
+                return createOptBtn(row.accountId,deptId,row.status);
+            }
+	      }],
+	      onClickCell: function (field, value, row, $element) {
+	      //alert(row.SystemDesc);
+	    },
+	    responseHandler:function(res){
+	    	if(res.status=="500")
+	    		{
+	    		top.layer.msg(res.msg);
+	    		}else
+	    			{
+	    			return {
+	    				total : res.list.total, //总页数,前面的key必须为"total"
+	    				rows : res.list.list //行数据，前面的key要与之前设置的dataField的值一致.
+	    			};
+	    			}
+	    }
+	   });
 }

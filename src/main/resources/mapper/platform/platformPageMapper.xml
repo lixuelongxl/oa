@@ -8,7 +8,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <result column="PAGE_ID" property="pagId" jdbcType="VARCHAR" />
     <result column="SORT_NO" property="sortNo" jdbcType="INTEGER" />
     <result column="PAGE_NAME" property="pageName" jdbcType="VARCHAR" />
-    <result column="HTML_CODE" property="htmlCode" jdbcType="VARCHAR" />
+    <result column="TABLE_NAME" property="tableName" jdbcType="INTEGER" />
+    <result column="PAGE_CODE" property="pageCode" jdbcType="VARCHAR" />
+    <result column="PAGE_HTML" property="pageHtml" jdbcType="VARCHAR" />
     <result column="PAGE_STYLE" property="pageStyle" jdbcType="VARCHAR" />
     <result column="PAGE_SCRIPT" property="pageScript" jdbcType="VARCHAR" />
     <result column="PAGE_TYPE" property="pageType" jdbcType="VARCHAR" />
@@ -17,10 +19,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
     <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
     <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
-  </resultMap>
+</resultMap>
 
 <select id="getManagePlatformPageList" resultType="java.util.HashMap">
-SELECT PAGE_ID AS pageId,PAGE_NAME AS pageName,CACHE_FLAG AS cacheFlag,REMARK AS remark
+SELECT PAGE_ID AS pageId,PAGE_NAME AS pageName,TABLE_NAME AS tableName,CACHE_FLAG AS cacheFlag,REMARK AS remark,
+CREATE_TIME AS createTime,PAGE_TYPE AS pageType,(SELECT T.TITLE FROM PLATFORM_PAGE_TYPE T WHERE T.ORG_ID=#{orgId} AND T.TYPE_ID=TYPE_ID) AS pageTypeTitle,
+(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=#{orgId} AND U.ACCOUNT_ID=CREATE_USER) AS createUserName
 FROM PLATFORM_PAGE 
 WHERE 
 ORG_ID=#{orgId}
@@ -28,15 +32,11 @@ ORG_ID=#{orgId}
 		CREATE_USER=#{accountId}
 	</if>
 	<if test="pageType!=''.toString() and pageType!=null">
-		AND P.PAGE_TYPE=#{pageType}
+		AND PAGE_TYPE=#{pageType}
 	</if>
 	<if test="search!='%%'.toString()">
-		AND P.PAGE_NAME LIKE #{search}
+		AND PAGE_NAME LIKE #{search}
 	</if>
 </select>
-
-
-
-
 </mapper>
 

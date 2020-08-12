@@ -249,7 +249,6 @@ function setIsTotal(flag)
 
 function setmodel(modelval)
 {
-console.log(modelval);
 var html="";
 if(modelval=="1")
 	{

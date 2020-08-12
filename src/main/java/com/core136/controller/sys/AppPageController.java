@@ -865,7 +865,7 @@ public ModelAndView goSetOrg(HttpServletRequest request)
 		Account account=accountService.getRedisAccount(request);
 		SysConfig sysConfig = new SysConfig();
 		sysConfig.setOrgId(account.getOrgId());
-		sysConfig = sysConfigService.selectOne(sysConfig);
+		sysConfig = sysConfigService.selectOneSysConfig(sysConfig);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("app/core/sysset/sysconfig");
 		mv.addObject("sysConfig",sysConfig);
@@ -1018,7 +1018,7 @@ public ModelAndView goSetOrg(HttpServletRequest request)
 		Account account=accountService.getRedisAccount(request);
 		SysConfig sysConfig = new SysConfig();
 		sysConfig.setOrgId(account.getOrgId());
-		sysConfig=sysConfigService.selectOne(sysConfig);
+		sysConfig=sysConfigService.selectOneSysConfig(sysConfig);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("app/core/personal/personseting");
 		mv.addObject("sysConfig",sysConfig);

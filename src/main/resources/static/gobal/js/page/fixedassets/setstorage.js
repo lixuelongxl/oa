@@ -65,7 +65,7 @@ function query()
 		       align:'center',
 		       width:'100px',
 	    	   formatter:function(value,row,index){
-	                return createOptBtn(row.dbSourceId);
+	                return createOptBtn(row.storageId);
 	            }
 		      }],
 		      onClickCell: function (field, value, row, $element) {
@@ -109,11 +109,11 @@ function edit(storageId)
 	document.getElementById("form1").reset();
 	$("#manager").attr("data-value","");
 	$.ajax({
-		url : "/ret/sysget/getFixedAssetsStorageById",
+		url : "/ret/fixedassetsget/getFixedAssetsStorageById",
 		type : "post",
 		dataType : "json",
 		data:{
-			dbSourceId:dbSourceId
+			storageId:storageId
 		},
 		success : function(data) {
 			if(data.status=="500")

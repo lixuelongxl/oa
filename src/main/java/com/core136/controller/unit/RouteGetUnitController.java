@@ -492,6 +492,50 @@ public RetDataBean getUserPrivNamesByIds(HttpServletRequest request,String userP
 	}
 	/**
 	 * 
+	 * @Title: getLeaveUserInfo   
+	 * @Description: TODO 获人员状态异常人员列表
+	 * @param request
+	 * @param pageParam
+	 * @return
+	 * RetDataBean    
+	 * @throws
+	 */
+	@RequestMapping(value="/getLeaveUserInfo",method=RequestMethod.POST)
+	public RetDataBean getLeaveUserInfo(
+			HttpServletRequest request,
+			PageParam pageParam
+			)
+	{
+		try
+		{
+			if(StringUtils.isBlank(pageParam.getSort()))
+			{
+				pageParam.setSort("U.SORT_NO");
+			}else
+			{
+				pageParam.setSort("A."+StrTools.upperCharToUnderLine(pageParam.getSort()));
+			}
+			if(StringUtils.isBlank(pageParam.getSortOrder()))
+			{
+				pageParam.setSortOrder("asc");
+			}
+			
+		Account account=accountService.getRedisAccount(request);
+		String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
+		pageParam.setOrgId(account.getOrgId());
+		pageParam.setOrderBy(orderBy);
+ 		PageInfo<Map<String, String>> pageInfo=userInfoService.getLeaveUserInfoList(pageParam);
+		return RetDataTools.Ok("请求数据成功!", pageInfo);
+		}catch (Exception e) {
+			// TODO: handle exception
+			return RetDataTools.Error(e.getMessage());
+		}
+	}
+	
+	
+	
+	/**
+	 * 
 	 * @Title: getUserInfoByDeptId   
 	 * @Description: TODO 获取部门下的所有人员
 	 * @param request

@@ -31,14 +31,14 @@ public class EchartsBpmService {
 	EchartsBpmMapper echartsBpmMapper;
 	/**
 	 * 
-	 * @Title: getBiBpmLowByMonthLine   
+	 * @Title: getBiBpmFlowByMonthLine   
 	 * @Description: TODO 按月份统计工作量
 	 * @param account
 	 * @return
 	 * OptionConfig    
 	 * @throws
 	 */
-	public OptionConfig getBiBpmLowByMonthLine(Account account)
+	public OptionConfig getBiBpmFlowByMonthLine(Account account)
 	{
 		OptionConfig optionConfig = new OptionConfig();
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM");
@@ -49,7 +49,7 @@ public class EchartsBpmService {
         c.add(Calendar.YEAR, -1);
         y = c.getTime();
         String beginTime = format.format(y);
-		List<Map<String, Object>> resList = echartsBpmMapper.getBiBpmLowByMonthLine(account.getOrgId(), beginTime, endTime);
+		List<Map<String, Object>> resList = echartsBpmMapper.getBiBpmFlowByMonthLine(account.getOrgId(), beginTime, endTime);
 		String [] xAxisData = new String[resList.size()];
 		Double[] resData = new Double[resList.size()];
 		for(int i=0;i<resList.size();i++)

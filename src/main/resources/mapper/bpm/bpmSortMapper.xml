@@ -10,6 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="MANAGE_ACCOUNT_ID" property="manageAccountId" jdbcType="VARCHAR" />
 		<result column="LEVEL_ID" property="leveLId" jdbcType="VARCHAR" />
 		<result column="SORT_NO" property="sortNo" jdbcType="INTEGER" />
+		<result column="SYS_FLAG" property="sysFlag" jdbcType="VARCHAR" />
 		<result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
 		<result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
 		<result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />

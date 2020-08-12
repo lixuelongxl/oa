@@ -529,7 +529,7 @@ public void getBpmSealSign(HttpServletResponse response,HttpServletRequest reque
 		if(!account.getOpFlag().equals("1"))
 		{
 			attach.setCreateAccount(account.getAccountId());
-			if(attachService.delete(attach)>0)
+			if(attachService.deleteAttach(attach)>0)
 			{
 				return RetDataTools.Ok("删除附件成功!",1);
 			}else
@@ -538,7 +538,7 @@ public void getBpmSealSign(HttpServletResponse response,HttpServletRequest reque
 			}
 		}else
 		{
-			if(attachService.delete(attach)>0)
+			if(attachService.deleteAttach(attach)>0)
 			{
 				return RetDataTools.Ok("删除附件成功!");	
 			}else
@@ -603,7 +603,7 @@ public void getBpmSealSign(HttpServletResponse response,HttpServletRequest reque
     public RetDataBean imUpload(HttpServletRequest request,String module,String accountId,String passWord) throws UploadException {
         String targetpath = SysTools.greateAttachDir(attachpath, module);
         try {
-        	Account account = accountService.login(accountId, passWord);
+        	Account account = accountService.getLoginAccount(accountId, passWord);
             return RetDataTools.Ok("文件上传成功!", uploadUtils.ImUpload(request,account,notallow, targetpath));
         } catch (IOException e) {
             return RetDataTools.Error(e.getMessage());
@@ -628,7 +628,7 @@ public void getBpmSealSign(HttpServletResponse response,HttpServletRequest reque
     public RetDataBean imAudioUpload(HttpServletRequest request,String module,String accountId,String passWord) throws UploadException {
         String targetpath = SysTools.greateAttachDir(attachpath, module);
         try {
-        	Account account = accountService.login(accountId, Md5CaculateUtil.MD5(accountId+passWord));
+        	Account account = accountService.getLoginAccount(accountId, Md5CaculateUtil.MD5(accountId+passWord));
             return RetDataTools.Ok("文件上传成功!", uploadUtils.ImAudioUpload(request,account,notallow, targetpath));
         } catch (IOException e) {
             return RetDataTools.Error(e.getMessage());

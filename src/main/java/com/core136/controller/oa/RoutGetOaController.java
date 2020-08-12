@@ -29,7 +29,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.core136.bean.account.Account;
 import com.core136.bean.account.UserInfo;
 import com.core136.bean.attend.AttendConfig;
-import com.core136.bean.hr.HrKpiPlan;
 import com.core136.bean.oa.Calendar;
 import com.core136.bean.oa.Diary;
 import com.core136.bean.oa.DiaryPriv;
@@ -280,6 +279,243 @@ public RetDataBean getTotalAttendList(
 		return RetDataTools.Error(e.getMessage());
 	}
 }
+
+/**
+ * 
+ * @Title: getMyTravelList   
+ * @Description: TODO 获取出差列表
+ * @param request
+ * @param pageParam
+ * @param beginTime
+ * @param endTime
+ * @return
+ * RetDataBean    
+ * @throws
+ */
+@RequestMapping(value="/getMyTravelList",method=RequestMethod.POST)
+public RetDataBean getMyTravelList(
+		HttpServletRequest request,
+		PageParam pageParam,
+		String beginTime,
+		String endTime
+		)
+{
+	try
+	{
+		if(StringUtils.isBlank(pageParam.getSort()))
+		{
+			pageParam.setSort("R.CREATE_TIME");
+		}else
+		{
+			pageParam.setSort(StrTools.upperCharToUnderLine(pageParam.getSort()));
+		}
+		if(StringUtils.isBlank(pageParam.getSortOrder()))
+		{
+			pageParam.setSortOrder("DESC");
+		}
+		
+	Account account=accountService.getRedisAccount(request);
+	pageParam.setOpFlag(account.getOpFlag());
+	String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
+	pageParam.setOrderBy(orderBy);
+	pageParam.setAccountId(account.getAccountId());
+	pageParam.setOrgId(account.getOrgId());
+	PageInfo<Map<String, String>> pageInfo=attendService.getMyTravelList(pageParam,beginTime, endTime);
+	return RetDataTools.Ok("请求数据成功!", pageInfo);
+	}catch (Exception e) {
+		return RetDataTools.Error(e.getMessage());
+	}
+}
+/**
+ * 
+ * @Title: getMyOutattendList   
+ * @Description: TODO 获取外出列表
+ * @param request
+ * @param pageParam
+ * @param beginTime
+ * @param endTime
+ * @return
+ * RetDataBean    
+ * @throws
+ */
+@RequestMapping(value="/getMyOutattendList",method=RequestMethod.POST)
+public RetDataBean getMyOutattendList(
+		HttpServletRequest request,
+		PageParam pageParam,
+		String beginTime,
+		String endTime
+		)
+{
+	try
+	{
+		if(StringUtils.isBlank(pageParam.getSort()))
+		{
+			pageParam.setSort("R.CREATE_TIME");
+		}else
+		{
+			pageParam.setSort(StrTools.upperCharToUnderLine(pageParam.getSort()));
+		}
+		if(StringUtils.isBlank(pageParam.getSortOrder()))
+		{
+			pageParam.setSortOrder("DESC");
+		}
+		
+	Account account=accountService.getRedisAccount(request);
+	pageParam.setOpFlag(account.getOpFlag());
+	String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
+	pageParam.setOrderBy(orderBy);
+	pageParam.setAccountId(account.getAccountId());
+	pageParam.setOrgId(account.getOrgId());
+	PageInfo<Map<String, String>> pageInfo=attendService.getMyOutattendList(pageParam,beginTime, endTime);
+	return RetDataTools.Ok("请求数据成功!", pageInfo);
+	}catch (Exception e) {
+		return RetDataTools.Error(e.getMessage());
+	}
+}
+
+/**
+ * 
+ * @Title: getMyOverTimeList   
+ * @Description: TODO 获取加班列表
+ * @param request
+ * @param pageParam
+ * @param beginTime
+ * @param endTime
+ * @return
+ * RetDataBean    
+ * @throws
+ */
+@RequestMapping(value="/getMyOverTimeList",method=RequestMethod.POST)
+public RetDataBean getMyOverTimeList(
+		HttpServletRequest request,
+		PageParam pageParam,
+		String beginTime,
+		String endTime
+		)
+{
+	try
+	{
+		if(StringUtils.isBlank(pageParam.getSort()))
+		{
+			pageParam.setSort("R.CREATE_TIME");
+		}else
+		{
+			pageParam.setSort(StrTools.upperCharToUnderLine(pageParam.getSort()));
+		}
+		if(StringUtils.isBlank(pageParam.getSortOrder()))
+		{
+			pageParam.setSortOrder("DESC");
+		}
+		
+	Account account=accountService.getRedisAccount(request);
+	pageParam.setOpFlag(account.getOpFlag());
+	String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
+	pageParam.setOrderBy(orderBy);
+	pageParam.setAccountId(account.getAccountId());
+	pageParam.setOrgId(account.getOrgId());
+	PageInfo<Map<String, String>> pageInfo=attendService.getMyOverTimeList(pageParam,beginTime, endTime);
+	return RetDataTools.Ok("请求数据成功!", pageInfo);
+	}catch (Exception e) {
+		return RetDataTools.Error(e.getMessage());
+	}
+}
+
+/**
+ * 
+ * @Title: getMyDutyList   
+ * @Description: TODO 获取值班列表
+ * @param request
+ * @param pageParam
+ * @param beginTime
+ * @param endTime
+ * @return
+ * RetDataBean    
+ * @throws
+ */
+@RequestMapping(value="/getMyDutyList",method=RequestMethod.POST)
+public RetDataBean getMyDutyList(
+		HttpServletRequest request,
+		PageParam pageParam,
+		String beginTime,
+		String endTime
+		)
+{
+	try
+	{
+		if(StringUtils.isBlank(pageParam.getSort()))
+		{
+			pageParam.setSort("R.CREATE_TIME");
+		}else
+		{
+			pageParam.setSort(StrTools.upperCharToUnderLine(pageParam.getSort()));
+		}
+		if(StringUtils.isBlank(pageParam.getSortOrder()))
+		{
+			pageParam.setSortOrder("DESC");
+		}
+		
+	Account account=accountService.getRedisAccount(request);
+	pageParam.setOpFlag(account.getOpFlag());
+	String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
+	pageParam.setOrderBy(orderBy);
+	pageParam.setAccountId(account.getAccountId());
+	pageParam.setOrgId(account.getOrgId());
+	PageInfo<Map<String, String>> pageInfo=attendService.getMyDutyList(pageParam,beginTime, endTime);
+	return RetDataTools.Ok("请求数据成功!", pageInfo);
+	}catch (Exception e) {
+		return RetDataTools.Error(e.getMessage());
+	}
+}
+
+/**
+ * 
+ * @Title: getMyLeaveList   
+ * @Description: TODO 获取人员请假列表
+ * @param request
+ * @param pageParam
+ * @param beginTime
+ * @param endTime
+ * @return
+ * RetDataBean    
+ * @throws
+ */
+@RequestMapping(value="/getMyLeaveList",method=RequestMethod.POST)
+public RetDataBean getMyLeaveList(
+		HttpServletRequest request,
+		PageParam pageParam,
+		String beginTime,
+		String endTime,
+		String type
+		)
+{
+	try
+	{
+		if(StringUtils.isBlank(pageParam.getSort()))
+		{
+			pageParam.setSort("R.CREATE_TIME");
+		}else
+		{
+			pageParam.setSort(StrTools.upperCharToUnderLine(pageParam.getSort()));
+		}
+		if(StringUtils.isBlank(pageParam.getSortOrder()))
+		{
+			pageParam.setSortOrder("DESC");
+		}
+		
+	Account account=accountService.getRedisAccount(request);
+	pageParam.setOpFlag(account.getOpFlag());
+	String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
+	pageParam.setOrderBy(orderBy);
+	pageParam.setAccountId(account.getAccountId());
+	pageParam.setOrgId(account.getOrgId());
+	PageInfo<Map<String, String>> pageInfo=attendService.getMyLeaveList(pageParam,beginTime, endTime,type);
+	return RetDataTools.Ok("请求数据成功!", pageInfo);
+	}catch (Exception e) {
+		return RetDataTools.Error(e.getMessage());
+	}
+}
+
+
 /**
  * 
  * @Title: getShowDiaryList   

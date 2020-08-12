@@ -22,18 +22,18 @@ private EchartsBpmService echartsBpmService;
 private AccountService accountService;
 /**
  * 
- * @Title: getBiBpmLowByMonthLine   
+ * @Title: getBiBpmFlowByMonthLine   
  * @Description: TODO 按月份统计工作量
  * @param request
  * @return
  * RetDataBean    
  * @throws
  */
-@RequestMapping(value = "/getBiBpmLowByMonthLine", method = RequestMethod.POST)
-public RetDataBean getBiBpmLowByMonthLine(HttpServletRequest request) {
+@RequestMapping(value = "/getBiBpmFLowByMonthLine", method = RequestMethod.POST)
+public RetDataBean getBiBpmFlowByMonthLine(HttpServletRequest request) {
 	try {
 		Account account=accountService.getRedisAccount(request);
-		return RetDataTools.Ok("请求成功!", echartsBpmService.getBiBpmLowByMonthLine(account));
+		return RetDataTools.Ok("请求成功!", echartsBpmService.getBiBpmFlowByMonthLine(account));
 	} catch (Exception e) {
 		e.printStackTrace();
 		return RetDataTools.Error(e.getMessage());

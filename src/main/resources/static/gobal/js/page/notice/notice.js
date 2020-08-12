@@ -40,28 +40,53 @@ $(function(){
 		format: "YYYY-MM-DD",
 		minDate:getSysDate(),
 	});
-	if(runId!=null&&runId!="")
+	if(isDocument)
 	{
-		$.ajax({
-			url : '/ret/bpmget/getBpmPrintData',
-			type : "post",
-			dataType : "json",
-			data : {
-				flowId : flowId,
-				runId : runId
-			},
-			success : function(data) {
-				if (data.status == "500") {
-					console.log(data.msg);
-				} else if (data.status == "100") {
-					top.layer.msg(data.msg);
-				} else {
-					$("#content").code(data.list.bpmFormHtml);
+		if(runId!=null&&runId!="")
+		{
+			$.ajax({
+				url : '/ret/documentget/getDocumentPrintData',
+				type : "post",
+				dataType : "json",
+				data : {
+					flowId : flowId,
+					runId : runId
+				},
+				success : function(data) {
+					if (data.status == "500") {
+						console.log(data.msg);
+					} else if (data.status == "100") {
+						top.layer.msg(data.msg);
+					} else {
+						$("#content").code(data.list.documentFormHtml);
+					}
 				}
-			}
-	});
+		});
+		}
+	}else
+	{
+		if(runId!=null&&runId!="")
+		{
+			$.ajax({
+				url : '/ret/bpmget/getBpmPrintData',
+				type : "post",
+				dataType : "json",
+				data : {
+					flowId : flowId,
+					runId : runId
+				},
+				success : function(data) {
+					if (data.status == "500") {
+						console.log(data.msg);
+					} else if (data.status == "100") {
+						top.layer.msg(data.msg);
+					} else {
+						$("#content").code(data.list.bpmFormHtml);
+					}
+				}
+		});
+		}
 	}
-	
 });
 
 

@@ -25,7 +25,10 @@
 							</div>
 							<div class="widget-body">
 								<ul id="tree" class="ztree"></ul>
-								<a id="cbut" href="javascript:void(0);" class="btn btn-purple" style="width: 100%;">创建用户</a> <a id="cquery" href="javascript:void(0);cquery" class="btn btn-palegreen" style="width: 100%; margin-top: 5px;">用户查询</a> <a id="cimport" href="javascript:void(0);" class="btn btn-sky" style="width: 100%; margin-top: 5px;">用户导入</a>
+								<a id="cbut" href="javascript:void(0);" class="btn btn-purple" style="width: 100%;">创建用户</a>
+								<a id="cquery" href="javascript:void(0);" class="btn btn-palegreen" style="width: 100%; margin-top: 5px;">用户查询</a>
+								<a id="notLoginQuery" href="javascript:void(0);" class="btn btn-primary" style="width: 100%; margin-top: 5px;">部门异常管理</a>
+								<a id="cimport" href="javascript:void(0);" class="btn btn-sky" style="width: 100%; margin-top: 5px;">用户导入</a>
 							</div>
 						</div>
 					</div>
@@ -42,6 +45,18 @@
 								</div>
 							</div>
 						</div>
+						
+						<div class="col-md-12 col-sm-12 col-xs-12" id="datalist1" style="display: none; padding: 0px;">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="btn-group" id="toobar1" role="group" aria-label="...">
+									</div>
+									<table id="myTable1"></table>
+								</div>
+							</div>
+						</div>
+						
+						
 						<div class="col-md-12 col-sm-12 col-xs-12" id="creatediv" style="padding: 0px;">
 							<div class="widget">
 								<div class="widget-header bordered-bottom bordered-palegreen">

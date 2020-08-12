@@ -54,7 +54,7 @@ public interface EchartsBpmMapper {
 	 * List<Map<String,String>>    
 	 * @throws
 	 */
-	public List<Map<String,Object>>getBiBpmLowByMonthLine(@Param(value="orgId")String orgId,@Param(value="beginTime")String beginTime,@Param(value="endTime")String endTime); 
+	public List<Map<String,Object>>getBiBpmFlowByMonthLine(@Param(value="orgId")String orgId,@Param(value="beginTime")String beginTime,@Param(value="endTime")String endTime); 
 	
 }
 

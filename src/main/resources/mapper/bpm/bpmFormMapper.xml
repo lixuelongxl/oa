@@ -9,8 +9,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="SORT_NO" property="sortNo" jdbcType="INTEGER" />
 		<result column="FORM_TITLE" property="formTitle" jdbcType="VARCHAR" />
 		<result column="TABLE_NAME" property="tableName" jdbcType="VARCHAR" />
-		<result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
 		<result column="CREATE_DEPT" property="createDept" jdbcType="VARCHAR" />
+		<result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
 		<result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
 		<result column="HTML_CODE" property="htmlCode" jdbcType="VARCHAR" />
 		<result column="MOBILE_HTML_CODE" property="mobileHtmlCode" jdbcType="VARCHAR" />
@@ -20,6 +20,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="SCRIPT" property="script" jdbcType="VARCHAR" />
 		<result column="BPM_TYPE_ID" property="bpmTypeId" jdbcType="VARCHAR"/>
 		<result column="VERSION" property="servion" jdbcType="VARCHAR" />
+		<result column="FORM_TYPE" property="formType" jdbcType="VARCHAR" />
+		<result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
+		<result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
 		<result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
 	</resultMap>
 

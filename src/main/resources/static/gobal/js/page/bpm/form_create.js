@@ -137,12 +137,16 @@ $(function () {
 				formId:$("#formId").val()
 				},
 			success : function(data) {
-				if(data.status==500)
+				console.log(data);
+				if(data.status=="200")
 					{
-					console.log(data.msg);
+						top.layer.msg(data.msg);
+					}else if(data.status=="100")
+					{
+						top.layer.msg(data.msg);
 					}else
 						{
-						top.layer.msg(data.msg);
+						console.log(data.msg);
 						}
 			}
 		});

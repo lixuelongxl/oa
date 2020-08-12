@@ -186,7 +186,7 @@ public RetDataBean sendWebMail(Account account,String to,String subject,String c
 		{
 			SysConfig sysConfig = new SysConfig();
 			sysConfig.setOrgId(account.getOrgId());
-			sysConfig = sysConfigService.selectOne(sysConfig);
+			sysConfig = sysConfigService.selectOneSysConfig(sysConfig);
 			emailService.sendWebMailPersonByOrg(sysConfig, to, subject, content, paths);
 			emailBody.setWebEmailFlag("1");
 		}else if(sendServiceType.equals("2"))
