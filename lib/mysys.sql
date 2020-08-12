@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : MyPc
-Source Server Version : 50719
-Source Host           : localhost:3306
+Source Server         : MySql8
+Source Server Version : 80021
+Source Host           : localhost:3338
 Source Database       : mysys
 
 Target Server Type    : MYSQL
-Target Server Version : 50719
+Target Server Version : 80021
 File Encoding         : 65001
 
-Date: 2020-07-24 20:15:01
+Date: 2020-08-12 09:48:45
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,7 +20,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `account`;
 CREATE TABLE `account` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `ACCOUNT_GU_ID` varchar(50) DEFAULT NULL COMMENT 'IM中的用户标识',
   `ACCOUNT_ID` varchar(50) DEFAULT NULL COMMENT '系统账号',
   `D_ACCOUNT_ID` varchar(50) DEFAULT NULL COMMENT '钉钉账号',
@@ -32,11 +32,11 @@ CREATE TABLE `account` (
   `MANAGE_DEPT` text,
   `PAGE_PRIV` varchar(30) DEFAULT NULL,
   `NOT_LOGIN` varchar(3) DEFAULT NULL COMMENT '账号状态 默认0，离职为1',
-  `ON_LINE` int(11) DEFAULT NULL COMMENT '在线状态',
+  `ON_LINE` int DEFAULT NULL COMMENT '在线状态',
   `LAST_VISIT_TIME` varchar(20) DEFAULT NULL COMMENT '最后在线时间',
   `LANGUAGE` varchar(6) DEFAULT NULL COMMENT '语言',
   `BY_NAME` varchar(60) DEFAULT NULL COMMENT '用户别名',
-  `LOGIN_NUM` int(11) DEFAULT '0' COMMENT '登陆次数',
+  `LOGIN_NUM` int DEFAULT '0' COMMENT '登陆次数',
   `LAST_LOGIN_TIME` varchar(20) DEFAULT NULL COMMENT '最后登录时间',
   `UPDATE_PASSWORD_TIME` varchar(20) DEFAULT NULL COMMENT '最后修改密码时间',
   `IM_FLAG` varchar(2) DEFAULT '0',
@@ -55,24 +55,24 @@ CREATE TABLE `account` (
 -- ----------------------------
 -- Records of account
 -- ----------------------------
-INSERT INTO `account` VALUES ('1', null, 'admin', 'admin', 'A-LXYZ', '123456', '1', '7', '96C0173D-8279-AABA-0749-A60CB47FEADE', null, '', '0', null, null, '1', 'administrator', '304', '2020-07-24 05:59:04', '2017-08-09 10:08:10', '0', '[{\"id\":\"1\",\"name\":\"日程安排\",\"selected\":\"1\",\"sort\":1},{\"id\":\"2\",\"name\":\"工作日志\",\"selected\":\"1\",\"sort\":2},{\"id\":\"4\",\"name\":\"定位考勤\",\"selected\":\"1\",\"sort\":3},{\"id\":\"5\",\"name\":\"工作审批\",\"selected\":\"1\",\"sort\":4},{\"id\":\"6\",\"name\":\"客户管理\",\"selected\":\"1\",\"sort\":5}]', '20190920203310_901_1.png', '', '1', '{\"left\":[{\"module\":\"news\",\"id\":\"undefined\",\"moduleName\":\"新闻\"},{\"module\":\"notice\",\"id\":\"undefined\",\"moduleName\":\"通知公告\"},{\"module\":\"myFile\",\"id\":\"undefined\",\"moduleName\":\"我的文件\"},{\"module\":\"document\",\"id\":\"DCA193FD-F96C-4324-AFD3-3C6F73D61829\",\"moduleName\":\"我的收发文\"}],\"right\":[{\"module\":\"bpm\",\"id\":\"undefined\",\"moduleName\":\"待办BPM\"},{\"module\":\"myTask\",\"id\":\"undefined\",\"moduleName\":\"我的任务\"},{\"module\":\"myMeeting\",\"id\":\"undefined\",\"moduleName\":\"我的会议\"}]}', '1', '1', '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `account` VALUES ('2', null, 'luyunyun', 'luyunyun', 'luyunyun', '123456', '1', null, '96C0173D-8279-AABA-0749-A60CB47FEADE', null, null, '0', null, null, null, null, '7', '2020-07-17 01:43:45', null, null, null, '20200402130414_332_admin.png', null, '0', '{\"left\":[{\"module\":\"calendar\",\"id\":\"AA8DAC92-32DC-E29F-4F9E-47ADF9246A33\",\"moduleName\":\"个人日程\"},{\"module\":\"email\",\"id\":\"DEEEF17E-1B08-8DEB-62A4-C8360C71BFDA\",\"moduleName\":\"内部邮件\"},{\"module\":\"superversion\",\"id\":\"637C1CE4-5360-A8D9-185E-D4DF75B954E1\",\"moduleName\":\"督查督办\"},{\"module\":\"sms\",\"id\":\"68E2B9EE-8D3A-A0E9-2ACF-E88B3BF348F1\",\"moduleName\":\"未读消息\"},{\"module\":\"myfile\",\"id\":\"F51AFD72-B890-6B27-1E74-61B326E62C25\",\"moduleName\":\"我的文件\"},{\"module\":\"bpm\",\"id\":\"F51AFD72-B890-6B27-1E74-61B326E62C26\",\"moduleName\":\"待办BPM\"},{\"module\":\"myTask\",\"id\":\"A0D47E6D-29F4-4A38-A497-165A3F763054\",\"moduleName\":\"我的任务\"}],\"right\":[{\"module\":\"news\",\"id\":\"FE9E931B-2ABF-4BA3-2E9A-07B852D7FBE8\",\"moduleName\":\"新闻\"},{\"module\":\"notice\",\"id\":\"716FA644-D234-A158-A939-975A011BDD13\",\"moduleName\":\"通知公告\"}]}', '1', '1', '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `account` VALUES ('3', null, 'liushaoquan', 'manager9480', 'liushaoquan', '123456', '1', null, '96C0173D-8279-AABA-0749-A60CB47FEADE', null, null, '0', null, null, null, null, '0', '2020-07-02 08:09:04', null, null, null, '20200314192428_557_logo.jpg', null, '0', '{\"left\":[{\"module\":\"calendar\",\"id\":\"undefined\",\"moduleName\":\"个人日程\"},{\"module\":\"myfile\",\"id\":\"undefined\",\"moduleName\":\"我的文件\"},{\"module\":\"bpm\",\"id\":\"undefined\",\"moduleName\":\"待办BPM\"},{\"module\":\"superversion\",\"id\":\"undefined\",\"moduleName\":\"督查督办\"},{\"module\":\"myTask\",\"id\":\"undefined\",\"moduleName\":\"我的任务\"}],\"right\":[{\"module\":\"news\",\"id\":\"undefined\",\"moduleName\":\"新闻\"},{\"module\":\"notice\",\"id\":\"undefined\",\"moduleName\":\"通知公告\"},{\"module\":\"email\",\"id\":\"undefined\",\"moduleName\":\"内部邮件\"},{\"module\":\"sms\",\"id\":\"undefined\",\"moduleName\":\"未读消息\"}]}', '1', '1', '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `account` VALUES ('4', null, 'zhanghaiyang', null, null, '123456', '1', null, '7C7F45A1-CF32-4C6E-EFA8-3CA181CCDF38', null, null, '0', null, null, null, null, '0', '2020-06-10 01:38:56', null, null, null, null, null, '0', null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `account` VALUES ('5', null, 'wutianyi', null, null, '123456', '1', null, '7C7F45A1-CF32-4C6E-EFA8-3CA181CCDF38', null, null, '0', null, null, null, null, '0', '2020-04-04 06:33:12', null, null, null, null, null, '0', null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `account` VALUES ('6', null, 'zhangxiaofei', null, null, '123456', '1', null, '7C7F45A1-CF32-4C6E-EFA8-3CA181CCDF38', null, null, '0', null, null, null, null, '2', '2020-07-21 09:32:08', null, null, null, null, null, '0', '{\"left\":[{\"module\":\"calendar\",\"id\":\"AA8DAC92-32DC-E29F-4F9E-47ADF9246A33\",\"moduleName\":\"个人日程\"},{\"module\":\"email\",\"id\":\"DEEEF17E-1B08-8DEB-62A4-C8360C71BFDA\",\"moduleName\":\"内部邮件\"},{\"module\":\"superversion\",\"id\":\"637C1CE4-5360-A8D9-185E-D4DF75B954E1\",\"moduleName\":\"督查督办\"},{\"module\":\"sms\",\"id\":\"68E2B9EE-8D3A-A0E9-2ACF-E88B3BF348F1\",\"moduleName\":\"未读消息\"},{\"module\":\"myfile\",\"id\":\"F51AFD72-B890-6B27-1E74-61B326E62C25\",\"moduleName\":\"我的文件\"},{\"module\":\"bpm\",\"id\":\"F51AFD72-B890-6B27-1E74-61B326E62C26\",\"moduleName\":\"待办BPM\"},{\"module\":\"myTask\",\"id\":\"A0D47E6D-29F4-4A38-A497-165A3F763054\",\"moduleName\":\"我的任务\"}],\"right\":[{\"module\":\"notice\",\"id\":\"716FA644-D234-A158-A939-975A011BDD13\",\"moduleName\":\"通知公告\"},{\"module\":\"news\",\"id\":\"FE9E931B-2ABF-4BA3-2E9A-07B852D7FBE8\",\"moduleName\":\"新闻\"}]}', null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `account` VALUES ('7', null, 'wangfang', null, null, '123456', '1', null, '7C7F45A1-CF32-4C6E-EFA8-3CA181CCDF38', null, null, '0', null, null, null, null, '0', '2020-04-04 06:33:12', null, null, null, null, null, '0', null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `account` VALUES ('8', null, 'tangguanghui', null, 'tangguanghui', '123456', '1', null, '7C7F45A1-CF32-4C6E-EFA8-3CA181CCDF38', null, null, '0', null, null, null, null, '0', '2020-04-04 06:33:12', null, null, null, null, null, '0', null, null, '1', '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `account` VALUES ('9', null, 'liudong', null, 'liudong', '123456', '1', null, '96C0173D-8279-AABA-0749-A60CB47FEADE', null, null, '0', null, null, null, null, '0', null, null, null, null, null, null, '0', null, null, '1', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `account` VALUES ('1', null, 'admin', 'admin', 'A-LXYZ', 'a66abb5684c45962d887564f08346e8d', '1', '7', '96C0173D-8279-AABA-0749-A60CB47FEADE', null, '', '0', null, null, '1', 'administrator', '546', '2020-08-12 09:15:32', '2020-07-27 11:59:49', '0', '[{\"id\":\"1\",\"name\":\"日程安排\",\"selected\":\"1\",\"sort\":1},{\"id\":\"2\",\"name\":\"工作日志\",\"selected\":\"1\",\"sort\":2},{\"id\":\"4\",\"name\":\"定位考勤\",\"selected\":\"1\",\"sort\":3},{\"id\":\"5\",\"name\":\"工作审批\",\"selected\":\"1\",\"sort\":4},{\"id\":\"6\",\"name\":\"客户管理\",\"selected\":\"1\",\"sort\":5}]', '20190920203310_901_1.png', '', '1', '{\"left\":[{\"module\":\"news\",\"id\":\"undefined\",\"moduleName\":\"新闻\"},{\"module\":\"notice\",\"id\":\"undefined\",\"moduleName\":\"通知公告\"},{\"module\":\"myFile\",\"id\":\"undefined\",\"moduleName\":\"我的文件\"},{\"module\":\"document\",\"id\":\"DCA193FD-F96C-4324-AFD3-3C6F73D61829\",\"moduleName\":\"我的收发文\"}],\"right\":[{\"module\":\"bpm\",\"id\":\"undefined\",\"moduleName\":\"待办BPM\"},{\"module\":\"myTask\",\"id\":\"undefined\",\"moduleName\":\"我的任务\"},{\"module\":\"myMeeting\",\"id\":\"undefined\",\"moduleName\":\"我的会议\"}]}', '1', '1', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `account` VALUES ('2', null, 'luyunyun', 'luyunyun', 'luyunyun', '93fe5dde6896cb120a41ab087e239d2f', '1', null, '96C0173D-8279-AABA-0749-A60CB47FEADE', null, null, '0', null, null, null, null, '9', '2020-07-26 07:54:59', null, null, null, '20200402130414_332_admin.png', null, '0', '{\"left\":[{\"module\":\"calendar\",\"id\":\"AA8DAC92-32DC-E29F-4F9E-47ADF9246A33\",\"moduleName\":\"个人日程\"},{\"module\":\"email\",\"id\":\"DEEEF17E-1B08-8DEB-62A4-C8360C71BFDA\",\"moduleName\":\"内部邮件\"},{\"module\":\"superversion\",\"id\":\"637C1CE4-5360-A8D9-185E-D4DF75B954E1\",\"moduleName\":\"督查督办\"},{\"module\":\"sms\",\"id\":\"68E2B9EE-8D3A-A0E9-2ACF-E88B3BF348F1\",\"moduleName\":\"未读消息\"},{\"module\":\"myfile\",\"id\":\"F51AFD72-B890-6B27-1E74-61B326E62C25\",\"moduleName\":\"我的文件\"},{\"module\":\"bpm\",\"id\":\"F51AFD72-B890-6B27-1E74-61B326E62C26\",\"moduleName\":\"待办BPM\"},{\"module\":\"myTask\",\"id\":\"A0D47E6D-29F4-4A38-A497-165A3F763054\",\"moduleName\":\"我的任务\"}],\"right\":[{\"module\":\"news\",\"id\":\"FE9E931B-2ABF-4BA3-2E9A-07B852D7FBE8\",\"moduleName\":\"新闻\"},{\"module\":\"notice\",\"id\":\"716FA644-D234-A158-A939-975A011BDD13\",\"moduleName\":\"通知公告\"}]}', '1', '1', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `account` VALUES ('3', null, 'liushaoquan', 'manager9480', 'liushaoquan', '0500446d47e57067bf0c80b55d236914', '1', null, '96C0173D-8279-AABA-0749-A60CB47FEADE', null, null, '0', null, null, null, null, '0', '2020-07-02 08:09:04', null, null, null, '20200314192428_557_logo.jpg', null, '0', '{\"left\":[{\"module\":\"calendar\",\"id\":\"undefined\",\"moduleName\":\"个人日程\"},{\"module\":\"myfile\",\"id\":\"undefined\",\"moduleName\":\"我的文件\"},{\"module\":\"bpm\",\"id\":\"undefined\",\"moduleName\":\"待办BPM\"},{\"module\":\"superversion\",\"id\":\"undefined\",\"moduleName\":\"督查督办\"},{\"module\":\"myTask\",\"id\":\"undefined\",\"moduleName\":\"我的任务\"}],\"right\":[{\"module\":\"news\",\"id\":\"undefined\",\"moduleName\":\"新闻\"},{\"module\":\"notice\",\"id\":\"undefined\",\"moduleName\":\"通知公告\"},{\"module\":\"email\",\"id\":\"undefined\",\"moduleName\":\"内部邮件\"},{\"module\":\"sms\",\"id\":\"undefined\",\"moduleName\":\"未读消息\"}]}', '1', '1', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `account` VALUES ('4', null, 'zhanghaiyang', '', '', '0df8a08382a1fe0397959cd751447b09', '1', null, '7C7F45A1-CF32-4C6E-EFA8-3CA181CCDF38', null, null, '0', null, null, null, null, '0', '2020-06-10 01:38:56', null, null, null, null, null, '0', null, '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `account` VALUES ('5', null, 'wutianyi', '', '', '275d5d13c52cd08b47393a3fb779e179', '1', null, '7C7F45A1-CF32-4C6E-EFA8-3CA181CCDF38', null, null, '0', null, null, null, null, '0', '2020-04-04 06:33:12', null, null, null, null, null, '0', null, '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `account` VALUES ('6', null, 'zhangxiaofei', '', '', '8a09b8f540c6dc0103da49b72fcf5318', '1', null, '7C7F45A1-CF32-4C6E-EFA8-3CA181CCDF38', null, null, '0', null, null, null, null, '2', '2020-07-21 09:32:08', null, null, null, null, null, '0', '{\"left\":[{\"module\":\"calendar\",\"id\":\"AA8DAC92-32DC-E29F-4F9E-47ADF9246A33\",\"moduleName\":\"个人日程\"},{\"module\":\"email\",\"id\":\"DEEEF17E-1B08-8DEB-62A4-C8360C71BFDA\",\"moduleName\":\"内部邮件\"},{\"module\":\"superversion\",\"id\":\"637C1CE4-5360-A8D9-185E-D4DF75B954E1\",\"moduleName\":\"督查督办\"},{\"module\":\"sms\",\"id\":\"68E2B9EE-8D3A-A0E9-2ACF-E88B3BF348F1\",\"moduleName\":\"未读消息\"},{\"module\":\"myfile\",\"id\":\"F51AFD72-B890-6B27-1E74-61B326E62C25\",\"moduleName\":\"我的文件\"},{\"module\":\"bpm\",\"id\":\"F51AFD72-B890-6B27-1E74-61B326E62C26\",\"moduleName\":\"待办BPM\"},{\"module\":\"myTask\",\"id\":\"A0D47E6D-29F4-4A38-A497-165A3F763054\",\"moduleName\":\"我的任务\"}],\"right\":[{\"module\":\"notice\",\"id\":\"716FA644-D234-A158-A939-975A011BDD13\",\"moduleName\":\"通知公告\"},{\"module\":\"news\",\"id\":\"FE9E931B-2ABF-4BA3-2E9A-07B852D7FBE8\",\"moduleName\":\"新闻\"}]}', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `account` VALUES ('7', null, 'wangfang', '', '', '02f90259b8e4f394328895009d7d0d42', '1', null, '7C7F45A1-CF32-4C6E-EFA8-3CA181CCDF38', null, null, '1', null, null, null, null, '0', '2020-04-04 06:33:12', null, null, null, null, null, '0', null, '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `account` VALUES ('8', null, 'tangguanghui', '', 'tangguanghui', 'ec5963f5869fe89dbbdb1e6661990390', '1', null, '7C7F45A1-CF32-4C6E-EFA8-3CA181CCDF38', null, null, '0', null, null, null, null, '0', '2020-04-04 06:33:12', null, null, null, null, null, '0', null, '', '1', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `account` VALUES ('9', null, 'liudong', '', 'liudong', 'e3e526a3e746610b581dd0efffb8d735', '1', null, '96C0173D-8279-AABA-0749-A60CB47FEADE', null, null, '0', null, null, null, null, '0', null, null, null, null, null, null, '0', null, '', '1', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 
 -- ----------------------------
 -- Table structure for app_config
 -- ----------------------------
 DROP TABLE IF EXISTS `app_config`;
 CREATE TABLE `app_config` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `APP_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `TITLE` varchar(50) DEFAULT NULL,
   `MODULE` varchar(50) DEFAULT NULL,
   `REMARK` text,
@@ -107,7 +107,7 @@ INSERT INTO `app_config` VALUES ('12', '595A3D00-3EF4-45F9-AD95-DC55BDD984D9', '
 -- ----------------------------
 DROP TABLE IF EXISTS `archives_borrow_file`;
 CREATE TABLE `archives_borrow_file` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `RECORD_ID` varchar(50) DEFAULT NULL,
   `FILE_ID` varchar(50) DEFAULT NULL,
   `BEGIN_TIME` varchar(20) DEFAULT NULL COMMENT '借阅时间',
@@ -132,7 +132,7 @@ INSERT INTO `archives_borrow_file` VALUES ('1', '1BF98F6E-65DE-4C71-8061-566EC56
 -- ----------------------------
 DROP TABLE IF EXISTS `archives_borrow_volume`;
 CREATE TABLE `archives_borrow_volume` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `RECORD_ID` varchar(50) DEFAULT NULL,
   `VOLUME_ID` varchar(50) DEFAULT NULL,
   `BEGIN_TIME` varchar(20) DEFAULT NULL COMMENT '借阅时间',
@@ -157,7 +157,7 @@ INSERT INTO `archives_borrow_volume` VALUES ('2', 'E1E85DBF-8C81-4C52-A504-BC94F
 -- ----------------------------
 DROP TABLE IF EXISTS `archives_destroy_record`;
 CREATE TABLE `archives_destroy_record` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ID` int NOT NULL AUTO_INCREMENT,
   `RECORD_ID` varchar(50) DEFAULT NULL,
   `ARCHIVES_TYPE` varchar(2) DEFAULT NULL COMMENT '档案类型',
   `DESTROY_TYPE` varchar(2) DEFAULT NULL COMMENT '销毁类型',
@@ -179,8 +179,8 @@ INSERT INTO `archives_destroy_record` VALUES ('2', '8D782996-E576-440E-8384-BA5F
 -- ----------------------------
 DROP TABLE IF EXISTS `archives_file`;
 CREATE TABLE `archives_file` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
+  `SORT_NO` int DEFAULT NULL,
   `FILE_ID` varchar(50) DEFAULT NULL,
   `FILE_CODE` varchar(50) DEFAULT NULL COMMENT '文件号',
   `SUBJECT` varchar(200) DEFAULT NULL COMMENT '文件主题词',
@@ -190,8 +190,8 @@ CREATE TABLE `archives_file` (
   `SEND_TIME` varchar(20) DEFAULT NULL,
   `SECRET_LEVEL` varchar(2) DEFAULT NULL COMMENT '密级',
   `FILE_TYPE` varchar(2) DEFAULT NULL COMMENT '文件类型',
-  `PAGE_TOTAL` int(11) DEFAULT NULL COMMENT '总页数',
-  `PRINT_TOTAL` int(11) DEFAULT NULL COMMENT '打印份数',
+  `PAGE_TOTAL` int DEFAULT NULL COMMENT '总页数',
+  `PRINT_TOTAL` int DEFAULT NULL COMMENT '打印份数',
   `ISAUDIT` varchar(2) DEFAULT '0' COMMENT '是否需要审批 0：需要 1：不需要',
   `VOLUME_ID` varchar(50) DEFAULT NULL COMMENT '所属案卷',
   `ATTACH_PRIV` varchar(50) DEFAULT NULL COMMENT '附件权限',
@@ -213,8 +213,8 @@ CREATE TABLE `archives_file` (
 -- ----------------------------
 DROP TABLE IF EXISTS `archives_repository`;
 CREATE TABLE `archives_repository` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
+  `SORT_NO` int DEFAULT NULL,
   `REPOSITORY_ID` varchar(50) DEFAULT NULL,
   `TITLE` varchar(100) DEFAULT NULL COMMENT '档案库标题',
   `USER_PRIV` text COMMENT '可查阅的人员权限',
@@ -238,9 +238,9 @@ INSERT INTO `archives_repository` VALUES ('1', '1', '38B43FD4-C9D8-4961-B7DC-C7C
 -- ----------------------------
 DROP TABLE IF EXISTS `archives_volume`;
 CREATE TABLE `archives_volume` (
-  `ID` bigint(11) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `VOLUME_ID` varchar(50) DEFAULT NULL COMMENT '档案卷ID',
-  `SORT_NO` int(11) DEFAULT NULL COMMENT '排序号',
+  `SORT_NO` int DEFAULT NULL COMMENT '排序号',
   `VOLUME_CODE` varchar(100) DEFAULT NULL COMMENT '案卷号',
   `VOLUME_TITLE` varchar(100) DEFAULT NULL COMMENT '案卷名称',
   `REPOSITORY_ID` varchar(50) DEFAULT NULL COMMENT '所属卷库',
@@ -254,7 +254,7 @@ CREATE TABLE `archives_volume` (
   `VOUCHER_TYPE` varchar(2) DEFAULT NULL COMMENT '凭证类别',
   `VOUCHER_BEGIN_NO` varchar(50) DEFAULT NULL COMMENT '凭证起始号',
   `VOUCHER_END_NO` varchar(50) DEFAULT NULL COMMENT '凭证结束号',
-  `PAGE_TOTAL` int(11) DEFAULT NULL COMMENT '总页数',
+  `PAGE_TOTAL` int DEFAULT NULL COMMENT '总页数',
   `REMARK` text,
   `DESTORY_FLAG` varchar(2) DEFAULT '0' COMMENT '销毁标记 1为销毁',
   `MANAGE_USER` varchar(50) DEFAULT NULL COMMENT '管理员',
@@ -274,7 +274,7 @@ INSERT INTO `archives_volume` VALUES ('2', '379CFBE6-8CCA-4325-A579-1F3717F50F46
 -- ----------------------------
 DROP TABLE IF EXISTS `attach`;
 CREATE TABLE `attach` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `ATTACH_ID` varchar(50) DEFAULT NULL COMMENT '附件的唯一标识',
   `UP_TIME` varchar(20) DEFAULT NULL COMMENT '上传时间',
   `CREATE_ACCOUNT` varchar(50) DEFAULT NULL COMMENT '上传用户账号',
@@ -285,11 +285,11 @@ CREATE TABLE `attach` (
   `MODULES` varchar(50) DEFAULT NULL COMMENT '附件所属系统模块',
   `DEL_FLAG` varchar(2) DEFAULT NULL COMMENT '删除标记0:正常1:删除',
   `PRIV` varchar(255) DEFAULT NULL COMMENT '权限(暂时没有使用)',
-  `FILE_SIZE` int(11) DEFAULT '0' COMMENT '文件大小',
+  `FILE_SIZE` int DEFAULT '0' COMMENT '文件大小',
   `ORG_ID` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE,
   KEY `ID` (`ID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=119 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of attach
@@ -412,13 +412,15 @@ INSERT INTO `attach` VALUES ('115', '09E9EBBF-76B9-4BAE-B5E7-24E3EE3C2065', '202
 INSERT INTO `attach` VALUES ('116', '1710394E-85D3-4175-A6ED-1EA156665F83', '2020-07-23 01:25:51', 'admin', '发文测试.doc', '20200723132551_370_发文测试.doc', '.doc', 'd:/attach/202007/document\\20200723132551_370_发文测试.doc', 'document', '0', null, '26624', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `attach` VALUES ('117', '531DAD0D-5407-4889-87F9-A45FBFB6F39E', '2020-07-23 01:26:15', 'admin', '发文测试.doc', '20200723132615_302_发文测试.doc', '.doc', 'd:/attach/202007/document\\20200723132615_302_发文测试.doc', 'document', '0', null, '26624', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `attach` VALUES ('118', 'C1BDAA95-5FCD-4403-91FB-5CE101E92F36', '2020-07-23 01:26:34', 'admin', '发文测试.doc', '20200723132634_487_发文测试.doc', '.doc', 'd:/attach/202007/document\\20200723132634_487_发文测试.doc', 'document', '0', null, '26624', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `attach` VALUES ('119', '5CCEDFA3-FF33-4013-B0A1-20BBE5728EC8', '2020-08-08 04:49:00', 'admin', 'splash_screen_bg.png', '20200808164900_413_splash_screen_bg.png', '.png', 'd:/cyunsoft/attach/202008/editor\\20200808164900_413_splash_screen_bg.png', 'editor', '0', null, '159476', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `attach` VALUES ('120', '8BDA7984-D64B-4320-A0A9-D4FE2112BFDF', '2020-08-08 04:49:32', 'admin', 'splash_screen_bg.png', '20200808164932_319_splash_screen_bg.png', '.png', 'd:/cyunsoft/attach/202008/editor\\20200808164932_319_splash_screen_bg.png', 'editor', '0', null, '159476', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 
 -- ----------------------------
 -- Table structure for attend
 -- ----------------------------
 DROP TABLE IF EXISTS `attend`;
 CREATE TABLE `attend` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `ATTEND_ID` varchar(50) DEFAULT NULL,
   `TIME` varchar(20) DEFAULT NULL,
   `TYPE` varchar(2) DEFAULT NULL COMMENT '0:正常打卡,1:补打卡2:迟到3:早退4:旷工',
@@ -446,9 +448,9 @@ INSERT INTO `attend` VALUES ('2', 'B3727349-D0AA-4839-A191-35AE7AC28769', '22:21
 -- ----------------------------
 DROP TABLE IF EXISTS `attend_config`;
 CREATE TABLE `attend_config` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `CONFIG_ID` varchar(50) DEFAULT NULL COMMENT '唯一标识',
-  `SORT_NO` int(11) DEFAULT NULL COMMENT '排序号',
+  `SORT_NO` int DEFAULT NULL COMMENT '排序号',
   `TITLE` varchar(50) DEFAULT NULL COMMENT '配置标题',
   `BEGIN_TIME` varchar(20) DEFAULT NULL COMMENT '上班时间',
   `END_TIME` varchar(20) DEFAULT NULL COMMENT '下班时间',
@@ -469,7 +471,7 @@ INSERT INTO `attend_config` VALUES ('1', '62D07AA3-8085-4D4E-8260-92DE89C43153',
 -- ----------------------------
 DROP TABLE IF EXISTS `bi_report_module`;
 CREATE TABLE `bi_report_module` (
-  `ID` bigint(20) DEFAULT NULL,
+  `ID` bigint DEFAULT NULL,
   `BI_MODULE_ID` varchar(50) DEFAULT NULL,
   `BI_MODULE_NAME` varchar(50) DEFAULT NULL,
   `ORG_ID` varchar(50) DEFAULT NULL
@@ -484,9 +486,9 @@ CREATE TABLE `bi_report_module` (
 -- ----------------------------
 DROP TABLE IF EXISTS `bi_report_sort`;
 CREATE TABLE `bi_report_sort` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `BI_MODEL_ID` varchar(50) DEFAULT NULL COMMENT '编号',
-  `SORT_ID` int(11) DEFAULT NULL COMMENT '排序号',
+  `SORT_ID` int DEFAULT NULL COMMENT '排序号',
   `BI_MODEL_NAME` varchar(100) DEFAULT NULL COMMENT '名称',
   `LEAVE_ID` text COMMENT '层级',
   `TOP_FLAG` varchar(2) DEFAULT NULL,
@@ -505,10 +507,10 @@ INSERT INTO `bi_report_sort` VALUES ('2', '8EADB678-A646-1E51-3E87-75A547B8AF55'
 -- ----------------------------
 DROP TABLE IF EXISTS `bi_sort`;
 CREATE TABLE `bi_sort` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `SORT_ID` varchar(50) DEFAULT NULL,
   `SORT_NAME` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `LEVEL_ID` varchar(50) DEFAULT NULL,
   `REMARK` varchar(255) DEFAULT NULL,
   `CREATE_USER` varchar(50) DEFAULT NULL,
@@ -531,8 +533,8 @@ INSERT INTO `bi_sort` VALUES ('5', '4BC619ED-788E-4A9B-B675-C66AC3A18852', '555'
 -- ----------------------------
 DROP TABLE IF EXISTS `bi_template`;
 CREATE TABLE `bi_template` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
+  `SORT_NO` int DEFAULT NULL,
   `TEMPLATE_ID` varchar(50) DEFAULT NULL,
   `TEMPLATE_NAME` varchar(50) DEFAULT NULL,
   `VERSION` varchar(10) DEFAULT NULL,
@@ -557,7 +559,7 @@ INSERT INTO `bi_template` VALUES ('1', null, '9B3061AE-5E41-4138-9086-34A5E505D9
 -- ----------------------------
 DROP TABLE IF EXISTS `bi_type`;
 CREATE TABLE `bi_type` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ID` int NOT NULL AUTO_INCREMENT,
   `BI_TYPE_ID` varchar(50) DEFAULT NULL,
   `BI_FLAG` varchar(50) DEFAULT NULL,
   `BI_TYPE_CN_NAME` varchar(50) DEFAULT NULL,
@@ -622,8 +624,8 @@ INSERT INTO `bi_type` VALUES ('46', null, null, null, null, null, '8EADB678-A646
 -- ----------------------------
 DROP TABLE IF EXISTS `bpm_bi_template`;
 CREATE TABLE `bpm_bi_template` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
+  `SORT_NO` int DEFAULT NULL,
   `TEMPLATE_ID` varchar(50) DEFAULT NULL,
   `TITLE` varchar(100) DEFAULT NULL,
   `FLOW_ID` varchar(50) DEFAULT NULL,
@@ -651,9 +653,9 @@ INSERT INTO `bpm_bi_template` VALUES ('2', '1', '6C566A9D-ADDF-4034-82CD-0CCF482
 -- ----------------------------
 DROP TABLE IF EXISTS `bpm_business`;
 CREATE TABLE `bpm_business` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `BUSINESS_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `TITLE` varchar(255) DEFAULT NULL COMMENT '业务逻辑说明',
   `FLOW_ID` varchar(50) DEFAULT '' COMMENT 'BPM分类',
   `PROCESS_ID` varchar(50) DEFAULT NULL COMMENT '步骤ID',
@@ -677,7 +679,7 @@ INSERT INTO `bpm_business` VALUES ('1', 'CCB26F96-3DCE-474D-86C0-0BB023E2A6A7', 
 -- ----------------------------
 DROP TABLE IF EXISTS `bpm_child_process`;
 CREATE TABLE `bpm_child_process` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `CHILD_PROCESS_ID` varchar(50) DEFAULT NULL,
   `PROCESS_ID` varchar(50) DEFAULT NULL,
   `CHILD_FLOW_ID` varchar(50) DEFAULT NULL COMMENT '关联的子流程ID',
@@ -701,7 +703,7 @@ INSERT INTO `bpm_child_process` VALUES ('2', '5FE329CA-6CC7-491C-962B-C383C34435
 -- ----------------------------
 DROP TABLE IF EXISTS `bpm_entrust`;
 CREATE TABLE `bpm_entrust` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `ENTRUST_ID` varchar(50) DEFAULT NULL COMMENT '唯一标识',
   `FLOW_ID` varchar(50) DEFAULT NULL COMMENT 'BPM流程标识',
   `BEGIN_TIME` varchar(20) DEFAULT NULL COMMENT '开始时间',
@@ -726,9 +728,9 @@ INSERT INTO `bpm_entrust` VALUES ('1', '5404E859-C866-4278-9E5B-05A238B7794F', '
 -- ----------------------------
 DROP TABLE IF EXISTS `bpm_flow`;
 CREATE TABLE `bpm_flow` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '顺序号',
+  `ID` bigint NOT NULL AUTO_INCREMENT COMMENT '顺序号',
   `FLOW_ID` varchar(50) DEFAULT NULL COMMENT '流程ID',
-  `SORT_NO` int(11) DEFAULT NULL COMMENT '排序号',
+  `SORT_NO` int DEFAULT NULL COMMENT '排序号',
   `FLOW_NAME` varchar(100) DEFAULT NULL COMMENT '流程名称',
   `FORM_ID` varchar(50) DEFAULT NULL COMMENT '表单id',
   `FLOW_SORT` varchar(50) DEFAULT NULL COMMENT '流程层级关联ID',
@@ -752,55 +754,66 @@ CREATE TABLE `bpm_flow` (
   `ORG_ID` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE,
   KEY `ID` (`ID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of bpm_flow
 -- ----------------------------
-INSERT INTO `bpm_flow` VALUES ('38', 'CEB094C8-CFC9-4169-89B1-D20D355E69FA', '1', '用印申请', '0B341ADA-203B-47F6-AC59-EA77A5528105', 'DB7AAD8D-1292-47C1-B119-795D5DE4B551', null, '1', '[D]-[U]-[F]-[T]', '', null, 'liushaoquan', 'liushaoquan', '', '', null, '0', '0', '0', '1', '0', '2020-03-15 19:55:10', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `bpm_flow` VALUES ('39', '04F67E55-ECA5-47F5-9CF8-140626AC69B1', '1', '费用预算申请', '227B8731-B2BE-46DB-AB97-E084FF37B615', 'C030844B-4FE8-4FA4-88FE-F9F11E11D01C', null, '1', '[D]-[U]-[F]-[T]', '', null, '', '', '', '', null, '0', '0', '1', '1', '0', '2020-03-20 18:08:34', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `bpm_flow` VALUES ('40', 'ECA79619-A2E5-4B3C-B48E-2DC63C4121BB', '2', '费用报销申请', 'E80C20E0-9E40-4CA6-B71B-A99853E55FE8', 'C030844B-4FE8-4FA4-88FE-F9F11E11D01C', null, '1', '[D]-[U]-[F]-[T]', '', null, '', '', '', 'dataNum12', null, '0', '0', '1', '1', '0', '2020-03-20 18:35:31', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `bpm_flow` VALUES ('41', '05A6E7F6-BF36-4453-BF7B-D5C89F3A2142', '1', '合同审批申请', 'BB9B5E2C-55DA-41DE-BF75-4C93FD31B440', '1D9AFFA2-A372-4B55-9E14-D55E5810AD87', null, '1', '[D]-[U]-[F]-[T]', '', null, '', '', '', '', null, '0', '0', '1', '1', '0', '2020-03-27 15:15:09', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_flow` VALUES ('38', 'CEB094C8-CFC9-4169-89B1-D20D355E69FA', '1', '用印申请流程', '0B341ADA-203B-47F6-AC59-EA77A5528105', 'DB7AAD8D-1292-47C1-B119-795D5DE4B551', null, '1', '[D]-[U]-[F]-[T]', '', null, 'liushaoquan', 'liushaoquan', '', '', null, '0', '0', '0', '1', '0', '2020-03-15 19:55:10', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_flow` VALUES ('39', '04F67E55-ECA5-47F5-9CF8-140626AC69B1', '1', '费用预算申请流程', '227B8731-B2BE-46DB-AB97-E084FF37B615', 'C030844B-4FE8-4FA4-88FE-F9F11E11D01C', null, '1', '[D]-[U]-[F]-[T]', '', null, '', '', '', '', null, '0', '0', '1', '1', '0', '2020-03-20 18:08:34', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_flow` VALUES ('40', 'ECA79619-A2E5-4B3C-B48E-2DC63C4121BB', '2', '费用报销申请流程', 'E80C20E0-9E40-4CA6-B71B-A99853E55FE8', 'C030844B-4FE8-4FA4-88FE-F9F11E11D01C', null, '1', '[D]-[U]-[F]-[T]', '', null, '', '', '', 'dataNum12', null, '0', '0', '1', '1', '0', '2020-03-20 18:35:31', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_flow` VALUES ('41', '05A6E7F6-BF36-4453-BF7B-D5C89F3A2142', '1', '合同审批申请流程', 'BB9B5E2C-55DA-41DE-BF75-4C93FD31B440', '1D9AFFA2-A372-4B55-9E14-D55E5810AD87', null, '1', '[D]-[U]-[F]-[T]', '', null, '', '', '', '', null, '0', '0', '1', '1', '0', '2020-03-27 15:15:09', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_flow` VALUES ('42', '688CA1D0-16F3-4CAE-8016-A8B148BF6161', '1', '请假申请流程', '157E707A-C8FB-4695-B5FE-9FE09A09327F', 'DB7AAD8D-1292-47C1-B119-795D5DE4B551', null, '0', '', '', null, null, null, '', '', null, '0', '0', '1', '1', '0', '2020-08-11 19:56:01', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_flow` VALUES ('43', '722515D9-05CF-427E-AE9C-04899794E82E', '9', '出差申请流程', 'FE0471C1-F44D-4434-BFFB-D1712E689AD2', 'DB7AAD8D-1292-47C1-B119-795D5DE4B551', null, '0', '', '', null, null, null, '', '', null, '0', '0', '1', '1', '0', '2020-08-11 20:24:38', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_flow` VALUES ('44', '6936773C-B83B-4EA9-82CC-CFD27E808027', '11', '加班申请流程', '8A132829-7994-4C7F-81D8-857043D052C9', 'DB7AAD8D-1292-47C1-B119-795D5DE4B551', null, '0', '', '', null, null, null, '', '', null, '0', '0', '1', '1', '0', '2020-08-11 23:11:23', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_flow` VALUES ('45', '69191F15-5029-41BB-9B74-5C84F8C58D33', '12', '值班申请流程', '6E027903-DD60-488B-8687-44AC65258324', 'DB7AAD8D-1292-47C1-B119-795D5DE4B551', null, '0', '', '', null, null, null, '', '', null, '0', '0', '1', '1', '0', '2020-08-11 23:27:55', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_flow` VALUES ('46', '1A79B4D8-8E53-4816-8A1D-E698AD7B89F6', '13', '外出申请流程', '21151864-0798-4927-BF30-6C36CD2AC2B4', 'DB7AAD8D-1292-47C1-B119-795D5DE4B551', null, '0', '', '', null, null, null, '', '', null, '0', '0', '1', '1', '0', '2020-08-11 23:50:20', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 
 -- ----------------------------
 -- Table structure for bpm_form
 -- ----------------------------
 DROP TABLE IF EXISTS `bpm_form`;
 CREATE TABLE `bpm_form` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
-  `FORM_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT '0' COMMENT '排序号',
-  `FORM_TITLE` varchar(50) DEFAULT NULL,
-  `TABLE_NAME` varchar(50) DEFAULT NULL,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
+  `FORM_ID` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '表单ID',
+  `SORT_NO` int DEFAULT '0' COMMENT '排序号',
+  `FORM_TITLE` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '表单名称',
+  `TABLE_NAME` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '数据库表名',
+  `HTML_CODE` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT '表单HTML',
+  `MOBILE_HTML_CODE` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT '移动端HTML',
+  `STYLE` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT 'css样式',
+  `SCRIPT` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT 'JS脚本',
+  `MOBILE_SCRIPT` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT '移动端JS脚本',
+  `MOBILE_STYLE` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT '移动端CSS样式',
+  `BPM_TYPE_ID` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '分类ID',
+  `VERSION` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '1',
+  `FORM_TYPE` varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '0' COMMENT '0:自创建表单1:系统内置表单',
+  `CREATE_TIME` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `CREATE_USER` varchar(20) DEFAULT NULL,
-  `CREATE_TIME` varchar(20) DEFAULT NULL,
-  `HTML_CODE` text,
-  `MOBILE_HTML_CODE` text,
-  `STYLE` text,
-  `SCRIPT` text,
-  `MOBILE_SCRIPT` text,
-  `MOBILE_STYLE` text,
-  `BPM_TYPE_ID` varchar(50) DEFAULT NULL,
-  `VERSION` varchar(50) DEFAULT '1',
   `ORG_ID` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE,
   KEY `ID` (`ID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of bpm_form
 -- ----------------------------
-INSERT INTO `bpm_form` VALUES ('1', '0B341ADA-203B-47F6-AC59-EA77A5528105', '1', '用印申请', '1584256402', 'admin', '2020-03-15 15:15:41', '<p style=\"text-align: center;\"><span style=\"color: rgb(54, 96, 146);\"><strong><span style=\"font-size: 24px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\">用印申请</span></strong></span></p>\n\n<table align=\"center\" border=\"1\" class=\"td-min-height\" data-sort=\"sortDisabled\" style=\"border: 1px solid rgb(54, 96, 146);\">\n	<tbody>\n		<tr class=\"firstRow\">\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">申请人</span></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;13&quot;,&quot;format&quot;:null}\" name=\"dataNum1\" placeholder=\"自动控件|申请人\" style=\"\" title=\"申请人\" type=\"text\" xtype=\"xmacro\" /></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; text-align: -webkit-center; background-color: rgb(219, 238, 243);\">&nbsp; 申请时间&nbsp;&nbsp;</span></span></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;2&quot;,&quot;format&quot;:&quot;yyyy-MM-dd&quot;}\" name=\"dataNum2\" placeholder=\"自动控件|申请时间\" style=\"\" title=\"申请时间\" type=\"text\" xtype=\"xmacro\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; text-align: -webkit-center; background-color: rgb(219, 238, 243);\">申请部门</span></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;14&quot;,&quot;format&quot;:null}\" name=\"dataNum3\" placeholder=\"自动控件|申请部门\" style=\"\" title=\"申请部门\" type=\"text\" xtype=\"xmacro\" /></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">职务</span></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;16&quot;,&quot;format&quot;:null}\" name=\"dataNum4\" placeholder=\"自动控件|职务\" style=\"\" title=\"职务\" type=\"text\" xtype=\"xmacro\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); background-color: rgb(219, 238, 243); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-size: 16px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; text-align: -webkit-center; background-color: rgb(219, 238, 243);\">用印类型&nbsp;</span></span></td>\n			<td align=\"center\" class=\"selectTdClass\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><select class=\"form-control\" datatype=\"undefined\" model=\"[{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;公章&quot;,&quot;checked&quot;:true},{&quot;vals&quot;:&quot;2&quot;,&quot;option&quot;:&quot;合同章&quot;,&quot;checked&quot;:false},{&quot;vals&quot;:&quot;3&quot;,&quot;option&quot;:&quot;账务章&quot;,&quot;checked&quot;:false}]\" name=\"dataNum5\" placeholder=\"用印类型\" style=\"\" title=\"用印类型\" xtype=\"xselect\"><option selected=\"selected\" value=\"1\">公章</option><option value=\"2\">合同章</option><option value=\"3\">账务章</option></select></td>\n			<td align=\"center\" class=\"selectTdClass\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-size: 16px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\">&nbsp; &nbsp;用印数量&nbsp;&nbsp;</span></td>\n			<td align=\"center\" class=\"selectTdClass\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum6\" placeholder=\"输入框|用印数量\" style=\"\" title=\"用印数量\" type=\"text\" xtype=\"xinput\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); background-color: rgb(219, 238, 243); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family:微软雅黑, Microsoft YaHei\"><span style=\"font-size: 16px;\">报送单位</span></span></td>\n			<td align=\"left\" class=\"selectTdClass\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum7\" placeholder=\"输入框|报送单位\" style=\"\" title=\"报送单位\" type=\"text\" xtype=\"xinput\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); border-width: 1px; border-style: solid; background-color: rgb(219, 238, 243); word-break: break-all;\" valign=\"middle\">\n			<p style=\"margin-bottom: 0px; padding: 0px; text-align: -webkit-center; white-space: normal;\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\"><span style=\"font-size: 16px;\">&nbsp; 申请事由</span></span></p>\n			</td>\n			<td align=\"left\" class=\"selectTdClass\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); border-width: 1px; border-style: solid; word-break: break-all;\" valign=\"middle\"><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum8\" placeholder=\"申请事由\" style=\"width:100%\" title=\"申请事由\" xtype=\"xtextarea\"></textarea></td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp; 部门领导审批&nbsp;&nbsp;</span></td>\n			<td align=\"left\" class=\"selectTdClass\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\">\n			<p><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum9\" placeholder=\"部门领导审批意见\" style=\"width:100%;height:100px;\" title=\"部门领导审批意见\" xtype=\"xtextarea\"></textarea></p>\n\n			<p><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\">&nbsp; <span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp;审批意见</span><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">：</span></span><select class=\"form-control\" datatype=\"undefined\" model=\"[{&quot;vals&quot;:&quot;&quot;,&quot;option&quot;:&quot;&quot;,&quot;checked&quot;:false},{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;同意&quot;,&quot;checked&quot;:false},{&quot;vals&quot;:&quot;2&quot;,&quot;option&quot;:&quot;不同意&quot;,&quot;checked&quot;:false}]\" name=\"dataNum10\" placeholder=\"部门领导审批意见\" style=\"width:100px;display: inline;\" title=\"部门领导审批意见\" xtype=\"xselect\"><option value=\"\"></option><option value=\"1\">同意</option><option value=\"2\">不同意</option></select><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\"><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\"> &nbsp;</span>签字：</span><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum11\" placeholder=\"自动控件|部门领导审批签字\" style=\"width:230px;display: inline-block;position: absolute;\" title=\"部门领导审批签字\" type=\"text\" xtype=\"xmacro\" /></p>\n			</td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">CEO审批</span></td>\n			<td align=\"left\" class=\"selectTdClass\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\">\n			<p><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum12\" placeholder=\"CEO审批\" style=\"width:100%;height:100px;\" title=\"CEO审批\" xtype=\"xtextarea\"></textarea></p>\n\n			<p><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\">&nbsp; <span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">审批意见</span><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">：</span></span><select class=\"form-control\" datatype=\"undefined\" model=\"[{&quot;vals&quot;:&quot;&quot;,&quot;option&quot;:&quot;&quot;,&quot;checked&quot;:true},{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;同意&quot;,&quot;checked&quot;:false},{&quot;vals&quot;:&quot;2&quot;,&quot;option&quot;:&quot;不同意&quot;,&quot;checked&quot;:false}]\" name=\"dataNum13\" placeholder=\"CEO审批意见\" style=\"width:100px;display: inline;\" title=\"CEO审批意见\" xtype=\"xselect\"><option selected=\"selected\" value=\"\"></option><option value=\"1\">同意</option><option value=\"2\">不同意</option></select><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\"><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp; &nbsp;</span>签字：</span><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum14\" placeholder=\"自动控件|CEO审批签字\" style=\"width:230px;display: inline-block;position: absolute;\" title=\"CEO审批签字\" type=\"text\" xtype=\"xmacro\" /></p>\n			</td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">备注说明</span></td>\n			<td align=\"left\" class=\"selectTdClass\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\">\n			<p><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp;<span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">1.凡使用公司印章须填写此表；</span></span></p>\n\n			<p style=\"margin-bottom: 0px; padding: 0px; white-space: normal;\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp;2.申请事由一栏应将用印的文本名称及内容填写清楚，如文本是合同的</span></p>\n\n			<p style=\"margin-bottom: 0px; padding: 0px; white-space: normal;\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp;应填写</span><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">涉及</span><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">金额及签订合同的对方单位名称；</span></p>\n			</td>\n		</tr>\n	</tbody>\n</table>\n\n<p style=\"text-align: center;\"><img model=\"[{&quot;childTitle&quot;:&quot;aa&quot;,&quot;childName&quot;:&quot;aa&quot;,&quot;formula&quot;:&quot;&quot;,&quot;childModel&quot;:&quot;1&quot;,&quot;isTotal&quot;:false,&quot;defaultValue&quot;:&quot;&quot;,&quot;width&quot;:&quot;&quot;},{&quot;childTitle&quot;:&quot;bb&quot;,&quot;childName&quot;:&quot;cc&quot;,&quot;formula&quot;:&quot;&quot;,&quot;childModel&quot;:&quot;1&quot;,&quot;isTotal&quot;:false,&quot;defaultValue&quot;:&quot;&quot;,&quot;width&quot;:&quot;&quot;}]\" name=\"dataNum15\" src=\"/module/ckeditor/plugins/xlist/xlist.png\" style=\"\" title=\"列表测试\" xtype=\"xlist\" /></p>\n', '<div class=\"form-group\"><label style=\"line-height: 34px;\">申请人</label><input style=\"width:200px;float:right;\" title=\"申请人\" defaultvalue=\"\" xtype=\"xmacro\" model=\"{&quot;type&quot;:&quot;13&quot;,&quot;format&quot;:null}\" name=\"dataNum1\" type=\"text\" class=\"form-control\" placeholder=\"自动控件|申请人\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">申请时间</label><input style=\"width:200px;float:right;\" title=\"申请时间\" defaultvalue=\"\" xtype=\"xmacro\" model=\"{&quot;type&quot;:&quot;2&quot;,&quot;format&quot;:&quot;yyyy-MM-dd&quot;}\" name=\"dataNum2\" type=\"text\" class=\"form-control\" placeholder=\"自动控件|申请时间\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">申请部门</label><input style=\"width:200px;float:right;\" title=\"申请部门\" defaultvalue=\"\" xtype=\"xmacro\" model=\"{&quot;type&quot;:&quot;13&quot;,&quot;format&quot;:null}\" name=\"dataNum3\" type=\"text\" class=\"form-control\" placeholder=\"自动控件|申请部门\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">职务</label><input style=\"width:200px;float:right;\" title=\"职务\" defaultvalue=\"\" xtype=\"xmacro\" model=\"{&quot;type&quot;:&quot;16&quot;,&quot;format&quot;:null}\" name=\"dataNum4\" type=\"text\" class=\"form-control\" placeholder=\"自动控件|职务\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">用印类型</label><select style=\"width:200px;float:right;\" title=\"用印类型\" defaultvalue=\"\" xtype=\"xselect\" model=\"[{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;公章&quot;,&quot;checked&quot;:true},{&quot;vals&quot;:&quot;2&quot;,&quot;option&quot;:&quot;合同章&quot;,&quot;checked&quot;:false},{&quot;vals&quot;:&quot;3&quot;,&quot;option&quot;:&quot;账务章&quot;,&quot;checked&quot;:false}]\" name=\"dataNum5\" type=\"text\" class=\"form-control\"><option value=\"1\" checked=\"\">公章</option><option value=\"2\">合同章</option><option value=\"3\">账务章</option></select></div><div class=\"form-group\"><label style=\"line-height: 34px;\">用印数量</label><input style=\"width:200px;float:right;\" title=\"用印数量\" defaultvalue=\"\" xtype=\"xinput\" name=\"dataNum6\" type=\"text\" class=\"form-control\" placeholder=\"输入框|用印数量\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">报送单位</label><input style=\"width:200px;float:right;\" title=\"报送单位\" defaultvalue=\"\" xtype=\"xinput\" name=\"dataNum7\" type=\"text\" class=\"form-control\" placeholder=\"输入框|报送单位\"></div><div class=\"form-group\"><label style=\"width:100%\">申请事由</label><textarea title=\"申请事由\" defaultvalue=\"\" xtype=\"xtextarea\" name=\"dataNum8\" class=\"form-control\" placeholder=\"申请事由\"></textarea></div><div class=\"form-group\"><label style=\"width:100%\">部门领导审批意见</label><textarea title=\"部门领导审批意见\" defaultvalue=\"\" xtype=\"xtextarea\" name=\"dataNum9\" class=\"form-control\" placeholder=\"部门领导审批意见\"></textarea></div><div class=\"form-group\"><label style=\"line-height: 34px;\">部门领导审批意见</label><select style=\"width:200px;float:right;\" title=\"部门领导审批意见\" defaultvalue=\"\" xtype=\"xselect\" model=\"[{&quot;vals&quot;:&quot;&quot;,&quot;option&quot;:&quot;&quot;,&quot;checked&quot;:false},{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;同意&quot;,&quot;checked&quot;:false},{&quot;vals&quot;:&quot;2&quot;,&quot;option&quot;:&quot;不同意&quot;,&quot;checked&quot;:false}]\" name=\"dataNum10\" type=\"text\" class=\"form-control\"><option value=\"\"></option><option value=\"1\">同意</option><option value=\"2\">不同意</option></select></div><div class=\"form-group\"><label style=\"line-height: 34px;\">部门领导审批签字</label><input style=\"width:200px;float:right;\" title=\"部门领导审批签字\" defaultvalue=\"\" xtype=\"xmacro\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum11\" type=\"text\" class=\"form-control\" placeholder=\"自动控件|部门领导审批签字\"></div><div class=\"form-group\"><label style=\"width:100%\">CEO审批</label><textarea title=\"CEO审批\" defaultvalue=\"\" xtype=\"xtextarea\" name=\"dataNum12\" class=\"form-control\" placeholder=\"CEO审批\"></textarea></div><div class=\"form-group\"><label style=\"line-height: 34px;\">CEO审批意见</label><select style=\"width:200px;float:right;\" title=\"CEO审批意见\" defaultvalue=\"\" xtype=\"xselect\" model=\"[{&quot;vals&quot;:&quot;&quot;,&quot;option&quot;:&quot;&quot;,&quot;checked&quot;:true},{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;同意&quot;,&quot;checked&quot;:false},{&quot;vals&quot;:&quot;2&quot;,&quot;option&quot;:&quot;不同意&quot;,&quot;checked&quot;:false}]\" name=\"dataNum13\" type=\"text\" class=\"form-control\"><option value=\"\" checked=\"\"></option><option value=\"1\">同意</option><option value=\"2\">不同意</option></select></div><div class=\"form-group\"><label style=\"line-height: 34px;\">CEO审批签字</label><input style=\"width:200px;float:right;\" title=\"CEO审批签字\" defaultvalue=\"\" xtype=\"xmacro\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum14\" type=\"text\" class=\"form-control\" placeholder=\"自动控件|CEO审批签字\"></div><div class=\"form-group\" style=\"\"><label style=\"width:100%;\">列表测试</label><img title=\"列表测试\" style=\"width:100%;\" model=\"[{&quot;childTitle&quot;:&quot;aa&quot;,&quot;childName&quot;:&quot;aa&quot;,&quot;formula&quot;:&quot;&quot;,&quot;childModel&quot;:&quot;1&quot;,&quot;isTotal&quot;:false,&quot;defaultValue&quot;:&quot;&quot;,&quot;width&quot;:&quot;&quot;},{&quot;childTitle&quot;:&quot;bb&quot;,&quot;childName&quot;:&quot;cc&quot;,&quot;formula&quot;:&quot;&quot;,&quot;childModel&quot;:&quot;1&quot;,&quot;isTotal&quot;:false,&quot;defaultValue&quot;:&quot;&quot;,&quot;width&quot;:&quot;&quot;}]\" xtype=\"xlist\" name=\"dataNum15\" src=\"/module/ckeditor/plugins/xlist/xlist.png\"></div>', null, null, null, null, 'DB7AAD8D-1292-47C1-B119-795D5DE4B551', 'DDABE26E-1552-4139-8DB2-9E329D45ED3F', '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `bpm_form` VALUES ('2', 'E80C20E0-9E40-4CA6-B71B-A99853E55FE8', '1', '费用报销申请单', '1584259557', 'admin', '2020-03-15 16:06:12', '<p style=\"text-align: center;\"><span style=\"color:#366092;font-family:微软雅黑, Microsoft YaHei\"><span style=\"font-size: 24px;\"><strong>费用报销申请单</strong></span></span></p>\n\n<table align=\"center\" border=\"1\" class=\"td-min-height\" data-sort=\"sortDisabled\" style=\"border: 1px solid rgb(54, 96, 146); width: 650px;\">\n	<tbody>\n		<tr class=\"firstRow\">\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">申请人</span></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;13&quot;,&quot;format&quot;:null}\" name=\"dataNum1\" placeholder=\"自动控件|申请人\" style=\"\" title=\"申请人\" type=\"text\" xtype=\"xmacro\" /></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family:微软雅黑, Microsoft YaHei\"><span style=\"font-size: 16px;\">录单日期</span></span></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;2&quot;,&quot;format&quot;:&quot;yyyy年MM月dd日&quot;}\" name=\"dataNum2\" placeholder=\"自动控件|录单日期\" style=\"\" title=\"录单日期\" type=\"text\" xtype=\"xmacro\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; text-align: -webkit-center; background-color: rgb(219, 238, 243);\">申请类型&nbsp;</span></span></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><select class=\"form-control\" datatype=\"undefined\" model=\"[{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;个人报销&quot;,&quot;checked&quot;:false},{&quot;vals&quot;:&quot;2&quot;,&quot;option&quot;:&quot;部门报销&quot;,&quot;checked&quot;:false},{&quot;vals&quot;:&quot;3&quot;,&quot;option&quot;:&quot;公司报销&quot;,&quot;checked&quot;:false}]\" name=\"dataNum3\" placeholder=\"申请类型 \" style=\"\" title=\"申请类型 \" xtype=\"xselect\"><option value=\"1\">个人报销</option><option value=\"2\">部门报销</option><option value=\"3\">公司报销</option></select></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">报销事由</span></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum4\" placeholder=\"输入框|报销事由\" style=\"\" title=\"报销事由\" type=\"text\" xtype=\"xinput\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); background-color: rgb(219, 238, 243); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-size: 16px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; text-align: -webkit-center; background-color: rgb(219, 238, 243);\">&nbsp;所在部门&nbsp;&nbsp;</span></span></td>\n			<td align=\"center\" class=\"selectTdClass\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;14&quot;,&quot;format&quot;:null}\" name=\"dataNum5\" placeholder=\"自动控件|所在部门 \" style=\"\" title=\"所在部门 \" type=\"text\" xtype=\"xmacro\" /></td>\n			<td align=\"center\" class=\"selectTdClass\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-size: 16px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\">&nbsp; 总报销金额&nbsp;</span></td>\n			<td align=\"center\" class=\"selectTdClass\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum6\" placeholder=\"输入框|总报销金额 \" style=\"\" title=\"总报销金额 \" type=\"text\" xtype=\"xinput\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); background-color: rgb(219, 238, 243); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family:微软雅黑, Microsoft YaHei\"><span style=\"font-size: 16px;\">&nbsp; &nbsp;备注</span></span></td>\n			<td align=\"left\" class=\"selectTdClass\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum7\" placeholder=\"备注\" style=\"width:100%;height:100px\" title=\"备注\" xtype=\"xtextarea\"></textarea></td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">部门领导审批</span></td>\n			<td align=\"left\" class=\"selectTdClass\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\">\n			<p><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum8\" placeholder=\"部门领导审批\" style=\"width:100%;height:50px\" title=\"部门领导审批\" xtype=\"xtextarea\"></textarea></p>\n\n			<p><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\">&nbsp; <span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp;审批意见</span><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">：</span></span><select class=\"form-control\" datatype=\"undefined\" model=\"[{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;同意&quot;,&quot;checked&quot;:true},{&quot;vals&quot;:&quot;0&quot;,&quot;option&quot;:&quot;不同意&quot;,&quot;checked&quot;:false}]\" name=\"dataNum9\" placeholder=\"部门领导审批意见\" style=\"display:inline-block;width:80px;\" title=\"部门领导审批意见\" xtype=\"xselect\"><option selected=\"selected\" value=\"1\">同意</option><option value=\"0\">不同意</option></select><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\"><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp; &nbsp; &nbsp;</span>签字：</span><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum10\" placeholder=\"自动控件|部门领导签字\" style=\"display:inline-block;width:200px;position: absolute;\" title=\"部门领导签字\" type=\"text\" xtype=\"xmacro\" /></p>\n			</td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">CEO审批</span></td>\n			<td align=\"left\" class=\"selectTdClass\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\">\n			<p><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum11\" placeholder=\"CEO审批\" style=\"width:100%;height:50px;\" title=\"CEO审批\" xtype=\"xtextarea\"></textarea></p>\n\n			<p><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\">&nbsp; &nbsp;&nbsp;<span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">审批意见</span><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">：</span></span><select class=\"form-control\" datatype=\"undefined\" model=\"[{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;同意&quot;,&quot;checked&quot;:true},{&quot;vals&quot;:&quot;0&quot;,&quot;option&quot;:&quot;不同意&quot;,&quot;checked&quot;:false}]\" name=\"dataNum12\" placeholder=\"CEO审批意见\" style=\"display:inline-block;width:80px;\" title=\"CEO审批意见\" xtype=\"xselect\"><option selected=\"selected\" value=\"1\">同意</option><option value=\"0\">不同意</option></select><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\"><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp; &nbsp; &nbsp;</span>签字：</span><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum13\" placeholder=\"自动控件|CEO审批\" style=\"display:inline-block;width:200px;position: absolute;\" title=\"CEO审批\" type=\"text\" xtype=\"xmacro\" /></p>\n			</td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp; 人事行政审批 &nbsp;</span></td>\n			<td align=\"left\" class=\"selectTdClass\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\">\n			<p><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum14\" placeholder=\"人事行政审批\" style=\"width:100%;height:50px;\" title=\"人事行政审批\" xtype=\"xtextarea\"></textarea></p>\n\n			<p><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\">&nbsp; &nbsp;&nbsp;<span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">审批意见</span><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">：</span></span><select class=\"form-control\" datatype=\"undefined\" model=\"[{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;同意&quot;,&quot;checked&quot;:true},{&quot;vals&quot;:&quot;0&quot;,&quot;option&quot;:&quot;不同意&quot;,&quot;checked&quot;:false}]\" name=\"dataNum15\" placeholder=\"人事行政审批意见\" style=\"display:inline-block;width:80px;\" title=\"人事行政审批意见\" xtype=\"xselect\"><option selected=\"selected\" value=\"1\">同意</option><option value=\"0\">不同意</option></select><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\"><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp; &nbsp; &nbsp;</span>签字：</span><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum16\" placeholder=\"自动控件|人事行政审批\" style=\"display:inline-block;width:200px;position: absolute;\" title=\"人事行政审批\" type=\"text\" xtype=\"xmacro\" /></p>\n\n			<p>&nbsp;</p>\n			</td>\n		</tr>\n	</tbody>\n</table>\n\n<p style=\"text-align: center;\">&nbsp;</p>\n', '<div class=\'form-group\'><label style=\'width:100%;\'>申请人</label><input title=\'申请人\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"13\",\"format\":null}\' name=\'dataNum1\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|申请人\'></div><div class=\'form-group\'><label style=\'width:100%;\'>录单日期</label><input title=\'录单日期\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"2\",\"format\":\"yyyy年MM月dd日\"}\' name=\'dataNum2\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|录单日期\'></div><div class=\'form-group\'><label style=\'width:100%;\'>申请类型 </label><select title=\'申请类型 \' defaultvalue=\'\' xtype=\'xselect\' model=\'[{\"vals\":\"1\",\"option\":\"个人报销\",\"checked\":false},{\"vals\":\"2\",\"option\":\"部门报销\",\"checked\":false},{\"vals\":\"3\",\"option\":\"公司报销\",\"checked\":false}]\' name=\'dataNum3\' type=\'text\' class=\'form-control\'><option value=\'1\'>个人报销</option><option value=\'2\'>部门报销</option><option value=\'3\'>公司报销</option></select></div><div class=\'form-group\'><label style=\'width:100%;\'>报销事由</label><input title=\'报销事由\' defaultvalue=\'\' xtype=\'xinput\' name=\'dataNum4\' type=\'text\' class=\'form-control\' placeholder=\'输入框|报销事由\'></div><div class=\'form-group\'><label style=\'width:100%;\'>所在部门 </label><input title=\'所在部门 \' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"14\",\"format\":null}\' name=\'dataNum5\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|所在部门 \'></div><div class=\'form-group\'><label style=\'width:100%;\'>总报销金额 </label><input title=\'总报销金额 \' defaultvalue=\'\' xtype=\'xinput\' name=\'dataNum6\' type=\'text\' class=\'form-control\' placeholder=\'输入框|总报销金额 \'></div><div class=\'form-group\'><label style=\'width:100%;\'>备注</label><textarea title=\'备注\' defaultvalue=\'\' xtype=\'xtextarea\' name=\'dataNum7\' class=\'form-control\' placeholder=\'备注\'></textarea></div><div class=\'form-group\'><label style=\'width:100%;\'>部门领导审批</label><textarea title=\'部门领导审批\' defaultvalue=\'\' xtype=\'xtextarea\' name=\'dataNum8\' class=\'form-control\' placeholder=\'部门领导审批\'></textarea></div><div class=\'form-group\'><label style=\'width:100%;\'>部门领导审批意见</label><select title=\'部门领导审批意见\' defaultvalue=\'\' xtype=\'xselect\' model=\'[{\"vals\":\"1\",\"option\":\"同意\",\"checked\":true},{\"vals\":\"0\",\"option\":\"不同意\",\"checked\":false}]\' name=\'dataNum9\' type=\'text\' class=\'form-control\'><option value=\'1\' checked>同意</option><option value=\'0\'>不同意</option></select></div><div class=\'form-group\'><label style=\'width:100%;\'>部门领导签字</label><input title=\'部门领导签字\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"20\",\"format\":null}\' name=\'dataNum10\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|部门领导签字\'></div><div class=\'form-group\'><label style=\'width:100%;\'>CEO审批</label><textarea title=\'CEO审批\' defaultvalue=\'\' xtype=\'xtextarea\' name=\'dataNum11\' class=\'form-control\' placeholder=\'CEO审批\'></textarea></div><div class=\'form-group\'><label style=\'width:100%;\'>CEO审批意见</label><select title=\'CEO审批意见\' defaultvalue=\'\' xtype=\'xselect\' model=\'[{\"vals\":\"1\",\"option\":\"同意\",\"checked\":true},{\"vals\":\"0\",\"option\":\"不同意\",\"checked\":false}]\' name=\'dataNum12\' type=\'text\' class=\'form-control\'><option value=\'1\' checked>同意</option><option value=\'0\'>不同意</option></select></div><div class=\'form-group\'><label style=\'width:100%;\'>CEO审批</label><input title=\'CEO审批\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"20\",\"format\":null}\' name=\'dataNum13\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|CEO审批\'></div><div class=\'form-group\'><label style=\'width:100%;\'>人事行政审批</label><textarea title=\'人事行政审批\' defaultvalue=\'\' xtype=\'xtextarea\' name=\'dataNum14\' class=\'form-control\' placeholder=\'人事行政审批\'></textarea></div><div class=\'form-group\'><label style=\'width:100%;\'>人事行政审批意见</label><select title=\'人事行政审批意见\' defaultvalue=\'\' xtype=\'xselect\' model=\'[{\"vals\":\"1\",\"option\":\"同意\",\"checked\":true},{\"vals\":\"0\",\"option\":\"不同意\",\"checked\":false}]\' name=\'dataNum15\' type=\'text\' class=\'form-control\'><option value=\'1\' checked>同意</option><option value=\'0\'>不同意</option></select></div><div class=\'form-group\'><label style=\'width:100%;\'>人事行政审批</label><input title=\'人事行政审批\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"20\",\"format\":null}\' name=\'dataNum16\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|人事行政审批\'></div>', null, null, null, null, 'C030844B-4FE8-4FA4-88FE-F9F11E11D01C', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `bpm_form` VALUES ('4', '227B8731-B2BE-46DB-AB97-E084FF37B615', '1', '费用预算申请单', '1584691609', 'admin', '2020-03-20 16:07:00', '<p style=\"text-align: center;\"><span style=\"color:#366092;font-family:微软雅黑, Microsoft YaHei\"><span style=\"font-size: 24px;\"><strong>费用预算申请单</strong></span></span></p>\n\n<table align=\"center\" border=\"1\" class=\"td-min-height\" data-sort=\"sortDisabled\" style=\"border: 1px solid rgb(54, 96, 146); width: 650px;\">\n	<tbody>\n		<tr class=\"firstRow\">\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">申请人</span></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;13&quot;,&quot;format&quot;:null}\" name=\"dataNum1\" placeholder=\"自动控件|申请人\" style=\"\" title=\"申请人\" type=\"text\" xtype=\"xmacro\" /></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">录单日期</span></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;2&quot;,&quot;format&quot;:&quot;yyyy年MM月dd日&quot;}\" name=\"dataNum2\" placeholder=\"自动控件|录单日期\" style=\"\" title=\"录单日期\" type=\"text\" xtype=\"xmacro\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); border-width: 1px; background-color: rgb(219, 238, 243); border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">申请类型</span></td>\n			<td align=\"center\" class=\"selectTdClass\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); border-width: 1px; border-style: solid;\" valign=\"middle\"><select class=\"form-control\" datatype=\"undefined\" model=\"[{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;个人预算&quot;,&quot;checked&quot;:false},{&quot;vals&quot;:&quot;2&quot;,&quot;option&quot;:&quot;部门预算&quot;,&quot;checked&quot;:false},{&quot;vals&quot;:&quot;3&quot;,&quot;option&quot;:&quot;公司预算&quot;,&quot;checked&quot;:false}]\" name=\"dataNum3\" placeholder=\"申请类型\" style=\"\" title=\"申请类型\" xtype=\"xselect\"><option value=\"1\">个人预算</option><option value=\"2\">部门预算</option><option value=\"3\">公司预算</option></select></td>\n			<td align=\"center\" class=\"selectTdClass\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); border-width: 1px; background-color: rgb(219, 238, 243); border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">费用事由</span></td>\n			<td align=\"center\" class=\"selectTdClass\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum4\" placeholder=\"输入框|费用事由\" style=\"\" title=\"费用事由\" type=\"text\" xtype=\"xinput\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family:微软雅黑, Microsoft YaHei\"><span style=\"font-size: 16px;\">所在部门</span></span></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;14&quot;,&quot;format&quot;:null}\" name=\"dataNum5\" placeholder=\"自动控件|所在部门\" style=\"\" title=\"所在部门\" type=\"text\" xtype=\"xmacro\" /></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp; 总预算申请金额&nbsp;&nbsp;</span></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum6\" placeholder=\"输入框|总预算申请金额 \" style=\"\" title=\"总预算申请金额 \" type=\"text\" xtype=\"xinput\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">备注</span></td>\n			<td align=\"left\" class=\"selectTdClass\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum13\" placeholder=\"备注\" style=\"width:100%;height:50px;\" title=\"备注\" xtype=\"xtextarea\"></textarea></td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp; 主管意见&nbsp;&nbsp;</span></td>\n			<td align=\"left\" class=\"selectTdClass\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\">\n			<p><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum7\" placeholder=\"主管意见\" style=\"width:100%;height:100px;\" title=\"主管意见\" xtype=\"xtextarea\"></textarea></p>\n\n			<p><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\">&nbsp; <span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">审批意见</span><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">：</span></span><select class=\"form-control\" datatype=\"undefined\" model=\"[{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;同意&quot;,&quot;checked&quot;:true},{&quot;vals&quot;:&quot;0&quot;,&quot;option&quot;:&quot;不同意&quot;,&quot;checked&quot;:false}]\" name=\"dataNum8\" placeholder=\"主管审批意见\" style=\"width:80px;display:inline-block;\" title=\"主管审批意见\" xtype=\"xselect\"><option selected=\"selected\" value=\"1\">同意</option><option value=\"0\">不同意</option></select><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\"><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp; &nbsp; &nbsp;</span>签字：</span><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum9\" placeholder=\"自动控件|主管签字\" style=\"width:200px;display:inline-block;position: absolute;\" title=\"主管签字\" type=\"text\" xtype=\"xmacro\" /></p>\n			</td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"text-align: -webkit-center; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">财务意见</span></td>\n			<td align=\"left\" class=\"selectTdClass\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\">\n			<p><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum10\" placeholder=\"财务意见\" style=\"width:100%;height:100px;\" title=\"财务意见\" xtype=\"xtextarea\"></textarea></p>\n\n			<p><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\">&nbsp; <span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">审批意见</span><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">：</span></span><select class=\"form-control\" datatype=\"undefined\" model=\"[{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;同意&quot;,&quot;checked&quot;:true},{&quot;vals&quot;:&quot;0&quot;,&quot;option&quot;:&quot;不同意&quot;,&quot;checked&quot;:false}]\" name=\"dataNum11\" placeholder=\"财务审批意见\" style=\"width:80px;display:inline-block;\" title=\"财务审批意见\" xtype=\"xselect\"><option selected=\"selected\" value=\"1\">同意</option><option value=\"0\">不同意</option></select><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\"><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp; &nbsp; &nbsp;</span>签字：</span><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum12\" placeholder=\"自动控件|财务签字\" style=\"width:200px;display:inline-block;position: absolute;\" title=\"财务签字\" type=\"text\" xtype=\"xmacro\" /></p>\n			</td>\n		</tr>\n	</tbody>\n</table>\n', '<div class=\'form-group\'><label style=\'width:100%;\'>申请人</label><input title=\'申请人\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"13\",\"format\":null}\' name=\'dataNum1\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|申请人\'></div><div class=\'form-group\'><label style=\'width:100%;\'>录单日期</label><input title=\'录单日期\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"2\",\"format\":\"yyyy年MM月dd日\"}\' name=\'dataNum2\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|录单日期\'></div><div class=\'form-group\'><label style=\'width:100%;\'>申请类型</label><select title=\'申请类型\' defaultvalue=\'\' xtype=\'xselect\' model=\'[{\"vals\":\"1\",\"option\":\"个人预算\",\"checked\":false},{\"vals\":\"2\",\"option\":\"部门预算\",\"checked\":false},{\"vals\":\"3\",\"option\":\"公司预算\",\"checked\":false}]\' name=\'dataNum3\' type=\'text\' class=\'form-control\'><option value=\'1\'>个人预算</option><option value=\'2\'>部门预算</option><option value=\'3\'>公司预算</option></select></div><div class=\'form-group\'><label style=\'width:100%;\'>费用事由</label><input title=\'费用事由\' defaultvalue=\'\' xtype=\'xinput\' name=\'dataNum4\' type=\'text\' class=\'form-control\' placeholder=\'输入框|费用事由\'></div><div class=\'form-group\'><label style=\'width:100%;\'>所在部门</label><input title=\'所在部门\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"14\",\"format\":null}\' name=\'dataNum5\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|所在部门\'></div><div class=\'form-group\'><label style=\'width:100%;\'>总预算申请金额 </label><input title=\'总预算申请金额 \' defaultvalue=\'\' xtype=\'xinput\' name=\'dataNum6\' type=\'text\' class=\'form-control\' placeholder=\'输入框|总预算申请金额 \'></div><div class=\'form-group\'><label style=\'width:100%;\'>备注</label><textarea title=\'备注\' defaultvalue=\'\' xtype=\'xtextarea\' name=\'dataNum13\' class=\'form-control\' placeholder=\'备注\'></textarea></div><div class=\'form-group\'><label style=\'width:100%;\'>主管意见</label><textarea title=\'主管意见\' defaultvalue=\'\' xtype=\'xtextarea\' name=\'dataNum7\' class=\'form-control\' placeholder=\'主管意见\'></textarea></div><div class=\'form-group\'><label style=\'width:100%;\'>主管审批意见</label><select title=\'主管审批意见\' defaultvalue=\'\' xtype=\'xselect\' model=\'[{\"vals\":\"1\",\"option\":\"同意\",\"checked\":true},{\"vals\":\"0\",\"option\":\"不同意\",\"checked\":false}]\' name=\'dataNum8\' type=\'text\' class=\'form-control\'><option value=\'1\' checked>同意</option><option value=\'0\'>不同意</option></select></div><div class=\'form-group\'><label style=\'width:100%;\'>主管签字</label><input title=\'主管签字\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"20\",\"format\":null}\' name=\'dataNum9\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|主管签字\'></div><div class=\'form-group\'><label style=\'width:100%;\'>财务意见</label><textarea title=\'财务意见\' defaultvalue=\'\' xtype=\'xtextarea\' name=\'dataNum10\' class=\'form-control\' placeholder=\'财务意见\'></textarea></div><div class=\'form-group\'><label style=\'width:100%;\'>财务审批意见</label><select title=\'财务审批意见\' defaultvalue=\'\' xtype=\'xselect\' model=\'[{\"vals\":\"1\",\"option\":\"同意\",\"checked\":true},{\"vals\":\"0\",\"option\":\"不同意\",\"checked\":false}]\' name=\'dataNum11\' type=\'text\' class=\'form-control\'><option value=\'1\' checked>同意</option><option value=\'0\'>不同意</option></select></div><div class=\'form-group\'><label style=\'width:100%;\'>财务签字</label><input title=\'财务签字\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"20\",\"format\":null}\' name=\'dataNum12\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|财务签字\'></div>', null, null, null, null, 'C030844B-4FE8-4FA4-88FE-F9F11E11D01C', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `bpm_form` VALUES ('5', 'BB9B5E2C-55DA-41DE-BF75-4C93FD31B440', '1', '合同表单', '1585290538', 'admin', '2020-03-27 14:30:43', '<p style=\"text-align: center;\"><span style=\"font-size:28px;\"><strong>合同审批表</strong></span></p>\n\n<table align=\"center\" border=\"1\" class=\"td-min-height\" data-sort=\"sortDisabled\" style=\"border: 1px solid rgb(54, 96, 146); margin: auto; width: 650px;\">\n	<tbody>\n		<tr class=\"firstRow\">\n			<td align=\"center\" colspan=\"4\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">合同基本资料</td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">合同名称</td>\n			<td align=\"center\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum1\" placeholder=\"输入框|合同名称\" style=\"\" title=\"合同名称\" type=\"text\" xtype=\"xinput\" /></td>\n			<td align=\"center\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">合同分类</td>\n			<td align=\"center\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;dbSource&quot;:&quot;36BF8C47-6F6D-4B9E-A24F-3992EE215C3E&quot;,&quot;sql&quot;:&quot;select sort_id as vkey,sort_name as val  from contract_sort where org_id={ORG_ID}&quot;}\" name=\"dataNum2\" placeholder=\"SQL控件下拉框|合同分类\" style=\"\" title=\"合同分类\" type=\"text\" value=\"\" xtype=\"xsqlselect\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">合同类型</td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all;\" valign=\"middle\"><select class=\"form-control\" datatype=\"undefined\" model=\"[{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;销售合同&quot;,&quot;checked&quot;:true},{&quot;vals&quot;:&quot;2&quot;,&quot;option&quot;:&quot;采购合同&quot;,&quot;checked&quot;:false}]\" name=\"dataNum3\" placeholder=\"合同类型\" style=\"\" title=\"合同类型\" xtype=\"xselect\"><option selected=\"selected\" value=\"1\">销售合同</option><option value=\"2\">采购合同</option></select></td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">合同编号</td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum4\" placeholder=\"输入框|合同编号\" style=\"\" title=\"合同编号\" type=\"text\" xtype=\"xinput\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"background-color: rgb(219, 238, 243);\">所属部门</span></td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all;\" valign=\"middle\" width=\"166\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;3&quot;,&quot;format&quot;:null}\" name=\"dataNum5\" placeholder=\"选择控件|所属部门\" style=\"\" title=\"所属部门\" type=\"text\" value=\"\" xtype=\"xfetch\" /></td>\n			<td align=\"center\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\" width=\"166\">业务人员</td>\n			<td align=\"center\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all;\" valign=\"middle\" width=\"166\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;7&quot;,&quot;format&quot;:null}\" name=\"dataNum6\" placeholder=\"选择控件|业务人员\" style=\"\" title=\"业务人员\" type=\"text\" value=\"\" xtype=\"xfetch\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"background-color: rgb(219, 238, 243);\">签约时间</span></td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all;\" valign=\"middle\" width=\"166\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;1&quot;,&quot;format&quot;:&quot;YYYY-MM-DD&quot;}\" name=\"dataNum7\" placeholder=\"选择控件|签约时间\" style=\"\" title=\"签约时间\" type=\"text\" value=\"\" xtype=\"xfetch\" /></td>\n			<td align=\"center\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\" width=\"166\">合同金额</td>\n			<td align=\"center\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all;\" valign=\"middle\" width=\"166\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum8\" placeholder=\"输入框|合同金额\" style=\"width:80%;display:inline-block;\" title=\"合同金额\" type=\"text\" xtype=\"xinput\" />元</td>\n		</tr>\n		<tr>\n			<td colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); background-color: rgb(219, 238, 243); text-align: center;\" valign=\"middle\">合同开始日期</td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;1&quot;,&quot;format&quot;:&quot;YYYY-MM-DD&quot;}\" name=\"dataNum9\" placeholder=\"选择控件|合同开始日期	\" style=\"\" title=\"合同开始日期	\" type=\"text\" value=\"\" xtype=\"xfetch\" /></td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">&nbsp;合同结束日期</td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;1&quot;,&quot;format&quot;:&quot;YYYY-MM-DD&quot;}\" name=\"dataNum10\" placeholder=\"选择控件|合同结束日期\" style=\"\" title=\"合同结束日期\" type=\"text\" value=\"\" xtype=\"xfetch\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">录入人员</td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;13&quot;,&quot;format&quot;:null}\" name=\"dataNum11\" placeholder=\"自动控件|录入人员\" style=\"\" title=\"录入人员\" type=\"text\" xtype=\"xmacro\" /></td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"text-align: -webkit-center; background-color: rgb(219, 238, 243);\">录入日期</span></td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;2&quot;,&quot;format&quot;:&quot;yyyy年MM月dd日&quot;}\" name=\"dataNum12\" placeholder=\"自动控件|录入日期\" style=\"\" title=\"录入日期\" type=\"text\" xtype=\"xmacro\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"4\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">公司资料</td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">甲方单位</td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum13\" placeholder=\"输入框|甲方单位\" style=\"\" title=\"甲方单位\" type=\"text\" xtype=\"xinput\" /></td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">乙方单位</td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum14\" placeholder=\"输入框|乙方单位\" style=\"\" title=\"乙方单位\" type=\"text\" xtype=\"xinput\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">甲方联系人</td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum15\" placeholder=\"输入框|甲方联系人\" style=\"\" title=\"甲方联系人\" type=\"text\" xtype=\"xinput\" /></td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">乙方联系人</td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum16\" placeholder=\"输入框|乙方联系人\" style=\"\" title=\"乙方联系人\" type=\"text\" xtype=\"xinput\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">甲方联系方式</td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum17\" placeholder=\"输入框|甲方联系方式 \" style=\"\" title=\"甲方联系方式 \" type=\"text\" xtype=\"xinput\" /></td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">乙方联系方式</td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum18\" placeholder=\"输入框|乙方联系方式\" style=\"\" title=\"乙方联系方式\" type=\"text\" xtype=\"xinput\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"4\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">合同内容</td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"4\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; background-color: rgb(255, 255, 255);\" valign=\"middle\"><img model=\"[{&quot;childTitle&quot;:&quot;产品名称&quot;,&quot;childName&quot;:&quot;name&quot;,&quot;formula&quot;:&quot;&quot;,&quot;childModel&quot;:&quot;1&quot;,&quot;isTotal&quot;:false,&quot;defaultValue&quot;:&quot;A,B,C&quot;,&quot;width&quot;:&quot;150&quot;},{&quot;childTitle&quot;:&quot;产品数量&quot;,&quot;childName&quot;:&quot;quantity&quot;,&quot;formula&quot;:&quot;&quot;,&quot;childModel&quot;:&quot;1&quot;,&quot;isTotal&quot;:true,&quot;defaultValue&quot;:&quot;中国,美国,日本&quot;,&quot;width&quot;:&quot;150&quot;},{&quot;childTitle&quot;:&quot;产品价格&quot;,&quot;childName&quot;:&quot;price&quot;,&quot;formula&quot;:&quot;&quot;,&quot;childModel&quot;:&quot;1&quot;,&quot;isTotal&quot;:false,&quot;defaultValue&quot;:&quot;&quot;,&quot;width&quot;:&quot;100&quot;},{&quot;childTitle&quot;:&quot;主要条款&quot;,&quot;childName&quot;:&quot;tiaokuan&quot;,&quot;formula&quot;:&quot;&quot;,&quot;childModel&quot;:&quot;1&quot;,&quot;isTotal&quot;:false,&quot;defaultValue&quot;:&quot;&quot;,&quot;width&quot;:&quot;200&quot;},{&quot;childTitle&quot;:&quot;备注&quot;,&quot;childName&quot;:&quot;remark&quot;,&quot;formula&quot;:&quot;&quot;,&quot;childModel&quot;:&quot;1&quot;,&quot;isTotal&quot;:false,&quot;defaultValue&quot;:&quot;&quot;,&quot;width&quot;:&quot;200&quot;},{&quot;childTitle&quot;:&quot;小计&quot;,&quot;childName&quot;:&quot;xiaoji&quot;,&quot;formula&quot;:&quot;(quantity*price)&quot;,&quot;childModel&quot;:&quot;1&quot;,&quot;isTotal&quot;:true,&quot;defaultValue&quot;:&quot;&quot;,&quot;width&quot;:&quot;400&quot;}]\" name=\"dataNum19\" src=\"/module/ckeditor/plugins/xlist/xlist.png\" style=\"width:650px\" title=\"合同内容\" xtype=\"xlist\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"4\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">合同备注</td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"4\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; background-color: rgb(255, 255, 255);\" valign=\"middle\"><img defaultvalue=\"\" name=\"dataNum20\" src=\"/module/ckeditor/plugins/xtextuedit/editor.jpg\" style=\"width:100%;text-align:left;\" title=\"合同备注\" xtype=\"xtextuedit\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"4\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">合同审批</td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">&nbsp; 部门领导审批&nbsp;&nbsp;</td>\n			<td align=\"left\" colspan=\"3\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all;\" valign=\"middle\">\n			<p><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum21\" placeholder=\"部门领导审批\" style=\"width:100%;height:100px;\" title=\"部门领导审批\" xtype=\"xtextarea\"></textarea></p>\n\n			<p><span style=\"background-color: transparent;\">&nbsp; 部门领导意见：</span><select class=\"form-control\" datatype=\"undefined\" model=\"[{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;同意&quot;,&quot;checked&quot;:true},{&quot;vals&quot;:&quot;0&quot;,&quot;option&quot;:&quot;不同意&quot;,&quot;checked&quot;:false}]\" name=\"dataNum23\" placeholder=\"部门领导意见\" style=\"width:80px\" title=\"部门领导意见\" xtype=\"xselect\"><option selected=\"selected\" value=\"1\">同意</option><option value=\"0\">不同意</option></select>部门领导签字：<input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum22\" placeholder=\"自动控件|部门领导签字\" style=\"width:200px;dispaly:inline-block;\" title=\"部门领导签字\" type=\"text\" xtype=\"xmacro\" /></p>\n			</td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">CEO审批</td>\n			<td align=\"left\" colspan=\"3\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all;\" valign=\"middle\">\n			<p><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum24\" placeholder=\"CEO审批\" style=\"width:100%;height:100px;\" title=\"CEO审批\" xtype=\"xtextarea\"></textarea></p>\n\n			<p>CEO意见：<select class=\"form-control\" datatype=\"undefined\" model=\"[{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;同意&quot;,&quot;checked&quot;:true},{&quot;vals&quot;:&quot;0&quot;,&quot;option&quot;:&quot;不同意&quot;,&quot;checked&quot;:false}]\" name=\"dataNum25\" placeholder=\"CEO意见\" style=\"width:80px\" title=\"CEO意见\" xtype=\"xselect\"><option selected=\"selected\" value=\"1\">同意</option><option value=\"0\">不同意</option></select> CEO审批签字：<input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum26\" placeholder=\"自动控件|CEO审批签字\" style=\"width:200px;dispaly:inline-block;\" title=\"CEO审批签字\" type=\"text\" xtype=\"xmacro\" /></p>\n			</td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><img defaultvalue=\"\" name=\"dataNum30\" src=\"/module/ckeditor/plugins/xseal/code.jpg\" style=\"width:100px\" title=\"签章\" xtype=\"xseal\" /></td>\n			<td align=\"left\" colspan=\"3\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum27\" placeholder=\"输入框|计算1\" style=\"\" title=\"计算1\" type=\"text\" xtype=\"xinput\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">&nbsp;</td>\n			<td align=\"left\" colspan=\"3\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum28\" placeholder=\"输入框|计算2\" style=\"\" title=\"计算2\" type=\"text\" xtype=\"xinput\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">&nbsp;</td>\n			<td align=\"left\" colspan=\"3\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{计算1}+{计算2}\" name=\"dataNum29\" placeholder=\"计算组件|计算组件\" style=\"\" title=\"计算组件\" type=\"text\" value=\"\" xtype=\"xcalculate\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">合同相关流程</td>\n			<td align=\"left\" colspan=\"3\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all;\" valign=\"middle\"><img model=\"{&quot;type&quot;:&quot;2&quot;}\" name=\"dataNum31\" src=\"/module/ckeditor/plugins/xbpm/bpmlist.png\" title=\"合同相关流程\" type=\"text\" xtype=\"xbpm\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">签章测试</td>\n			<td align=\"left\" colspan=\"3\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all;\" valign=\"middle\"><img defaultvalue=\"\" name=\"dataNum32\" src=\"/module/ckeditor/plugins/xseal/code.jpg\" style=\"width:200px\" title=\"签章测试\" xtype=\"xseal\" /></td>\n		</tr>\n	</tbody>\n</table>\n', '<div class=\"form-group\"><label style=\"line-height: 34px;\">合同名称</label><input style=\"width:200px;float:right;\" title=\"合同名称\" defaultvalue=\"\" xtype=\"xinput\" name=\"dataNum1\" type=\"text\" class=\"form-control\" placeholder=\"输入框|合同名称\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">合同分类</label><input style=\"width:200px;float:right;\" title=\"合同分类\" defaultvalue=\"\" xtype=\"xsqlselect\" model=\"{&quot;dbSource&quot;:&quot;36BF8C47-6F6D-4B9E-A24F-3992EE215C3E&quot;,&quot;sql&quot;:&quot;select sort_id as vkey,sort_name as val  from contract_sort where org_id={ORG_ID}&quot;}\" name=\"dataNum2\" type=\"text\" class=\"form-control\" placeholder=\"SQL控件下拉框|合同分类\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">合同类型</label><select style=\"width:200px;float:right;\" title=\"合同类型\" defaultvalue=\"\" xtype=\"xselect\" model=\"[{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;销售合同&quot;,&quot;checked&quot;:true},{&quot;vals&quot;:&quot;2&quot;,&quot;option&quot;:&quot;采购合同&quot;,&quot;checked&quot;:false}]\" name=\"dataNum3\" type=\"text\" class=\"form-control\"><option value=\"1\" checked=\"\">销售合同</option><option value=\"2\">采购合同</option></select></div><div class=\"form-group\"><label style=\"line-height: 34px;\">合同编号</label><input style=\"width:200px;float:right;\" title=\"合同编号\" defaultvalue=\"\" xtype=\"xinput\" name=\"dataNum4\" type=\"text\" class=\"form-control\" placeholder=\"输入框|合同编号\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">所属部门</label><input style=\"width:200px;float:right;\" title=\"所属部门\" defaultvalue=\"\" xtype=\"xfetch\" model=\"{&quot;type&quot;:&quot;3&quot;,&quot;format&quot;:null}\" name=\"dataNum5\" type=\"text\" class=\"form-control\" placeholder=\"选择控件|所属部门\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">业务人员</label><input style=\"width:200px;float:right;\" title=\"业务人员\" defaultvalue=\"\" xtype=\"xfetch\" model=\"{&quot;type&quot;:&quot;7&quot;,&quot;format&quot;:null}\" name=\"dataNum6\" type=\"text\" class=\"form-control\" placeholder=\"选择控件|业务人员\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">签约时间</label><input style=\"width:200px;float:right;\" title=\"签约时间\" defaultvalue=\"\" xtype=\"xfetch\" model=\"{&quot;type&quot;:&quot;1&quot;,&quot;format&quot;:&quot;YYYY-MM-DD&quot;}\" name=\"dataNum7\" type=\"text\" class=\"form-control\" placeholder=\"选择控件|签约时间\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">合同金额</label><input style=\"width:200px;float:right;\" title=\"合同金额\" defaultvalue=\"\" xtype=\"xinput\" name=\"dataNum8\" type=\"text\" class=\"form-control\" placeholder=\"输入框|合同金额\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">合同开始日期	</label><input style=\"width:200px;float:right;\" title=\"合同开始日期	\" defaultvalue=\"\" xtype=\"xfetch\" model=\"{&quot;type&quot;:&quot;1&quot;,&quot;format&quot;:&quot;YYYY-MM-DD&quot;}\" name=\"dataNum9\" type=\"text\" class=\"form-control\" placeholder=\"选择控件|合同开始日期	\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">合同结束日期</label><input style=\"width:200px;float:right;\" title=\"合同结束日期\" defaultvalue=\"\" xtype=\"xfetch\" model=\"{&quot;type&quot;:&quot;1&quot;,&quot;format&quot;:&quot;YYYY-MM-DD&quot;}\" name=\"dataNum10\" type=\"text\" class=\"form-control\" placeholder=\"选择控件|合同结束日期\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">录入人员</label><input style=\"width:200px;float:right;\" title=\"录入人员\" defaultvalue=\"\" xtype=\"xmacro\" model=\"{&quot;type&quot;:&quot;13&quot;,&quot;format&quot;:null}\" name=\"dataNum11\" type=\"text\" class=\"form-control\" placeholder=\"自动控件|录入人员\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">录入日期</label><input style=\"width:200px;float:right;\" title=\"录入日期\" defaultvalue=\"\" xtype=\"xmacro\" model=\"{&quot;type&quot;:&quot;2&quot;,&quot;format&quot;:&quot;yyyy年MM月dd日&quot;}\" name=\"dataNum12\" type=\"text\" class=\"form-control\" placeholder=\"自动控件|录入日期\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">甲方单位</label><input style=\"width:200px;float:right;\" title=\"甲方单位\" defaultvalue=\"\" xtype=\"xinput\" name=\"dataNum13\" type=\"text\" class=\"form-control\" placeholder=\"输入框|甲方单位\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">乙方单位</label><input style=\"width:200px;float:right;\" title=\"乙方单位\" defaultvalue=\"\" xtype=\"xinput\" name=\"dataNum14\" type=\"text\" class=\"form-control\" placeholder=\"输入框|乙方单位\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">甲方联系人</label><input style=\"width:200px;float:right;\" title=\"甲方联系人\" defaultvalue=\"\" xtype=\"xinput\" name=\"dataNum15\" type=\"text\" class=\"form-control\" placeholder=\"输入框|甲方联系人\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">乙方联系人</label><input style=\"width:200px;float:right;\" title=\"乙方联系人\" defaultvalue=\"\" xtype=\"xinput\" name=\"dataNum16\" type=\"text\" class=\"form-control\" placeholder=\"输入框|乙方联系人\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">甲方联系方式 </label><input style=\"width:200px;float:right;\" title=\"甲方联系方式 \" defaultvalue=\"\" xtype=\"xinput\" name=\"dataNum17\" type=\"text\" class=\"form-control\" placeholder=\"输入框|甲方联系方式 \"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">乙方联系方式</label><input style=\"width:200px;float:right;\" title=\"乙方联系方式\" defaultvalue=\"\" xtype=\"xinput\" name=\"dataNum18\" type=\"text\" class=\"form-control\" placeholder=\"输入框|乙方联系方式\"></div><div class=\"form-group\"><label style=\"width:100%;\">合同内容</label><img title=\"合同内容\" style=\"width:100%;\" model=\"[{&quot;childTitle&quot;:&quot;产品名称&quot;,&quot;childName&quot;:&quot;name&quot;,&quot;formula&quot;:&quot;&quot;,&quot;childModel&quot;:&quot;3&quot;,&quot;isTotal&quot;:false,&quot;defaultValue&quot;:&quot;A,B,C&quot;,&quot;width&quot;:&quot;150&quot;},{&quot;childTitle&quot;:&quot;产品数量&quot;,&quot;childName&quot;:&quot;quantity&quot;,&quot;formula&quot;:&quot;&quot;,&quot;childModel&quot;:&quot;4&quot;,&quot;isTotal&quot;:false,&quot;defaultValue&quot;:&quot;中国,美国,日本&quot;,&quot;width&quot;:&quot;150&quot;},{&quot;childTitle&quot;:&quot;产品价格&quot;,&quot;childName&quot;:&quot;price&quot;,&quot;formula&quot;:&quot;&quot;,&quot;childModel&quot;:&quot;5&quot;,&quot;isTotal&quot;:false,&quot;defaultValue&quot;:&quot;&quot;,&quot;width&quot;:&quot;100&quot;},{&quot;childTitle&quot;:&quot;主要条款&quot;,&quot;childName&quot;:&quot;tiaokuan&quot;,&quot;formula&quot;:&quot;&quot;,&quot;childModel&quot;:&quot;1&quot;,&quot;isTotal&quot;:false,&quot;defaultValue&quot;:&quot;&quot;,&quot;width&quot;:&quot;200&quot;},{&quot;childTitle&quot;:&quot;备注&quot;,&quot;childName&quot;:&quot;remark&quot;,&quot;formula&quot;:&quot;&quot;,&quot;childModel&quot;:&quot;1&quot;,&quot;isTotal&quot;:false,&quot;defaultValue&quot;:&quot;&quot;,&quot;width&quot;:&quot;200&quot;}]\" xtype=\"xlist\" name=\"dataNum19\" src=\"/module/ckeditor/plugins/xlist/xlist.png\"></div><div class=\"form-group\"><label style=\"width:100%\">合同备注</label><img title=\"合同备注\" style=\"width:100%;\" defaultvalue=\"\" xtype=\"xtextuedit\" name=\"dataNum20\" src=\"/module/ckeditor/plugins/xtextuedit/editor.jpg\"></div><div class=\"form-group\"><label style=\"width:100%\">部门领导审批</label><textarea title=\"部门领导审批\" defaultvalue=\"\" xtype=\"xtextarea\" name=\"dataNum21\" class=\"form-control\" placeholder=\"部门领导审批\"></textarea></div><div class=\"form-group\"><label style=\"line-height: 34px;\">部门领导意见</label><select style=\"width:200px;float:right;\" title=\"部门领导意见\" defaultvalue=\"\" xtype=\"xselect\" model=\"[{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;同意&quot;,&quot;checked&quot;:true},{&quot;vals&quot;:&quot;0&quot;,&quot;option&quot;:&quot;不同意&quot;,&quot;checked&quot;:false}]\" name=\"dataNum23\" type=\"text\" class=\"form-control\"><option value=\"1\" checked=\"\">同意</option><option value=\"0\">不同意</option></select></div><div class=\"form-group\"><label style=\"line-height: 34px;\">部门领导签字</label><input style=\"width:200px;float:right;\" title=\"部门领导签字\" defaultvalue=\"\" xtype=\"xmacro\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum22\" type=\"text\" class=\"form-control\" placeholder=\"自动控件|部门领导签字\"></div><div class=\"form-group\"><label style=\"width:100%\">CEO审批</label><textarea title=\"CEO审批\" defaultvalue=\"\" xtype=\"xtextarea\" name=\"dataNum24\" class=\"form-control\" placeholder=\"CEO审批\"></textarea></div><div class=\"form-group\"><label style=\"line-height: 34px;\">CEO意见</label><select style=\"width:200px;float:right;\" title=\"CEO意见\" defaultvalue=\"\" xtype=\"xselect\" model=\"[{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;同意&quot;,&quot;checked&quot;:true},{&quot;vals&quot;:&quot;0&quot;,&quot;option&quot;:&quot;不同意&quot;,&quot;checked&quot;:false}]\" name=\"dataNum25\" type=\"text\" class=\"form-control\"><option value=\"1\" checked=\"\">同意</option><option value=\"0\">不同意</option></select></div><div class=\"form-group\"><label style=\"line-height: 34px;\">CEO审批签字</label><input style=\"width:200px;float:right;\" title=\"CEO审批签字\" defaultvalue=\"\" xtype=\"xmacro\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum26\" type=\"text\" class=\"form-control\" placeholder=\"自动控件|CEO审批签字\"></div><div class=\"form-group\" style=\"\"><label style=\"line-height: 34px;\">计算1</label><input style=\"width:200px;float:right;\" title=\"计算1\" defaultvalue=\"\" xtype=\"xinput\" name=\"dataNum27\" type=\"text\" class=\"form-control\" placeholder=\"输入框|计算1\"></div><div class=\"form-group\" style=\"\"><label style=\"line-height: 34px;\">计算2</label><input style=\"width:200px;float:right;\" title=\"计算2\" defaultvalue=\"\" xtype=\"xinput\" name=\"dataNum28\" type=\"text\" class=\"form-control\" placeholder=\"输入框|计算2\"></div><div class=\"form-group\" style=\"\"><label style=\"line-height: 34px;\">计算组件</label><input style=\"width:200px;float:right;\" title=\"计算组件\" defaultvalue=\"\" xtype=\"xcalculate\" model=\"{计算1}+{计算2}\" name=\"dataNum29\" type=\"text\" class=\"form-control\" placeholder=\"计算组件|计算组件\"></div><div class=\"form-group\" style=\"\"><label style=\"line-height: 34px;\">合同相关流程</label><img title=\"合同相关流程\" style=\"width:100%;\" model=\"{&quot;type&quot;:&quot;2&quot;}\" xtype=\"xbpm\" name=\"dataNum31\" src=\"/module/ckeditor/plugins/xbpm/bpmlist.png\"></div><div class=\"form-group\" style=\"\"><label style=\"width:100%;\">签章测试</label><img title=\"签章测试\" defaultvalue=\"\" style=\"width:100%;\" xtype=\"xseal\" name=\"dataNum32\" src=\"/module/ckeditor/plugins/xseal/code.jpg\"></div><div class=\"form-group\" style=\"\"><label style=\"width:100%;\">签章</label><img title=\"签章\" defaultvalue=\"dataNum24\" style=\"width:100%;\" xtype=\"xseal\" name=\"dataNum30\" src=\"/module/ckeditor/plugins/xseal/code.jpg\"></div>', null, null, null, null, '1D9AFFA2-A372-4B55-9E14-D55E5810AD87', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_form` VALUES ('1', '0B341ADA-203B-47F6-AC59-EA77A5528105', '1', '用印申请', '1584256402', '<p style=\"text-align: center;\"><span style=\"color: rgb(54, 96, 146);\"><strong><span style=\"font-size: 24px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\">用印申请</span></strong></span></p>\n\n<table align=\"center\" border=\"1\" class=\"td-min-height\" data-sort=\"sortDisabled\" style=\"border: 1px solid rgb(54, 96, 146);\">\n	<tbody>\n		<tr class=\"firstRow\">\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">申请人</span></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;13&quot;,&quot;format&quot;:null}\" name=\"dataNum1\" placeholder=\"自动控件|申请人\" style=\"\" title=\"申请人\" type=\"text\" xtype=\"xmacro\" /></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; text-align: -webkit-center; background-color: rgb(219, 238, 243);\">&nbsp; 申请时间&nbsp;&nbsp;</span></span></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;2&quot;,&quot;format&quot;:&quot;yyyy-MM-dd&quot;}\" name=\"dataNum2\" placeholder=\"自动控件|申请时间\" style=\"\" title=\"申请时间\" type=\"text\" xtype=\"xmacro\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; text-align: -webkit-center; background-color: rgb(219, 238, 243);\">申请部门</span></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;14&quot;,&quot;format&quot;:null}\" name=\"dataNum3\" placeholder=\"自动控件|申请部门\" style=\"\" title=\"申请部门\" type=\"text\" xtype=\"xmacro\" /></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">职务</span></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;16&quot;,&quot;format&quot;:null}\" name=\"dataNum4\" placeholder=\"自动控件|职务\" style=\"\" title=\"职务\" type=\"text\" xtype=\"xmacro\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); background-color: rgb(219, 238, 243); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-size: 16px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; text-align: -webkit-center; background-color: rgb(219, 238, 243);\">用印类型&nbsp;</span></span></td>\n			<td align=\"center\" class=\"selectTdClass\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><select class=\"form-control\" datatype=\"undefined\" model=\"[{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;公章&quot;,&quot;checked&quot;:true},{&quot;vals&quot;:&quot;2&quot;,&quot;option&quot;:&quot;合同章&quot;,&quot;checked&quot;:false},{&quot;vals&quot;:&quot;3&quot;,&quot;option&quot;:&quot;账务章&quot;,&quot;checked&quot;:false}]\" name=\"dataNum5\" placeholder=\"用印类型\" style=\"\" title=\"用印类型\" xtype=\"xselect\"><option selected=\"selected\" value=\"1\">公章</option><option value=\"2\">合同章</option><option value=\"3\">账务章</option></select></td>\n			<td align=\"center\" class=\"selectTdClass\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-size: 16px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\">&nbsp; &nbsp;用印数量&nbsp;&nbsp;</span></td>\n			<td align=\"center\" class=\"selectTdClass\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum6\" placeholder=\"输入框|用印数量\" style=\"\" title=\"用印数量\" type=\"text\" xtype=\"xinput\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); background-color: rgb(219, 238, 243); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family:微软雅黑, Microsoft YaHei\"><span style=\"font-size: 16px;\">报送单位</span></span></td>\n			<td align=\"left\" class=\"selectTdClass\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum7\" placeholder=\"输入框|报送单位\" style=\"\" title=\"报送单位\" type=\"text\" xtype=\"xinput\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); border-width: 1px; border-style: solid; background-color: rgb(219, 238, 243); word-break: break-all;\" valign=\"middle\">\n			<p style=\"margin-bottom: 0px; padding: 0px; text-align: -webkit-center; white-space: normal;\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\"><span style=\"font-size: 16px;\">&nbsp; 申请事由</span></span></p>\n			</td>\n			<td align=\"left\" class=\"selectTdClass\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); border-width: 1px; border-style: solid; word-break: break-all;\" valign=\"middle\"><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum8\" placeholder=\"申请事由\" style=\"width:100%\" title=\"申请事由\" xtype=\"xtextarea\"></textarea></td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp; 部门领导审批&nbsp;&nbsp;</span></td>\n			<td align=\"left\" class=\"selectTdClass\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\">\n			<p><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum9\" placeholder=\"部门领导审批意见\" style=\"width:100%;height:100px;\" title=\"部门领导审批意见\" xtype=\"xtextarea\"></textarea></p>\n\n			<p><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\">&nbsp; <span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp;审批意见</span><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">：</span></span><select class=\"form-control\" datatype=\"undefined\" model=\"[{&quot;vals&quot;:&quot;&quot;,&quot;option&quot;:&quot;&quot;,&quot;checked&quot;:false},{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;同意&quot;,&quot;checked&quot;:false},{&quot;vals&quot;:&quot;2&quot;,&quot;option&quot;:&quot;不同意&quot;,&quot;checked&quot;:false}]\" name=\"dataNum10\" placeholder=\"部门领导审批意见\" style=\"width:100px;display: inline;\" title=\"部门领导审批意见\" xtype=\"xselect\"><option value=\"\"></option><option value=\"1\">同意</option><option value=\"2\">不同意</option></select><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\"><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\"> &nbsp;</span>签字：</span><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum11\" placeholder=\"自动控件|部门领导审批签字\" style=\"width:230px;display: inline-block;position: absolute;\" title=\"部门领导审批签字\" type=\"text\" xtype=\"xmacro\" /></p>\n			</td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">CEO审批</span></td>\n			<td align=\"left\" class=\"selectTdClass\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\">\n			<p><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum12\" placeholder=\"CEO审批\" style=\"width:100%;height:100px;\" title=\"CEO审批\" xtype=\"xtextarea\"></textarea></p>\n\n			<p><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\">&nbsp; <span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">审批意见</span><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">：</span></span><select class=\"form-control\" datatype=\"undefined\" model=\"[{&quot;vals&quot;:&quot;&quot;,&quot;option&quot;:&quot;&quot;,&quot;checked&quot;:true},{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;同意&quot;,&quot;checked&quot;:false},{&quot;vals&quot;:&quot;2&quot;,&quot;option&quot;:&quot;不同意&quot;,&quot;checked&quot;:false}]\" name=\"dataNum13\" placeholder=\"CEO审批意见\" style=\"width:100px;display: inline;\" title=\"CEO审批意见\" xtype=\"xselect\"><option selected=\"selected\" value=\"\"></option><option value=\"1\">同意</option><option value=\"2\">不同意</option></select><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\"><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp; &nbsp;</span>签字：</span><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum14\" placeholder=\"自动控件|CEO审批签字\" style=\"width:230px;display: inline-block;position: absolute;\" title=\"CEO审批签字\" type=\"text\" xtype=\"xmacro\" /></p>\n			</td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">备注说明</span></td>\n			<td align=\"left\" class=\"selectTdClass\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\">\n			<p><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp;<span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">1.凡使用公司印章须填写此表；</span></span></p>\n\n			<p style=\"margin-bottom: 0px; padding: 0px; white-space: normal;\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp;2.申请事由一栏应将用印的文本名称及内容填写清楚，如文本是合同的</span></p>\n\n			<p style=\"margin-bottom: 0px; padding: 0px; white-space: normal;\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp;应填写</span><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">涉及</span><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">金额及签订合同的对方单位名称；</span></p>\n			</td>\n		</tr>\n	</tbody>\n</table>\n\n<p style=\"text-align: center;\"><img model=\"[{&quot;childTitle&quot;:&quot;aa&quot;,&quot;childName&quot;:&quot;aa&quot;,&quot;formula&quot;:&quot;&quot;,&quot;childModel&quot;:&quot;1&quot;,&quot;isTotal&quot;:false,&quot;defaultValue&quot;:&quot;&quot;,&quot;width&quot;:&quot;&quot;},{&quot;childTitle&quot;:&quot;bb&quot;,&quot;childName&quot;:&quot;cc&quot;,&quot;formula&quot;:&quot;&quot;,&quot;childModel&quot;:&quot;1&quot;,&quot;isTotal&quot;:false,&quot;defaultValue&quot;:&quot;&quot;,&quot;width&quot;:&quot;&quot;}]\" name=\"dataNum15\" src=\"/module/ckeditor/plugins/xlist/xlist.png\" style=\"\" title=\"列表测试\" xtype=\"xlist\" /></p>\n', '<div class=\"form-group\"><label style=\"line-height: 34px;\">申请人</label><input style=\"width:200px;float:right;\" title=\"申请人\" defaultvalue=\"\" xtype=\"xmacro\" model=\"{&quot;type&quot;:&quot;13&quot;,&quot;format&quot;:null}\" name=\"dataNum1\" type=\"text\" class=\"form-control\" placeholder=\"自动控件|申请人\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">申请时间</label><input style=\"width:200px;float:right;\" title=\"申请时间\" defaultvalue=\"\" xtype=\"xmacro\" model=\"{&quot;type&quot;:&quot;2&quot;,&quot;format&quot;:&quot;yyyy-MM-dd&quot;}\" name=\"dataNum2\" type=\"text\" class=\"form-control\" placeholder=\"自动控件|申请时间\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">申请部门</label><input style=\"width:200px;float:right;\" title=\"申请部门\" defaultvalue=\"\" xtype=\"xmacro\" model=\"{&quot;type&quot;:&quot;13&quot;,&quot;format&quot;:null}\" name=\"dataNum3\" type=\"text\" class=\"form-control\" placeholder=\"自动控件|申请部门\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">职务</label><input style=\"width:200px;float:right;\" title=\"职务\" defaultvalue=\"\" xtype=\"xmacro\" model=\"{&quot;type&quot;:&quot;16&quot;,&quot;format&quot;:null}\" name=\"dataNum4\" type=\"text\" class=\"form-control\" placeholder=\"自动控件|职务\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">用印类型</label><select style=\"width:200px;float:right;\" title=\"用印类型\" defaultvalue=\"\" xtype=\"xselect\" model=\"[{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;公章&quot;,&quot;checked&quot;:true},{&quot;vals&quot;:&quot;2&quot;,&quot;option&quot;:&quot;合同章&quot;,&quot;checked&quot;:false},{&quot;vals&quot;:&quot;3&quot;,&quot;option&quot;:&quot;账务章&quot;,&quot;checked&quot;:false}]\" name=\"dataNum5\" type=\"text\" class=\"form-control\"><option value=\"1\" checked=\"\">公章</option><option value=\"2\">合同章</option><option value=\"3\">账务章</option></select></div><div class=\"form-group\"><label style=\"line-height: 34px;\">用印数量</label><input style=\"width:200px;float:right;\" title=\"用印数量\" defaultvalue=\"\" xtype=\"xinput\" name=\"dataNum6\" type=\"text\" class=\"form-control\" placeholder=\"输入框|用印数量\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">报送单位</label><input style=\"width:200px;float:right;\" title=\"报送单位\" defaultvalue=\"\" xtype=\"xinput\" name=\"dataNum7\" type=\"text\" class=\"form-control\" placeholder=\"输入框|报送单位\"></div><div class=\"form-group\"><label style=\"width:100%\">申请事由</label><textarea title=\"申请事由\" defaultvalue=\"\" xtype=\"xtextarea\" name=\"dataNum8\" class=\"form-control\" placeholder=\"申请事由\"></textarea></div><div class=\"form-group\"><label style=\"width:100%\">部门领导审批意见</label><textarea title=\"部门领导审批意见\" defaultvalue=\"\" xtype=\"xtextarea\" name=\"dataNum9\" class=\"form-control\" placeholder=\"部门领导审批意见\"></textarea></div><div class=\"form-group\"><label style=\"line-height: 34px;\">部门领导审批意见</label><select style=\"width:200px;float:right;\" title=\"部门领导审批意见\" defaultvalue=\"\" xtype=\"xselect\" model=\"[{&quot;vals&quot;:&quot;&quot;,&quot;option&quot;:&quot;&quot;,&quot;checked&quot;:false},{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;同意&quot;,&quot;checked&quot;:false},{&quot;vals&quot;:&quot;2&quot;,&quot;option&quot;:&quot;不同意&quot;,&quot;checked&quot;:false}]\" name=\"dataNum10\" type=\"text\" class=\"form-control\"><option value=\"\"></option><option value=\"1\">同意</option><option value=\"2\">不同意</option></select></div><div class=\"form-group\"><label style=\"line-height: 34px;\">部门领导审批签字</label><input style=\"width:200px;float:right;\" title=\"部门领导审批签字\" defaultvalue=\"\" xtype=\"xmacro\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum11\" type=\"text\" class=\"form-control\" placeholder=\"自动控件|部门领导审批签字\"></div><div class=\"form-group\"><label style=\"width:100%\">CEO审批</label><textarea title=\"CEO审批\" defaultvalue=\"\" xtype=\"xtextarea\" name=\"dataNum12\" class=\"form-control\" placeholder=\"CEO审批\"></textarea></div><div class=\"form-group\"><label style=\"line-height: 34px;\">CEO审批意见</label><select style=\"width:200px;float:right;\" title=\"CEO审批意见\" defaultvalue=\"\" xtype=\"xselect\" model=\"[{&quot;vals&quot;:&quot;&quot;,&quot;option&quot;:&quot;&quot;,&quot;checked&quot;:true},{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;同意&quot;,&quot;checked&quot;:false},{&quot;vals&quot;:&quot;2&quot;,&quot;option&quot;:&quot;不同意&quot;,&quot;checked&quot;:false}]\" name=\"dataNum13\" type=\"text\" class=\"form-control\"><option value=\"\" checked=\"\"></option><option value=\"1\">同意</option><option value=\"2\">不同意</option></select></div><div class=\"form-group\"><label style=\"line-height: 34px;\">CEO审批签字</label><input style=\"width:200px;float:right;\" title=\"CEO审批签字\" defaultvalue=\"\" xtype=\"xmacro\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum14\" type=\"text\" class=\"form-control\" placeholder=\"自动控件|CEO审批签字\"></div><div class=\"form-group\" style=\"\"><label style=\"width:100%;\">列表测试</label><img title=\"列表测试\" style=\"width:100%;\" model=\"[{&quot;childTitle&quot;:&quot;aa&quot;,&quot;childName&quot;:&quot;aa&quot;,&quot;formula&quot;:&quot;&quot;,&quot;childModel&quot;:&quot;1&quot;,&quot;isTotal&quot;:false,&quot;defaultValue&quot;:&quot;&quot;,&quot;width&quot;:&quot;&quot;},{&quot;childTitle&quot;:&quot;bb&quot;,&quot;childName&quot;:&quot;cc&quot;,&quot;formula&quot;:&quot;&quot;,&quot;childModel&quot;:&quot;1&quot;,&quot;isTotal&quot;:false,&quot;defaultValue&quot;:&quot;&quot;,&quot;width&quot;:&quot;&quot;}]\" xtype=\"xlist\" name=\"dataNum15\" src=\"/module/ckeditor/plugins/xlist/xlist.png\"></div>', null, null, null, null, 'DB7AAD8D-1292-47C1-B119-795D5DE4B551', 'DDABE26E-1552-4139-8DB2-9E329D45ED3F', '0', '2020-03-15 15:15:41', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_form` VALUES ('2', 'E80C20E0-9E40-4CA6-B71B-A99853E55FE8', '1', '费用报销申请单', '1584259557', '<p style=\"text-align: center;\"><span style=\"color:#366092;font-family:微软雅黑, Microsoft YaHei\"><span style=\"font-size: 24px;\"><strong>费用报销申请单</strong></span></span></p>\n\n<table align=\"center\" border=\"1\" class=\"td-min-height\" data-sort=\"sortDisabled\" style=\"border: 1px solid rgb(54, 96, 146); width: 650px;\">\n	<tbody>\n		<tr class=\"firstRow\">\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">申请人</span></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;13&quot;,&quot;format&quot;:null}\" name=\"dataNum1\" placeholder=\"自动控件|申请人\" style=\"\" title=\"申请人\" type=\"text\" xtype=\"xmacro\" /></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family:微软雅黑, Microsoft YaHei\"><span style=\"font-size: 16px;\">录单日期</span></span></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;2&quot;,&quot;format&quot;:&quot;yyyy年MM月dd日&quot;}\" name=\"dataNum2\" placeholder=\"自动控件|录单日期\" style=\"\" title=\"录单日期\" type=\"text\" xtype=\"xmacro\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; text-align: -webkit-center; background-color: rgb(219, 238, 243);\">申请类型&nbsp;</span></span></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><select class=\"form-control\" datatype=\"undefined\" model=\"[{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;个人报销&quot;,&quot;checked&quot;:false},{&quot;vals&quot;:&quot;2&quot;,&quot;option&quot;:&quot;部门报销&quot;,&quot;checked&quot;:false},{&quot;vals&quot;:&quot;3&quot;,&quot;option&quot;:&quot;公司报销&quot;,&quot;checked&quot;:false}]\" name=\"dataNum3\" placeholder=\"申请类型 \" style=\"\" title=\"申请类型 \" xtype=\"xselect\"><option value=\"1\">个人报销</option><option value=\"2\">部门报销</option><option value=\"3\">公司报销</option></select></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">报销事由</span></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum4\" placeholder=\"输入框|报销事由\" style=\"\" title=\"报销事由\" type=\"text\" xtype=\"xinput\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); background-color: rgb(219, 238, 243); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-size: 16px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; text-align: -webkit-center; background-color: rgb(219, 238, 243);\">&nbsp;所在部门&nbsp;&nbsp;</span></span></td>\n			<td align=\"center\" class=\"selectTdClass\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;14&quot;,&quot;format&quot;:null}\" name=\"dataNum5\" placeholder=\"自动控件|所在部门 \" style=\"\" title=\"所在部门 \" type=\"text\" xtype=\"xmacro\" /></td>\n			<td align=\"center\" class=\"selectTdClass\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-size: 16px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\">&nbsp; 总报销金额&nbsp;</span></td>\n			<td align=\"center\" class=\"selectTdClass\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum6\" placeholder=\"输入框|总报销金额 \" style=\"\" title=\"总报销金额 \" type=\"text\" xtype=\"xinput\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); background-color: rgb(219, 238, 243); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family:微软雅黑, Microsoft YaHei\"><span style=\"font-size: 16px;\">&nbsp; &nbsp;备注</span></span></td>\n			<td align=\"left\" class=\"selectTdClass\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum7\" placeholder=\"备注\" style=\"width:100%;height:100px\" title=\"备注\" xtype=\"xtextarea\"></textarea></td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">部门领导审批</span></td>\n			<td align=\"left\" class=\"selectTdClass\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\">\n			<p><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum8\" placeholder=\"部门领导审批\" style=\"width:100%;height:50px\" title=\"部门领导审批\" xtype=\"xtextarea\"></textarea></p>\n\n			<p><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\">&nbsp; <span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp;审批意见</span><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">：</span></span><select class=\"form-control\" datatype=\"undefined\" model=\"[{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;同意&quot;,&quot;checked&quot;:true},{&quot;vals&quot;:&quot;0&quot;,&quot;option&quot;:&quot;不同意&quot;,&quot;checked&quot;:false}]\" name=\"dataNum9\" placeholder=\"部门领导审批意见\" style=\"display:inline-block;width:80px;\" title=\"部门领导审批意见\" xtype=\"xselect\"><option selected=\"selected\" value=\"1\">同意</option><option value=\"0\">不同意</option></select><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\"><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp; &nbsp; &nbsp;</span>签字：</span><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum10\" placeholder=\"自动控件|部门领导签字\" style=\"display:inline-block;width:200px;position: absolute;\" title=\"部门领导签字\" type=\"text\" xtype=\"xmacro\" /></p>\n			</td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">CEO审批</span></td>\n			<td align=\"left\" class=\"selectTdClass\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\">\n			<p><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum11\" placeholder=\"CEO审批\" style=\"width:100%;height:50px;\" title=\"CEO审批\" xtype=\"xtextarea\"></textarea></p>\n\n			<p><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\">&nbsp; &nbsp;&nbsp;<span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">审批意见</span><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">：</span></span><select class=\"form-control\" datatype=\"undefined\" model=\"[{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;同意&quot;,&quot;checked&quot;:true},{&quot;vals&quot;:&quot;0&quot;,&quot;option&quot;:&quot;不同意&quot;,&quot;checked&quot;:false}]\" name=\"dataNum12\" placeholder=\"CEO审批意见\" style=\"display:inline-block;width:80px;\" title=\"CEO审批意见\" xtype=\"xselect\"><option selected=\"selected\" value=\"1\">同意</option><option value=\"0\">不同意</option></select><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\"><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp; &nbsp; &nbsp;</span>签字：</span><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum13\" placeholder=\"自动控件|CEO审批\" style=\"display:inline-block;width:200px;position: absolute;\" title=\"CEO审批\" type=\"text\" xtype=\"xmacro\" /></p>\n			</td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp; 人事行政审批 &nbsp;</span></td>\n			<td align=\"left\" class=\"selectTdClass\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\">\n			<p><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum14\" placeholder=\"人事行政审批\" style=\"width:100%;height:50px;\" title=\"人事行政审批\" xtype=\"xtextarea\"></textarea></p>\n\n			<p><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\">&nbsp; &nbsp;&nbsp;<span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">审批意见</span><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">：</span></span><select class=\"form-control\" datatype=\"undefined\" model=\"[{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;同意&quot;,&quot;checked&quot;:true},{&quot;vals&quot;:&quot;0&quot;,&quot;option&quot;:&quot;不同意&quot;,&quot;checked&quot;:false}]\" name=\"dataNum15\" placeholder=\"人事行政审批意见\" style=\"display:inline-block;width:80px;\" title=\"人事行政审批意见\" xtype=\"xselect\"><option selected=\"selected\" value=\"1\">同意</option><option value=\"0\">不同意</option></select><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\"><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp; &nbsp; &nbsp;</span>签字：</span><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum16\" placeholder=\"自动控件|人事行政审批\" style=\"display:inline-block;width:200px;position: absolute;\" title=\"人事行政审批\" type=\"text\" xtype=\"xmacro\" /></p>\n\n			<p>&nbsp;</p>\n			</td>\n		</tr>\n	</tbody>\n</table>\n\n<p style=\"text-align: center;\">&nbsp;</p>\n', '<div class=\'form-group\'><label style=\'width:100%;\'>申请人</label><input title=\'申请人\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"13\",\"format\":null}\' name=\'dataNum1\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|申请人\'></div><div class=\'form-group\'><label style=\'width:100%;\'>录单日期</label><input title=\'录单日期\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"2\",\"format\":\"yyyy年MM月dd日\"}\' name=\'dataNum2\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|录单日期\'></div><div class=\'form-group\'><label style=\'width:100%;\'>申请类型 </label><select title=\'申请类型 \' defaultvalue=\'\' xtype=\'xselect\' model=\'[{\"vals\":\"1\",\"option\":\"个人报销\",\"checked\":false},{\"vals\":\"2\",\"option\":\"部门报销\",\"checked\":false},{\"vals\":\"3\",\"option\":\"公司报销\",\"checked\":false}]\' name=\'dataNum3\' type=\'text\' class=\'form-control\'><option value=\'1\'>个人报销</option><option value=\'2\'>部门报销</option><option value=\'3\'>公司报销</option></select></div><div class=\'form-group\'><label style=\'width:100%;\'>报销事由</label><input title=\'报销事由\' defaultvalue=\'\' xtype=\'xinput\' name=\'dataNum4\' type=\'text\' class=\'form-control\' placeholder=\'输入框|报销事由\'></div><div class=\'form-group\'><label style=\'width:100%;\'>所在部门 </label><input title=\'所在部门 \' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"14\",\"format\":null}\' name=\'dataNum5\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|所在部门 \'></div><div class=\'form-group\'><label style=\'width:100%;\'>总报销金额 </label><input title=\'总报销金额 \' defaultvalue=\'\' xtype=\'xinput\' name=\'dataNum6\' type=\'text\' class=\'form-control\' placeholder=\'输入框|总报销金额 \'></div><div class=\'form-group\'><label style=\'width:100%;\'>备注</label><textarea title=\'备注\' defaultvalue=\'\' xtype=\'xtextarea\' name=\'dataNum7\' class=\'form-control\' placeholder=\'备注\'></textarea></div><div class=\'form-group\'><label style=\'width:100%;\'>部门领导审批</label><textarea title=\'部门领导审批\' defaultvalue=\'\' xtype=\'xtextarea\' name=\'dataNum8\' class=\'form-control\' placeholder=\'部门领导审批\'></textarea></div><div class=\'form-group\'><label style=\'width:100%;\'>部门领导审批意见</label><select title=\'部门领导审批意见\' defaultvalue=\'\' xtype=\'xselect\' model=\'[{\"vals\":\"1\",\"option\":\"同意\",\"checked\":true},{\"vals\":\"0\",\"option\":\"不同意\",\"checked\":false}]\' name=\'dataNum9\' type=\'text\' class=\'form-control\'><option value=\'1\' checked>同意</option><option value=\'0\'>不同意</option></select></div><div class=\'form-group\'><label style=\'width:100%;\'>部门领导签字</label><input title=\'部门领导签字\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"20\",\"format\":null}\' name=\'dataNum10\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|部门领导签字\'></div><div class=\'form-group\'><label style=\'width:100%;\'>CEO审批</label><textarea title=\'CEO审批\' defaultvalue=\'\' xtype=\'xtextarea\' name=\'dataNum11\' class=\'form-control\' placeholder=\'CEO审批\'></textarea></div><div class=\'form-group\'><label style=\'width:100%;\'>CEO审批意见</label><select title=\'CEO审批意见\' defaultvalue=\'\' xtype=\'xselect\' model=\'[{\"vals\":\"1\",\"option\":\"同意\",\"checked\":true},{\"vals\":\"0\",\"option\":\"不同意\",\"checked\":false}]\' name=\'dataNum12\' type=\'text\' class=\'form-control\'><option value=\'1\' checked>同意</option><option value=\'0\'>不同意</option></select></div><div class=\'form-group\'><label style=\'width:100%;\'>CEO审批</label><input title=\'CEO审批\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"20\",\"format\":null}\' name=\'dataNum13\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|CEO审批\'></div><div class=\'form-group\'><label style=\'width:100%;\'>人事行政审批</label><textarea title=\'人事行政审批\' defaultvalue=\'\' xtype=\'xtextarea\' name=\'dataNum14\' class=\'form-control\' placeholder=\'人事行政审批\'></textarea></div><div class=\'form-group\'><label style=\'width:100%;\'>人事行政审批意见</label><select title=\'人事行政审批意见\' defaultvalue=\'\' xtype=\'xselect\' model=\'[{\"vals\":\"1\",\"option\":\"同意\",\"checked\":true},{\"vals\":\"0\",\"option\":\"不同意\",\"checked\":false}]\' name=\'dataNum15\' type=\'text\' class=\'form-control\'><option value=\'1\' checked>同意</option><option value=\'0\'>不同意</option></select></div><div class=\'form-group\'><label style=\'width:100%;\'>人事行政审批</label><input title=\'人事行政审批\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"20\",\"format\":null}\' name=\'dataNum16\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|人事行政审批\'></div>', null, null, null, null, 'C030844B-4FE8-4FA4-88FE-F9F11E11D01C', null, '0', '2020-03-15 16:06:12', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_form` VALUES ('4', '227B8731-B2BE-46DB-AB97-E084FF37B615', '1', '费用预算申请单', '1584691609', '<p style=\"text-align: center;\"><span style=\"color:#366092;font-family:微软雅黑, Microsoft YaHei\"><span style=\"font-size: 24px;\"><strong>费用预算申请单</strong></span></span></p>\n\n<table align=\"center\" border=\"1\" class=\"td-min-height\" data-sort=\"sortDisabled\" style=\"border: 1px solid rgb(54, 96, 146); width: 650px;\">\n	<tbody>\n		<tr class=\"firstRow\">\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">申请人</span></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;13&quot;,&quot;format&quot;:null}\" name=\"dataNum1\" placeholder=\"自动控件|申请人\" style=\"\" title=\"申请人\" type=\"text\" xtype=\"xmacro\" /></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">录单日期</span></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;2&quot;,&quot;format&quot;:&quot;yyyy年MM月dd日&quot;}\" name=\"dataNum2\" placeholder=\"自动控件|录单日期\" style=\"\" title=\"录单日期\" type=\"text\" xtype=\"xmacro\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); border-width: 1px; background-color: rgb(219, 238, 243); border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">申请类型</span></td>\n			<td align=\"center\" class=\"selectTdClass\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); border-width: 1px; border-style: solid;\" valign=\"middle\"><select class=\"form-control\" datatype=\"undefined\" model=\"[{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;个人预算&quot;,&quot;checked&quot;:false},{&quot;vals&quot;:&quot;2&quot;,&quot;option&quot;:&quot;部门预算&quot;,&quot;checked&quot;:false},{&quot;vals&quot;:&quot;3&quot;,&quot;option&quot;:&quot;公司预算&quot;,&quot;checked&quot;:false}]\" name=\"dataNum3\" placeholder=\"申请类型\" style=\"\" title=\"申请类型\" xtype=\"xselect\"><option value=\"1\">个人预算</option><option value=\"2\">部门预算</option><option value=\"3\">公司预算</option></select></td>\n			<td align=\"center\" class=\"selectTdClass\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); border-width: 1px; background-color: rgb(219, 238, 243); border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">费用事由</span></td>\n			<td align=\"center\" class=\"selectTdClass\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum4\" placeholder=\"输入框|费用事由\" style=\"\" title=\"费用事由\" type=\"text\" xtype=\"xinput\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family:微软雅黑, Microsoft YaHei\"><span style=\"font-size: 16px;\">所在部门</span></span></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;14&quot;,&quot;format&quot;:null}\" name=\"dataNum5\" placeholder=\"自动控件|所在部门\" style=\"\" title=\"所在部门\" type=\"text\" xtype=\"xmacro\" /></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp; 总预算申请金额&nbsp;&nbsp;</span></td>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum6\" placeholder=\"输入框|总预算申请金额 \" style=\"\" title=\"总预算申请金额 \" type=\"text\" xtype=\"xinput\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">备注</span></td>\n			<td align=\"left\" class=\"selectTdClass\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum13\" placeholder=\"备注\" style=\"width:100%;height:50px;\" title=\"备注\" xtype=\"xtextarea\"></textarea></td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp; 主管意见&nbsp;&nbsp;</span></td>\n			<td align=\"left\" class=\"selectTdClass\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\">\n			<p><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum7\" placeholder=\"主管意见\" style=\"width:100%;height:100px;\" title=\"主管意见\" xtype=\"xtextarea\"></textarea></p>\n\n			<p><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\">&nbsp; <span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">审批意见</span><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">：</span></span><select class=\"form-control\" datatype=\"undefined\" model=\"[{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;同意&quot;,&quot;checked&quot;:true},{&quot;vals&quot;:&quot;0&quot;,&quot;option&quot;:&quot;不同意&quot;,&quot;checked&quot;:false}]\" name=\"dataNum8\" placeholder=\"主管审批意见\" style=\"width:80px;display:inline-block;\" title=\"主管审批意见\" xtype=\"xselect\"><option selected=\"selected\" value=\"1\">同意</option><option value=\"0\">不同意</option></select><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\"><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp; &nbsp; &nbsp;</span>签字：</span><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum9\" placeholder=\"自动控件|主管签字\" style=\"width:200px;display:inline-block;position: absolute;\" title=\"主管签字\" type=\"text\" xtype=\"xmacro\" /></p>\n			</td>\n		</tr>\n		<tr>\n			<td align=\"center\" class=\"selectTdClass\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"text-align: -webkit-center; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">财务意见</span></td>\n			<td align=\"left\" class=\"selectTdClass\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\">\n			<p><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum10\" placeholder=\"财务意见\" style=\"width:100%;height:100px;\" title=\"财务意见\" xtype=\"xtextarea\"></textarea></p>\n\n			<p><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\">&nbsp; <span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">审批意见</span><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">：</span></span><select class=\"form-control\" datatype=\"undefined\" model=\"[{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;同意&quot;,&quot;checked&quot;:true},{&quot;vals&quot;:&quot;0&quot;,&quot;option&quot;:&quot;不同意&quot;,&quot;checked&quot;:false}]\" name=\"dataNum11\" placeholder=\"财务审批意见\" style=\"width:80px;display:inline-block;\" title=\"财务审批意见\" xtype=\"xselect\"><option selected=\"selected\" value=\"1\">同意</option><option value=\"0\">不同意</option></select><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\"><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp; &nbsp; &nbsp;</span>签字：</span><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum12\" placeholder=\"自动控件|财务签字\" style=\"width:200px;display:inline-block;position: absolute;\" title=\"财务签字\" type=\"text\" xtype=\"xmacro\" /></p>\n			</td>\n		</tr>\n	</tbody>\n</table>\n', '<div class=\'form-group\'><label style=\'width:100%;\'>申请人</label><input title=\'申请人\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"13\",\"format\":null}\' name=\'dataNum1\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|申请人\'></div><div class=\'form-group\'><label style=\'width:100%;\'>录单日期</label><input title=\'录单日期\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"2\",\"format\":\"yyyy年MM月dd日\"}\' name=\'dataNum2\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|录单日期\'></div><div class=\'form-group\'><label style=\'width:100%;\'>申请类型</label><select title=\'申请类型\' defaultvalue=\'\' xtype=\'xselect\' model=\'[{\"vals\":\"1\",\"option\":\"个人预算\",\"checked\":false},{\"vals\":\"2\",\"option\":\"部门预算\",\"checked\":false},{\"vals\":\"3\",\"option\":\"公司预算\",\"checked\":false}]\' name=\'dataNum3\' type=\'text\' class=\'form-control\'><option value=\'1\'>个人预算</option><option value=\'2\'>部门预算</option><option value=\'3\'>公司预算</option></select></div><div class=\'form-group\'><label style=\'width:100%;\'>费用事由</label><input title=\'费用事由\' defaultvalue=\'\' xtype=\'xinput\' name=\'dataNum4\' type=\'text\' class=\'form-control\' placeholder=\'输入框|费用事由\'></div><div class=\'form-group\'><label style=\'width:100%;\'>所在部门</label><input title=\'所在部门\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"14\",\"format\":null}\' name=\'dataNum5\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|所在部门\'></div><div class=\'form-group\'><label style=\'width:100%;\'>总预算申请金额 </label><input title=\'总预算申请金额 \' defaultvalue=\'\' xtype=\'xinput\' name=\'dataNum6\' type=\'text\' class=\'form-control\' placeholder=\'输入框|总预算申请金额 \'></div><div class=\'form-group\'><label style=\'width:100%;\'>备注</label><textarea title=\'备注\' defaultvalue=\'\' xtype=\'xtextarea\' name=\'dataNum13\' class=\'form-control\' placeholder=\'备注\'></textarea></div><div class=\'form-group\'><label style=\'width:100%;\'>主管意见</label><textarea title=\'主管意见\' defaultvalue=\'\' xtype=\'xtextarea\' name=\'dataNum7\' class=\'form-control\' placeholder=\'主管意见\'></textarea></div><div class=\'form-group\'><label style=\'width:100%;\'>主管审批意见</label><select title=\'主管审批意见\' defaultvalue=\'\' xtype=\'xselect\' model=\'[{\"vals\":\"1\",\"option\":\"同意\",\"checked\":true},{\"vals\":\"0\",\"option\":\"不同意\",\"checked\":false}]\' name=\'dataNum8\' type=\'text\' class=\'form-control\'><option value=\'1\' checked>同意</option><option value=\'0\'>不同意</option></select></div><div class=\'form-group\'><label style=\'width:100%;\'>主管签字</label><input title=\'主管签字\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"20\",\"format\":null}\' name=\'dataNum9\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|主管签字\'></div><div class=\'form-group\'><label style=\'width:100%;\'>财务意见</label><textarea title=\'财务意见\' defaultvalue=\'\' xtype=\'xtextarea\' name=\'dataNum10\' class=\'form-control\' placeholder=\'财务意见\'></textarea></div><div class=\'form-group\'><label style=\'width:100%;\'>财务审批意见</label><select title=\'财务审批意见\' defaultvalue=\'\' xtype=\'xselect\' model=\'[{\"vals\":\"1\",\"option\":\"同意\",\"checked\":true},{\"vals\":\"0\",\"option\":\"不同意\",\"checked\":false}]\' name=\'dataNum11\' type=\'text\' class=\'form-control\'><option value=\'1\' checked>同意</option><option value=\'0\'>不同意</option></select></div><div class=\'form-group\'><label style=\'width:100%;\'>财务签字</label><input title=\'财务签字\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"20\",\"format\":null}\' name=\'dataNum12\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|财务签字\'></div>', null, null, null, null, 'C030844B-4FE8-4FA4-88FE-F9F11E11D01C', null, '0', '2020-03-20 16:07:00', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_form` VALUES ('5', 'BB9B5E2C-55DA-41DE-BF75-4C93FD31B440', '1', '合同表单', '1585290538', '<p style=\"text-align: center;\"><span style=\"font-size:28px;\"><strong>合同审批表</strong></span></p>\n\n<table align=\"center\" border=\"1\" class=\"td-min-height\" data-sort=\"sortDisabled\" style=\"border: 1px solid rgb(54, 96, 146); margin: auto; width: 650px;\">\n	<tbody>\n		<tr class=\"firstRow\">\n			<td align=\"center\" colspan=\"4\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">合同基本资料</td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border: 1px solid rgb(54, 96, 146); background-color: rgb(219, 238, 243); width: 200px;\" valign=\"middle\">合同名称</td>\n			<td align=\"center\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum1\" placeholder=\"输入框|合同名称\" style=\"\" title=\"合同名称\" type=\"text\" xtype=\"xinput\" /></td>\n			<td align=\"center\" style=\"border: 1px solid rgb(54, 96, 146); background-color: rgb(219, 238, 243); width: 200px;\" valign=\"middle\">合同分类</td>\n			<td align=\"center\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;dbSource&quot;:&quot;SYS_DB&quot;,&quot;sql&quot;:&quot;select sort_id as vkey,sort_name as val  from contract_sort where org_id={ORG_ID}&quot;}\" name=\"dataNum2\" placeholder=\"SQL控件下拉框|合同分类\" style=\"\" title=\"合同分类\" type=\"text\" value=\"\" xtype=\"xsqlselect\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">合同类型</td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all;\" valign=\"middle\"><select class=\"form-control\" datatype=\"undefined\" model=\"[{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;销售合同&quot;,&quot;checked&quot;:true},{&quot;vals&quot;:&quot;2&quot;,&quot;option&quot;:&quot;采购合同&quot;,&quot;checked&quot;:false}]\" name=\"dataNum3\" placeholder=\"合同类型\" style=\"\" title=\"合同类型\" xtype=\"xselect\"><option selected=\"selected\" value=\"1\">销售合同</option><option value=\"2\">采购合同</option></select></td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">合同编号</td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum4\" placeholder=\"输入框|合同编号\" style=\"\" title=\"合同编号\" type=\"text\" xtype=\"xinput\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"background-color: rgb(219, 238, 243);\">所属部门</span></td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all;\" valign=\"middle\" width=\"166\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;3&quot;,&quot;format&quot;:null}\" name=\"dataNum5\" placeholder=\"选择控件|所属部门\" style=\"\" title=\"所属部门\" type=\"text\" value=\"\" xtype=\"xfetch\" /></td>\n			<td align=\"center\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\" width=\"166\">业务人员</td>\n			<td align=\"center\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all;\" valign=\"middle\" width=\"166\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;7&quot;,&quot;format&quot;:null}\" name=\"dataNum6\" placeholder=\"选择控件|业务人员\" style=\"\" title=\"业务人员\" type=\"text\" value=\"\" xtype=\"xfetch\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"background-color: rgb(219, 238, 243);\">签约时间</span></td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all;\" valign=\"middle\" width=\"166\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;1&quot;,&quot;format&quot;:&quot;YYYY-MM-DD&quot;}\" name=\"dataNum7\" placeholder=\"选择控件|签约时间\" style=\"\" title=\"签约时间\" type=\"text\" value=\"\" xtype=\"xfetch\" /></td>\n			<td align=\"center\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\" width=\"166\">合同金额</td>\n			<td align=\"center\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all;\" valign=\"middle\" width=\"166\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum8\" placeholder=\"输入框|合同金额\" style=\"width:80%;display:inline-block;\" title=\"合同金额\" type=\"text\" xtype=\"xinput\" />元</td>\n		</tr>\n		<tr>\n			<td colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); background-color: rgb(219, 238, 243); text-align: center;\" valign=\"middle\">合同开始日期</td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;1&quot;,&quot;format&quot;:&quot;YYYY-MM-DD&quot;}\" name=\"dataNum9\" placeholder=\"选择控件|合同开始日期	\" style=\"\" title=\"合同开始日期	\" type=\"text\" value=\"\" xtype=\"xfetch\" /></td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">&nbsp;合同结束日期</td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;1&quot;,&quot;format&quot;:&quot;YYYY-MM-DD&quot;}\" name=\"dataNum10\" placeholder=\"选择控件|合同结束日期\" style=\"\" title=\"合同结束日期\" type=\"text\" value=\"\" xtype=\"xfetch\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">录入人员</td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;13&quot;,&quot;format&quot;:null}\" name=\"dataNum11\" placeholder=\"自动控件|录入人员\" style=\"\" title=\"录入人员\" type=\"text\" xtype=\"xmacro\" /></td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"text-align: -webkit-center; background-color: rgb(219, 238, 243);\">录入日期</span></td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;2&quot;,&quot;format&quot;:&quot;yyyy年MM月dd日&quot;}\" name=\"dataNum12\" placeholder=\"自动控件|录入日期\" style=\"\" title=\"录入日期\" type=\"text\" xtype=\"xmacro\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"4\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">公司资料</td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">甲方单位</td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum13\" placeholder=\"输入框|甲方单位\" style=\"\" title=\"甲方单位\" type=\"text\" xtype=\"xinput\" /></td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">乙方单位</td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum14\" placeholder=\"输入框|乙方单位\" style=\"\" title=\"乙方单位\" type=\"text\" xtype=\"xinput\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">甲方联系人</td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum15\" placeholder=\"输入框|甲方联系人\" style=\"\" title=\"甲方联系人\" type=\"text\" xtype=\"xinput\" /></td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">乙方联系人</td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum16\" placeholder=\"输入框|乙方联系人\" style=\"\" title=\"乙方联系人\" type=\"text\" xtype=\"xinput\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">甲方联系方式</td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum17\" placeholder=\"输入框|甲方联系方式 \" style=\"\" title=\"甲方联系方式 \" type=\"text\" xtype=\"xinput\" /></td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">乙方联系方式</td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum18\" placeholder=\"输入框|乙方联系方式\" style=\"\" title=\"乙方联系方式\" type=\"text\" xtype=\"xinput\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"4\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">合同内容</td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"4\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; background-color: rgb(255, 255, 255);\" valign=\"middle\"><img model=\"[{&quot;childTitle&quot;:&quot;产品名称&quot;,&quot;childName&quot;:&quot;name&quot;,&quot;formula&quot;:&quot;&quot;,&quot;childModel&quot;:&quot;1&quot;,&quot;isTotal&quot;:false,&quot;defaultValue&quot;:&quot;A,B,C&quot;,&quot;width&quot;:&quot;150&quot;},{&quot;childTitle&quot;:&quot;产品数量&quot;,&quot;childName&quot;:&quot;quantity&quot;,&quot;formula&quot;:&quot;&quot;,&quot;childModel&quot;:&quot;1&quot;,&quot;isTotal&quot;:true,&quot;defaultValue&quot;:&quot;中国,美国,日本&quot;,&quot;width&quot;:&quot;150&quot;},{&quot;childTitle&quot;:&quot;产品价格&quot;,&quot;childName&quot;:&quot;price&quot;,&quot;formula&quot;:&quot;&quot;,&quot;childModel&quot;:&quot;1&quot;,&quot;isTotal&quot;:false,&quot;defaultValue&quot;:&quot;&quot;,&quot;width&quot;:&quot;100&quot;},{&quot;childTitle&quot;:&quot;主要条款&quot;,&quot;childName&quot;:&quot;tiaokuan&quot;,&quot;formula&quot;:&quot;&quot;,&quot;childModel&quot;:&quot;1&quot;,&quot;isTotal&quot;:false,&quot;defaultValue&quot;:&quot;&quot;,&quot;width&quot;:&quot;200&quot;},{&quot;childTitle&quot;:&quot;备注&quot;,&quot;childName&quot;:&quot;remark&quot;,&quot;formula&quot;:&quot;&quot;,&quot;childModel&quot;:&quot;1&quot;,&quot;isTotal&quot;:false,&quot;defaultValue&quot;:&quot;&quot;,&quot;width&quot;:&quot;200&quot;},{&quot;childTitle&quot;:&quot;小计&quot;,&quot;childName&quot;:&quot;xiaoji&quot;,&quot;formula&quot;:&quot;(quantity*price)&quot;,&quot;childModel&quot;:&quot;1&quot;,&quot;isTotal&quot;:true,&quot;defaultValue&quot;:&quot;&quot;,&quot;width&quot;:&quot;400&quot;},{&quot;childTitle&quot;:&quot;其它11&quot;,&quot;childName&quot;:&quot;xt&quot;,&quot;formula&quot;:&quot;&quot;,&quot;childModel&quot;:&quot;1&quot;,&quot;isTotal&quot;:false,&quot;defaultValue&quot;:&quot;&quot;,&quot;width&quot;:&quot;&quot;}]\" name=\"dataNum19\" src=\"/module/ckeditor/plugins/xlist/xlist.png\" style=\"width:650px\" title=\"合同内容\" xtype=\"xlist\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"4\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">合同备注</td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"4\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; background-color: rgb(255, 255, 255);\" valign=\"middle\"><img defaultvalue=\"\" name=\"dataNum20\" src=\"/module/ckeditor/plugins/xtextuedit/editor.jpg\" style=\"width:100%;text-align:left;\" title=\"合同备注\" xtype=\"xtextuedit\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"4\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">合同审批</td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">&nbsp; 部门领导审批&nbsp;&nbsp;</td>\n			<td align=\"left\" colspan=\"3\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all;\" valign=\"middle\">\n			<p><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum21\" placeholder=\"部门领导审批\" style=\"width:100%;height:100px;\" title=\"部门领导审批\" xtype=\"xtextarea\"></textarea></p>\n\n			<p><span style=\"background-color: transparent;\">&nbsp; 部门领导意见：</span><select class=\"form-control\" datatype=\"undefined\" model=\"[{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;同意&quot;,&quot;checked&quot;:true},{&quot;vals&quot;:&quot;0&quot;,&quot;option&quot;:&quot;不同意&quot;,&quot;checked&quot;:false}]\" name=\"dataNum23\" placeholder=\"部门领导意见\" style=\"width:80px\" title=\"部门领导意见\" xtype=\"xselect\"><option selected=\"selected\" value=\"1\">同意</option><option value=\"0\">不同意</option></select>部门领导签字：<input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum22\" placeholder=\"自动控件|部门领导签字\" style=\"width:200px;dispaly:inline-block;\" title=\"部门领导签字\" type=\"text\" xtype=\"xmacro\" /></p>\n			</td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">CEO审批</td>\n			<td align=\"left\" colspan=\"3\" rowspan=\"1\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all;\" valign=\"middle\">\n			<p><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum24\" placeholder=\"CEO审批\" style=\"width:100%;height:100px;\" title=\"CEO审批\" xtype=\"xtextarea\"></textarea></p>\n\n			<p>CEO意见：<select class=\"form-control\" datatype=\"undefined\" model=\"[{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;同意&quot;,&quot;checked&quot;:true},{&quot;vals&quot;:&quot;0&quot;,&quot;option&quot;:&quot;不同意&quot;,&quot;checked&quot;:false}]\" name=\"dataNum25\" placeholder=\"CEO意见\" style=\"width:80px\" title=\"CEO意见\" xtype=\"xselect\"><option selected=\"selected\" value=\"1\">同意</option><option value=\"0\">不同意</option></select> CEO审批签字：<input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum26\" placeholder=\"自动控件|CEO审批签字\" style=\"width:200px;dispaly:inline-block;\" title=\"CEO审批签字\" type=\"text\" xtype=\"xmacro\" /></p>\n			</td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\">合同相关流程</td>\n			<td align=\"left\" colspan=\"3\" style=\"border: 1px solid rgb(54, 96, 146); border-image: none; -ms-word-break: break-all;\" valign=\"middle\"><img model=\"{&quot;type&quot;:&quot;2&quot;}\" name=\"dataNum31\" src=\"/module/ckeditor/plugins/xbpm/bpmlist.png\" title=\"合同相关流程\" type=\"text\" xtype=\"xbpm\" /></td>\n		</tr>\n	</tbody>\n</table>\n', '<div class=\"form-group\"><label style=\"line-height: 34px;\">合同名称</label><input style=\"width:200px;float:right;\" title=\"合同名称\" defaultvalue=\"\" xtype=\"xinput\" name=\"dataNum1\" type=\"text\" class=\"form-control\" placeholder=\"输入框|合同名称\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">合同分类</label><input style=\"width:200px;float:right;\" title=\"合同分类\" defaultvalue=\"\" xtype=\"xsqlselect\" model=\"{&quot;dbSource&quot;:&quot;36BF8C47-6F6D-4B9E-A24F-3992EE215C3E&quot;,&quot;sql&quot;:&quot;select sort_id as vkey,sort_name as val  from contract_sort where org_id={ORG_ID}&quot;}\" name=\"dataNum2\" type=\"text\" class=\"form-control\" placeholder=\"SQL控件下拉框|合同分类\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">合同类型</label><select style=\"width:200px;float:right;\" title=\"合同类型\" defaultvalue=\"\" xtype=\"xselect\" model=\"[{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;销售合同&quot;,&quot;checked&quot;:true},{&quot;vals&quot;:&quot;2&quot;,&quot;option&quot;:&quot;采购合同&quot;,&quot;checked&quot;:false}]\" name=\"dataNum3\" type=\"text\" class=\"form-control\"><option value=\"1\" checked=\"\">销售合同</option><option value=\"2\">采购合同</option></select></div><div class=\"form-group\"><label style=\"line-height: 34px;\">合同编号</label><input style=\"width:200px;float:right;\" title=\"合同编号\" defaultvalue=\"\" xtype=\"xinput\" name=\"dataNum4\" type=\"text\" class=\"form-control\" placeholder=\"输入框|合同编号\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">所属部门</label><input style=\"width:200px;float:right;\" title=\"所属部门\" defaultvalue=\"\" xtype=\"xfetch\" model=\"{&quot;type&quot;:&quot;3&quot;,&quot;format&quot;:null}\" name=\"dataNum5\" type=\"text\" class=\"form-control\" placeholder=\"选择控件|所属部门\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">业务人员</label><input style=\"width:200px;float:right;\" title=\"业务人员\" defaultvalue=\"\" xtype=\"xfetch\" model=\"{&quot;type&quot;:&quot;7&quot;,&quot;format&quot;:null}\" name=\"dataNum6\" type=\"text\" class=\"form-control\" placeholder=\"选择控件|业务人员\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">签约时间</label><input style=\"width:200px;float:right;\" title=\"签约时间\" defaultvalue=\"\" xtype=\"xfetch\" model=\"{&quot;type&quot;:&quot;1&quot;,&quot;format&quot;:&quot;YYYY-MM-DD&quot;}\" name=\"dataNum7\" type=\"text\" class=\"form-control\" placeholder=\"选择控件|签约时间\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">合同金额</label><input style=\"width:200px;float:right;\" title=\"合同金额\" defaultvalue=\"\" xtype=\"xinput\" name=\"dataNum8\" type=\"text\" class=\"form-control\" placeholder=\"输入框|合同金额\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">合同开始日期	</label><input style=\"width:200px;float:right;\" title=\"合同开始日期	\" defaultvalue=\"\" xtype=\"xfetch\" model=\"{&quot;type&quot;:&quot;1&quot;,&quot;format&quot;:&quot;YYYY-MM-DD&quot;}\" name=\"dataNum9\" type=\"text\" class=\"form-control\" placeholder=\"选择控件|合同开始日期	\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">合同结束日期</label><input style=\"width:200px;float:right;\" title=\"合同结束日期\" defaultvalue=\"\" xtype=\"xfetch\" model=\"{&quot;type&quot;:&quot;1&quot;,&quot;format&quot;:&quot;YYYY-MM-DD&quot;}\" name=\"dataNum10\" type=\"text\" class=\"form-control\" placeholder=\"选择控件|合同结束日期\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">录入人员</label><input style=\"width:200px;float:right;\" title=\"录入人员\" defaultvalue=\"\" xtype=\"xmacro\" model=\"{&quot;type&quot;:&quot;13&quot;,&quot;format&quot;:null}\" name=\"dataNum11\" type=\"text\" class=\"form-control\" placeholder=\"自动控件|录入人员\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">录入日期</label><input style=\"width:200px;float:right;\" title=\"录入日期\" defaultvalue=\"\" xtype=\"xmacro\" model=\"{&quot;type&quot;:&quot;2&quot;,&quot;format&quot;:&quot;yyyy年MM月dd日&quot;}\" name=\"dataNum12\" type=\"text\" class=\"form-control\" placeholder=\"自动控件|录入日期\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">甲方单位</label><input style=\"width:200px;float:right;\" title=\"甲方单位\" defaultvalue=\"\" xtype=\"xinput\" name=\"dataNum13\" type=\"text\" class=\"form-control\" placeholder=\"输入框|甲方单位\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">乙方单位</label><input style=\"width:200px;float:right;\" title=\"乙方单位\" defaultvalue=\"\" xtype=\"xinput\" name=\"dataNum14\" type=\"text\" class=\"form-control\" placeholder=\"输入框|乙方单位\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">甲方联系人</label><input style=\"width:200px;float:right;\" title=\"甲方联系人\" defaultvalue=\"\" xtype=\"xinput\" name=\"dataNum15\" type=\"text\" class=\"form-control\" placeholder=\"输入框|甲方联系人\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">乙方联系人</label><input style=\"width:200px;float:right;\" title=\"乙方联系人\" defaultvalue=\"\" xtype=\"xinput\" name=\"dataNum16\" type=\"text\" class=\"form-control\" placeholder=\"输入框|乙方联系人\"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">甲方联系方式 </label><input style=\"width:200px;float:right;\" title=\"甲方联系方式 \" defaultvalue=\"\" xtype=\"xinput\" name=\"dataNum17\" type=\"text\" class=\"form-control\" placeholder=\"输入框|甲方联系方式 \"></div><div class=\"form-group\"><label style=\"line-height: 34px;\">乙方联系方式</label><input style=\"width:200px;float:right;\" title=\"乙方联系方式\" defaultvalue=\"\" xtype=\"xinput\" name=\"dataNum18\" type=\"text\" class=\"form-control\" placeholder=\"输入框|乙方联系方式\"></div><div class=\"form-group\"><label style=\"width:100%;\">合同内容</label><img title=\"合同内容\" style=\"width:100%;\" model=\"[{&quot;childTitle&quot;:&quot;产品名称&quot;,&quot;childName&quot;:&quot;name&quot;,&quot;formula&quot;:&quot;&quot;,&quot;childModel&quot;:&quot;3&quot;,&quot;isTotal&quot;:false,&quot;defaultValue&quot;:&quot;A,B,C&quot;,&quot;width&quot;:&quot;150&quot;},{&quot;childTitle&quot;:&quot;产品数量&quot;,&quot;childName&quot;:&quot;quantity&quot;,&quot;formula&quot;:&quot;&quot;,&quot;childModel&quot;:&quot;4&quot;,&quot;isTotal&quot;:false,&quot;defaultValue&quot;:&quot;中国,美国,日本&quot;,&quot;width&quot;:&quot;150&quot;},{&quot;childTitle&quot;:&quot;产品价格&quot;,&quot;childName&quot;:&quot;price&quot;,&quot;formula&quot;:&quot;&quot;,&quot;childModel&quot;:&quot;5&quot;,&quot;isTotal&quot;:false,&quot;defaultValue&quot;:&quot;&quot;,&quot;width&quot;:&quot;100&quot;},{&quot;childTitle&quot;:&quot;主要条款&quot;,&quot;childName&quot;:&quot;tiaokuan&quot;,&quot;formula&quot;:&quot;&quot;,&quot;childModel&quot;:&quot;1&quot;,&quot;isTotal&quot;:false,&quot;defaultValue&quot;:&quot;&quot;,&quot;width&quot;:&quot;200&quot;},{&quot;childTitle&quot;:&quot;备注&quot;,&quot;childName&quot;:&quot;remark&quot;,&quot;formula&quot;:&quot;&quot;,&quot;childModel&quot;:&quot;1&quot;,&quot;isTotal&quot;:false,&quot;defaultValue&quot;:&quot;&quot;,&quot;width&quot;:&quot;200&quot;}]\" xtype=\"xlist\" name=\"dataNum19\" src=\"/module/ckeditor/plugins/xlist/xlist.png\"></div><div class=\"form-group\"><label style=\"width:100%\">合同备注</label><img title=\"合同备注\" style=\"width:100%;\" defaultvalue=\"\" xtype=\"xtextuedit\" name=\"dataNum20\" src=\"/module/ckeditor/plugins/xtextuedit/editor.jpg\"></div><div class=\"form-group\"><label style=\"width:100%\">部门领导审批</label><textarea title=\"部门领导审批\" defaultvalue=\"\" xtype=\"xtextarea\" name=\"dataNum21\" class=\"form-control\" placeholder=\"部门领导审批\"></textarea></div><div class=\"form-group\"><label style=\"line-height: 34px;\">部门领导意见</label><select style=\"width:200px;float:right;\" title=\"部门领导意见\" defaultvalue=\"\" xtype=\"xselect\" model=\"[{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;同意&quot;,&quot;checked&quot;:true},{&quot;vals&quot;:&quot;0&quot;,&quot;option&quot;:&quot;不同意&quot;,&quot;checked&quot;:false}]\" name=\"dataNum23\" type=\"text\" class=\"form-control\"><option value=\"1\" checked=\"\">同意</option><option value=\"0\">不同意</option></select></div><div class=\"form-group\"><label style=\"line-height: 34px;\">部门领导签字</label><input style=\"width:200px;float:right;\" title=\"部门领导签字\" defaultvalue=\"\" xtype=\"xmacro\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum22\" type=\"text\" class=\"form-control\" placeholder=\"自动控件|部门领导签字\"></div><div class=\"form-group\"><label style=\"width:100%\">CEO审批</label><textarea title=\"CEO审批\" defaultvalue=\"\" xtype=\"xtextarea\" name=\"dataNum24\" class=\"form-control\" placeholder=\"CEO审批\"></textarea></div><div class=\"form-group\"><label style=\"line-height: 34px;\">CEO意见</label><select style=\"width:200px;float:right;\" title=\"CEO意见\" defaultvalue=\"\" xtype=\"xselect\" model=\"[{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;同意&quot;,&quot;checked&quot;:true},{&quot;vals&quot;:&quot;0&quot;,&quot;option&quot;:&quot;不同意&quot;,&quot;checked&quot;:false}]\" name=\"dataNum25\" type=\"text\" class=\"form-control\"><option value=\"1\" checked=\"\">同意</option><option value=\"0\">不同意</option></select></div><div class=\"form-group\"><label style=\"line-height: 34px;\">CEO审批签字</label><input style=\"width:200px;float:right;\" title=\"CEO审批签字\" defaultvalue=\"\" xtype=\"xmacro\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum26\" type=\"text\" class=\"form-control\" placeholder=\"自动控件|CEO审批签字\"></div><div class=\"form-group\" style=\"\"><label style=\"line-height: 34px;\">计算1</label><input style=\"width:200px;float:right;\" title=\"计算1\" defaultvalue=\"\" xtype=\"xinput\" name=\"dataNum27\" type=\"text\" class=\"form-control\" placeholder=\"输入框|计算1\"></div><div class=\"form-group\" style=\"\"><label style=\"line-height: 34px;\">计算2</label><input style=\"width:200px;float:right;\" title=\"计算2\" defaultvalue=\"\" xtype=\"xinput\" name=\"dataNum28\" type=\"text\" class=\"form-control\" placeholder=\"输入框|计算2\"></div><div class=\"form-group\" style=\"\"><label style=\"line-height: 34px;\">计算组件</label><input style=\"width:200px;float:right;\" title=\"计算组件\" defaultvalue=\"\" xtype=\"xcalculate\" model=\"{计算1}+{计算2}\" name=\"dataNum29\" type=\"text\" class=\"form-control\" placeholder=\"计算组件|计算组件\"></div><div class=\"form-group\" style=\"\"><label style=\"line-height: 34px;\">合同相关流程</label><img title=\"合同相关流程\" style=\"width:100%;\" model=\"{&quot;type&quot;:&quot;2&quot;}\" xtype=\"xbpm\" name=\"dataNum31\" src=\"/module/ckeditor/plugins/xbpm/bpmlist.png\"></div><div class=\"form-group\" style=\"\"><label style=\"width:100%;\">签章测试</label><img title=\"签章测试\" defaultvalue=\"\" style=\"width:100%;\" xtype=\"xseal\" name=\"dataNum32\" src=\"/module/ckeditor/plugins/xseal/code.jpg\"></div><div class=\"form-group\" style=\"\"><label style=\"width:100%;\">签章</label><img title=\"签章\" defaultvalue=\"dataNum24\" style=\"width:100%;\" xtype=\"xseal\" name=\"dataNum30\" src=\"/module/ckeditor/plugins/xseal/code.jpg\"></div>', null, null, null, null, '1D9AFFA2-A372-4B55-9E14-D55E5810AD87', null, '0', '2020-03-27 14:30:43', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_form` VALUES ('6', 'FE0471C1-F44D-4434-BFFB-D1712E689AD2', '1', '出差申请单', 'travel', '<p style=\"text-align: center;\"><span style=\"color: rgb(54, 96, 146);\"><strong><span style=\"font-size: 24px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\">出差申请</span></strong></span></p>\n\n<table align=\"center\" border=\"1\" class=\"td-min-height\" data-sort=\"sortDisabled\" style=\"border: 1px solid rgb(54, 96, 146); width: 650px;\">\n	<tbody>\n		<tr class=\"firstRow\">\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">申请人</span></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;13&quot;,&quot;format&quot;:null}\" name=\"dataNum1\" placeholder=\"自动控件|申请人\" style=\"\" title=\"申请人\" type=\"text\" xtype=\"xmacro\" /></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">申请部门</span></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;14&quot;,&quot;format&quot;:null}\" name=\"dataNum2\" placeholder=\"自动控件|申请部门\" style=\"\" title=\"申请部门\" type=\"text\" xtype=\"xmacro\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">申请时间</span></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;3&quot;,&quot;format&quot;:&quot;yyyy年MM月dd日 HH时mm分&quot;}\" name=\"dataNum3\" placeholder=\"自动控件|申请时间\" style=\"\" title=\"申请时间\" type=\"text\" xtype=\"xmacro\" /></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">职务</span></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;16&quot;,&quot;format&quot;:null}\" name=\"dataNum4\" placeholder=\"自动控件|职务\" style=\"\" title=\"职务\" type=\"text\" xtype=\"xmacro\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); background-color: rgb(219, 238, 243); word-break: break-all;\" valign=\"middle\"><span style=\"font-size: 16px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\">出差地点</span></td>\n			<td align=\"center\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum5\" placeholder=\"输入框|出差地点\" style=\"\" title=\"出差地点\" type=\"text\" xtype=\"xinput\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); background-color: rgb(219, 238, 243); word-break: break-all;\" valign=\"middle\"><span style=\"font-size: 16px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\">&nbsp; 出差开始时间&nbsp;&nbsp;</span></td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;1&quot;,&quot;format&quot;:&quot;YYYY年MM月DD日 hh时mm分&quot;}\" name=\"dataNum6\" placeholder=\"选择控件|出差开始时间\" style=\"\" title=\"出差开始时间\" type=\"text\" value=\"\" xtype=\"xfetch\" /></td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"font-size: 16px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\">&nbsp; 出差结束时间&nbsp;&nbsp;</span></td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;1&quot;,&quot;format&quot;:&quot;YYYY年MM月DD日 hh时mm分&quot;}\" name=\"dataNum7\" placeholder=\"选择控件|出差结束时间\" style=\"\" title=\"出差结束时间\" type=\"text\" value=\"\" xtype=\"xfetch\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); background-color: rgb(219, 238, 243); word-break: break-all;\" valign=\"middle\"><span style=\"font-size: 16px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\">预计费用</span></td>\n			<td align=\"left\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum8\" placeholder=\"输入框|预计费用\" style=\"width:200px;display: inline;\" title=\"预计费用\" type=\"text\" xtype=\"xinput\" /><span style=\"font-size: 16px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\">元</span></td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"font-family:微软雅黑, Microsoft YaHei\"><span style=\"font-size: 16px;\">出差事由</span></span></td>\n			<td align=\"left\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\"><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum9\" placeholder=\"出差事由\" style=\"width:100%;height:100px;\" title=\"出差事由\" xtype=\"xtextarea\"></textarea></td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">部门领导审批</span></td>\n			<td align=\"left\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\">\n			<p>&nbsp;</p>\n\n			<p><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum10\" placeholder=\"部门领导审批意见\" style=\"width:100%;height:100px\" title=\"部门领导审批意见\" xtype=\"xtextarea\"></textarea></p>\n\n			<p style=\"text-align: right;\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\">&nbsp; 签字：</span><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum11\" placeholder=\"自动控件|部门领导审批签字\" style=\"display: inline-block;width:300px;\" title=\"部门领导审批签字\" type=\"text\" xtype=\"xmacro\" /></p>\n			</td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">CEO审批</span></td>\n			<td align=\"left\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\">\n			<p>&nbsp;</p>\n\n			<p><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum12\" placeholder=\"CEO审批意见\" style=\"width:100%;height:100px\" title=\"CEO审批意见\" xtype=\"xtextarea\"></textarea></p>\n\n			<p style=\"text-align: right;\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\">&nbsp; <span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp;</span>签字：</span><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum13\" placeholder=\"自动控件|CEO审批签字\" style=\"display: inline-block;width:300px;\" title=\"CEO审批签字\" type=\"text\" xtype=\"xmacro\" /></p>\n			</td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">人事行政审批</span></td>\n			<td align=\"left\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\">\n			<p>&nbsp;</p>\n\n			<p><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum14\" placeholder=\"人事行政审批意见\" style=\"width:100%;height:100px\" title=\"人事行政审批意见\" xtype=\"xtextarea\"></textarea></p>\n\n			<p style=\"text-align: right;\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\">签字：</span><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum15\" placeholder=\"自动控件|人事行政审批签字\" style=\"display: inline-block;width:300px;\" title=\"人事行政审批签字\" type=\"text\" xtype=\"xmacro\" /></p>\n			</td>\n		</tr>\n	</tbody>\n</table>\n\n<p style=\"text-align: center;\">&nbsp;</p>\n', '<div class=\'form-group\'><label style=\'line-height: 34px;\'>申请人</label><input style=\'width:200px;float:right;\' title=\'申请人\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"13\",\"format\":null}\' name=\'dataNum1\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|申请人\'></div><div class=\'form-group\'><label style=\'line-height: 34px;\'>申请部门</label><input style=\'width:200px;float:right;\' title=\'申请部门\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"14\",\"format\":null}\' name=\'dataNum2\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|申请部门\'></div>', null, null, null, null, '85098050-4374-488D-BE01-66BCFD04D72A', null, '1', '2020-08-11 17:26:49', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_form` VALUES ('7', '157E707A-C8FB-4695-B5FE-9FE09A09327F', '2', '请假申请单', 'leave', '<p style=\"text-align: center;\"><span style=\"color: rgb(54, 96, 146);\"><strong><span style=\"font-size: 24px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\">请假登记</span></strong></span></p>\n\n<table align=\"center\" border=\"1\" class=\"td-min-height\" data-sort=\"sortDisabled\" style=\"border: 1px solid rgb(54, 96, 146);\">\n	<tbody>\n		<tr class=\"firstRow\">\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">申请人</span></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;13&quot;,&quot;format&quot;:null}\" name=\"dataNum1\" placeholder=\"自动控件|申请人\" style=\"width:100%\" title=\"申请人\" type=\"text\" xtype=\"xmacro\" /></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">申请部门</span></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;14&quot;,&quot;format&quot;:null}\" name=\"dataNum2\" placeholder=\"自动控件|申请部门\" style=\"\" title=\"申请部门\" type=\"text\" xtype=\"xmacro\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">申请时间</span></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;3&quot;,&quot;format&quot;:&quot;yyyy年MM月dd日 HH时mm分&quot;}\" name=\"dataNum3\" placeholder=\"自动控件|申请时间\" style=\"\" title=\"申请时间\" type=\"text\" xtype=\"xmacro\" /></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">请假类型</span></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\"><select class=\"form-control\" datatype=\"undefined\" model=\"[{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;事假&quot;,&quot;checked&quot;:false},{&quot;vals&quot;:&quot;2&quot;,&quot;option&quot;:&quot;婚假&quot;,&quot;checked&quot;:false},{&quot;vals&quot;:&quot;3&quot;,&quot;option&quot;:&quot;丧假&quot;,&quot;checked&quot;:false},{&quot;vals&quot;:&quot;4&quot;,&quot;option&quot;:&quot;年假&quot;,&quot;checked&quot;:false}]\" name=\"dataNum4\" placeholder=\"请假类型\" style=\"width:100%\" title=\"请假类型\" xtype=\"xselect\"><option value=\"1\">事假</option><option value=\"2\">婚假</option><option value=\"3\">丧假</option><option value=\"4\">年假</option></select></td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp; 请假开始时间&nbsp;&nbsp;</span></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;1&quot;,&quot;format&quot;:&quot;YYYY年MM月DD日 hh时mm分&quot;}\" name=\"dataNum5\" placeholder=\"选择控件|请假开始时间 \" style=\"\" title=\"请假开始时间 \" type=\"text\" value=\"\" xtype=\"xfetch\" /></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp; 请假结束时间&nbsp;&nbsp;</span></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;1&quot;,&quot;format&quot;:&quot;YYYY年MM月DD日 hh时mm分&quot;}\" name=\"dataNum6\" placeholder=\"选择控件|请假结束时间  \" style=\"\" title=\"请假结束时间  \" type=\"text\" value=\"\" xtype=\"xfetch\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">请假事由</span></td>\n			<td align=\"center\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\"><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum7\" placeholder=\"请假事由\" style=\"width:100%;height:100px\" title=\"请假事由\" xtype=\"xtextarea\"></textarea></td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">部门领导审批</span></td>\n			<td align=\"left\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\">\n			<p><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum8\" placeholder=\"部门领导审批意见\" style=\"width:100%;height:100px;\" title=\"部门领导审批意见\" xtype=\"xtextarea\"></textarea></p>\n\n			<p style=\"text-align: right;\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp; </span><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">签字：</span></span><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum9\" placeholder=\"自动控件|部门领导审批签字\" style=\"display: inline-block;width:300px;\" title=\"部门领导审批签字\" type=\"text\" xtype=\"xmacro\" /></p>\n			</td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">CEO审批</span></td>\n			<td align=\"left\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\">\n			<p><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum10\" placeholder=\"CEO审批意见\" style=\"width:100%;height:100px\" title=\"CEO审批意见\" xtype=\"xtextarea\"></textarea></p>\n\n			<p style=\"text-align: right;\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\">签字：</span><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum11\" placeholder=\"自动控件|CEO审批签字\" style=\"display: inline-block;width:300px;\" title=\"CEO审批签字\" type=\"text\" xtype=\"xmacro\" /></p>\n			</td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">人事行政审批</span></td>\n			<td align=\"left\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\">\n			<p><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum12\" placeholder=\"人事行政审批意见\" style=\"width:100%;height:100px;\" title=\"人事行政审批意见\" xtype=\"xtextarea\"></textarea></p>\n\n			<p style=\"text-align: right;\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\">&nbsp; 签字：</span><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum13\" placeholder=\"自动控件|人事行政审批签字\" style=\"display: inline-block;width:300px;\" title=\"人事行政审批签字\" type=\"text\" xtype=\"xmacro\" /></p>\n			</td>\n		</tr>\n	</tbody>\n</table>\n\n<p style=\"text-align: center;\">&nbsp;</p>\n', '<div class=\'form-group\'><label style=\'line-height: 34px;\'>申请人</label><input style=\'width:200px;float:right;\' title=\'申请人\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"13\",\"format\":null}\' name=\'dataNum1\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|申请人\'></div><div class=\'form-group\'><label style=\'line-height: 34px;\'>申请部门</label><input style=\'width:200px;float:right;\' title=\'申请部门\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"14\",\"format\":null}\' name=\'dataNum2\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|申请部门\'></div><div class=\'form-group\'><label style=\'line-height: 34px;\'>申请时间</label><input style=\'width:200px;float:right;\' title=\'申请时间\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"3\",\"format\":\"yyyy年MM月dd日 HH时mm分\"}\' name=\'dataNum3\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|申请时间\'></div><div class=\'form-group\'><label style=\'line-height: 34px;\'>请假类型</label><select style=\'width:200px;float:right;\' title=\'请假类型\' defaultvalue=\'\' xtype=\'xselect\' model=\'[{\"vals\":\"1\",\"option\":\"事假\",\"checked\":false},{\"vals\":\"2\",\"option\":\"婚假\",\"checked\":false},{\"vals\":\"3\",\"option\":\"丧假\",\"checked\":false},{\"vals\":\"4\",\"option\":\"年假\",\"checked\":false}]\' name=\'dataNum4\' type=\'text\' class=\'form-control\'><option value=\'1\'>事假</option><option value=\'2\'>婚假</option><option value=\'3\'>丧假</option><option value=\'4\'>年假</option></select></div>', null, null, null, null, '85098050-4374-488D-BE01-66BCFD04D72A', null, '1', '2020-08-11 17:49:45', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_form` VALUES ('8', '8A132829-7994-4C7F-81D8-857043D052C9', '3', '加班申请单', 'overtime', '<p style=\"text-align: center;\"><span style=\"color: rgb(54, 96, 146);\"><strong><span style=\"font-size: 24px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\">加班登记</span></strong></span></p>\n\n<table align=\"center\" border=\"1\" class=\"td-min-height\" data-sort=\"sortDisabled\" style=\"border: 1px solid rgb(54, 96, 146); width: 650px;\">\n	<tbody>\n		<tr class=\"firstRow\">\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">申请人</span></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;13&quot;,&quot;format&quot;:null}\" name=\"dataNum1\" placeholder=\"自动控件|申请人\" style=\"\" title=\"申请人\" type=\"text\" xtype=\"xmacro\" /></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-size: 16px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\">申请部门</span></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;14&quot;,&quot;format&quot;:null}\" name=\"dataNum2\" placeholder=\"自动控件|申请部门\" style=\"\" title=\"申请部门\" type=\"text\" xtype=\"xmacro\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-size: 16px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\">申请时间</span></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;3&quot;,&quot;format&quot;:&quot;yyyy年MM月dd日 HH时mm分&quot;}\" name=\"dataNum3\" placeholder=\"自动控件|申请时间\" style=\"\" title=\"申请时间\" type=\"text\" xtype=\"xmacro\" /></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-size: 16px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\">职务</span></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;16&quot;,&quot;format&quot;:null}\" name=\"dataNum4\" placeholder=\"自动控件|职务\" style=\"\" title=\"职务\" type=\"text\" xtype=\"xmacro\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); background-color: rgb(219, 238, 243); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"text-align: -webkit-center; background-color: rgb(219, 238, 243); font-size: 16px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\">&nbsp; 加班开始时间&nbsp;&nbsp;</span></td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;1&quot;,&quot;format&quot;:&quot;YYYY年MM月DD日 hh时mm分&quot;}\" name=\"dataNum5\" placeholder=\"选择控件|加班开始时间 \" style=\"\" title=\"加班开始时间 \" type=\"text\" value=\"\" xtype=\"xfetch\" /></td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-size: 16px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\">&nbsp; 加班结束时间&nbsp;&nbsp;</span></td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;1&quot;,&quot;format&quot;:&quot;YYYY年MM月DD日 hh时mm分&quot;}\" name=\"dataNum6\" placeholder=\"选择控件|加班结束时间 \" style=\"\" title=\"加班结束时间 \" type=\"text\" value=\"\" xtype=\"xfetch\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); background-color: rgb(219, 238, 243); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp; &nbsp;加班地点</span></td>\n			<td align=\"left\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum7\" placeholder=\"输入框|加班地点\" style=\"\" title=\"加班地点\" type=\"text\" xtype=\"xinput\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">加班事由</span></td>\n			<td align=\"left\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum8\" placeholder=\"加班事由\" style=\"width:100%;height:100px\" title=\"加班事由\" xtype=\"xtextarea\"></textarea></td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-size: 16px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\">部门领导审批</span></td>\n			<td align=\"left\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\">\n			<p><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum9\" placeholder=\"部门领导审批意见\" style=\"width:100%;height:100px;\" title=\"部门领导审批意见\" xtype=\"xtextarea\"></textarea></p>\n\n			<p style=\"text-align: right;\"><span style=\"font-size: 16px; background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\">&nbsp; &nbsp;签字：</span><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum10\" placeholder=\"自动控件|部门领导审批签字\" style=\"display:inline-block;width:300px;\" title=\"部门领导审批签字\" type=\"text\" xtype=\"xmacro\" /></p>\n			</td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-size: 16px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\">CEO审批</span></td>\n			<td align=\"left\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\">\n			<p><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum11\" placeholder=\"CEO审批意见\" style=\"width:100%;height:100px;\" title=\"CEO审批意见\" xtype=\"xtextarea\"></textarea></p>\n\n			<p style=\"text-align: right;\"><span style=\"font-size: 16px; background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\">&nbsp;签字：</span><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum12\" placeholder=\"自动控件|CEO审批签字\" style=\"width:300px;display:inline-block;\" title=\"CEO审批签字\" type=\"text\" xtype=\"xmacro\" /></p>\n			</td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-size: 16px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\">人事行政审批</span></td>\n			<td align=\"left\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\">\n			<p style=\"text-align: right;\"><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum13\" placeholder=\"人事行政审批意见\" style=\"width: 100%; height: 100px;\" title=\"人事行政审批意见\" xtype=\"xtextarea\"></textarea><span style=\"font-size: 16px; background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\">&nbsp;签字：</span><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum14\" placeholder=\"自动控件|人事行政审批签字\" style=\"width:300px;display:inline-block;\" title=\"人事行政审批签字\" type=\"text\" xtype=\"xmacro\" /></p>\n			</td>\n		</tr>\n	</tbody>\n</table>\n\n<p style=\"text-align: center;\">&nbsp;</p>\n', '<div class=\'form-group\'><label style=\'line-height: 34px;\'>申请人</label><input style=\'width:200px;float:right;\' title=\'申请人\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"13\",\"format\":null}\' name=\'dataNum1\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|申请人\'></div><div class=\'form-group\'><label style=\'line-height: 34px;\'>申请部门</label><input style=\'width:200px;float:right;\' title=\'申请部门\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"14\",\"format\":null}\' name=\'dataNum2\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|申请部门\'></div><div class=\'form-group\'><label style=\'line-height: 34px;\'>申请时间</label><input style=\'width:200px;float:right;\' title=\'申请时间\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"3\",\"format\":\"yyyy年MM月dd日 HH时mm分\"}\' name=\'dataNum3\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|申请时间\'></div><div class=\'form-group\'><label style=\'line-height: 34px;\'>职务</label><input style=\'width:200px;float:right;\' title=\'职务\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"16\",\"format\":null}\' name=\'dataNum4\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|职务\'></div><div class=\'form-group\'><label style=\'line-height: 34px;\'>加班开始时间 </label><input style=\'width:200px;float:right;\' title=\'加班开始时间 \' defaultvalue=\'\'  xtype=\'xfetch\' model=\'{\"type\":\"1\",\"format\":\"YYYY年MM月DD日 hh时mm分\"}\' name=\'dataNum5\' type=\'text\' class=\'form-control\' placeholder=\'选择控件|加班开始时间 \'></div><div class=\'form-group\'><label style=\'line-height: 34px;\'>  加班结束时间 </label><input style=\'width:200px;float:right;\' title=\'  加班结束时间 \' defaultvalue=\'\'  xtype=\'xfetch\' model=\'{\"type\":\"1\",\"format\":\"YYYY年MM月DD日 hh时mm分\"}\' name=\'dataNum6\' type=\'text\' class=\'form-control\' placeholder=\'选择控件|  加班结束时间 \'></div><div class=\'form-group\'><label style=\'line-height: 34px;\'>加班地点</label><input style=\'width:200px;float:right;\' title=\'加班地点\' defaultvalue=\'\' xtype=\'xinput\' name=\'dataNum7\' type=\'text\' class=\'form-control\' placeholder=\'输入框|加班地点\'></div><div class=\'form-group\'><label style=\'width:100%\'>加班事由</label><textarea title=\'加班事由\' defaultvalue=\'\' xtype=\'xtextarea\' name=\'dataNum8\' class=\'form-control\' placeholder=\'加班事由\'></textarea></div>', null, null, null, null, '85098050-4374-488D-BE01-66BCFD04D72A', null, '1', '2020-08-11 17:50:42', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_form` VALUES ('9', '6E027903-DD60-488B-8687-44AC65258324', '4', '值班申请单', 'duty', '<p style=\"text-align: center;\"><span style=\"color: rgb(54, 96, 146);\"><strong><span style=\"font-size: 24px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\">值班登记</span></strong></span></p>\n\n<table align=\"center\" border=\"1\" class=\"td-min-height\" data-sort=\"sortDisabled\" style=\"border: 1px solid rgb(54, 96, 146); width: 650px;\">\n	<tbody>\n		<tr class=\"firstRow\">\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">填表日期</span></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;2&quot;,&quot;format&quot;:&quot;yyyy年MM月dd日&quot;}\" name=\"dataNum1\" placeholder=\"自动控件|填表日期\" style=\"\" title=\"填表日期\" type=\"text\" xtype=\"xmacro\" /></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family:微软雅黑, Microsoft YaHei\"><span style=\"font-size: 16px;\">受理时间</span></span></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;1&quot;,&quot;format&quot;:&quot;YYYY年MM月DD日 hh时mm分&quot;}\" name=\"dataNum2\" placeholder=\"选择控件|受理时间\" style=\"\" title=\"受理时间\" type=\"text\" value=\"\" xtype=\"xfetch\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">受理人</span></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;13&quot;,&quot;format&quot;:null}\" name=\"dataNum3\" placeholder=\"自动控件|受理人\" style=\"\" title=\"受理人\" type=\"text\" xtype=\"xmacro\" /></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">受理方式</span></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><select class=\"form-control\" datatype=\"undefined\" model=\"[{&quot;vals&quot;:&quot;1&quot;,&quot;option&quot;:&quot;电话&quot;,&quot;checked&quot;:false},{&quot;vals&quot;:&quot;2&quot;,&quot;option&quot;:&quot;网络&quot;,&quot;checked&quot;:false},{&quot;vals&quot;:&quot;3&quot;,&quot;option&quot;:&quot;其它&quot;,&quot;checked&quot;:false}]\" name=\"dataNum4\" placeholder=\"受理方式\" style=\"width:100%\" title=\"受理方式\" xtype=\"xselect\"><option value=\"1\">电话</option><option value=\"2\">网络</option><option value=\"3\">其它</option></select></td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); background-color: rgb(219, 238, 243); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-size: 16px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; text-align: -webkit-center; background-color: rgb(219, 238, 243);\">&nbsp; &nbsp;联系人</span></span></td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum5\" placeholder=\"输入框|联系人\" style=\"\" title=\"联系人\" type=\"text\" xtype=\"xinput\" /></td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-size: 16px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\">&nbsp;电话</span></td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum6\" placeholder=\"输入框|电话\" style=\"\" title=\"电话\" type=\"text\" xtype=\"xinput\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); background-color: rgb(219, 238, 243); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family:微软雅黑, Microsoft YaHei\"><span style=\"font-size: 16px;\">&nbsp; &nbsp;<span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; text-align: -webkit-center; background-color: rgb(219, 238, 243);\">单位名称</span></span></span></td>\n			<td align=\"left\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum7\" placeholder=\"输入框|单位名称\" style=\"width:100%\" title=\"单位名称\" type=\"text\" xtype=\"xinput\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family:微软雅黑, Microsoft YaHei\"><span style=\"font-size: 16px;\">值班事由</span></span></td>\n			<td align=\"left\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\"><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum8\" placeholder=\"值班事由\" style=\"width:100%;height:100px\" title=\"值班事由\" xtype=\"xtextarea\"></textarea></td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp; 部门领导审批&nbsp;&nbsp;</span></td>\n			<td align=\"left\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\">\n			<p><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum9\" placeholder=\"部门领导审批意见\" style=\"width:100%;height:100px;\" title=\"部门领导审批意见\" xtype=\"xtextarea\"></textarea></p>\n\n			<p style=\"text-align: right;\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\">&nbsp; <span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp;</span><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp;&nbsp;</span>签字：</span><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum10\" placeholder=\"自动控件|部门领导审批签字\" style=\"width:300px;display:inline-block;\" title=\"部门领导审批签字\" type=\"text\" xtype=\"xmacro\" /></p>\n			</td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">CEO审批</span></td>\n			<td align=\"left\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\">\n			<p>&nbsp;</p>\n\n			<p><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum11\" placeholder=\"CEO审批意见\" style=\"width:100%;height:100px;\" title=\"CEO审批意见\" xtype=\"xtextarea\"></textarea></p>\n\n			<p style=\"text-align: right;\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\">&nbsp; <span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp;</span>签字：</span><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum12\" placeholder=\"自动控件|CEO审批签名\" style=\"width:300px;display:inline-block;\" title=\"CEO审批签名\" type=\"text\" xtype=\"xmacro\" /></p>\n			</td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243); border-width: 1px; border-style: solid;\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">人事行政审批</span></td>\n			<td align=\"left\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; border-width: 1px; border-style: solid;\" valign=\"middle\">\n			<p><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum13\" placeholder=\"人事行政审批意见\" style=\"width:100%;height:100px;\" title=\"人事行政审批意见\" xtype=\"xtextarea\"></textarea></p>\n\n			<p style=\"text-align: right;\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\">签字：</span><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum14\" placeholder=\"自动控件|人事行政审批签字\" style=\"width:300px;display:inline-block;\" title=\"人事行政审批签字\" type=\"text\" xtype=\"xmacro\" /></p>\n			</td>\n		</tr>\n	</tbody>\n</table>\n\n<p style=\"text-align: center;\">&nbsp;</p>\n', '<div class=\'form-group\'><label style=\'line-height: 34px;\'>填表日期</label><input style=\'width:200px;float:right;\' title=\'填表日期\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"2\",\"format\":\"yyyy年MM月dd日\"}\' name=\'dataNum1\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|填表日期\'></div><div class=\'form-group\'><label style=\'line-height: 34px;\'>受理时间</label><input style=\'width:200px;float:right;\' title=\'受理时间\' defaultvalue=\'\'  xtype=\'xfetch\' model=\'{\"type\":\"1\",\"format\":\"YYYY年MM月DD日 hh时mm分\"}\' name=\'dataNum2\' type=\'text\' class=\'form-control\' placeholder=\'选择控件|受理时间\'></div><div class=\'form-group\'><label style=\'line-height: 34px;\'>受理人</label><input style=\'width:200px;float:right;\' title=\'受理人\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"13\",\"format\":null}\' name=\'dataNum3\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|受理人\'></div><div class=\'form-group\'><label style=\'line-height: 34px;\'>受理方式</label><select style=\'width:200px;float:right;\' title=\'受理方式\' defaultvalue=\'\' xtype=\'xselect\' model=\'[{\"vals\":\"1\",\"option\":\"电话\",\"checked\":false},{\"vals\":\"2\",\"option\":\"网络\",\"checked\":false},{\"vals\":\"3\",\"option\":\"其它\",\"checked\":false}]\' name=\'dataNum4\' type=\'text\' class=\'form-control\'><option value=\'1\'>电话</option><option value=\'2\'>网络</option><option value=\'3\'>其它</option></select></div><div class=\'form-group\'><label style=\'line-height: 34px;\'>联系人</label><input style=\'width:200px;float:right;\' title=\'联系人\' defaultvalue=\'\' xtype=\'xinput\' name=\'dataNum5\' type=\'text\' class=\'form-control\' placeholder=\'输入框|联系人\'></div><div class=\'form-group\'><label style=\'line-height: 34px;\'>电话</label><input style=\'width:200px;float:right;\' title=\'电话\' defaultvalue=\'\' xtype=\'xinput\' name=\'dataNum6\' type=\'text\' class=\'form-control\' placeholder=\'输入框|电话\'></div><div class=\'form-group\'><label style=\'line-height: 34px;\'>单位名称</label><input style=\'width:200px;float:right;\' title=\'单位名称\' defaultvalue=\'\' xtype=\'xinput\' name=\'dataNum7\' type=\'text\' class=\'form-control\' placeholder=\'输入框|单位名称\'></div><div class=\'form-group\'><label style=\'width:100%\'>值班事由</label><textarea title=\'值班事由\' defaultvalue=\'\' xtype=\'xtextarea\' name=\'dataNum8\' class=\'form-control\' placeholder=\'值班事由\'></textarea></div>', null, null, null, null, '85098050-4374-488D-BE01-66BCFD04D72A', null, '1', '2020-08-11 17:51:09', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_form` VALUES ('10', '21151864-0798-4927-BF30-6C36CD2AC2B4', '5', '外出申请单', 'outattend', '<p style=\"text-align: center;\"><span style=\"color: rgb(54, 96, 146);\"><strong><span style=\"font-size: 24px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\">外出登记</span></strong></span></p>\n\n<table align=\"center\" border=\"1\" class=\"td-min-height\" data-sort=\"sortDisabled\" style=\"border: 1px solid rgb(54, 96, 146); width: 650px;\">\n	<tbody>\n		<tr class=\"firstRow\">\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">申请人</span></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;13&quot;,&quot;format&quot;:null}\" name=\"dataNum1\" placeholder=\"自动控件|申请人\" style=\"\" title=\"申请人\" type=\"text\" xtype=\"xmacro\" /></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">申请部门</span></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;14&quot;,&quot;format&quot;:null}\" name=\"dataNum2\" placeholder=\"自动控件|申请部门\" style=\"\" title=\"申请部门\" type=\"text\" xtype=\"xmacro\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">申请时间</span></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;3&quot;,&quot;format&quot;:&quot;yyyy年MM月dd日 HH时mm分&quot;}\" name=\"dataNum3\" placeholder=\"自动控件|申请时间\" style=\"\" title=\"申请时间\" type=\"text\" xtype=\"xmacro\" /></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">职务</span></td>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;16&quot;,&quot;format&quot;:null}\" name=\"dataNum4\" placeholder=\"自动控件|职务\" style=\"\" title=\"职务\" type=\"text\" xtype=\"xmacro\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); background-color: rgb(219, 238, 243); word-break: break-all;\" valign=\"middle\"><span style=\"font-size: 16px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\">外出单位</span></td>\n			<td align=\"center\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum5\" placeholder=\"输入框|外出单位\" style=\"width:100%\" title=\"外出单位\" type=\"text\" xtype=\"xinput\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); background-color: rgb(219, 238, 243); word-break: break-all;\" valign=\"middle\"><span style=\"font-size: 16px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; text-align: -webkit-center; background-color: rgb(219, 238, 243);\">&nbsp; 外出开始时间&nbsp;&nbsp;</span></span></td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;1&quot;,&quot;format&quot;:&quot;YYYY年MM月DD日 hh时mm分&quot;}\" name=\"dataNum6\" placeholder=\"选择控件| 外出开始时间 \" style=\"\" title=\" 外出开始时间 \" type=\"text\" value=\"\" xtype=\"xfetch\" /></td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"font-size: 16px; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;;\">&nbsp; 外出结束时间&nbsp;&nbsp;</span></td>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;1&quot;,&quot;format&quot;:&quot;YYYY年MM月DD日 hh时mm分&quot;}\" name=\"dataNum7\" placeholder=\"选择控件| 外出结束时间\" style=\"\" title=\" 外出结束时间\" type=\"text\" value=\"\" xtype=\"xfetch\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" colspan=\"1\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); background-color: rgb(219, 238, 243); word-break: break-all;\" valign=\"middle\"><span style=\"font-family:微软雅黑, Microsoft YaHei\"><span style=\"font-size: 16px;\">&nbsp; &nbsp;外出地点</span></span></td>\n			<td align=\"left\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\"><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum8\" placeholder=\"输入框|外出地点\" style=\"width:100%\" title=\"外出地点\" type=\"text\" xtype=\"xinput\" /></td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"font-family:微软雅黑, Microsoft YaHei\"><span style=\"font-size: 16px;\">外出事由</span></span></td>\n			<td align=\"left\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\"><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum9\" placeholder=\"外出事由\" style=\"width:100%;height:100px\" title=\"外出事由\" xtype=\"xtextarea\"></textarea></td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">部门领导审批</span></td>\n			<td align=\"left\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\">\n			<p><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum10\" placeholder=\"部门领导审批意见\" style=\"width:100%;height:100px;\" title=\"部门领导审批意见\" xtype=\"xtextarea\"></textarea></p>\n\n			<p style=\"text-align: right;\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\">&nbsp; <span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp;</span><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp;</span>签字：</span><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum11\" placeholder=\"自动控件|部门领导审批签字\" style=\"width:300px;display:inline-block;\" title=\"部门领导审批签字\" type=\"text\" xtype=\"xmacro\" /></p>\n			</td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">CEO审批</span></td>\n			<td align=\"left\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\">\n			<p><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum12\" placeholder=\"CEO审批意见\" style=\"width:100%;height:100px;\" title=\"CEO审批意见\" xtype=\"xtextarea\"></textarea></p>\n\n			<p style=\"text-align: right;\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\">&nbsp; <span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp;</span>签字：</span><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;20&quot;,&quot;format&quot;:null}\" name=\"dataNum13\" placeholder=\"自动控件|CEO审批签字\" style=\"width:300px;display:inline-block;\" title=\"CEO审批签字\" type=\"text\" xtype=\"xmacro\" /></p>\n			</td>\n		</tr>\n		<tr>\n			<td align=\"center\" style=\"border-color: rgb(54, 96, 146); word-break: break-all; background-color: rgb(219, 238, 243);\" valign=\"middle\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">人事行政审批</span></td>\n			<td align=\"left\" colspan=\"3\" rowspan=\"1\" style=\"border-color: rgb(54, 96, 146); word-break: break-all;\" valign=\"middle\">\n			<p><textarea class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" name=\"dataNum14\" placeholder=\"人事行政审批意见\" style=\"width:100%;height:100px;\" title=\"人事行政审批意见\" xtype=\"xtextarea\"></textarea></p>\n\n			<p style=\"text-align: right;\"><span style=\"font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px; background-color: transparent;\"><span style=\"background-color: transparent; font-family: 微软雅黑, &quot;Microsoft YaHei&quot;; font-size: 16px;\">&nbsp;</span>签字：</span><input class=\"form-control\" datatype=\"undefined\" defaultvalue=\"\" model=\"{&quot;type&quot;:&quot;1&quot;,&quot;format&quot;:&quot;yyyy年&quot;}\" name=\"dataNum15\" placeholder=\"自动控件|人事行政审批签字\" style=\"width:300px;display:inline-block;\" title=\"人事行政审批签字\" type=\"text\" xtype=\"xmacro\" /></p>\n			</td>\n		</tr>\n	</tbody>\n</table>\n\n<p style=\"text-align: center;\">&nbsp;</p>\n', '<div class=\'form-group\'><label style=\'line-height: 34px;\'>申请人</label><input style=\'width:200px;float:right;\' title=\'申请人\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"13\",\"format\":null}\' name=\'dataNum1\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|申请人\'></div><div class=\'form-group\'><label style=\'line-height: 34px;\'>申请部门</label><input style=\'width:200px;float:right;\' title=\'申请部门\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"14\",\"format\":null}\' name=\'dataNum2\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|申请部门\'></div><div class=\'form-group\'><label style=\'line-height: 34px;\'>申请时间</label><input style=\'width:200px;float:right;\' title=\'申请时间\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"3\",\"format\":\"yyyy年MM月dd日 HH时mm分\"}\' name=\'dataNum3\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|申请时间\'></div><div class=\'form-group\'><label style=\'line-height: 34px;\'>职务</label><input style=\'width:200px;float:right;\' title=\'职务\' defaultvalue=\'\'  xtype=\'xmacro\' model=\'{\"type\":\"16\",\"format\":null}\' name=\'dataNum4\' type=\'text\' class=\'form-control\' placeholder=\'自动控件|职务\'></div><div class=\'form-group\'><label style=\'line-height: 34px;\'>外出单位</label><input style=\'width:200px;float:right;\' title=\'外出单位\' defaultvalue=\'\' xtype=\'xinput\' name=\'dataNum5\' type=\'text\' class=\'form-control\' placeholder=\'输入框|外出单位\'></div><div class=\'form-group\'><label style=\'line-height: 34px;\'> 外出开始时间 </label><input style=\'width:200px;float:right;\' title=\' 外出开始时间 \' defaultvalue=\'\'  xtype=\'xfetch\' model=\'{\"type\":\"1\",\"format\":\"YYYY年MM月DD日 hh时mm分\"}\' name=\'dataNum6\' type=\'text\' class=\'form-control\' placeholder=\'选择控件| 外出开始时间 \'></div><div class=\'form-group\'><label style=\'line-height: 34px;\'> 外出结束时间</label><input style=\'width:200px;float:right;\' title=\' 外出结束时间\' defaultvalue=\'\'  xtype=\'xfetch\' model=\'{\"type\":\"1\",\"format\":\"YYYY年MM月DD日 hh时mm分\"}\' name=\'dataNum7\' type=\'text\' class=\'form-control\' placeholder=\'选择控件| 外出结束时间\'></div><div class=\'form-group\'><label style=\'line-height: 34px;\'>外出地点</label><input style=\'width:200px;float:right;\' title=\'外出地点\' defaultvalue=\'\' xtype=\'xinput\' name=\'dataNum8\' type=\'text\' class=\'form-control\' placeholder=\'输入框|外出地点\'></div><div class=\'form-group\'><label style=\'width:100%\'>外出事由</label><textarea title=\'外出事由\' defaultvalue=\'\' xtype=\'xtextarea\' name=\'dataNum9\' class=\'form-control\' placeholder=\'外出事由\'></textarea></div>', null, null, null, null, '85098050-4374-488D-BE01-66BCFD04D72A', null, '1', '2020-08-11 21:00:23', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 
 -- ----------------------------
 -- Table structure for bpm_form_version
 -- ----------------------------
 DROP TABLE IF EXISTS `bpm_form_version`;
 CREATE TABLE `bpm_form_version` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `VERSION_ID` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `TITLE` varchar(100) DEFAULT NULL,
   `FORM_ID` varchar(50) DEFAULT NULL,
@@ -827,7 +840,7 @@ INSERT INTO `bpm_form_version` VALUES ('1', 'DDABE26E-1552-4139-8DB2-9E329D45ED3
 -- ----------------------------
 DROP TABLE IF EXISTS `bpm_list`;
 CREATE TABLE `bpm_list` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `RUN_ID` varchar(50) DEFAULT NULL COMMENT '流水号',
   `FLOW_TITLE` varchar(200) DEFAULT NULL COMMENT '流程标题',
   `END_TIME` varchar(50) DEFAULT NULL COMMENT '流程结束时间',
@@ -846,7 +859,7 @@ CREATE TABLE `bpm_list` (
   `ORG_ID` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE,
   KEY `ID` (`ID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of bpm_list
@@ -879,8 +892,8 @@ INSERT INTO `bpm_list` VALUES ('30', '5094B2BF-1056-432C-AEFB-CE94FDFBA9D1', '�
 INSERT INTO `bpm_list` VALUES ('31', '196146FD-DFB8-4019-8563-1E05108CB8C6', '信息中心-OA管理员-合同审批申请-2020-07-06 09:32:55', '', '0', 'admin,', '0', 'admin', '0', '05A6E7F6-BF36-4453-BF7B-D5C89F3A2142', '', null, null, null, '2020-07-06 09:32:57', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `bpm_list` VALUES ('32', '0608937E-CC16-44DD-B426-9AC97DFB75D5', '信息中心-OA管理员-合同审批申请-2020-07-06 09:35:09', '', '0', 'admin,', '0', 'admin,luyunyun', '0', '05A6E7F6-BF36-4453-BF7B-D5C89F3A2142', '', null, null, null, '2020-07-06 09:35:10', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `bpm_list` VALUES ('33', '04D0E05B-5C1B-4CF8-A8B9-4AF4EF013558', '信息中心-OA管理员-合同审批申请-2020-07-06 09:59:42', '', '0', 'admin,', '0', 'admin,luyunyun', '0', '05A6E7F6-BF36-4453-BF7B-D5C89F3A2142', '', null, null, null, '2020-07-06 09:59:43', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `bpm_list` VALUES ('34', '0838CA7D-43DE-403F-9B09-6EBD3E3D8EC6', '信息中心-OA管理员-合同审批申请-2020-07-06 10:00:25', '', '0', 'admin,', '0', 'admin', '0', '05A6E7F6-BF36-4453-BF7B-D5C89F3A2142', '', null, null, null, '2020-07-06 10:00:27', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `bpm_list` VALUES ('35', 'B3136A84-0F00-4067-85E3-692FF443AB3C', '信息中心-OA管理员-合同审批申请-2020-07-06 10:04:19', '', '0', 'admin,', '0', 'admin', '0', '05A6E7F6-BF36-4453-BF7B-D5C89F3A2142', '', null, null, null, '2020-07-06 10:04:20', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_list` VALUES ('34', '0838CA7D-43DE-403F-9B09-6EBD3E3D8EC6', '信息中心-OA管理员-合同审批申请-2020-07-06 10:00:25', '', '0', 'admin,', '0', 'zhanghaiyang,admin', '0', '05A6E7F6-BF36-4453-BF7B-D5C89F3A2142', '', null, null, null, '2020-07-06 10:00:27', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_list` VALUES ('35', 'B3136A84-0F00-4067-85E3-692FF443AB3C', '信息中心-OA管理员-合同审批申请-2020-07-06 10:04:19', '', '0', 'admin,', '0', 'zhanghaiyang,admin', '0', '05A6E7F6-BF36-4453-BF7B-D5C89F3A2142', '', null, null, null, '2020-07-06 10:04:20', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `bpm_list` VALUES ('36', 'D0D44EE7-1B50-4620-B2E2-5E3693E51973', '信息中心-OA管理员-用印申请-2020-07-06 10:04:53', '', '0', 'admin,', '0', 'admin', '0', 'CEB094C8-CFC9-4169-89B1-D20D355E69FA', '', null, null, null, '2020-07-06 10:04:54', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `bpm_list` VALUES ('37', 'C37979C0-F646-447B-9DDF-DFC97700075D', '信息中心-OA管理员-合同审批申请-2020-07-06 10:05:05', '', '0', 'admin,', '0', 'admin', '0', '05A6E7F6-BF36-4453-BF7B-D5C89F3A2142', '', null, null, null, '2020-07-06 10:05:07', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `bpm_list` VALUES ('38', '3DC82957-9E8C-4857-B6B9-DC3430A7563A', '信息中心-OA管理员-合同审批申请-2020-07-06 10:20:23', '', '0', 'admin,', '0', 'admin', '0', '05A6E7F6-BF36-4453-BF7B-D5C89F3A2142', '', null, null, null, '2020-07-06 10:20:24', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
@@ -910,15 +923,23 @@ INSERT INTO `bpm_list` VALUES ('61', '68B90404-8C86-4103-93FD-836051C7997C', '�
 INSERT INTO `bpm_list` VALUES ('62', '8A635E2D-2D44-4812-A762-6D2DEF61E32F', '信息中心-OA管理员-合同审批申请-2020-07-20 21:54:56', '', '0', 'admin,', '0', 'tangguanghui,liushaoquan,zhangxiaofei,admin', '0', '05A6E7F6-BF36-4453-BF7B-D5C89F3A2142', '', null, null, null, '2020-07-20 21:54:57', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `bpm_list` VALUES ('63', 'ED232123-EB61-432A-8012-877CEFCB2EAE', '信息中心-OA管理员-用印申请-2020-07-22 11:15:32', '', '0', 'admin,', '0', 'admin', '0', 'CEB094C8-CFC9-4169-89B1-D20D355E69FA', '', null, null, null, '2020-07-22 11:15:33', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `bpm_list` VALUES ('64', '8399AA12-FEC4-4062-A9F9-2847CEC4BFAD', '信息中心-OA管理员-合同审批申请-2020-07-22 11:22:34', '', '0', 'admin,', '0', 'admin', '0', '05A6E7F6-BF36-4453-BF7B-D5C89F3A2142', null, null, null, null, '2020-07-22 11:22:35', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_list` VALUES ('65', '950006B5-7298-46A8-B9AC-268744C06955', '信息中心-OA管理员-合同审批申请-2020-07-24 20:36:35', '', '0', 'admin,', '0', 'admin', '0', '05A6E7F6-BF36-4453-BF7B-D5C89F3A2142', '', null, null, null, '2020-07-24 20:36:36', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_list` VALUES ('66', '2FD3AC7D-EE2C-41C2-96B9-3B543676752B', '信息中心-OA管理员-合同审批申请-2020-07-25 19:04:36', '', '0', null, '0', 'admin', '0', '05A6E7F6-BF36-4453-BF7B-D5C89F3A2142', '', null, null, null, '2020-07-25 19:04:36', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_list` VALUES ('67', 'D3AB5CE9-5AE2-498C-8ACE-643BDCAD52B9', '信息中心-OA管理员-合同审批申请-2020-08-11 09:38:37', '', '0', 'admin,', '0', 'admin', '0', '05A6E7F6-BF36-4453-BF7B-D5C89F3A2142', null, null, null, null, '2020-08-11 09:38:39', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_list` VALUES ('68', '8C0727F6-3FAB-4AEC-97A3-9C21BAC6CB40', '测试', '', '0', 'admin,', '0', 'admin', '0', '688CA1D0-16F3-4CAE-8016-A8B148BF6161', '', null, null, null, '2020-08-11 20:05:53', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_list` VALUES ('69', 'EEDC1F2B-5B94-4045-ADF0-C2FD24E79D8B', '出差测试', '', '0', 'admin,', '0', 'admin', '0', '722515D9-05CF-427E-AE9C-04899794E82E', '', null, null, null, '2020-08-11 20:28:57', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_list` VALUES ('70', 'BA334508-7A38-4AE4-8B20-85378D158AD5', '加班测试', '', '0', 'admin,', '0', 'admin', '0', '6936773C-B83B-4EA9-82CC-CFD27E808027', '', null, null, null, '2020-08-11 23:24:18', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_list` VALUES ('71', '8D52FB20-A116-47EA-A524-A1CA6D6B346D', '值班流程测试', '', '0', 'admin,', '0', 'admin', '0', '69191F15-5029-41BB-9B74-5C84F8C58D33', '', null, null, null, '2020-08-11 23:29:32', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_list` VALUES ('72', 'E3B08F40-9CFE-4CFE-890C-8E62893F61AD', '外出测式', '', '0', 'admin,', '0', 'admin', '0', '1A79B4D8-8E53-4816-8A1D-E698AD7B89F6', '', null, null, null, '2020-08-11 23:51:14', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 
 -- ----------------------------
 -- Table structure for bpm_plugins_register
 -- ----------------------------
 DROP TABLE IF EXISTS `bpm_plugins_register`;
 CREATE TABLE `bpm_plugins_register` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `PLUGINS_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `TITLE` varchar(50) DEFAULT NULL,
   `PACK_NAME` varchar(500) DEFAULT NULL COMMENT '注要用于表示,在那个业务场景下',
   `CLASS_NAME` varchar(50) DEFAULT NULL,
@@ -941,10 +962,10 @@ INSERT INTO `bpm_plugins_register` VALUES ('1', 'C972C4B3-942B-4EAC-AE3E-77D3012
 -- ----------------------------
 DROP TABLE IF EXISTS `bpm_process`;
 CREATE TABLE `bpm_process` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `PROCESS_ID` varchar(50) DEFAULT NULL COMMENT '步骤唯一标识',
   `FLOW_ID` varchar(50) DEFAULT '' COMMENT 'BPM流程维一标识',
-  `SORT_NO` int(11) DEFAULT NULL COMMENT '排序字段',
+  `SORT_NO` int DEFAULT NULL COMMENT '排序字段',
   `PRCS_NAME` varchar(50) DEFAULT '' COMMENT '步骤名称',
   `NEXT_PRCS` text COMMENT '下一步骤集合',
   `PRCS_TYPE` varchar(2) DEFAULT NULL COMMENT '步骤类型1:开始2:结束,3为普通..',
@@ -997,7 +1018,7 @@ CREATE TABLE `bpm_process` (
   `ORG_ID` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE,
   KEY `ID` (`ID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of bpm_process
@@ -1016,18 +1037,28 @@ INSERT INTO `bpm_process` VALUES ('11', '7BBE2765-DEAC-4EEE-ACB2-3F0EB495E7FF', 
 INSERT INTO `bpm_process` VALUES ('12', '0D777990-FFD0-4871-AF6F-13E798DD2C0D', 'ECA79619-A2E5-4B3C-B48E-2DC63C4121BB', null, '部门领导审批', '66BDBA14-2468-4621-9A99-8D8876EED8EC,0F23CBDB-D863-4634-A7C8-BE8A75EDCBBE,7BBE2765-DEAC-4EEE-ACB2-3F0EB495E7FF', '3', '205', '12', '1', null, 'luyunyun,liushaoquan,zhangxiaofei,wangfang', null, null, 'dataNum8,dataNum9,dataNum10', null, '{}', '0', '1', '[{\"prcsTo\":\"7BBE2765-DEAC-4EEE-ACB2-3F0EB495E7FF\",\"condition\":[],\"exp\":\"\"},{\"prcsTo\":\"66BDBA14-2468-4621-9A99-8D8876EED8EC\",\"condition\":[],\"exp\":\"\"},{\"prcsTo\":\"0F23CBDB-D863-4634-A7C8-BE8A75EDCBBE\",\"condition\":[],\"exp\":\"\"}]', '', null, null, null, '0D777990-FFD0-4871-AF6F-13E798DD2C0D', '0', '1', '0', '1', '0.00', '', '', '', null, '1', '', '', '', '', '0', '0', '1', 'wangfang', '', '1', '1', '0', '0', '{\"webSms\":\"0\",\"mobileSms\":\"0\",\"appSms\":\"0\",\"webMail\":\"0\",\"ddSms\":\"0\"}', '{\"webSms\":\"0\",\"mobileSms\":\"0\",\"appSms\":\"0\",\"webMail\":\"0\",\"ddSms\":\"0\"}', '{\"webSms\":\"0\",\"mobileSms\":\"0\",\"appSms\":\"0\",\"webMail\":\"0\",\"ddSms\":\"0\"}', 'admin', '2020-03-20 18:35:48', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `bpm_process` VALUES ('13', '66BDBA14-2468-4621-9A99-8D8876EED8EC', 'ECA79619-A2E5-4B3C-B48E-2DC63C4121BB', null, 'CEO审批', '0F23CBDB-D863-4634-A7C8-BE8A75EDCBBE', '3', '214', '403', '0', null, 'zhanghaiyang', '', null, 'dataNum11,dataNum12,dataNum13', null, null, '0', '1', '[{\"prcsTo\":\"0F23CBDB-D863-4634-A7C8-BE8A75EDCBBE\",\"condition\":[],\"exp\":\"\"}]', '', null, null, null, '0D777990-FFD0-4871-AF6F-13E798DD2C0D', '0', '1', '0', '1', '0.00', '', '', '', null, '1', '', '', '', '', '0', '0', '0', null, '', '1', '1', '0', '0', null, null, null, 'admin', '2020-03-20 18:36:01', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `bpm_process` VALUES ('14', '0F23CBDB-D863-4634-A7C8-BE8A75EDCBBE', 'ECA79619-A2E5-4B3C-B48E-2DC63C4121BB', null, '人事行政审批', '7BBE2765-DEAC-4EEE-ACB2-3F0EB495E7FF', '3', '420', '14', '0', null, '@all', null, null, 'dataNum14,dataNum15,dataNum16', null, null, '0', '1', '[{\"prcsTo\":\"7BBE2765-DEAC-4EEE-ACB2-3F0EB495E7FF\",\"condition\":[],\"exp\":\"\"}]', '0', 'admin', null, null, '0D777990-FFD0-4871-AF6F-13E798DD2C0D', '0', '1', '0', '1', '0.00', '', '', '', null, '1', '', '', '', '', '0', '0', '0', null, '', '1', '1', '0', '0', null, null, null, 'admin', '2020-03-20 18:36:11', '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `bpm_process` VALUES ('15', 'ACE2A30B-2582-40AE-B3AD-06896AF22BCE', '05A6E7F6-BF36-4453-BF7B-D5C89F3A2142', '1', '开始', '1FF3676A-7942-4761-98E3-EFF88266AFD4', '1', '50', '180', null, null, '@all', null, null, 'dataNum1,dataNum2,dataNum3,dataNum4,dataNum5,dataNum6,dataNum7,dataNum8,dataNum9,dataNum10,dataNum11,dataNum12,dataNum13,dataNum14,dataNum15,dataNum16,dataNum17,dataNum18,dataNum19,dataNum20,dataNum30,dataNum31,dataNum32', '{\"dataNum19\":[{\"optpriv\":\"1\",\"childName\":\"name\"},{\"optpriv\":\"1\",\"childName\":\"quantity\"},{\"optpriv\":\"1\",\"childName\":\"price\"},{\"optpriv\":\"1\",\"childName\":\"tiaokuan\"},{\"optpriv\":\"1\",\"childName\":\"remark\"},{\"optpriv\":\"1\",\"childName\":\"xiaoji\"}]}', '{\"dataNum19\":{\"addpriv\":\"1\",\"delpriv\":\"1\"}}', '0', '1', '[{\"prcsTo\":\"1FF3676A-7942-4761-98E3-EFF88266AFD4\",\"condition\":[],\"exp\":\"\"}]', '', null, null, null, '1FF3676A-7942-4761-98E3-EFF88266AFD4', '0', '4', '0', '1', null, '', '', '', null, '1', '', '', '', '', '0', '0', '2', 'admin', '', '1', null, '1', '0', '{\"webSms\":\"0\",\"mobileSms\":\"0\",\"appSms\":\"0\",\"webMail\":\"0\",\"ddSms\":\"1\",\"wxSms\":\"1\"}', '{\"webSms\":\"0\",\"mobileSms\":\"0\",\"appSms\":\"0\",\"webMail\":\"0\",\"ddSms\":\"1\",\"wxSms\":\"1\"}', '{\"webSms\":\"0\",\"mobileSms\":\"0\",\"appSms\":\"0\",\"webMail\":\"0\",\"ddSms\":\"1\",\"wxSms\":\"1\"}', 'admin', '2020-03-27 15:15:41', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_process` VALUES ('15', 'ACE2A30B-2582-40AE-B3AD-06896AF22BCE', '05A6E7F6-BF36-4453-BF7B-D5C89F3A2142', '1', '开始', '1FF3676A-7942-4761-98E3-EFF88266AFD4', '1', '50', '180', null, null, '@all', null, null, 'dataNum1,dataNum2,dataNum3,dataNum4,dataNum5,dataNum6,dataNum7,dataNum8,dataNum9,dataNum10,dataNum11,dataNum12,dataNum13,dataNum14,dataNum15,dataNum16,dataNum17,dataNum18,dataNum19,dataNum20,dataNum30,dataNum31,dataNum32', '{\"dataNum19\":[{\"optpriv\":\"1\",\"childName\":\"name\"},{\"optpriv\":\"1\",\"childName\":\"quantity\"},{\"optpriv\":\"1\",\"childName\":\"price\"},{\"optpriv\":\"1\",\"childName\":\"tiaokuan\"},{\"optpriv\":\"1\",\"childName\":\"remark\"},{\"optpriv\":\"1\",\"childName\":\"xiaoji\"},{\"optpriv\":\"1\",\"childName\":\"xt\"}]}', '{\"dataNum19\":{\"addpriv\":\"1\",\"delpriv\":\"1\"}}', '0', '1', '[{\"prcsTo\":\"1FF3676A-7942-4761-98E3-EFF88266AFD4\",\"condition\":[],\"exp\":\"\"}]', '', null, null, null, '1FF3676A-7942-4761-98E3-EFF88266AFD4', '0', '4', '0', '1', null, '', '', '', null, '1', '', '', '', '', '0', '0', '2', 'admin', '', '1', null, '1', '0', '{\"webSms\":\"0\",\"mobileSms\":\"0\",\"appSms\":\"0\",\"webMail\":\"0\",\"ddSms\":\"1\",\"wxSms\":\"1\"}', '{\"webSms\":\"0\",\"mobileSms\":\"0\",\"appSms\":\"0\",\"webMail\":\"0\",\"ddSms\":\"1\",\"wxSms\":\"1\"}', '{\"webSms\":\"0\",\"mobileSms\":\"0\",\"appSms\":\"0\",\"webMail\":\"0\",\"ddSms\":\"1\",\"wxSms\":\"1\"}', 'admin', '2020-03-27 15:15:41', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `bpm_process` VALUES ('16', '39F9D887-48EF-46A2-9AD1-0703BA45B1B2', '05A6E7F6-BF36-4453-BF7B-D5C89F3A2142', '999', '结束', null, '2', '655', '22', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '1', null, null, null, null, '0', null, null, null, null, null, null, '0', null, null, null, null, 'admin', '2020-03-27 15:15:41', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `bpm_process` VALUES ('17', '1FF3676A-7942-4761-98E3-EFF88266AFD4', '05A6E7F6-BF36-4453-BF7B-D5C89F3A2142', null, '部门领导审批', '02848267-9C54-4502-8708-DE5FA0BE1AEB', '3', '264', '22', '0', null, 'admin,luyunyun,liushaoquan,zhangxiaofei,wangfang', null, null, 'dataNum21,dataNum23,dataNum22', '{\"dataNum19\":[{\"optpriv\":\"0\",\"childName\":\"tiaokuan\"},{\"optpriv\":\"0\",\"childName\":\"remark\"}]}', '{\"dataNum19\":{\"addpriv\":\"0\",\"delpriv\":\"0\"}}', '0', '1', '[{\"prcsTo\":\"02848267-9C54-4502-8708-DE5FA0BE1AEB\",\"condition\":[],\"exp\":\"\"}]', '1', 'tangguanghui', 'liushaoquan,zhangxiaofei,tangguanghui', null, '1FF3676A-7942-4761-98E3-EFF88266AFD4', '0', '1', '0', '1', '0.00', '', '', '', null, '1', '', '', '', '', '0', '1', '0', null, '', '1', '1', '0', '0', '{\"webSms\":\"2\",\"mobileSms\":\"0\",\"appSms\":\"0\",\"webMail\":\"0\",\"ddSms\":\"1\",\"wxSms\":\"0\"}', '{\"webSms\":\"2\",\"mobileSms\":\"0\",\"appSms\":\"0\",\"webMail\":\"0\",\"ddSms\":\"1\",\"wxSms\":\"0\"}', '{\"webSms\":\"2\",\"mobileSms\":\"0\",\"appSms\":\"0\",\"webMail\":\"0\",\"ddSms\":\"1\",\"wxSms\":\"2\"}', 'admin', '2020-03-27 15:16:04', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `bpm_process` VALUES ('18', '02848267-9C54-4502-8708-DE5FA0BE1AEB', '05A6E7F6-BF36-4453-BF7B-D5C89F3A2142', null, 'CEO审批', '39F9D887-48EF-46A2-9AD1-0703BA45B1B2', '3', '445', '185', '0', null, 'zhanghaiyang', null, null, 'dataNum24,dataNum25,dataNum26', '{\"dataNum19\":[{\"optpriv\":\"0\",\"childName\":\"tiaokuan\"},{\"optpriv\":\"0\",\"childName\":\"remark\"}]}', '{\"dataNum19\":{\"addpriv\":\"0\",\"delpriv\":\"0\"}}', '0', '1', '[{\"prcsTo\":\"39F9D887-48EF-46A2-9AD1-0703BA45B1B2\",\"condition\":[],\"exp\":\"\"}]', '', null, null, null, '1FF3676A-7942-4761-98E3-EFF88266AFD4', '0', '1', '0', '1', '0.00', '', '', '', null, '1', '', '', '', '', '0', '0', '0', null, '', '1', '1', '0', '0', null, null, null, 'admin', '2020-03-27 15:16:14', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `bpm_process` VALUES ('20', 'CB2BC489-EF2A-4E15-B0E6-BED3E5343B9A', 'CEB094C8-CFC9-4169-89B1-D20D355E69FA', null, '子流程测试', 'B0174B80-6614-4F60-9B5A-677165B8BCAB', '6', '362', '428', '0', null, null, null, null, null, null, null, '0', '1', '[]', '4', null, null, null, '', '0', '1', '0', '1', '0.00', null, null, null, null, '1', null, null, null, null, '0', '0', '0', null, null, '1', '1', '0', '0', null, null, null, 'admin', '2020-06-21 10:26:03', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_process` VALUES ('21', '2481FE2E-6C67-498E-9FE6-9E7B8B3017E4', '688CA1D0-16F3-4CAE-8016-A8B148BF6161', '1', '开始', '2C5ACFF0-54DD-48D7-B44E-BE40A1747335', '1', '50', '180', null, null, '@all', null, null, 'dataNum1,dataNum2,dataNum3,dataNum4,dataNum5,dataNum6,dataNum7', null, '{}', '0', '1', '[{\"prcsTo\":\"2C5ACFF0-54DD-48D7-B44E-BE40A1747335\",\"condition\":[],\"exp\":\"\"}]', '', null, null, null, '', '0', '4', '0', '1', null, '', '', '', null, '1', '', '', '', '', '0', '0', '0', null, '', '1', null, '0', '0', '{\"webSms\":\"0\",\"mobileSms\":\"0\",\"appSms\":\"0\",\"webMail\":\"0\",\"ddSms\":\"0\",\"wxSms\":\"0\"}', '{\"webSms\":\"0\",\"mobileSms\":\"0\",\"appSms\":\"0\",\"webMail\":\"0\",\"ddSms\":\"0\",\"wxSms\":\"0\"}', '{\"webSms\":\"0\",\"mobileSms\":\"0\",\"appSms\":\"0\",\"webMail\":\"0\",\"ddSms\":\"0\",\"wxSms\":\"0\"}', 'admin', '2020-08-11 19:56:06', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_process` VALUES ('22', '2C5ACFF0-54DD-48D7-B44E-BE40A1747335', '688CA1D0-16F3-4CAE-8016-A8B148BF6161', '999', '结束', null, '2', '250', '180', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '1', null, null, null, null, '0', null, null, null, null, null, null, null, null, null, null, null, 'admin', '2020-08-11 19:56:06', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_process` VALUES ('23', '5E8723FC-DCCB-4B65-ADE3-D070C5AAB66F', '722515D9-05CF-427E-AE9C-04899794E82E', '1', '开始', 'FE9FBDE7-0BD8-4A7C-917D-6A2C120ADF25', '1', '50', '180', null, null, '@all', null, null, 'dataNum1,dataNum2,dataNum3,dataNum4,dataNum5,dataNum6,dataNum7,dataNum8,dataNum9', null, '{}', '0', '1', '[{\"prcsTo\":\"FE9FBDE7-0BD8-4A7C-917D-6A2C120ADF25\",\"condition\":[],\"exp\":\"\"}]', '', null, null, null, '', '0', '4', '0', '1', null, '', '', '', null, '1', '', '', '', '', '0', '0', '0', null, '', '1', null, '0', '0', '{\"webSms\":\"0\",\"mobileSms\":\"0\",\"appSms\":\"0\",\"webMail\":\"0\",\"ddSms\":\"0\",\"wxSms\":\"0\"}', '{\"webSms\":\"0\",\"mobileSms\":\"0\",\"appSms\":\"0\",\"webMail\":\"0\",\"ddSms\":\"0\",\"wxSms\":\"0\"}', '{\"webSms\":\"0\",\"mobileSms\":\"0\",\"appSms\":\"0\",\"webMail\":\"0\",\"ddSms\":\"0\",\"wxSms\":\"0\"}', 'admin', '2020-08-11 20:24:44', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_process` VALUES ('24', 'FE9FBDE7-0BD8-4A7C-917D-6A2C120ADF25', '722515D9-05CF-427E-AE9C-04899794E82E', '999', '结束', null, '2', '250', '180', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '1', null, null, null, null, '0', null, null, null, null, null, null, null, null, null, null, null, 'admin', '2020-08-11 20:24:44', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_process` VALUES ('25', '36C3B6C6-930A-4202-AA49-92016466E5AF', '6936773C-B83B-4EA9-82CC-CFD27E808027', '1', '开始', '98D55EEC-E677-4A78-A572-9D7507EC807E', '1', '50', '180', null, null, '@all', null, null, 'dataNum1,dataNum2,dataNum3,dataNum4,dataNum5,dataNum6,dataNum7,dataNum8', null, '{}', '0', '1', '[{\"prcsTo\":\"98D55EEC-E677-4A78-A572-9D7507EC807E\",\"condition\":[],\"exp\":\"\"}]', '', null, null, null, '', '0', '4', '0', '1', null, '', '', '', null, '1', '', '', '', '', '0', '0', '0', null, '', '1', null, '0', '0', '{\"webSms\":\"0\",\"mobileSms\":\"0\",\"appSms\":\"0\",\"webMail\":\"0\",\"ddSms\":\"0\",\"wxSms\":\"0\"}', '{\"webSms\":\"0\",\"mobileSms\":\"0\",\"appSms\":\"0\",\"webMail\":\"0\",\"ddSms\":\"0\",\"wxSms\":\"0\"}', '{\"webSms\":\"0\",\"mobileSms\":\"0\",\"appSms\":\"0\",\"webMail\":\"0\",\"ddSms\":\"0\",\"wxSms\":\"0\"}', 'admin', '2020-08-11 23:12:15', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_process` VALUES ('26', '98D55EEC-E677-4A78-A572-9D7507EC807E', '6936773C-B83B-4EA9-82CC-CFD27E808027', '999', '结束', null, '2', '250', '180', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '1', null, null, null, null, '0', null, null, null, null, null, null, null, null, null, null, null, 'admin', '2020-08-11 23:12:15', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_process` VALUES ('27', '93094915-B41F-4D36-8FA8-3322B85C2878', '69191F15-5029-41BB-9B74-5C84F8C58D33', '1', '开始', 'E9BD70FB-9C38-49EA-920B-D79A480619B7', '1', '50', '180', null, null, '@all', null, null, 'dataNum1,dataNum2,dataNum3,dataNum4,dataNum5,dataNum6,dataNum7,dataNum8', null, '{}', '0', '1', '[{\"prcsTo\":\"E9BD70FB-9C38-49EA-920B-D79A480619B7\",\"condition\":[],\"exp\":\"\"}]', '', null, null, null, '', '0', '4', '0', '1', null, '', '', '', null, '1', '', '', '', '', '0', '0', '0', null, '', '1', null, '0', '0', '{\"webSms\":\"0\",\"mobileSms\":\"0\",\"appSms\":\"0\",\"webMail\":\"0\",\"ddSms\":\"0\",\"wxSms\":\"0\"}', '{\"webSms\":\"0\",\"mobileSms\":\"0\",\"appSms\":\"0\",\"webMail\":\"0\",\"ddSms\":\"0\",\"wxSms\":\"0\"}', '{\"webSms\":\"0\",\"mobileSms\":\"0\",\"appSms\":\"0\",\"webMail\":\"0\",\"ddSms\":\"0\",\"wxSms\":\"0\"}', 'admin', '2020-08-11 23:27:59', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_process` VALUES ('28', 'E9BD70FB-9C38-49EA-920B-D79A480619B7', '69191F15-5029-41BB-9B74-5C84F8C58D33', '999', '结束', null, '2', '250', '180', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '1', null, null, null, null, '0', null, null, null, null, null, null, null, null, null, null, null, 'admin', '2020-08-11 23:27:59', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_process` VALUES ('29', '2DEFE33F-A983-4B68-AB20-CDDBD806A91B', '1A79B4D8-8E53-4816-8A1D-E698AD7B89F6', '1', '开始', '0DED20BE-15FE-4289-9904-635452A5255D', '1', '50', '180', null, null, '@all', null, null, 'dataNum1,dataNum2,dataNum3,dataNum4,dataNum5,dataNum6,dataNum7,dataNum8,dataNum9', null, '{}', '0', '1', '[{\"prcsTo\":\"0DED20BE-15FE-4289-9904-635452A5255D\",\"condition\":[],\"exp\":\"\"}]', '', null, null, null, '', '0', '4', '0', '1', null, '', '', '', null, '1', '', '', '', '', '0', '0', '0', null, '', '1', null, '0', '0', '{\"webSms\":\"0\",\"mobileSms\":\"0\",\"appSms\":\"0\",\"webMail\":\"0\",\"ddSms\":\"0\",\"wxSms\":\"0\"}', '{\"webSms\":\"0\",\"mobileSms\":\"0\",\"appSms\":\"0\",\"webMail\":\"0\",\"ddSms\":\"0\",\"wxSms\":\"0\"}', '{\"webSms\":\"0\",\"mobileSms\":\"0\",\"appSms\":\"0\",\"webMail\":\"0\",\"ddSms\":\"0\",\"wxSms\":\"0\"}', 'admin', '2020-08-11 23:50:35', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_process` VALUES ('30', '0DED20BE-15FE-4289-9904-635452A5255D', '1A79B4D8-8E53-4816-8A1D-E698AD7B89F6', '999', '结束', null, '2', '250', '180', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '1', null, null, null, null, '0', null, null, null, null, null, null, null, null, null, null, null, 'admin', '2020-08-11 23:50:35', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 
 -- ----------------------------
 -- Table structure for bpm_run_log
 -- ----------------------------
 DROP TABLE IF EXISTS `bpm_run_log`;
 CREATE TABLE `bpm_run_log` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `LOG_ID` varchar(50) DEFAULT NULL,
   `LOG_TYPE` varchar(5) DEFAULT NULL,
   `FLOW_ID` varchar(50) DEFAULT NULL,
@@ -1040,7 +1071,7 @@ CREATE TABLE `bpm_run_log` (
   `CREATE_USER` varchar(50) DEFAULT NULL,
   `ORG_ID` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=371 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=448 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of bpm_run_log
@@ -1370,13 +1401,90 @@ INSERT INTO `bpm_run_log` VALUES ('367', 'F2F23D91-9CAB-47DF-8A9D-07E09237E557',
 INSERT INTO `bpm_run_log` VALUES ('368', '768E654A-01FD-4D2D-AC51-146D0BAB5972', '6', 'CEB094C8-CFC9-4169-89B1-D20D355E69FA', null, null, null, '44E5B6C7-3210-4A38-871F-1A989616336A', '修改步骤设置', '2020-07-22 11:16:19', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `bpm_run_log` VALUES ('369', '38F09398-A99D-408B-B04E-9B2C0F3C1859', '4', 'CEB094C8-CFC9-4169-89B1-D20D355E69FA', null, null, null, null, '修改BPM流程的基本设置', '2020-07-22 11:17:23', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `bpm_run_log` VALUES ('370', '643F3048-1242-4ECD-8B70-1BEC2F8F751B', '4', '05A6E7F6-BF36-4453-BF7B-D5C89F3A2142', null, null, null, null, '修改BPM流程的基本设置', '2020-07-22 11:22:27', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('371', '1A26DF77-87FA-4A5C-AA9D-F1237A8D69D5', '3', null, '0B341ADA-203B-47F6-AC59-EA77A5528105', null, null, null, 'BPM表单内容修改成功', '2020-07-26 11:12:14', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('372', '9207C0A2-63B4-455D-BCEE-5EEB9A40BE56', '3', null, '0B341ADA-203B-47F6-AC59-EA77A5528105', null, null, null, 'BPM表单内容修改成功', '2020-07-26 11:12:51', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('373', '82488169-EC59-4DF5-A226-2FC6BD087708', '3', null, 'BB9B5E2C-55DA-41DE-BF75-4C93FD31B440', null, null, null, 'BPM表单内容修改成功', '2020-07-29 13:37:54', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('374', '450B8076-6612-493A-9BB1-358EAA430909', '3', null, 'BB9B5E2C-55DA-41DE-BF75-4C93FD31B440', null, null, null, 'BPM表单内容修改成功', '2020-08-09 01:23:50', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('375', '4C7EE6DF-77E3-4240-A06A-3681C41E8A81', '3', null, 'BB9B5E2C-55DA-41DE-BF75-4C93FD31B440', null, null, null, 'BPM表单内容修改成功', '2020-08-09 01:27:54', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('376', '140C74B1-3C16-410B-905D-46E83CBBF564', '3', null, 'BB9B5E2C-55DA-41DE-BF75-4C93FD31B440', null, null, null, 'BPM表单内容修改成功', '2020-08-09 11:13:37', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('377', 'E381815D-A87C-4DE5-92A3-A57FFC09642D', '3', null, 'BB9B5E2C-55DA-41DE-BF75-4C93FD31B440', null, null, null, 'BPM表单内容修改成功', '2020-08-09 11:14:49', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('378', 'C769308C-FED1-4E54-BA0F-574260DF5327', '3', null, 'BB9B5E2C-55DA-41DE-BF75-4C93FD31B440', null, null, null, 'BPM表单内容修改成功', '2020-08-09 11:26:37', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('379', 'C1128C43-9C1E-4BEC-BE7E-89B77C7F8B27', '3', null, 'BB9B5E2C-55DA-41DE-BF75-4C93FD31B440', null, null, null, 'BPM表单内容修改成功', '2020-08-09 13:54:30', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('380', '84E0395A-53F4-41CC-B9B7-BC63EF705D4D', '3', null, 'BB9B5E2C-55DA-41DE-BF75-4C93FD31B440', null, null, null, 'BPM表单内容修改成功', '2020-08-09 13:55:15', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('381', '1308D22D-DE03-4164-9DF0-09ED94D82DFE', '3', null, 'BB9B5E2C-55DA-41DE-BF75-4C93FD31B440', null, null, null, 'BPM表单内容修改成功', '2020-08-09 14:04:37', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('382', '729E0124-0B29-4D8B-A2EA-5534553435FB', '3', null, 'BB9B5E2C-55DA-41DE-BF75-4C93FD31B440', null, null, null, 'BPM表单内容修改成功', '2020-08-09 14:05:35', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('383', '596697CE-15AE-470D-9902-C3FFED83ED25', '3', null, 'BB9B5E2C-55DA-41DE-BF75-4C93FD31B440', null, null, null, 'BPM表单内容修改成功', '2020-08-09 14:43:50', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('384', '2A796C21-6876-4D40-8E0A-E7A2DEEFF117', '3', null, 'BB9B5E2C-55DA-41DE-BF75-4C93FD31B440', null, null, null, 'BPM表单内容修改成功', '2020-08-09 14:44:54', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('385', '1201840F-712A-4EE3-B74E-C18410D78489', '3', null, 'BB9B5E2C-55DA-41DE-BF75-4C93FD31B440', null, null, null, 'BPM表单内容修改成功', '2020-08-09 14:46:11', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('386', '1EE5083A-8922-450B-828E-8BFB58C124E0', '3', null, 'BB9B5E2C-55DA-41DE-BF75-4C93FD31B440', null, null, null, 'BPM表单内容修改成功', '2020-08-09 14:47:10', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('387', '4FB21E6F-7460-45B1-960C-871E4AA6C149', '3', null, 'BB9B5E2C-55DA-41DE-BF75-4C93FD31B440', null, null, null, 'BPM表单内容修改成功', '2020-08-09 14:50:06', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('388', '2209B7CA-4FE1-4BA0-9A57-FB16816AAC95', '3', null, 'BB9B5E2C-55DA-41DE-BF75-4C93FD31B440', null, null, null, 'BPM表单内容修改成功', '2020-08-09 14:51:30', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('389', '4A8AB987-194C-43CD-88D7-4EE7B098BCEF', '3', null, 'BB9B5E2C-55DA-41DE-BF75-4C93FD31B440', null, null, null, 'BPM表单内容修改成功', '2020-08-09 14:53:08', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('390', 'A00653F7-DFAD-48DA-B3CD-3D80292EDF1B', '3', null, 'BB9B5E2C-55DA-41DE-BF75-4C93FD31B440', null, null, null, 'BPM表单内容修改成功', '2020-08-09 14:53:28', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('391', '1E920FC0-4440-4E94-A716-FDF3D779DC6D', '6', '05A6E7F6-BF36-4453-BF7B-D5C89F3A2142', null, null, null, 'ACE2A30B-2582-40AE-B3AD-06896AF22BCE', '修改步骤设置', '2020-08-11 09:39:12', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('392', 'FC2AD0C9-DB01-4266-B3D4-7503DA3B8A4E', '3', null, '157E707A-C8FB-4695-B5FE-9FE09A09327F', null, null, null, 'BPM表单内容修改成功', '2020-08-11 17:57:05', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('393', '14147D72-226E-4AEA-85F3-8F0324A48EAF', '3', null, '157E707A-C8FB-4695-B5FE-9FE09A09327F', null, null, null, 'BPM表单内容修改成功', '2020-08-11 17:59:35', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('394', '3934B063-A1E6-41AF-AF5A-9A49AC173DF5', '3', null, '157E707A-C8FB-4695-B5FE-9FE09A09327F', null, null, null, 'BPM表单内容修改成功', '2020-08-11 18:12:45', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('395', 'A9C64CAC-D9F9-4B55-85F8-900A490EBA9B', '3', null, '157E707A-C8FB-4695-B5FE-9FE09A09327F', null, null, null, 'BPM表单内容修改成功', '2020-08-11 18:15:04', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('396', 'C1992A51-FF96-4D4C-8FD4-3B7E4F66866D', '3', null, '157E707A-C8FB-4695-B5FE-9FE09A09327F', null, null, null, 'BPM表单内容修改成功', '2020-08-11 18:15:55', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('397', 'B28E257C-97EF-4CCF-92D5-E0396BE8DCDA', '3', null, '157E707A-C8FB-4695-B5FE-9FE09A09327F', null, null, null, 'BPM表单内容修改成功', '2020-08-11 18:18:57', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('398', 'A298C293-8E6B-4557-BE76-80EE0EB11F32', '3', null, '157E707A-C8FB-4695-B5FE-9FE09A09327F', null, null, null, 'BPM表单内容修改成功', '2020-08-11 18:22:14', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('399', '9AACFB1C-4237-40B9-B863-1691A289AB31', '3', null, '157E707A-C8FB-4695-B5FE-9FE09A09327F', null, null, null, 'BPM表单内容修改成功', '2020-08-11 18:25:06', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('400', '2B5A1300-3A27-43B6-88D1-D34CA0F81098', '3', null, '157E707A-C8FB-4695-B5FE-9FE09A09327F', null, null, null, 'BPM表单内容修改成功', '2020-08-11 18:26:44', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('401', '2072FFCF-647C-47DF-B797-2E2AEA89F71F', '3', null, 'FE0471C1-F44D-4434-BFFB-D1712E689AD2', null, null, null, 'BPM表单内容修改成功', '2020-08-11 18:27:55', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('402', 'F40BB99E-50C9-4A73-AB57-FB6FFE69A1B2', '3', null, 'FE0471C1-F44D-4434-BFFB-D1712E689AD2', null, null, null, 'BPM表单内容修改成功', '2020-08-11 18:29:32', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('403', '716E372C-FFC7-4BEB-B010-3EFD5DA2C0C1', '3', null, 'FE0471C1-F44D-4434-BFFB-D1712E689AD2', null, null, null, 'BPM表单内容修改成功', '2020-08-11 18:30:55', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('404', '6A0C7A64-33FE-4D91-A219-55EBCB2D2EEB', '3', null, 'FE0471C1-F44D-4434-BFFB-D1712E689AD2', null, null, null, 'BPM表单内容修改成功', '2020-08-11 18:32:12', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('405', 'F301176C-3085-46B5-AF52-24EAA82F2C13', '3', null, 'FE0471C1-F44D-4434-BFFB-D1712E689AD2', null, null, null, 'BPM表单内容修改成功', '2020-08-11 18:33:01', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('406', 'C55D9B4D-463E-40A9-B161-B7D3977F545F', '3', null, 'FE0471C1-F44D-4434-BFFB-D1712E689AD2', null, null, null, 'BPM表单内容修改成功', '2020-08-11 18:36:44', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('407', '067130B7-323E-4C63-AB75-0357F029A45A', '3', null, 'FE0471C1-F44D-4434-BFFB-D1712E689AD2', null, null, null, 'BPM表单内容修改成功', '2020-08-11 18:39:37', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('408', '3A3BEC92-28AD-41D2-BA21-322D6A2446F7', '3', null, 'FE0471C1-F44D-4434-BFFB-D1712E689AD2', null, null, null, 'BPM表单内容修改成功', '2020-08-11 18:40:03', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('409', 'BF70CD1C-F83A-44A1-85A9-05E8977D231A', '3', null, '157E707A-C8FB-4695-B5FE-9FE09A09327F', null, null, null, 'BPM表单内容修改成功', '2020-08-11 18:40:16', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('410', '85B3B1A0-A15A-4A6B-962F-1AB2186A524F', '6', '688CA1D0-16F3-4CAE-8016-A8B148BF6161', null, null, null, '2481FE2E-6C67-498E-9FE6-9E7B8B3017E4', '修改步骤设置', '2020-08-11 19:56:30', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('411', 'FED672ED-D6F5-49A5-801D-3F027E597C31', '6', '688CA1D0-16F3-4CAE-8016-A8B148BF6161', null, null, null, '2481FE2E-6C67-498E-9FE6-9E7B8B3017E4', '修改步骤设置', '2020-08-11 19:57:09', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('412', '12C7866E-E2D7-4E46-8423-0C6840A8C6ED', '6', '688CA1D0-16F3-4CAE-8016-A8B148BF6161', null, null, null, '2481FE2E-6C67-498E-9FE6-9E7B8B3017E4', '修改步骤设置', '2020-08-11 19:57:45', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('413', '3D317095-2CF7-4758-9965-C4370359FDE2', '6', '688CA1D0-16F3-4CAE-8016-A8B148BF6161', null, null, null, '2481FE2E-6C67-498E-9FE6-9E7B8B3017E4', '修改步骤设置', '2020-08-11 19:58:04', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('414', 'A328FB20-1AE7-4006-BDE1-30F1E6212AD1', '6', '688CA1D0-16F3-4CAE-8016-A8B148BF6161', null, null, null, '2481FE2E-6C67-498E-9FE6-9E7B8B3017E4', '修改步骤设置', '2020-08-11 19:58:30', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('415', 'E5252861-4FAC-4101-A1D8-E453A0DCAEE6', '6', '722515D9-05CF-427E-AE9C-04899794E82E', null, null, null, '5E8723FC-DCCB-4B65-ADE3-D070C5AAB66F', '修改步骤设置', '2020-08-11 20:24:51', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('416', '42CBCE24-BE71-4291-A8AD-4CEC9BE12D62', '6', '722515D9-05CF-427E-AE9C-04899794E82E', null, null, null, '5E8723FC-DCCB-4B65-ADE3-D070C5AAB66F', '修改步骤设置', '2020-08-11 20:25:02', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('417', '9A82CA52-55C6-4FA9-97E1-C20A097104A3', '3', null, '157E707A-C8FB-4695-B5FE-9FE09A09327F', null, null, null, '修改表单js,style脚本', '2020-08-11 20:25:54', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('418', '5C56329A-2FF6-466B-AAA1-0FD60A93EE14', '3', null, '157E707A-C8FB-4695-B5FE-9FE09A09327F', null, null, null, 'BPM表单内容修改成功', '2020-08-11 20:27:23', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('419', '96E69998-F899-4F66-BA34-75CDC12BBC19', '3', null, '157E707A-C8FB-4695-B5FE-9FE09A09327F', null, null, null, 'BPM表单内容修改成功', '2020-08-11 20:28:24', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('420', '9030ABBB-8BBB-455E-BB11-5ED71E1A20D9', '3', null, '8A132829-7994-4C7F-81D8-857043D052C9', null, null, null, 'BPM表单内容修改成功', '2020-08-11 20:54:04', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('421', '0DEFF321-A222-49DE-9B68-645FAF5DF47C', '3', null, '6E027903-DD60-488B-8687-44AC65258324', null, null, null, 'BPM表单内容修改成功', '2020-08-11 20:58:39', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('422', 'AF53D7DC-0558-437F-8E27-985938CDB8D0', '3', null, '21151864-0798-4927-BF30-6C36CD2AC2B4', null, null, null, 'BPM表单内容修改成功', '2020-08-11 21:04:13', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('423', 'A8DB7D12-A5DC-47A3-B58F-DDFE1C3011EA', '3', null, '8A132829-7994-4C7F-81D8-857043D052C9', null, null, null, 'BPM表单内容修改成功', '2020-08-11 22:58:46', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('424', 'BEC91913-6CB0-4AE2-8627-959B0A01BE69', '3', null, '8A132829-7994-4C7F-81D8-857043D052C9', null, null, null, 'BPM表单内容修改成功', '2020-08-11 22:59:12', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('425', '700C78FB-F40E-4C27-987C-189E7F48CFEC', '3', null, '6E027903-DD60-488B-8687-44AC65258324', null, null, null, 'BPM表单内容修改成功', '2020-08-11 23:03:21', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('426', 'B780A22F-14FC-4542-975F-7D89BE0189DA', '3', null, '6E027903-DD60-488B-8687-44AC65258324', null, null, null, 'BPM表单内容修改成功', '2020-08-11 23:03:38', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('427', 'EF16499E-8C1B-462E-85CC-FDCB6687EEF9', '3', null, '6E027903-DD60-488B-8687-44AC65258324', null, null, null, 'BPM表单内容修改成功', '2020-08-11 23:03:52', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('428', '6B0B39C1-ADA7-4FAC-90C2-90C8EFFFF98F', '3', null, '8A132829-7994-4C7F-81D8-857043D052C9', null, null, null, 'BPM表单内容修改成功', '2020-08-11 23:04:15', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('429', 'E466E48D-7E62-4028-A8DB-322ABC32DB08', '3', null, '8A132829-7994-4C7F-81D8-857043D052C9', null, null, null, 'BPM表单内容修改成功', '2020-08-11 23:04:43', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('430', '05F0C83B-50F7-4205-833B-B4A63B7F5E9B', '3', null, 'FE0471C1-F44D-4434-BFFB-D1712E689AD2', null, null, null, 'BPM表单内容修改成功', '2020-08-11 23:05:13', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('431', '80C99D9D-D0F0-41DD-BE7B-ED9D52BFF986', '3', null, '157E707A-C8FB-4695-B5FE-9FE09A09327F', null, null, null, 'BPM表单内容修改成功', '2020-08-11 23:05:42', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('432', '69F2B8FA-3779-4F42-8FA7-5EC81579A965', '3', null, '21151864-0798-4927-BF30-6C36CD2AC2B4', null, null, null, 'BPM表单内容修改成功', '2020-08-11 23:10:23', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('433', '247C9027-7E9F-4101-80D1-B8570C3BCBEC', '4', '722515D9-05CF-427E-AE9C-04899794E82E', null, null, null, null, '修改BPM流程的基本设置', '2020-08-11 23:11:37', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('434', 'BC61BE08-FBBF-49CD-98C1-BDCD863E265B', '4', '688CA1D0-16F3-4CAE-8016-A8B148BF6161', null, null, null, null, '修改BPM流程的基本设置', '2020-08-11 23:11:43', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('435', '5DB88F38-6DCA-481C-BAD0-81E109BE1896', '4', 'CEB094C8-CFC9-4169-89B1-D20D355E69FA', null, null, null, null, '修改BPM流程的基本设置', '2020-08-11 23:11:49', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('436', '1E77DC55-18B1-4CEE-83C3-5B145398699A', '4', '04F67E55-ECA5-47F5-9CF8-140626AC69B1', null, null, null, null, '修改BPM流程的基本设置', '2020-08-11 23:12:00', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('437', 'FCBA8FCD-7296-4B50-AC95-78ADEE683B91', '4', '05A6E7F6-BF36-4453-BF7B-D5C89F3A2142', null, null, null, null, '修改BPM流程的基本设置', '2020-08-11 23:12:05', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('438', 'AEB42D88-0BFA-4D1E-A417-455057655B93', '4', 'ECA79619-A2E5-4B3C-B48E-2DC63C4121BB', null, null, null, null, '修改BPM流程的基本设置', '2020-08-11 23:12:11', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('439', '93C57329-06B9-4DFD-981E-D150C0D4B985', '6', '6936773C-B83B-4EA9-82CC-CFD27E808027', null, null, null, '36C3B6C6-930A-4202-AA49-92016466E5AF', '修改步骤设置', '2020-08-11 23:12:37', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('440', '38928110-3FF6-41C6-87BB-80713432E9C0', '6', '6936773C-B83B-4EA9-82CC-CFD27E808027', null, null, null, '36C3B6C6-930A-4202-AA49-92016466E5AF', '修改步骤设置', '2020-08-11 23:12:47', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('441', 'DF4367CC-351E-4D2B-82E8-4A6B0A9D5B12', '6', '688CA1D0-16F3-4CAE-8016-A8B148BF6161', null, null, null, '2481FE2E-6C67-498E-9FE6-9E7B8B3017E4', '修改步骤设置', '2020-08-11 23:12:57', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('442', '423D6E6A-D511-4B7D-B6B3-6FED9EEE2679', '3', null, '8A132829-7994-4C7F-81D8-857043D052C9', null, null, null, 'BPM表单内容修改成功', '2020-08-11 23:26:13', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('443', 'ECC67EA4-F698-46FB-B51B-58060235B746', '6', '69191F15-5029-41BB-9B74-5C84F8C58D33', null, null, null, '93094915-B41F-4D36-8FA8-3322B85C2878', '修改步骤设置', '2020-08-11 23:28:12', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('444', 'A2D38007-6890-4537-90E3-E04787CCD16E', '6', '69191F15-5029-41BB-9B74-5C84F8C58D33', null, null, null, '93094915-B41F-4D36-8FA8-3322B85C2878', '修改步骤设置', '2020-08-11 23:28:19', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('445', '71B563C1-F13E-4F84-8D12-9FB567829665', '4', '1A79B4D8-8E53-4816-8A1D-E698AD7B89F6', null, null, null, null, '修改BPM流程的基本设置', '2020-08-11 23:50:32', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('446', 'EF76529E-F730-416A-AF1B-F7A041F857BE', '6', '1A79B4D8-8E53-4816-8A1D-E698AD7B89F6', null, null, null, '2DEFE33F-A983-4B68-AB20-CDDBD806A91B', '修改步骤设置', '2020-08-11 23:50:47', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_log` VALUES ('447', '45D138CA-8C52-40F1-A4DE-880DB8C49CFA', '6', '1A79B4D8-8E53-4816-8A1D-E698AD7B89F6', null, null, null, '2DEFE33F-A983-4B68-AB20-CDDBD806A91B', '修改步骤设置', '2020-08-11 23:50:55', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 
 -- ----------------------------
 -- Table structure for bpm_run_process
 -- ----------------------------
 DROP TABLE IF EXISTS `bpm_run_process`;
 CREATE TABLE `bpm_run_process` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `RUN_PROCESS_ID` varchar(50) DEFAULT NULL COMMENT '执行步骤的唯一标识',
   `RUN_ID` varchar(50) DEFAULT NULL COMMENT '流程流水号',
   `PROCESS_ID` varchar(50) DEFAULT NULL COMMENT '系统设计的步骤号',
@@ -1398,7 +1506,7 @@ CREATE TABLE `bpm_run_process` (
   `ORG_ID` varchar(50) DEFAULT NULL,
   KEY `ID` (`ID`) USING BTREE,
   KEY `RUN_ID` (`RUN_ID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=134 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=144 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of bpm_run_process
@@ -1472,10 +1580,10 @@ INSERT INTO `bpm_run_process` VALUES ('68', 'D39BA791-07BE-4D08-8BFD-727F6668148
 INSERT INTO `bpm_run_process` VALUES ('69', '4DA3B913-B532-4AB4-BA67-650381E399B0', '04D0E05B-5C1B-4CF8-A8B9-4AF4EF013558', 'ACE2A30B-2582-40AE-B3AD-06896AF22BCE', '0', 'admin', 'admin', '2020-07-06 09:59:43', '2020-07-06 09:59:43', '2020-07-06 09:59:54', '1', '1', '<p><br></p>', null, null, null, '', '77946EAD-75A8-49B1-9578-BAFBFC98F211', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `bpm_run_process` VALUES ('70', 'B63B8909-C053-43DB-A3F3-D3610AC375DF', '04D0E05B-5C1B-4CF8-A8B9-4AF4EF013558', '1FF3676A-7942-4761-98E3-EFF88266AFD4', '0', 'luyunyun', 'admin', '2020-07-17 17:01:56', null, null, null, '0', null, null, null, null, null, '4DA3B913-B532-4AB4-BA67-650381E399B0', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `bpm_run_process` VALUES ('71', '29607A0E-9BED-418D-8622-67744B69C39B', '0838CA7D-43DE-403F-9B09-6EBD3E3D8EC6', 'ACE2A30B-2582-40AE-B3AD-06896AF22BCE', '0', 'admin', 'admin', '2020-07-06 10:00:27', '2020-07-06 10:00:27', '2020-07-06 10:00:38', '1', '1', '<p><br></p>', null, null, null, '', 'E1732A79-F5A5-4C37-B6C5-2164BBCC9245', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `bpm_run_process` VALUES ('72', 'A48B493D-C628-4CA4-9684-F606872FDBB0', '0838CA7D-43DE-403F-9B09-6EBD3E3D8EC6', '1FF3676A-7942-4761-98E3-EFF88266AFD4', '0', 'admin', 'admin', '2020-07-06 10:00:38', '2020-07-23 18:59:34', null, '1', '0', '<p><br></p>', null, null, null, '', '29607A0E-9BED-418D-8622-67744B69C39B', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_process` VALUES ('72', 'A48B493D-C628-4CA4-9684-F606872FDBB0', '0838CA7D-43DE-403F-9B09-6EBD3E3D8EC6', '1FF3676A-7942-4761-98E3-EFF88266AFD4', '0', 'admin', 'admin', '2020-07-06 10:00:38', '2020-07-27 23:07:34', '2020-07-27 23:07:47', '1', '1', '<p>还可以这样</p>', null, null, null, '', '29607A0E-9BED-418D-8622-67744B69C39B', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `bpm_run_process` VALUES ('73', '676C75F7-796B-49A8-9AA5-E3DA7E2A057C', 'B3136A84-0F00-4067-85E3-692FF443AB3C', 'ACE2A30B-2582-40AE-B3AD-06896AF22BCE', '0', 'admin', 'admin', '2020-07-06 10:04:20', '2020-07-06 10:04:20', '2020-07-06 10:04:33', '1', '1', '<p><br></p>', null, null, null, '', '86DE6E4D-220B-4A32-B4A2-868CC238AFA6', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `bpm_run_process` VALUES ('74', 'C967C852-A272-428B-A650-8ACB5F056023', 'B3136A84-0F00-4067-85E3-692FF443AB3C', '1FF3676A-7942-4761-98E3-EFF88266AFD4', '0', 'admin', 'admin', '2020-07-06 10:04:33', '2020-07-18 23:58:35', null, '1', '0', '<p><br></p>', null, null, null, '', '676C75F7-796B-49A8-9AA5-E3DA7E2A057C', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `bpm_run_process` VALUES ('75', '8FD6EDE3-833D-4B30-B19E-FB4D3F364291', 'D0D44EE7-1B50-4620-B2E2-5E3693E51973', '44E5B6C7-3210-4A38-871F-1A989616336A', '0', 'admin', 'admin', '2020-07-06 10:04:54', '2020-07-06 10:04:54', null, '1', '0', '<p><br></p>', null, null, null, '', '4CDAB4A3-C954-4572-8215-37B4D03F0BB4', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_process` VALUES ('74', 'C967C852-A272-428B-A650-8ACB5F056023', 'B3136A84-0F00-4067-85E3-692FF443AB3C', '1FF3676A-7942-4761-98E3-EFF88266AFD4', '0', 'admin', 'admin', '2020-07-06 10:04:33', '2020-07-27 23:07:50', '2020-07-27 23:08:00', '1', '1', '<p>咯模糊</p>', null, null, null, '', '676C75F7-796B-49A8-9AA5-E3DA7E2A057C', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_process` VALUES ('75', '8FD6EDE3-833D-4B30-B19E-FB4D3F364291', 'D0D44EE7-1B50-4620-B2E2-5E3693E51973', '44E5B6C7-3210-4A38-871F-1A989616336A', '0', 'admin', 'admin', '2020-07-06 10:04:54', '2020-07-27 23:12:23', null, '1', '0', '<p><br></p>', null, null, null, '', '4CDAB4A3-C954-4572-8215-37B4D03F0BB4', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `bpm_run_process` VALUES ('76', '178308E0-AA0A-4E07-98A8-CA0BADDB85B0', 'C37979C0-F646-447B-9DDF-DFC97700075D', 'ACE2A30B-2582-40AE-B3AD-06896AF22BCE', '0', 'admin', 'admin', '2020-07-06 10:05:07', '2020-07-06 10:05:07', '2020-07-06 10:05:15', '1', '1', '<p><br></p>', null, null, null, '', '8C828969-BD4B-410E-9BA5-B1A3A6359B19', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `bpm_run_process` VALUES ('77', 'B99869AD-5F9E-48BD-9316-B3AC44DBFCC3', 'C37979C0-F646-447B-9DDF-DFC97700075D', '1FF3676A-7942-4761-98E3-EFF88266AFD4', '0', 'admin', 'admin', '2020-07-06 10:05:15', null, null, null, '0', null, null, null, null, null, '178308E0-AA0A-4E07-98A8-CA0BADDB85B0', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `bpm_run_process` VALUES ('78', '7ADC5D1B-B6A3-4DF0-8231-3091158356AC', '3DC82957-9E8C-4857-B6B9-DC3430A7563A', 'ACE2A30B-2582-40AE-B3AD-06896AF22BCE', '0', 'admin', 'admin', '2020-07-06 10:20:24', '2020-07-06 10:20:24', '2020-07-06 10:20:36', '1', '1', '<p><br></p>', null, null, null, '', 'F35BCCF0-22E8-42BF-83DD-D122C8107D0B', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
@@ -1516,9 +1624,9 @@ INSERT INTO `bpm_run_process` VALUES ('112', '7EBA9D38-B37D-4B25-B22F-444E49D3E9
 INSERT INTO `bpm_run_process` VALUES ('113', 'AF80CA32-8BFD-4046-8ED4-EBF38FFB5513', 'B135936F-BB53-4CCE-93C7-2D9BEC253A2C', 'ACE2A30B-2582-40AE-B3AD-06896AF22BCE', '0', 'admin', 'admin', '2020-07-06 15:17:37', '2020-07-06 15:17:37', '2020-07-06 15:17:51', '1', '1', '<p><br></p>', null, null, null, '', 'C29A35A9-612C-4B28-912F-7AB595F01741', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `bpm_run_process` VALUES ('114', '3D0B2A35-B03F-4141-8949-3930F948B8D7', 'B135936F-BB53-4CCE-93C7-2D9BEC253A2C', '1FF3676A-7942-4761-98E3-EFF88266AFD4', '0', 'admin', 'admin', '2020-07-06 15:17:51', null, null, null, '0', null, null, null, null, null, 'AF80CA32-8BFD-4046-8ED4-EBF38FFB5513', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `bpm_run_process` VALUES ('115', 'DB28B246-05FE-47CB-9CCF-F49D41D29477', '2D5DCED2-7CE5-41E7-839A-4622D777CFAC', 'ACE2A30B-2582-40AE-B3AD-06896AF22BCE', '0', 'admin', 'admin', '2020-07-06 15:22:49', '2020-07-06 15:22:49', '2020-07-06 15:22:58', '1', '1', '<p><br></p>', null, null, null, '', 'F0025838-AF28-435C-B62B-BFD1EBFB6F33', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `bpm_run_process` VALUES ('116', '3ABA54E0-D5D6-42EB-9315-B193E781F4F0', '2D5DCED2-7CE5-41E7-839A-4622D777CFAC', '1FF3676A-7942-4761-98E3-EFF88266AFD4', '0', 'admin', 'admin', '2020-07-06 15:22:58', '2020-07-18 15:13:38', null, null, '0', null, null, null, null, null, 'DB28B246-05FE-47CB-9CCF-F49D41D29477', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_process` VALUES ('116', '3ABA54E0-D5D6-42EB-9315-B193E781F4F0', '2D5DCED2-7CE5-41E7-839A-4622D777CFAC', '1FF3676A-7942-4761-98E3-EFF88266AFD4', '0', 'admin', 'admin', '2020-07-06 15:22:58', '2020-08-11 09:38:15', null, null, '0', null, null, null, null, null, 'DB28B246-05FE-47CB-9CCF-F49D41D29477', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `bpm_run_process` VALUES ('117', 'C465F961-2398-4FD8-B2B6-C9A986F17310', '2AF504E5-6338-4E10-9AA2-36D12AF8AC2E', 'ACE2A30B-2582-40AE-B3AD-06896AF22BCE', '0', 'admin', 'admin', '2020-07-06 15:27:31', '2020-07-06 15:27:31', '2020-07-06 15:27:40', '1', '1', '<p><br></p>', null, null, null, '', '757FF83F-FF62-4E0C-B70D-B8F006D66BBF', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `bpm_run_process` VALUES ('118', '9DD8E965-DFA3-4D7E-8C14-D3BF69AF125D', '2AF504E5-6338-4E10-9AA2-36D12AF8AC2E', '1FF3676A-7942-4761-98E3-EFF88266AFD4', '0', 'admin', 'admin', '2020-07-06 15:27:40', '2020-07-06 16:16:25', null, null, '0', null, null, null, null, null, 'C465F961-2398-4FD8-B2B6-C9A986F17310', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_process` VALUES ('118', '9DD8E965-DFA3-4D7E-8C14-D3BF69AF125D', '2AF504E5-6338-4E10-9AA2-36D12AF8AC2E', '1FF3676A-7942-4761-98E3-EFF88266AFD4', '0', 'admin', 'admin', '2020-07-06 15:27:40', '2020-07-26 20:20:29', null, '1', '0', '<p><br></p>', null, null, null, '', 'C465F961-2398-4FD8-B2B6-C9A986F17310', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `bpm_run_process` VALUES ('119', '10CDE8E7-D714-4107-A720-F9216746B9C1', '6EB51D0A-3316-4A11-9139-F3F8C21AACB1', 'ACE2A30B-2582-40AE-B3AD-06896AF22BCE', '0', 'admin', 'admin', '2020-07-18 21:00:19', '2020-07-18 21:53:59', '2020-07-18 22:00:26', '0', '1', '<p><br></p>', null, null, null, '', '26513EF1-DAE1-46FA-B5EE-DFD4831C4E60', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `bpm_run_process` VALUES ('120', 'B315E340-EAFC-424D-B61A-08C07451980A', 'F79BCAFC-24A8-446D-83E2-F6DFA55EE3F8', 'ACE2A30B-2582-40AE-B3AD-06896AF22BCE', '0', 'admin', 'admin', '2020-07-18 22:31:40', '2020-07-20 21:25:30', '2020-07-20 21:44:39', '1', '1', '\n								<div></div>\n							', null, null, null, '', 'EBEB34D5-A561-4184-9FEF-7DEC965A5A49', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `bpm_run_process` VALUES ('121', '876AF31F-A2E6-4AD7-AB80-CCA4E6C3C284', '5FD2D4AE-E350-4CE6-BE2B-C049B6E9174C', 'ACE2A30B-2582-40AE-B3AD-06896AF22BCE', '0', 'admin', 'admin', '2020-07-19 13:51:55', '2020-07-19 13:51:55', '2020-07-19 13:51:58', '1', '1', '<p><br></p>', null, null, null, '', 'D69A0728-2E63-4082-A8A8-78FD086EBBF8', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
@@ -1534,15 +1642,25 @@ INSERT INTO `bpm_run_process` VALUES ('130', '80CC47B1-D7CD-4795-9355-B355BBFD6F
 INSERT INTO `bpm_run_process` VALUES ('131', 'CC43D449-34D6-4875-9AAC-C0549724F8AD', '8A635E2D-2D44-4812-A762-6D2DEF61E32F', '1FF3676A-7942-4761-98E3-EFF88266AFD4', '1', 'liushaoquan', 'admin', '2020-07-20 21:55:05', null, null, null, '0', null, null, null, null, null, '42E870BA-6DBF-443F-BA2D-2F945E3C5914', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `bpm_run_process` VALUES ('132', 'E07CD380-F038-4EE5-B8AC-B7F7883879E3', 'ED232123-EB61-432A-8012-877CEFCB2EAE', '44E5B6C7-3210-4A38-871F-1A989616336A', '0', 'admin', 'admin', '2020-07-22 11:15:33', '2020-07-22 11:21:26', null, '1', '0', '<p><br></p>', null, null, null, '', '038D991B-36E9-47E9-B024-3CE88CFD9CFE', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `bpm_run_process` VALUES ('133', 'A9889AD5-89B4-4CC7-ACCA-C512B0274010', '8399AA12-FEC4-4062-A9F9-2847CEC4BFAD', 'ACE2A30B-2582-40AE-B3AD-06896AF22BCE', '0', 'admin', 'admin', '2020-07-22 11:22:35', '2020-07-22 11:22:50', null, null, '0', null, null, null, null, null, '2613C39D-839D-494C-8528-580939F6D018', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_process` VALUES ('134', '96779D05-7602-403B-A5F7-DB3760BD40EC', '950006B5-7298-46A8-B9AC-268744C06955', 'ACE2A30B-2582-40AE-B3AD-06896AF22BCE', '0', 'admin', 'admin', '2020-07-24 20:36:36', '2020-07-29 13:19:12', null, '1', '0', '<p><br></p>', null, null, null, '', '9128A569-2BBF-48E3-984B-B1A6E384CEC7', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_process` VALUES ('135', '3AF202FD-6481-4336-A3AF-C9F110AB213E', '2FD3AC7D-EE2C-41C2-96B9-3B543676752B', 'ACE2A30B-2582-40AE-B3AD-06896AF22BCE', '0', 'admin', 'admin', '2020-07-25 19:04:36', '2020-08-06 23:59:08', null, '1', '0', '<p><br></p>', null, null, null, '', 'F06BDBAE-4B3E-4118-AE5F-2B2AEF0F2899', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_process` VALUES ('136', '7CF32A8B-C294-4207-B518-B3F01E75DEE4', '0838CA7D-43DE-403F-9B09-6EBD3E3D8EC6', '02848267-9C54-4502-8708-DE5FA0BE1AEB', '0', 'zhanghaiyang', 'admin', '2020-07-27 23:07:47', null, null, null, '0', null, null, null, null, null, 'A48B493D-C628-4CA4-9684-F606872FDBB0', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_process` VALUES ('137', '79C690F1-DAEB-4A0A-AB76-3FE369D96DD9', 'B3136A84-0F00-4067-85E3-692FF443AB3C', '02848267-9C54-4502-8708-DE5FA0BE1AEB', '0', 'zhanghaiyang', 'admin', '2020-07-27 23:08:00', null, null, null, '0', null, null, null, null, null, 'C967C852-A272-428B-A650-8ACB5F056023', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_process` VALUES ('138', 'B4C0A00F-A6B8-48D8-9F55-1F9FC418ACAB', 'D3AB5CE9-5AE2-498C-8ACE-643BDCAD52B9', 'ACE2A30B-2582-40AE-B3AD-06896AF22BCE', '0', 'admin', 'admin', '2020-08-11 09:38:39', '2020-08-11 09:39:17', null, null, '0', null, null, null, null, null, '72CC34CC-BDE2-4B85-9C51-0DC0C900A168', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_process` VALUES ('139', '0E0FE4B5-74FC-460A-BCC2-F9A096357E5B', '8C0727F6-3FAB-4AEC-97A3-9C21BAC6CB40', '2481FE2E-6C67-498E-9FE6-9E7B8B3017E4', '0', 'admin', 'admin', '2020-08-11 20:05:53', '2020-08-11 20:14:00', null, '1', '0', '<p><br></p>', null, null, null, '', '1E3435F1-8FD4-42C1-917E-0E2264C354A6', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_process` VALUES ('140', '10A1883B-19C7-4BA3-A6C1-ADE618DFD63C', 'EEDC1F2B-5B94-4045-ADF0-C2FD24E79D8B', '5E8723FC-DCCB-4B65-ADE3-D070C5AAB66F', '0', 'admin', 'admin', '2020-08-11 20:28:57', '2020-08-11 20:29:51', null, '1', '0', '<p><br></p>', null, null, null, '', 'D8DC8E03-3CDA-4E51-8483-548FE8346000', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_process` VALUES ('141', '8DC9DB59-F93A-47E8-BEFA-4157DD12D627', 'BA334508-7A38-4AE4-8B20-85378D158AD5', '36C3B6C6-930A-4202-AA49-92016466E5AF', '0', 'admin', 'admin', '2020-08-11 23:24:18', '2020-08-11 23:24:18', null, '1', '0', '<p><br></p>', null, null, null, '', '98D4F98F-8A5A-459A-A52F-8AD339833525', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_process` VALUES ('142', 'C7791751-F1DC-446A-BEAA-F37C8B714B01', '8D52FB20-A116-47EA-A524-A1CA6D6B346D', '93094915-B41F-4D36-8FA8-3322B85C2878', '0', 'admin', 'admin', '2020-08-11 23:29:32', '2020-08-11 23:43:26', null, '1', '0', '<p><br></p>', null, null, null, '', 'AAAC833C-87F4-4878-8DEC-E45287E21D52', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_run_process` VALUES ('143', '10F50CA0-A9C4-49C1-A2A9-283ED2EC031B', 'E3B08F40-9CFE-4CFE-890C-8E62893F61AD', '2DEFE33F-A983-4B68-AB20-CDDBD806A91B', '0', 'admin', 'admin', '2020-08-11 23:51:14', '2020-08-11 23:52:24', null, '1', '0', '<p><br></p>', null, null, null, '', 'D52F41DF-FC63-4EA4-8FE2-BDE2523A6B31', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 
 -- ----------------------------
 -- Table structure for bpm_seal_sign
 -- ----------------------------
 DROP TABLE IF EXISTS `bpm_seal_sign`;
 CREATE TABLE `bpm_seal_sign` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `SEAL_SIGN_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `TITLE` varchar(100) DEFAULT NULL,
   `PASSWORD` varchar(50) DEFAULT NULL,
   `ACCOUNT_ID` varchar(50) DEFAULT NULL,
@@ -1563,7 +1681,7 @@ INSERT INTO `bpm_seal_sign` VALUES ('13', 'E4320605-B88D-4C38-AF17-B489BC3BA3B4'
 -- ----------------------------
 DROP TABLE IF EXISTS `bpm_send_to`;
 CREATE TABLE `bpm_send_to` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `SEND_TO_ID` varchar(50) DEFAULT NULL,
   `RUN_ID` varchar(50) DEFAULT NULL,
   `STATUS` varchar(2) DEFAULT '0' COMMENT '0:未查阅1已查阅',
@@ -1600,35 +1718,37 @@ INSERT INTO `bpm_send_to` VALUES ('16', '73F02BE7-1E31-4C2F-A6D0-29B4E80CEE2E', 
 -- ----------------------------
 DROP TABLE IF EXISTS `bpm_sort`;
 CREATE TABLE `bpm_sort` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `BPM_SORT_ID` varchar(50) DEFAULT NULL COMMENT '分类的维一标识',
   `BPM_SORT_NAME` varchar(50) DEFAULT NULL COMMENT '分类名称',
   `MANAGE_ACCOUNT_ID` varchar(20) DEFAULT NULL,
   `LEVEL_ID` varchar(50) DEFAULT NULL COMMENT '父级分类',
-  `SORT_NO` int(3) DEFAULT NULL COMMENT '排序号',
+  `SORT_NO` int DEFAULT NULL COMMENT '排序号',
+  `SYS_FLAG` varchar(2) DEFAULT '0' COMMENT '0:用户自建，1:系统内置',
   `CREATE_TIME` varchar(20) DEFAULT NULL,
   `CREATE_USER` varchar(50) DEFAULT NULL,
   `ORG_ID` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE,
   KEY `ID` (`ID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of bpm_sort
 -- ----------------------------
-INSERT INTO `bpm_sort` VALUES ('1', 'DB7AAD8D-1292-47C1-B119-795D5DE4B551', '行政办公', 'admin', '0', '1', null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `bpm_sort` VALUES ('2', 'C030844B-4FE8-4FA4-88FE-F9F11E11D01C', '费用管理', 'admin', '0', '2', null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `bpm_sort` VALUES ('3', '1D9AFFA2-A372-4B55-9E14-D55E5810AD87', '合同管理', 'admin', '0', '2', null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `bpm_sort` VALUES ('4', 'EE5AB294-CDD4-4440-A56B-E3059D5B8A9F', '公文管理', 'admin', '0', '3', null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_sort` VALUES ('1', 'DB7AAD8D-1292-47C1-B119-795D5DE4B551', '行政办公', 'admin', '0', '1', '0', null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_sort` VALUES ('2', 'C030844B-4FE8-4FA4-88FE-F9F11E11D01C', '费用管理', 'admin', '0', '2', '0', null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_sort` VALUES ('3', '1D9AFFA2-A372-4B55-9E14-D55E5810AD87', '合同管理', 'admin', '0', '2', '0', null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_sort` VALUES ('4', 'EE5AB294-CDD4-4440-A56B-E3059D5B8A9F', '公文管理', 'admin', '0', '3', '0', null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `bpm_sort` VALUES ('5', '85098050-4374-488D-BE01-66BCFD04D72A', '系统内置', 'admin', '0', '99', '1', '2020-08-11 17:12:17', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 
 -- ----------------------------
 -- Table structure for bpm_template
 -- ----------------------------
 DROP TABLE IF EXISTS `bpm_template`;
 CREATE TABLE `bpm_template` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `TEMPLATE_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `FLOW_ID` varchar(50) DEFAULT NULL,
   `PROCESS_ID` varchar(50) DEFAULT NULL,
   `TEMPLATE_NAME` varchar(255) DEFAULT NULL,
@@ -1648,7 +1768,7 @@ CREATE TABLE `bpm_template` (
 -- ----------------------------
 DROP TABLE IF EXISTS `b_1584256402`;
 CREATE TABLE `b_1584256402` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `ID` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
   `RUN_ID` varchar(50) DEFAULT NULL COMMENT 'BPM流水标识',
   `DATA_NUM1` text COMMENT '申请人',
   `DATA_NUM2` text COMMENT '申请时间',
@@ -1685,7 +1805,7 @@ INSERT INTO `b_1584256402` VALUES ('8', 'ED232123-EB61-432A-8012-877CEFCB2EAE', 
 -- ----------------------------
 DROP TABLE IF EXISTS `b_1584259557`;
 CREATE TABLE `b_1584259557` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `ID` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
   `RUN_ID` varchar(50) DEFAULT NULL COMMENT 'BPM流水标识',
   `DATA_NUM1` text COMMENT '申请人',
   `DATA_NUM2` text COMMENT '录单日期',
@@ -1719,7 +1839,7 @@ INSERT INTO `b_1584259557` VALUES ('3', 'B3AA711B-2B12-420C-867C-A20F6E7B3AED', 
 -- ----------------------------
 DROP TABLE IF EXISTS `b_1584691609`;
 CREATE TABLE `b_1584691609` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `ID` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
   `RUN_ID` varchar(50) DEFAULT NULL COMMENT 'BPM流水标识',
   `DATA_NUM1` text COMMENT '申请人',
   `DATA_NUM2` text COMMENT '录单日期',
@@ -1751,7 +1871,7 @@ INSERT INTO `b_1584691609` VALUES ('4', '06B0AE04-F5BB-457C-812B-26F8AED2E902', 
 -- ----------------------------
 DROP TABLE IF EXISTS `b_1585290538`;
 CREATE TABLE `b_1585290538` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `ID` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
   `RUN_ID` varchar(50) DEFAULT NULL COMMENT 'BPM流水标识',
   `DATA_NUM1` text COMMENT '合同名称',
   `DATA_NUM2` text COMMENT '合同分类',
@@ -1759,7 +1879,6 @@ CREATE TABLE `b_1585290538` (
   `DATA_NUM4` text COMMENT '合同编号',
   `DATA_NUM5` text COMMENT '所属部门',
   `DATA_NUM6` text COMMENT '业务人员',
-  `ORG_ID` varchar(50) DEFAULT NULL COMMENT '组织机构识别码',
   `DATA_NUM7` text COMMENT '签约时间',
   `DATA_NUM8` text COMMENT '合同金额',
   `DATA_NUM9` text COMMENT '合同开始日期	',
@@ -1772,79 +1891,30 @@ CREATE TABLE `b_1585290538` (
   `DATA_NUM16` text COMMENT '乙方联系人',
   `DATA_NUM17` text COMMENT '甲方联系方式 ',
   `DATA_NUM18` text COMMENT '乙方联系方式',
+  `DATA_NUM19` text COMMENT '合同内容',
   `DATA_NUM20` text COMMENT '合同备注',
   `DATA_NUM21` text COMMENT '部门领导审批',
-  `DATA_NUM22` text COMMENT '部门领导意见',
   `DATA_NUM23` text COMMENT '部门领导意见',
+  `DATA_NUM22` text COMMENT '部门领导签字',
   `DATA_NUM24` text COMMENT 'CEO审批',
   `DATA_NUM25` text COMMENT 'CEO意见',
   `DATA_NUM26` text COMMENT 'CEO审批签字',
-  `DATA_NUM27` text COMMENT '计算1',
-  `DATA_NUM28` text COMMENT '计算2',
-  `DATA_NUM29` text COMMENT '计算组件',
-  `DATA_NUM30` text COMMENT '签章',
   `DATA_NUM31` text COMMENT '合同相关流程',
-  `DATA_NUM32` text COMMENT '签章测试',
+  `ORG_ID` varchar(50) DEFAULT NULL COMMENT '组织机构识别码',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of b_1585290538
 -- ----------------------------
-INSERT INTO `b_1585290538` VALUES ('1', '2C5414DB-1CB7-4895-9332-487BF15B65D7', 'XX区政府政务系统', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', 'HT-X-20200326', '销售部', '张小飞', '8EADB678-A646-1E51-3E87-75A547B8AF19', '2020-03-27', '300000', '2020-04-01', '2022-03-31', 'OA管理员', '2020年03月27日', 'XX区政府', '江苏稠云信息技术有限公司', '张部长', '张小飞', '1381404xxxx', '1398488152x', '<div style=\"text-align: left;\"><span style=\"font-weight: bold;\">12313123123123</span></div>', '', '刘绍全 2020年04月08日 14时57分40秒', '1', null, null, null, null, null, null, null, null, null);
-INSERT INTO `b_1585290538` VALUES ('2', '9F818906-7614-4A06-B4F9-1704D005A26D', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', '刘绍全', '2020年03月31日', '', '', '', '', '', '', '', null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `b_1585290538` VALUES ('3', '89E243C9-0440-4072-9D53-F36C2183A3C2', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', '刘绍全', '2020年04月04日', '', '', '', '', '', '', '', null, null, null, null, null, null, null, null, null, null, null, null);
-INSERT INTO `b_1585290538` VALUES ('4', '932F2097-14F1-4C8E-B2B7-75780A42A158', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年04月08日', '', '', '', '', '', '', '', '', '刘绍全 2020年04月08日 14时58分00秒', '1', null, null, null, null, null, null, null, null, null);
-INSERT INTO `b_1585290538` VALUES ('5', 'F1A32281-A0A0-422E-A89F-79FDBADE4FE9', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年04月08日', '', '', '', '', '', '', '', '', '刘绍全 2020年04月08日 14时57分57秒', '1', null, null, null, null, null, null, null, null, null);
-INSERT INTO `b_1585290538` VALUES ('6', '18C8308C-BD04-49BA-ACFB-72AEE6B03B72', '测试一下', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年04月08日', '', '', '', '', '', '', '', '', '刘绍全 2020年04月08日 14时57分54秒', '1', null, null, null, null, null, null, null, null, null);
-INSERT INTO `b_1585290538` VALUES ('7', 'B66E56DE-3D5E-4F49-B03F-35F87B8D6755', '南京XXX项目采购合同', '{\"vkey\":\"D970A340-1E83-4C02-B99D-61367BC0B9F9\",\"value\":\"2019年合同\"}', '2', 'HT000-0001', '销售部', '张小飞', '8EADB678-A646-1E51-3E87-75A547B8AF19', '2020-04-08', '300000', '2020-04-08', '2024-04-30', 'OA管理员', '2020年04月08日', '南京金号集团', '南京城投', '张三丰', '李四大', '13522211123', '025-88888888', '没有特别要求，只要服务到位', '我部门没有什么意见', '刘绍全 2020年04月08日 16时53分49秒', '1', null, null, null, null, null, null, null, null, null);
-INSERT INTO `b_1585290538` VALUES ('8', 'B7B31970-B9F1-44FB-899C-E66198E2FE0C', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年04月08日', '', '', '', '', '', '', '', '', '刘绍全 2020年04月08日 19时20分31秒', '1', null, null, null, null, null, null, null, null, null);
-INSERT INTO `b_1585290538` VALUES ('9', 'CAF01D96-D96C-458D-8C24-EE7C68063FE6', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年06月19日', '', '', '', '', '', '', '<br>', '', 'OA管理员 2020年07月13日 19时31分24秒', '1', null, null, null, '', '', '', null, '60E2C90C-A068-4789-B01E-E07EC444ACE3', null);
-INSERT INTO `b_1585290538` VALUES ('10', '189B9F80-65E6-420F-B7C1-88C33E276652', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月06日', '', '', '', '', '', '', '', null, null, null, null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('11', '5D5F1AD5-B921-423C-A2A5-2343E2AACED4', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月06日', '', '', '', '', '', '', '', null, null, null, null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('12', '258CBDF3-040F-4FCF-A97D-434BB0E4B76D', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月06日', '', '', '', '', '', '', '', null, null, null, null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('13', 'E9D98408-02F9-4B2D-AD63-5DF25F5E951A', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月06日', '', '', '', '', '', '', '', null, null, null, null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('14', 'BD29A45D-3D6D-4FF3-8ADB-653AF4BACC78', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月06日', '', '', '', '', '', '', '', null, null, null, null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('15', '5094B2BF-1056-432C-AEFB-CE94FDFBA9D1', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月06日', '', '', '', '', '', '', '', null, null, null, null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('16', '196146FD-DFB8-4019-8563-1E05108CB8C6', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月06日', '', '', '', '', '', '', '', '', '鲁云云 2020年07月17日 13时18分43秒', '1', null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('17', '0608937E-CC16-44DD-B426-9AC97DFB75D5', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月06日', '', '', '', '', '', '', '', null, null, null, null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('18', '04D0E05B-5C1B-4CF8-A8B9-4AF4EF013558', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月06日', '', '', '', '', '', '', '', null, null, null, null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('19', '0838CA7D-43DE-403F-9B09-6EBD3E3D8EC6', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月06日', '', '', '', '', '', '', '', '', 'OA管理员 2020年07月20日 18时50分32秒', '1', null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('20', 'B3136A84-0F00-4067-85E3-692FF443AB3C', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月06日', '', '', '', '', '', '', '', '', 'OA管理员 2020年07月18日 23时48分41秒', '1', null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('21', 'C37979C0-F646-447B-9DDF-DFC97700075D', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月06日', '', '', '', '', '', '', '', null, null, null, null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('22', '3DC82957-9E8C-4857-B6B9-DC3430A7563A', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月06日', '', '', '', '', '', '', '', null, null, null, null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('23', '895C9B3C-2B87-49E0-AF0D-EE21AC31AFD6', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月06日', '', '', '', '', '', '', '', null, null, null, null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('24', '7E89EA03-0FEF-4F30-B76E-1A7948CAFFA1', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月06日', '', '', '', '', '', '', '', null, null, null, null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('25', 'D14CE95F-0633-4389-BB22-2817D78B764C', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月06日', '', '', '', '', '', '', '', '', 'OA管理员 2020年07月18日 23时49分05秒', '1', null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('26', '5DED874D-B8EA-4788-870A-2ED255AE399C', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月06日', '', '', '', '', '', '', '', null, null, null, null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('27', 'F75D2626-C6B1-4EA0-9957-60EC88085109', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月06日', '', '', '', '', '', '', '', null, null, null, null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('28', '9847D9B0-3358-41B1-AB7A-34C24B2884AE', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月06日', '', '', '', '', '', '', '', null, null, null, null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('29', 'F877B34B-4739-4C75-B555-634D10BFAEF7', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月06日', '', '', '', '', '', '', '', null, null, null, null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('30', 'C5059EDE-3DA0-43CB-B5C2-5A95202E71A0', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月06日', '', '', '', '', '', '', '', null, null, null, null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('31', '979E9812-EFEA-4FE0-8C40-B4C4AB36756A', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月06日', '', '', '', '', '', '', '', null, null, null, null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('32', '00681F3C-0C2D-4972-A048-5256DC7DD275', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月06日', '', '', '', '', '', '', '', null, null, null, null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('33', '955845B4-66B5-4093-BCA3-DDCF923611CC', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月06日', '', '', '', '', '', '', '', null, null, null, null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('34', '1C15D4BA-E04B-4A51-B251-720547CBF617', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月06日', '', '', '', '', '', '', '', null, null, null, null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('35', '8E6CE03A-8E50-40FA-9939-A9F2EDFE7376', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月06日', '', '', '', '', '', '', '', null, null, null, null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('36', 'A2AC4B44-0EC4-4136-8D49-B05694B507CE', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月06日', '', '', '', '', '', '', '', null, null, null, null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('37', 'FD4A8A2B-B67E-4D7A-8A74-CF7DC5F913DF', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月06日', '', '', '', '', '', '', '', '', 'OA管理员 2020年07月06日 14时10分26秒', '1', null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('38', 'EAF09087-9626-43A0-BEE7-B0C04E737CAA', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月06日', '', '', '', '', '', '', '', '', 'OA管理员 2020年07月06日 15时09分49秒', '1', null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('39', 'B135936F-BB53-4CCE-93C7-2D9BEC253A2C', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月06日', '', '', '', '', '', '', '', null, null, null, null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('40', '2D5DCED2-7CE5-41E7-839A-4622D777CFAC', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月06日', '', '', '', '', '', '', '', null, null, null, null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('41', '2AF504E5-6338-4E10-9AA2-36D12AF8AC2E', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月06日', '', '', '', '', '', '', '', null, null, null, null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('42', '6EB51D0A-3316-4A11-9139-F3F8C21AACB1', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月18日', '', '', '', '', '', '', '', null, null, null, null, null, null, '', '', '', null, '', null);
-INSERT INTO `b_1585290538` VALUES ('43', 'F79BCAFC-24A8-446D-83E2-F6DFA55EE3F8', 'OA管理员', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月18日', '', '', '', '', '', '', '', null, null, null, null, null, null, '', '', '', 'data:image/png;data:image/png;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWMAAACWCAYAAAAL6un/AAARCElEQVR4Xu2dC9BuUxnH/8o1SkYlURlMcU4ZRlImRRcSXTCdSM1UjEsuo5JL5F7EuF8rpkxK7gohzRwhhWacDKYMKZGSW1LTRWn+eXZn+5zv+/Z+3733u9bevzXzznsue631rN+zzv9bZ+21nmcxUSAAAQhAYOIEFpu4BRgAAQhAAAJCjJkEEIAABBIggBgn4ARMgAAEIIAYMwcgAAEIJEAAMU7ACZgAAQhAADFmDkAAAhBIgABinIATMAECEIAAYswcgAAEIJAAAcQ4ASdgAgQgAAHEmDkAAQhAIAECiHECTsAECEAAAogxcwACEIBAAgQQ4wScgAkQgAAEEGPmAAQgAIEECCDGCTgBEyAAAQggxswBCEAAAgkQQIwTcAImQAACEECMmQMQgAAEEiCAGCfgBEyAAAQggBgzByAAAQgkQAAxTsAJmAABCEAAMWYOQAACEEiAAGKcgBMwAQIQgABizByAAAQgkAABxDgBJ2ACBCAAAcSYOQABCEAgAQKIcQJOwAQIQAACiDFzAAIQgEACBBDjBJyACRCAAAQQY+YABCAAgQQIIMYJOAETIAABCCDGzAEIQAACCRAYghg/E5yHMNYEphQmQAACoxAYgkAVYvwZSSeOAok6EIAABNomMAQxXlfS/AC5qaQFbUOlfQhAAAJ1CQxBjM1kb0knSHpQ0qp1IfE8BCAAgbYJDEWMzfEBSatIYrui7VlF+xCAQG0CQxJjtitqTw8qQAACXREYkhizXdHVrKIfCECgNoGhiXF5u+JQSYfVJkYFCEAAAi0QGKIYryHpGkn+3kbSpS1wpUkIQAACtQgMUYwNaGtJl0i6V9Lm8V0LHA9DAAIQaJLAUMXYDA+R5K0Kjrs1OaNoCwIQGInAkMWY/eORpgyVIACBNggMXYzZP25jVtEmBCBQm8DQxZj949pThgoQgEAbBBDjZ6myf9zG7KJNCECgMgHEeCGq4ro0548rTx8ehAAEmiKAGC8kyf5xU7OKdiAAgdoEEOPnIuP8ce0p1PsKJCfovYvTGCBi/Hw/FPvHj0naWNJdabgKKyZA4EBJR0a//FuZgAOG1CUTbNHefkTSipLulDQPQR7SP4n/j3UDSbfE77aSdOUgKTDozgggxotGPUfSBZLmIsidzcXUOvIPYs+DIyQdnJpx2NM/Aojx9D5FkPs336uO6FuSPibpWkmbVa3EcxAYhwBiPDO9siD/VdKb2bIYZ7plUdeZYI6X9KSkd0u6NQurMTJ7Aojx7C60IHvvcFm2LGaHlfkT3hu+WNKSkvaSdErm48H8jAggxtWcxZZFNU45P2Uf3yhpBUnfkbRDzoPB9vwIIMbVfTZ1y+I1knz8jZI/gam+XVnSX/IfFiPIiQBiXM9brJ7q8crhaf7Xk4OXBmAjYlzfyatJmi/J30dLOqB+E9RIhABCnIgjMENCjEebBZ+Q9I2o6ivUl43WDLUmSAAhniB8un4+AcR49Fnh408+BnV75NH7w+hNUbNjAr7mfrmk5Tkh0zF5upuWAGI83uRwUlOvjB+V9HbOII8Hs6Pa20o6Q9LLJf1Nkq89E3+kI/h0Mz0BxHi82fFKSfdwBnk8iB3WdtAfB/9xOV/SbpIe77B/uoIAK+MW5wB7jy3CbajpdSR9RdJ7JT0taX9JxzXUNs1AoBECrIwbwfi/gDIEFmqGZdOtfFzSsZJWknRzCPF1TXdCexAYlwBiPC7BhfUR5OZYNtWSrzPvEY2dKWlfLnM0hZZ2miaAGDdLdOpNri0k3dBsF7RWgcBakn4kaRVJT8RZcIsxBQLJEkCMm3dNObCQI3/tLunc5ruhxWkIOKaE94ctxA9KcvCfBdCCQOoEEON2PORTFmdJ2jKa/2IpfU87PdKqCRQps/zrCyNLC2QgkAUBxLhdN50aK2P38nVJO7fb3WBbf4mk00uR1rxX7BCYFAhkQwAxbt9Vjl3x5ejmh5J8lfqh9rsdTA9rS/J+sC/d3CfpoAiBORgADLQfBBDjbvxoAfbKbRlJZAxpjvl7QohXj+BNu0q6u7nmaQkC3RFAjLtjvYmkK7it1xhw56jzvvxSkpyzzkLs680UCGRJADHu1m2cRW6G996SToimjpL0hWaapRUITI4AYtw9ewR5dObrx/nhl0q6P27TnTd6c9SEQDoEEOPJ+AJBrs/d8SSOkLR4nB9+J/vD9SFSI10CiPHkfIMgV2PvvfYvSdooHvdpCf+eAoFeEUCMJ+vOqden3yfp+smalEzvS8eRQAfwd7kt9oavTsZCDIFAgwQQ4wZhjtiUBflWSS+S9JSkPSV9c8S2+lJtO0m+MLNinJA4JiKvcVqiLx5mHM8jgBinMSl8fdo59Rxv18V7owenYVqnVnhLwlea/e3yXUkWYq+KKRDoNQHEOC33Oh2Qz8u6OLjQLgM6O1u+qeh8gt4bPjst92ANBNojgBi3x3bUlveTdHRUvikE+Y5RG8ug3oaSnEvwVWGrM207NRJ56TJwHiY2RwAxbo5lky3Niz1TJ830KtEr5O832UECbfmImkXXFzaWlPT7GKdvKVIgMDgCiHG6LnfWYm9b+KKDi08VnJiuubUsc2hRC/Fbo5aTg/qlHQUCgyWAGKft+uUkXV56oeUTBj5tkXNxPrp9YgAPx5nhk3MeELZDoAkCiHETFNtvw7GQd4pufiDpk5IsZDmVdSMDx2ZhtF9Q+vLGL3MaBLZCoC0CiHFbZJtv9/Nx7GvZSKrpG2m5vNhzYB8fWXNMCf8Q8RaFI65RIACBIIAY5zUVfEPPq2SfPLCoOZ3T1xIeglfDFuEPhY1+CWkhzuWHSMJoMa1vBBDjPD1azvV2TlwQcRSzlEp5NWy7LMJFxpOU7MQWCCRBADFOwg0jGbF1XBFeQ9I9IciTDifpm4R+Ofe50ogc+N0vHm8ZaZRUgsBACCDGeTvaQuzTCRZml9NClB/reFjejrAI71Dq1+eG/aLRef8oEIDALAQQ435MkfK2xYKIbeFbbW0Xx9JwFuYtSh35KJ73sbm80TZ92u8VAcS4P+4sb1t4VE6A6oBDvsHXdHGC1U9J2hgRbhot7Q2VAGLcL8+/Nk5Y7BjD+lUI8rcbGOYSEcTIWw/rIcINEKUJCJQIIMb9nA7bhyivHcNzfGSL6CjFL+Vc1yvhNUsN+GWhX85dNUqj1IEABJ5LADHu74x4RQjyHjFEv1DzeV8Hsq9Slomr10dK8qq4KKdIOpOoalUQ8gwEqhNAjKuzyvXJrSR9NS6K/D2uIPu8739mGJD3hB2YaJ3SM0dJOkHSn3IFgd0QSJkAYpyyd5q1zUfP/ELPueVujAsYU7cYvK3hoO4fja6dYcPCfVGzptAaBCAwlQBiPKw54ZCVFuR3xbBPipWyV7s+omYhdgxlF//eWxIUCECgAwKIcQeQE+zisFKOvV9L+oek4mXf9yLI+x8TtBuTINBbAohxb10768DeH3vJK8eTT0ryvnCR8mnWBngAAhBojgBi3BzLnFraObIuLz/F6AdiGyPlSHA5ccZWCFQmgBhXRpX9g6tKcgxkn5J4S4zmmgj4/gJJjpe8efy50yAdzvG17H3OADIigBhn5KwRTf2ApA9K+ogkB6Z3uTMiqfm8cLnsGgF/HIDokRBkXuKNCJ5qEKhDADGuQyufZwsB9vfLSmb/K17cOaTlU9MMZ2oYTF8Wcbbqn+QzfCyFQH4EEOP8fDadxdMJsMNp+jxx8akaXvNtkrxd4awiLsfEavp3/UHGSCCQDoHcxXi+pBdLelM6SDuz5NWS1o9Yxk7HVF4B/1bStaXP42NY5ZgU+0p6vSQHHjoxQmTOdINvjO6oCoFhEshZjJ3cshCZnMdRd+a9Q9I2EUFtyVLleyU5x5yDuVuI/1234Rmet9D7BZ9F2eXKOBbn2MUUCECgAQI5i9hqku4LBjmPo4obHbRnuxBhx5ooytOxdXCppOurNDTmMxtG8KAio8fZkV3E16YpEIDAGARyFjGn+ilEIOdxzOS+uZIcDtOB4+eUHrwpwldePKHAPf7B8OkILv9EbF2cXPqfyhhTkqoQGCaBnEVsE0neM3bJeRyLmnm+HVeshB3Ypyh+oeY9258lMF2XkrSfpN0lOVyn95Md6+KMBGzDBAhkRyBnEXN4x1/0SIwtaF4FW4SLSxkens/7OlOHg7nfnOAM836yYx7vErbdEKLsVTsFAhCoSCBnMXaKod9kKsYrSHpjxAv2tz/ej/VNuKLcHiJ8riSf9U29OAuItyqK5KTOAmKRvjt1w7EPAikQyFmMHVfB+5UuKY/D+75vkFT+ft00zv9nxA/+saTrUpggI9iwZ2QYcShOJ0O1IJ82QjtUgcCgCKQsYlUc4aNtPuLmeAveS+26eIW7eunj+A+OgraKJJ/28G226YqPnvkFpPd/b4ktF8cVfqjrQbTQn69TfzZe8rl5r+y9BdPFiY8WhkOTEGifQO5i7BMVxUu8TSUtaAiZL5JYVH37rPi20FpgLbRe9fnSxQsr9PeMJMcM9s0122cB9re3Ifpe/JLV+93FLT6/4DsuWPR97IwPArUI5C7GHuzekZut1sAbetirW+9bOxC7V7T+eBVo8fXxM64OPwvaPjok/hdzf2zFOC8fBQIQCAJ9EGMP5eFSuqAmnGuRtZB628Bte+/Tv7bQ+s8twP4Ue9ZN9Nn3Nvy/GAuyM1S7OKOIg9mneEKk775gfAkS6IsYJ4gWk6YhUF4lFy8snV3EqZ8oEBgsAcR4sK6f6MCnrpJvjVWyr3VTIDBIAojxIN2ezKB9DG7/0gu+syIHn4MeUSAwKAKI8aDcneRgfQzOgrxTWOd9eW9bkGEkSXdhVFsEEOO2yNJuXQIOhnSApA2i4mWSDmvwuGJde3geAp0SQIw7xU1nsxBw8CGvkv2Sz5d5fFrFgjyJCz04CwKdEkCMO8VNZxUJrBWCXAQfcjVHiHPqJwoEekkAMe6lW3szKN+qdOaSxWNEj4YoO6g9BQK9IoAY98qdvRyMr53vKmk3SY4F4uJIcF4pe1+ZAoFeEECMe+HGQQzCke6cXcSiXOT++6mkQ2P1PAgIDLK/BBDj/vq2ryPzhZE9JO1YGuAVko4lKlxfXT6McSHGw/BzH0e5paR9JDkyXFHOidjJvtFHgUBWBBDjrNyFsYsgsFeIsveWi3J65OK7A2IQyIUAYpyLp7BzJgKOl+y9ZL/oc06+ohwvycLM9WrmT/IEEOPkXYSBNQisFBlGLMxOEODyZ0mnSrqI23w1SPJo5wQQ486R02EHBJwf8SBJDkTkW30uDtHp+MkXSrqrAxvoAgK1CCDGtXDxcGYElpZ0YAhz2XQLcvHJbEiY21cCiHFfPcu4ygScs3Cb+GxW+os7Q5SvJuMIE2bSBBDjSXuA/rsm4Khw28ZnzVLnTmx7fnxIp9W1V+hPiDGTYKgEfIuvEGV/F+WBkihzXnmos2MC40aMJwCdLpMjMEfSh+Mzt2SdgxRdEh8npKVAoDUCiHFraGk4UwKFKPu7KD6J4RgYPiL3VKbjwuzECSDGiTsI8yZGoFgt+zTGEmGFX/hZkM+cmFV03FsCiHFvXcvAGiKwnqR5EZxouWjzphDl8xrqg2YgwAs85gAEKhLwStmXSHzluihXReJUf1MgMBYBVsZj4aPyAAlsFKvk7Utj9wrZ2xdeMVMgMBIBxHgkbFSCgLaIlbK/i+K95FO4bs3sGIUAYjwKNepAYCEBr5Ad7N4rZheftvAq+QJJtwEKAlUJIMZVSfEcBGYm4L1ki3JxTtnH4U6K69Y/Bx4EZiOAGM9GiL+HQHUCPm1hQT68dBzOtW+OlfKlku6r3hxPDonAfwHipjy1Cs8MNAAAAABJRU5ErkJggg==', '', 'data:image/png;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWMAAACWCAYAAAAL6un/AAAH10lEQVR4Xu3cTailcxwH8O8QkuS9SBZCeSmxsEHKWlmKhY0tC7Kxk5WFBRtrG1lQY2MjC6QsSMlrKHkn7wsUeetfz8lNd+bcmXvuud9zn8/U051mzj3n+3x+v/nOmTPPOYfiBwECBAjsu8ChfU8gAAECBAhEGVsCAgQIFAgo44IhiECAAAFlbAcIECBQIKCMC4YgAgECBJSxHSBAgECBgDIuGIIIBAgQUMZ2gAABAgUCyrhgCCIQIEBAGdsBAgQIFAgo44IhiECAAAFlbAcIECBQIKCMC4YgAgECBJSxHSBAgECBgDIuGIIIBAgQUMZ2gAABAgUCyrhgCCIQIEBAGdsBAgQIFAgo44IhiECAAAFlbAcIECBQIKCMC4YgAgECBJSxHSBAgECBgDIuGIIIBAgQUMZ2gAABAgUCyrhgCCIQIEBAGdsBAgQIFAgo44IhiECAAAFlbAcIECBQIKCMC4YgAgECBJSxHSBAgECBgDIuGIIIBAgQUMZ2gAABAgUCyrhgCCIQIEBAGdsBAgQIFAgo44IhiECAAAFlbAcIECBQIKCMC4YgAgECBJSxHSBAgECBgDIuGIIIBAgQUMZ2gAABAgUCyrhgCCIQIEBAGdsBAgQIFAgo44IhiECAAAFlbAcIECBQIKCMC4YgAgECBJSxHSBAgECBgDIuGIIIBAgQUMZ2gAABAgUCyrhgCCIQIEBAGdsBAgQIFAgo44IhiECAAAFlbAeWCVya5K4k9yc5edmN//f7LyW5+Ri/x80JzFJAGc9y7Ds66TuS3J7k1h3devsbKeNd4PnWeQko43nNe9nZnpHkgenYetsnkzyb5PCyO/D7BAgcn4AyPj63g/ZdFya5O8k9SU6fTu73JA8leSrJpwfthJ0PgTYBZdw2kfXnuTLJa0lOmx76pySPJHkiyTfrj+MRCcxTQBnPc+6Lsx5F/HSSq6ZfGC9RPJ7kl3mzOHsC6xdQxus3b3nErUX8bpLbkrzXEk4OAnMTUMZzm/h/5/tjkrOSKOL57oAzLxJQxkXDWGOUe5M8muTnJDd4RrxGeQ9F4AgCynh+q3FNkhen0x5vyHhzfgSzOOMbkyyOW6Yz9ue9ePSGUzycPYr2XZJzk9yX5LE9egx3u16Ba5OMv2QXX69PcuI2Efx5X+9cjunRDOeYuDb+xuOZ0itJ/khyysafzfxO4PIk47hi+nr1VMLbSfw1vUnn5SSvT5cvzk9sg85YGW/QsFYQdVy69nCSZ6arJ1Zwl+5iRQLnJ7kgyXgX5HgTzvhMkMu2fD37KI/zZ5JRuuN68ben450V5XI3axJQxmuCLnmY55KM1w/HO+3G9cR+rF9g/ItkPKMd/0oZn/txUZKLk5ywgyj/JPk4yedJnk/yapJPkny2g+91k3IBZVw+oBXHGy9PnJTkziTj8yb82DuBS5JsPW5Kct2ShxuXG36U5IOpdH9I8nWSL6bjy72L6573W0AZ7/cE1vv43yY5b7qkbXzuhP/AW+5/apLxEsE509fx88VxpF8bLzcc7Znuh0neml5OGNd5jzfbvL88ilscZAFlfJCnu/25jWuMH0xyZpJNfa1xfI7G+EtlHKMQx7ksjvFGlq2FuSjSZQW5F5vwRpLFMV7LHc9yv5r+A3UvHs99brCAMt7g4e0i+rgM6oXpErdd3M0svvXv6QOTxgcobXeMlxK+T7L4uvj5b7PQcZIrE1DGK6PcyDva6fWpbSc3CnI8yxwFOF5n3XqMwhzvLFwc4zbj2upx/Np2IvIQWAgoY7tAgACBAgFlXDAEEQgQIKCM7QABAgQKBJRxwRBEIECAgDK2AwQIECgQUMYFQxCBAAECytgOECBAoEBAGRcMQQQCBAgoYztAgACBAgFlXDAEEQgQIKCM7QABAgQKBJRxwRBEIECAgDK2AwQIECgQUMYFQxCBAAECytgOECBAoEBAGRcMQQQCBAgoYztAgACBAgFlXDAEEQgQIKCM7QABAgQKBJRxwRBEIECAgDK2AwQIECgQUMYFQxCBAAECytgOECBAoEBAGRcMQQQCBAgoYztAgACBAgFlXDAEEQgQIKCM7QABAgQKBJRxwRBEIECAgDK2AwQIECgQUMYFQxCBAAECytgOECBAoEBAGRcMQQQCBAgoYztAgACBAgFlXDAEEQgQIKCM7QABAgQKBJRxwRBEIECAgDK2AwQIECgQUMYFQxCBAAECytgOECBAoEBAGRcMQQQCBAgoYztAgACBAgFlXDAEEQgQIKCM7QABAgQKBJRxwRBEIECAgDK2AwQIECgQUMYFQxCBAAECytgOECBAoEBAGRcMQQQCBAgoYztAgACBAgFlXDAEEQgQIKCM7QABAgQKBJRxwRBEIECAgDK2AwQIECgQUMYFQxCBAAECytgOECBAoEBAGRcMQQQCBAgoYztAgACBAgFlXDAEEQgQIKCM7QABAgQKBJRxwRBEIECAgDK2AwQIECgQUMYFQxCBAAECytgOECBAoEBAGRcMQQQCBAgoYztAgACBAgFlXDAEEQgQIKCM7QABAgQKBJRxwRBEIECAgDK2AwQIECgQUMYFQxCBAAECytgOECBAoEBAGRcMQQQCBAgoYztAgACBAgFlXDAEEQgQIKCM7QABAgQKBJRxwRBEIECAgDK2AwQIECgQUMYFQxCBAAECytgOECBAoEDgX7SseJcOHc+MAAAAAElFTkSuQmCC');
-INSERT INTO `b_1585290538` VALUES ('44', '5FD2D4AE-E350-4CE6-BE2B-C049B6E9174C', '', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月19日', '', '', '', '', '', '', '', null, null, null, null, null, null, null, null, null, '/module/ckeditor/plugins/xseal/code.jpg', '', '/module/ckeditor/plugins/xseal/code.jpg');
-INSERT INTO `b_1585290538` VALUES ('45', '68B90404-8C86-4103-93FD-836051C7997C', 'OA管理员', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月20日', '', '', '', '', '', '', '', null, null, null, null, null, null, null, null, null, '/module/ckeditor/plugins/xseal/code.jpg', '', '/module/ckeditor/plugins/xseal/code.jpg');
-INSERT INTO `b_1585290538` VALUES ('46', '8A635E2D-2D44-4812-A762-6D2DEF61E32F', 'OA管理员', '{\"vkey\":\"1C0BBD06-492A-4CD7-9044-767CCA533FE2\",\"value\":\"2018年合同\"}', '1', '', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '', '', '', '', 'OA管理员', '2020年07月20日', '', '', '', '', '', '', '', null, null, null, null, null, null, null, null, null, '/module/ckeditor/plugins/xseal/code.jpg', '', '/module/ckeditor/plugins/xseal/code.jpg');
-INSERT INTO `b_1585290538` VALUES ('47', '8399AA12-FEC4-4062-A9F9-2847CEC4BFAD', null, null, null, null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `b_1585290538` VALUES ('1', 'D3AB5CE9-5AE2-498C-8ACE-643BDCAD52B9', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 
 -- ----------------------------
 -- Table structure for b_c_1584256402_data_num15
 -- ----------------------------
 DROP TABLE IF EXISTS `b_c_1584256402_data_num15`;
 CREATE TABLE `b_c_1584256402_data_num15` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `ID` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
   `RUN_ID` varchar(50) DEFAULT NULL COMMENT 'BPM流水标识',
   `UNIQUE_ID` varchar(50) DEFAULT NULL COMMENT '子表行唯一标识',
   `aa` text COMMENT 'aa',
@@ -1864,7 +1934,7 @@ INSERT INTO `b_c_1584256402_data_num15` VALUES ('2', 'ED232123-EB61-432A-8012-87
 -- ----------------------------
 DROP TABLE IF EXISTS `b_c_1585290538_data_num19`;
 CREATE TABLE `b_c_1585290538_data_num19` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `ID` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
   `RUN_ID` varchar(50) DEFAULT NULL COMMENT 'BPM流水标识',
   `UNIQUE_ID` varchar(50) DEFAULT NULL COMMENT '子表行唯一标识',
   `name` text COMMENT '产品名称',
@@ -1872,22 +1942,173 @@ CREATE TABLE `b_c_1585290538_data_num19` (
   `price` text COMMENT '产品价格',
   `tiaokuan` text COMMENT '主要条款',
   `remark` text COMMENT '备注',
-  `ORG_ID` varchar(50) DEFAULT NULL COMMENT '组织机构识别码',
   `xiaoji` text COMMENT '小计',
+  `ORG_ID` varchar(50) DEFAULT NULL COMMENT '组织机构识别码',
+  `xt` text COMMENT '其它11',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of b_c_1585290538_data_num19
 -- ----------------------------
-INSERT INTO `b_c_1585290538_data_num19` VALUES ('4', 'CAF01D96-D96C-458D-8C24-EE7C68063FE6', '6E3133D1-30DC-4AAF-944A-15419FF8C69F', '测试', '77', '44', '', '', '8EADB678-A646-1E51-3E87-75A547B8AF19', '');
+
+-- ----------------------------
+-- Table structure for b_duty
+-- ----------------------------
+DROP TABLE IF EXISTS `b_duty`;
+CREATE TABLE `b_duty` (
+  `ID` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `RUN_ID` varchar(50) DEFAULT NULL COMMENT 'BPM流水标识',
+  `DATA_NUM1` text COMMENT '填表日期',
+  `DATA_NUM2` text COMMENT '受理时间',
+  `DATA_NUM3` text COMMENT '受理人',
+  `DATA_NUM4` text COMMENT '受理方式',
+  `DATA_NUM5` text COMMENT '联系人',
+  `DATA_NUM6` text COMMENT '电话',
+  `DATA_NUM7` text COMMENT '单位名称',
+  `DATA_NUM8` text COMMENT '值班事由',
+  `ORG_ID` varchar(50) DEFAULT NULL COMMENT '组织机构识别码',
+  `DATA_NUM9` text COMMENT '部门领导审批意见',
+  `DATA_NUM10` text COMMENT '部门领导审批签字',
+  `DATA_NUM11` text COMMENT 'CEO审批意见',
+  `DATA_NUM12` text COMMENT 'CEO审批签名',
+  `DATA_NUM13` text COMMENT '人事行政审批意见',
+  `DATA_NUM14` text COMMENT '人事行政审批签字',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of b_duty
+-- ----------------------------
+INSERT INTO `b_duty` VALUES ('1', '8D52FB20-A116-47EA-A524-A1CA6D6B346D', '2020年08月11日', '', 'OA管理员', '1', '张三', '1381404xxxx', '江苏稠云信息技术有限合同', '晚上有客户到现场', '8EADB678-A646-1E51-3E87-75A547B8AF19', null, null, null, null, null, null);
+
+-- ----------------------------
+-- Table structure for b_leave
+-- ----------------------------
+DROP TABLE IF EXISTS `b_leave`;
+CREATE TABLE `b_leave` (
+  `ID` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `RUN_ID` varchar(50) DEFAULT NULL COMMENT 'BPM流水标识',
+  `DATA_NUM1` text COMMENT '申请人',
+  `DATA_NUM2` text COMMENT '申请部门',
+  `DATA_NUM3` text COMMENT '申请时间',
+  `DATA_NUM4` text COMMENT '请假类型',
+  `DATA_NUM5` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT '请假开始时间 ',
+  `DATA_NUM6` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT '请假结束时间  ',
+  `DATA_NUM7` text COMMENT '请假事由',
+  `DATA_NUM8` text COMMENT '部门领导审批意见',
+  `DATA_NUM9` text COMMENT '部门领导审批签字',
+  `DATA_NUM10` text COMMENT 'CEO审批意见',
+  `DATA_NUM11` text COMMENT 'CEO审批签字',
+  `DATA_NUM12` text COMMENT '人事行政审批意见',
+  `DATA_NUM13` text COMMENT '人事行政审批签字',
+  `ORG_ID` varchar(50) DEFAULT NULL COMMENT '组织机构识别码',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of b_leave
+-- ----------------------------
+INSERT INTO `b_leave` VALUES ('1', '8C0727F6-3FAB-4AEC-97A3-9C21BAC6CB40', 'OA管理员', '信息中心', '2020年08月11日 20时05分', '1', '2020年08月11日 20时14分', '2020年08月12日 20时14分', '请假事由', null, null, null, null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
+
+-- ----------------------------
+-- Table structure for b_outattend
+-- ----------------------------
+DROP TABLE IF EXISTS `b_outattend`;
+CREATE TABLE `b_outattend` (
+  `ID` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `RUN_ID` varchar(50) DEFAULT NULL COMMENT 'BPM流水标识',
+  `DATA_NUM1` text COMMENT '申请人',
+  `DATA_NUM2` text COMMENT '申请部门',
+  `DATA_NUM3` text COMMENT '申请时间',
+  `DATA_NUM4` text COMMENT '职务',
+  `DATA_NUM5` text COMMENT '外出单位',
+  `DATA_NUM6` text COMMENT ' 外出开始时间 ',
+  `DATA_NUM7` text COMMENT ' 外出结束时间',
+  `DATA_NUM8` text COMMENT '外出地点',
+  `DATA_NUM9` text COMMENT '外出事由',
+  `ORG_ID` varchar(50) DEFAULT NULL COMMENT '组织机构识别码',
+  `DATA_NUM10` text COMMENT '部门领导审批意见',
+  `DATA_NUM11` text COMMENT '部门领导审批签字',
+  `DATA_NUM12` text COMMENT 'CEO审批意见',
+  `DATA_NUM13` text COMMENT 'CEO审批签字',
+  `DATA_NUM14` text COMMENT '人事行政审批意见',
+  `DATA_NUM15` text COMMENT '人事行政审批签字',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of b_outattend
+-- ----------------------------
+INSERT INTO `b_outattend` VALUES ('1', 'E3B08F40-9CFE-4CFE-890C-8E62893F61AD', 'OA管理员', '信息中心', '2020年08月11日 23时51分', '总经理', '上海核电', '2020年08月11日 23时51分', '2020年08月12日 23时51分', '上海', '项目考察', '8EADB678-A646-1E51-3E87-75A547B8AF19', null, null, null, null, null, null);
+
+-- ----------------------------
+-- Table structure for b_overtime
+-- ----------------------------
+DROP TABLE IF EXISTS `b_overtime`;
+CREATE TABLE `b_overtime` (
+  `ID` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `RUN_ID` varchar(50) DEFAULT NULL COMMENT 'BPM流水标识',
+  `DATA_NUM1` text COMMENT '申请人',
+  `DATA_NUM2` text COMMENT '申请部门',
+  `DATA_NUM3` text COMMENT '申请时间',
+  `DATA_NUM4` text COMMENT '职务',
+  `DATA_NUM5` text COMMENT '加班开始时间 ',
+  `DATA_NUM6` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT '加班结束时间 ',
+  `DATA_NUM7` text COMMENT '加班地点',
+  `DATA_NUM8` text COMMENT '加班事由',
+  `ORG_ID` varchar(50) DEFAULT NULL COMMENT '组织机构识别码',
+  `DATA_NUM9` text COMMENT '部门领导审批意见',
+  `DATA_NUM10` text COMMENT '部门领导审批签字',
+  `DATA_NUM11` text COMMENT 'CEO审批意见',
+  `DATA_NUM12` text COMMENT 'CEO审批签字',
+  `DATA_NUM13` text COMMENT '人事行政审批意见',
+  `DATA_NUM14` text COMMENT '人事行政审批签字',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of b_overtime
+-- ----------------------------
+INSERT INTO `b_overtime` VALUES ('1', 'BA334508-7A38-4AE4-8B20-85378D158AD5', 'OA管理员', '信息中心', '2020年08月11日 23时24分', '总经理', '2020年08月11日 23时24分', '2020年08月11日 23时24分', '办公室', '招标文件准备', '8EADB678-A646-1E51-3E87-75A547B8AF19', null, null, null, null, null, null);
+
+-- ----------------------------
+-- Table structure for b_travel
+-- ----------------------------
+DROP TABLE IF EXISTS `b_travel`;
+CREATE TABLE `b_travel` (
+  `ID` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `RUN_ID` varchar(50) DEFAULT NULL COMMENT 'BPM流水标识',
+  `DATA_NUM1` text COMMENT '申请人',
+  `DATA_NUM2` text COMMENT '申请部门',
+  `ORG_ID` varchar(50) DEFAULT NULL COMMENT '组织机构识别码',
+  `DATA_NUM3` text COMMENT '申请时间',
+  `DATA_NUM4` text COMMENT '职务',
+  `DATA_NUM5` text COMMENT '出差地点',
+  `DATA_NUM6` text COMMENT '出差开始时间',
+  `DATA_NUM7` text COMMENT '出差结束时间',
+  `DATA_NUM8` text COMMENT '预计费用',
+  `DATA_NUM9` text COMMENT '出差事由',
+  `DATA_NUM10` text COMMENT '部门领导审批意见',
+  `DATA_NUM11` text COMMENT '部门领导审批签字',
+  `DATA_NUM12` text COMMENT 'CEO审批意见',
+  `DATA_NUM13` text COMMENT 'CEO审批签字',
+  `DATA_NUM14` text COMMENT '人事行政审批意见',
+  `DATA_NUM15` text COMMENT '人事行政审批签字',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of b_travel
+-- ----------------------------
+INSERT INTO `b_travel` VALUES ('1', 'EEDC1F2B-5B94-4045-ADF0-C2FD24E79D8B', 'OA管理员', '信息中心', '8EADB678-A646-1E51-3E87-75A547B8AF19', '2020年08月11日 20时28分', '总经理', '上海', '2020年08月11日 20时28分', '2020年08月31日 20时29分', '20000', '客户产品演示', null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for calendar
 -- ----------------------------
 DROP TABLE IF EXISTS `calendar`;
 CREATE TABLE `calendar` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `CALENDAR_ID` varchar(50) DEFAULT NULL,
   `START` varchar(20) DEFAULT NULL,
   `END` varchar(20) DEFAULT NULL,
@@ -1904,7 +2125,7 @@ CREATE TABLE `calendar` (
   `CREATE_TIME` varchar(20) DEFAULT NULL,
   `ORG_ID` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of calendar
@@ -1912,15 +2133,16 @@ CREATE TABLE `calendar` (
 INSERT INTO `calendar` VALUES ('20', '1E6F0696-3F2E-42EA-AB4D-76A2376963BB', '2020-04-10 21:00:00', '2020-04-10 12:00:00', '345345345354', 'admin', '1', '0', '1', '2', '2020-07-18 00:50:00', null, 'webMail,wxSms', 'admin', '2020-04-08 20:12:32', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `calendar` VALUES ('21', 'DF1ABE86-853A-4959-A22F-60940B4595C7', '2020-06-22 12:00:00', '2020-06-23 12:00:00', '测试', 'admin', '1', '0', '1', '0', '', null, 'ddSms', 'admin', '2020-06-22 10:14:20', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `calendar` VALUES ('22', 'B13F0B16-3F54-48E1-9365-6CBABAB498AD', '2020-07-02 12:00:00', '2020-07-04 12:00:00', '外出学习', 'admin', '1', '0', '1', '0', '', null, 'ddSms', 'admin', '2020-06-23 17:17:25', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `calendar` VALUES ('23', 'FA333100-803A-4F1C-B0DC-7D15747C4CE9', '2020-07-26 12:00:00', '2020-07-27 12:00:00', '部门例会', 'admin', '1', '0', '1', '0', '', null, '', 'admin', '2020-07-25 11:12:17', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 
 -- ----------------------------
 -- Table structure for calendar_type
 -- ----------------------------
 DROP TABLE IF EXISTS `calendar_type`;
 CREATE TABLE `calendar_type` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `CALENDAR_TYPE_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `ACCOUNT_ID` varchar(50) DEFAULT NULL,
   `TYPE_NAME` varchar(20) DEFAULT NULL,
   `COLOR` varchar(20) DEFAULT NULL,
@@ -1938,9 +2160,9 @@ CREATE TABLE `calendar_type` (
 -- ----------------------------
 DROP TABLE IF EXISTS `code_class`;
 CREATE TABLE `code_class` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `CODE_CLASS_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `CODE_VALUE` varchar(50) DEFAULT NULL,
   `CODE_NAME` varchar(200) DEFAULT NULL,
   `MODULE` varchar(20) DEFAULT NULL,
@@ -1994,9 +2216,9 @@ INSERT INTO `code_class` VALUES ('73', '80ABF9E0-9A5C-4E05-A86D-D4D8C794060D', '
 -- ----------------------------
 DROP TABLE IF EXISTS `contract`;
 CREATE TABLE `contract` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `CONTRACT_ID` varchar(50) DEFAULT NULL COMMENT '合同id',
-  `SORT_NO` int(11) DEFAULT NULL COMMENT '排序',
+  `SORT_NO` int DEFAULT NULL COMMENT '排序',
   `CONTRACT_CODE` varchar(50) DEFAULT NULL COMMENT '合同编号',
   `SIGN_TIME` varchar(20) DEFAULT NULL COMMENT '签订时间',
   `SIGN_ADDRESS` varchar(255) DEFAULT NULL COMMENT '签订地址',
@@ -2044,7 +2266,7 @@ INSERT INTO `contract` VALUES ('1', '176E9EA3-0F68-4D79-9D05-9513DCEAEB9D', null
 -- ----------------------------
 DROP TABLE IF EXISTS `contract_bill`;
 CREATE TABLE `contract_bill` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `BILL_ID` varchar(50) DEFAULT NULL,
   `BILL_CODE` varchar(100) DEFAULT NULL,
   `CUSTOMER_NAME` varchar(255) DEFAULT NULL,
@@ -2072,9 +2294,9 @@ INSERT INTO `contract_bill` VALUES ('1', '97A99057-62CB-4F00-917C-2083D24AF196',
 -- ----------------------------
 DROP TABLE IF EXISTS `contract_details`;
 CREATE TABLE `contract_details` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `DETAILS_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `CONTRACT_ID` varchar(50) DEFAULT NULL,
   `PRODUCT_ID` varchar(50) DEFAULT NULL,
   `QUANTITY` decimal(10,2) DEFAULT '0.00',
@@ -2094,7 +2316,7 @@ CREATE TABLE `contract_details` (
 -- ----------------------------
 DROP TABLE IF EXISTS `contract_payable`;
 CREATE TABLE `contract_payable` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `PAYABLE_ID` varchar(50) DEFAULT NULL,
   `CONTRACT_ID` varchar(50) DEFAULT NULL,
   `PAYABLED` double(50,0) DEFAULT '0',
@@ -2128,7 +2350,7 @@ INSERT INTO `contract_payable` VALUES ('9', '61F07A41-C38B-4D70-9ED1-2669EF14CC2
 -- ----------------------------
 DROP TABLE IF EXISTS `contract_payable_record`;
 CREATE TABLE `contract_payable_record` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `RECORD_ID` varchar(50) DEFAULT NULL,
   `PAYABLE_ID` varchar(50) DEFAULT NULL,
   `AMOUNT` decimal(10,0) DEFAULT NULL,
@@ -2154,7 +2376,7 @@ INSERT INTO `contract_payable_record` VALUES ('6', '2971EC5B-7005-4811-9F1E-2967
 -- ----------------------------
 DROP TABLE IF EXISTS `contract_priv`;
 CREATE TABLE `contract_priv` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `PRIV_ID` varchar(50) DEFAULT NULL COMMENT '权限ID',
   `FINANCIAL_STAFF` text COMMENT '财务人员',
   `SHIPPER` text COMMENT '发货人员',
@@ -2174,7 +2396,7 @@ INSERT INTO `contract_priv` VALUES ('6', null, 'jinzhong', null, 'jinqi,lixiang,
 -- ----------------------------
 DROP TABLE IF EXISTS `contract_receivables`;
 CREATE TABLE `contract_receivables` (
-  `ID` bigint(11) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `RECEIVABLES_ID` varchar(50) DEFAULT NULL,
   `CONTRACT_ID` varchar(50) DEFAULT NULL,
   `UN_RECEIVED` double DEFAULT NULL COMMENT '应收款金额',
@@ -2200,7 +2422,7 @@ INSERT INTO `contract_receivables` VALUES ('1', 'BF60E002-9D9A-449D-B20B-89E2659
 -- ----------------------------
 DROP TABLE IF EXISTS `contract_receivables_record`;
 CREATE TABLE `contract_receivables_record` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `RECORD_ID` varchar(50) DEFAULT NULL,
   `RECEIVABLES_ID` varchar(50) DEFAULT NULL,
   `AMOUNT` decimal(10,0) DEFAULT NULL,
@@ -2224,7 +2446,7 @@ INSERT INTO `contract_receivables_record` VALUES ('4', '0B643BE8-B786-4E60-A7EF-
 -- ----------------------------
 DROP TABLE IF EXISTS `contract_sendgoods`;
 CREATE TABLE `contract_sendgoods` (
-  `ID` bigint(11) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `RECORD_ID` varchar(50) DEFAULT NULL,
   `CONTRACT_ID` varchar(50) DEFAULT NULL,
   `TRACKING_NUMBER` varchar(50) DEFAULT NULL COMMENT '快递单号',
@@ -2251,9 +2473,9 @@ INSERT INTO `contract_sendgoods` VALUES ('1', '27234A4E-A64B-4ED6-879F-65EF71766
 -- ----------------------------
 DROP TABLE IF EXISTS `contract_sort`;
 CREATE TABLE `contract_sort` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `SORT_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `SORT_NAME` varchar(50) DEFAULT NULL,
   `SORT_REMARK` text,
   `SORT_LEAVE` varchar(50) DEFAULT NULL,
@@ -2276,9 +2498,9 @@ INSERT INTO `contract_sort` VALUES ('4', '14534F3C-42BC-479D-BEFE-7FC43064ED89',
 -- ----------------------------
 DROP TABLE IF EXISTS `crm_contact_record`;
 CREATE TABLE `crm_contact_record` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `RECORD_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `CUSTOMER_ID` varchar(50) DEFAULT NULL,
   `LINK_MAN_ID` varchar(50) DEFAULT NULL COMMENT '记录ID',
   `CONTENT` text COMMENT '联系内容',
@@ -2308,9 +2530,9 @@ INSERT INTO `crm_contact_record` VALUES ('121', 'A871954B-5D74-4300-89B4-1B3A544
 -- ----------------------------
 DROP TABLE IF EXISTS `crm_contract_info`;
 CREATE TABLE `crm_contract_info` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `CONTRACT_INFO_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `CUSTOMER_ID` varchar(50) DEFAULT NULL,
   `BANK` varchar(50) DEFAULT NULL,
   `BANK_ACCOUNT` varchar(50) DEFAULT NULL,
@@ -2331,9 +2553,9 @@ INSERT INTO `crm_contract_info` VALUES ('1', 'D6B68910-1084-9F68-765C-F8382D9964
 -- ----------------------------
 DROP TABLE IF EXISTS `crm_customer`;
 CREATE TABLE `crm_customer` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `CUSTOMER_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `CUSTOMER_CODE` varchar(50) DEFAULT NULL COMMENT '客户编号',
   `CN_NAME` varchar(50) DEFAULT NULL COMMENT '客户中文名称',
   `EN_NAME` varchar(50) DEFAULT NULL COMMENT '客户英文名称',
@@ -2373,7 +2595,7 @@ CREATE TABLE `crm_customer` (
   `KEEP_USER` text COMMENT '当前销售员',
   `ORG_ID` varchar(300) DEFAULT NULL,
   KEY `ID` (`ID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2621 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of crm_customer
@@ -2394,9 +2616,9 @@ INSERT INTO `crm_customer` VALUES ('10', 'C6300909-7092-11E9-922B-F48E38BCA691',
 -- ----------------------------
 DROP TABLE IF EXISTS `crm_industry`;
 CREATE TABLE `crm_industry` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `INDUSTRY_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `INDUSTRY_NAME` varchar(50) DEFAULT NULL,
   `REMARK` text,
   `ORG_ID` varchar(50) DEFAULT NULL,
@@ -2423,7 +2645,7 @@ INSERT INTO `crm_industry` VALUES ('48', 'CEAABA07-93F4-4EDB-AF76-1168739354CA',
 -- ----------------------------
 DROP TABLE IF EXISTS `crm_inquiry`;
 CREATE TABLE `crm_inquiry` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `INQUIRY_ID` varchar(50) DEFAULT NULL,
   `CUSTOMER_ID` varchar(50) DEFAULT NULL,
   `INQUIRY_CODE` varchar(50) DEFAULT NULL,
@@ -2464,11 +2686,11 @@ INSERT INTO `crm_inquiry` VALUES ('8', 'EA974FA6-40E1-4701-AF13-BF49E32BE6A7', '
 -- ----------------------------
 DROP TABLE IF EXISTS `crm_inquiry_detail`;
 CREATE TABLE `crm_inquiry_detail` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `DETAIL_ID` varchar(50) DEFAULT NULL,
   `INQUIRY_ID` varchar(50) DEFAULT NULL,
   `PRODUCT_ID` varchar(50) DEFAULT NULL,
-  `COUNT` int(11) DEFAULT NULL,
+  `COUNT` int DEFAULT NULL,
   `DELIVERY` varchar(20) DEFAULT NULL,
   `REMARK` text,
   `CREATE_TIME` varchar(20) DEFAULT NULL,
@@ -2491,9 +2713,9 @@ INSERT INTO `crm_inquiry_detail` VALUES ('19', '68EE97F9-69FC-4D75-97AA-3D57A5D0
 -- ----------------------------
 DROP TABLE IF EXISTS `crm_link_man`;
 CREATE TABLE `crm_link_man` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `LINK_MAN_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `CUSTOMER_ID` varchar(50) DEFAULT NULL,
   `LINK_NAME` varchar(50) DEFAULT NULL,
   `SEX` varchar(2) DEFAULT NULL,
@@ -5582,9 +5804,9 @@ INSERT INTO `crm_link_man` VALUES ('3058', 'BD8004E8-3016-444A-9978-D553C4530CA8
 -- ----------------------------
 DROP TABLE IF EXISTS `crm_my_product`;
 CREATE TABLE `crm_my_product` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `PRODUCT_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `PRODUCT_NAME` varchar(50) DEFAULT NULL,
   `REMARK` text,
   `ORG_ID` varchar(50) DEFAULT NULL,
@@ -5613,9 +5835,9 @@ INSERT INTO `crm_my_product` VALUES ('17', '7B45607C-FE10-408B-A9B7-D6FD93C6999D
 -- ----------------------------
 DROP TABLE IF EXISTS `crm_priv`;
 CREATE TABLE `crm_priv` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `PRIV_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `MANAGER` text,
   `SALE` text,
   `SENDER` text,
@@ -5633,7 +5855,7 @@ INSERT INTO `crm_priv` VALUES ('9', '3B4F5468-03FC-4C5D-8C38-9FD1B323A367', null
 -- ----------------------------
 DROP TABLE IF EXISTS `crm_quotation`;
 CREATE TABLE `crm_quotation` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `QUOTATION_ID` varchar(50) DEFAULT NULL COMMENT '报价价ID',
   `QUOTATION_CODE` varchar(50) DEFAULT NULL COMMENT '报价单编号',
   `CUSTOMER_ID` varchar(50) DEFAULT NULL COMMENT '客户ID',
@@ -5659,7 +5881,7 @@ CREATE TABLE `crm_quotation` (
 -- ----------------------------
 DROP TABLE IF EXISTS `crm_quotation_mx`;
 CREATE TABLE `crm_quotation_mx` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `RECORD_ID` varchar(50) DEFAULT NULL,
   `QUOTATION_ID` varchar(50) DEFAULT NULL,
   `NAME` varchar(100) DEFAULT NULL COMMENT '产品名称',
@@ -5682,9 +5904,9 @@ CREATE TABLE `crm_quotation_mx` (
 -- ----------------------------
 DROP TABLE IF EXISTS `crm_tags`;
 CREATE TABLE `crm_tags` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `TAGS_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `INDUSTRY_ID` varchar(50) DEFAULT NULL,
   `TAGS_NAME` varchar(50) DEFAULT NULL,
   `REMARK` text,
@@ -5785,7 +6007,7 @@ INSERT INTO `crm_tags` VALUES ('112', '5BE245A9-DE81-4A41-B7D0-E63CD98ADF94', '4
 -- ----------------------------
 DROP TABLE IF EXISTS `data_upload_handle`;
 CREATE TABLE `data_upload_handle` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `PROCESS_ID` varchar(50) DEFAULT NULL,
   `RECORD_ID` varchar(50) DEFAULT NULL,
   `REMARK` text,
@@ -5806,7 +6028,7 @@ INSERT INTO `data_upload_handle` VALUES ('2', '513B5D60-1C17-427D-B4E0-ECEB0916B
 -- ----------------------------
 DROP TABLE IF EXISTS `data_upload_info`;
 CREATE TABLE `data_upload_info` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `RECORD_ID` varchar(50) DEFAULT NULL,
   `TITLE` varchar(100) DEFAULT NULL,
   `DATA_TYPE` varchar(2) DEFAULT NULL,
@@ -5836,7 +6058,7 @@ INSERT INTO `data_upload_info` VALUES ('1', 'F2098427-561E-4BC2-96D1-DA05B8822EA
 -- ----------------------------
 DROP TABLE IF EXISTS `dd_config`;
 CREATE TABLE `dd_config` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `CONFIG_ID` varchar(50) DEFAULT NULL,
   `DINGDING_CORP_ID` varchar(255) DEFAULT NULL,
   `DINGDING_AGENT_ID` varchar(255) DEFAULT NULL,
@@ -5858,7 +6080,7 @@ INSERT INTO `dd_config` VALUES ('1', '0B58DB86-A6CE-4DE2-8379-6E2C45C07C2E', 'di
 -- ----------------------------
 DROP TABLE IF EXISTS `diary`;
 CREATE TABLE `diary` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `DIARY_ID` varchar(100) DEFAULT NULL,
   `DIARY_DAY` varchar(20) DEFAULT NULL,
   `TITLE` varchar(50) DEFAULT NULL,
@@ -5888,7 +6110,7 @@ INSERT INTO `diary` VALUES ('3', 'AA88FFE8-1E8C-460A-845F-731931E4DA3F', '2020-0
 -- ----------------------------
 DROP TABLE IF EXISTS `diary_comments`;
 CREATE TABLE `diary_comments` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `COMM_ID` varchar(100) DEFAULT NULL,
   `DIARY_ID` varchar(100) DEFAULT NULL,
   `CONTENT` text,
@@ -5910,11 +6132,11 @@ INSERT INTO `diary_comments` VALUES ('3', 'CCD8D79B-B8BE-439C-B3AE-231C8EA3314E'
 -- ----------------------------
 DROP TABLE IF EXISTS `diary_priv`;
 CREATE TABLE `diary_priv` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `DIARY_PRIV_ID` varchar(150) DEFAULT NULL,
-  `LOCK_DAY` int(11) DEFAULT NULL,
-  `COMM_STATUS` int(11) DEFAULT NULL,
-  `SHARE_STATUS` int(11) DEFAULT NULL,
+  `LOCK_DAY` int DEFAULT NULL,
+  `COMM_STATUS` int DEFAULT NULL,
+  `SHARE_STATUS` int DEFAULT NULL,
   `TEMPLATE` text,
   `CREATE_TIME` varchar(20) DEFAULT NULL,
   `CREATE_USER` varchar(50) DEFAULT NULL,
@@ -5932,7 +6154,7 @@ INSERT INTO `diary_priv` VALUES ('4', '306BA027-6C46-82CB-D231-5539BC1D7A03', '7
 -- ----------------------------
 DROP TABLE IF EXISTS `document_entrust`;
 CREATE TABLE `document_entrust` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `ENTRUST_ID` varchar(50) DEFAULT NULL COMMENT '唯一标识',
   `FLOW_ID` varchar(50) DEFAULT NULL COMMENT 'BPM流程标识',
   `BEGIN_TIME` varchar(20) DEFAULT NULL COMMENT '开始时间',
@@ -5956,9 +6178,9 @@ CREATE TABLE `document_entrust` (
 -- ----------------------------
 DROP TABLE IF EXISTS `document_flow`;
 CREATE TABLE `document_flow` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '顺序号',
+  `ID` bigint NOT NULL AUTO_INCREMENT COMMENT '顺序号',
   `FLOW_ID` varchar(50) DEFAULT NULL COMMENT '流程ID',
-  `SORT_NO` int(5) DEFAULT NULL COMMENT '排序号',
+  `SORT_NO` int DEFAULT NULL COMMENT '排序号',
   `FLOW_NAME` varchar(50) DEFAULT NULL COMMENT '流程名称',
   `FORM_ID` varchar(50) DEFAULT NULL COMMENT '表单id',
   `DOCUMENT_TYPE` varchar(50) DEFAULT NULL COMMENT '公文流程的类型',
@@ -5996,10 +6218,10 @@ INSERT INTO `document_flow` VALUES ('45', 'EF7EF198-D49B-4AA5-9A01-37112ADFDAA0'
 -- ----------------------------
 DROP TABLE IF EXISTS `document_form`;
 CREATE TABLE `document_form` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `FORM_ID` varchar(50) DEFAULT NULL,
   `DOCUMENT_TYPE` varchar(50) DEFAULT NULL COMMENT '1:收文表单2:发文表单',
-  `SORT_NO` int(11) DEFAULT '0' COMMENT '排序号',
+  `SORT_NO` int DEFAULT '0' COMMENT '排序号',
   `FORM_TITLE` varchar(50) DEFAULT NULL,
   `TABLE_NAME` varchar(50) DEFAULT NULL,
   `CREATE_USER` varchar(20) DEFAULT NULL,
@@ -6028,7 +6250,7 @@ INSERT INTO `document_form` VALUES ('10', '2EF37CB2-F3CF-489C-B267-7F1D45A2F1C1'
 -- ----------------------------
 DROP TABLE IF EXISTS `document_form_version`;
 CREATE TABLE `document_form_version` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `VERSION_ID` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `TITLE` varchar(100) DEFAULT NULL,
   `FORM_ID` varchar(50) DEFAULT NULL,
@@ -6055,7 +6277,7 @@ INSERT INTO `document_form_version` VALUES ('1', 'DDABE26E-1552-4139-8DB2-9E329D
 -- ----------------------------
 DROP TABLE IF EXISTS `document_list`;
 CREATE TABLE `document_list` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `RUN_ID` varchar(50) DEFAULT NULL COMMENT '流水号',
   `FLOW_TITLE` varchar(200) DEFAULT NULL COMMENT '流程标题',
   `END_TIME` varchar(50) DEFAULT NULL COMMENT '流程结束时间',
@@ -6093,7 +6315,7 @@ INSERT INTO `document_list` VALUES ('44', '0566FE4E-CAE4-41DD-92FA-475236D08F63'
 -- ----------------------------
 DROP TABLE IF EXISTS `document_list_file`;
 CREATE TABLE `document_list_file` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `RECORD_ID` varchar(50) DEFAULT NULL,
   `RUN_ID` varchar(50) DEFAULT NULL COMMENT '流水号',
   `FLOW_TITLE` varchar(200) DEFAULT NULL COMMENT '流程标题',
@@ -6127,13 +6349,13 @@ CREATE TABLE `document_list_file` (
 -- ----------------------------
 DROP TABLE IF EXISTS `document_number`;
 CREATE TABLE `document_number` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `CONFIG_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL COMMENT '排序号',
+  `SORT_NO` int DEFAULT NULL COMMENT '排序号',
   `TITLE` varchar(100) DEFAULT NULL COMMENT '文号规则名称',
   `RULE` varchar(100) DEFAULT NULL COMMENT '文号规则',
-  `START_NUMBER` int(11) DEFAULT NULL COMMENT '文号起始号',
-  `NUMBER` int(11) DEFAULT '0' COMMENT '当前序号',
+  `START_NUMBER` int DEFAULT NULL COMMENT '文号起始号',
+  `NUMBER` int DEFAULT '0' COMMENT '当前序号',
   `CREATE_TIME` varchar(20) DEFAULT NULL,
   `CREATE_USER` varchar(50) DEFAULT NULL,
   `ORG_ID` varchar(50) DEFAULT NULL,
@@ -6151,9 +6373,9 @@ INSERT INTO `document_number` VALUES ('3', '5E9E90A2-0049-49DF-9538-4B1781A22D4F
 -- ----------------------------
 DROP TABLE IF EXISTS `document_plugins_register`;
 CREATE TABLE `document_plugins_register` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `PLUGINS_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `TITLE` varchar(50) DEFAULT NULL,
   `PACK_NAME` varchar(500) DEFAULT NULL COMMENT '注要用于表示,在那个业务场景下',
   `CLASS_NAME` varchar(50) DEFAULT NULL,
@@ -6175,10 +6397,10 @@ CREATE TABLE `document_plugins_register` (
 -- ----------------------------
 DROP TABLE IF EXISTS `document_process`;
 CREATE TABLE `document_process` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `PROCESS_ID` varchar(50) DEFAULT NULL COMMENT '步骤唯一标识',
   `FLOW_ID` varchar(50) DEFAULT '' COMMENT 'BPM流程维一标识',
-  `SORT_NO` int(11) DEFAULT NULL COMMENT '排序字段',
+  `SORT_NO` int DEFAULT NULL COMMENT '排序字段',
   `PRCS_NAME` varchar(50) DEFAULT '' COMMENT '步骤名称',
   `NEXT_PRCS` text COMMENT '下一步骤集合',
   `PRCS_TYPE` varchar(2) DEFAULT NULL COMMENT '步骤类型1:开始2:结束,3为普通..',
@@ -6265,7 +6487,7 @@ INSERT INTO `document_process` VALUES ('41', '3C8D8D86-E260-4411-BA9E-E00534983A
 -- ----------------------------
 DROP TABLE IF EXISTS `document_run_log`;
 CREATE TABLE `document_run_log` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `LOG_ID` varchar(50) DEFAULT NULL,
   `LOG_TYPE` varchar(5) DEFAULT NULL,
   `FLOW_ID` varchar(50) DEFAULT NULL,
@@ -6278,7 +6500,7 @@ CREATE TABLE `document_run_log` (
   `CREATE_USER` varchar(50) DEFAULT NULL,
   `ORG_ID` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=411 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=416 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of document_run_log
@@ -6370,13 +6592,18 @@ INSERT INTO `document_run_log` VALUES ('407', '1808426F-565C-44C8-AF85-E041DB5D4
 INSERT INTO `document_run_log` VALUES ('408', 'A91296C6-8F57-4A2D-8463-D12DA5D94354', '6', 'F23AA749-0E8A-41E5-8091-52AD628118AC', null, null, null, '06BE1EBE-3261-4848-A690-B6340996177B', '修改步骤设置', '2020-07-23 13:36:59', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `document_run_log` VALUES ('409', 'FD229DA0-7392-49C6-A018-A1B362C54817', '6', 'F23AA749-0E8A-41E5-8091-52AD628118AC', null, null, null, '06BE1EBE-3261-4848-A690-B6340996177B', '修改步骤设置', '2020-07-23 13:39:38', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `document_run_log` VALUES ('410', '2DE533BC-BA09-4894-81EC-C84134DFCF3B', '6', 'F23AA749-0E8A-41E5-8091-52AD628118AC', null, null, null, '06BE1EBE-3261-4848-A690-B6340996177B', '修改步骤设置', '2020-07-23 19:10:57', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `document_run_log` VALUES ('411', 'AB9CA959-2B2E-446E-9D1F-79744A2D5EA6', '3', null, '2EF37CB2-F3CF-489C-B267-7F1D45A2F1C1', null, null, null, '公文表单内容修改成功', '2020-07-26 20:21:30', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `document_run_log` VALUES ('412', '3B5167DC-4DED-4074-86E6-79B1D7BCA003', '3', null, '2EF37CB2-F3CF-489C-B267-7F1D45A2F1C1', null, null, null, '公文表单内容修改成功', '2020-08-09 15:17:06', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `document_run_log` VALUES ('413', 'C9FE2F2B-6B9F-4C32-A0CD-9FABB50A6D90', '3', null, '2EF37CB2-F3CF-489C-B267-7F1D45A2F1C1', null, null, null, '公文表单内容修改成功', '2020-08-09 15:17:29', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `document_run_log` VALUES ('414', '63711997-E976-4DC4-BAD7-FEC2B9454810', '3', null, '2EF37CB2-F3CF-489C-B267-7F1D45A2F1C1', null, null, null, '公文表单内容修改成功', '2020-08-09 15:17:41', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `document_run_log` VALUES ('415', '1E91635A-64B0-4CD2-9AEE-93E1E42C1FC8', '3', null, '2EF37CB2-F3CF-489C-B267-7F1D45A2F1C1', null, null, null, '公文表单内容修改成功', '2020-08-09 15:18:23', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 
 -- ----------------------------
 -- Table structure for document_run_process
 -- ----------------------------
 DROP TABLE IF EXISTS `document_run_process`;
 CREATE TABLE `document_run_process` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `RUN_PROCESS_ID` varchar(50) DEFAULT NULL COMMENT '执行步骤的唯一标识',
   `RUN_ID` varchar(50) DEFAULT NULL COMMENT '流程流水号',
   `PROCESS_ID` varchar(50) DEFAULT NULL COMMENT '系统设计的步骤号',
@@ -6445,25 +6672,25 @@ INSERT INTO `document_run_process` VALUES ('40', '14AD1760-8973-4214-9DD1-AD44F2
 INSERT INTO `document_run_process` VALUES ('41', '349CE24E-B400-440C-AABE-A2841A1708F6', 'B5B974D9-16D7-44ED-A5E0-AA6D556CCB9C', '91110888-CAAA-4943-B1F1-01263349285A', '0', 'wangfang', 'admin', '2020-06-03 13:02:34', null, null, null, '0', null, null, null, null, null, '14AD1760-8973-4214-9DD1-AD44F2D03991', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `document_run_process` VALUES ('42', 'C0AE3FC9-9C2E-49CD-AA89-BB82E5B8279D', '2FFBB0EB-AD79-49C5-ACB9-46004AA73002', '44E5B6C7-3210-4A38-871F-1A989616336A', '0', 'liushaoquan', 'liushaoquan', '2020-06-10 22:31:04', '2020-06-10 22:31:04', null, null, '0', null, null, null, null, null, '2930CF9A-0606-4E19-84FC-5D55463C716D', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `document_run_process` VALUES ('49', '6B828B87-F1EE-4836-9A1A-82D82ECF5D5F', 'E654A362-5AC3-40E8-B249-C158DE1D25B9', '8146D27C-950B-4D72-8835-90EEF3CCA770', '0', 'admin', 'admin', '2020-06-28 10:40:32', '2020-07-05 21:10:20', null, '1', '0', '<p><br></p>', null, null, null, '', 'FE1B93D6-6447-4E0E-8169-4321F2922C25', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `document_run_process` VALUES ('61', '1C44CF2F-C639-4029-8E69-87D66BB260F5', 'CF59E8B5-3042-4E4D-92C8-E17C61D0ABE3', '8146D27C-950B-4D72-8835-90EEF3CCA770', '0', 'admin', 'admin', '2020-07-19 10:53:21', '2020-07-19 10:53:21', null, null, '0', null, null, null, null, null, '356453FC-9483-4D83-A62E-1B4E2A87DDE1', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `document_run_process` VALUES ('61', '1C44CF2F-C639-4029-8E69-87D66BB260F5', 'CF59E8B5-3042-4E4D-92C8-E17C61D0ABE3', '8146D27C-950B-4D72-8835-90EEF3CCA770', '0', 'admin', 'admin', '2020-07-19 10:53:21', '2020-08-09 22:58:55', null, null, '0', null, null, null, null, null, '356453FC-9483-4D83-A62E-1B4E2A87DDE1', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `document_run_process` VALUES ('70', '6DE550BB-D7FE-47D4-B44E-2543DF1F12CB', 'DBE8E8BF-B4EE-41F0-8C26-66A4E9848F23', '2EAFC3FA-D856-4E2A-87F5-0F5EA4C18C33', '0', 'admin', 'admin', '2020-07-21 17:49:20', '2020-07-21 17:53:04', '2020-07-21 17:55:37', '1', '1', '<p>事项比较的急！</p>', null, null, null, '', '9248F3D3-CD7E-4E26-A981-FAA183B73887', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `document_run_process` VALUES ('71', '7D3BA5FE-2DF9-4947-BF1E-DA760827CD2B', 'DBE8E8BF-B4EE-41F0-8C26-66A4E9848F23', 'D24E7C89-265E-4DD7-8C11-EB928337930D', '0', 'admin', 'admin', '2020-07-21 17:55:37', '2020-07-21 18:00:03', '2020-07-21 18:00:57', '1', '1', '<p><br></p>', null, null, null, '', '6DE550BB-D7FE-47D4-B44E-2543DF1F12CB', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `document_run_process` VALUES ('72', '73E16C29-C050-40BF-A056-119F4B534BED', 'DBE8E8BF-B4EE-41F0-8C26-66A4E9848F23', 'FE50D958-4811-4510-9D8E-72CD7C8BE572', '0', 'admin', 'admin', '2020-07-21 18:00:57', '2020-07-21 18:01:01', '2020-07-21 18:01:48', '1', '1', '<p>没有什么意见</p>', null, null, null, '', '7D3BA5FE-2DF9-4947-BF1E-DA760827CD2B', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `document_run_process` VALUES ('73', '52C8BF3F-6F52-4FE4-9AD1-7CA92BA59A31', 'DBE8E8BF-B4EE-41F0-8C26-66A4E9848F23', 'DD0F06BD-0CCA-4816-9047-534D13ED29A6', '0', 'admin', 'admin', '2020-07-21 18:01:48', '2020-07-21 18:01:50', '2020-07-21 18:02:45', '1', '1', '<p><br></p>', null, null, null, '', '73E16C29-C050-40BF-A056-119F4B534BED', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `document_run_process` VALUES ('74', 'BB4D858A-6FDD-4123-8B49-4982E56C65C8', 'DBE8E8BF-B4EE-41F0-8C26-66A4E9848F23', '5BAC6FF2-0A3B-43AE-AEDA-7426DDBC4186', '0', 'admin', 'admin', '2020-07-21 18:02:45', '2020-07-21 18:06:30', '2020-07-21 18:06:40', '1', '1', '<p><br></p>', null, null, null, '', '52C8BF3F-6F52-4FE4-9AD1-7CA92BA59A31', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `document_run_process` VALUES ('75', '16419A4D-3C8A-44A5-8EFA-B5554D62626B', 'BAB82730-D321-41E9-9663-E3A69E089FB0', '2EAFC3FA-D856-4E2A-87F5-0F5EA4C18C33', '0', 'admin', 'admin', '2020-07-21 20:38:24', '2020-07-23 19:06:07', null, '1', '0', '\n								<div></div>\n							', null, null, null, '', '8C135D7E-EE01-485D-8AEF-52772B314330', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `document_run_process` VALUES ('75', '16419A4D-3C8A-44A5-8EFA-B5554D62626B', 'BAB82730-D321-41E9-9663-E3A69E089FB0', '2EAFC3FA-D856-4E2A-87F5-0F5EA4C18C33', '0', 'admin', 'admin', '2020-07-21 20:38:24', '2020-08-06 20:05:17', null, '1', '0', '\n								<div></div>\n							', null, null, null, '', '8C135D7E-EE01-485D-8AEF-52772B314330', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `document_run_process` VALUES ('76', 'B7A374FF-37D7-47C1-974C-50E8BECAFEA4', 'CDA5EE0E-A285-4AFA-BCF9-C2993F4A7171', '06BE1EBE-3261-4848-A690-B6340996177B', '0', 'luyunyun', 'admin', '2020-07-21 20:38:46', '2020-07-21 20:38:35', null, null, '0', null, null, null, null, null, '4515C883-A168-41BC-A75D-6AC4186A80B8', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `document_run_process` VALUES ('77', 'E9CB0A2F-5091-40BF-B3E1-226CC48E3F41', '68DB02BD-48D6-4072-855B-8B5FB7B7DFE4', '06BE1EBE-3261-4848-A690-B6340996177B', '0', 'luyunyun', 'admin', '2020-07-21 20:43:56', '2020-07-21 20:43:48', null, null, '0', null, null, null, null, null, '01DCD7B8-D5B9-46B8-A44E-C03816A04643', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `document_run_process` VALUES ('78', '4EF2B673-3E49-4876-84D8-61BB5C9DB588', '9A378CB5-F4BE-45F9-9A61-703AE654F99E', '06BE1EBE-3261-4848-A690-B6340996177B', '0', 'luyunyun', 'admin', '2020-07-21 20:47:08', '2020-07-21 20:46:58', null, null, '0', null, null, null, null, null, 'D7978B31-8009-49D1-85F9-09928C959537', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `document_run_process` VALUES ('79', '37377D9B-5C9B-4A88-A32E-71DB0B79FEC6', 'BE43FA28-64DE-435F-9759-CBE10E29B1A6', '06BE1EBE-3261-4848-A690-B6340996177B', '0', 'admin', 'admin', '2020-07-22 15:14:35', '2020-07-23 19:00:48', null, '1', '0', '<p><br></p>', null, null, null, '', '885EB519-3CB4-4D3A-A5C3-CFEF3171B6D2', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `document_run_process` VALUES ('80', 'CF85009F-DAE1-4387-AB0C-E4109DC27D1C', '0566FE4E-CAE4-41DD-92FA-475236D08F63', '06BE1EBE-3261-4848-A690-B6340996177B', '0', 'admin', 'admin', '2020-07-23 10:51:18', '2020-07-24 17:45:39', null, '1', '0', '<p><br></p>', null, null, null, '', 'CFB8DE8C-F891-4316-B7D5-D93809396D4F', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `document_run_process` VALUES ('79', '37377D9B-5C9B-4A88-A32E-71DB0B79FEC6', 'BE43FA28-64DE-435F-9759-CBE10E29B1A6', '06BE1EBE-3261-4848-A690-B6340996177B', '0', 'admin', 'admin', '2020-07-22 15:14:35', '2020-07-28 15:04:38', null, '1', '0', '<p><br></p>', null, null, null, '', '885EB519-3CB4-4D3A-A5C3-CFEF3171B6D2', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `document_run_process` VALUES ('80', 'CF85009F-DAE1-4387-AB0C-E4109DC27D1C', '0566FE4E-CAE4-41DD-92FA-475236D08F63', '06BE1EBE-3261-4848-A690-B6340996177B', '0', 'admin', 'admin', '2020-07-23 10:51:18', '2020-07-25 22:04:17', null, '1', '0', '<p><br></p>', null, null, null, '', 'CFB8DE8C-F891-4316-B7D5-D93809396D4F', null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 
 -- ----------------------------
 -- Table structure for document_send_to
 -- ----------------------------
 DROP TABLE IF EXISTS `document_send_to`;
 CREATE TABLE `document_send_to` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `SEND_TO_ID` varchar(50) DEFAULT NULL,
   `RUN_ID` varchar(50) DEFAULT NULL,
   `STATUS` varchar(2) DEFAULT '0' COMMENT '0:未查阅1已查阅',
@@ -6486,12 +6713,12 @@ INSERT INTO `document_send_to` VALUES ('3', '91D67233-35C7-41DE-B436-CAD09601F9A
 -- ----------------------------
 DROP TABLE IF EXISTS `document_sort`;
 CREATE TABLE `document_sort` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `SORT_ID` varchar(50) DEFAULT NULL COMMENT '分类的维一标识',
   `SORT_NAME` varchar(50) DEFAULT NULL COMMENT '分类名称',
   `MANAGE_ACCOUNT_ID` varchar(20) DEFAULT NULL,
   `LEVEL_ID` varchar(50) DEFAULT NULL COMMENT '父级分类',
-  `SORT_NO` int(3) DEFAULT NULL COMMENT '排序号',
+  `SORT_NO` int DEFAULT NULL COMMENT '排序号',
   `CREATE_TIME` varchar(20) DEFAULT NULL,
   `CREATE_USER` varchar(50) DEFAULT NULL,
   `ORG_ID` varchar(50) DEFAULT NULL,
@@ -6509,9 +6736,9 @@ INSERT INTO `document_sort` VALUES ('5', '88213982-0E67-4E00-B1EF-FC4B2D7D4B5D',
 -- ----------------------------
 DROP TABLE IF EXISTS `document_template`;
 CREATE TABLE `document_template` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `TEMPLATE_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `FLOW_ID` varchar(50) DEFAULT NULL,
   `PROCESS_ID` varchar(50) DEFAULT NULL,
   `TEMPLATE_NAME` varchar(255) DEFAULT NULL,
@@ -6533,7 +6760,7 @@ INSERT INTO `document_template` VALUES ('2', 'ABEAFC91-32D5-41CA-95E3-44B9ED833D
 -- ----------------------------
 DROP TABLE IF EXISTS `dynamic`;
 CREATE TABLE `dynamic` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `DYNAMIC_ID` varchar(50) DEFAULT NULL,
   `ACCOUNT_ID` varchar(50) DEFAULT NULL,
   `ATTACH` varchar(255) DEFAULT NULL,
@@ -6557,7 +6784,7 @@ INSERT INTO `dynamic` VALUES ('19', 'A4D3D005-FEB5-4A06-A899-FB276D543B38', 'jin
 -- ----------------------------
 DROP TABLE IF EXISTS `d_1592046694`;
 CREATE TABLE `d_1592046694` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `ID` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
   `RUN_ID` varchar(50) DEFAULT NULL COMMENT 'BPM流水标识',
   `DATA_NUM1` text COMMENT '发文文号',
   `DATA_NUM2` text COMMENT '缓急',
@@ -6597,7 +6824,7 @@ INSERT INTO `d_1592046694` VALUES ('5', '0566FE4E-CAE4-41DD-92FA-475236D08F63', 
 -- ----------------------------
 DROP TABLE IF EXISTS `d_1593310910`;
 CREATE TABLE `d_1593310910` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `ID` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
   `RUN_ID` varchar(50) DEFAULT NULL COMMENT 'BPM流水标识',
   `DATA_NUM1` text COMMENT '来文单位',
   `DATA_NUM2` text COMMENT '密级',
@@ -6616,35 +6843,33 @@ INSERT INTO `d_1593310910` VALUES ('2', 'CF59E8B5-3042-4E4D-92C8-E17C61D0ABE3', 
 -- ----------------------------
 DROP TABLE IF EXISTS `d_1595318021`;
 CREATE TABLE `d_1595318021` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `ID` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
   `RUN_ID` varchar(50) DEFAULT NULL COMMENT 'BPM流水标识',
   `DATA_NUM1` text COMMENT '申请日期',
-  `ORG_ID` varchar(50) DEFAULT NULL COMMENT '组织机构识别码',
   `DATA_NUM2` text COMMENT ' 部门',
   `DATA_NUM3` text COMMENT '用印名称',
   `DATA_NUM4` text COMMENT '份数',
   `DATA_NUM5` text COMMENT '部门领导签字',
+  `DATA_NUM11` text COMMENT '部门领导签名',
   `DATA_NUM6` text COMMENT '校领导意见',
   `DATA_NUM7` text COMMENT '办公室意见',
   `DATA_NUM8` text COMMENT '材料内容',
   `DATA_NUM9` text COMMENT '经办人',
   `DATA_NUM10` text COMMENT '出印人',
-  `DATA_NUM11` text COMMENT '部门领导签名',
+  `ORG_ID` varchar(50) DEFAULT NULL COMMENT '组织机构识别码',
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of d_1595318021
 -- ----------------------------
-INSERT INTO `d_1595318021` VALUES ('1', 'DBE8E8BF-B4EE-41F0-8C26-66A4E9848F23', '2020年07月21日', '8EADB678-A646-1E51-3E87-75A547B8AF19', '信息中心', '1', '5', '这个事项是由校领导班子商定的', 'OA管理员 2020年07月21日 18时01分01秒', 'OA管理员 2020年07月21日 18时01分50秒', '中国共产党新闻网北京7月21日电 （谢磊 赵晶）日前，2020年中央和国家机关“强素质·作表率”读书活动举办第二讲，围绕“重温马克思主义经典，深化习近平新时代中国特色社会主义思想学习”这一主题，邀请北京大学哲学系丰子义教授做客讲堂，以“坚持历史唯物主义”为主题，导读《德意志意识形态》。\r\n\r\n丰子义在导读中指出，习近平新时代中国特色社会主义思想蕴含着丰富的哲学思想，把马克思主义哲学中国化推进到一个新的境界，展现了21世纪中国马克思主义哲学的新特色、新风格、新气派。', 'OA管理员 2020年07月21日', 'OA管理员 2020年07月21日 18时06分30秒', 'OA管理员 2020年07月21日 18时00分03秒');
-INSERT INTO `d_1595318021` VALUES ('2', 'BAB82730-D321-41E9-9663-E3A69E089FB0', 'null', '8EADB678-A646-1E51-3E87-75A547B8AF19', 'null', 'null', 'null', null, null, null, 'null', 'null', null, null);
 
 -- ----------------------------
 -- Table structure for email
 -- ----------------------------
 DROP TABLE IF EXISTS `email`;
 CREATE TABLE `email` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `EMAIL_ID` varchar(50) DEFAULT NULL,
   `TO_ID` text,
   `READ_FLAG` varchar(1) DEFAULT NULL,
@@ -6657,7 +6882,7 @@ CREATE TABLE `email` (
   `ORG_ID` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE,
   KEY `ID` (`ID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of email
@@ -6680,18 +6905,19 @@ INSERT INTO `email` VALUES ('15', '107582F2-4501-4E95-A4B0-0611DF905956', 'admin
 INSERT INTO `email` VALUES ('16', '60D06FD7-4007-4A45-BA0B-1247D2C40017', 'admin', null, '0', '0', 'D61E159B-57D3-44B8-93E5-A53154F5939A', '2020-07-06 16:39:59', null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `email` VALUES ('17', '698113F1-CFC2-484D-8A29-3A6DA3E26DA1', 'admin', null, '0', '0', 'EE87492B-DA33-4E5F-9A46-9B98C4752ABA', '2020-07-06 16:42:35', null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `email` VALUES ('18', 'ECC8ECFC-1345-4EF6-B34D-E7128F856EE3', 'admin', null, '0', '0', '0CB70238-2BB1-4270-8564-0AA39AE1EAD9', '2020-07-20 11:47:25', null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `email` VALUES ('19', '170E8631-A618-465A-BFFC-63C315273276', 'admin', null, '0', '0', '0CD26183-F7EB-4464-9EAC-2C5BD75C0E68', '2020-07-18 23:58:47', null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `email` VALUES ('20', 'B10A78CA-FD20-4CB9-AD67-3562B96FC227', 'admin', null, '0', '0', '7D3E0AB0-1924-434F-98E7-C923BA014E44', '2020-07-06 20:50:53', null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `email` VALUES ('21', 'F2CE0E32-6E30-4944-9C7D-DDF2ADA9D404', 'admin', null, '0', '0', 'AFF0EC01-463E-4839-871A-1EF3C7F56AAE', '2020-07-20 11:46:28', null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `email` VALUES ('22', 'AA474F51-87DB-417F-AA4F-5BD55A19A98E', 'admin', null, '0', '0', '3D684093-7603-47CA-828F-D5BE1470AFB5', '2020-07-18 23:58:41', null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `email` VALUES ('23', 'ECF589CA-0646-4D94-8AF1-C5F7883B6122', 'admin', null, '0', '0', '23FDA4F7-93F5-41C2-AA82-67F2FE35B83B', '2020-07-18 23:33:17', null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `email` VALUES ('19', '170E8631-A618-465A-BFFC-63C315273276', 'admin', null, '0', '0', '0CD26183-F7EB-4464-9EAC-2C5BD75C0E68', '2020-07-26 21:19:14', null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `email` VALUES ('20', 'B10A78CA-FD20-4CB9-AD67-3562B96FC227', 'admin', null, '0', '0', '7D3E0AB0-1924-434F-98E7-C923BA014E44', '2020-07-28 16:17:06', null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `email` VALUES ('21', 'F2CE0E32-6E30-4944-9C7D-DDF2ADA9D404', 'admin', null, '0', '0', 'AFF0EC01-463E-4839-871A-1EF3C7F56AAE', '2020-07-27 21:06:29', null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `email` VALUES ('22', 'AA474F51-87DB-417F-AA4F-5BD55A19A98E', 'admin', null, '0', '0', '3D684093-7603-47CA-828F-D5BE1470AFB5', '2020-08-06 18:26:19', null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `email` VALUES ('23', 'ECF589CA-0646-4D94-8AF1-C5F7883B6122', 'admin', null, '0', '0', '23FDA4F7-93F5-41C2-AA82-67F2FE35B83B', '2020-07-27 22:54:15', null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `email` VALUES ('24', '3581D112-FFBF-4115-8F95-70B9230D3531', 'admin', null, '0', '0', '424D4C08-35F1-4ED1-9A76-7690F5549E49', '2020-08-08 16:49:48', null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 
 -- ----------------------------
 -- Table structure for email_body
 -- ----------------------------
 DROP TABLE IF EXISTS `email_body`;
 CREATE TABLE `email_body` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `BODY_ID` varchar(50) DEFAULT NULL,
   `FROM_ID` varchar(50) DEFAULT NULL,
   `TO_ID` text,
@@ -6712,7 +6938,7 @@ CREATE TABLE `email_body` (
   UNIQUE KEY `SEQ_ID` (`ID`) USING BTREE,
   KEY `email_from_id` (`FROM_ID`) USING BTREE,
   KEY `email_send_time` (`SEND_TIME`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of email_body
@@ -6736,15 +6962,16 @@ INSERT INTO `email_body` VALUES ('16', '7D3E0AB0-1924-434F-98E7-C923BA014E44', '
 INSERT INTO `email_body` VALUES ('17', 'AFF0EC01-463E-4839-871A-1EF3C7F56AAE', 'admin', 'admin', null, '北京昨日新增1例确诊，为果蔬店促销员！北京核酸检测人数已超1100万', '7月6日，北京市新冠肺炎疫情防控工作新闻发布会第143场召开。 昨日新增确诊1例，详情公布↓↓ 北京...', '<p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">7月6日，北京市新冠肺炎疫情防控工作新闻发布会第143场召开。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\"><strong>昨日新增确诊1例，详情公布↓↓</strong></p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">北京市疾控中心副主任庞星火介绍，7月5日0时至24时，新增报告本地确诊病例1例。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">病例具体情况为，女，50岁，<strong>现住址为丰台区花乡天骄俊园，为果蔬便民连锁店促销员。</strong>&nbsp;6月13日起居家隔离，6月19日被确定为确诊病例的密切接触者，由专车转运至集中隔离点进行集中医学观察，7月4日进行核酸检测,结果为阳性，由120救护车转运至丰台中西医结合医院就诊，7月5日确诊，临床分型为普通型。</p>', '2020-07-06 20:51:43', '', '1', null, null, null, null, '0', 'webSms,ddSms,wxSms', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `email_body` VALUES ('18', '3D684093-7603-47CA-828F-D5BE1470AFB5', 'admin', 'admin', null, '没等到《掌中之物》开播，却等来彭冠英新剧官宣，演员阵容爱了！', '说起彭冠英的《掌中之物》这部剧，相信大家是对它又爱又恨，爱的是这部剧真的很不错，值得大家去追看，恨的...', '<p><span style=\"color: rgb(0, 0, 0); font-family: -apple-system-font, &quot;Helvetica Neue&quot;, &quot;PingFang SC&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 19px; text-align: justify;\">说起彭冠英的《掌中之物》这部剧，相信大家是对它又爱又恨，爱的是这部剧真的很不错，值得大家去追看，恨的是《掌中之物》之前不停发布剧照和预告，大家都以为要播出了，心中充满期待，但却迟迟没有听到要播出的消息，据说片方想要等上星再播？不管怎么样，大家还是希望《掌中之物》能早日播出的，彭冠英和蔡文静的搭档，大家是非常期待的呢！</span><br></p>', '2020-07-07 18:34:26', '', '1', null, null, null, null, '0', 'webMail', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `email_body` VALUES ('19', '23FDA4F7-93F5-41C2-AA82-67F2FE35B83B', 'admin', 'admin', null, '没等到《掌中之物》开播，却等来彭冠英新剧官宣，演员阵容爱了！', '说起彭冠英的《掌中之物》这部剧，相信大家是对它又爱又恨，爱的是这部剧真的很不错，值得大家去追看，恨的...', '<p><span style=\"color: rgb(0, 0, 0); font-family: -apple-system-font, &quot;Helvetica Neue&quot;, &quot;PingFang SC&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei&quot;, sans-serif; font-size: 19px; text-align: justify;\">说起彭冠英的《掌中之物》这部剧，相信大家是对它又爱又恨，爱的是这部剧真的很不错，值得大家去追看，恨的是《掌中之物》之前不停发布剧照和预告，大家都以为要播出了，心中充满期待，但却迟迟没有听到要播出的消息，据说片方想要等上星再播？不管怎么样，大家还是希望《掌中之物》能早日播出的，彭冠英和蔡文静的搭档，大家是非常期待的呢！</span><br></p>', '2020-07-07 18:34:48', '', '1', null, null, null, null, '0', 'webMail', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `email_body` VALUES ('20', '424D4C08-35F1-4ED1-9A76-7690F5549E49', 'admin', 'admin', null, '微任务', '', '<p><img style=\"height: 300px; width: 200px;\" src=\"/sys/file/getImage?attachId=8BDA7984-D64B-4320-A0A9-D4FE2112BFDF\"><br></p>', '2020-08-08 16:49:46', '', '1', null, null, null, null, '0', '', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 
 -- ----------------------------
 -- Table structure for email_box
 -- ----------------------------
 DROP TABLE IF EXISTS `email_box`;
 CREATE TABLE `email_box` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `BOX_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `BOX_LEAVE` varchar(50) DEFAULT NULL,
   `BOX_NAME` varchar(50) DEFAULT NULL,
   `ACCOUNT_ID` varchar(50) DEFAULT NULL,
@@ -6764,7 +6991,7 @@ INSERT INTO `email_box` VALUES ('4', '08890882-355E-4F55-BB87-4823DF69325E', '6'
 -- ----------------------------
 DROP TABLE IF EXISTS `email_config`;
 CREATE TABLE `email_config` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `CONFIG_ID` varchar(50) DEFAULT NULL,
   `POP3` varchar(50) DEFAULT NULL,
   `SMTP` varchar(50) DEFAULT NULL,
@@ -6788,7 +7015,7 @@ INSERT INTO `email_config` VALUES ('2', '2A2ADF6D-811C-4383-A909-29773895C59B', 
 -- ----------------------------
 DROP TABLE IF EXISTS `email_tags`;
 CREATE TABLE `email_tags` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `TAG_ID` varchar(50) DEFAULT NULL,
   `TAG_NAME` varchar(20) DEFAULT NULL,
   `COLOR` varchar(10) DEFAULT NULL,
@@ -6806,9 +7033,9 @@ CREATE TABLE `email_tags` (
 -- ----------------------------
 DROP TABLE IF EXISTS `erp_bom`;
 CREATE TABLE `erp_bom` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `BOM_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `BOM_NAME` varchar(255) DEFAULT NULL,
   `MATERIEL_CODE` varchar(50) DEFAULT NULL,
   `VERSION` varchar(100) DEFAULT '' COMMENT '版本',
@@ -6834,7 +7061,7 @@ INSERT INTO `erp_bom` VALUES ('1', 'B11E30E2-A010-46DF-A6E7-A24618BB296E', '1', 
 -- ----------------------------
 DROP TABLE IF EXISTS `erp_bom_detail`;
 CREATE TABLE `erp_bom_detail` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `BOM_DETAIL_ID` varchar(50) DEFAULT NULL,
   `BOM_ID` varchar(50) DEFAULT NULL,
   `MATERIEL_CODE` varchar(50) DEFAULT NULL,
@@ -6863,9 +7090,9 @@ INSERT INTO `erp_bom_detail` VALUES ('35', '210199C0-A249-45C1-8073-7BAF7001879B
 -- ----------------------------
 DROP TABLE IF EXISTS `erp_bom_sort`;
 CREATE TABLE `erp_bom_sort` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `SORT_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `SORT_NAME` varchar(50) DEFAULT NULL,
   `SORT_REMARK` text,
   `SORT_LEAVE` varchar(50) DEFAULT NULL,
@@ -6909,9 +7136,9 @@ INSERT INTO `erp_bom_sort` VALUES ('49', '8CFE6993-FC32-4F99-9517-931BA1834382',
 -- ----------------------------
 DROP TABLE IF EXISTS `erp_equipment`;
 CREATE TABLE `erp_equipment` (
-  `ID` bigint(20) NOT NULL,
+  `ID` bigint NOT NULL,
   `EQUIPMENT_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `EQUIPMENT_NAME` varchar(50) DEFAULT NULL,
   `SORT_LEAVE` varchar(50) DEFAULT NULL,
   `MODEL` varchar(50) DEFAULT NULL,
@@ -6935,9 +7162,9 @@ CREATE TABLE `erp_equipment` (
 -- ----------------------------
 DROP TABLE IF EXISTS `erp_equipment_sort`;
 CREATE TABLE `erp_equipment_sort` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `SORT_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `SORT_NAME` varchar(50) DEFAULT NULL,
   `SORT_LEAVE` varchar(50) DEFAULT NULL,
   `SORT_REMARK` text,
@@ -6965,10 +7192,10 @@ INSERT INTO `erp_equipment_sort` VALUES ('10', '9D407D22-43C8-4FB0-BE3A-F0D75682
 -- ----------------------------
 DROP TABLE IF EXISTS `erp_materiel`;
 CREATE TABLE `erp_materiel` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `MATERIEL_ID` varchar(50) DEFAULT NULL,
   `MATERIEL_CODE` varchar(255) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `MATERIEL_NAME` varchar(255) DEFAULT NULL,
   `SOURCE` varchar(2) DEFAULT NULL,
   `UNIT` varchar(2) DEFAULT NULL,
@@ -7085,7 +7312,7 @@ INSERT INTO `erp_materiel` VALUES ('54731', '746C27B4-32D4-4486-88FA-7E74D41289C
 -- ----------------------------
 DROP TABLE IF EXISTS `erp_materiel_sort`;
 CREATE TABLE `erp_materiel_sort` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `SORT_ID` varchar(50) DEFAULT NULL,
   `SORT_CODE` varchar(50) DEFAULT NULL,
   `SORT_NAME` varchar(50) DEFAULT NULL,
@@ -7158,7 +7385,7 @@ INSERT INTO `erp_materiel_sort` VALUES ('4104', '3AC55975-2160-4212-BE81-A37DA3B
 -- ----------------------------
 DROP TABLE IF EXISTS `erp_order`;
 CREATE TABLE `erp_order` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `ORDER_ID` varchar(50) DEFAULT NULL,
   `ORDER_CODE` varchar(50) DEFAULT NULL,
   `ORDER_TITLE` varchar(100) DEFAULT NULL,
@@ -7170,10 +7397,10 @@ CREATE TABLE `erp_order` (
   `LINK_NAME` varchar(50) DEFAULT NULL,
   `REMARK` text,
   `CUSTOMER` varchar(255) DEFAULT NULL,
-  `PACK_CHARGES` int(255) DEFAULT NULL,
-  `FREIGHT` int(255) DEFAULT NULL,
-  `OTHER_CHARGES` int(255) DEFAULT NULL,
-  `TAX` int(255) DEFAULT NULL,
+  `PACK_CHARGES` int DEFAULT NULL,
+  `FREIGHT` int DEFAULT NULL,
+  `OTHER_CHARGES` int DEFAULT NULL,
+  `TAX` int DEFAULT NULL,
   `STATUS` varchar(2) DEFAULT NULL,
   `PAY_TYPE` varchar(2) DEFAULT NULL,
   `ATTACH` text,
@@ -7191,12 +7418,12 @@ INSERT INTO `erp_order` VALUES ('4', '2A45EBB1-3D73-44EB-A629-D181044B0F6C', '20
 -- ----------------------------
 DROP TABLE IF EXISTS `erp_order_detail`;
 CREATE TABLE `erp_order_detail` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `DETAIL_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `ORDER_ID` varchar(50) DEFAULT NULL,
   `PRODUCT_ID` varchar(50) DEFAULT NULL,
-  `COUNT` int(11) DEFAULT NULL,
+  `COUNT` int DEFAULT NULL,
   `REMARK` text,
   `ORG_ID` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE
@@ -7211,10 +7438,10 @@ CREATE TABLE `erp_order_detail` (
 -- ----------------------------
 DROP TABLE IF EXISTS `erp_product`;
 CREATE TABLE `erp_product` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `PRODUCT_ID` varchar(50) DEFAULT NULL,
   `MODEL` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `PRODUCT_NAME` varchar(50) DEFAULT NULL,
   `SORT_LEAVE` varchar(50) DEFAULT NULL,
   `BOM_ID` varchar(50) DEFAULT NULL,
@@ -7239,9 +7466,9 @@ INSERT INTO `erp_product` VALUES ('4', 'EC0C1B21-9E5D-498B-B9C3-E14F25099C8B', '
 -- ----------------------------
 DROP TABLE IF EXISTS `erp_product_sort`;
 CREATE TABLE `erp_product_sort` (
-  `ID` bigint(11) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `SORT_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `PRODUCT_SORT_NAME` varchar(50) DEFAULT NULL,
   `SORT_CODE` varchar(50) DEFAULT NULL,
   `SORT_IMG` varchar(255) DEFAULT NULL,
@@ -7264,8 +7491,8 @@ INSERT INTO `erp_product_sort` VALUES ('2', 'C649B0A6-36D1-4705-A434-36CAA136FB9
 -- ----------------------------
 DROP TABLE IF EXISTS `erp_unit`;
 CREATE TABLE `erp_unit` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
-  `UNIT_ID` int(11) DEFAULT NULL,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
+  `UNIT_ID` int DEFAULT NULL,
   `TYPE` varchar(10) DEFAULT NULL,
   `CN_NAME` varchar(255) DEFAULT NULL,
   `EN_NAME` varchar(255) DEFAULT NULL,
@@ -7291,12 +7518,12 @@ INSERT INTO `erp_unit` VALUES ('9', '9', '9', '小时', 'H', '8EADB678-A646-1E51
 -- ----------------------------
 DROP TABLE IF EXISTS `fixed_assets`;
 CREATE TABLE `fixed_assets` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `ASSETS_ID` varchar(50) DEFAULT NULL,
   `ASSETS_NAME` varchar(255) DEFAULT NULL,
   `ASSETS_CODE` varchar(50) DEFAULT NULL,
   `SORT_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `ATTACH` varchar(255) DEFAULT NULL,
   `REMARK` text,
   `OWN_DEPT` text,
@@ -7323,7 +7550,7 @@ INSERT INTO `fixed_assets` VALUES ('1', '01C3A008-527C-4E17-9857-116F4CF57C61', 
 -- ----------------------------
 DROP TABLE IF EXISTS `fixed_assets_apply`;
 CREATE TABLE `fixed_assets_apply` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `APPLY_ID` varchar(50) DEFAULT NULL,
   `ASSETS_ID` varchar(50) DEFAULT NULL,
   `USED_USER` varchar(50) DEFAULT NULL,
@@ -7346,7 +7573,7 @@ INSERT INTO `fixed_assets_apply` VALUES ('2', '597848A2-3028-46FF-8152-26B18EEDA
 -- ----------------------------
 DROP TABLE IF EXISTS `fixed_assets_approval`;
 CREATE TABLE `fixed_assets_approval` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `APPROVAL_ID` varchar(50) DEFAULT NULL,
   `APPLY_ID` varchar(50) DEFAULT NULL,
   `REMARK` text,
@@ -7367,7 +7594,7 @@ INSERT INTO `fixed_assets_approval` VALUES ('2', '7C2342B9-AC3A-45D5-9EDA-4E229B
 -- ----------------------------
 DROP TABLE IF EXISTS `fixed_assets_config`;
 CREATE TABLE `fixed_assets_config` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `CONFIG_ID` varchar(50) DEFAULT NULL,
   `MANAGEMENT` text,
   `REMARK` text,
@@ -7386,7 +7613,7 @@ CREATE TABLE `fixed_assets_config` (
 -- ----------------------------
 DROP TABLE IF EXISTS `fixed_assets_repair`;
 CREATE TABLE `fixed_assets_repair` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `REPAIR_ID` varchar(50) DEFAULT NULL,
   `ASSETS_ID` varchar(50) DEFAULT NULL,
   `PROBLEM_DESCRIPTION` text COMMENT '问题描述',
@@ -7410,9 +7637,9 @@ CREATE TABLE `fixed_assets_repair` (
 -- ----------------------------
 DROP TABLE IF EXISTS `fixed_assets_sort`;
 CREATE TABLE `fixed_assets_sort` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `SORT_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `SORT_NAME` varchar(50) DEFAULT NULL,
   `REMARK` text,
   `PARENT_ID` varchar(50) DEFAULT NULL,
@@ -7437,9 +7664,9 @@ INSERT INTO `fixed_assets_sort` VALUES ('35', '07084B7B-68FF-4117-AF1C-721C3AECB
 -- ----------------------------
 DROP TABLE IF EXISTS `fixed_assets_storage`;
 CREATE TABLE `fixed_assets_storage` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `STORAGE_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `STORAGE_NAME` varchar(50) DEFAULT NULL,
   `POSITION` varchar(255) DEFAULT NULL,
   `MANAGER` varchar(50) DEFAULT NULL,
@@ -7453,7 +7680,7 @@ CREATE TABLE `fixed_assets_storage` (
 -- ----------------------------
 -- Records of fixed_assets_storage
 -- ----------------------------
-INSERT INTO `fixed_assets_storage` VALUES ('1', '05C4576A-196C-4146-B1E3-603B4B7C8D2D', '1', 'A号仓库', '江苏省南京市玄武区', 'fangye', '', '2019-12-17 15:45:56', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `fixed_assets_storage` VALUES ('1', '05C4576A-196C-4146-B1E3-603B4B7C8D2D', '1', 'A号仓库', '江苏省南京市玄武区', 'admin', '', '2019-12-17 15:45:56', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 
 -- ----------------------------
 -- Table structure for fucai
@@ -10041,10 +10268,10 @@ INSERT INTO `fucai` VALUES ('3001', '10', '11', '12', '13', '26', '28', ',10,11,
 -- ----------------------------
 DROP TABLE IF EXISTS `hr_care_record`;
 CREATE TABLE `hr_care_record` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `RECORD_ID` varchar(50) DEFAULT NULL,
   `SUBJECT` varchar(100) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `USER_ID` text,
   `JOIN_USER` text,
   `CARE_TYPE` varchar(5) DEFAULT NULL,
@@ -10069,9 +10296,9 @@ INSERT INTO `hr_care_record` VALUES ('1', '4F8ED0A9-F601-46E6-819E-80FD11B42BB4'
 -- ----------------------------
 DROP TABLE IF EXISTS `hr_class_code`;
 CREATE TABLE `hr_class_code` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '代码自增ID',
+  `ID` bigint NOT NULL AUTO_INCREMENT COMMENT '代码自增ID',
   `CODE_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `MODULE` varchar(100) NOT NULL DEFAULT '' COMMENT '代码编号',
   `CODE_NAME` text NOT NULL COMMENT '代码名称',
   `CODE_VALUE` varchar(100) DEFAULT '' COMMENT '排序号',
@@ -10299,9 +10526,9 @@ INSERT INTO `hr_class_code` VALUES ('213', '1F40992E-5F65-4A9A-A2DE-72FB91E458F7
 -- ----------------------------
 DROP TABLE IF EXISTS `hr_contract`;
 CREATE TABLE `hr_contract` (
-  `ID` bigint(11) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `CONTRACT_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `USER_ID` varchar(50) DEFAULT NULL COMMENT '用户ID',
   `USER_NAME` varchar(50) DEFAULT NULL,
   `SIGN_TYPE` varchar(2) DEFAULT NULL,
@@ -10335,9 +10562,9 @@ INSERT INTO `hr_contract` VALUES ('6', 'D8D57AC2-A62A-458F-B6BC-ADB0AEC0E4DA', '
 -- ----------------------------
 DROP TABLE IF EXISTS `hr_department`;
 CREATE TABLE `hr_department` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '顺序号',
+  `ID` bigint NOT NULL AUTO_INCREMENT COMMENT '顺序号',
   `DEPT_ID` varchar(50) NOT NULL COMMENT '部门id',
-  `SORT_NO` int(11) DEFAULT '0' COMMENT '部门排序号',
+  `SORT_NO` int DEFAULT '0' COMMENT '部门排序号',
   `DEPT_NAME` varchar(100) NOT NULL COMMENT '部门名称',
   `ORG_LEVEL_ID` varchar(50) NOT NULL COMMENT '父级id',
   `DEPT_TEL` varchar(20) DEFAULT NULL COMMENT '部门电话',
@@ -10374,7 +10601,7 @@ INSERT INTO `hr_department` VALUES ('1', 'FB6E0084-7A78-9C2A-9BA3-3522C6967002',
 -- ----------------------------
 DROP TABLE IF EXISTS `hr_evaluate`;
 CREATE TABLE `hr_evaluate` (
-  `ID` bigint(11) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `RECORD_ID` varchar(50) DEFAULT NULL,
   `USER_ID` varchar(50) DEFAULT NULL,
   `ATTITUDE_LEVEL` decimal(5,2) DEFAULT NULL COMMENT '工作态度',
@@ -10400,8 +10627,8 @@ INSERT INTO `hr_evaluate` VALUES ('7', 'C5BA2DCC-B359-40C3-8B87-DF4457EF8709', '
 -- ----------------------------
 DROP TABLE IF EXISTS `hr_incentive`;
 CREATE TABLE `hr_incentive` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
+  `SORT_NO` int DEFAULT NULL,
   `INCENTIVE_ID` varchar(50) DEFAULT NULL,
   `INCENTIVE_TYPE` varchar(2) DEFAULT NULL COMMENT '奖惩类型',
   `INCENTIVE_ITEM` varchar(3) DEFAULT NULL COMMENT '奖惩原因',
@@ -10428,11 +10655,11 @@ INSERT INTO `hr_incentive` VALUES ('2', '1', '0A09B738-36B4-4FE1-B161-8C6E0522EF
 -- ----------------------------
 DROP TABLE IF EXISTS `hr_kpi_item`;
 CREATE TABLE `hr_kpi_item` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `ITEM_ID` varchar(50) DEFAULT NULL,
   `TITLE` varchar(255) DEFAULT NULL,
   `CHILD_ITEM` text,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `OPT_TYPE` varchar(50) DEFAULT '0' COMMENT '0,单选，1多选，2,填报，',
   `KPI_TYPE` varchar(50) DEFAULT NULL,
   `REMARK` text,
@@ -10452,7 +10679,7 @@ INSERT INTO `hr_kpi_item` VALUES ('1', '9BFCB20C-04B2-4267-A56F-36579B425E18', '
 -- ----------------------------
 DROP TABLE IF EXISTS `hr_kpi_plan`;
 CREATE TABLE `hr_kpi_plan` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `PLAN_ID` varchar(50) DEFAULT NULL,
   `TITLE` varchar(100) DEFAULT NULL COMMENT '考核标题',
   `BEGIN_TIME` varchar(20) DEFAULT NULL COMMENT '考核开始时间',
@@ -10480,9 +10707,9 @@ CREATE TABLE `hr_kpi_plan` (
 -- ----------------------------
 DROP TABLE IF EXISTS `hr_learn_record`;
 CREATE TABLE `hr_learn_record` (
-  `ID` bigint(11) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `RECORD_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `USER_ID` varchar(50) DEFAULT NULL,
   `SHOOL_NAME` varchar(100) DEFAULT NULL COMMENT '学校',
   `BEGIN_TIME` varchar(20) DEFAULT NULL COMMENT '开始时间',
@@ -10510,9 +10737,9 @@ INSERT INTO `hr_learn_record` VALUES ('1', '5FD98232-1A47-409B-A905-4D3BB42B066D
 -- ----------------------------
 DROP TABLE IF EXISTS `hr_leave_record`;
 CREATE TABLE `hr_leave_record` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `RECORD_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `USER_ID` varchar(50) DEFAULT NULL,
   `POST` varchar(50) DEFAULT NULL COMMENT '担任职务',
   `LEAVE_TYPE` varchar(5) DEFAULT NULL,
@@ -10543,8 +10770,8 @@ INSERT INTO `hr_leave_record` VALUES ('2', '44D63392-CB64-42E3-8229-646502A845AE
 -- ----------------------------
 DROP TABLE IF EXISTS `hr_licence`;
 CREATE TABLE `hr_licence` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
-  `SORT_NO` int(11) DEFAULT NULL COMMENT '排序号',
+  `ID` bigint NOT NULL AUTO_INCREMENT,
+  `SORT_NO` int DEFAULT NULL COMMENT '排序号',
   `LICENCE_ID` varchar(50) DEFAULT NULL,
   `USER_ID` varchar(50) DEFAULT NULL,
   `LICENCE_CODE` varchar(100) DEFAULT NULL COMMENT '证件编号',
@@ -10575,11 +10802,11 @@ INSERT INTO `hr_licence` VALUES ('2', '2', 'CABE8BBF-8B2F-44B4-9DAB-E7D89B0CA705
 -- ----------------------------
 DROP TABLE IF EXISTS `hr_personnel_transfer`;
 CREATE TABLE `hr_personnel_transfer` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `TRANSFER_ID` varchar(50) DEFAULT NULL,
   `TITLE` varchar(100) DEFAULT NULL COMMENT '文件标题',
   `USER_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `TRANSFER_TYPE` varchar(5) DEFAULT NULL COMMENT '调动类型',
   `TRANSFER_TIME` varchar(20) DEFAULT NULL COMMENT '调动日期',
   `START_TIME` varchar(20) DEFAULT NULL COMMENT '调动生效日期',
@@ -10608,12 +10835,12 @@ INSERT INTO `hr_personnel_transfer` VALUES ('1', '90BCB3CF-EAB0-4F11-8AA1-2DFC81
 -- ----------------------------
 DROP TABLE IF EXISTS `hr_recruit_needs`;
 CREATE TABLE `hr_recruit_needs` (
-  `ID` bigint(11) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `RECORD_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `TITLE` varchar(100) DEFAULT NULL COMMENT '标题',
   `DEPT_ID` varchar(50) DEFAULT NULL COMMENT '需求部门',
-  `USER_COUNT` int(11) DEFAULT NULL,
+  `USER_COUNT` int DEFAULT NULL,
   `SKILLS` varchar(200) DEFAULT NULL COMMENT '特长',
   `MAJOR` varchar(50) DEFAULT NULL COMMENT '专业',
   `WORK_JOB` varchar(5) DEFAULT NULL COMMENT '工种',
@@ -10643,9 +10870,9 @@ INSERT INTO `hr_recruit_needs` VALUES ('1', '0EBC631B-A5E6-4827-95B3-70D978794E1
 -- ----------------------------
 DROP TABLE IF EXISTS `hr_recruit_plan`;
 CREATE TABLE `hr_recruit_plan` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `PLAN_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `TITLE` varchar(100) DEFAULT NULL COMMENT '计划标题',
   `BEGIN_TIME` varchar(20) DEFAULT NULL COMMENT '开始时间',
   `END_TIME` varchar(20) DEFAULT NULL COMMENT '结束',
@@ -10669,9 +10896,9 @@ INSERT INTO `hr_recruit_plan` VALUES ('1', '7851AD73-6058-4A01-96C3-E22F4E28C116
 -- ----------------------------
 DROP TABLE IF EXISTS `hr_reinstatement`;
 CREATE TABLE `hr_reinstatement` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `RECORD_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `USER_ID` varchar(50) DEFAULT NULL COMMENT '复职人员',
   `DEPT_ID` varchar(50) DEFAULT NULL COMMENT '复职部门',
   `LEVEL_ID` varchar(50) DEFAULT NULL COMMENT '担任职务',
@@ -10698,8 +10925,8 @@ INSERT INTO `hr_reinstatement` VALUES ('2', '0E916A4E-09B2-4554-8F65-B4530F187CB
 -- ----------------------------
 DROP TABLE IF EXISTS `hr_salary_record`;
 CREATE TABLE `hr_salary_record` (
-  `ID` bigint(11) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `ID` bigint DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `RECORD_ID` varchar(50) DEFAULT NULL,
   `USER_ID` varchar(50) DEFAULT NULL,
   `YEAR` varchar(5) DEFAULT NULL,
@@ -10735,8 +10962,8 @@ INSERT INTO `hr_salary_record` VALUES (null, null, '0BC71FEF-B130-4A99-A298-DBC9
 -- ----------------------------
 DROP TABLE IF EXISTS `hr_title_evaluation`;
 CREATE TABLE `hr_title_evaluation` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
+  `SORT_NO` int DEFAULT NULL,
   `RECORD_ID` varchar(50) DEFAULT NULL,
   `USER_ID` varchar(50) DEFAULT NULL,
   `POST_NAME` varchar(10) DEFAULT NULL COMMENT '获取职称',
@@ -10769,22 +10996,22 @@ INSERT INTO `hr_title_evaluation` VALUES ('1', '1', '9C5415E0-810E-4DB6-9746-62A
 -- ----------------------------
 DROP TABLE IF EXISTS `hr_train_record`;
 CREATE TABLE `hr_train_record` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `RECORD_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `TITLE` varchar(100) DEFAULT NULL,
   `TRAIN_CODE` varchar(50) DEFAULT NULL COMMENT '培训计划编号',
   `CHANNEL` varchar(5) DEFAULT NULL COMMENT '培训渠道',
   `COURSE_TYPE` varchar(255) DEFAULT NULL COMMENT '培训形式',
   `HOLD_DEPT` varchar(50) DEFAULT NULL COMMENT '主办部门',
   `CHARGE_PERSON` varchar(50) DEFAULT NULL COMMENT '负责人',
-  `USER_COUNT` int(11) DEFAULT NULL COMMENT '参加培训人数',
+  `USER_COUNT` int DEFAULT NULL COMMENT '参加培训人数',
   `ADDRESS` varchar(255) DEFAULT NULL COMMENT '培训地址',
   `INSTITUTION_NAME` varchar(100) DEFAULT NULL COMMENT '培训机构名称',
   `INSTITUTION_USER` varchar(50) DEFAULT NULL COMMENT '培训机构联系人',
   `INSTITUTION_CONTACT` varchar(100) DEFAULT NULL COMMENT '培训机构联系人',
   `COURSE_NAME` varchar(100) DEFAULT NULL COMMENT '课程名称',
-  `COURSE_TIME` int(11) DEFAULT NULL COMMENT '总课时',
+  `COURSE_TIME` int DEFAULT NULL COMMENT '总课时',
   `BEGIN_TIME` varchar(20) DEFAULT NULL COMMENT '开课日期',
   `END_TIME` varchar(20) DEFAULT NULL COMMENT '结束日期',
   `FOUNDS` decimal(10,0) DEFAULT NULL COMMENT '总经费',
@@ -10815,8 +11042,8 @@ INSERT INTO `hr_train_record` VALUES ('2', '0D958081-0918-4F5C-94A9-4A391C99F92A
 -- ----------------------------
 DROP TABLE IF EXISTS `hr_user_info`;
 CREATE TABLE `hr_user_info` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
-  `SORT_NO` int(11) DEFAULT NULL COMMENT '排序号',
+  `ID` bigint NOT NULL AUTO_INCREMENT,
+  `SORT_NO` int DEFAULT NULL COMMENT '排序号',
   `ACCOUNT_ID` varchar(50) DEFAULT NULL COMMENT 'OA账号',
   `USER_ID` varchar(50) DEFAULT NULL COMMENT 'ID号',
   `DEPT_ID` varchar(50) DEFAULT NULL COMMENT '部门',
@@ -10892,8 +11119,8 @@ INSERT INTO `hr_user_info` VALUES ('10', '1', 'liushaoquan', '335A9414-8A73-4599
 -- ----------------------------
 DROP TABLE IF EXISTS `hr_user_level`;
 CREATE TABLE `hr_user_level` (
-  `ID` bigint(11) NOT NULL AUTO_INCREMENT,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
+  `SORT_NO` int DEFAULT NULL,
   `LEVEL_ID` varchar(50) DEFAULT NULL,
   `LEVEL_NO_ID` varchar(50) DEFAULT NULL,
   `LEVEL_NAME` varchar(50) DEFAULT NULL,
@@ -10920,8 +11147,8 @@ INSERT INTO `hr_user_level` VALUES ('12', null, '6C771064-C41C-8F6F-9823-C70B1F2
 -- ----------------------------
 DROP TABLE IF EXISTS `hr_wages_level`;
 CREATE TABLE `hr_wages_level` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
+  `SORT_NO` int DEFAULT NULL,
   `WAGES_ID` varchar(50) DEFAULT NULL,
   `TITLE` varchar(50) DEFAULT NULL,
   `WAGES` double DEFAULT NULL,
@@ -10943,8 +11170,8 @@ INSERT INTO `hr_wages_level` VALUES ('3', '2', '69D0DCE8-AADB-4903-A2FC-B1116EFE
 -- ----------------------------
 DROP TABLE IF EXISTS `hr_welfare_record`;
 CREATE TABLE `hr_welfare_record` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
+  `SORT_NO` int DEFAULT NULL,
   `USER_ID` varchar(50) DEFAULT NULL,
   `RECORD_ID` varchar(50) DEFAULT NULL,
   `TITLE` varchar(100) DEFAULT NULL,
@@ -10970,9 +11197,9 @@ INSERT INTO `hr_welfare_record` VALUES ('2', '2', 'C1376504-4FBD-498E-BC48-B4704
 -- ----------------------------
 DROP TABLE IF EXISTS `hr_work_record`;
 CREATE TABLE `hr_work_record` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `RECORD_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `USER_ID` varchar(50) DEFAULT NULL,
   `POST` varchar(50) DEFAULT NULL COMMENT '担任职务',
   `DEPT_NAME` varchar(50) DEFAULT NULL COMMENT '所在部门',
@@ -11003,8 +11230,8 @@ INSERT INTO `hr_work_record` VALUES ('1', 'A940D845-E049-4539-B790-86FC98BADB65'
 -- ----------------------------
 DROP TABLE IF EXISTS `hr_work_skills`;
 CREATE TABLE `hr_work_skills` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
+  `SORT_NO` int DEFAULT NULL,
   `RECORD_ID` varchar(50) DEFAULT NULL,
   `USER_ID` varchar(50) DEFAULT NULL,
   `NAME` varchar(50) DEFAULT NULL COMMENT '技能名称',
@@ -11031,7 +11258,7 @@ INSERT INTO `hr_work_skills` VALUES ('1', '1', '045B315A-1EE6-4E13-A606-E7331279
 -- ----------------------------
 DROP TABLE IF EXISTS `inquiry`;
 CREATE TABLE `inquiry` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `INQUIRY_ID` varchar(50) DEFAULT NULL,
   `TITLE` varchar(255) DEFAULT NULL,
   `CONTENT` text,
@@ -11069,10 +11296,10 @@ INSERT INTO `inquiry` VALUES ('28', '37b0f8cd-da33-4ec3-bb47-2c74682ca507', '111
 -- ----------------------------
 DROP TABLE IF EXISTS `knowledge`;
 CREATE TABLE `knowledge` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `KNOWLEDGE_ID` varchar(50) DEFAULT NULL,
   `TITLE` varchar(255) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `KEYWORDS` varchar(255) DEFAULT NULL,
   `SORT_ID` varchar(50) DEFAULT NULL,
   `CONTENT` text,
@@ -11083,7 +11310,7 @@ CREATE TABLE `knowledge` (
   `LEAVE_PRIV` text,
   `CREATE_TIME` varchar(20) DEFAULT NULL,
   `CREATE_USER` varchar(50) DEFAULT NULL,
-  `LEAVE_STAR` int(11) DEFAULT NULL,
+  `LEAVE_STAR` int DEFAULT NULL,
   `ORG_ID` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
@@ -11099,9 +11326,9 @@ INSERT INTO `knowledge` VALUES ('25', '2CA45165-B298-4C59-ADDC-06CF34F87037', '1
 -- ----------------------------
 DROP TABLE IF EXISTS `knowledge_learn`;
 CREATE TABLE `knowledge_learn` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `LEARN_ID` varbinary(255) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `TYPE` varchar(50) DEFAULT NULL,
   `KNOWLEDGE_ID` varchar(50) DEFAULT NULL,
   `COMMENT` text,
@@ -11124,11 +11351,11 @@ INSERT INTO `knowledge_learn` VALUES ('3', 0x39334537453030352D454631302D3442423
 -- ----------------------------
 DROP TABLE IF EXISTS `knowledge_search`;
 CREATE TABLE `knowledge_search` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `RECORD_ID` varchar(50) DEFAULT NULL,
   `KEY_WORD` varchar(255) DEFAULT NULL,
   `SORT_ID` varchar(50) DEFAULT NULL,
-  `COUNT` int(11) DEFAULT NULL,
+  `COUNT` int DEFAULT NULL,
   `CREATE_TIME` varchar(20) DEFAULT NULL,
   `CREATE_USER` varchar(50) DEFAULT NULL,
   `ORG_ID` varchar(50) DEFAULT NULL,
@@ -11167,9 +11394,9 @@ INSERT INTO `knowledge_search` VALUES ('23', 'FA2DB527-A94D-4027-A885-CB4B00921A
 -- ----------------------------
 DROP TABLE IF EXISTS `knowledge_sort`;
 CREATE TABLE `knowledge_sort` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `SORT_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `SORT_NAME` varchar(50) DEFAULT NULL,
   `SORT_REMARK` text,
   `SORT_LEAVE` varchar(50) DEFAULT NULL,
@@ -11195,7 +11422,7 @@ INSERT INTO `knowledge_sort` VALUES ('4', '14534F3C-42BC-479D-BEFE-7FC43064ED89'
 -- ----------------------------
 DROP TABLE IF EXISTS `lead_activity`;
 CREATE TABLE `lead_activity` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `RECORD_ID` varchar(50) DEFAULT NULL,
   `TITLE` varchar(200) DEFAULT NULL COMMENT '活动标题',
   `LEADER` varchar(50) DEFAULT NULL COMMENT '领导ID',
@@ -11221,7 +11448,7 @@ INSERT INTO `lead_activity` VALUES ('1', '550B17F8-54AA-46F4-990B-B13A4C5AFAEE',
 -- ----------------------------
 DROP TABLE IF EXISTS `meeting`;
 CREATE TABLE `meeting` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `MEETING_ID` varchar(50) DEFAULT NULL,
   `MEETING_TYPE` varchar(50) DEFAULT NULL,
   `SUBJECT` varchar(255) DEFAULT NULL,
@@ -11258,10 +11485,10 @@ INSERT INTO `meeting` VALUES ('3', 'A59D2309-3D23-4866-B727-445C74481D4F', '2', 
 -- ----------------------------
 DROP TABLE IF EXISTS `meeting_device`;
 CREATE TABLE `meeting_device` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `DEVICE_CODE` varchar(50) DEFAULT NULL,
   `DEVICE_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `DEVICE_NAME` varchar(50) DEFAULT NULL,
   `BRAND` varchar(50) DEFAULT NULL,
   `MODEL` varchar(100) DEFAULT NULL,
@@ -11287,7 +11514,7 @@ INSERT INTO `meeting_device` VALUES ('9', 'PC-001', '71425C8C-02BD-45BA-B4B2-D9A
 -- ----------------------------
 DROP TABLE IF EXISTS `meeting_notes`;
 CREATE TABLE `meeting_notes` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `NOTES_ID` varchar(50) DEFAULT NULL,
   `MEETING_ID` varchar(50) DEFAULT NULL,
   `NOTES_TITLE` varchar(200) DEFAULT NULL,
@@ -11315,12 +11542,12 @@ INSERT INTO `meeting_notes` VALUES ('12', 'F6721C8D-650A-4084-8977-DC7421DF1233'
 -- ----------------------------
 DROP TABLE IF EXISTS `meeting_room`;
 CREATE TABLE `meeting_room` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
+  `SORT_NO` int DEFAULT NULL,
   `ROOM_ID` varchar(50) DEFAULT NULL,
   `NAME` varchar(100) DEFAULT NULL,
   `REMARK` text,
-  `USER_COUNT` int(11) DEFAULT NULL,
+  `USER_COUNT` int DEFAULT NULL,
   `DEPT_PRIV` text,
   `ADDRESS` varchar(50) DEFAULT NULL,
   `MANAGER` varchar(50) DEFAULT NULL,
@@ -11343,7 +11570,7 @@ INSERT INTO `meeting_room` VALUES ('18', '2', '5640B7F4-9D26-4F5D-B2EE-C93422FC4
 -- ----------------------------
 DROP TABLE IF EXISTS `mobile_sms`;
 CREATE TABLE `mobile_sms` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `SMS_ID` varchar(50) DEFAULT NULL,
   `FROM_ID` varchar(50) DEFAULT NULL,
   `TO_ID` varchar(50) DEFAULT NULL,
@@ -11367,9 +11594,9 @@ CREATE TABLE `mobile_sms` (
 -- ----------------------------
 DROP TABLE IF EXISTS `net_disk`;
 CREATE TABLE `net_disk` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `NET_DISK_ID` varchar(150) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `NET_DISK_NAME` text,
   `ROOT_PATH` text,
   `CREATE_USER` text,
@@ -11384,7 +11611,7 @@ CREATE TABLE `net_disk` (
   `MANAGE_LEAVE` text,
   `DOWN_LEAVE` text,
   `ACCESS_LEAVE` text,
-  `SPACE_LIMIT` int(11) DEFAULT NULL,
+  `SPACE_LIMIT` int DEFAULT NULL,
   `ORDER_BY` varchar(60) DEFAULT NULL,
   `ASC_OR_DESC` varchar(60) DEFAULT NULL,
   `DISK_CREATE_TIME` varchar(50) DEFAULT NULL,
@@ -11404,11 +11631,11 @@ INSERT INTO `net_disk` VALUES ('4', 'E78BDC49-2026-4D5F-B229-46D055BFBAEA', '2',
 -- ----------------------------
 DROP TABLE IF EXISTS `news`;
 CREATE TABLE `news` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
-  `NEWS_ID` varchar(50) CHARACTER SET gbk DEFAULT NULL,
-  `NEWS_TITLE` varchar(200) CHARACTER SET gbk DEFAULT NULL,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
+  `NEWS_ID` varchar(50) CHARACTER SET gbk COLLATE gbk_chinese_ci DEFAULT NULL,
+  `NEWS_TITLE` varchar(200) CHARACTER SET gbk COLLATE gbk_chinese_ci DEFAULT NULL,
   `SUBHEADING` varchar(200) DEFAULT NULL COMMENT '副标题',
-  `NEWS_TYPE` varchar(20) CHARACTER SET gbk DEFAULT NULL,
+  `NEWS_TYPE` varchar(20) CHARACTER SET gbk COLLATE gbk_chinese_ci DEFAULT NULL,
   `DEPT_PRIV` text,
   `USER_PRIV` text,
   `LEVEL_PRIV` text,
@@ -11417,7 +11644,7 @@ CREATE TABLE `news` (
   `CONTENT` text,
   `ATTACH` text,
   `ATTACH_PRIV` varchar(2) DEFAULT NULL,
-  `ONCLICK_COUNT` bigint(20) DEFAULT '0',
+  `ONCLICK_COUNT` bigint DEFAULT '0',
   `MSG_TYPE` varchar(50) DEFAULT NULL,
   `DEL_FLAG` varchar(1) DEFAULT '0',
   `IS_TOP` varchar(1) DEFAULT '0',
@@ -11434,18 +11661,18 @@ CREATE TABLE `news` (
 -- ----------------------------
 -- Records of news
 -- ----------------------------
-INSERT INTO `news` VALUES ('1', 'DCA97E31-1E45-4FB8-A1DC-9C16E2E3332A', '美国5G网络建设落后可能导致美国在新的科技领域落后于中国', '据报道指美国在5G网络建设方面已大幅落后于中国，主要是因为它采用非主流的5G毫米波技术所致，5G网络...', '4', null, '@all', null, '2020-03-20', '', '<p>据报道指美国在5G网络建设方面已大幅落后于中国，主要是因为它采用非主流的5G毫米波技术所致，5G网络建设落后导致的结果可不仅仅是美国消费者较晚使用5G技术，更重要的是导致美国在新的科技领域落后于中国。</p><p>美国5G网络建设落后于中国</p><p>据悉至今年初美国建成的5G基站数量在1.5万座以内，而中国目前的5G基站数量已达到15万座。美国建成的5G基站多数都是基于5G毫米波技术，中国的5G基站则是基于5G厘米波技术，因此中国的5G网络覆盖已大幅领先于美国。</p><p>美国被迫采用5G毫米波技术是因为全球主流的中频5G频段被美国军方占用，美国运营商被迫采用5G毫米波技术，然而基于5G毫米波技术建设的5G基站覆盖范围太小了，5G信号受到影响太大，甚至于雨水都可能阻隔5G毫米波的信号，因此美国运营商建成的5G网络主要是提高固网宽带移动服务，而不是移动通信服务。</p><p>美国5G网络建设进展缓慢还与它的建网成本过高有关，在全球前四大通信设备商当中，中国两大通信设备商华为和中兴提供的5G设备价格是最实惠的，诺基亚和爱立信的通信设备则较为昂贵，然而华为和中兴未能进入美国市场，这导致美国运营商建设的5基站成本是中国运营商的两倍多。</p><p>美国目前已认识到5G毫米波技术的诸多弊端，因此宣布向卫星运营商提供近150亿美元的资金推动它们释放3.7GHz-42GHz的中频频段，这意味着美国在事实上放弃5G毫米波技术而选用全球主流的5G厘米波技术。</p><p>然而中国已在加快5G网络建设的进程，预计到今年底将建成60万座5G基站。美国如今才开始清理中频频段，今年内能否成功释放中频频段都是个疑问，这意味着美国运营商采用5G厘米波技术最快也得在明显开始，这样一来在未来3-5年中国的5G网络建设将大幅领先于美国。</p><p>美国在新的科技领域或落后于中国</p><p>5G技术是为物联网、自动驾驶等新技术准备，中国迅速建成覆盖全国的5G网络将有利于中国推动这些技术进入实际应用，有助于中国在新技术领域取得领先优势。</p><p>从目前的技术发展来看，美国至少在自动驾驶技术领域是领先于中国的，特别是美国企业特斯拉的自动驾驶技术已累积超过10亿公里，它也是全球企业当中率先在实际使用中应用自动驾驶技术的，但是美国5G网络的建设进展缓慢，将拖累美国企业在这些新技术领域保持领先优势。</p><p>在4G时代，中国移动互联网就凭借网络覆盖领先的优势（中国4G基站占全球的比例近一半）取得对美国企业的领先优势，以致于美国企业不得不反过来学习中国的互联网创新科技。目前中国的物联网连接数已近十亿（至2019年6月仅是中国移动的物联网连接数就已达到6.3亿），随着5G网络迅速覆盖至全国，中国的物联网将进入快速增长阶段，中国的物联网技术领先于美国将成为事实。</p><p>在自动驾驶技术方面，中国的百度其实在技术上并没落后于美国企业太多，目前百度正加紧与各汽车企业合作推广自动驾驶技术，随着5G技术在中国的迅速推广，自动驾驶技术在中国可望将迅速获得应用，如此中国的自动驾驶技术可望迅速缩短与美国的差距。</p><p>美国如今转向支持5G厘米波技术，很可能就是担忧它在新技术领域落后于中国，然而考虑到现实情况，技术美国力推它也无法缩短与中国的差距，或许中国快速推广5G将成为中国在新技术领域赶超美国的契机。</p>', '8771E46C-F68B-4EE8-918B-18334795CED8', '1', '8', '', '0', '0', 'liushaoquan,admin', '0', '2020-03-20 12:46:57', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `news` VALUES ('2', '7CAC3DAE-F45E-4F05-98F4-8E7D38C1F038', '麒麟820来了！荣耀30S发布会官宣：3月20日见', '3月19日讯，今天上午，荣耀手机在官方微博上正式宣布，荣耀30S新品发布会将定在3月30日举行，荣耀...', '4', '', '@all', null, '2020-03-20', '', '<p>3月19日讯，今天上午，荣耀手机在官方微博上正式宣布，荣耀30S新品发布会将定在3月30日举行，荣耀官方称该手机能够让更多用户感受5G时代领先科技，其目标应该是主打性价比段位。</p><p>本次荣耀30S发布会的主题是“美由「芯」生”，这应该和即将同时发布的麒麟820 5G芯片有关。正如荣耀官微所说的由内而外的全“芯”之作那样，荣耀30S很可能会搭载最新的麒麟820芯片。</p><p>对于本次荣耀30S即将搭载的麒麟820处理器，广大网友都是比较期待的，这样的期许来自于它的前代麒麟810处理器打下的口碑。麒麟810作为一款定位中端的处理器，它拥有着先进的制程，这使得它对比同价位处理器功耗更低、性能更强，整体性能直逼骁龙845处理器。而荣耀9X这款千元机型的推出，更是将麒麟810处理器的名声彻底打响。</p>', '8771E46C-F68B-4EE8-918B-18334795CED8', '1', '8', '', '0', '0', 'admin', '0', '2020-03-20 13:38:29', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `news` VALUES ('3', '6A7189CA-E52B-4CA0-B420-BBD04FDB86F5', '中央财政累计安排有关防控资金257.5亿元', '本报北京3月24日电 （记者曲哲涵）财政部24日公布1—2月财政收支情况。数据显示，1—2月累计，全...', '2', null, '@all', null, '2020-03-25', '', '<p style=\"margin-top: 25px; margin-bottom: 25px; padding: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 18px; line-height: 32.4px; font-family: &quot;Microsoft Yahei&quot;; color: rgb(34, 34, 34);\">本报北京3月24日电&nbsp;&nbsp;（记者曲哲涵）财政部24日公布1—2月财政收支情况。数据显示，1—2月累计，全国一般公共预算收入35232亿元，同比下降9.9%。其中，中央一般公共预算收入17242亿元，同比下降11.2%；地方一般公共预算本级收入17990亿元，同比下降8.6%。全国税收收入31175亿元，同比下降11.2%；非税收入4057亿元，同比增长1.7%。1—2月累计，全国一般公共预算支出32350亿元，同比下降2.9%。</p><p style=\"margin-top: 25px; margin-bottom: 25px; padding: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 18px; line-height: 32.4px; font-family: &quot;Microsoft Yahei&quot;; color: rgb(34, 34, 34);\">　　据了解，全国财政收入同比下降的主要原因，一是巩固减税降费成效，增值税翘尾减收效果持续释放。二是上年末延至今年初缴纳入库的税收收入同比减少。三是疫情对财政收入的影响在2月份明显显现，进口环节税收、车辆购置税等2月份当月申报税种降幅明显扩大，住宿餐饮、居民服务、交通运输等行业税收收入分别下降55.1%、41.6%、37.3%，房地产业、建筑业、批发零售业、制造业等行业税收收入也大幅下降。</p><p style=\"margin-top: 25px; margin-bottom: 25px; padding: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 18px; line-height: 32.4px; font-family: &quot;Microsoft Yahei&quot;; color: rgb(34, 34, 34);\">　　虽然财政减收明显，但疫情防控经费和基层“三保”支出，仍得到较好保障。截至3月21日，中央财政已累计安排有关防控资金257.5亿元，支持地方做好患者救治、医护人员补贴发放，以及建立疫情防控短缺物资储备、开展药品和疫苗研发等工作。与疫情防控直接相关的卫生健康支出2716亿元，同比增长22.7%。在去年四季度已提前下达转移支付的基础上，今年以来预拨均衡性转移支付700亿元、县级基本财力保障机制奖补资金406亿元，增强地方财政经费保障能力，支持地方做好疫情防控和基层“三保”工作。此外，财政部还建立了“全国县级财政库款监测”机制，动态监测湖北等受疫情影响较大地区的财政库款情况，加强资金调度，确保疫情防控、“三保”等资金及时足额拨付到位。</p>', '8771E46C-F68B-4EE8-918B-18334795CED8', '1', '5', '', '0', '0', 'liushaoquan,admin,luyunyun', '0', '2020-03-25 14:08:25', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `news` VALUES ('4', '9D465F9A-DEE4-4752-86F9-05E501C575D5', '最新国家科技奖受理项目公布：钟南山团队项目冲击最高奖', '北京头条客户端3月25日报道，2020年度国家科学技术奖提名工作已结束。国家科学技术奖励工作办公室共...', '2', null, '@all', null, '2020-03-25', '', '<p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">北京头条客户端3月25日报道，2020年度国家科学技术奖提名工作已结束。国家科学技术奖励工作办公室共收到有关单位和专家提名的国家自然科学奖项目333项，国家技术发明奖项目333项，国家科学技术进步奖项目1135项。3月24日起在其官网公布。据统计，共有112个项目冲击一等奖或特等奖，其中包括钟南山院士领衔的钟南山呼吸疾病防控创新团队的项目。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">此外，对形式审查合格予以受理的67项国家技术发明奖专用项目、183项国家科学技术进步奖专用项目在一定范围内公布。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">形式审查不合格项目19项不予受理，包括国家自然科学奖3项，国家技术发明奖4项（通用项目），国家科学技术进步奖12项（通用项目）。提名单位撤回提名9项，其中国家技术发明奖3项（通用项目），国家科学技术进步奖6项（通用项目）。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">自受理项目公布之日起30日内，任何单位或者个人对公布项目的创新性、先进性、实用性及提名材料真实性和项目主要完成人、主要完成单位持有异议的，应当以书面方式向国家科学技术奖励工作办公室提出，并提供必要的证明材料。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">（原题为《2020年度国家科学技术奖受理项目公布》）</p>', '8771E46C-F68B-4EE8-918B-18334795CED8', '1', '3', '', '0', '0', 'admin', '0', '2020-03-25 14:09:06', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `news` VALUES ('5', 'EF03AB43-9000-4AAF-84FC-DDB888C808A5', '三地推行周末2.5天假刺激消费，其他省市跟不跟？', '中新经纬客户端3月25日电 (吴晓薇 张猛)3月以来，浙江、江西及甘肃省陇南市三地相继推行2.5天假...', '', null, '@all', null, '2020-03-25', '', '<p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">中新经纬客户端3月25日电 (吴晓薇 张猛)3月以来，浙江、江西及甘肃省陇南市三地相继推行2.5天假期制刺激消费。外省市网友大呼羡慕的同时不禁疑惑，多出的半天假期怎么休？会缩短法定工作时间吗？其他地区会跟进吗？</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\"><strong>这三地每周多出半天假期</strong></p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\"><img alt=\"\" src=\"https://m1-1253159997.image.myqcloud.com/imageDir/52089c68e2a909088c685ecde44493e9.jpg\" data-upload-link=\"%7B%22cover%22%3A%22%22%2C%22desc%22%3A%22%22%2C%22id%22%3A%22eiimpz_936831%22%2C%22size%22%3A616%2C%22width%22%3A1080%2C%22height%22%3A700%2C%22url%22%3A%22https%3A%2F%2Fm1-1253159997.image.myqcloud.com%2FimageDir%2F52089c68e2a909088c685ecde44493e9.jpg%22%2C%22tags%22%3A%5B%5D%2C%22time%22%3A%22%22%2C%22mime%22%3A%22%22%7D\" style=\"border-width: initial; border-style: none; max-width: 100%; display: block; height: auto; margin: 10px auto 20px;\"></p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">亲子旅游资料图 中新经纬 张燕征 摄</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">据中国旅游研究院测算，受疫情影响，2020年一季度及全年，国内旅游人次将分别下降56%和15.5%，国内旅游收入分别下降69%和20.6%；预计全年同比减少旅游9.32亿人次，减收达1.18万亿元。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">为了促进文旅消费，近来国内多地推出了发放消费券、景区门票半价等措施。另有三地相继提出2.5天假期制，要求略有不同。例如，江西省和陇南市要求鼓励、引导职工外出度假和旅游，浙江省则未提及。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">具体看来，江西省率先提出了二季度试行周末2.5天弹性作息，要求各地各单位结合实际，优化工作安排，积极引导干部职工周末外出休闲度假。弹性作息减少的工作时间，通过延长其他工作日时长调剂补回。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">甘肃省陇南市随后鼓励休假消费，要求每周星期五下午各行政事业单位在完成工作任务，安排好值班人员的情况下，可以鼓励其余职工休假旅游。严格落实带薪休假制度，任何部门单位不得以任何理由取消或减少干部职工休假。同时，要合理安排疫情防控期间的值班补假，保证干部职工身心健康，带动消费持续增加。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">就在昨天(24日)，浙江省印发《浙江省人民政府办公厅关于提振消费促进经济稳定增长的实施意见》。其中提到，鼓励实施一周4.5天弹性工作制，支持有条件的机关、社会团体、企事业单位落实带薪休假制度。</p>', '8771E46C-F68B-4EE8-918B-18334795CED8', '1', '1', '', '0', '0', 'admin', '0', '2020-03-25 14:09:41', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `news` VALUES ('6', 'A9294C7C-F761-4AB3-9E37-34E83AF4D928', '高校发开学预通知！大学生先别着急买火车票', '目前已有多地公布预开学时间，你是不是也在家坐不住了？不过，有高校发来提醒，要等待正式开学通知，不用着...', '', null, '@all', null, '2020-03-25', '', '<p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">目前已有多地公布预开学时间，你是不是也在家坐不住了？不过，有高校发来提醒，要等待正式开学通知，不用着急购买火车票……</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\"><strong>江苏高校提醒：起始时间并不一定是开学时间！</strong></p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">根据江苏省教育厅通知精神，江苏高校以4月13日为开学起始时间做好开学准备工作。从3月23日起，江苏省内多所高校发布了新学期开学的预通知。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">高校提醒，4月13日是我省高校开学的起始时间，并不一定是返校、报到或开学时间。各校会根据自身的准备情况确定学生返校时间，经上级部门批准后发布。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">江南大学明确，学校会给学生预留充分的返校准备时间。在发布确定的返校日期前，不得提前返校。该校要求，疫情管控尚未解除地区的学生和仍在国外的留学生，要继续遵守所在地防疫管控规定，不得返校。</p>', '8771E46C-F68B-4EE8-918B-18334795CED8', '1', '0', '', '0', '0', null, '0', '2020-03-25 14:10:01', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `news` VALUES ('7', '8CF16946-994B-4390-9511-7B32B3C44420', '打好武汉生活物资供应保障战', '打疫情防控阻击战，实际上也是打后勤保障战。“民以食为天”，离汉通道关闭、社区长时间封闭管理，武汉千万...', '2', null, '@all', null, '2020-03-25', '', '<p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">打疫情防控阻击战，实际上也是打后勤保障战。“民以食为天”，离汉通道关闭、社区长时间封闭管理，武汉千万居民的基本生活如何保障，引人关注。</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　习近平总书记在湖北省武汉市考察新冠肺炎疫情防控工作时强调，要千方百计保障好群众基本生活。</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　3月11日召开的湖北省委常委会扩大会议提出，要充分考虑长时间封闭管理给群众生活和精神带来的压力，将心比心、以心换心，带着感情和责任做好民生工作。</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　武汉三镇，生活物资供应保障战接续打响。</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　——从跨省联动协调货源，到协调落实生活必需品“绿色通道”，调动各方力量组织供应，全市米面油肉等基本生活物资库存量可满足30天以上消费需求，活鱼供应也渐成常态。</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　——从公交车到军用运输车辆，从冷链物流车到邮政车辆、社会车辆，广泛动员运力，扩大物资配送范围，提升配送时效。</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　——从“特价蔬菜包”扩容增投，到储备冻猪肉增量供应，多措并举落实惠民政策，全力稳定物价。</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　——从各大型商超在岗员工变身搬运工、分拣员、配送员，到广大社区工作者、网格员、志愿者、下沉干部负责代购代送，便民保供服务更精准。</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　连日来，本报记者深入武汉民生保障一线，探访奔走在生活物资供应链上的人们，倾听武汉打好生活物资供应保障战的故事。</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　　　　</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　保供应</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　以超常态化的需求组织应急保供，统筹资源增加生活物资供给</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　离汉通道关闭后，武汉生活必需品应急保供任务艰巨。需求阶段性增大，价格一度出现较大幅度上涨。</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　“要以超过常态化的需求来组织供应，宁可增加库存，宁可备而不用或备而少用，也要坚决防止出现短缺。”2月3日，在国务院联防联控机制新闻发布会上，国家发展改革委副主任连维良介绍，中央应对新冠肺炎疫情工作领导小组专门设立了多部门组成的生活物资保障组，建立快速联动工作机制，千方百计增加生活必需品供应。“比如，我们在湖北省周边6省份协调蔬菜资源，现有库存近6万吨，可持续向武汉市场每天供应约8000吨；上海港周边安排1万吨中央冻猪肉储备，随时准备向武汉市场定向投放。”</p>', '8771E46C-F68B-4EE8-918B-18334795CED8', '1', '0', '', '0', '0', null, '0', '2020-03-25 14:11:22', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `news` VALUES ('8', '97A90BC0-21ED-44CF-AB0E-53928695AFF7', '今起武汉117条公交恢复运营 6条地铁线本周六恢复', '原标题：武汉公交地铁部分恢复运营相关解读 3月24日，湖北省新型冠状病毒感染肺炎疫情防控指挥部发布通...', '2', null, '@all', null, '2020-03-25', '', '<p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">原标题：武汉公交地铁部分恢复运营相关解读</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">3月24日，湖北省新型冠状病毒感染肺炎疫情防控指挥部发布通告，就解除离鄂通道管控和武汉市复工复产作出安排，提出“外省来鄂来汉人员凭外省健康码或湖北健康码‘绿码’，在全省范围内安全有序流动”。为无缝对接武汉三大火车站，解决外省来鄂来汉人员及复工复产人员市内交通出行，经请示行业主管部门，<strong>自3月25日起，武汉恢复117条公交线路运营。3月28日起，恢复轨道交通1号线、2号线、3号线、4号线、6号线、7号线运行。</strong>&nbsp;恢复运行的公交、地铁线路的开收班及运营时间，仍按车站公示时间实施。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\"><strong>武汉公交地铁部分恢复运营</strong>&nbsp;<strong>相关解读</strong></p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\"><strong>1</strong></p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">请问近日恢复部分城市公共交通运营的有关安排？</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">当前，我市正积极推进复工复产，企业员工通勤需求逐渐加大，在外人员陆续返汉，人员有序流动加快，有序恢复公共交通运营迫在眉睫。近期，市交通运输部门组织公共交通企业全力做好各项准备工作，完成了驾驶员、管理员的调配和培训、交通工具和场站消杀、配备测温设备、实名登记扫码乘车二维码的张贴，以及部分公共交通线路恢复前的演练测试工作。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">一、<strong>3月25日起，恢复汉口、武昌、武汉等三大火车站始发的42条公交线路运营；</strong>&nbsp;<strong>恢复中心城区</strong>&nbsp;（含武汉东湖新技术开发区、武汉经济技术开发区）<strong>75条区域公交线路运营</strong>&nbsp;（含微循环公交线路）</p>', '8771E46C-F68B-4EE8-918B-18334795CED8', '1', '3', '', '0', '0', 'liushaoquan,admin', '0', '2020-03-25 14:23:44', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `news` VALUES ('1', 'DCA97E31-1E45-4FB8-A1DC-9C16E2E3332A', '美国5G网络建设落后可能导致美国在新的科技领域落后于中国', '据报道指美国在5G网络建设方面已大幅落后于中国，主要是因为它采用非主流的5G毫米波技术所致，5G网络...', '4', null, '@all', null, '2020-03-20', '', '<p>据报道指美国在5G网络建设方面已大幅落后于中国，主要是因为它采用非主流的5G毫米波技术所致，5G网络建设落后导致的结果可不仅仅是美国消费者较晚使用5G技术，更重要的是导致美国在新的科技领域落后于中国。</p><p>美国5G网络建设落后于中国</p><p>据悉至今年初美国建成的5G基站数量在1.5万座以内，而中国目前的5G基站数量已达到15万座。美国建成的5G基站多数都是基于5G毫米波技术，中国的5G基站则是基于5G厘米波技术，因此中国的5G网络覆盖已大幅领先于美国。</p><p>美国被迫采用5G毫米波技术是因为全球主流的中频5G频段被美国军方占用，美国运营商被迫采用5G毫米波技术，然而基于5G毫米波技术建设的5G基站覆盖范围太小了，5G信号受到影响太大，甚至于雨水都可能阻隔5G毫米波的信号，因此美国运营商建成的5G网络主要是提高固网宽带移动服务，而不是移动通信服务。</p><p>美国5G网络建设进展缓慢还与它的建网成本过高有关，在全球前四大通信设备商当中，中国两大通信设备商华为和中兴提供的5G设备价格是最实惠的，诺基亚和爱立信的通信设备则较为昂贵，然而华为和中兴未能进入美国市场，这导致美国运营商建设的5基站成本是中国运营商的两倍多。</p><p>美国目前已认识到5G毫米波技术的诸多弊端，因此宣布向卫星运营商提供近150亿美元的资金推动它们释放3.7GHz-42GHz的中频频段，这意味着美国在事实上放弃5G毫米波技术而选用全球主流的5G厘米波技术。</p><p>然而中国已在加快5G网络建设的进程，预计到今年底将建成60万座5G基站。美国如今才开始清理中频频段，今年内能否成功释放中频频段都是个疑问，这意味着美国运营商采用5G厘米波技术最快也得在明显开始，这样一来在未来3-5年中国的5G网络建设将大幅领先于美国。</p><p>美国在新的科技领域或落后于中国</p><p>5G技术是为物联网、自动驾驶等新技术准备，中国迅速建成覆盖全国的5G网络将有利于中国推动这些技术进入实际应用，有助于中国在新技术领域取得领先优势。</p><p>从目前的技术发展来看，美国至少在自动驾驶技术领域是领先于中国的，特别是美国企业特斯拉的自动驾驶技术已累积超过10亿公里，它也是全球企业当中率先在实际使用中应用自动驾驶技术的，但是美国5G网络的建设进展缓慢，将拖累美国企业在这些新技术领域保持领先优势。</p><p>在4G时代，中国移动互联网就凭借网络覆盖领先的优势（中国4G基站占全球的比例近一半）取得对美国企业的领先优势，以致于美国企业不得不反过来学习中国的互联网创新科技。目前中国的物联网连接数已近十亿（至2019年6月仅是中国移动的物联网连接数就已达到6.3亿），随着5G网络迅速覆盖至全国，中国的物联网将进入快速增长阶段，中国的物联网技术领先于美国将成为事实。</p><p>在自动驾驶技术方面，中国的百度其实在技术上并没落后于美国企业太多，目前百度正加紧与各汽车企业合作推广自动驾驶技术，随着5G技术在中国的迅速推广，自动驾驶技术在中国可望将迅速获得应用，如此中国的自动驾驶技术可望迅速缩短与美国的差距。</p><p>美国如今转向支持5G厘米波技术，很可能就是担忧它在新技术领域落后于中国，然而考虑到现实情况，技术美国力推它也无法缩短与中国的差距，或许中国快速推广5G将成为中国在新技术领域赶超美国的契机。</p>', '8771E46C-F68B-4EE8-918B-18334795CED8', '1', '34', '', '0', '0', 'liushaoquan,admin', '0', '2020-03-20 12:46:57', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `news` VALUES ('2', '7CAC3DAE-F45E-4F05-98F4-8E7D38C1F038', '麒麟820来了！荣耀30S发布会官宣：3月20日见', '3月19日讯，今天上午，荣耀手机在官方微博上正式宣布，荣耀30S新品发布会将定在3月30日举行，荣耀...', '4', '', '@all', null, '2020-03-20', '', '<p>3月19日讯，今天上午，荣耀手机在官方微博上正式宣布，荣耀30S新品发布会将定在3月30日举行，荣耀官方称该手机能够让更多用户感受5G时代领先科技，其目标应该是主打性价比段位。</p><p>本次荣耀30S发布会的主题是“美由「芯」生”，这应该和即将同时发布的麒麟820 5G芯片有关。正如荣耀官微所说的由内而外的全“芯”之作那样，荣耀30S很可能会搭载最新的麒麟820芯片。</p><p>对于本次荣耀30S即将搭载的麒麟820处理器，广大网友都是比较期待的，这样的期许来自于它的前代麒麟810处理器打下的口碑。麒麟810作为一款定位中端的处理器，它拥有着先进的制程，这使得它对比同价位处理器功耗更低、性能更强，整体性能直逼骁龙845处理器。而荣耀9X这款千元机型的推出，更是将麒麟810处理器的名声彻底打响。</p>', '8771E46C-F68B-4EE8-918B-18334795CED8', '1', '11', '', '0', '0', 'admin', '0', '2020-03-20 13:38:29', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `news` VALUES ('3', '6A7189CA-E52B-4CA0-B420-BBD04FDB86F5', '中央财政累计安排有关防控资金257.5亿元', '本报北京3月24日电 （记者曲哲涵）财政部24日公布1—2月财政收支情况。数据显示，1—2月累计，全...', '2', null, '@all', null, '2020-03-25', '', '<p style=\"margin-top: 25px; margin-bottom: 25px; padding: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 18px; line-height: 32.4px; font-family: &quot;Microsoft Yahei&quot;; color: rgb(34, 34, 34);\">本报北京3月24日电&nbsp;&nbsp;（记者曲哲涵）财政部24日公布1—2月财政收支情况。数据显示，1—2月累计，全国一般公共预算收入35232亿元，同比下降9.9%。其中，中央一般公共预算收入17242亿元，同比下降11.2%；地方一般公共预算本级收入17990亿元，同比下降8.6%。全国税收收入31175亿元，同比下降11.2%；非税收入4057亿元，同比增长1.7%。1—2月累计，全国一般公共预算支出32350亿元，同比下降2.9%。</p><p style=\"margin-top: 25px; margin-bottom: 25px; padding: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 18px; line-height: 32.4px; font-family: &quot;Microsoft Yahei&quot;; color: rgb(34, 34, 34);\">　　据了解，全国财政收入同比下降的主要原因，一是巩固减税降费成效，增值税翘尾减收效果持续释放。二是上年末延至今年初缴纳入库的税收收入同比减少。三是疫情对财政收入的影响在2月份明显显现，进口环节税收、车辆购置税等2月份当月申报税种降幅明显扩大，住宿餐饮、居民服务、交通运输等行业税收收入分别下降55.1%、41.6%、37.3%，房地产业、建筑业、批发零售业、制造业等行业税收收入也大幅下降。</p><p style=\"margin-top: 25px; margin-bottom: 25px; padding: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 18px; line-height: 32.4px; font-family: &quot;Microsoft Yahei&quot;; color: rgb(34, 34, 34);\">　　虽然财政减收明显，但疫情防控经费和基层“三保”支出，仍得到较好保障。截至3月21日，中央财政已累计安排有关防控资金257.5亿元，支持地方做好患者救治、医护人员补贴发放，以及建立疫情防控短缺物资储备、开展药品和疫苗研发等工作。与疫情防控直接相关的卫生健康支出2716亿元，同比增长22.7%。在去年四季度已提前下达转移支付的基础上，今年以来预拨均衡性转移支付700亿元、县级基本财力保障机制奖补资金406亿元，增强地方财政经费保障能力，支持地方做好疫情防控和基层“三保”工作。此外，财政部还建立了“全国县级财政库款监测”机制，动态监测湖北等受疫情影响较大地区的财政库款情况，加强资金调度，确保疫情防控、“三保”等资金及时足额拨付到位。</p>', '8771E46C-F68B-4EE8-918B-18334795CED8', '1', '6', '', '0', '0', 'liushaoquan,admin,luyunyun', '0', '2020-03-25 14:08:25', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `news` VALUES ('4', '9D465F9A-DEE4-4752-86F9-05E501C575D5', '最新国家科技奖受理项目公布：钟南山团队项目冲击最高奖', '北京头条客户端3月25日报道，2020年度国家科学技术奖提名工作已结束。国家科学技术奖励工作办公室共...', '2', null, '@all', null, '2020-03-25', '', '<p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">北京头条客户端3月25日报道，2020年度国家科学技术奖提名工作已结束。国家科学技术奖励工作办公室共收到有关单位和专家提名的国家自然科学奖项目333项，国家技术发明奖项目333项，国家科学技术进步奖项目1135项。3月24日起在其官网公布。据统计，共有112个项目冲击一等奖或特等奖，其中包括钟南山院士领衔的钟南山呼吸疾病防控创新团队的项目。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">此外，对形式审查合格予以受理的67项国家技术发明奖专用项目、183项国家科学技术进步奖专用项目在一定范围内公布。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">形式审查不合格项目19项不予受理，包括国家自然科学奖3项，国家技术发明奖4项（通用项目），国家科学技术进步奖12项（通用项目）。提名单位撤回提名9项，其中国家技术发明奖3项（通用项目），国家科学技术进步奖6项（通用项目）。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">自受理项目公布之日起30日内，任何单位或者个人对公布项目的创新性、先进性、实用性及提名材料真实性和项目主要完成人、主要完成单位持有异议的，应当以书面方式向国家科学技术奖励工作办公室提出，并提供必要的证明材料。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">（原题为《2020年度国家科学技术奖受理项目公布》）</p>', '8771E46C-F68B-4EE8-918B-18334795CED8', '1', '4', '', '0', '0', 'admin', '0', '2020-03-25 14:09:06', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `news` VALUES ('5', 'EF03AB43-9000-4AAF-84FC-DDB888C808A5', '三地推行周末2.5天假刺激消费，其他省市跟不跟？', '中新经纬客户端3月25日电 (吴晓薇 张猛)3月以来，浙江、江西及甘肃省陇南市三地相继推行2.5天假...', '', null, '@all', null, '2020-03-25', '', '<p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">中新经纬客户端3月25日电 (吴晓薇 张猛)3月以来，浙江、江西及甘肃省陇南市三地相继推行2.5天假期制刺激消费。外省市网友大呼羡慕的同时不禁疑惑，多出的半天假期怎么休？会缩短法定工作时间吗？其他地区会跟进吗？</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\"><strong>这三地每周多出半天假期</strong></p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\"><img alt=\"\" src=\"https://m1-1253159997.image.myqcloud.com/imageDir/52089c68e2a909088c685ecde44493e9.jpg\" data-upload-link=\"%7B%22cover%22%3A%22%22%2C%22desc%22%3A%22%22%2C%22id%22%3A%22eiimpz_936831%22%2C%22size%22%3A616%2C%22width%22%3A1080%2C%22height%22%3A700%2C%22url%22%3A%22https%3A%2F%2Fm1-1253159997.image.myqcloud.com%2FimageDir%2F52089c68e2a909088c685ecde44493e9.jpg%22%2C%22tags%22%3A%5B%5D%2C%22time%22%3A%22%22%2C%22mime%22%3A%22%22%7D\" style=\"border-width: initial; border-style: none; max-width: 100%; display: block; height: auto; margin: 10px auto 20px;\"></p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">亲子旅游资料图 中新经纬 张燕征 摄</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">据中国旅游研究院测算，受疫情影响，2020年一季度及全年，国内旅游人次将分别下降56%和15.5%，国内旅游收入分别下降69%和20.6%；预计全年同比减少旅游9.32亿人次，减收达1.18万亿元。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">为了促进文旅消费，近来国内多地推出了发放消费券、景区门票半价等措施。另有三地相继提出2.5天假期制，要求略有不同。例如，江西省和陇南市要求鼓励、引导职工外出度假和旅游，浙江省则未提及。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">具体看来，江西省率先提出了二季度试行周末2.5天弹性作息，要求各地各单位结合实际，优化工作安排，积极引导干部职工周末外出休闲度假。弹性作息减少的工作时间，通过延长其他工作日时长调剂补回。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">甘肃省陇南市随后鼓励休假消费，要求每周星期五下午各行政事业单位在完成工作任务，安排好值班人员的情况下，可以鼓励其余职工休假旅游。严格落实带薪休假制度，任何部门单位不得以任何理由取消或减少干部职工休假。同时，要合理安排疫情防控期间的值班补假，保证干部职工身心健康，带动消费持续增加。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">就在昨天(24日)，浙江省印发《浙江省人民政府办公厅关于提振消费促进经济稳定增长的实施意见》。其中提到，鼓励实施一周4.5天弹性工作制，支持有条件的机关、社会团体、企事业单位落实带薪休假制度。</p>', '8771E46C-F68B-4EE8-918B-18334795CED8', '1', '4', '', '0', '0', 'admin', '0', '2020-03-25 14:09:41', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `news` VALUES ('6', 'A9294C7C-F761-4AB3-9E37-34E83AF4D928', '高校发开学预通知！大学生先别着急买火车票', '目前已有多地公布预开学时间，你是不是也在家坐不住了？不过，有高校发来提醒，要等待正式开学通知，不用着...', '', null, '@all', null, '2020-03-25', '', '<p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">目前已有多地公布预开学时间，你是不是也在家坐不住了？不过，有高校发来提醒，要等待正式开学通知，不用着急购买火车票……</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\"><strong>江苏高校提醒：起始时间并不一定是开学时间！</strong></p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">根据江苏省教育厅通知精神，江苏高校以4月13日为开学起始时间做好开学准备工作。从3月23日起，江苏省内多所高校发布了新学期开学的预通知。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">高校提醒，4月13日是我省高校开学的起始时间，并不一定是返校、报到或开学时间。各校会根据自身的准备情况确定学生返校时间，经上级部门批准后发布。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">江南大学明确，学校会给学生预留充分的返校准备时间。在发布确定的返校日期前，不得提前返校。该校要求，疫情管控尚未解除地区的学生和仍在国外的留学生，要继续遵守所在地防疫管控规定，不得返校。</p>', '8771E46C-F68B-4EE8-918B-18334795CED8', '1', '2', '', '0', '0', 'admin', '0', '2020-03-25 14:10:01', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `news` VALUES ('7', '8CF16946-994B-4390-9511-7B32B3C44420', '打好武汉生活物资供应保障战', '打疫情防控阻击战，实际上也是打后勤保障战。“民以食为天”，离汉通道关闭、社区长时间封闭管理，武汉千万...', '2', null, '@all', null, '2020-03-25', '', '<p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">打疫情防控阻击战，实际上也是打后勤保障战。“民以食为天”，离汉通道关闭、社区长时间封闭管理，武汉千万居民的基本生活如何保障，引人关注。</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　习近平总书记在湖北省武汉市考察新冠肺炎疫情防控工作时强调，要千方百计保障好群众基本生活。</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　3月11日召开的湖北省委常委会扩大会议提出，要充分考虑长时间封闭管理给群众生活和精神带来的压力，将心比心、以心换心，带着感情和责任做好民生工作。</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　武汉三镇，生活物资供应保障战接续打响。</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　——从跨省联动协调货源，到协调落实生活必需品“绿色通道”，调动各方力量组织供应，全市米面油肉等基本生活物资库存量可满足30天以上消费需求，活鱼供应也渐成常态。</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　——从公交车到军用运输车辆，从冷链物流车到邮政车辆、社会车辆，广泛动员运力，扩大物资配送范围，提升配送时效。</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　——从“特价蔬菜包”扩容增投，到储备冻猪肉增量供应，多措并举落实惠民政策，全力稳定物价。</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　——从各大型商超在岗员工变身搬运工、分拣员、配送员，到广大社区工作者、网格员、志愿者、下沉干部负责代购代送，便民保供服务更精准。</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　连日来，本报记者深入武汉民生保障一线，探访奔走在生活物资供应链上的人们，倾听武汉打好生活物资供应保障战的故事。</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　　　　</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　保供应</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　以超常态化的需求组织应急保供，统筹资源增加生活物资供给</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　离汉通道关闭后，武汉生活必需品应急保供任务艰巨。需求阶段性增大，价格一度出现较大幅度上涨。</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　“要以超过常态化的需求来组织供应，宁可增加库存，宁可备而不用或备而少用，也要坚决防止出现短缺。”2月3日，在国务院联防联控机制新闻发布会上，国家发展改革委副主任连维良介绍，中央应对新冠肺炎疫情工作领导小组专门设立了多部门组成的生活物资保障组，建立快速联动工作机制，千方百计增加生活必需品供应。“比如，我们在湖北省周边6省份协调蔬菜资源，现有库存近6万吨，可持续向武汉市场每天供应约8000吨；上海港周边安排1万吨中央冻猪肉储备，随时准备向武汉市场定向投放。”</p>', '8771E46C-F68B-4EE8-918B-18334795CED8', '1', '1', '', '0', '0', 'admin', '0', '2020-03-25 14:11:22', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `news` VALUES ('8', '97A90BC0-21ED-44CF-AB0E-53928695AFF7', '今起武汉117条公交恢复运营 6条地铁线本周六恢复', '原标题：武汉公交地铁部分恢复运营相关解读 3月24日，湖北省新型冠状病毒感染肺炎疫情防控指挥部发布通...', '2', null, '@all', null, '2020-03-25', '', '<p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">原标题：武汉公交地铁部分恢复运营相关解读</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">3月24日，湖北省新型冠状病毒感染肺炎疫情防控指挥部发布通告，就解除离鄂通道管控和武汉市复工复产作出安排，提出“外省来鄂来汉人员凭外省健康码或湖北健康码‘绿码’，在全省范围内安全有序流动”。为无缝对接武汉三大火车站，解决外省来鄂来汉人员及复工复产人员市内交通出行，经请示行业主管部门，<strong>自3月25日起，武汉恢复117条公交线路运营。3月28日起，恢复轨道交通1号线、2号线、3号线、4号线、6号线、7号线运行。</strong>&nbsp;恢复运行的公交、地铁线路的开收班及运营时间，仍按车站公示时间实施。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\"><strong>武汉公交地铁部分恢复运营</strong>&nbsp;<strong>相关解读</strong></p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\"><strong>1</strong></p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">请问近日恢复部分城市公共交通运营的有关安排？</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">当前，我市正积极推进复工复产，企业员工通勤需求逐渐加大，在外人员陆续返汉，人员有序流动加快，有序恢复公共交通运营迫在眉睫。近期，市交通运输部门组织公共交通企业全力做好各项准备工作，完成了驾驶员、管理员的调配和培训、交通工具和场站消杀、配备测温设备、实名登记扫码乘车二维码的张贴，以及部分公共交通线路恢复前的演练测试工作。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">一、<strong>3月25日起，恢复汉口、武昌、武汉等三大火车站始发的42条公交线路运营；</strong>&nbsp;<strong>恢复中心城区</strong>&nbsp;（含武汉东湖新技术开发区、武汉经济技术开发区）<strong>75条区域公交线路运营</strong>&nbsp;（含微循环公交线路）</p>', '8771E46C-F68B-4EE8-918B-18334795CED8', '1', '4', '', '0', '0', 'liushaoquan,admin', '0', '2020-03-25 14:23:44', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `news` VALUES ('9', '87D9BF25-DF25-4B21-9C4B-D0E268DD60FA', '人社部：对湖北高校及湖北籍2020届毕业生给予一次性求职创业补贴', '人社部副部长游钧表示，将加大对湖北等疫情严重地区的就业支持。对湖北高校及湖北籍2020届毕业生给予一...', '2', null, '@all', null, '2020-03-25', '', '<p><span style=\"color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; font-size: 16px; background-color: rgb(249, 249, 249);\">人社部副部长游钧表示，将加大对湖北等疫情严重地区的就业支持。对湖北高校及湖北籍2020届毕业生给予一次性求职创业补贴。湖北的事业单位空缺岗位，可开展专项招聘，基层服务项目向湖北倾斜</span><br></p>', '8771E46C-F68B-4EE8-918B-18334795CED8', '1', '11', '', '0', '0', 'admin', '0', '2020-03-25 14:24:07', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `news` VALUES ('10', '887F71F2-8926-4C7E-ABB2-0BF467C15B8D', '四川发布公告！终止群体聚集禁令，麻将馆等可以营业', '经营单位，如歌舞娱乐、游戏游艺、互联网上网服务场所、营业性麻将场所和大型儿童游乐设施、健身房、室内游...', '2', null, '@all', null, '2020-03-25', '', '<p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">经营单位，如歌舞娱乐、游戏游艺、互联网上网服务场所、营业性麻将场所和大型儿童游乐设施、健身房、室内游泳场(馆)等暂停营业。暂时禁止群体性聚餐(含农村自办群体性宴席)”及第二条中“凡2020年1月10日以来，从武汉等疫区入川的，应自觉居家隔离14天”的规定。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">二、终止3号公告第二条“鼓励相关企业扩产扩能，抓紧技术改造，研发新品，提升质量，增加产能。支持具备一定条件企业转型生产疫情防控物资。建立应急审批‘绿色通道’”的规定。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">三、终止4号公告第四条“运送疫情防控急需的物资、医患人员的车辆，可申请省级交通运输主管部门发放通行证，免费优先通行高速公路”的规定。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">四、终止5号公告第二条中“对来自湖北等疫情重点地区的员工，一律严格落实医学观察或居家自我隔离等措施”的规定。</p>', '8771E46C-F68B-4EE8-918B-18334795CED8', '1', '1', '', '0', '0', 'admin', '0', '2020-03-25 14:24:42', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `news` VALUES ('11', '4D8F3672-6248-470E-9916-EFC03520A16D', '复工复产戴啥口罩？看清这个标准就行了', '复工复产戴啥口罩？看清这个标准就行了 国家发改委微信平台日前发布消息称，由中国产业用纺织品行业协会牵...', '2', null, '@all', null, '2020-03-25', '', '<p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">复工复产戴啥口罩？看清这个标准就行了</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">国家发改委微信平台日前发布消息称，由中国产业用纺织品行业协会牵头制定的《民用卫生口罩》团体标准本月正式发布。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">消息称，该标准的发布，填补了我国民用卫生口罩领域标准的空白，改变了市场无标可依、无标可查的现状，为口罩企业规范生产提供了技术支撑，为市场监管部门提供了监管依据，为消费者提供了权威的卫生口罩购买指南。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">疫情凸显民用卫生口罩标准需求</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">为什么要制定《民用卫生口罩》团体标准？</p>', '8771E46C-F68B-4EE8-918B-18334795CED8', '1', '2', '', '0', '0', 'liushaoquan,admin', '0', '2020-03-25 14:25:12', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `news` VALUES ('12', '18BAD5A9-5346-4EC2-B583-16DDC843EA3A', '消息提醒测试', 'css3 background 新添属性让你的背景图不再拉伸而是随窗口变化而... 2015年8月2...', '2', null, '@all', null, '2020-04-04', '', '<h3 class=\"t\" style=\"margin: 0px 0px 1px; padding: 0px; list-style: none; font-size: medium; line-height: 1.54; color: rgb(51, 51, 51); font-family: arial;\"><a data-click=\"{\n			\'F\':\'778317EA\',\n			\'F1\':\'9D73F1E4\',\n			\'F2\':\'4CA6DE6B\',\n			\'F3\':\'54E5243F\',\n			\'T\':\'1585978009\',\n						\'y\':\'7FAFBDA7\'\n												}\" href=\"https://www.baidu.com/link?url=3Bsy2h0GunpWP43pQad3d3CBH75ipgWB7erZs8AmZ0SWX1XF9fVGd4_Gwt4TIcMPwGLiqOrFYzVZUiFktmmSGlJnAk5-GD-B9uGy_OVuNG_&amp;wd=&amp;eqid=ac785a60001ae075000000045e881a99\" target=\"_blank\">css3&nbsp;<span style=\"color: rgb(204, 0, 0); text-decoration-line: underline;\">background</span>&nbsp;新添属性让你的背景图不再<span style=\"color: rgb(204, 0, 0); text-decoration-line: underline;\">拉伸</span>而是随窗口变化而...</a></h3><div class=\"c-abstract\" style=\"color: rgb(51, 51, 51); font-family: arial;\"><span class=\" newTimeFactor_before_abs m\" style=\"color: rgb(102, 102, 102);\">2015年8月28日&nbsp;-&nbsp;</span>x轴 /y轴 重复展示(纵向<span style=\"color: rgb(204, 0, 0);\">拉伸</span>不重复 / 横向<span style=\"color: rgb(204, 0, 0);\">拉伸</span>不重复 )&nbsp;<span style=\"color: rgb(204, 0, 0);\">background</span>-repeat 这个货 看下它的值: repeat 默认。背景图像将在垂直方向和水平方向重复。 r...</div>', '8771E46C-F68B-4EE8-918B-18334795CED8', '1', '16', 'ddSms', '0', '0', 'admin', '0', '2020-04-04 14:48:32', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `news` VALUES ('11', '4D8F3672-6248-470E-9916-EFC03520A16D', '复工复产戴啥口罩？看清这个标准就行了', '复工复产戴啥口罩？看清这个标准就行了 国家发改委微信平台日前发布消息称，由中国产业用纺织品行业协会牵...', '2', null, '@all', null, '2020-03-25', '', '<p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">复工复产戴啥口罩？看清这个标准就行了</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">国家发改委微信平台日前发布消息称，由中国产业用纺织品行业协会牵头制定的《民用卫生口罩》团体标准本月正式发布。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">消息称，该标准的发布，填补了我国民用卫生口罩领域标准的空白，改变了市场无标可依、无标可查的现状，为口罩企业规范生产提供了技术支撑，为市场监管部门提供了监管依据，为消费者提供了权威的卫生口罩购买指南。</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">疫情凸显民用卫生口罩标准需求</p><p style=\"margin-top: 10px; margin-bottom: 20px; padding: 0px; list-style: none; line-height: 30px; font-size: 16px; word-break: break-all; color: rgb(25, 25, 25); font-family: &quot;PingFang SC&quot;, Helvetica, &quot;Microsoft YaHei&quot;, simsun, sans-serif; background-color: rgb(249, 249, 249);\">为什么要制定《民用卫生口罩》团体标准？</p>', '8771E46C-F68B-4EE8-918B-18334795CED8', '1', '3', '', '0', '0', 'liushaoquan,admin', '0', '2020-03-25 14:25:12', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `news` VALUES ('12', '18BAD5A9-5346-4EC2-B583-16DDC843EA3A', '消息提醒测试', 'css3 background 新添属性让你的背景图不再拉伸而是随窗口变化而... 2015年8月2...', '2', null, '@all', null, '2020-04-04', '', '<h3 class=\"t\" style=\"margin: 0px 0px 1px; padding: 0px; list-style: none; font-size: medium; line-height: 1.54; color: rgb(51, 51, 51); font-family: arial;\"><a data-click=\"{\n			\'F\':\'778317EA\',\n			\'F1\':\'9D73F1E4\',\n			\'F2\':\'4CA6DE6B\',\n			\'F3\':\'54E5243F\',\n			\'T\':\'1585978009\',\n						\'y\':\'7FAFBDA7\'\n												}\" href=\"https://www.baidu.com/link?url=3Bsy2h0GunpWP43pQad3d3CBH75ipgWB7erZs8AmZ0SWX1XF9fVGd4_Gwt4TIcMPwGLiqOrFYzVZUiFktmmSGlJnAk5-GD-B9uGy_OVuNG_&amp;wd=&amp;eqid=ac785a60001ae075000000045e881a99\" target=\"_blank\">css3&nbsp;<span style=\"color: rgb(204, 0, 0); text-decoration-line: underline;\">background</span>&nbsp;新添属性让你的背景图不再<span style=\"color: rgb(204, 0, 0); text-decoration-line: underline;\">拉伸</span>而是随窗口变化而...</a></h3><div class=\"c-abstract\" style=\"color: rgb(51, 51, 51); font-family: arial;\"><span class=\" newTimeFactor_before_abs m\" style=\"color: rgb(102, 102, 102);\">2015年8月28日&nbsp;-&nbsp;</span>x轴 /y轴 重复展示(纵向<span style=\"color: rgb(204, 0, 0);\">拉伸</span>不重复 / 横向<span style=\"color: rgb(204, 0, 0);\">拉伸</span>不重复 )&nbsp;<span style=\"color: rgb(204, 0, 0);\">background</span>-repeat 这个货 看下它的值: repeat 默认。背景图像将在垂直方向和水平方向重复。 r...</div>', '8771E46C-F68B-4EE8-918B-18334795CED8', '1', '17', 'ddSms', '0', '0', 'admin', '0', '2020-04-04 14:48:32', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `news` VALUES ('13', '22B94CAA-FDBC-4E06-9591-DB4178BFB2D1', '消息提醒测试', 'css3 background 新添属性让你的背景图不再拉伸而是随窗口变化而... 2015年8月2...', '2', null, '@all', '17FD4237-EA0B-116E-9CD5-E57A11C35312', '2020-04-04', '', '<h3 class=\"t\" style=\"margin: 0px 0px 1px; padding: 0px; list-style: none; font-size: medium; line-height: 1.54; color: rgb(51, 51, 51); font-family: arial;\"><a data-click=\"{\n			\'F\':\'778317EA\',\n			\'F1\':\'9D73F1E4\',\n			\'F2\':\'4CA6DE6B\',\n			\'F3\':\'54E5243F\',\n			\'T\':\'1585978009\',\n						\'y\':\'7FAFBDA7\'\n												}\" href=\"https://www.baidu.com/link?url=3Bsy2h0GunpWP43pQad3d3CBH75ipgWB7erZs8AmZ0SWX1XF9fVGd4_Gwt4TIcMPwGLiqOrFYzVZUiFktmmSGlJnAk5-GD-B9uGy_OVuNG_&amp;wd=&amp;eqid=ac785a60001ae075000000045e881a99\" target=\"_blank\">css3&nbsp;<span style=\"color: rgb(204, 0, 0); text-decoration-line: underline;\">background</span>&nbsp;新添属性让你的背景图不再<span style=\"color: rgb(204, 0, 0); text-decoration-line: underline;\">拉伸</span>而是随窗口变化而...</a></h3><div class=\"c-abstract\" style=\"color: rgb(51, 51, 51); font-family: arial;\"><span class=\" newTimeFactor_before_abs m\" style=\"color: rgb(102, 102, 102);\">2015年8月28日&nbsp;-&nbsp;</span>x轴 /y轴 重复展示(纵向<span style=\"color: rgb(204, 0, 0);\">拉伸</span>不重复 / 横向<span style=\"color: rgb(204, 0, 0);\">拉伸</span>不重复 )&nbsp;<span style=\"color: rgb(204, 0, 0);\">background</span>-repeat 这个货 看下它的值: repeat 默认。背景图像将在垂直方向和水平方向重复。 r...</div>', '8771E46C-F68B-4EE8-918B-18334795CED8', '1', '5', 'webSms,webMail,ddSms', '0', '0', 'admin', '0', '2020-06-11 21:39:05', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `news` VALUES ('14', '31E724FE-BD8A-4821-B66B-2413AC029AB9', '消息提醒测试', '报北京4月3日电 （记者曲哲涵）国务院联防联控机制3日召开新闻发布会，介绍增加地方政府专项债规模和强...', '3', null, '@all', null, '2020-04-04', '', '<p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">报北京4月3日电&nbsp;&nbsp;（记者曲哲涵）国务院联防联控机制3日召开新闻发布会，介绍增加地方政府专项债规模和强化对中小微企业普惠性金融支持的有关情况。</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　财政部副部长许宏才介绍，今年以来，财政部已提前下达2020年部分新增专项债券额度1.29万亿元。截至3月31日，各地发行新增专项债券1.08万亿元，占新增额度84%；发行规模同比增长63%，预计约提前2.5个月完成既定发行任务。各地发行新增专项债券实际用于项目8255亿元，占发行额的77%。整体上发行进度和资金使用进度进一步提前，有利于加大宏观政策调节力度，及早发挥作用，对冲疫情影响。</p>', '8771E46C-F68B-4EE8-918B-18334795CED8', '1', '1', 'ddSms', '0', '0', 'admin', '0', '2020-04-04 15:29:51', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `news` VALUES ('15', 'AAB9BFDE-34BB-409D-B105-154B6A570AF2', '全国哀悼，为了更好地前行', '本报评论员 　　燕子来时新社，梨花落后清明。在国内疫情防控形势持续向好时，我们迎来了追思怀远的清明节...', '2', null, 'liushaoquan', null, '2020-04-04', '', '<p style=\"margin-bottom: 0px; padding: 0px; color: rgb(34, 34, 34); font-family: 微软雅黑; font-size: 18px;\">本报评论员</p><p style=\"margin-bottom: 0px; padding: 0px; color: rgb(34, 34, 34); font-family: 微软雅黑; font-size: 18px;\">　　燕子来时新社，梨花落后清明。在国内疫情防控形势持续向好时，我们迎来了追思怀远的清明节。为表达全国各族人民对抗击新冠肺炎疫情斗争牺牲烈士和逝世同胞的深切哀悼，国务院4月3日发布公告，决定2020年4月4日举行全国性哀悼活动。在此期间，全国和驻外使领馆下半旗志哀，全国停止公共娱乐活动，从上午10时起，全国人民默哀3分钟，汽车、火车、舰船鸣笛，防空警报鸣响。</p><p style=\"margin-bottom: 0px; padding: 0px; color: rgb(34, 34, 34); font-family: 微软雅黑; font-size: 18px;\">　　慎终追远，民归德厚。作为中华传统节日之一，清明节承载着人们对逝去故人的祭奠和思念，对礼俗社会人伦情感的尊重，因而是中华传统文化中的重要节日。清明节祭祀先人，是中国传统社会“敦伦尽分”的环节，也是中国传统礼俗文化不可或缺的功能。</p><p style=\"margin-bottom: 0px; padding: 0px; color: rgb(34, 34, 34); font-family: 微软雅黑; font-size: 18px;\">　　清明祭奠先人是不可或缺的传统习俗，但祭祀的方式不同时代具有不同的特征。与往年不同，今年一场突如其来的疫情，打乱了所有人的生活节奏。虽然当前国内疫情传播被基本阻断，但境外疫情仍在疯狂肆虐，无症状感染者等国内疫情防控的不确定因素也仍然存在。因此，民政部和许多地方政府大力推广网络祭扫等非现场祭扫方式，减少人员聚集，这是为了公共安全的理性倡议，得到了各地群众的自觉支持。</p>', '8771E46C-F68B-4EE8-918B-18334795CED8', '1', '0', 'ddSms', '0', '0', null, '0', '2020-04-04 17:45:01', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
@@ -11462,7 +11689,7 @@ INSERT INTO `news` VALUES ('22', '94928EF8-6572-47DE-8A09-3DC49758B961', '贴近
 -- ----------------------------
 DROP TABLE IF EXISTS `news_comments`;
 CREATE TABLE `news_comments` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `COMM_ID` varchar(50) DEFAULT NULL,
   `COMM_PID` varchar(50) DEFAULT NULL,
   `COMM_TYPE` varchar(2) DEFAULT '0' COMMENT '0:匿名1:实名',
@@ -11483,7 +11710,7 @@ CREATE TABLE `news_comments` (
 -- ----------------------------
 DROP TABLE IF EXISTS `notice`;
 CREATE TABLE `notice` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `NOTICE_ID` varchar(50) DEFAULT NULL,
   `NOTICE_TITLE` varchar(200) DEFAULT NULL,
   `SUBHEADING` varchar(200) DEFAULT NULL COMMENT '副标题',
@@ -11495,7 +11722,7 @@ CREATE TABLE `notice` (
   `ATTACH` text,
   `ATTACH_PRIV` text,
   `CONTENT` text,
-  `ONCLICK_COUNT` int(5) DEFAULT '0',
+  `ONCLICK_COUNT` int DEFAULT '0',
   `SEND_TIME` varchar(20) DEFAULT NULL,
   `DEL_FLAG` varchar(1) DEFAULT '0',
   `IS_TOP` varchar(1) DEFAULT '0',
@@ -11515,12 +11742,12 @@ CREATE TABLE `notice` (
 -- ----------------------------
 -- Records of notice
 -- ----------------------------
-INSERT INTO `notice` VALUES ('1', '128E479D-E78E-47E1-8D73-F6DDC30CAF47', '关于开展江苏省重点实验室评估工作的通知', '通知： 各有关重点实验室、有关单位： 根据《江苏省重点实验室管理办法》、《江苏省重点实验室评估规则（...', '1', null, null, '@all', null, '', '1', '<p>通知：</p><p><br></p><p>各有关重点实验室、有关单位：</p><p><br></p><p>根据《江苏省重点实验室管理办法》、《江苏省重点实验室评估规则（试行）》等要求，2020年省科技厅将对省重点实验室进行新一轮评估，现将有关事项通知如下：</p><p><br></p><p>一、评估对象</p><p><br></p><p>评估对象包括73家省级重点实验室。对不参加评估或中途退出评估的实验室，按“未通过评估”处理，不再纳入“江苏省重点实验室”管理序列。</p><p><br></p><p>二、评估材料</p><p><br></p><p>包括《江苏省重点实验室评估申请书》及2017年1月1日至2019年12月31日评估期内的佐证材料。</p><p><br></p><p>三、评估工作安排</p><p><br></p><p>1．评估材料上报。3月31日前，各参评实验室按照要求提交经依托单位和主管部门审核的《江苏省重点实验室评估申请书》及相关佐证材料。</p><p><br></p><p>2．材料审核。4月上旬。评估机构按照评估要求核实评估材料。</p><p><br></p><p>3．初评。4月下旬。评估机构对实验室的研发能力、团队层次及创新成果等重点指标进行量化，分领域对实验室需求度及影响力、解决重大科技问题、对产业创新与社会发展的贡献程度等进行专家评审，确定初评结果。</p><p><br></p><p>4．复评。5月上旬。初评排名前20%左右的实验室可提出申请参加优秀等次的复评，否则，按良好确定本轮评估等次；初评排名后30%左右的实验室须参加复评。复评以集中会议形式进行，听取实验室主任PPT报告，并就相关事项进行质询，具体事项另行通知。必要时可进行现场复核。</p><p><br></p><p>四、相关要求</p><p><br></p><p>1．评估是掌握实验室整体运行情况和创新绩效的重要措施。请各有关单位严格落实《江苏省科技计划与项目评估管理暂行办法》等要求，如有评估期内发生违反科研伦理、学术道德，以及评估材料弄虚作假等科研失信行为，一经查实，将按《江苏省科技计划项目信用管理办法》和《省科技计划项目信用记录与评价规则（试行）》等有关规定做出相应处理。</p><p><br></p><p>2．请各实验室高度重视、认真准备，真实客观地反映评估期内本实验室的绩效及运行状况。非本评估期、或非本实验室研究方向、或非本实验室研发团队、或无佐证材料的绩效一律不列入评估范围。请各参评实验室依托单位认真做好评估材料的公示工作（公示时间原则上不少于5个工作日），对评估材料的真实性、完整性、合法性和有效性进行审核；各主管部门对评估材料的完整性进行认真审核。</p><p><br></p><p>3．评估材料统一使用A4纸打印并装订成册（纸质封面，平装订），其中《江苏省重点实验室评估申请书》（一式11份）、佐证材料（1套）分别成册，请各实验室务必于2020年3月31日前将本单位内部公示无异议的评估材料报送至江苏省生产力促进中心创新平台管理服务处（地址：南京市成贤街118号省技术产权交易市场大厅，邮编:210018），同时将所有评估材料的电子文档发送</p><p><br></p><p>4．本通知及相关附件（格式）均可在江苏省科技厅网站或江苏省科技创新平台网通知公告中下载。</p>', '13', '2020-03-20', '0', '0', 'liushaoquan,admin', '0', '1', '', null, '2023-03-31', '2020-03-20 13:57:40', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `notice` VALUES ('2', '2E5889E4-55A1-4670-A16A-4AFE7D54EA65', '通告加强群租房管理消除安全隐患', '【连网】（记者 史卫平 通讯员 关宁） 昨日笔者从市公安局获悉，为加强群租房管理，消除各类安全隐患，...', '2', null, '@all', null, null, '', '1', '<p>【连网】（记者 史卫平 通讯员 关宁） 昨日笔者从市公安局获悉，为加强群租房管理，消除各类安全隐患，维护房屋租赁双方合法权益，保障人民群众生命财产安全和社会公共安全，市公安、住建等7部门联合发布《关于加强群租房管理消除安全隐患的通告》（以下简称《通告》），明确指出四种情形房屋不得出租，租赁双方应当依法租赁房屋。</p><p><br></p><p>该《通告》共13条。《通告》对群租房的概念予以明确，即出租住房供他人集中居住，出租居室10间以上、或者出租床位达到10个以上的，应当作为群租房进行管理。</p><p><br></p><p>出租人按照法律规定和合同约定对群租房安全负责，应当确保所出租群租房及室内设施符合规定的安全标准，如配备一定数量的灭火器材和防毒面具、安全绳、腰斧等逃生自救器材，积极安装独立式感烟火灾探测报警器、简易喷淋等技防设施，并确保完好有效。出租人要对租赁住房经常进行安全检查，落实安全责任。承租人将承租住房转租、转借他人居住的，要承担出租人治安责任，如果留宿他人居住超过7天或者增加实际居住人，均应当向公安机关申报登记信息。</p><p><br></p><p>《通告》规定，有下列情形之一的房屋不得出租：属于违法建筑的；不符合安全、防灾等工程建设强制性标准的；违反规定改变房屋使用性质的；法律法规禁止出租的其他情形。出租住房的，应当以原设计的房间为最小出租单位，人均租住建筑面积不得低于设区市、县级人民政府规定的最低标准；厨房、卫生间、阳台和地下储藏室不得出租供人员居住。</p><p><br></p><p>出租人、承租人应当按照消防安全管理规定使用群租房，按照电力安全管理规定用电，遵守安全用气规则。单位和个人应当依法租赁房屋，及时申报登记信息，共同维护房屋租赁期间生产生活安全。违者，由公安、住建、城管、自然资源和规划、市场监管、消防救援、电力等部门依法予以处罚；构成犯罪的，依法追究刑事责任。</p><p><br></p><p>单位和个人应当自觉抵制违法租赁行为，自觉整改群租房安全隐患。鼓励村（居）委会、物业管理机构和广大群众发现、规劝和举报违法租赁行为和群租房安全隐患，举报线索一经查实，按规定予以奖励。在线服务平台举报电话：12345。</p>', '4', '2020-03-20', '0', '0', 'liushaoquan,admin', '0', '1', '', null, '2024-03-31', '2020-03-20 14:02:15', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `notice` VALUES ('1', '128E479D-E78E-47E1-8D73-F6DDC30CAF47', '关于开展江苏省重点实验室评估工作的通知', '通知： 各有关重点实验室、有关单位： 根据《江苏省重点实验室管理办法》、《江苏省重点实验室评估规则（...', '1', null, null, '@all', null, '', '1', '<p>通知：</p><p><br></p><p>各有关重点实验室、有关单位：</p><p><br></p><p>根据《江苏省重点实验室管理办法》、《江苏省重点实验室评估规则（试行）》等要求，2020年省科技厅将对省重点实验室进行新一轮评估，现将有关事项通知如下：</p><p><br></p><p>一、评估对象</p><p><br></p><p>评估对象包括73家省级重点实验室。对不参加评估或中途退出评估的实验室，按“未通过评估”处理，不再纳入“江苏省重点实验室”管理序列。</p><p><br></p><p>二、评估材料</p><p><br></p><p>包括《江苏省重点实验室评估申请书》及2017年1月1日至2019年12月31日评估期内的佐证材料。</p><p><br></p><p>三、评估工作安排</p><p><br></p><p>1．评估材料上报。3月31日前，各参评实验室按照要求提交经依托单位和主管部门审核的《江苏省重点实验室评估申请书》及相关佐证材料。</p><p><br></p><p>2．材料审核。4月上旬。评估机构按照评估要求核实评估材料。</p><p><br></p><p>3．初评。4月下旬。评估机构对实验室的研发能力、团队层次及创新成果等重点指标进行量化，分领域对实验室需求度及影响力、解决重大科技问题、对产业创新与社会发展的贡献程度等进行专家评审，确定初评结果。</p><p><br></p><p>4．复评。5月上旬。初评排名前20%左右的实验室可提出申请参加优秀等次的复评，否则，按良好确定本轮评估等次；初评排名后30%左右的实验室须参加复评。复评以集中会议形式进行，听取实验室主任PPT报告，并就相关事项进行质询，具体事项另行通知。必要时可进行现场复核。</p><p><br></p><p>四、相关要求</p><p><br></p><p>1．评估是掌握实验室整体运行情况和创新绩效的重要措施。请各有关单位严格落实《江苏省科技计划与项目评估管理暂行办法》等要求，如有评估期内发生违反科研伦理、学术道德，以及评估材料弄虚作假等科研失信行为，一经查实，将按《江苏省科技计划项目信用管理办法》和《省科技计划项目信用记录与评价规则（试行）》等有关规定做出相应处理。</p><p><br></p><p>2．请各实验室高度重视、认真准备，真实客观地反映评估期内本实验室的绩效及运行状况。非本评估期、或非本实验室研究方向、或非本实验室研发团队、或无佐证材料的绩效一律不列入评估范围。请各参评实验室依托单位认真做好评估材料的公示工作（公示时间原则上不少于5个工作日），对评估材料的真实性、完整性、合法性和有效性进行审核；各主管部门对评估材料的完整性进行认真审核。</p><p><br></p><p>3．评估材料统一使用A4纸打印并装订成册（纸质封面，平装订），其中《江苏省重点实验室评估申请书》（一式11份）、佐证材料（1套）分别成册，请各实验室务必于2020年3月31日前将本单位内部公示无异议的评估材料报送至江苏省生产力促进中心创新平台管理服务处（地址：南京市成贤街118号省技术产权交易市场大厅，邮编:210018），同时将所有评估材料的电子文档发送</p><p><br></p><p>4．本通知及相关附件（格式）均可在江苏省科技厅网站或江苏省科技创新平台网通知公告中下载。</p>', '15', '2020-03-20', '0', '0', 'liushaoquan,admin', '0', '1', '', null, '2023-03-31', '2020-03-20 13:57:40', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `notice` VALUES ('2', '2E5889E4-55A1-4670-A16A-4AFE7D54EA65', '通告加强群租房管理消除安全隐患', '【连网】（记者 史卫平 通讯员 关宁） 昨日笔者从市公安局获悉，为加强群租房管理，消除各类安全隐患，...', '2', null, '@all', null, null, '', '1', '<p>【连网】（记者 史卫平 通讯员 关宁） 昨日笔者从市公安局获悉，为加强群租房管理，消除各类安全隐患，维护房屋租赁双方合法权益，保障人民群众生命财产安全和社会公共安全，市公安、住建等7部门联合发布《关于加强群租房管理消除安全隐患的通告》（以下简称《通告》），明确指出四种情形房屋不得出租，租赁双方应当依法租赁房屋。</p><p><br></p><p>该《通告》共13条。《通告》对群租房的概念予以明确，即出租住房供他人集中居住，出租居室10间以上、或者出租床位达到10个以上的，应当作为群租房进行管理。</p><p><br></p><p>出租人按照法律规定和合同约定对群租房安全负责，应当确保所出租群租房及室内设施符合规定的安全标准，如配备一定数量的灭火器材和防毒面具、安全绳、腰斧等逃生自救器材，积极安装独立式感烟火灾探测报警器、简易喷淋等技防设施，并确保完好有效。出租人要对租赁住房经常进行安全检查，落实安全责任。承租人将承租住房转租、转借他人居住的，要承担出租人治安责任，如果留宿他人居住超过7天或者增加实际居住人，均应当向公安机关申报登记信息。</p><p><br></p><p>《通告》规定，有下列情形之一的房屋不得出租：属于违法建筑的；不符合安全、防灾等工程建设强制性标准的；违反规定改变房屋使用性质的；法律法规禁止出租的其他情形。出租住房的，应当以原设计的房间为最小出租单位，人均租住建筑面积不得低于设区市、县级人民政府规定的最低标准；厨房、卫生间、阳台和地下储藏室不得出租供人员居住。</p><p><br></p><p>出租人、承租人应当按照消防安全管理规定使用群租房，按照电力安全管理规定用电，遵守安全用气规则。单位和个人应当依法租赁房屋，及时申报登记信息，共同维护房屋租赁期间生产生活安全。违者，由公安、住建、城管、自然资源和规划、市场监管、消防救援、电力等部门依法予以处罚；构成犯罪的，依法追究刑事责任。</p><p><br></p><p>单位和个人应当自觉抵制违法租赁行为，自觉整改群租房安全隐患。鼓励村（居）委会、物业管理机构和广大群众发现、规劝和举报违法租赁行为和群租房安全隐患，举报线索一经查实，按规定予以奖励。在线服务平台举报电话：12345。</p>', '5', '2020-03-20', '0', '0', 'liushaoquan,admin', '0', '1', '', null, '2024-03-31', '2020-03-20 14:02:15', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `notice` VALUES ('3', '881114BD-CBD1-4B30-9DAE-5AE3A313A4BD', '关于清理2016年省社科基金在研项目的通知', '各高校、单位科研（社科）处： 根据《江苏省社会科学基金项目管理办法》有关规定，现对2016年省社科基...', '4', null, null, '@all', null, '', '1', '<p>各高校、单位科研（社科）处：</p><p><br></p><p>根据《江苏省社会科学基金项目管理办法》有关规定，现对2016年省社科基金在研项目进行清理，具体事项如下：</p><p><br></p><p>1.关于清理范围。列入本次清理范围的项目为2016年省社科基金各类在研项目。</p><p><br></p><p>2.关于延期申请。列入清理范围的项目原则上不得提出延期申请，如遇特殊情况，需经科研管理部门同意后报我办审批。延期时间不超过半年，即最迟可延期至2021年3月。</p><p><br></p><p>3.关于成果形式。（1）列入清理范围的项目，其预期成果为研究报告的，可采用系列论文或书稿结项。（2）预期成果为系列论文的，必须有3篇省级以上刊物发表的论文，论文内容要围绕课题研究对象，贯穿课题研究主线。与课题无关或关联不大的，无论是否标注项目号，不予受理。（3）预期成果为书稿的，必须是未正式公开出版。如书稿已正式公开出版，不予受理。（4）后期资助项目须提交指定出版社出版合同和样书。</p><p><br></p><p>请各单位通知到各项目负责人，督促负责人加快研究进度，及时推出成果，并于2020年9月30日前按程序提出结项申请（或延期申请），逾期将不再受理。</p><p><br></p><p>联系人：周丽；联系电话：025-88802748。</p>', '2', '2020-03-20', '0', '0', 'admin', '0', '1', '', null, '2020-03-20', '2020-03-20 14:28:17', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `notice` VALUES ('4', '78E1EF42-65E9-4926-9567-920A707BCA94', '关于省社科基金研究专项课题申报', '各有关高校、科研单位、重点智库社科（科研）处： 为做好新型冠状病毒感染的肺炎疫情防控工作，有效减少人...', '3', null, null, '@all', null, '', '1', '<p>各有关高校、科研单位、重点智库社科（科研）处：</p><p><br></p><p>为做好新型冠状病毒感染的肺炎疫情防控工作，有效减少人员聚集，阻断疫情传播，更好保障科研人员身体健康，经研究决定，省社科基金“学习贯彻党的十九届四中全会精神、推动省域治理体系和治理能力现代化建设走在前列”研究专项课题申报截止日期延长至2月28日，《江苏省社会科学基金项目2020年度课题指南》选题推荐截止日期延长至3月5日。根据事态发展，后续工作安排如有调整将另行通知，请及时关注。</p><p><br></p><p>江苏省哲学社会科学规划办公室</p><p><br></p><p>2020年2月3日</p><p><br></p><p>来源:江苏社科规划网&nbsp; &nbsp;编辑:蔡阳艳</p>', '4', '2020-03-20', '0', '0', 'liushaoquan,admin', '0', '1', '', null, '', '2020-03-20 14:29:02', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `notice` VALUES ('5', '35383AD0-12A5-48B3-A058-69B98AE91763', '2019年度省社科基金立项项目公布', '2019年度省社科基金项目已完成申报受理、通讯初评、会议评审、网上公示等程序，经江苏省哲学社会科学规...', '3', null, null, '@all', null, '', '1', '<p>2019年度省社科基金项目已完成申报受理、通讯初评、会议评审、网上公示等程序，经江苏省哲学社会科学规划领导小组审定同意，现将立项课题名单予以公布（见附件）。</p><p><br></p><p>　　今年全省申报课题2774项，经审核，正式受理2605项。此次公布的年度项目立项总数为335项，立项率为12.08%。其中，重点项目42项，每项资助8万元；一般项目176项，青年项目117项，资助金额均为每项5万元。项目分布涉及全省55所高校、党校、科研院所。立项数超过（含）10项的单位包括：南京师范大学、东南大学、苏州大学、南京大学、南京财经大学、淮阴师范学院、扬州大学、南京工业大学、南京邮电大学、南京信息工程大学、南京审计大学、河海大学、盐城师范学院。</p><p><br></p><p>　附件: 2019年度江苏省社会科学基金项目立项名单</p>', '1', '2020-03-20', '0', '0', 'admin', '0', '1', '', null, '2023-03-31', '2020-03-20 14:29:45', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `notice` VALUES ('6', 'ACD52A3A-5CD4-4F5A-85E9-EEB20198D5F2', '2019年度江苏省社科基金项目申报公告', '　经省委宣传部批准，现予发布《江苏省社科基金项目2019年度课题指南》，并就做好2019年度江苏省社...', '3', null, null, '@all', null, '', '1', '<p>　经省委宣传部批准，现予发布《江苏省社科基金项目2019年度课题指南》，并就做好2019年度江苏省社科基金项目申报工作有关事项公告如下：</p><p><br></p><p>　　一、指导思想。申报江苏省社科基金项目的指导思想是，高举中国特色社会主义伟大旗帜，以马克思列宁主义、毛泽东思想、邓小平理论、“三个代表”重要思想、科学发展观、习近平新时代中国特色社会主义思想为指导，深入贯彻落实党的十九大和十九届二中、三中全会精神，贯彻落实省第十三次党代会及历次全会精神，坚持解放思想、实事求是、与时俱进，坚持以重大现实问题为主攻方向，坚持基础研究和应用研究并重，发挥省社科基金示范引导作用，加快构建中国特色哲学社会科学，为党委政府工作大局服务，为繁荣发展哲学社会科学服务。</p><p><br></p><p>　　二、总体要求。申报省社科基金项目，要体现鲜明的时代特征、问题导向和创新意识，着力推出有价值的研究成果。基础研究力求原创性、开拓性和较高的学术思想价值，力求推进学科体系、学术体系、话语体系建设和创新；应用研究要重点关注江苏经济社会发展的重大理论和实践问题，着力推出具有现实性、针对性和较强决策参考价值的研究成果。</p><p><br></p><p>　　《江苏省社科基金项目2019年度课题指南》围绕深入学习贯彻习近平新时代中国特色社会主义思想和省委省政府重大战略部署拟定了一批重要选题，申请人可结合自己的学术专长和研究基础选择申报。依据《课题指南》条目申报的选题，可选择不同的研究角度、方法和侧重点，文字表述可做适当修改。只要符合《课题指南》指导思想和基本要求，各学科均鼓励申请人根据研究兴趣和学术积累申报自选课题（包括重点课题）。自选课题与按《课题指南》申报的选题在评审程序、评审标准、立项指标等方面同等对待。跨学科研究课题要以“靠近优先”为原则，选择一个为主的学科申报。无论是按《课题指南》拟定的选题还是自选课题，课题名称的表述应科学、严谨、规范、简明，一般不加副标题。</p><p><br></p><p>　　三、申报条件。课题申请单位须符合以下条件：在相关领域具有较雄厚的学术资源和研究实力；设有科研管理职能部门；能够提供开展研究的必要条件并承诺信誉保证。课题申请人须符合以下条件：具有独立开展研究和组织开展研究的能力，能够承担实质性研究工作；具有中级以上（含）专业技术职称，或者具有博士学位（含处级及以上行政职务）。重点项目申请人须具有副高级以上（含）专业技术职称（职务）；青年项目申请人年龄不得超过36周岁（1983年6月30日后出生）。课题参加者须征得本人同意并签字确认，否则视为违规申报。</p><p><br></p><p>　　课题负责人同年度只能申报一个省社科基金项目，且不能作为课题组成员参与其他省社科基金项目的申请；课题组成员同年度最多参与两个省社科基金项目申请；在研（2019年6月30日前未获批准结项）的国家、省社科基金项目负责人不得申请新项目。凡在内容上与在研或已结项的各级各类项目有较大关联的申请课题，须在《申请书》中详细说明所申请项目与已承担项目的区别，否则视为重复申请;不得以内容基本相同或相近的同一成果申请多家基金项目结项。曾经承担国家、省社科基金项目，成果鉴定为不合格或被中止、撤项的不得申报（自中止、撤项之日起三年内）。</p><p><br></p><p>　　四、项目类别和资助额度。项目类别分为重点项目、一般项目、青年项目，资助经费分别为8万元、5万元、5万元。项目类别由申请人根据选题研究内容自行确定。申请人应按照《江苏省社会科学基金项目资金使用管理办法》（可从我办网站下载）的要求，根据实际需要编制科学合理的经费预算。</p><p><br></p><p>　　五、研究时限和成果要求。基础研究一般2-3年，最终成果为专著或系列论文，专著须鉴定通过后方能出版，违反规定擅自出版者视为自行终止相关资助协议。应用对策研究根据研究问题的紧迫性和时效性，一般在2年内完成研究任务，最终成果为研究报告，其核心观点或重要对策建议原则上须刊登省委宣传部《宣传工作动态社科基金成果专刊》才能结项。</p><p><br></p><p>　　六、课题评审。本年度课题评审采取两轮评审。初评为双向匿名评审，委托省外专家网上评审《论证活页》，根据初评成绩确定复评入围名单；复评以会议评审方式进行，委托省内各学科领域有影响力的专家组成评审组，评审《申请书》，经评审组投票产生建议立项名单，报省哲学社会科学规划领导小组审定。项目申报评审不收取任何费用。</p><p><br></p><p>　　七、申报要求。2019年度省社科基金项目实行限项申报。全省本科院校、省委党校、省社科院等单位申报指标，根据申报基数、过去两年有效申报数量和项目研究完成情况等综合考量确定。限额指标通过申报系统分别下达到申报单位。其他院校、科研机构等不限制申报数量，二级单位审核通过后，申报材料由省社科规划办统一审核，审核合格的参加通讯评审。各单位要做好申报人资质、申请书规范性、质量的审核把关，申报指标要向青年项目适度倾斜。</p><p><br></p><p>　　申请人要按照《江苏省社会科学基金项目申请书》（2019年修订版）的要求如实填写申请材料，并保证没有知识产权争议。凡在申请中弄虚作假者，一经发现并查实后，取消三年申报资格；如获准立项即作撤项处理并通报批评。</p><p><br></p><p>　　省社科基金项目继续实行网上申报。申请人通过“省社科基金项目网上申报系统”进行申报（网址：http://xmsb.jschina.com.cn）。已注册申请人使用帐号密码登录。新申请人须先注册并经二级单位激活账号后方可申报。申报系统使用方法详见“江苏省社会科学基金项目申报评审系统-用户手册”。申请人在线填写基础申报材料后，下载申请书与活页模板，离线填写内容保存后上传至系统，并提交二级单位审核。申请人须动态跟踪审核情况。经二级单位审核通过后，申请人即可以打印纸质版《申请书》（与网上提交的《申请书》应一致），经所在单位审查盖章后，统一报送省社科规划办公室。</p><p><br></p><p>　　八、审核要求。各高校、科研管理部门作为二级单位负责审核本校、本单位的申请人信息和申报课题质量。有申报限项的高校和单位审核通过的课题数量不得超出申报指标。网上申报经二级单位审核通过后，主管单位不再退回修改。</p><p><br></p><p>　　各单位要加强对项目申报工作的组织和指导，保证申报质量，对申请书所有栏目填写的内容，特别是对申请人资格、选题、课题设计的科学性和可行性，课题组是否具有完成研究任务的充分条件，进行认真审核，并签署明确意见。对申请人不具备申报条件的，选题不符合《课题指南》要求、不具有重要研究价值的，课题论证明显简单草率、填写内容有明显缺项的，无相关前期研究成果或前期研究成果与所申报课题无关的，申请书填写内容不实、弄虚作假的，一律不得受理申报。</p><p><br></p><p>　　报送材料包括：（1）《申请书》1式3份（一律用A3纸双面印制，中缝装订），其中须含1份原件。（2）二级单位从申报系统中导出的申报数据汇总表（加盖公章）1份。申报时间：网上申报受理时间为2019年6月20日至7月10日；二级单位审核截至2019年7月12日；纸质材料受理时间截至2019年7月15日。申报单位须于截止日期前将申报材料报送我办，逾期不予受理。</p><p><br></p><p>　　通讯地址：南京市北京西路 70号省委宣传部规划办。邮政编码：210013。联系电话：（025）88802748，88802747；网上申报咨询电话：（025）58682033,58682050,（021）65963999；400-788-1166。</p>', '1', '2020-03-20', '0', '0', 'admin', '0', '1', '', null, '', '2020-03-20 14:30:25', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `notice` VALUES ('6', 'ACD52A3A-5CD4-4F5A-85E9-EEB20198D5F2', '2019年度江苏省社科基金项目申报公告', '　经省委宣传部批准，现予发布《江苏省社科基金项目2019年度课题指南》，并就做好2019年度江苏省社...', '3', null, null, '@all', null, '', '1', '<p>　经省委宣传部批准，现予发布《江苏省社科基金项目2019年度课题指南》，并就做好2019年度江苏省社科基金项目申报工作有关事项公告如下：</p><p><br></p><p>　　一、指导思想。申报江苏省社科基金项目的指导思想是，高举中国特色社会主义伟大旗帜，以马克思列宁主义、毛泽东思想、邓小平理论、“三个代表”重要思想、科学发展观、习近平新时代中国特色社会主义思想为指导，深入贯彻落实党的十九大和十九届二中、三中全会精神，贯彻落实省第十三次党代会及历次全会精神，坚持解放思想、实事求是、与时俱进，坚持以重大现实问题为主攻方向，坚持基础研究和应用研究并重，发挥省社科基金示范引导作用，加快构建中国特色哲学社会科学，为党委政府工作大局服务，为繁荣发展哲学社会科学服务。</p><p><br></p><p>　　二、总体要求。申报省社科基金项目，要体现鲜明的时代特征、问题导向和创新意识，着力推出有价值的研究成果。基础研究力求原创性、开拓性和较高的学术思想价值，力求推进学科体系、学术体系、话语体系建设和创新；应用研究要重点关注江苏经济社会发展的重大理论和实践问题，着力推出具有现实性、针对性和较强决策参考价值的研究成果。</p><p><br></p><p>　　《江苏省社科基金项目2019年度课题指南》围绕深入学习贯彻习近平新时代中国特色社会主义思想和省委省政府重大战略部署拟定了一批重要选题，申请人可结合自己的学术专长和研究基础选择申报。依据《课题指南》条目申报的选题，可选择不同的研究角度、方法和侧重点，文字表述可做适当修改。只要符合《课题指南》指导思想和基本要求，各学科均鼓励申请人根据研究兴趣和学术积累申报自选课题（包括重点课题）。自选课题与按《课题指南》申报的选题在评审程序、评审标准、立项指标等方面同等对待。跨学科研究课题要以“靠近优先”为原则，选择一个为主的学科申报。无论是按《课题指南》拟定的选题还是自选课题，课题名称的表述应科学、严谨、规范、简明，一般不加副标题。</p><p><br></p><p>　　三、申报条件。课题申请单位须符合以下条件：在相关领域具有较雄厚的学术资源和研究实力；设有科研管理职能部门；能够提供开展研究的必要条件并承诺信誉保证。课题申请人须符合以下条件：具有独立开展研究和组织开展研究的能力，能够承担实质性研究工作；具有中级以上（含）专业技术职称，或者具有博士学位（含处级及以上行政职务）。重点项目申请人须具有副高级以上（含）专业技术职称（职务）；青年项目申请人年龄不得超过36周岁（1983年6月30日后出生）。课题参加者须征得本人同意并签字确认，否则视为违规申报。</p><p><br></p><p>　　课题负责人同年度只能申报一个省社科基金项目，且不能作为课题组成员参与其他省社科基金项目的申请；课题组成员同年度最多参与两个省社科基金项目申请；在研（2019年6月30日前未获批准结项）的国家、省社科基金项目负责人不得申请新项目。凡在内容上与在研或已结项的各级各类项目有较大关联的申请课题，须在《申请书》中详细说明所申请项目与已承担项目的区别，否则视为重复申请;不得以内容基本相同或相近的同一成果申请多家基金项目结项。曾经承担国家、省社科基金项目，成果鉴定为不合格或被中止、撤项的不得申报（自中止、撤项之日起三年内）。</p><p><br></p><p>　　四、项目类别和资助额度。项目类别分为重点项目、一般项目、青年项目，资助经费分别为8万元、5万元、5万元。项目类别由申请人根据选题研究内容自行确定。申请人应按照《江苏省社会科学基金项目资金使用管理办法》（可从我办网站下载）的要求，根据实际需要编制科学合理的经费预算。</p><p><br></p><p>　　五、研究时限和成果要求。基础研究一般2-3年，最终成果为专著或系列论文，专著须鉴定通过后方能出版，违反规定擅自出版者视为自行终止相关资助协议。应用对策研究根据研究问题的紧迫性和时效性，一般在2年内完成研究任务，最终成果为研究报告，其核心观点或重要对策建议原则上须刊登省委宣传部《宣传工作动态社科基金成果专刊》才能结项。</p><p><br></p><p>　　六、课题评审。本年度课题评审采取两轮评审。初评为双向匿名评审，委托省外专家网上评审《论证活页》，根据初评成绩确定复评入围名单；复评以会议评审方式进行，委托省内各学科领域有影响力的专家组成评审组，评审《申请书》，经评审组投票产生建议立项名单，报省哲学社会科学规划领导小组审定。项目申报评审不收取任何费用。</p><p><br></p><p>　　七、申报要求。2019年度省社科基金项目实行限项申报。全省本科院校、省委党校、省社科院等单位申报指标，根据申报基数、过去两年有效申报数量和项目研究完成情况等综合考量确定。限额指标通过申报系统分别下达到申报单位。其他院校、科研机构等不限制申报数量，二级单位审核通过后，申报材料由省社科规划办统一审核，审核合格的参加通讯评审。各单位要做好申报人资质、申请书规范性、质量的审核把关，申报指标要向青年项目适度倾斜。</p><p><br></p><p>　　申请人要按照《江苏省社会科学基金项目申请书》（2019年修订版）的要求如实填写申请材料，并保证没有知识产权争议。凡在申请中弄虚作假者，一经发现并查实后，取消三年申报资格；如获准立项即作撤项处理并通报批评。</p><p><br></p><p>　　省社科基金项目继续实行网上申报。申请人通过“省社科基金项目网上申报系统”进行申报（网址：http://xmsb.jschina.com.cn）。已注册申请人使用帐号密码登录。新申请人须先注册并经二级单位激活账号后方可申报。申报系统使用方法详见“江苏省社会科学基金项目申报评审系统-用户手册”。申请人在线填写基础申报材料后，下载申请书与活页模板，离线填写内容保存后上传至系统，并提交二级单位审核。申请人须动态跟踪审核情况。经二级单位审核通过后，申请人即可以打印纸质版《申请书》（与网上提交的《申请书》应一致），经所在单位审查盖章后，统一报送省社科规划办公室。</p><p><br></p><p>　　八、审核要求。各高校、科研管理部门作为二级单位负责审核本校、本单位的申请人信息和申报课题质量。有申报限项的高校和单位审核通过的课题数量不得超出申报指标。网上申报经二级单位审核通过后，主管单位不再退回修改。</p><p><br></p><p>　　各单位要加强对项目申报工作的组织和指导，保证申报质量，对申请书所有栏目填写的内容，特别是对申请人资格、选题、课题设计的科学性和可行性，课题组是否具有完成研究任务的充分条件，进行认真审核，并签署明确意见。对申请人不具备申报条件的，选题不符合《课题指南》要求、不具有重要研究价值的，课题论证明显简单草率、填写内容有明显缺项的，无相关前期研究成果或前期研究成果与所申报课题无关的，申请书填写内容不实、弄虚作假的，一律不得受理申报。</p><p><br></p><p>　　报送材料包括：（1）《申请书》1式3份（一律用A3纸双面印制，中缝装订），其中须含1份原件。（2）二级单位从申报系统中导出的申报数据汇总表（加盖公章）1份。申报时间：网上申报受理时间为2019年6月20日至7月10日；二级单位审核截至2019年7月12日；纸质材料受理时间截至2019年7月15日。申报单位须于截止日期前将申报材料报送我办，逾期不予受理。</p><p><br></p><p>　　通讯地址：南京市北京西路 70号省委宣传部规划办。邮政编码：210013。联系电话：（025）88802748，88802747；网上申报咨询电话：（025）58682033,58682050,（021）65963999；400-788-1166。</p>', '2', '2020-03-20', '0', '0', 'admin', '0', '1', '', null, '', '2020-03-20 14:30:25', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `notice` VALUES ('7', 'FDBE0F35-B88A-4F31-A530-167072107D42', '3333333333333', '有些人担心受新冠病毒疫情影响，会出现食品短缺，市场上出现一些囤积抢购米面粮油的情况，4月4日国务院联...', '', null, null, 'admin', null, '', '1', '<p><span style=\"color: rgb(0, 0, 0); font-family: -apple-system-font, BlinkMacSystemFont, &quot;Helvetica Neue&quot;, &quot;PingFang SC&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei UI&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif; font-size: 16px; letter-spacing: 0.544px; text-align: justify; caret-color: rgb(0, 0, 0);\">有些人担心受新冠病毒疫情影响，会出现食品短缺，市场上出现一些囤积抢购米面粮油的情况，4月4日国务院联防联控机制就做好疫情期间粮食供给和保障工作情况召开的发布会上，</span><span style=\"margin: 0px; padding: 0px; max-width: 100%; font-family: -apple-system-font, BlinkMacSystemFont, &quot;Helvetica Neue&quot;, &quot;PingFang SC&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei UI&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif; font-size: 16px; letter-spacing: 0.544px; text-align: justify; caret-color: rgb(0, 0, 0); color: rgb(0, 32, 96); overflow-wrap: break-word !important;\"><strong style=\"margin: 0px; padding: 0px; max-width: 100%; overflow-wrap: break-word !important;\"><span style=\"margin: 0px; padding: 0px; max-width: 100%; caret-color: red; overflow-wrap: break-word !important;\">农业农村部发</span></strong></span><span style=\"margin: 0px; padding: 0px; max-width: 100%; font-family: -apple-system-font, BlinkMacSystemFont, &quot;Helvetica Neue&quot;, &quot;PingFang SC&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei UI&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif; font-size: 16px; letter-spacing: 0.544px; text-align: justify; caret-color: rgb(0, 0, 0); color: rgb(0, 32, 96); overflow-wrap: break-word !important;\"><strong style=\"margin: 0px; padding: 0px; max-width: 100%; overflow-wrap: break-word !important;\"><span style=\"margin: 0px; padding: 0px; max-width: 100%; caret-color: red; overflow-wrap: break-word !important;\">展规划司司长魏百刚介绍了我国粮食产量、人均粮食占有量、粮食库存量、我国谷物进口量四组数据，告诉你囤粮真没必要。</span></strong></span><br></p>', '5', '2020-07-14', '0', '0', 'admin', '0', '2', '', null, '', '2020-07-15 14:50:53', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `notice` VALUES ('8', 'D1175EBB-9933-43B6-8C7B-15DA51231D95', '4444444444', '有些人担心受新冠病毒疫情影响，会出现食品短缺，市场上出现一些囤积抢购米面粮油的情况，4月4日国务院联...', '2', null, null, 'liushaoquan', null, '', '1', '<p><span style=\"color: rgb(0, 0, 0); font-family: -apple-system-font, BlinkMacSystemFont, &quot;Helvetica Neue&quot;, &quot;PingFang SC&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei UI&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif; font-size: 16px; letter-spacing: 0.544px; text-align: justify; caret-color: rgb(0, 0, 0);\">有些人担心受新冠病毒疫情影响，会出现食品短缺，市场上出现一些囤积抢购米面粮油的情况，4月4日国务院联防联控机制就做好疫情期间粮食供给和保障工作情况召开的发布会上，</span><span style=\"margin: 0px; padding: 0px; max-width: 100%; font-family: -apple-system-font, BlinkMacSystemFont, &quot;Helvetica Neue&quot;, &quot;PingFang SC&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei UI&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif; font-size: 16px; letter-spacing: 0.544px; text-align: justify; caret-color: rgb(0, 0, 0); color: rgb(0, 32, 96); overflow-wrap: break-word !important;\"><strong style=\"margin: 0px; padding: 0px; max-width: 100%; overflow-wrap: break-word !important;\"><span style=\"margin: 0px; padding: 0px; max-width: 100%; caret-color: red; overflow-wrap: break-word !important;\">农业农村部发</span></strong></span><span style=\"margin: 0px; padding: 0px; max-width: 100%; font-family: -apple-system-font, BlinkMacSystemFont, &quot;Helvetica Neue&quot;, &quot;PingFang SC&quot;, &quot;Hiragino Sans GB&quot;, &quot;Microsoft YaHei UI&quot;, &quot;Microsoft YaHei&quot;, Arial, sans-serif; font-size: 16px; letter-spacing: 0.544px; text-align: justify; caret-color: rgb(0, 0, 0); color: rgb(0, 32, 96); overflow-wrap: break-word !important;\"><strong style=\"margin: 0px; padding: 0px; max-width: 100%; overflow-wrap: break-word !important;\"><span style=\"margin: 0px; padding: 0px; max-width: 100%; caret-color: red; overflow-wrap: break-word !important;\">展规划司司长魏百刚介绍了我国粮食产量、人均粮食占有量、粮食库存量、我国谷物进口量四组数据，告诉你囤粮真没必要。</span></strong></span><br></p>', '3', '2020-04-04', '0', '0', 'liushaoquan', '0', '1', 'ddSms', null, '', '2020-04-04 22:50:09', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 
@@ -11529,10 +11756,10 @@ INSERT INTO `notice` VALUES ('8', 'D1175EBB-9933-43B6-8C7B-15DA51231D95', '44444
 -- ----------------------------
 DROP TABLE IF EXISTS `notice_config`;
 CREATE TABLE `notice_config` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `CONFIG_ID` varchar(50) DEFAULT NULL,
   `CODE_CLASS_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `NOTICE_TYPE` varchar(50) DEFAULT NULL,
   `APPROVER` varchar(255) DEFAULT NULL,
   `APPROVER_TYPE` varchar(2) DEFAULT NULL COMMENT '0,审批人员:1发布无需审批人员',
@@ -11559,9 +11786,9 @@ INSERT INTO `notice_config` VALUES ('24', '77442476-F1C3-4E7E-9607-AD8678E886F4'
 -- ----------------------------
 DROP TABLE IF EXISTS `notice_template`;
 CREATE TABLE `notice_template` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `TEMPLATE_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `NOTICE_TYPE` varchar(50) DEFAULT NULL,
   `TEMPLATE_NAME` varchar(255) DEFAULT NULL,
   `CREATE_USER` varchar(50) DEFAULT NULL,
@@ -11581,13 +11808,13 @@ INSERT INTO `notice_template` VALUES ('1', '5530F38C-0A22-45B3-B3E3-1085466D1F3E
 -- ----------------------------
 DROP TABLE IF EXISTS `office_supplies`;
 CREATE TABLE `office_supplies` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
+  `SORT_NO` int DEFAULT NULL,
   `SUPPLIES_ID` varchar(50) DEFAULT NULL,
   `SORT_ID` varchar(50) DEFAULT NULL,
   `SUPPLIES_NAME` varchar(50) DEFAULT NULL,
   `SUPPLIES_CODE` varchar(50) DEFAULT NULL,
-  `QUANTITY` int(11) DEFAULT NULL,
+  `QUANTITY` int DEFAULT NULL,
   `BRAND` varchar(50) DEFAULT NULL,
   `MODEL` varchar(100) DEFAULT NULL,
   `UNIT` varchar(50) DEFAULT NULL,
@@ -11611,12 +11838,12 @@ INSERT INTO `office_supplies` VALUES ('1', '1', 'FDD34B31-DE8F-4CEB-972E-F043CEF
 -- ----------------------------
 DROP TABLE IF EXISTS `office_supplies_apply`;
 CREATE TABLE `office_supplies_apply` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `APPLY_ID` varchar(50) DEFAULT NULL,
   `TITLE` varchar(100) DEFAULT NULL,
   `SUPPLIES_ID` varchar(50) DEFAULT NULL,
   `REMARK` text,
-  `QUANTITY` int(11) DEFAULT NULL,
+  `QUANTITY` int DEFAULT NULL,
   `USED_USER` varchar(50) DEFAULT NULL,
   `STATUS` varchar(2) DEFAULT NULL,
   `APPLY_USER` varchar(50) DEFAULT NULL,
@@ -11635,7 +11862,7 @@ CREATE TABLE `office_supplies_apply` (
 -- ----------------------------
 DROP TABLE IF EXISTS `office_supplies_approval`;
 CREATE TABLE `office_supplies_approval` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `APPROVAL_ID` varchar(50) DEFAULT NULL,
   `APPLY_ID` varchar(50) DEFAULT NULL,
   `STATUS` varchar(255) DEFAULT NULL,
@@ -11655,12 +11882,12 @@ CREATE TABLE `office_supplies_approval` (
 -- ----------------------------
 DROP TABLE IF EXISTS `office_supplies_grant`;
 CREATE TABLE `office_supplies_grant` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `GRANT_ID` varchar(50) DEFAULT NULL,
   `APPLY_ID` varchar(50) DEFAULT NULL,
   `SUPPLIES_ID` varchar(50) DEFAULT NULL,
   `GET_USER` varchar(50) DEFAULT NULL,
-  `QUANTITY` int(11) DEFAULT NULL,
+  `QUANTITY` int DEFAULT NULL,
   `REMARK` text,
   `CREATE_TIME` varchar(20) DEFAULT NULL,
   `CREATE_USER` varchar(50) DEFAULT NULL,
@@ -11677,9 +11904,9 @@ CREATE TABLE `office_supplies_grant` (
 -- ----------------------------
 DROP TABLE IF EXISTS `office_supplies_sort`;
 CREATE TABLE `office_supplies_sort` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `SORT_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `SORT_NAME` varchar(50) DEFAULT NULL,
   `REMARK` text,
   `PARENT_ID` varchar(50) DEFAULT NULL,
@@ -11705,9 +11932,9 @@ INSERT INTO `office_supplies_sort` VALUES ('36', 'DB7A7256-DF42-40C0-A1FC-081F46
 -- ----------------------------
 DROP TABLE IF EXISTS `office_supplies_unit`;
 CREATE TABLE `office_supplies_unit` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `UNIT_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `CN_NAME` varchar(50) DEFAULT NULL,
   `EN_NAME` varchar(50) DEFAULT NULL,
   `CREATE_USER` varchar(50) DEFAULT NULL,
@@ -11733,9 +11960,9 @@ INSERT INTO `office_supplies_unit` VALUES ('8', '8', '1', '台', 'PC', null, nul
 -- ----------------------------
 DROP TABLE IF EXISTS `personal_file`;
 CREATE TABLE `personal_file` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `FILE_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `FILE_NAME` varchar(50) DEFAULT NULL,
   `FOLDER_ID` varchar(50) DEFAULT NULL,
   `CREATE_TIME` varchar(20) DEFAULT NULL,
@@ -11773,9 +12000,9 @@ INSERT INTO `personal_file` VALUES ('21', 'C48FD03B-5663-4420-B4FA-188E1FB8B6F9'
 -- ----------------------------
 DROP TABLE IF EXISTS `personal_file_folder`;
 CREATE TABLE `personal_file_folder` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `FOLDER_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `FOLDER_NAME` varchar(50) DEFAULT NULL,
   `FOLDER_LEAVE` varchar(50) DEFAULT NULL,
   `CREATE_TIME` varchar(20) DEFAULT NULL,
@@ -11799,9 +12026,9 @@ INSERT INTO `personal_file_folder` VALUES ('4', '11F83A24-ED52-4C35-8D3B-0B2F2C2
 -- ----------------------------
 DROP TABLE IF EXISTS `photo`;
 CREATE TABLE `photo` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `PHOTO_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `PHOTO_TITLE` varchar(50) DEFAULT NULL,
   `ROOT_PATH` varchar(2000) DEFAULT NULL,
   `CREATE_USER` varchar(50) DEFAULT NULL,
@@ -11824,7 +12051,7 @@ INSERT INTO `photo` VALUES ('1', 'C2A9E558-0E2F-4447-A116-C92B8C230BD2', '1', '�
 -- ----------------------------
 DROP TABLE IF EXISTS `photo_info`;
 CREATE TABLE `photo_info` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `PHOTO_INFO_ID` varchar(50) DEFAULT NULL,
   `PHOTO_INFO_NAME` varchar(200) DEFAULT NULL,
   `CREATE_TIME` datetime DEFAULT NULL,
@@ -11860,11 +12087,11 @@ INSERT INTO `photo_info` VALUES ('195', '2FFDBE99-53D4-3A69-38E8-EACAC6A4040E', 
 -- ----------------------------
 DROP TABLE IF EXISTS `platform_menu`;
 CREATE TABLE `platform_menu` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `MENU_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL COMMENT '排序号',
+  `SORT_NO` int DEFAULT NULL COMMENT '排序号',
   `MENU_NAME` varchar(20) DEFAULT NULL COMMENT '菜单名称',
-  `PAGE_ID` int(11) DEFAULT NULL,
+  `PAGE_ID` int DEFAULT NULL,
   `APP_CODE` varchar(200) DEFAULT NULL COMMENT '菜单所属模块',
   `LEVEL_ID` varchar(50) DEFAULT '0' COMMENT '菜单层级',
   `MENU_PIC` varchar(100) DEFAULT NULL COMMENT '菜单图标样式',
@@ -11885,31 +12112,35 @@ CREATE TABLE `platform_menu` (
 -- ----------------------------
 DROP TABLE IF EXISTS `platform_page`;
 CREATE TABLE `platform_page` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `PAGE_ID` varchar(50) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL COMMENT '排序号',
   `PAGE_NAME` varchar(255) DEFAULT NULL COMMENT '页面名称',
-  `HTML_CODE` text COMMENT '页面HTML代码',
+  `PAGE_CODE` varchar(50) DEFAULT NULL,
+  `PAGE_HTML` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT '页面HTML代码',
+  `TABLE_NAME` varchar(255) DEFAULT NULL COMMENT '数据库表名',
   `PAGE_STYLE` text COMMENT '页面CSS样式脚本',
   `PAGE_SCRIPT` text COMMENT '页面JS脚本',
-  `PAGE_TYPE` varchar(2) DEFAULT NULL,
+  `PAGE_TYPE` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '页面类型',
   `CACHE_FLAG` varchar(2) DEFAULT NULL COMMENT '0:数据库，1：缓存文件',
   `REMARK` text,
   `CREATE_TIME` varchar(20) DEFAULT NULL,
   `CREATE_USER` varchar(50) DEFAULT NULL,
   `ORG_ID` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of platform_page
 -- ----------------------------
+INSERT INTO `platform_page` VALUES ('1', 'CCEE21E5-3E75-49B1-90E0-7FF64E7C0659', '1', '2222', null, '<p style=\"text-align: center;\">\r\n    <span style=\"font-size: 24px;\">材料入库</span>\r\n</p>\r\n<p style=\"text-align: center;\">\r\n    <span style=\"font-size: 24px;\"></span>\r\n</p>\r\n<table border=\"1\" width=\"100%\" class=\"td-min-height\" style=\"width: 81%; border: 1px solid rgb(128, 128, 128);\" align=\"center\" data-sort=\"sortDisabled\">\r\n    <tbody>\r\n        <tr class=\"firstRow\">\r\n            <td valign=\"middle\" style=\"border-color: rgb(221, 221, 221);\" align=\"center\">\r\n                材料名称\r\n            </td>\r\n            <td valign=\"top\" style=\"border-color: rgb(221, 221, 221);\">\r\n                <input type=\"text\" xtype=\"xinput\" title=\"材料名称\" name=\"clmc\" datatype=\"varchar\" defaultvalue=\"\" style=\"\" class=\"form-control\" placeholder=\"输入框|材料名称\"/>\r\n            </td>\r\n            <td valign=\"middle\" style=\"border-color: rgb(221, 221, 221);\" align=\"center\">\r\n                材料编号\r\n            </td>\r\n            <td valign=\"top\" style=\"border-color: rgb(221, 221, 221);\">\r\n                <input type=\"text\" xtype=\"xinput\" title=\"材料编号\" name=\"clbh\" datatype=\"varchar\" defaultvalue=\"\" style=\"\" class=\"form-control\" placeholder=\"输入框|材料编号\"/>\r\n            </td>\r\n        </tr>\r\n        <tr>\r\n            <td valign=\"middle\" style=\"border-color: rgb(221, 221, 221);\" align=\"center\">\r\n                材料品牌\r\n            </td>\r\n            <td valign=\"top\" style=\"border-color: rgb(221, 221, 221);\" align=\"left\">\r\n                <input type=\"text\" xtype=\"xinput\" title=\"材料品牌\" name=\"clpp\" datatype=\"varchar\" defaultvalue=\"\" style=\"\" class=\"form-control\" placeholder=\"输入框|材料品牌\"/>\r\n            </td>\r\n            <td valign=\"middle\" style=\"border-color: rgb(221, 221, 221);\" align=\"center\">\r\n                供应商\r\n            </td>\r\n            <td valign=\"top\" style=\"border-color: rgb(221, 221, 221);\">\r\n                <input type=\"text\" xtype=\"xsqlselect\" title=\"供应商\" name=\"clgys\" datatype=\"varchar\" model=\"{&quot;dbSource&quot;:&quot;36BF8C47-6F6D-4B9E-A24F-3992EE215C3E&quot;,&quot;sql&quot;:&quot;&quot;}\" defaultvalue=\"\" value=\"\" style=\"\" class=\"form-control\" placeholder=\"SQL下拉组件|供应商\"/>\r\n            </td>\r\n        </tr>\r\n        <tr>\r\n            <td valign=\"middle\" style=\"border-color: rgb(221, 221, 221);\" align=\"center\">\r\n                入库数量\r\n            </td>\r\n            <td valign=\"top\" style=\"border-color: rgb(221, 221, 221);\" align=\"left\">\r\n                <input type=\"text\" xtype=\"xinput\" title=\"入库数量\" name=\"rksl\" datatype=\"int\" defaultvalue=\"\" style=\"\" class=\"form-control\" placeholder=\"输入框|入库数量\"/>\r\n            </td>\r\n            <td valign=\"middle\" style=\"border-color: rgb(221, 221, 221);\" align=\"center\">\r\n                采购人\r\n            </td>\r\n            <td valign=\"top\" style=\"border-color: rgb(221, 221, 221);\">\r\n                <input type=\"text\" xtype=\"xmacro\" title=\"采购人\" name=\"cgr\" datatype=\"请选择\" defaultvalue=\"\" style=\"\" model=\"{&quot;type&quot;:&quot;13&quot;,&quot;format&quot;:null}\" class=\"form-control\" placeholder=\"宏组件|采购人\"/>\r\n            </td>\r\n        </tr>\r\n        <tr>\r\n            <td valign=\"middle\" style=\"border-color: rgb(221, 221, 221);\" align=\"center\">\r\n                入库库位\r\n            </td>\r\n            <td valign=\"top\" style=\"border-color: rgb(221, 221, 221);\" align=\"left\">\r\n                <input type=\"text\" xtype=\"xsqlselect\" title=\"入库库位\" name=\"rkkw\" datatype=\"请选择\" model=\"{&quot;dbSource&quot;:&quot;SYS_DB&quot;,&quot;sql&quot;:&quot;&quot;}\" defaultvalue=\"\" value=\"\" style=\"\" class=\"form-control\" placeholder=\"SQL下拉组件|入库库位\"/>\r\n            </td>\r\n            <td valign=\"middle\" style=\"border-color: rgb(221, 221, 221);\" align=\"center\">\r\n                入库日期\r\n            </td>\r\n            <td valign=\"top\" style=\"border-color: rgb(221, 221, 221);\">\r\n                <input type=\"text\" xtype=\"xmacro\" title=\"入库日期\" name=\"rkrq\" datatype=\"请选择\" defaultvalue=\"\" style=\"\" model=\"{&quot;type&quot;:&quot;2&quot;,&quot;format&quot;:&quot;yyyy年MM月dd日&quot;}\" class=\"form-control\" placeholder=\"宏组件|入库日期\"/>\r\n            </td>\r\n        </tr>\r\n        <tr>\r\n            <td valign=\"top\" style=\"border-color: rgb(221, 221, 221);\" colspan=\"4\">\r\n                <p>\r\n                    备注\r\n                </p>\r\n                <p>\r\n                    <textarea xtype=\"xtextarea\" title=\"备注\" name=\"remark\" datatype=\"请选择\" defaultvalue=\"\" style=\"width:100%;height:200px\" class=\"form-control\" placeholder=\"输入框|备注\"></textarea>\r\n                </p>\r\n            </td>\r\n        </tr>\r\n    </tbody>\r\n</table>\r\n<p style=\"text-align: center;\">\r\n    <span style=\"font-size: 24px;\"></span><br/>\r\n</p>', '1596897734', 'alter(11)', '111', '49874037-A387-4FBE-9F11-F9E616EEECBB', '0', null, '2020-08-07 12:04:35', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 
 -- ----------------------------
 -- Table structure for platform_page_field
 -- ----------------------------
 DROP TABLE IF EXISTS `platform_page_field`;
 CREATE TABLE `platform_page_field` (
-  `ID` bigint(11) NOT NULL,
+  `ID` bigint NOT NULL,
   `FIELD_ID` varchar(50) DEFAULT NULL,
   `TITLE` varchar(255) DEFAULT NULL,
   `PAGE_ID` varchar(50) DEFAULT NULL,
@@ -11919,7 +12150,7 @@ CREATE TABLE `platform_page_field` (
   `VALUE` text,
   `FIELD_NAME` varchar(50) DEFAULT NULL COMMENT '字段名称',
   `DATA_TYPE` varchar(50) DEFAULT NULL COMMENT '字符类型',
-  `FIELD_LENGTH` int(11) DEFAULT NULL COMMENT '字段长度',
+  `FIELD_LENGTH` int DEFAULT NULL COMMENT '字段长度',
   `EVENT` text COMMENT '事件',
   `CREATE_TIME` varchar(20) DEFAULT NULL,
   `CREATE_USER` varchar(50) DEFAULT NULL,
@@ -11932,16 +12163,37 @@ CREATE TABLE `platform_page_field` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for platform_page_type
+-- ----------------------------
+DROP TABLE IF EXISTS `platform_page_type`;
+CREATE TABLE `platform_page_type` (
+  `ID` bigint NOT NULL AUTO_INCREMENT,
+  `TYPE_ID` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '分类ID',
+  `SORT_NO` int DEFAULT NULL COMMENT '分类排序号',
+  `TITLE` varchar(100) DEFAULT NULL COMMENT '分类名称',
+  `REMARK` text,
+  `CREATE_TIME` varchar(20) DEFAULT NULL,
+  `CREATE_USER` varchar(50) DEFAULT NULL,
+  `ORG_ID` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of platform_page_type
+-- ----------------------------
+INSERT INTO `platform_page_type` VALUES ('2', '49874037-A387-4FBE-9F11-F9E616EEECBB', '1', '原材料入库', '原材料采购入库业务', '2020-08-08 22:28:13', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+
+-- ----------------------------
 -- Table structure for project_build_artificial_sort
 -- ----------------------------
 DROP TABLE IF EXISTS `project_build_artificial_sort`;
 CREATE TABLE `project_build_artificial_sort` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `SORT_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `SORT_NAME` varchar(50) DEFAULT NULL,
   `SORT_REMARK` text,
-  `REFERENCE_WAGE` int(11) DEFAULT NULL,
+  `REFERENCE_WAGE` int DEFAULT NULL,
   `SORT_LEAVE` varchar(50) DEFAULT NULL,
   `CREATE_USER` varchar(50) DEFAULT NULL,
   `CREATE_TIME` varchar(20) DEFAULT NULL,
@@ -11962,7 +12214,7 @@ INSERT INTO `project_build_artificial_sort` VALUES ('33', '14534F3C-42BC-479D-BE
 -- ----------------------------
 DROP TABLE IF EXISTS `project_build_bpm_config`;
 CREATE TABLE `project_build_bpm_config` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `CONFIG_ID` varchar(50) DEFAULT NULL,
   `FLOW_ID` varchar(50) DEFAULT NULL,
   `EVENT` varchar(50) DEFAULT NULL,
@@ -11981,16 +12233,16 @@ CREATE TABLE `project_build_bpm_config` (
 -- ----------------------------
 DROP TABLE IF EXISTS `project_build_contract`;
 CREATE TABLE `project_build_contract` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `CONTRACT_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `SORT_ID` varchar(50) DEFAULT NULL,
   `TITLE` varchar(255) DEFAULT NULL,
   `CONTRACT_CODE` varchar(50) DEFAULT NULL,
   `SIGN_TIME` varchar(20) DEFAULT NULL,
   `ATTACH` text,
   `REMARK` text,
-  `AMOUNT` int(255) DEFAULT NULL COMMENT '合同金额',
+  `AMOUNT` int DEFAULT NULL COMMENT '合同金额',
   `TYPE` varchar(2) DEFAULT NULL,
   `SIGN_PART` varchar(50) DEFAULT NULL COMMENT '对方签订人',
   `SIGN_USER` varchar(50) DEFAULT NULL COMMENT '我方签订人',
@@ -12009,9 +12261,9 @@ CREATE TABLE `project_build_contract` (
 -- ----------------------------
 DROP TABLE IF EXISTS `project_build_contract_sort`;
 CREATE TABLE `project_build_contract_sort` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `SORT_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `SORT_NAME` varchar(50) DEFAULT NULL,
   `SORT_REMARK` text,
   `SORT_LEAVE` varchar(50) DEFAULT NULL,
@@ -12035,31 +12287,31 @@ INSERT INTO `project_build_contract_sort` VALUES ('34', '91F71E44-7E4D-4178-A332
 -- ----------------------------
 DROP TABLE IF EXISTS `project_build_details`;
 CREATE TABLE `project_build_details` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
-  `PROJECT_ID` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
-  `SORT_ID` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
-  `PROJECT_NO` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
-  `PROJECT_TITLE` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `PROJECT_TYPE` varchar(2) CHARACTER SET utf8 DEFAULT NULL,
-  `REMARK` text CHARACTER SET utf8,
-  `CONTRACT` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
-  `FIRST_PARTY` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `SECOND_PARTY` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
+  `PROJECT_ID` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `SORT_ID` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
+  `PROJECT_NO` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `PROJECT_TITLE` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `PROJECT_TYPE` varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `REMARK` text CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `CONTRACT` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `FIRST_PARTY` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `SECOND_PARTY` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `AMOUNT` decimal(10,0) DEFAULT NULL COMMENT '合同额',
-  `END_TIME` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
-  `BEGIN_TIME` varchar(20) COLLATE utf8_romanian_ci DEFAULT NULL,
-  `MANAGER` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
-  `PART_A_LINK_USER_NAME` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
-  `PART_A_LINK_TEL` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
-  `PART_A_LINK_FAX` varchar(50) COLLATE utf8_romanian_ci DEFAULT NULL,
-  `PART_A_LINK_EMAIL` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
-  `PART_A_LINK_MOBILE` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
-  `CREATE_TIME` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
-  `CREATE_USER` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
-  `ATTACH` text COLLATE utf8_romanian_ci,
-  `STATUS` varchar(2) COLLATE utf8_romanian_ci DEFAULT '0' COMMENT '项目是否验收完成',
-  `ORG_ID` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `END_TIME` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `BEGIN_TIME` varchar(20) CHARACTER SET utf8 COLLATE utf8_romanian_ci DEFAULT NULL,
+  `MANAGER` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `PART_A_LINK_USER_NAME` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `PART_A_LINK_TEL` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `PART_A_LINK_FAX` varchar(50) CHARACTER SET utf8 COLLATE utf8_romanian_ci DEFAULT NULL,
+  `PART_A_LINK_EMAIL` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `PART_A_LINK_MOBILE` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `CREATE_TIME` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `CREATE_USER` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `ATTACH` text CHARACTER SET utf8 COLLATE utf8_romanian_ci,
+  `STATUS` varchar(2) CHARACTER SET utf8 COLLATE utf8_romanian_ci DEFAULT '0' COMMENT '项目是否验收完成',
+  `ORG_ID` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_romanian_ci;
 
@@ -12077,17 +12329,17 @@ INSERT INTO `project_build_details` VALUES ('7', 'B3DEA5B0-2FB5-4C72-8504-58E62B
 -- ----------------------------
 DROP TABLE IF EXISTS `project_build_material`;
 CREATE TABLE `project_build_material` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `MATERIAL_ID` varchar(50) DEFAULT NULL,
   `NAME` varchar(255) DEFAULT NULL,
   `MATERIAL_CODE` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `SORT_ID` varchar(50) DEFAULT NULL,
   `BRAND` varchar(50) DEFAULT NULL,
   `MODEL` varchar(255) DEFAULT NULL,
   `REMARK` text,
   `ATTACH` text,
-  `UNIT` int(11) DEFAULT NULL,
+  `UNIT` int DEFAULT NULL,
   `PRICE` decimal(10,2) DEFAULT NULL,
   `CREATE_USER` varchar(50) DEFAULT NULL,
   `CREATE_TIME` varchar(20) DEFAULT NULL,
@@ -12109,12 +12361,12 @@ INSERT INTO `project_build_material` VALUES ('7', '78F8C934-6CB5-4244-8D5C-0FEAC
 -- ----------------------------
 DROP TABLE IF EXISTS `project_build_material_in`;
 CREATE TABLE `project_build_material_in` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `IN_ID` varchar(50) DEFAULT NULL,
   `PROJECT_ID` varchar(50) DEFAULT NULL,
   `MATERIAL_ID` varchar(50) DEFAULT NULL,
   `PURCHASE_ID` varchar(50) DEFAULT NULL,
-  `QUANTITY` int(255) DEFAULT '0',
+  `QUANTITY` int DEFAULT '0',
   `IN_USER` varchar(255) DEFAULT NULL,
   `REMARK` text,
   `CREATE_TIME` varchar(20) DEFAULT NULL,
@@ -12136,14 +12388,14 @@ INSERT INTO `project_build_material_in` VALUES ('7', '8251C985-3F53-4276-84D2-DC
 -- ----------------------------
 DROP TABLE IF EXISTS `project_build_material_mx`;
 CREATE TABLE `project_build_material_mx` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `MATERIAL_MX_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `PURCHASE_ID` varchar(50) DEFAULT NULL,
   `PROJECT_ID` varchar(50) DEFAULT NULL,
   `STAGE_ID` varchar(50) DEFAULT NULL,
   `MATERIAL_ID` varchar(50) DEFAULT NULL,
-  `QUANTITY` int(11) DEFAULT NULL,
+  `QUANTITY` int DEFAULT NULL,
   `PRICE` decimal(10,2) DEFAULT NULL,
   `REMARK` text,
   `CREATE_TIME` varchar(20) DEFAULT NULL,
@@ -12193,12 +12445,12 @@ INSERT INTO `project_build_material_mx` VALUES ('32', '55459225-0367-41ED-8024-5
 -- ----------------------------
 DROP TABLE IF EXISTS `project_build_material_out`;
 CREATE TABLE `project_build_material_out` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `OUT_ID` varchar(50) DEFAULT NULL,
   `PROJECT_ID` varchar(50) DEFAULT NULL,
   `MATERIAL_ID` varchar(50) DEFAULT NULL,
   `STAGE_ID` varchar(50) DEFAULT NULL,
-  `QUANTITY` int(255) DEFAULT '0',
+  `QUANTITY` int DEFAULT '0',
   `OUT_USER` varchar(255) DEFAULT NULL,
   `REMARK` text,
   `CREATE_TIME` varchar(20) DEFAULT NULL,
@@ -12218,10 +12470,10 @@ INSERT INTO `project_build_material_out` VALUES ('2', '55', null, '5575EB9D-5FB6
 -- ----------------------------
 DROP TABLE IF EXISTS `project_build_material_purchase`;
 CREATE TABLE `project_build_material_purchase` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `PURCHASE_ID` varchar(50) DEFAULT NULL,
   `TITLE` varchar(255) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `PROJECT_ID` varchar(50) DEFAULT NULL,
   `STAGE_ID` varchar(50) DEFAULT NULL,
   `SUPPLIER_ID` varchar(50) DEFAULT NULL,
@@ -12246,9 +12498,9 @@ INSERT INTO `project_build_material_purchase` VALUES ('30', '1C95D37A-B4FF-414F-
 -- ----------------------------
 DROP TABLE IF EXISTS `project_build_material_sort`;
 CREATE TABLE `project_build_material_sort` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `SORT_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `SORT_NAME` varchar(50) DEFAULT NULL,
   `SORT_REMARK` text,
   `SORT_LEAVE` varchar(50) DEFAULT NULL,
@@ -12289,13 +12541,13 @@ INSERT INTO `project_build_material_sort` VALUES ('51', '08C6A8FE-1243-4C40-AF46
 -- ----------------------------
 DROP TABLE IF EXISTS `project_build_material_stage`;
 CREATE TABLE `project_build_material_stage` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `MATERIAL_STAGE_ID` varchar(255) DEFAULT NULL,
   `MATERIAL_ID` varchar(255) DEFAULT NULL,
   `STAGE_ID` varchar(255) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `PROJECT_ID` varchar(255) DEFAULT NULL,
-  `USE_QUANTITY` int(11) DEFAULT NULL,
+  `USE_QUANTITY` int DEFAULT NULL,
   `REMARK` text,
   `CREATE_TIME` varchar(20) DEFAULT NULL,
   `CREATE_USER` varchar(50) DEFAULT NULL,
@@ -12315,9 +12567,9 @@ INSERT INTO `project_build_material_stage` VALUES ('6', '9EDA9757-ABC6-4AD5-8C2C
 -- ----------------------------
 DROP TABLE IF EXISTS `project_build_sort`;
 CREATE TABLE `project_build_sort` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `SORT_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `SORT_NAME` varchar(50) DEFAULT NULL,
   `SORT_REMARK` text,
   `SORT_LEAVE` varchar(50) DEFAULT NULL,
@@ -12341,9 +12593,9 @@ INSERT INTO `project_build_sort` VALUES ('35', '07084B7B-68FF-4117-AF1C-721C3AEC
 -- ----------------------------
 DROP TABLE IF EXISTS `project_build_stage`;
 CREATE TABLE `project_build_stage` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `STAGE_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `PROJECT_ID` varchar(50) DEFAULT NULL,
   `STAGE_NAME` varchar(255) DEFAULT NULL,
   `BEGIN_TIME` varchar(20) DEFAULT NULL,
@@ -12372,9 +12624,9 @@ INSERT INTO `project_build_stage` VALUES ('10', '52774681-2B7C-4835-86D4-611B9DC
 -- ----------------------------
 DROP TABLE IF EXISTS `project_build_supplier`;
 CREATE TABLE `project_build_supplier` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `SUPPLIER_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `COMPANY_NAME` varchar(255) DEFAULT NULL,
   `INDUSTRY` varchar(2) DEFAULT NULL,
   `LEVEL` varchar(2) DEFAULT NULL,
@@ -12418,9 +12670,9 @@ INSERT INTO `project_build_supplier` VALUES ('5', '71F39D98-7FC4-4F8E-AEF8-9B1F7
 -- ----------------------------
 DROP TABLE IF EXISTS `project_build_unit`;
 CREATE TABLE `project_build_unit` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `UNIT_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `TYPE` varchar(10) DEFAULT NULL,
   `CN_NAME` varchar(50) DEFAULT NULL,
   `EN_NAME` varchar(50) DEFAULT NULL,
@@ -12447,9 +12699,9 @@ INSERT INTO `project_build_unit` VALUES ('8', '8', '1', 'material', '台', 'PC',
 -- ----------------------------
 DROP TABLE IF EXISTS `public_file`;
 CREATE TABLE `public_file` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `FILE_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `FILE_NAME` varchar(50) DEFAULT NULL,
   `FOLDER_ID` varchar(50) DEFAULT NULL,
   `CREATE_TIME` varchar(20) DEFAULT NULL,
@@ -12457,11 +12709,11 @@ CREATE TABLE `public_file` (
   `VERSION` varchar(20) DEFAULT NULL,
   `ATTACH` varchar(255) DEFAULT NULL,
   `REMARK` text,
-  `READ_COUNT` int(11) DEFAULT NULL,
+  `READ_COUNT` int DEFAULT NULL,
   `READ_USER` text,
   `ORG_ID` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of public_file
@@ -12471,25 +12723,21 @@ INSERT INTO `public_file` VALUES ('2', '9CF20228-9CE9-4B2B-B95D-F95F821AC1E7', n
 INSERT INTO `public_file` VALUES ('3', '530ED1DC-BAD8-4736-840A-6CE17735C07D', null, null, null, '2019-07-19 10:03:22', 'admin', null, null, null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `public_file` VALUES ('4', '4F8404A9-873C-439F-B1C7-2ED825167DFB', '55', null, null, '2019-07-19 10:26:18', 'admin', null, '8C3D930B-7930-4E01-BC65-57E926B1E604', null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `public_file` VALUES ('5', '2EEA14F3-3C00-486C-A945-31C340E88C5C', '99', '公司项目外包员工激励见意方案.docx', '02C359C0-55A6-4125-B382-B27B0DE5BC54', '2019-07-19 10:33:32', 'admin', null, '096B6D60-34D9-44DE-9408-E27C4EC5A0B0', null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `public_file` VALUES ('6', '3EC0B11B-9451-4FA2-97FF-94ABF305A2C8', '345345', '工作计划.xlsx', '5D03C29E-C8F3-456A-A6E5-9CA4C9B2FCBC', '2019-07-19 10:56:00', 'admin', null, '480E4220-082E-4C9F-8F73-C8DCB23FA7EC', null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `public_file` VALUES ('7', '034DD18F-C8AA-4680-BAAA-E20F1DAB336B', '111', 'email-企业.xlsx', '02C359C0-55A6-4125-B382-B27B0DE5BC54', '2019-09-04 14:08:40', 'admin', null, '04B7EFAA-A66F-4E61-8A34-9DBD010EA461', null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `public_file` VALUES ('8', '0A024954-076F-4877-9441-E8C3E30C780F', '444', 'SAAS-云端版(上海商创 20200211).docx', '02C359C0-55A6-4125-B382-B27B0DE5BC54', '2020-03-06 12:15:50', 'admin', null, '596403BC-621C-4142-8179-5639FB819617', null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `public_file` VALUES ('9', 'D4295A17-11B4-4E65-84E6-59B0C533F569', '4444', '用户信息列表.xls', '5D03C29E-C8F3-456A-A6E5-9CA4C9B2FCBC', '2020-07-17 18:05:58', 'admin', null, '476D954F-B7A1-44E2-8E71-D3B8C6CA254C', null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `public_file` VALUES ('10', '596AF4AC-01BC-4E0F-AF11-7EC95F0DC96E', null, '企查查接口报价表全部2018.1.4.xlsx', '5D03C29E-C8F3-456A-A6E5-9CA4C9B2FCBC', '2020-07-17 18:06:33', 'admin', null, '546A5E92-9707-4A89-9F5E-83FE75539D86', null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `public_file` VALUES ('12', 'EF6429E0-C586-4F7C-B404-E56F7744077F', '4', '用户信息列表.xls', '5D03C29E-C8F3-456A-A6E5-9CA4C9B2FCBC', '2020-07-17 18:15:42', 'admin', null, '0FC93220-6740-4F9E-8AB4-A8B7A584FBFD', null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `public_file` VALUES ('13', '4BC1CD5F-0D6E-4550-B7FA-938F8A35FB38', '9', '永利一期方案.doc', '5D03C29E-C8F3-456A-A6E5-9CA4C9B2FCBC', '2020-07-17 18:21:05', 'admin', null, '02521AA1-804B-486A-B482-CB8BE75D79B3', null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `public_file` VALUES ('14', '0653E3DC-F3DD-45C9-A3B0-BA0AF8886AF1', '8', '永利一期方案.docx', '5D03C29E-C8F3-456A-A6E5-9CA4C9B2FCBC', '2020-07-17 18:27:36', 'admin', null, '48EAA606-6D39-4B11-BC90-8C58BF0EA7D5', null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `public_file` VALUES ('15', 'CDDBA2F9-2B10-4E42-A925-C27DF8E92EBF', '1', '永利一期方案.doc', '5D03C29E-C8F3-456A-A6E5-9CA4C9B2FCBC', '2020-07-17 18:36:52', 'admin', null, 'A1BD6213-A4A8-4DA0-A3C8-AFB3F9013856', null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `public_file` VALUES ('16', '694D389D-2BFD-4F5D-A72E-95EE90E5A488', '66', '永利一期方案.docx', '5D03C29E-C8F3-456A-A6E5-9CA4C9B2FCBC', '2020-07-17 18:43:30', 'admin', null, '3A76E608-1D30-4D5B-8CFD-62D3BD942E25', null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19');
 
 -- ----------------------------
 -- Table structure for public_file_folder
 -- ----------------------------
 DROP TABLE IF EXISTS `public_file_folder`;
 CREATE TABLE `public_file_folder` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `FOLDER_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `FOLDER_NAME` varchar(50) DEFAULT NULL,
   `FOLDER_LEAVE` varchar(50) DEFAULT NULL,
   `ACCESS_USER_PRIV` text,
@@ -12505,7 +12753,7 @@ CREATE TABLE `public_file_folder` (
   `MANAGE_LEAVE_PRIV` text,
   `CREATE_LEAVE_PRIV` text,
   `OWNER` text,
-  `SPACE_LIMIT` int(11) DEFAULT NULL,
+  `SPACE_LIMIT` int DEFAULT NULL,
   `STATUS` varchar(2) DEFAULT '1',
   `CREATE_TIME` varchar(20) DEFAULT NULL,
   `CREATE_USER` varchar(50) DEFAULT NULL,
@@ -12521,11 +12769,35 @@ INSERT INTO `public_file_folder` VALUES ('2', '5D03C29E-C8F3-456A-A6E5-9CA4C9B2F
 INSERT INTO `public_file_folder` VALUES ('3', '3C1B4263-A0C3-439B-A301-4E2A19761C63', '1', '123', '0', '@all', null, null, null, null, null, null, null, null, null, null, null, 'admin', null, '0', '2019-07-18 17:06:49', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 
 -- ----------------------------
+-- Table structure for p_1596897734
+-- ----------------------------
+DROP TABLE IF EXISTS `p_1596897734`;
+CREATE TABLE `p_1596897734` (
+  `ID` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `RECORD_ID` varchar(50) DEFAULT NULL COMMENT 'BPM流水标识',
+  `CLMC` text COMMENT '材料名称',
+  `CLBH` text COMMENT '材料编号',
+  `CLPP` text COMMENT '材料品牌',
+  `CLGYS` text COMMENT '供应商',
+  `RKSL` int DEFAULT NULL COMMENT '入库数量',
+  `CGR` text COMMENT '采购人',
+  `RKKW` text COMMENT '入库库位',
+  `RKRQ` text COMMENT '入库日期',
+  `REMARK` text COMMENT '备注',
+  `ORG_ID` varchar(50) DEFAULT NULL COMMENT '组织机构识别码',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of p_1596897734
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for secretary
 -- ----------------------------
 DROP TABLE IF EXISTS `secretary`;
 CREATE TABLE `secretary` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `SECRETARY_ID` varchar(50) DEFAULT NULL,
   `CONTENT` varchar(200) DEFAULT NULL,
   `ORG_ID` varchar(50) DEFAULT NULL,
@@ -12543,7 +12815,7 @@ INSERT INTO `secretary` VALUES ('2', '2', '系统男声', '8EADB678-A646-1E51-3E
 -- ----------------------------
 DROP TABLE IF EXISTS `shortcut`;
 CREATE TABLE `shortcut` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `CONFIG_ID` varchar(50) DEFAULT NULL,
   `CONFIG` text,
   `CREATE_USER` varchar(50) DEFAULT NULL,
@@ -12562,7 +12834,7 @@ INSERT INTO `shortcut` VALUES ('1', '864DC4DE-B9BE-48AD-B852-0A9D45F58FD3', '[{\
 -- ----------------------------
 DROP TABLE IF EXISTS `sms`;
 CREATE TABLE `sms` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT COMMENT '顺序号',
+  `ID` int NOT NULL AUTO_INCREMENT COMMENT '顺序号',
   `SMS_ID` varchar(50) DEFAULT NULL COMMENT '消息的GUID标识',
   `SMS_TITLE` varchar(100) DEFAULT NULL,
   `SMS_FROM` varchar(20) DEFAULT NULL COMMENT '发送者账号',
@@ -12592,9 +12864,9 @@ INSERT INTO `sms` VALUES ('8', '48EB4310-E92F-4F94-9802-CEDB0647CE11', '公司�
 INSERT INTO `sms` VALUES ('9', '727DD155-1B21-4886-98D1-A8C3C568E941', '公司新战略', 'admin', 'tangguanghui', '2020-04-20 14:46:35', '主题为：公司新战略的会议，邀请您参加。请您提前做好准备工作。会议时间：2020-04-25 12:30-2020-04-25 14:30开会地址：二号会议室具体地址：行政楼一楼', 'MEETING', '/app/core/meeting/meetingdetails?meetingId=BD9573D5-16D6-421D-8493-6B18EFFD2249', 'BF62780A-AB62-4887-A170-B6C2F34EBDC4,96A363B4-970D-43FC-B504-639AFD28E76E', '0', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `sms` VALUES ('10', '3535D94E-F967-488B-BFB0-9D00F4FFD0FC', '公司新战略', 'admin', 'liudong', '2020-04-20 14:46:35', '主题为：公司新战略的会议，邀请您参加。请您提前做好准备工作。会议时间：2020-04-25 12:30-2020-04-25 14:30开会地址：二号会议室具体地址：行政楼一楼', 'MEETING', '/app/core/meeting/meetingdetails?meetingId=BD9573D5-16D6-421D-8493-6B18EFFD2249', 'BF62780A-AB62-4887-A170-B6C2F34EBDC4,96A363B4-970D-43FC-B504-639AFD28E76E', '0', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `sms` VALUES ('11', '0F355B6E-3C13-465C-813F-6F92C8407569', 'BPM事件提醒', 'admin', 'admin', '2020-07-06 15:10:17', 'BPM流程标题：信息中心-OA管理员-合同审批申请-2020-07-06 15:08:51转交提醒！', 'BPM', '/app/core/bpm/bpmread?runId=EAF09087-9626-43A0-BEE7-B0C04E737CAA&flowId=05A6E7F6-BF36-4453-BF7B-D5C89F3A2142', null, '1', '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `sms` VALUES ('12', '7689F13D-B34A-4492-90E2-BBC11788CDD1', '贴近百姓生活 深入田间地头', 'admin', 'admin', '2020-07-06 16:27:52', '炎炎夏日，夜色渐浓。村民们手摇蒲扇，陆陆续续来到新时代文明实践站，江西省寻乌县澄江镇周田村的“屋场夜...', 'EMAIL', '/mobile/email/details?emailId=A8CEE039-57A9-4A38-9361-0298F6FF7F8F', '', '0', '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `sms` VALUES ('13', '47078468-C1C0-45F6-8A2A-0AC98312BB11', '外媒：阴影笼罩美国独立日 但是“总统装作一切都很好”', 'admin', 'admin', '2020-07-06 20:42:00', '参考消息网7月5日报道 外媒称，在其他许多国家疫情已基本稳定之际，美国的疫情数据依然看不到任何好转的...', 'EMAIL', '/app/core/oa/emaildetails?emailId=170E8631-A618-465A-BFFC-63C315273276', '', '0', '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `sms` VALUES ('14', '127EC4CE-477C-40AC-B466-F93490B47D63', '阴影笼罩美国独立日 但是', 'admin', 'admin', '2020-07-06 20:48:51', '参考消息网7月5日报道 外媒称，在其他许多国家疫情已基本稳定之际，美国的疫情数据依然看不到任何好转的...', 'EMAIL', '/app/core/oa/emaildetails?emailId=B10A78CA-FD20-4CB9-AD67-3562B96FC227', '', '0', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sms` VALUES ('12', '7689F13D-B34A-4492-90E2-BBC11788CDD1', '贴近百姓生活 深入田间地头', 'admin', 'admin', '2020-07-06 16:27:52', '炎炎夏日，夜色渐浓。村民们手摇蒲扇，陆陆续续来到新时代文明实践站，江西省寻乌县澄江镇周田村的“屋场夜...', 'EMAIL', '/mobile/email/details?emailId=A8CEE039-57A9-4A38-9361-0298F6FF7F8F', '', '1', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sms` VALUES ('13', '47078468-C1C0-45F6-8A2A-0AC98312BB11', '外媒：阴影笼罩美国独立日 但是“总统装作一切都很好”', 'admin', 'admin', '2020-07-06 20:42:00', '参考消息网7月5日报道 外媒称，在其他许多国家疫情已基本稳定之际，美国的疫情数据依然看不到任何好转的...', 'EMAIL', '/app/core/oa/emaildetails?emailId=170E8631-A618-465A-BFFC-63C315273276', '', '1', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sms` VALUES ('14', '127EC4CE-477C-40AC-B466-F93490B47D63', '阴影笼罩美国独立日 但是', 'admin', 'admin', '2020-07-06 20:48:51', '参考消息网7月5日报道 外媒称，在其他许多国家疫情已基本稳定之际，美国的疫情数据依然看不到任何好转的...', 'EMAIL', '/app/core/oa/emaildetails?emailId=B10A78CA-FD20-4CB9-AD67-3562B96FC227', '', '1', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `sms` VALUES ('15', '1AED52C9-1EFC-4275-B6FF-F385640BE5C3', '北京昨日新增1例确诊，为果蔬店促销员！北京核酸检测人数已超1100万', 'admin', 'admin', '2020-07-06 20:51:43', '7月6日，北京市新冠肺炎疫情防控工作新闻发布会第143场召开。 昨日新增确诊1例，详情公布↓↓ 北京...', 'EMAIL', '/app/core/oa/emaildetails?emailId=F2CE0E32-6E30-4944-9C7D-DDF2ADA9D404', '', '1', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `sms` VALUES ('16', 'C4CFD7C0-3A2A-4661-86C3-239EE198A170', 'BPM事件提醒', 'admin', 'luyunyun', '2020-07-17 13:15:39', 'BPM流程标题：信息中心-OA管理员-合同审批申请-2020-07-06 09:30:23委托提醒！', 'BPM', '/app/core/bpm/dowork?runId=null&runProcessId=F8CCE970-30EE-4EB8-9DC9-163A1B0448BD', null, '0', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `sms` VALUES ('17', 'E8A4E0BD-78F2-40A9-94D1-516A1ECA8518', 'BPM事件提醒', 'admin', 'luyunyun', '2020-07-17 13:18:26', 'BPM流程标题：信息中心-OA管理员-合同审批申请-2020-07-06 09:32:55委托提醒！', 'BPM', '/app/core/bpm/dowork?runId=196146FD-DFB8-4019-8563-1E05108CB8C6&runProcessId=C6F15F83-C015-4FFC-938B-635DF2C51BFB', null, '1', '8EADB678-A646-1E51-3E87-75A547B8AF19');
@@ -12627,7 +12899,7 @@ INSERT INTO `sms` VALUES ('40', 'BFC7F06C-F037-42C1-9815-1A1729D934BC', '工作�
 -- ----------------------------
 DROP TABLE IF EXISTS `sms_config`;
 CREATE TABLE `sms_config` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `CONFIG` text,
   `MUST_CHECKED` text,
   `ORG_ID` varchar(50) DEFAULT NULL,
@@ -12644,8 +12916,8 @@ INSERT INTO `sms_config` VALUES ('35', '{\"email\":[\"webSms\",\"webMail\",\"ddS
 -- ----------------------------
 DROP TABLE IF EXISTS `superversion`;
 CREATE TABLE `superversion` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
+  `SORT_NO` int DEFAULT NULL,
   `SUPERVERSION_ID` varchar(50) DEFAULT NULL,
   `LEAD_ID` varchar(50) DEFAULT NULL COMMENT '观注领导',
   `TITLE` varchar(200) DEFAULT NULL COMMENT '标题',
@@ -12662,21 +12934,22 @@ CREATE TABLE `superversion` (
   `CREATE_TIME` varchar(20) DEFAULT NULL COMMENT '创建时间',
   `ORG_ID` varchar(50) DEFAULT NULL,
   KEY `ID` (`ID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of superversion
 -- ----------------------------
 INSERT INTO `superversion` VALUES ('1', null, '9A4AD9FB-30D6-4CD3-97E7-03523CB085A5', 'admin', '督查测试', '920FB034-2561-4AB7-8CB9-DB58627B6183', '2020-03-10', '2020-04-30', 'admin', '2', 'luyunyun,admin', 'E50F6965-3D15-4D7D-8C43-2F42EA7CE472', '<p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">连日来，中国抗击新冠肺炎疫情的有力举措和积极成效受到海外媒体高度关注。许多媒体刊发报道和评论指出，中国防控疫情高效有序展开，充分彰显了中国共产党的领导和中国特色社会主义制度的显著优势。</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　“防控措施取得积极成效的原因，在于中国共产党的领导和中国体制优势”</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　多家海外媒体在报道中指出，中国为应对疫情采取的措施快速、高效、有力。德国《世界报》网站刊文指出：“面对紧急形势，中国制度发挥出巨大效力。强大的应对措施只有在人力物力充足和管理完善的制度下才可能实现。”</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　俄罗斯发行量最大的报纸《劳动报》发表文章认为，确诊病例数在中国不断下降，这无疑要归功于中国政府采取的强有力举措。“关键时刻，更见中国制度优势。”从中央到地方，中国展现出很强的动员能力和组织能力，能在紧急情况下把资源分配到最需要的地方。“正是中国的体制优势，有效遏制了疫情蔓延。”</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　《俄罗斯报》发表俄专家文章称：“中国政府正在采取严格坚决的措施，如此大规模的社会动员在世界公共卫生史上前所未有。防控措施取得积极成效的原因，在于中国共产党的领导和中国体制优势。”</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　埃及《宪章报》刊文指出：“中国抗击疫情的行动正在取得越来越明显的成效，也为维护世界公共卫生安全和人类健康作出积极贡献。中国必将赢得最后的胜利，这彰显了中国制度的优越性以及中国强有力的协调组织能力。”</p><p style=\"-webkit-tap-highlight-color: rgba(0, 0, 0, 0); margin-bottom: 25px; font-size: 18px; text-align: justify; word-break: normal; overflow-wrap: break-word; color: rgb(47, 47, 47); font-family: PingFangSC-Regular, STXihei, Verdana, Calibri, Helvetica, Arial, sans-serif;\">　　“中国速度和中国力量向世界展示了抗击疫情的必胜信念和积极成效”</p>', 'mobileSms,appSms', 'admin', '2020-03-10 18:35:03', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `superversion` VALUES ('2', null, 'C1C2435A-0E9B-4E5F-9909-41ADD843054A', 'admin', '图表分析', '8C0B7FEA-E23F-4744-B892-314239935B8C', '2020-08-10', '2020-08-31', null, '0', null, '', '<p>微任务仍佣兵</p>', '', 'admin', '2020-08-10 23:26:08', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 
 -- ----------------------------
 -- Table structure for superversion_config
 -- ----------------------------
 DROP TABLE IF EXISTS `superversion_config`;
 CREATE TABLE `superversion_config` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `CONFIG_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `TYPE_NAME` varchar(50) DEFAULT NULL,
   `LEAD_ID` varchar(50) DEFAULT NULL,
   `REMARK` text,
@@ -12697,7 +12970,7 @@ INSERT INTO `superversion_config` VALUES ('2', '8C0B7FEA-E23F-4744-B892-31423993
 -- ----------------------------
 DROP TABLE IF EXISTS `superversion_delay`;
 CREATE TABLE `superversion_delay` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `DELAY_ID` varchar(50) DEFAULT NULL,
   `SUPERVERSION_ID` varchar(50) DEFAULT NULL,
   `DELAY_TIME` varchar(20) DEFAULT NULL,
@@ -12723,12 +12996,12 @@ INSERT INTO `superversion_delay` VALUES ('1', 'F05B67A1-DE36-4051-ACFC-3B10ACC4B
 -- ----------------------------
 DROP TABLE IF EXISTS `superversion_process`;
 CREATE TABLE `superversion_process` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `PROCESS_ID` varchar(50) DEFAULT NULL,
   `SUPERVERSION_ID` varchar(50) DEFAULT NULL,
   `CONTENT` text,
   `ATTACH` text,
-  `PRCS_VALUE` int(11) DEFAULT NULL,
+  `PRCS_VALUE` int DEFAULT NULL,
   `FINISH_TIME` varchar(20) DEFAULT NULL,
   `CREATE_TIME` varchar(20) DEFAULT NULL,
   `CREATE_USER` varchar(50) DEFAULT NULL,
@@ -12747,7 +13020,7 @@ INSERT INTO `superversion_process` VALUES ('2', '31FAFA49-7E81-41E0-AAEB-E88679C
 -- ----------------------------
 DROP TABLE IF EXISTS `superversion_score`;
 CREATE TABLE `superversion_score` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `SCORE_ID` varchar(50) DEFAULT NULL,
   `SUPERVERSION_ID` varchar(50) DEFAULT NULL,
   `PROCESS_ID` varchar(50) DEFAULT NULL,
@@ -12795,8 +13068,8 @@ CREATE TABLE `sysm_regist` (
   `regist_disk_sn` varchar(200) NOT NULL,
   `regist_time` date NOT NULL,
   `regist_deadline` date NOT NULL,
-  `regist_user_count` int(11) NOT NULL,
-  `regist_im_user_count` int(11) NOT NULL,
+  `regist_user_count` int NOT NULL,
+  `regist_im_user_count` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -12818,10 +13091,10 @@ INSERT INTO `sysm_regist` VALUES ('D423C5D8-C57A-9246-A0C3-1C71E5C47AA6', '江�
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_config`;
 CREATE TABLE `sys_config` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `SYS_CONFIG_ID` varchar(50) DEFAULT NULL,
-  `PASS_WORD_LENGTH` int(2) DEFAULT NULL,
-  `PASS_WORD_STRENGTH` int(2) DEFAULT NULL,
+  `PASS_WORD_LENGTH` int DEFAULT NULL,
+  `PASS_WORD_STRENGTH` int DEFAULT NULL,
   `EMAIL` varchar(50) DEFAULT NULL,
   `PORT` varchar(6) DEFAULT NULL,
   `POP3` varchar(50) DEFAULT NULL,
@@ -12837,15 +13110,15 @@ CREATE TABLE `sys_config` (
 -- ----------------------------
 -- Records of sys_config
 -- ----------------------------
-INSERT INTO `sys_config` VALUES ('2', '90F4852C-7C97-4E12-BA0E-C452160FCEC3', '16', '0', '68311718@qq.com', '465', 'pop3.qq.com', 'smtp.qq.com', 'zbnnbvurbhpybgdf', '1', '127.0.0.1', '8136', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_config` VALUES ('2', '90F4852C-7C97-4E12-BA0E-C452160FCEC3', '8', '0', '68311718@qq.com', '465', 'pop3.qq.com', 'smtp.qq.com', 'zbnnbvurbhpybgdf', '1', '127.0.0.1', '8136', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 
 -- ----------------------------
 -- Table structure for sys_db_source
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_db_source`;
 CREATE TABLE `sys_db_source` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
+  `SORT_NO` int DEFAULT NULL,
   `DB_SOURCE_ID` varchar(50) DEFAULT NULL,
   `DB_SOURCE_NAME` varchar(200) DEFAULT NULL,
   `DB_SOURCE_TYPE` varchar(30) DEFAULT NULL,
@@ -12869,11 +13142,11 @@ INSERT INTO `sys_db_source` VALUES ('3', '2', '669E16FC-7500-4A02-8B23-D7ECF9196
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_desk_config`;
 CREATE TABLE `sys_desk_config` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `DESK_CONFIG_ID` varchar(50) DEFAULT NULL,
   `MODULE` varchar(50) DEFAULT NULL,
   `MODULE_NAME` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `USE_USER_PRIV` text,
   `USE_DEPT_PRIV` text,
   `USE_LEAVE_PRIV` text,
@@ -12907,7 +13180,7 @@ INSERT INTO `sys_desk_config` VALUES ('577', 'DCA193FD-F96C-4324-AFD3-3C6F73D618
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_info`;
 CREATE TABLE `sys_info` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `UNIT` varchar(40) DEFAULT NULL,
   `MACHINE_CODE` varchar(40) DEFAULT NULL,
   `SN` varchar(50) DEFAULT NULL,
@@ -12927,7 +13200,7 @@ CREATE TABLE `sys_info` (
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_interface`;
 CREATE TABLE `sys_interface` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `SYS_TITLE` varchar(255) DEFAULT NULL,
   `BACKGROUND_IMG` text,
   `RECORD_NUMBER` varchar(100) DEFAULT NULL,
@@ -12946,7 +13219,7 @@ INSERT INTO `sys_interface` VALUES ('1', '稠云V2.1智能办公系统', '202002
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_log`;
 CREATE TABLE `sys_log` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `LOG_ID` varchar(50) DEFAULT NULL,
   `ACCOUNT_ID` varchar(20) DEFAULT NULL,
   `EVENT_TYPE` varchar(20) DEFAULT NULL,
@@ -12954,22 +13227,276 @@ CREATE TABLE `sys_log` (
   `IP` varchar(50) DEFAULT NULL,
   `REMARK` varchar(200) DEFAULT NULL,
   `ORG_ID` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`ID`) USING BTREE,
-  KEY `ID` (`ID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2870 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `ID` (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=3123 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sys_log
 -- ----------------------------
+INSERT INTO `sys_log` VALUES ('1', 'D220E073-8950-4513-8CA1-EBDF52148294', 'admin', '1', '2020-08-09 13:43:13', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2870', 'CCC9E1C5-9786-42D6-B0A0-E629022C0F16', 'admin', '1', '2020-07-24 20:35:11', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2871', '1D1B0ECA-8FF5-4ED2-8EB3-D7F890C74E37', 'admin', '1', '2020-07-24 20:36:08', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2872', 'FE80D244-6BE7-472D-8D1F-DB8EABF07721', 'admin', '1', '2020-07-24 20:36:15', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2873', 'FBDF0AE3-3576-4511-B3C9-92C7ACBAF0B0', 'admin', '2', '2020-07-24 20:39:57', '127.0.0.1', '账户注销', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2874', 'C7CA9EA2-555E-4873-A9E4-393B640F8095', 'admin', '1', '2020-07-24 20:40:10', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2875', '96BD92B6-861F-47CE-A165-4AD1B3039F20', 'admin', '1', '2020-07-24 21:44:01', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2876', 'F36B143F-B8E9-479F-B420-8BCD0B2065AD', 'admin', '1', '2020-07-24 23:28:48', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2877', 'AA0D6DC3-06F5-4484-B772-C5CEC86E3348', 'admin', '1', '2020-07-25 10:30:40', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2878', '465FB94B-45D2-453E-B1C5-138292E108CA', 'admin', '1', '2020-07-25 11:23:18', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2879', 'DAEB69F6-F2E8-4B85-BA5B-E58A6A8905EC', 'admin', '1', '2020-07-25 11:31:09', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2880', 'C87E7B4A-2C2C-40A3-A657-709532D5B43C', 'admin', '1', '2020-07-25 11:32:36', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2881', '02E2DBF1-B7D4-4DF2-9242-EF53F559461B', 'admin', '1', '2020-07-25 11:35:14', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2882', 'B0673C21-7832-4C15-9436-08D951F7F458', 'admin', '1', '2020-07-25 11:50:45', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2883', 'F18148F4-E5CF-4F9C-8C83-A7906587E3A7', 'admin', '1', '2020-07-25 16:12:17', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2884', '37DEE516-68F8-4156-96DF-FE8EC9DF609D', 'admin', '1', '2020-07-25 16:18:52', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2885', '0CE88202-E2B2-444A-AE26-B1A801395CAA', 'admin', '1', '2020-07-25 16:48:56', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2886', '81AC766C-AC76-435D-A225-C87D4DB1E361', 'admin', '1', '2020-07-25 17:07:11', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2887', '8F489E9D-D439-453B-B8AA-87591711CDB9', 'admin', '1', '2020-07-25 17:31:06', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2888', '0388A30D-FEC0-405D-93A0-5AF38A79BE39', 'admin', '1', '2020-07-25 17:32:33', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2889', '84C88A30-1AE4-4FFC-91D7-414413560ED7', 'admin', '1', '2020-07-25 18:57:57', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2890', 'E414FE75-532D-4EF0-AF18-9C781CFF63F4', 'admin', '2', '2020-07-25 19:16:41', '127.0.0.1', '账户注销', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2891', '11D6A26F-786A-44D1-AF8F-DCC02834903B', 'luyunyun', '1', '2020-07-25 19:16:48', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2892', '9671EC76-6AAF-438F-997A-660ED8629646', 'luyunyun', '2', '2020-07-25 19:17:12', '127.0.0.1', '账户注销', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2893', 'E2C0432E-4B9A-4086-A843-709695BF382B', 'admin', '1', '2020-07-25 19:17:13', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2894', 'B6B9A33A-5C5C-4C86-945E-C7A3953D44B9', 'admin', '1', '2020-07-25 19:26:58', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2895', 'BEE7AEEE-9201-4274-A7D4-D76A374D04AC', 'admin', '1', '2020-07-25 19:29:20', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2896', 'C12FE391-DA56-440A-85DA-A06B902B647B', 'admin', '1', '2020-07-25 19:50:15', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2897', '190994B2-E275-4D8D-9CB6-F65AFB8DF68E', 'admin', '1', '2020-07-25 19:55:42', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2898', 'B92420D7-9AB5-4DAB-8F67-8D3E08B730E7', 'admin', '2', '2020-07-25 20:26:56', '127.0.0.1', '账户注销', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2899', '3D4B3498-B4A4-48B1-93D3-9A342641C94C', 'admin', '1', '2020-07-25 20:26:59', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2900', '61D126A8-CF9B-4AB7-BE73-9A1A9E4C26BE', 'admin', '2', '2020-07-25 20:30:07', '127.0.0.1', '账户注销', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2901', 'D8446303-9AED-4A2D-9A96-DF14046C011C', 'admin', '1', '2020-07-25 20:30:09', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2902', '279ECCD3-C418-4F71-BD4B-17C750B5F101', 'admin', '1', '2020-07-25 21:39:06', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2903', 'E482CFEC-B9F9-433C-AB7B-533937D734D9', 'admin', '1', '2020-07-26 11:10:37', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2904', '5948BE64-D90C-48E1-BE2F-1D59E21E1355', 'admin', '1', '2020-07-26 13:26:52', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2905', 'A59F003F-60B0-4139-85F8-EC89DAF2C730', 'admin', '1', '2020-07-26 13:39:27', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2906', '5F43F423-0A04-4B39-A5A6-FF219972F2C1', 'admin', '1', '2020-07-26 13:44:20', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2907', 'E9CF601F-A797-45B1-92CA-E4C58B0EEF28', 'admin', '1', '2020-07-26 16:50:01', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2908', 'BCA4FF93-488F-4163-8881-A2E44ABD1C9A', 'admin', '1', '2020-07-26 16:50:38', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2909', '35B6447C-19DC-4F92-953F-DFB65FE6EA54', 'admin', '1', '2020-07-26 16:50:41', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2910', '09184CD9-3E37-4435-83C0-60612943519F', 'admin', '1', '2020-07-26 16:52:37', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2911', '87F5B0D7-0DC4-4B2E-B8BC-BCF582D17684', 'admin', '1', '2020-07-26 16:52:50', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2912', '6DE2F567-49DB-4E19-9965-998D06777616', 'admin', '1', '2020-07-26 16:52:52', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2913', 'EA8E64BF-6116-431B-9AFB-544E526C3044', 'admin', '1', '2020-07-26 16:53:27', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2914', '391BB2B4-871B-4BB2-BC0C-00A0EB801211', 'admin', '1', '2020-07-26 17:00:13', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2915', 'F7D40808-EA8D-4D88-A82A-CA87CC72BBB9', 'admin', '1', '2020-07-26 17:00:17', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2916', 'FFF3D968-996D-4881-B9F8-082A47CF059E', 'admin', '1', '2020-07-26 17:00:46', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2917', 'A2A004A6-093C-404A-B17C-A1229A9FE9D1', 'admin', '1', '2020-07-26 17:08:23', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2918', '51DFE986-D6E2-407F-8F4C-5FBDF80A5AF7', 'admin', '1', '2020-07-26 17:22:19', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2919', '0B4DE784-D99B-41BD-AC28-3D9E1F00C69F', 'admin', '1', '2020-07-26 17:22:23', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2920', 'CB15BBEF-2B4E-4056-9B88-73EF22EFB965', 'admin', '1', '2020-07-26 17:25:52', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2921', '9E65431C-E9E3-4F7E-BFFC-99C1AC7DBFAA', 'admin', '1', '2020-07-26 17:27:16', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2922', '546DE1F2-FF0B-4B08-AC4A-38108DF56297', 'admin', '1', '2020-07-26 18:01:05', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2923', 'C742D6B8-BC8B-480D-8248-25B3AFB9C1FF', 'admin', '1', '2020-07-26 18:01:13', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2924', '17E10FFC-7616-45D6-9937-6C513FDDDE4A', 'admin', '1', '2020-07-26 18:07:14', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2925', 'AEFDF674-F198-4B36-B8FC-0BFA78B5617D', 'admin', '1', '2020-07-26 18:39:52', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2926', '7701EF5B-36BD-497D-984E-C6E2D0C9DFD8', 'admin', '1', '2020-07-26 18:40:47', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2927', '63EFC9CA-9E47-43E9-97B1-30C529D2EE85', 'admin', '1', '2020-07-26 18:41:28', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2928', '0F60C49E-14ED-436F-9A13-2AC71E3A7E85', 'admin', '1', '2020-07-26 18:48:11', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2929', '84AABA92-7073-44C6-8643-0EB03B14DA25', 'admin', '1', '2020-07-26 19:02:10', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2930', '407DFC0F-6CB8-41F3-A583-EAE97E45A07D', 'admin', '1', '2020-07-26 19:31:52', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2931', 'AFBD60BE-7CE4-49C5-B981-2ECD45E9D874', 'admin', '1', '2020-07-26 19:53:38', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2932', '79CE3187-E236-4E6A-AA0C-54F13068A023', 'admin', '2', '2020-07-26 19:54:06', '127.0.0.1', '账户注销', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2933', '537EE0B1-2F43-42F1-816A-F6C3EF587968', 'admin', '1', '2020-07-26 19:54:30', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2934', 'B98A60B0-36B4-4181-9E2A-33B6E1C1D212', 'luyunyun', '1', '2020-07-26 19:54:59', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2935', '6772BDA1-7641-482F-A26E-3D8C1493EF09', 'luyunyun', '2', '2020-07-26 19:55:31', '127.0.0.1', '账户注销', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2936', '40C5BC12-3464-4996-9D8E-DE68780D8E97', 'admin', '1', '2020-07-26 20:03:26', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2937', '4F40661C-2529-4517-9C4A-7CC99E20B5DB', 'admin', '1', '2020-07-26 21:16:43', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2938', '6AEDEC17-9579-48F0-9D14-041558A6801E', 'admin', '1', '2020-07-26 22:48:26', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2939', '07409373-3D70-4941-988A-8515864636A0', 'admin', '1', '2020-07-26 22:58:13', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2940', '9DA70E5F-EDF3-40A5-94D7-1D1DBD2C3D47', 'admin', '1', '2020-07-26 23:01:49', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2941', 'A6EC5A20-9181-4F2D-8FD1-918FEEBAEE27', 'admin', '1', '2020-07-26 23:02:10', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2942', '2281F10A-A489-4FE4-A716-EA27AD50810D', 'admin', '1', '2020-07-26 23:02:12', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2943', 'EE0F76EC-0C1F-455B-8EA0-DB4174DEA56B', 'admin', '1', '2020-07-26 23:02:23', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2944', 'DCBAC2A9-DA4E-40CD-A640-1B75B3DE5BB3', 'admin', '1', '2020-07-26 23:16:09', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2945', 'AD94BD2E-1960-47E9-B7B5-673ADADD0E2A', 'admin', '1', '2020-07-27 11:31:30', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2946', '02CEB344-E3F0-4F88-8F86-FD47A414A8A4', 'admin', '1', '2020-07-27 11:35:24', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2947', 'BB919813-A706-4AAA-915B-D90D0E975FE1', 'admin', '1', '2020-07-27 11:40:53', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2948', '9A090A56-1ABD-4947-88BB-05A30AF8CAFE', 'admin', '1', '2020-07-27 11:44:08', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2949', '640B31F4-242C-403C-B59A-2D410F3FE7B8', 'admin', '1', '2020-07-27 11:55:25', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2950', 'A85112A3-4B3C-447D-B2E5-EB8800F6B9B9', 'admin', '1', '2020-07-27 11:59:19', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2951', '4D8D6F84-8E83-4232-9226-41E04055939F', 'admin', '1', '2020-07-27 12:05:02', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2952', 'B67372E9-F699-47AA-875D-4EA7AD6A160D', 'admin', '1', '2020-07-27 12:10:49', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2953', '82C5F2CF-5375-4AD9-87D3-CA3C1C173322', 'admin', '2', '2020-07-27 12:11:01', '127.0.0.1', '账户注销', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2954', '8697E4D8-C91C-4EBE-B2DC-A0B54BEDF0D7', 'admin', '1', '2020-07-27 12:11:03', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2955', 'E3B264C4-B921-4BA7-9FF0-56312B408F6D', 'admin', '2', '2020-07-27 12:31:15', '127.0.0.1', '账户注销', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2956', '3F8832B2-6831-4706-8B23-D7D5EDE0FD21', 'admin', '1', '2020-07-27 13:28:13', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2957', '843CBF5F-546B-447B-A5EF-E23B05BE06D0', 'admin', '1', '2020-07-27 19:56:40', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2958', 'C73E0640-CCF4-40DF-9D64-07B3A8148F22', 'admin', '1', '2020-07-27 20:12:34', '192.168.1.103', '移动端登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2959', '895617F5-181C-4956-A70E-7E64C6AB09F3', 'admin', '1', '2020-07-27 20:16:09', '192.168.1.103', '移动端登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2960', '94412122-02B4-4BA1-AE03-B0C88F1CE73F', 'admin', '1', '2020-07-27 20:16:31', '192.168.1.103', '移动端登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2961', 'A7C07977-3719-4D55-A9B7-92A185E98808', 'admin', '1', '2020-07-27 20:16:44', '192.168.1.103', '移动端登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2962', '0752E37F-A7AB-42E1-BB01-77C39525490A', 'admin', '1', '2020-07-27 22:56:13', '192.168.1.101', '移动端登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2963', '2683798C-9652-42EF-9AF7-CA3317D78F81', 'admin', '1', '2020-07-27 23:06:07', '192.168.1.101', '移动端登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2964', 'C7833DA5-FFCD-4397-A971-7776C0FE8590', 'admin', '1', '2020-07-28 12:09:23', '192.168.1.103', '移动端登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2965', '529C586E-45B6-4F4E-AD18-82254CF1DDCD', 'admin', '1', '2020-07-28 14:58:09', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2966', '2ED5AF8A-3FBC-4D10-A47F-C006F8C5B8F0', 'admin', '1', '2020-07-28 15:19:24', '192.168.1.103', '移动端登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2967', '56AA9661-6C12-4C32-B6AF-057FA52822F6', 'admin', '1', '2020-07-28 15:22:30', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2968', '3706DA0B-3509-488D-9286-F922756EEE70', 'admin', '2', '2020-07-28 15:23:09', '127.0.0.1', '账户注销', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2969', 'BA8347F1-ACCF-4C92-8C68-EDCAF1D9DBD3', 'admin', '1', '2020-07-28 15:23:11', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2970', '1005BF0C-45B1-4636-862B-01AC295BCB13', 'admin', '1', '2020-07-28 20:46:39', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2971', '70330991-AB02-4A5B-B11C-07AF277CC578', 'admin', '1', '2020-07-28 20:52:44', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2972', '3B334C42-8B56-4FB1-BEEE-F267938BCB39', 'admin', '1', '2020-07-28 21:17:08', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2973', 'EE4AE736-2B8F-4CE5-A044-C352D2B67A0C', 'admin', '1', '2020-07-28 21:59:10', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2974', 'DBA846E1-6E78-4B0B-B556-5A18F1216374', 'admin', '1', '2020-07-28 23:47:50', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2975', '49843235-00B6-4C4F-9185-2694E585446A', 'admin', '1', '2020-07-29 09:35:40', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2976', 'DBC0A2DB-4E99-45D0-9F32-B5F9A3F613BB', 'admin', '1', '2020-07-29 11:41:06', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2977', '816309F9-C0D2-44BD-9DD0-EFE4616B4E99', 'admin', '1', '2020-07-29 13:18:39', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2978', '0D05BEF5-67EC-44FF-8D97-AA9E57FCE47B', 'admin', '1', '2020-07-29 13:28:35', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2979', '35906A97-FC43-431B-BDCA-9C01ABD59521', 'admin', '1', '2020-07-29 13:36:00', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2980', '99D9D0A9-C31D-400F-A2D8-D09E51D59FD0', 'admin', '1', '2020-07-29 13:46:48', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2981', 'AF985218-5C67-43C4-AEF6-81CD0452B328', 'admin', '1', '2020-07-29 13:58:37', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2982', 'F8889BA7-B971-4C0B-A524-8E6723431F12', 'admin', '1', '2020-07-29 17:58:47', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2983', 'DB46FA93-2E47-4C9C-B78A-F1EF62089CBE', 'admin', '1', '2020-08-06 18:25:18', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2984', '3C3D2557-FEF5-485E-9191-2523229B26FC', 'admin', '1', '2020-08-06 20:02:39', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2985', 'FE8605DD-559D-49EA-9F19-1B34B73D4A67', 'admin', '1', '2020-08-06 20:55:57', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2986', '4EA45535-FF0A-494E-A804-C10BF4AA028C', 'admin', '1', '2020-08-06 21:34:31', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2987', 'DE2B004F-D6AC-4D40-B0E7-6E8C3AF4F55A', 'admin', '1', '2020-08-06 23:58:12', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2988', '8FA82024-8089-4AFE-84AB-8F620FD15B72', 'admin', '1', '2020-08-07 10:19:45', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2989', 'AC3E7AD6-02FC-4859-BB66-F82A3F3E2A3F', 'admin', '1', '2020-08-07 12:04:15', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2990', 'A75497DE-5C79-4666-8939-A20554C3E21C', 'admin', '1', '2020-08-07 14:58:18', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2991', '59C72D71-E515-473C-90BA-2346097279EF', 'admin', '1', '2020-08-07 15:02:20', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2992', '796DDD3C-EF2B-4998-B5F7-26CA882EC6B6', 'admin', '1', '2020-08-07 15:57:16', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2993', '9407E855-AABE-476E-B28D-54486464094B', 'admin', '1', '2020-08-07 15:57:18', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2994', '2C12E9BA-5766-441E-A282-4AC46A88C55C', 'admin', '1', '2020-08-07 15:57:25', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2995', 'BBCEABC5-0731-4CA3-B3CC-76BAC94F65CD', 'admin', '1', '2020-08-07 16:34:21', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2996', '954271CA-06DF-4181-822E-A2121DC71D54', 'admin', '1', '2020-08-07 16:34:40', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2997', '6BE7D280-E5B9-452A-8D0B-3E2EBA7927F9', 'admin', '1', '2020-08-07 16:42:11', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2998', '944D1296-CD70-45B7-BC00-A1B3345BD384', 'admin', '1', '2020-08-07 17:53:49', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('2999', '1E7EAB78-ED7E-4125-8AFF-3FD7DB82283C', 'admin', '1', '2020-08-07 19:59:22', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3000', '1E4CC542-92FE-4B68-92B7-1743F399D52F', 'admin', '1', '2020-08-07 20:57:01', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3001', 'C8CA1E57-2F6F-403D-9935-0E4179B8F64C', 'admin', '1', '2020-08-07 21:40:22', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3002', '2B76ED6B-9484-448B-84FD-6A5B23D526FF', 'admin', '1', '2020-08-07 22:27:43', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3003', '3FFAC608-29D5-4352-AB9F-D8E5CA236A7C', 'admin', '1', '2020-08-07 22:27:58', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3004', 'E587F5B1-AE58-4376-A405-3FB39AB92033', 'admin', '1', '2020-08-07 22:28:05', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3005', 'BA2B3AD8-EFD8-439E-BA1E-F25E07C16D89', 'admin', '1', '2020-08-07 22:56:14', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3006', '18595651-A434-4475-BB88-724D89FED2D1', 'admin', '1', '2020-08-07 23:27:17', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3007', 'BBC8316B-A9D8-4E8E-B1FE-852773B8D466', 'admin', '1', '2020-08-07 23:27:30', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3008', '786611D7-320A-4F2A-AF59-20A2523A346C', 'admin', '1', '2020-08-08 00:00:53', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3009', '53B5B973-8813-4A68-AA3A-A40947CCF321', 'admin', '1', '2020-08-08 00:01:03', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3010', '4200CD39-C8E0-474E-BB0B-0614710AE3D4', 'admin', '1', '2020-08-08 00:31:45', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3011', 'A24D4824-932A-4D8A-81CA-E8C15B92FD9F', 'admin', '1', '2020-08-08 00:31:52', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3012', 'CF3D6BEF-FE40-449F-9B6F-FD609C6278A7', 'admin', '1', '2020-08-08 01:03:17', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3013', 'C2F5B4E7-1AE2-4F45-825A-DFE5B89E3A74', 'admin', '1', '2020-08-08 01:03:25', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3014', 'DF18A1AE-B454-4449-925E-978BD64A4E6D', 'admin', '1', '2020-08-08 09:39:42', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3015', 'D53052D4-D238-49FC-A7B1-746E06881337', 'admin', '1', '2020-08-08 11:27:46', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3016', 'B03C7B9A-9B59-45A6-9623-4D20B2CAF3D7', 'admin', '1', '2020-08-08 12:18:16', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3017', 'EEB3B2B8-1EC2-4F57-B387-692BAF4E5245', 'admin', '1', '2020-08-08 12:18:32', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3018', '94A69D60-3573-40D3-847C-643EC9693FBD', 'admin', '1', '2020-08-08 12:18:39', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3019', '46A6A910-6DD4-4981-865F-8A758CFC1533', 'admin', '1', '2020-08-08 12:51:09', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3020', '232A1832-19F9-4CC7-80E9-1CC9EE56660E', 'admin', '1', '2020-08-08 12:52:58', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3021', '553F301B-9808-4969-B4CA-576B51930763', 'admin', '1', '2020-08-08 12:53:14', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3022', 'FD25C6D6-73B9-4A76-8022-1AC9C54E2DF0', 'admin', '1', '2020-08-08 12:56:02', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3023', '7EF85F7C-8BEB-4718-8FB7-7F3C374BC221', 'admin', '1', '2020-08-08 13:17:30', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3024', '7351FDC5-9C1E-4A68-8B37-53B048074680', 'admin', '1', '2020-08-08 13:17:44', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3025', '7028959A-FC2D-4BD9-8914-2E9D282A25C3', 'admin', '1', '2020-08-08 13:17:52', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3026', 'EA4BE1CD-45FD-4F5E-8ACF-3E6B032FE748', 'admin', '1', '2020-08-08 13:18:09', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3027', '5718CEA1-4CF1-4DC5-8A00-C9616534FEE1', 'admin', '1', '2020-08-08 13:19:41', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3028', 'A4298D7F-5E5E-45EC-9E58-1DABD0207D44', 'admin', '1', '2020-08-08 13:20:28', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3029', '9B3F984A-0446-4E72-AD39-DB96BD256EBB', 'admin', '1', '2020-08-08 13:21:24', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3030', '7A7F7FA7-672D-4AF1-874E-F8938ADF332C', 'admin', '1', '2020-08-08 13:22:00', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3031', '150E3C5E-D428-44EC-9336-1F7B11AF6EDC', 'admin', '1', '2020-08-08 13:22:44', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3032', '86CB84DE-5EC9-4826-A3F6-AB285C3321AF', 'admin', '1', '2020-08-08 13:26:08', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3033', '6530E3CE-C10A-4710-83D1-95DDC8167928', 'admin', '1', '2020-08-08 13:29:12', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3034', '6325203F-B427-4BA9-9318-AE110F427602', 'admin', '1', '2020-08-08 13:29:19', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3035', 'FAA925B9-46A5-4FFD-A214-CA9043E2086E', 'admin', '1', '2020-08-08 13:30:51', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3036', '3D3E4F69-F258-41A0-93A9-494900BF6346', 'admin', '1', '2020-08-08 13:30:54', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3037', 'CD8C2D40-9AB4-4F88-99FB-970C6973949D', 'admin', '1', '2020-08-08 13:31:35', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3038', '5E8D694E-D17A-414A-BE45-432A4725719B', 'admin', '1', '2020-08-08 13:31:51', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3039', '3CA9A9AB-1D83-4900-9634-028CCD475343', 'admin', '1', '2020-08-08 13:39:57', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3040', '9E010A71-8A7D-4970-B139-C3685B3A203F', 'admin', '1', '2020-08-08 13:40:00', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3041', '89A83ED8-6A61-4978-89EB-FE1ADB01FBF1', 'admin', '1', '2020-08-08 13:41:19', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3042', 'E573A200-2BAA-4918-8DCC-82C63AD19548', 'admin', '1', '2020-08-08 13:41:22', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3043', 'F3FC5D63-FCC7-4A89-B078-6E3DB885E046', 'admin', '1', '2020-08-08 13:41:33', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3044', '8E816616-9FAE-4DDE-8940-5EC00A5E9371', 'admin', '1', '2020-08-08 13:41:44', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3045', '9B502831-852B-4004-BC6A-F98F8A7881E9', 'admin', '1', '2020-08-08 13:43:05', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3046', '8A42D06F-5534-4527-9E19-C1A3D9337EA1', 'admin', '1', '2020-08-08 13:43:08', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3047', '6908B457-096C-4A43-BD50-787FE10BA0EC', 'admin', '1', '2020-08-08 13:44:37', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3048', 'B6A5BCCC-218A-42EF-9AE2-B3D70910FA28', 'admin', '1', '2020-08-08 13:44:49', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3049', '9568F208-9D85-4B5D-974C-574E0DE75065', 'admin', '1', '2020-08-08 13:49:12', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3050', '7060F32E-05EB-4DE2-9ABB-C93A18877B67', 'admin', '1', '2020-08-08 14:03:15', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3051', '74ECFBDB-04B3-455C-BF55-412F2D2824FD', 'admin', '1', '2020-08-08 18:57:30', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3052', '2B7D050E-653C-4746-906F-184C27B05183', 'admin', '1', '2020-08-08 19:05:36', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3053', '91F2AC34-5250-484D-A5A6-56AB7428F866', 'admin', '2', '2020-08-08 19:06:02', '127.0.0.1', '账户注销', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3054', '38D52107-6F81-4215-AB28-B0A1836FFA59', 'admin', '1', '2020-08-08 19:06:04', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3055', '4AB1579B-11B7-4429-A773-C903475E24C8', 'admin', '2', '2020-08-08 19:06:47', '127.0.0.1', '账户注销', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3056', 'CE908C4F-CBC0-41FC-8139-9A7F5365DBC4', 'admin', '1', '2020-08-08 19:06:49', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3057', '5E494338-90DC-4771-BA9E-212C6381D5E7', 'admin', '1', '2020-08-08 20:34:17', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3058', 'F76828D3-F21C-4439-B412-6DE053CAB3AD', 'admin', '1', '2020-08-08 21:00:28', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3059', '72D16314-45D5-4E74-868D-11C8BFCB9EBA', 'admin', '1', '2020-08-08 21:03:31', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3060', 'A6DDB227-1ECA-4C70-98E1-D71821D104E1', 'admin', '1', '2020-08-08 21:07:52', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3061', '6589B2BA-44A9-472C-9C56-D298359E05DD', 'admin', '1', '2020-08-08 21:42:43', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3062', 'D3FD201A-E603-4C26-B794-E8C1507A64F1', 'admin', '1', '2020-08-08 21:50:46', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3063', '4460CB39-4E58-4FD7-B81F-2C6797E6BF5C', 'admin', '1', '2020-08-08 22:17:33', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3064', '58647309-3C11-40DC-9AF4-64F24EFA1357', 'admin', '1', '2020-08-08 22:24:39', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3065', '4B675F5B-44E9-4AEA-B161-9A58F5A5AAF2', 'admin', '1', '2020-08-08 22:41:39', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3066', '5583979B-7B87-45DB-A7B5-87C1F176EAAA', 'admin', '1', '2020-08-09 00:21:38', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3067', '99A9B82C-6CE7-4236-906B-025AAF79CB25', 'admin', '1', '2020-08-09 01:22:25', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3068', '9D9B784A-1CCB-4655-9D40-BDE12C2041A4', 'admin', '1', '2020-08-09 11:13:01', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3069', '098905E3-0FAF-4C23-9056-D301C1334649', 'admin', '1', '2020-08-09 11:26:19', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3070', 'A5DF8D96-8D80-4B7A-870F-63979C76F31D', 'admin', '1', '2020-08-09 13:48:54', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3071', '80A1D4C1-3599-40BD-B979-BC4428D0BC3A', 'admin', '1', '2020-08-09 13:48:56', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3072', '33AC5AB2-4E4D-41F7-AC04-E1AABFBBD163', 'admin', '1', '2020-08-09 13:49:09', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3073', '56514003-B80D-4782-B767-71F20D5BB1AF', 'admin', '1', '2020-08-09 13:53:40', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3074', '3291DB5E-DB6B-43EB-A557-407F7462F7DB', 'admin', '1', '2020-08-09 13:57:05', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3075', 'E913575C-3C40-422A-809A-6554FEFB5AD3', 'admin', '1', '2020-08-09 14:04:10', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3076', 'FDE0119B-8001-40DB-A018-5A14A4169112', 'admin', '1', '2020-08-09 14:38:08', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3077', '679BF6F0-AE46-498A-82D8-D3C755D7B034', 'admin', '1', '2020-08-09 14:43:03', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3078', 'C30F08D3-5227-4DA4-8478-1579676030EF', 'admin', '1', '2020-08-09 14:49:52', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3079', 'DBEFE55A-7801-498B-B5F0-CD5444153CDE', 'admin', '1', '2020-08-09 14:53:05', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3080', '0FBC75BC-3558-442E-9724-4B4900FA06A4', 'admin', '1', '2020-08-09 15:16:42', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3081', 'A18F5CAD-669A-4F1C-97D5-2F23FCD6A1CF', 'admin', '1', '2020-08-09 16:59:03', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3082', 'ECA401D9-642E-4F68-928F-88F90A5424AD', 'admin', '1', '2020-08-09 19:23:38', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3083', 'D9CB95CC-0089-448F-B69F-D951E4875389', 'admin', '1', '2020-08-09 19:27:04', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3084', 'DB13BC37-7697-4157-93B9-B240229539C5', 'admin', '1', '2020-08-09 21:08:03', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3085', 'D70095BE-3B13-4149-8DAE-87C59733B6EE', 'admin', '1', '2020-08-09 22:57:01', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3086', '4F14F28C-A474-49D6-A665-8F0646E8F047', 'admin', '1', '2020-08-09 23:30:45', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3087', 'C50FD17D-725C-4DC5-9191-64418B770FDA', 'admin', '1', '2020-08-09 23:32:23', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3088', '21FBE68A-401C-429E-8A18-961BF73E4B80', 'admin', '1', '2020-08-10 00:16:36', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3089', '7D6A7BC3-D670-4BC0-87E5-A2F79E2C83F5', 'admin', '1', '2020-08-10 00:29:53', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3090', 'AC1F001C-F393-44C0-AE72-DF1B25F2160D', 'admin', '1', '2020-08-10 00:34:59', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3091', 'E4A87904-EB29-401D-B3C6-81DBE64693B3', 'admin', '1', '2020-08-10 21:49:44', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3092', 'AD7E8236-3566-47B5-AC0F-10374A14867B', 'admin', '1', '2020-08-10 22:28:52', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3093', '4ABF1B18-79CD-4C34-B5DC-4822F74DC09E', 'admin', '1', '2020-08-10 22:45:34', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3094', '5938F278-2A81-4316-84E6-72E9FE9CB147', 'admin', '1', '2020-08-10 23:10:09', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3095', 'A75CF1F7-3907-4CF5-8758-6D3CD0895DB9', 'admin', '1', '2020-08-10 23:12:15', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3096', '0C5A2481-EB2C-447C-A79D-903A32A9CE59', 'admin', '1', '2020-08-10 23:22:36', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3097', 'FEC92A78-F6C6-41DC-BEE8-E06326C6F88C', 'admin', '1', '2020-08-10 23:25:15', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3098', '682AB1C8-F5B8-4BF3-9C6C-EE4E990A8476', 'admin', '1', '2020-08-10 23:51:36', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3099', '289E2522-79FF-458D-B7DC-8BD5E900ECA9', 'admin', '1', '2020-08-11 00:00:02', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3100', '7D699521-200E-4651-AA8A-706C4EF56B43', 'admin', '1', '2020-08-11 00:03:46', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3101', '9C1B6B9A-DC5E-49F1-8FFC-BAF1D70340F0', 'admin', '1', '2020-08-11 09:37:43', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3102', 'E5729E41-6C84-431F-8FDF-7CB07DBBEDF9', 'admin', '1', '2020-08-11 17:10:16', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3103', '0EBCD888-E064-413E-8C7D-3E84A004E251', 'admin', '1', '2020-08-11 17:24:57', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3104', 'C87535D1-D88D-4EED-921A-0C0CFBCF5FB9', 'admin', '1', '2020-08-11 17:44:44', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3105', '45DB406B-C0EC-48B9-BFF5-0EEEAD76DEC3', 'admin', '1', '2020-08-11 17:55:56', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3106', '2348153D-1696-4FD8-84E9-0EB6287F2D0B', 'admin', '1', '2020-08-11 18:22:02', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3107', '7DE2C98B-771A-4E51-BFB9-0DAE3DE87EC4', 'admin', '1', '2020-08-11 19:50:02', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3108', '0C5A38F5-1BBD-4E98-A099-24440CA23E80', 'admin', '1', '2020-08-11 19:55:00', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3109', '1B03866F-27D3-4C8F-923D-C337F498008D', 'admin', '1', '2020-08-11 20:05:41', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3110', '03E80032-DD54-4EFB-867A-5ACD85DEA9B1', 'admin', '1', '2020-08-11 20:19:48', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3111', '4DABD33D-AA12-4AAA-976F-1551B0936414', 'admin', '1', '2020-08-11 20:40:46', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3112', '28DBF4A0-7763-4CA7-8B42-4A68D87699F6', 'admin', '1', '2020-08-11 20:42:43', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3113', '4FCE67DD-7F1E-4C18-8874-8F4D4BB2AF11', 'admin', '1', '2020-08-11 20:46:03', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3114', '22EA6A9B-A2A1-465D-9D75-D938287B4524', 'admin', '1', '2020-08-11 20:50:44', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3115', 'DAFB062A-4C6B-4442-B81F-8D2CD7E7F54C', 'admin', '1', '2020-08-11 22:53:29', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3116', 'C657CE93-210F-447B-9F8F-015C85D7CC50', 'admin', '1', '2020-08-11 23:21:57', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3117', '14750143-F821-43BE-823B-59AC01D4E8E5', 'admin', '1', '2020-08-11 23:41:54', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3118', 'C2B46172-9A5D-400D-96ED-DA3E8BA4FE35', 'admin', '1', '2020-08-11 23:45:21', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3119', 'E78CAD82-FCFE-4BE3-83D0-1BDDEC05A6D8', 'admin', '1', '2020-08-12 06:47:47', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3120', '8221F18F-DCE9-4255-A32B-A98843E003E0', 'admin', '1', '2020-08-12 06:49:14', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3121', '514E15F5-B7AD-4906-A0C5-380AB7C70A20', 'admin', '1', '2020-08-12 07:43:18', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_log` VALUES ('3122', '99FB320F-A27F-45D3-AB33-076D1A8F6246', 'admin', '1', '2020-08-12 09:15:32', '127.0.0.1', '登陆成功', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 
 -- ----------------------------
 -- Table structure for sys_menu
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_menu`;
 CREATE TABLE `sys_menu` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `SYS_MENU_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL COMMENT '排序号',
+  `SORT_NO` int DEFAULT NULL COMMENT '排序号',
   `SYS_MENU_NAME` varchar(20) DEFAULT NULL COMMENT '菜单名称',
   `SYS_MENU_URL` varchar(200) DEFAULT NULL COMMENT '菜单地址,为空时为父级分类',
   `SYS_MENU_CODE` varchar(200) DEFAULT NULL COMMENT '菜单所属模块',
@@ -12980,7 +13507,7 @@ CREATE TABLE `sys_menu` (
   `ORG_ID` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE,
   KEY `ID` (`ID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=454 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=456 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sys_menu
@@ -13099,7 +13626,7 @@ INSERT INTO `sys_menu` VALUES ('185', '185', '3', '领料申请', '/app/core/pro
 INSERT INTO `sys_menu` VALUES ('187', '187', '21', '钉钉用户', '/app/core/dingdingset', 'dingding', '', '1', '369', 'url.png', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `sys_menu` VALUES ('208', '208', '9', '委托设置', '/app/core/bpm/setentrust', 'workflow', '', '1', '33', 'url.png', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `sys_menu` VALUES ('243', '243', '1', '测试', '/app/core/test', '', '', '1', '1', '', '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `sys_menu` VALUES ('244', '244', '12', '企业ERP', '', 'erp', '', '1', '0', 'menu-icon fa fa-cogs', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_menu` VALUES ('244', '244', '12', '成本核算', '', 'erp', '', '1', '0', 'menu-icon fa fa-cogs', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `sys_menu` VALUES ('245', '245', '2', '基础资料', '', 'erp', '', '1', '244', '', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `sys_menu` VALUES ('246', '246', '1', '物料分类', '/app/core/erp/cost/materielsort', 'erp', '', '1', '245', '', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `sys_menu` VALUES ('247', '247', '2', '产品分类', '/app/core/erp/cost/productsort', 'erp', '', '1', '245', '', '8EADB678-A646-1E51-3E87-75A547B8AF19');
@@ -13308,15 +13835,17 @@ INSERT INTO `sys_menu` VALUES ('450', '450', '1', '应用菜单', '/app/core/pla
 INSERT INTO `sys_menu` VALUES ('451', '451', '2', '应用权限', '/app/core/platform/apppriv', 'platform', '', '1', '449', '', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `sys_menu` VALUES ('452', '452', '3', '页面设计', '/app/core/platform/formdesign', 'platform', '', '1', '449', '', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `sys_menu` VALUES ('453', '453', '4', '业务规则', '/app/core/platform/buinessrule', 'platform', '', '1', '449', '', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_menu` VALUES ('454', '454', '99', '参数设置', '', 'platform', '', null, '449', '', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `sys_menu` VALUES ('455', '455', '1', '页面类型', '/app/core/platform/pagetypeset', 'platform', '', '1', '454', '', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 
 -- ----------------------------
 -- Table structure for sys_org_config
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_org_config`;
 CREATE TABLE `sys_org_config` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `CONFIG_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `ORG_ADMIN` varchar(50) DEFAULT NULL,
   `REMARK` text,
   `CREATE_TIME` varchar(20) DEFAULT NULL,
@@ -13335,9 +13864,9 @@ INSERT INTO `sys_org_config` VALUES ('7', null, null, 'admin', null, '2015-10-01
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_profile`;
 CREATE TABLE `sys_profile` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `PROFILE_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `TITLE` varchar(50) DEFAULT NULL,
   `URL` varchar(200) DEFAULT NULL,
   `USER_PRIV` text,
@@ -13366,9 +13895,9 @@ INSERT INTO `sys_profile` VALUES ('6', '32E3942F-6C0D-491B-A13A-723287E5B9DB', '
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_timing_task`;
 CREATE TABLE `sys_timing_task` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `TASK_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `TASK_NAME` varchar(20) DEFAULT NULL,
   `RULE` varchar(50) DEFAULT NULL,
   `METHOD` varchar(500) DEFAULT NULL COMMENT '执行方法名',
@@ -13392,7 +13921,7 @@ INSERT INTO `sys_timing_task` VALUES ('3', '123DA9DA-C645-48C8-AC12-4DE19915482A
 -- ----------------------------
 DROP TABLE IF EXISTS `task`;
 CREATE TABLE `task` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `TASK_ID` varchar(50) DEFAULT NULL,
   `TASK_NAME` varchar(255) DEFAULT NULL,
   `TASK_TYPE` varchar(10) DEFAULT NULL,
@@ -13427,13 +13956,13 @@ INSERT INTO `task` VALUES ('5', 'A24FAA52-0484-4095-B06E-116A0506A513', '城北�
 -- ----------------------------
 DROP TABLE IF EXISTS `task_gantt_data`;
 CREATE TABLE `task_gantt_data` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `TASK_DATA_ID` varchar(50) DEFAULT NULL,
   `TASK_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `TEXT` varchar(50) DEFAULT NULL,
   `START_DATE` varchar(20) DEFAULT NULL,
-  `DURATION` int(255) DEFAULT NULL,
+  `DURATION` int DEFAULT NULL,
   `PROGRESS` decimal(5,2) DEFAULT NULL,
   `OPEN` varchar(10) DEFAULT NULL,
   `PARENT` varchar(50) DEFAULT NULL,
@@ -13458,10 +13987,10 @@ INSERT INTO `task_gantt_data` VALUES ('8', 'BD3B165A-B252-40E6-90F9-31839FCFF8C0
 -- ----------------------------
 DROP TABLE IF EXISTS `task_gantt_link`;
 CREATE TABLE `task_gantt_link` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `TASK_LINK_ID` varchar(50) DEFAULT NULL,
   `TASK_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `SOURCE` varchar(50) DEFAULT NULL,
   `TARGET` varchar(50) DEFAULT NULL,
   `TYPE` varchar(2) DEFAULT NULL,
@@ -13483,7 +14012,7 @@ INSERT INTO `task_gantt_link` VALUES ('10', '166F4138-C993-46F4-B740-128FE7AB3B6
 -- ----------------------------
 DROP TABLE IF EXISTS `task_process`;
 CREATE TABLE `task_process` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `PROCESS_ID` varchar(50) DEFAULT NULL,
   `TASK_DATA_ID` varchar(50) DEFAULT NULL,
   `CONTENT` text,
@@ -13508,7 +14037,7 @@ INSERT INTO `task_process` VALUES ('7', 'B2C7B029-DF24-47C9-B04B-4CD6ABFAFC2D', 
 -- ----------------------------
 DROP TABLE IF EXISTS `unit`;
 CREATE TABLE `unit` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `ORG_NAME` varchar(40) DEFAULT NULL,
   `ORG_ADD` varchar(100) DEFAULT NULL,
   `ORG_TEL` varchar(20) DEFAULT NULL,
@@ -13537,9 +14066,9 @@ INSERT INTO `unit` VALUES ('2', '江苏稠云信息技术有限公司', '南京�
 -- ----------------------------
 DROP TABLE IF EXISTS `unit_dept`;
 CREATE TABLE `unit_dept` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '顺序号',
+  `ID` bigint NOT NULL AUTO_INCREMENT COMMENT '顺序号',
   `DEPT_ID` varchar(50) DEFAULT NULL COMMENT '部门id',
-  `SORT_NO` int(11) DEFAULT '0' COMMENT '部门排序号',
+  `SORT_NO` int DEFAULT '0' COMMENT '部门排序号',
   `DEPT_NAME` varchar(50) DEFAULT NULL COMMENT '部门名称',
   `ORG_LEAVE_ID` varchar(50) DEFAULT NULL COMMENT '父级id',
   `DEPT_TEL` varchar(20) DEFAULT NULL COMMENT '部门电话',
@@ -13552,7 +14081,7 @@ CREATE TABLE `unit_dept` (
   `ORG_ID` varchar(50) DEFAULT NULL COMMENT '组织机构id',
   PRIMARY KEY (`ID`),
   KEY `ID` (`ID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of unit_dept
@@ -13561,16 +14090,17 @@ INSERT INTO `unit_dept` VALUES ('1', '003EDE10-9E1D-78CF-E020-A4CD4F01F4F7', '99
 INSERT INTO `unit_dept` VALUES ('2', 'EE4CD6F7-5EB3-4A47-94C2-8E89715725ED', '3', '销售部', '0', '', '', '', null, '276344573', '7', '', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `unit_dept` VALUES ('3', 'BB789AAD-7AC3-4472-A436-1A01A0BA3AF2', '3', '技术部', '0', '', '', '', null, '275914656', '8', '', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `unit_dept` VALUES ('4', 'C2B29B6A-4E4C-4A96-AFF2-AFF339DC6AB3', '0', '总经理室', '0', '', '', '', null, '276472779', '4', '', '8EADB678-A646-1E51-3E87-75A547B8AF19');
-INSERT INTO `unit_dept` VALUES ('5', '21892982-43B1-4265-9335-909C2F678FB3', '1', '账务室', '4', '', '', '', null, '275612898', '5', '', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `unit_dept` VALUES ('5', '21892982-43B1-4265-9335-909C2F678FB3', '1', '账务室', 'C2B29B6A-4E4C-4A96-AFF2-AFF339DC6AB3', '', '', '', 'wutianyi', '275612898', '5', '', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `unit_dept` VALUES ('6', 'C1590EA5-82C7-49C6-8C3E-1B6F6358924F', '2', '行政人事部', '0', '', '', '', null, '305219613', '6', '', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `unit_dept` VALUES ('7', '1CA344D3-05C3-4880-B999-217482C526F1', '3', '市场部', '0', '', '', '', null, null, '2', '', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `unit_dept` VALUES ('8', '8ECD7D87-811A-474C-A8B3-26A413A32AB1', '6', '风险控制部', 'EE4CD6F7-5EB3-4A47-94C2-8E89715725ED', '', '', '', 'wutianyi', null, null, '', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 
 -- ----------------------------
 -- Table structure for user_friends
 -- ----------------------------
 DROP TABLE IF EXISTS `user_friends`;
 CREATE TABLE `user_friends` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `ACCOUNT_GU_ID` varchar(50) DEFAULT NULL,
   `ACCOUNT_ID` varchar(50) DEFAULT NULL,
   `FRIENDS_ACCOUNT_ID` varchar(50) DEFAULT NULL,
@@ -13588,7 +14118,7 @@ INSERT INTO `user_friends` VALUES ('1', '88f0cb56-2585-49e0-8445-fe95a2cf2aa4', 
 -- ----------------------------
 DROP TABLE IF EXISTS `user_group`;
 CREATE TABLE `user_group` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `GROUP_ID` varchar(50) DEFAULT NULL,
   `GROUP_TITLE` varchar(50) DEFAULT NULL,
   `GROUP_USERS` text,
@@ -13608,7 +14138,7 @@ INSERT INTO `user_group` VALUES ('1', '568F0DCA-A973-4543-845C-70BB166CDF2B', '�
 -- ----------------------------
 DROP TABLE IF EXISTS `user_group_friend`;
 CREATE TABLE `user_group_friend` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `FRIEND_ID` varchar(50) DEFAULT NULL,
   `GROUP_ID` varchar(50) DEFAULT NULL,
   `ACCOUNT_ID` varchar(50) DEFAULT NULL,
@@ -13627,9 +14157,9 @@ CREATE TABLE `user_group_friend` (
 -- ----------------------------
 DROP TABLE IF EXISTS `user_info`;
 CREATE TABLE `user_info` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `USER_INFO_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `ACCOUNT_ID` varchar(20) DEFAULT NULL COMMENT '账号',
   `PIN_YIN` varchar(30) DEFAULT NULL,
   `USER_NAME` varchar(20) DEFAULT NULL COMMENT '名字',
@@ -13660,22 +14190,22 @@ CREATE TABLE `user_info` (
 -- ----------------------------
 -- Records of user_info
 -- ----------------------------
-INSERT INTO `user_info` VALUES ('1', '81D14ED2-0ED7-0C59-8A00-779B68021835', '1', 'admin', 'admin', 'OA管理员', '003EDE10-9E1D-78CF-E020-A4CD4F01F4F7', '', '', '', '13814042966', '', '68311718@qq.com', '2012-12-30', null, '', '女', 'A3B37C84-99BF-3111-37BF-B0A6A0DDD79A', '小可爱', '62D07AA3-8085-4D4E-8260-92DE89C43153', '2', '1', '0519-8888888', '8EADB678-A646-1E51-3E87-75A547B8AF19', null);
-INSERT INTO `user_info` VALUES ('2', '840984EB-0537-454A-8F4B-344B0CE6F4A3', '1', 'luyunyun', 'luyunyun', '鲁云云', '1CA344D3-05C3-4880-B999-217482C526F1', 'admin', null, null, null, null, null, null, null, '', '女', 'A2D4DD87-D61B-972A-014F-959ADBF5E22D', null, 'undefined', null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19', null);
-INSERT INTO `user_info` VALUES ('3', '2AA28147-3093-4389-A54B-ED5F09D62FB9', '1', 'liushaoquan', 'liushaoquan', '刘绍全', 'BB789AAD-7AC3-4472-A436-1A01A0BA3AF2', null, null, null, null, null, null, null, null, '', '男', 'A2D4DD87-D61B-972A-014F-959ADBF5E22D', null, 'undefined', null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19', null);
-INSERT INTO `user_info` VALUES ('4', 'B671D804-1137-49AD-8808-E57D7A8B1CB7', '1', 'zhanghaiyang', 'zhanghaiyang', '张海洋', 'C2B29B6A-4E4C-4A96-AFF2-AFF339DC6AB3', null, null, null, null, null, null, null, null, '', '男', 'A3B37C84-99BF-3111-37BF-B0A6A0DDD79A', null, 'undefined', null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19', null);
-INSERT INTO `user_info` VALUES ('5', '58643A25-B74A-4ECB-A10A-710095779915', '1', 'wutianyi', 'wutianyi', '吴天一', '21892982-43B1-4265-9335-909C2F678FB3', null, null, null, null, null, null, null, null, '', '男', '', null, 'undefined', null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19', null);
-INSERT INTO `user_info` VALUES ('6', 'E89F041F-186B-4884-83B8-DA04B9E05F10', '1', 'zhangxiaofei', 'zhangxiaofei', '张小飞', 'EE4CD6F7-5EB3-4A47-94C2-8E89715725ED', null, null, null, null, null, null, null, null, '', '男', null, null, 'undefined', null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19', null);
-INSERT INTO `user_info` VALUES ('7', 'F2978592-9987-49F7-A8D1-93148AE327D9', '1', 'wangfang', 'wangfang', '王芳', 'C1590EA5-82C7-49C6-8C3E-1B6F6358924F', null, null, null, null, null, null, null, null, '', '女', null, null, 'undefined', null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19', null);
-INSERT INTO `user_info` VALUES ('8', '81E112F9-7DA7-4DCB-8705-551884CB9D4D', '1', 'tangguanghui', 'tangguanghui', '唐广辉', 'EE4CD6F7-5EB3-4A47-94C2-8E89715725ED', 'admin', null, null, null, null, null, null, null, '', '男', '51BE41B7-02B7-E46D-77EA-A63912F682CA', null, 'undefined', null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19', null);
-INSERT INTO `user_info` VALUES ('9', '0520E9D3-2234-46FB-AAB5-3B034F99E3AF', '2', 'liudong', 'liudong', '刘栋', 'BB789AAD-7AC3-4472-A436-1A01A0BA3AF2', 'admin', null, null, null, null, null, null, null, '', '男', '51BE41B7-02B7-E46D-77EA-A63912F682CA', null, 'undefined', null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19', null);
+INSERT INTO `user_info` VALUES ('1', '81D14ED2-0ED7-0C59-8A00-779B68021835', '1', 'admin', 'admin', 'OA管理员', '003EDE10-9E1D-78CF-E020-A4CD4F01F4F7', '', '', '', '13814042966', '', '68311718@qq.com', '2012-12-30', null, '', '男', 'A3B37C84-99BF-3111-37BF-B0A6A0DDD79A', '小可爱', '62D07AA3-8085-4D4E-8260-92DE89C43153', '2', '1', '0519-8888888', '8EADB678-A646-1E51-3E87-75A547B8AF19', null);
+INSERT INTO `user_info` VALUES ('2', '840984EB-0537-454A-8F4B-344B0CE6F4A3', '1', 'luyunyun', 'luyunyun', '鲁云云', '1CA344D3-05C3-4880-B999-217482C526F1', 'admin', null, null, '', null, null, null, null, '', '女', 'A2D4DD87-D61B-972A-014F-959ADBF5E22D', null, '62D07AA3-8085-4D4E-8260-92DE89C43153', null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19', null);
+INSERT INTO `user_info` VALUES ('3', '2AA28147-3093-4389-A54B-ED5F09D62FB9', '1', 'liushaoquan', 'liushaoquan', '刘绍全', 'BB789AAD-7AC3-4472-A436-1A01A0BA3AF2', 'admin', null, null, '', null, null, null, null, '', '男', 'A2D4DD87-D61B-972A-014F-959ADBF5E22D', null, '62D07AA3-8085-4D4E-8260-92DE89C43153', null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19', null);
+INSERT INTO `user_info` VALUES ('4', 'B671D804-1137-49AD-8808-E57D7A8B1CB7', '1', 'zhanghaiyang', 'zhanghaiyang', '张海洋', 'C2B29B6A-4E4C-4A96-AFF2-AFF339DC6AB3', null, null, null, '', null, null, null, null, '', '男', 'A3B37C84-99BF-3111-37BF-B0A6A0DDD79A', null, '62D07AA3-8085-4D4E-8260-92DE89C43153', null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19', null);
+INSERT INTO `user_info` VALUES ('5', '58643A25-B74A-4ECB-A10A-710095779915', '1', 'wutianyi', 'wutianyi', '吴天一', '21892982-43B1-4265-9335-909C2F678FB3', null, null, null, '', null, null, null, null, '', '男', 'A3B37C84-99BF-3111-37BF-B0A6A0DDD79A', null, '62D07AA3-8085-4D4E-8260-92DE89C43153', null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19', null);
+INSERT INTO `user_info` VALUES ('6', 'E89F041F-186B-4884-83B8-DA04B9E05F10', '1', 'zhangxiaofei', 'zhangxiaofei', '张小飞', 'EE4CD6F7-5EB3-4A47-94C2-8E89715725ED', null, null, null, '', null, null, null, null, '', '男', '90BD381A-CA7E-45C7-A9EA-29E2FCA958BB', null, '62D07AA3-8085-4D4E-8260-92DE89C43153', null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19', null);
+INSERT INTO `user_info` VALUES ('7', 'F2978592-9987-49F7-A8D1-93148AE327D9', '1', 'wangfang', 'wangfang', '王芳', 'C1590EA5-82C7-49C6-8C3E-1B6F6358924F', null, null, null, '', null, null, null, null, '', '女', null, null, '62D07AA3-8085-4D4E-8260-92DE89C43153', null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19', null);
+INSERT INTO `user_info` VALUES ('8', '81E112F9-7DA7-4DCB-8705-551884CB9D4D', '1', 'tangguanghui', 'tangguanghui', '唐广辉', 'EE4CD6F7-5EB3-4A47-94C2-8E89715725ED', 'admin', null, null, '', null, null, null, null, '', '男', '51BE41B7-02B7-E46D-77EA-A63912F682CA', null, '62D07AA3-8085-4D4E-8260-92DE89C43153', null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19', null);
+INSERT INTO `user_info` VALUES ('9', '0520E9D3-2234-46FB-AAB5-3B034F99E3AF', '2', 'liudong', 'liudong', '刘栋', 'BB789AAD-7AC3-4472-A436-1A01A0BA3AF2', 'admin', null, null, '', null, null, null, null, '', '男', '51BE41B7-02B7-E46D-77EA-A63912F682CA', null, '62D07AA3-8085-4D4E-8260-92DE89C43153', null, null, null, '8EADB678-A646-1E51-3E87-75A547B8AF19', null);
 
 -- ----------------------------
 -- Table structure for user_level
 -- ----------------------------
 DROP TABLE IF EXISTS `user_level`;
 CREATE TABLE `user_level` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `LEVEL_ID` varchar(50) DEFAULT NULL,
   `LEVEL_NAME` varchar(50) DEFAULT NULL,
   `LEVEL_NO_ID` varchar(50) DEFAULT NULL,
@@ -13701,9 +14231,9 @@ INSERT INTO `user_level` VALUES ('24', '90BD381A-CA7E-45C7-A9EA-29E2FCA958BB', '
 -- ----------------------------
 DROP TABLE IF EXISTS `user_priv`;
 CREATE TABLE `user_priv` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `USER_PRIV_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `USER_PRIV_NAME` varchar(50) DEFAULT NULL,
   `USER_PRIV_STR` text,
   `MOBILE_PRIV` text,
@@ -13711,7 +14241,7 @@ CREATE TABLE `user_priv` (
   `REMARK` text,
   `CREATE_TIME` varchar(20) DEFAULT NULL,
   `CREATE_USER` varchar(50) DEFAULT NULL,
-  `ORG_ID` varchar(50) CHARACTER SET gbk DEFAULT NULL,
+  `ORG_ID` varchar(50) CHARACTER SET gbk COLLATE gbk_chinese_ci DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE,
   KEY `ID` (`ID`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
@@ -13719,7 +14249,7 @@ CREATE TABLE `user_priv` (
 -- ----------------------------
 -- Records of user_priv
 -- ----------------------------
-INSERT INTO `user_priv` VALUES ('1', '96C0173D-8279-AABA-0749-A60CB47FEADE', '1', 'OA 管理员', '1,2,3,4,5,6,10,408,8,9,7,11,413,414,415,417,418,416,419,420,422,423,426,448,441,447,421,425,428,432,427,440,424,442,433,33,34,35,36,37,38,39,431,208,40,41,42,43,360,409,430,110,335,364,434,435,436,437,443,446,444,445,46,47,48,49,50,51,52,53,54,55,336,98,100,101,111,103,104,112,99,102,56,57,58,59,61,62,60,63,384,385,386,391,390,389,388,387,395,396,397,406,407,398,399,400,401,410,411,412,24,25,27,88,26,28,90,12,13,14,17,18,19,20,105,106,107,108,109,113,306,365,307,366,308,337,338,343,344,345,346,347,348,349,351,352,376,353,354,355,356,350,357,358,359,392,377,382,383,378,380,381,379,393,394,405,402,403,404,339,340,341,342,362,375,69,70,71,72,73,75,76,368,77,78,74,86,372,81,82,361,371,367,374,89,79,333,369,44,80,127,187,370,438,439,92', 'C3C4578A-003F-4B8F-9304-46481AFEAB91,C3C4578A-003F-4B8F-9304-46481AFEAB90,C3C4578A-003F-4B8F-9304-46481AFEAB93,5AA29A48-D543-4F2C-BAB9-1934BAC2558E,5AA29A48-D543-4F2C-BAB9-1934BAC2558F,ECE3D5C5-0A50-4961-BD2E-CF6A9621E83D,ECE3D5C5-0A50-4961-BD2E-CF6A9621E83A,31CC4A75-2331-4A33-AF03-84CAA3ADFBE1,595A3D00-3EF4-45F9-AD95-DC55BDD984D9,F09D9BFC-A72F-4A5C-8D3D-F904CB059F5C,044750A8-43A2-4179-AC09-912B04C7D10A,EDAFFBAE-17A9-4130-A7DF-920A4BE4E544', null, '软件的最高权限用户组', '2020-04-23 12:00:00', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
+INSERT INTO `user_priv` VALUES ('1', '96C0173D-8279-AABA-0749-A60CB47FEADE', '1', 'OA 管理员', '1,2,3,4,5,6,10,408,8,9,7,11,413,414,415,417,418,416,419,420,422,423,426,448,441,447,421,425,428,432,427,440,424,442,433,33,34,35,36,37,38,39,431,208,40,41,42,43,360,409,430,110,335,364,434,435,436,437,443,446,444,445,46,47,48,49,50,51,52,53,54,55,336,98,100,101,111,103,104,112,99,102,56,57,58,59,61,62,60,63,384,385,386,391,390,389,388,387,395,396,397,406,407,398,399,400,401,410,411,412,449,450,451,452,453,454,455,24,25,27,88,26,28,90,21,22,23,84,85,321,322,323,324,12,13,14,17,18,19,20,105,106,107,108,109,113,306,365,307,366,308,83,29,30,31,32,363,259,262,264,260,261,263,373,337,338,343,344,345,346,347,348,349,351,352,376,353,354,355,356,350,357,358,359,392,377,382,383,378,380,381,379,393,394,405,402,403,404,339,340,341,342,362,375,64,266,65,66,297,267,286,287,288,289,290,268,68,265,270,291,292,293,294,295,296,269,271,272,273,67,285,244,253,254,255,256,245,246,247,248,252,257,258,249,251,250,429,180,312,311,185,182,184,326,181,183,330,331,332,313,314,315,316,317,318,319,302,303,304,310,309,298,299,300,320,325,301,305,327,328,329,274,275,279,280,281,282,283,284,276,277,278,69,70,71,72,73,75,76,368,77,78,74,86,372,81,82,361,371,367,374,89,79,333,369,44,80,127,187,370,438,439,92', 'C3C4578A-003F-4B8F-9304-46481AFEAB91,C3C4578A-003F-4B8F-9304-46481AFEAB90,C3C4578A-003F-4B8F-9304-46481AFEAB93,5AA29A48-D543-4F2C-BAB9-1934BAC2558E,5AA29A48-D543-4F2C-BAB9-1934BAC2558F,ECE3D5C5-0A50-4961-BD2E-CF6A9621E83D,ECE3D5C5-0A50-4961-BD2E-CF6A9621E83A,31CC4A75-2331-4A33-AF03-84CAA3ADFBE1,595A3D00-3EF4-45F9-AD95-DC55BDD984D9,F09D9BFC-A72F-4A5C-8D3D-F904CB059F5C,044750A8-43A2-4179-AC09-912B04C7D10A,EDAFFBAE-17A9-4130-A7DF-920A4BE4E544', null, '软件的最高权限用户组', '2020-04-23 12:00:00', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 INSERT INTO `user_priv` VALUES ('2', '7C7F45A1-CF32-4C6E-EFA8-3CA181CCDF38', '2', '职员', '1,2,3,4,5,6,10,408,8,9,7,11,413,414,415,417,418,416,419,420,422,423,426,448,441,447,33,34,35,36,37,38,39,431,46,49,50,98,101,111,56,57,384,386,395,397,398,399,410,412,24,25,88,28,105,107,109,306,365,244,253,254,255,256,245,246,247,248,252,257,258,249,251,250', '31CC4A75-2331-4A33-AF03-84CAA3ADFBE1,F09D9BFC-A72F-4A5C-8D3D-F904CB059F5C,C3C4578A-003F-4B8F-9304-46481AFEAB90,C3C4578A-003F-4B8F-9304-46481AFEAB91,EDAFFBAE-17A9-4130-A7DF-920A4BE4E544,ECE3D5C5-0A50-4961-BD2E-CF6A9621E83D,5AA29A48-D543-4F2C-BAB9-1934BAC2558E,044750A8-43A2-4179-AC09-912B04C7D10A', null, '普通正常用户', '2020-04-23 12:00:00', 'admin', '8EADB678-A646-1E51-3E87-75A547B8AF19');
 
 -- ----------------------------
@@ -13727,7 +14257,7 @@ INSERT INTO `user_priv` VALUES ('2', '7C7F45A1-CF32-4C6E-EFA8-3CA181CCDF38', '2'
 -- ----------------------------
 DROP TABLE IF EXISTS `vehicle_apply`;
 CREATE TABLE `vehicle_apply` (
-  `ID` bigint(11) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `APPLY_ID` varchar(50) DEFAULT NULL,
   `TYPE` varchar(2) DEFAULT NULL COMMENT '车辆类型',
   `USED_USER` varchar(50) DEFAULT NULL COMMENT '用车人',
@@ -13761,15 +14291,15 @@ INSERT INTO `vehicle_apply` VALUES ('1', 'B484E0DA-B231-42B8-84D3-1349AE72F2B1',
 -- ----------------------------
 DROP TABLE IF EXISTS `vehicle_info`;
 CREATE TABLE `vehicle_info` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
+  `SORT_NO` int DEFAULT NULL,
   `VEHICLE_ID` varchar(50) DEFAULT NULL,
   `VEHICLE_NUMBER` varchar(10) DEFAULT NULL COMMENT '车牌号',
   `BRAND` varchar(50) DEFAULT NULL COMMENT '品牌',
   `MODEL` varchar(50) DEFAULT NULL COMMENT '型号',
   `DISPLACEMENT` decimal(10,2) DEFAULT NULL COMMENT '排量',
   `COLOR` varchar(10) DEFAULT NULL COMMENT '颜色',
-  `SEATS` int(11) DEFAULT NULL COMMENT '座位数',
+  `SEATS` int DEFAULT NULL COMMENT '座位数',
   `FRAME_NO` varchar(50) DEFAULT NULL,
   `CERTIFICATION` varchar(50) DEFAULT NULL COMMENT '登记证书号',
   `ENGINE_NO` varchar(50) DEFAULT NULL COMMENT '发动机号',
@@ -13810,11 +14340,11 @@ INSERT INTO `vehicle_info` VALUES ('2', '2', '7F28EC3B-BB13-43F8-9C45-1196AD1F4A
 -- ----------------------------
 DROP TABLE IF EXISTS `vehicle_oil_card`;
 CREATE TABLE `vehicle_oil_card` (
-  `ID` bigint(255) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `CARD_ID` varchar(50) DEFAULT NULL,
   `CARD_CODE` varchar(50) DEFAULT NULL COMMENT '油卡编号',
   `CARD_NO` varchar(50) DEFAULT NULL COMMENT '油卡卡号',
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `PASS_WORD` varchar(255) DEFAULT NULL COMMENT '油卡密码',
   `OIL_TYPE` varchar(255) DEFAULT NULL,
   `OIL_COMP` varchar(100) DEFAULT NULL COMMENT '发卡公司',
@@ -13840,7 +14370,7 @@ INSERT INTO `vehicle_oil_card` VALUES ('2', '454ADC86-8606-4F62-A13E-BE80EF8F319
 -- ----------------------------
 DROP TABLE IF EXISTS `vehicle_operator`;
 CREATE TABLE `vehicle_operator` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `CONFIG_ID` varchar(50) DEFAULT NULL,
   `OPT_USER` varchar(255) DEFAULT NULL,
   `CREATE_USER` varchar(50) DEFAULT NULL,
@@ -13859,7 +14389,7 @@ INSERT INTO `vehicle_operator` VALUES ('1', '4F914E2F-29BC-44C6-BAAC-C6E5741F905
 -- ----------------------------
 DROP TABLE IF EXISTS `vehicle_repair_record`;
 CREATE TABLE `vehicle_repair_record` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `RECORD_ID` varchar(50) DEFAULT NULL,
   `VEHICLE_ID` varchar(50) DEFAULT NULL COMMENT '车牌号',
   `REPAIR_TIME` varchar(20) DEFAULT NULL COMMENT '维护日期',
@@ -13886,9 +14416,9 @@ INSERT INTO `vehicle_repair_record` VALUES ('1', 'E623A719-C67A-4D58-8E2D-106279
 -- ----------------------------
 DROP TABLE IF EXISTS `work_plan`;
 CREATE TABLE `work_plan` (
-  `ID` bigint(11) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `PLAN_ID` varchar(50) DEFAULT NULL,
-  `SORT_NO` int(11) DEFAULT NULL,
+  `SORT_NO` int DEFAULT NULL,
   `TITLE` varchar(200) DEFAULT NULL COMMENT '计划标题',
   `PLAN_TYPE` varchar(50) DEFAULT NULL,
   `USER_PRIV` text COMMENT '分享权限',
@@ -13920,7 +14450,7 @@ INSERT INTO `work_plan` VALUES ('2', '7814B2B9-69EC-4BE1-81A2-EC3EBD87ECC8', '1'
 -- ----------------------------
 DROP TABLE IF EXISTS `work_plan_process`;
 CREATE TABLE `work_plan_process` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `PROCESS_ID` varchar(50) DEFAULT NULL,
   `PLAN_ID` varchar(50) DEFAULT NULL COMMENT '计划ID',
   `REMARK` text COMMENT '处理反馈意见',
@@ -13941,7 +14471,7 @@ INSERT INTO `work_plan_process` VALUES ('1', '28040623-78BF-4B5B-9316-8686FD3821
 -- ----------------------------
 DROP TABLE IF EXISTS `wx_config`;
 CREATE TABLE `wx_config` (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
   `CONFIG_ID` varchar(50) DEFAULT NULL,
   `WX_CORP_ID` varchar(255) DEFAULT NULL,
   `WX_AGENT_ID` varchar(255) DEFAULT NULL,
@@ -13964,7 +14494,8 @@ INSERT INTO `wx_config` VALUES ('2', 'C61806D0-9863-4329-8D7E-AA90AFB5E82F', 'wx
 -- ----------------------------
 DROP FUNCTION IF EXISTS `FUN_INTE_ARRAY`;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` FUNCTION `FUN_INTE_ARRAY`(setA TEXT,setB TEXT) RETURNS int(1)
+CREATE DEFINER=`root`@`localhost` FUNCTION `FUN_INTE_ARRAY`(`setA` text,`setB` text) RETURNS int
+    DETERMINISTIC
 BEGIN  
     DECLARE idx INT DEFAULT 0 ; -- B 集合单元索引   
     DECLARE len INT DEFAULT 0;-- B 集合表达式长度  
