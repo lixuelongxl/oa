@@ -2,12 +2,16 @@ package com.core136.config;
 
 import java.util.Properties;
 
+import javax.sql.DataSource;
+
 import org.beetl.ext.spring.BeetlGroupUtilConfiguration;
 import org.beetl.ext.spring.BeetlSpringViewResolver;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
@@ -73,10 +77,39 @@ public class AppConfig implements WebMvcConfigurer{
 	   public BeetlSpringViewResolver getBeetlSpringViewResolver(BeetlGroupUtilConfiguration beetlConfig) {
 	       BeetlSpringViewResolver beetlSpringViewResolver = new BeetlSpringViewResolver();
 	       beetlSpringViewResolver.setConfig(beetlConfig);
-	       beetlSpringViewResolver.setContentType("textml;charset=UTF-8");
+	       //beetlSpringViewResolver.setContentType("textml;charset=UTF-8");
 	       beetlSpringViewResolver.setSuffix(".html");
 	       return beetlSpringViewResolver;
 	   }
+	 
+	 /**
+		 * 
+		 * @Title: generalTM
+		 * @author:刘绍全
+		 * @Description: Durid 数据源事务管理定义
+		 * @param:  dataSource
+		 * @param: @return
+		 * @return: PlatformTransactionManager
+		 * 
+		 */
+		@Bean(name = "generalTM") // 给事务管理器命名
+		public PlatformTransactionManager generalTM(DataSource dataSource) {
+			return new DataSourceTransactionManager(dataSource);
+		}
+
+		/**
+		 * 一般事务只管在两个表或两个表以前更新时需要 在@Service类的方法上添加 @Transactional(value="事务名") 例如：
+		 * 
+		 * @Transactional(value="generalTM") 
+		 * @Override public Integer
+		 * addWorkFlowType(WorkFlowType workFlowType)
+		 * {
+		 * return workFlowTypeMapper.addWorkFlowType(workFlowType);
+		 *  }
+		 * 
+		 * 
+		 * 
+		 */
 	 
 	 /**
 		 * 添加PageOffice的服务器端授权程序Servlet（必须）

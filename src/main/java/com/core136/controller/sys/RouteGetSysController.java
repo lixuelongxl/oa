@@ -630,7 +630,7 @@ public RetDataBean getMySysLogList(
 		{
 			Account account=accountService.getRedisAccount(request);
 			codeClass.setOrgId(account.getOrgId());
-			return RetDataTools.Ok("请求成功！",codeClassService.selectOne(codeClass));
+			return RetDataTools.Ok("请求成功！",codeClassService.selectOneCodeClass(codeClass));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
 		}

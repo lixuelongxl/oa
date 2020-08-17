@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.core136.bean.account.Account;
 import com.core136.bean.account.UserInfo;
 import com.core136.bean.file.Knowledge;
+import com.core136.bean.file.KnowledgeLearn;
 import com.core136.bean.file.KnowledgeSearch;
 import com.core136.bean.file.KnowledgeSort;
 import com.core136.bean.sys.PageParam;
@@ -42,6 +43,75 @@ public class RoutGetKnowledgeController {
 	@Autowired
 	private AccountService accountService;
 	
+	/**
+	 * 
+	 * @Title: getLearnCount   
+	 * @Description: TODO 获取知识的学习次数
+	 * @param request
+	 * @param knowledgeLearn
+	 * @return
+	 * RetDataBean    
+	 * @throws
+	 */
+	@RequestMapping(value="/getLearnCount",method=RequestMethod.POST)
+	public RetDataBean getLearnCount(HttpServletRequest request,KnowledgeLearn knowledgeLearn)
+	{
+		try
+		{
+			Account account=accountService.getRedisAccount(request);
+			knowledgeLearn.setOrgId(account.getOrgId());
+			return  RetDataTools.Ok("请求数据成功!",knowledgeLearnService.getLearnCount(knowledgeLearn));
+		}catch (Exception e) {
+			return RetDataTools.Error(e.getMessage());
+		}
+	}
+	
+	
+	/**
+	 * 
+	 * @Title: getAllKnowledgeList   
+	 * @Description: TODO 获取所有知识列表
+	 * @param request
+	 * @param pageParam
+	 * @param beginTime
+	 * @param endTime
+	 * @param sortId
+	 * @return
+	 * RetDataBean    
+	 * @throws
+	 */
+	@RequestMapping(value="/getAllKnowledgeList",method=RequestMethod.POST)
+	public RetDataBean getAllKnowledgeList(
+			HttpServletRequest request,
+			PageParam pageParam,
+			String beginTime,
+			String endTime,
+			String sortId
+			)
+	{
+		try
+		{
+			if(StringUtils.isBlank(pageParam.getSort()))
+			{
+				pageParam.setSort("K.SORT_NO");
+			}else
+			{
+				pageParam.setSort(StrTools.upperCharToUnderLine(pageParam.getSort()));
+			}
+			if(StringUtils.isBlank(pageParam.getSortOrder()))
+			{
+				pageParam.setSortOrder("asc");
+			}
+			
+		Account account=accountService.getRedisAccount(request);
+		pageParam.setOrgId(account.getOrgId());
+		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
+		PageInfo<Map<String, String>> pageInfo=knowledgeService.getAllKnowledgeList(pageParam, beginTime, endTime,sortId);
+		return RetDataTools.Ok("请求数据成功!", pageInfo);
+		}catch (Exception e) {
+			return RetDataTools.Error(e.getMessage());
+		}
+	}
 	/**
 	 * 
 	 * @Title: getAllKnowledgeSortMap   

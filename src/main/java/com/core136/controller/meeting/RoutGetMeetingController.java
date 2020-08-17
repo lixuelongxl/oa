@@ -251,12 +251,12 @@ public class RoutGetMeetingController {
 	 * @throws
 	 */
 	@RequestMapping(value="/getCanUseMeetingRoomList",method=RequestMethod.POST)
-	public RetDataBean getCanUseMeetingRoomList(HttpServletRequest request)
+	public RetDataBean getCanUseMeetingRoomList(HttpServletRequest request,String search)
 	{
 		try
 		{
 			UserInfo userInfo = accountService.getRedisUserInfo(request);
-			return RetDataTools.Ok("请求成功!", meetingRoomService.getCanUseMeetingRoomList(userInfo.getOrgId(),userInfo.getDeptId()));
+			return RetDataTools.Ok("请求成功!", meetingRoomService.getCanUseMeetingRoomList(userInfo.getOrgId(),userInfo.getDeptId(),search));
 		}catch (Exception e) {
 			// TODO: handle exception
 			return RetDataTools.Error(e.getMessage());

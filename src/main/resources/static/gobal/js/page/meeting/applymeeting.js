@@ -17,6 +17,9 @@ $(function(){
     $(".js-addday").unbind("click").click(function(){
     	addDay()
     });
+    $(".glyphicon-search").unbind("click").click(function(){
+    	getCanUseMeetingRoomList();
+    });
     createTimeLine();
     getCanUseMeetingRoomList();
     $(".js-applymeeting").unbind("clikc").click(function(){
@@ -178,8 +181,10 @@ function getCanUseMeetingRoomList()
 		type : "post",
 		dataType : "json",
 		async : false,
+		data:{search:$("#meetingroomsearch").val()},
 		success : function(data) {
 			if (data.status == "200") {
+				$("#filedlist").empty();
 				var html="";
 				var mhtml="";
 				for(var i=0;i<data.list.length;i++)

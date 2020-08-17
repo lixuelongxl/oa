@@ -12,6 +12,7 @@ import com.core136.bean.account.Account;
 import com.core136.bean.file.Knowledge;
 import com.core136.bean.file.KnowledgeLearn;
 import com.core136.bean.file.KnowledgeSort;
+import com.core136.bean.fixedassets.FixedAssetsRepair;
 import com.core136.service.account.AccountService;
 import com.core136.service.file.KnowledgeLearnService;
 import com.core136.service.file.KnowledgeSearchService;
@@ -195,6 +196,34 @@ public class RoutSetKnowledgeController {
 		}
 	}
 	
+	/**
+	 * 
+	 * @Title: updateKnowledge   
+	 * @Description: TODO 更新知识
+	 * @param request
+	 * @param knowledge
+	 * @return
+	 * RetDataBean    
+	 * @throws
+	 */
+	@RequestMapping(value="/updateKnowledge",method=RequestMethod.POST)
+	public RetDataBean updateKnowledge(HttpServletRequest request,Knowledge knowledge)
+	{
+		try
+		{
+			if(StringUtils.isBlank(knowledge.getKnowledgeId()))
+			{
+				return RetDataTools.NotOk("请求参数有问题,请检查!");
+			}
+			Account account=accountService.getRedisAccount(request);
+			Example example = new Example(Knowledge.class);
+			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("knowledgeId",knowledge.getKnowledgeId());
+			return RetDataTools.Ok("更新成功!",knowledgeService.updateKnowledge(example, knowledge));
+		}catch (Exception e) {
+			// TODO: handle exception
+			return RetDataTools.Error(e.getMessage());
+		}
+	}
 	
 	/**
 	 * 

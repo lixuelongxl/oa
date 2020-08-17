@@ -92,8 +92,8 @@ public class MeetingRoomService {
 	 * @return: List<Map<String,String>>      
 	 * @throws
 	 */
-	public List<Map<String, String>> getCanUseMeetingRoomList(String orgId,String deptId)
+	public List<Map<String, String>> getCanUseMeetingRoomList(String orgId,String deptId,String search)
 	{
-		return meetingRoomMapper.getCanUseMeetingRoomList(orgId, deptId);
+		return meetingRoomMapper.getCanUseMeetingRoomList(orgId, deptId,"%"+search+"%");
 	}
 }

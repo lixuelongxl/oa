@@ -73,7 +73,7 @@ function getAllKnowledgeSortMap()
                                         "<div class=\"widget-body bordered-left bordered-blue\">";
 					for(var j=0;j<record[i].childSort.length;j++)
 					{
-						html+= "<a class=\"btn btn-link\" data-value=\""+record[i].childSort[j].sortId+"\">"+record[i].childSort[j].sortName+"</a>";
+						html+= "<a class=\"btn btn-link js-gosort\" data-value=\""+record[i].childSort[j].sortId+"\">"+record[i].childSort[j].sortName+"</a>";
 					}
                          html+="</div>"+
                                     "</div>"+
@@ -81,6 +81,9 @@ function getAllKnowledgeSortMap()
                          
                     $("#knowledgeSortMap").append(html);
 				}
+				$(".js-gosort").unbind("click").click(function(){
+					 window.open("/app/core/file/knowledgestudylist?sortId="+$(this).attr("data-value"));
+				})
 			}else if(data.status=="100")
 			{
 				top.layer.msg(data.msg);

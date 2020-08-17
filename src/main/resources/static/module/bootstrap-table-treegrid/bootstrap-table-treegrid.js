@@ -20,8 +20,9 @@
         },
         onCheckRoot: function (row, data) {
             var that = this;
-            var v=parseInt(that.options.parentIdField);
-            return !row[v];
+            if(row.pid=="0")
+            return true;
+            return !row[that.options.parentIdField];
         }
     });
 

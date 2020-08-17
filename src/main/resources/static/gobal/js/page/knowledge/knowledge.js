@@ -78,9 +78,6 @@ function addKnowledge()
 		data:{
 			title:$("#title").val(),
 			sortNo:$("#sortNo").val(),
-			userPriv:$("#userPriv").attr("data-value"),
-			deptPriv:$("#deptPriv").attr("data-value"),
-			leavePriv:$("#leavePriv").attr("data-value"),
 			content:$("#content").code(),
 			sortId:$("#sortId").attr("data-value"),
 			keywords:$("#keywords").val(),

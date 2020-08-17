@@ -1,44 +1,7 @@
-var zTree;
-var setting = {
-	async : {
-		enable : true,// 设置 zTree 是否开启异步加载模式
-		url : "/ret/knowledgeget/getknowledgeSortTree",// Ajax 获取数据的 URL 地址
-		autoParam : [ "sortId" ],// 异步加载时需要自动提交父节点属性的参数
-	},
-	callback : {
-		onClick : zTreeOnClick
-	},
-	data : {
-		simpleData : {
-			enable : true,
-			idKey : "sortId",
-			pIdKey : "sortLeave",
-			rootPId : "0"
-		},
-		key : {
-			name : "sortName"
-		}
-	}
-};
-
-
 $(function() {
-	$.ajax({
-		url : "/ret/knowledgeget/getknowledgeSortTree",
-		type : "post",
-		dataType : "json",
-		success : function(data) {
-			zTree = $.fn.zTree.init($("#tree"), setting, data);// 初始化树节点时，添加同步获取的数据
-		}
-	});
-	query("");
+	query();
 });
-function zTreeOnClick(event, treeId, treeNode) {
-	$("#myTable").bootstrapTable('destroy');
-	query(treeNode.sortId);
-}
-
-function query(sortId)
+function query()
 {
 	 $("#myTable").bootstrapTable({
 	      url: '/ret/knowledgeget/getKnowledgeStudyList?sortId='+sortId,
@@ -56,8 +19,8 @@ function query(sortId)
 	      showPaginationSwitch: true,//是否显示 数据条数选择框
 	      sortable: true,//排序
 	      search: true,//启用搜索
-	      showColumns: false,//是否显示 内容列下拉框
-	      showRefresh: false,//显示刷新按钮
+	      showColumns: true,//是否显示 内容列下拉框
+	      showRefresh: true,//显示刷新按钮
 	      idField: 'knowledgeId',//key值栏位
 	      clickToSelect: false,//点击选中checkbox
 	      pageList : [10, 20, 30, 50],//可选择单页记录数

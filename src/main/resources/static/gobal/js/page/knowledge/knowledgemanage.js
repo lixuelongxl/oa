@@ -134,7 +134,7 @@ function query()
 			       title: '版本'
 			   },
 			   {
-			       field: 'leaveStar',
+			       field: 'levelStar',
 			       width:'50px',
 			       title: '星级'
 			   },
@@ -201,13 +201,10 @@ return temp;
 function createOptBtn(knowledgeId)
 {
 	var html = "<a href=\"javascript:void(0);details('" + knowledgeId + "')\" class=\"btn btn-primary btn-xs\">详情</a>&nbsp;&nbsp;"
-	+ "<a href=\"javascript:void(0);edit('" + knowledgeId + "')\" class=\"btn btn-success btn-xs\">编辑</a>&nbsp;&nbsp;"
+	+ "<a href=\"/app/core/file/knowledgecreate?view=edit&knowledgeId=" + knowledgeId + "\" class=\"btn btn-success btn-xs\">编辑</a>&nbsp;&nbsp;"
 	+ "<a href=\"javascript:void(0);deleteknowledge('" + knowledgeId + "')\" class=\"btn btn-darkorange btn-xs\" >删除</a>";
 return html;
 return html;
-}
-
-function edit(knowledgeId){
 }
 
 function deleteknowledge(knowledgeId)

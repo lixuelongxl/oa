@@ -17,6 +17,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.core136.bean.meeting.MeetingRoom;
+import com.fasterxml.jackson.annotation.JacksonInject.Value;
+
 import org.core136.common.dbutils.MyMapper;
 
 /**
@@ -48,5 +50,5 @@ public interface MeetingRoomMapper extends MyMapper<MeetingRoom>{
 	 * @return: List<Map<String,String>>      
 	 * @throws
 	 */
-	public List<Map<String, String>>getCanUseMeetingRoomList(@Param(value="orgId") String orgId,@Param(value="deptId") String deptId);
+	public List<Map<String, String>>getCanUseMeetingRoomList(@Param(value="orgId") String orgId,@Param(value="deptId") String deptId,@Param(value="search")String search);
 }

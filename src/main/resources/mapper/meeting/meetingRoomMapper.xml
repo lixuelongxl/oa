@@ -36,7 +36,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	(
 		DEPT_PRIV ='@all' OR FUN_INTE_ARRAY(DEPT_PRIV,#{deptId}) > 0
 	)
-	
+	<if test="search !='%%' and search !=''.toString() and search!=null">
+			AND NAME LIKE #{search}
+	</if>
 </select>
 
 </mapper>

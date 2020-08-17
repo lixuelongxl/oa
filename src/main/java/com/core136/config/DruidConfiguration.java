@@ -35,10 +35,10 @@ public class DruidConfiguration {
 	 * @return: ServletRegistrationBean      
 
 	 */
-	@Value("${spring.durid.user}")
+	@Value("${spring.datasource.druid.username}")
 	private String user;
 	
-	@Value("${spring.durid.passwd}")
+	@Value("${spring.datasource.druid.password}")
 	private String passwd;
 	
 	@Value("${spring.durid.allowip}")
@@ -77,35 +77,35 @@ public class DruidConfiguration {
 	 private String password;
 	 @Value("${spring.datasource.driver-class-name}")
 	 private String driverClassName;
-	 @Value("${spring.datasource.initialSize}")
+	 @Value("${spring.datasource.druid.initial-size}")
 	 private int initialSize;
-	 @Value("${spring.datasource.minIdle}")
+	 @Value("${spring.datasource.druid.min-idle}")
 	 private int minIdle;
-	 @Value("${spring.datasource.maxActive}")
+	 @Value("${spring.datasource.druid.max-active}")
 	 private int maxActive;
-	 @Value("${spring.datasource.maxWait}")
+	 @Value("${spring.datasource.druid.max-wait}")
 	 private int maxWait;
-	 @Value("${spring.datasource.timeBetweenEvictionRunsMillis}")
+	 @Value("${spring.datasource.druid.time-between-eviction-runs-millis}")
 	 private int timeBetweenEvictionRunsMillis;
-	 @Value("${spring.datasource.minEvictableIdleTimeMillis}")
+	 @Value("${spring.datasource.druid.min-evictable-idle-time-millis}")
 	 private int minEvictableIdleTimeMillis;
-	 @Value("${spring.datasource.validationQuery}")
+	 @Value("${spring.datasource.druid.validation-query}")
 	 private String validationQuery;
-	 @Value("${spring.datasource.testWhileIdle}")
+	 @Value("${spring.datasource.druid.test-while-idle}")
 	 private boolean testWhileIdle;
-	 @Value("${spring.datasource.testOnBorrow}")
+	 @Value("${spring.datasource.druid.test-on-borrow}")
 	 private boolean testOnBorrow;
-	 @Value("${spring.datasource.testOnReturn}")
+	 @Value("${spring.datasource.druid.test-on-return}")
 	 private boolean testOnReturn;
-	 @Value("${spring.datasource.poolPreparedStatements}")
+	 @Value("${spring.datasource.druid.pool-prepared-statements}")
 	 private boolean poolPreparedStatements;
-	 @Value("${spring.datasource.maxPoolPreparedStatementPerConnectionSize}")
+	 @Value("${spring.datasource.druid.max-pool-prepared-statement-per-connection-size}")
 	 private int maxPoolPreparedStatementPerConnectionSize;
-	 @Value("${spring.datasource.filters}")
+	 @Value("${spring.datasource.druid.filters}")
 	 private String filters;
-	 @Value("${spring.datasource.connectionProperties}")
+	 @Value("${spring.datasource.druid.connection-properties}")
 	 private String connectionProperties;
-	 @Value("${spring.datasource.useGlobalDataSourceStat}")
+	 @Value("${spring.datasource.druid.use-global-data-source-stat}")
 	 private boolean useGlobalDataSourceStat;
 
 	 @Bean     //声明其为Bean实例

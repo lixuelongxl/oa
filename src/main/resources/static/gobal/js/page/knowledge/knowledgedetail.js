@@ -34,6 +34,7 @@ $(function(){
 				}
 		}
 	});
+	$("#onclickCount").html(getLearnCount()+"次");
 	setTimeout(function(){
 		addKnowledgeLearn();
 		},1000*30);
@@ -80,6 +81,35 @@ function getSortName(sortId)
 			if(data.status=="200")
 			{
 				returnStr=data.list.sortName;
+			}else if(data.status=="100")
+			{
+				top.layer.msg(data.msg);
+			}else if(data.status=="500")
+			{
+				console.log(data.msg);
+			}
+		}
+		});
+	
+	return returnStr;
+}
+
+
+function getLearnCount()
+{
+	var returnStr="";
+	$.ajax({
+		url : "/ret/knowledgeget/getLearnCount",
+		type : "post",
+		dataType : "json",
+		async : false,
+		data : {
+			knowledgeId : knowledgeId
+		},
+		success : function(data) {
+			if(data.status=="200")
+			{
+				returnStr=data.list;
 			}else if(data.status=="100")
 			{
 				top.layer.msg(data.msg);

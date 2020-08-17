@@ -29,7 +29,27 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/app/core")
 public class KnowledgePageController {
-	
+	/**
+	 * 
+	 * @Title: goKnowledgestudylist   
+	 * @Description: TODO 跳转到知识分类清单
+	 * @return
+	 * ModelAndView    
+	 * @throws
+	 */
+	@RequestMapping("/file/knowledgestudylist")
+	public ModelAndView  goKnowledgestudylist()
+	{
+		try
+		{
+		ModelAndView mv = new ModelAndView("app/core/knowledge/knowledgestudylist");
+		return mv;
+		}catch (Exception e) {
+		// TODO: handle exception
+		ModelAndView mv = new ModelAndView("titps");
+		return mv;
+	}
+	}	
 	/**
 	 * 
 	 * @Title: goDetailKnowledge   
@@ -144,15 +164,27 @@ public class KnowledgePageController {
 	 * @throws
 	 */
 	@RequestMapping("/file/knowledgeinit")
-	public ModelAndView  goKnowledgeManage()
+	public ModelAndView  goKnowledgeManage(String view)
 	{
+		ModelAndView mv =null;
 		try
 		{
-		ModelAndView mv = new ModelAndView("app/core/knowledge/knowledgeinit");
+			if(StringUtils.isBlank(view))
+			{
+				mv = new ModelAndView("app/core/knowledge/knowledgeinit");
+			}else
+			{
+				if(view.equals("init"))
+				{
+					mv = new ModelAndView("app/core/knowledge/knowledgeintegral");
+				}else if(view.equals("total"))
+				{
+					mv = new ModelAndView("app/core/knowledge/knowledgetotal");
+				}
+			}
 		return mv;
 		}catch (Exception e) {
-		// TODO: handle exception
-		ModelAndView mv = new ModelAndView("titps");
+		mv = new ModelAndView("titps");
 		return mv;
 	}
 	}
@@ -179,6 +211,9 @@ public class KnowledgePageController {
 				if(view.equals("manage"))
 				{
 					mv = new ModelAndView("app/core/knowledge/knowledgemanage");	
+				}else if(view.equals("edit"))
+				{
+					mv = new ModelAndView("app/core/knowledge/knowledgeedit");	
 				}
 			}
 		return mv;
