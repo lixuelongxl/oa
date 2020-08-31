@@ -16,8 +16,8 @@
 
 1.  mvn install lib/目录中的jar 文件拷贝到D盘根目录下，
 		mvn install:install-file -DgroupId=com.zhuozhengsoft -DartifactId=pageoffice -Dversion=4.6.0.4 -Dpackaging=jar -Dfile=d:/pageoffice4.6.0.4.jar  
-		mvn install:install-file -DgroupId=com.oracle -DartifactId=ojdbc8 -Dversion=12.2.0.1 -Dpackaging=jar -Dfile=D:\ojdbc8.jar 
-		mvn install:install-file -DgroupId=dm -DartifactId=dm.jdbc.driver -Dversion=1.8.0 -Dpackaging=jar -Dfile=D:\DmJdbcDriver18.jar 
+		mvn install:install-file -DgroupId=com.oracle -DartifactId=ojdbc8 -Dversion=12.2.0.1 -Dpackaging=jar -Dfile=D:\ojdbc8.jar  
+		mvn install:install-file -DgroupId=dm -DartifactId=dm.jdbc.driver -Dversion=1.8.0 -Dpackaging=jar -Dfile=D:\DmJdbcDriver18.jar  
 		mvn install:install-file -DgroupId=com.dingtalk.open -DartifactId=taobao-sdk-java-auto -Dversion=1479188381469-20200218 -Dpackaging=jar -Dfile=D:\taobao-sdk-java-auto_1479188381469-20200218.jar  
 		mvn install:install-file -DgroupId=cyunsoft.common -DartifactId=cyunsoft-common -Dversion=0.0.1-SNAPSHOT -Dpackaging=jar -Dfile=d:/cyunsoft-common-0.0.1-SNAPSHOT.jar  
 		mvn install:install-file -DgroupId=cyunsoft.bean -DartifactId=cyunsoft-bean -Dversion=0.0.1-SNAPSHOT -Dpackaging=jar -Dfile=d:/cyunsoft-bean-0.0.1-SNAPSHOT.jar  
