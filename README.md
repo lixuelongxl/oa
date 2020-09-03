@@ -13,7 +13,7 @@
 
 #### 国产化
 系统已全面支持国产化，中标麒麟操作系统+openJdk8x64bit+达梦8数据库+东方通tongWeb中间件。若项目需要可联系我们索取相关源代码。
-国产化war包下载地址：http://www.cyunsoft.com/BOOT.war
+国产化war包下载地址：http://www.cyunsoft.com/ROOT.war
 ![image](http://www.cyunsoft.com/gc.jpg)
 
 #### 安装教程
