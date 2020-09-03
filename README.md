@@ -12,7 +12,7 @@
 安装版测试下载地址：http://www.cyunsoft.com/cyunsoft_oa_v2.1_20200814_setup.exe
 
 #### 国产化
-系统已全面支持国产化，中标麒麟操作系统+openJdk8x64bit+达梦8数据库+东方通tongWeb中间件。苦项目需要可联系我们索取相关源代码。
+系统已全面支持国产化，中标麒麟操作系统+openJdk8x64bit+达梦8数据库+东方通tongWeb中间件。若项目需要可联系我们索取相关源代码。
 国产化war包下载地址：http://www.cyunsoft.com/BOOT.war
 ![image](http://www.cyunsoft.com/gc.jpg)
 
