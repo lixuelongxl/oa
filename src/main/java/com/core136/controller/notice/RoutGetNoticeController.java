@@ -63,7 +63,7 @@ public class RoutGetNoticeController {
 	 * @param: request
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMyNoticeListForDesk",method=RequestMethod.POST)
 	public RetDataBean getMyNoticeListForDesk(HttpServletRequest request)
@@ -89,7 +89,7 @@ public class RoutGetNoticeController {
 	 * @param: orgId
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value = "/getMobileNoticeInfo", method = RequestMethod.POST)
 	public RetDataBean getMobileNoticeInfo(HttpServletRequest request, Notice notice) {

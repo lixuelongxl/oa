@@ -24,7 +24,7 @@ public interface TaskProcessMapper extends MyMapper<TaskProcess>{
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 	public List<Map<String, String>>getMyTaskProcessList(
 			@Param(value="orgId")String orgId,
@@ -43,7 +43,7 @@ public interface TaskProcessMapper extends MyMapper<TaskProcess>{
  * @param processId
  * @return
  * Map<String,String>    
- * @throws
+
  */
 public Map<String, String>getProcessInfo(@Param(value="orgId")String orgId,@Param(value="processId")String processId,String accountId);
 }

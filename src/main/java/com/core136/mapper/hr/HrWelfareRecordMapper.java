@@ -24,7 +24,7 @@ public interface HrWelfareRecordMapper extends MyMapper<HrWelfareRecord>{
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getHrWelfareRecordList(@Param(value="orgId")String orgId,@Param(value="beginTime")String beginTime,
 															@Param(value="endTime")String endTime,@Param(value="type")String type,

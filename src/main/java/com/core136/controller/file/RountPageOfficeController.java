@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.core136.bean.account.Account;
 import com.core136.bean.account.UserInfo;
 import com.core136.bean.file.Attach;
 import com.core136.bean.file.NetDisk;
@@ -114,7 +113,7 @@ public ModelAndView openppt(HttpServletRequest request,Attach attach,String open
 	 * @param: map
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/openpdf", method=RequestMethod.GET)
 	public ModelAndView openPdf(HttpServletRequest request,Attach attach,String openModeType, Map<String,Object> map,NetDisk netDisk,String path){
@@ -187,7 +186,7 @@ public ModelAndView openppt(HttpServletRequest request,Attach attach,String open
 	 * @param: map
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/openexcel", method=RequestMethod.GET)
 	public ModelAndView openExcel(HttpServletRequest request,Attach attach,String openModeType, Map<String,Object> map,NetDisk netDisk,String path){
@@ -247,7 +246,7 @@ public ModelAndView openppt(HttpServletRequest request,Attach attach,String open
 	 * @param: map
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/taohongword", method=RequestMethod.GET)
 	public ModelAndView taohongword(HttpServletRequest request,Attach attach,String openModeType,String runId,String mb, Map<String,Object> map){
@@ -337,7 +336,7 @@ public ModelAndView openppt(HttpServletRequest request,Attach attach,String open
  * @param: map
  * @param: @return      
  * @return: ModelAndView      
- * @throws
+
  */
 	@RequestMapping(value="/openword", method=RequestMethod.GET)
 	public ModelAndView openWord(HttpServletRequest request,Attach attach,String openModeType, Map<String,Object> map,NetDisk netDisk,String path){
@@ -393,7 +392,7 @@ public ModelAndView openppt(HttpServletRequest request,Attach attach,String open
 	 * @param: request
 	 * @param: response      
 	 * @return: void      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/wordsave", method=RequestMethod.POST)
 	public void wordSaveFile(HttpServletRequest request, HttpServletResponse response){
@@ -423,7 +422,7 @@ public ModelAndView openppt(HttpServletRequest request,Attach attach,String open
  * @param: request
  * @param: response      
  * @return: void      
- * @throws
+
  */
 	@RequestMapping(value="/excelsave", method=RequestMethod.POST)
 	public void excelSaveFile(HttpServletRequest request, HttpServletResponse response){
@@ -448,7 +447,7 @@ public ModelAndView openppt(HttpServletRequest request,Attach attach,String open
 	 * @param: request
 	 * @param: response      
 	 * @return: void      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/pptsave", method=RequestMethod.POST)
 	public void pptSaveFile(HttpServletRequest request, HttpServletResponse response){

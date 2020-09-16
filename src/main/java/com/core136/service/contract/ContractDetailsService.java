@@ -76,7 +76,7 @@ public List<Map<String, Object>> getContractDetailsList(String orgId, String con
  * @param: contractId
  * @param: @return      
  * @return: PageInfo<Map<String,Object>>      
- * @throws
+
  */
 public PageInfo<Map<String, Object>> getContractDetailsList(PageParam pageParam,String contractId) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());

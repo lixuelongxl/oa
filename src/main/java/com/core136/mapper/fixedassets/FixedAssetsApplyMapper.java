@@ -39,7 +39,7 @@ public interface FixedAssetsApplyMapper extends MyMapper<FixedAssetsApply>{
 	 * @param: opFlag
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getFixedAssetsApplyList(
 			@Param(value="orgId")String orgId,
@@ -59,7 +59,7 @@ public interface FixedAssetsApplyMapper extends MyMapper<FixedAssetsApply>{
 	 * @param: applyId
 	 * @param: @return      
 	 * @return:Map<String,String>     
-	 * @throws
+
 	 */
 	public Map<String, String>getApplyAndApproveInfo(@Param(value="orgId")String orgId,@Param(value="applyId") String applyId);
 		

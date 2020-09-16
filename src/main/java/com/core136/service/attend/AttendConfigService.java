@@ -65,7 +65,7 @@ public List<AttendConfig> getAllConfig(AttendConfig attendConfig)
  * @param: orgId
  * @param: @return      
  * @return: List<AttendConfig>      
- * @throws
+
  */
 public List<AttendConfig> getConfigList(String orgId)
 {
@@ -89,7 +89,7 @@ public PageInfo<AttendConfig> getAttendConfigList(PageParam pageParam,AttendConf
  * @param: orgId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>> getAllAttendConfigList(String orgId)
 {
@@ -102,7 +102,7 @@ public List<Map<String, String>> getAllAttendConfigList(String orgId)
  * @param: orgId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>> getMyAttendConfigList(String orgId)
 {

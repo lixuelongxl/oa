@@ -67,7 +67,7 @@ public class RoutSetOfficesuppliesController {
 	 * @param: officeSuppliesGrant
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertOfficeSuppliesGrant",method=RequestMethod.POST)
 	public RetDataBean insertOfficeSuppliesGrant(HttpServletRequest request,OfficeSuppliesGrant officeSuppliesGrant)
@@ -104,7 +104,7 @@ public class RoutSetOfficesuppliesController {
 	 * @param: officeSuppliesApproval
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertOfficeSuppliesApproval",method=RequestMethod.POST)
 	public RetDataBean insertOfficeSuppliesApproval(HttpServletRequest request,OfficeSuppliesApproval officeSuppliesApproval)
@@ -129,7 +129,7 @@ public class RoutSetOfficesuppliesController {
 	 * @param: officeSuppliesApproval
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteOfficeSuppliesApproval",method=RequestMethod.POST)
 	public RetDataBean deleteOfficeSuppliesApproval(HttpServletRequest request,OfficeSuppliesApproval officeSuppliesApproval)
@@ -156,7 +156,7 @@ public class RoutSetOfficesuppliesController {
 	 * @param: officeSuppliesApproval
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateofficeSuppliesApproval",method=RequestMethod.POST)
 	public RetDataBean updateofficeSuppliesApproval(HttpServletRequest request,OfficeSuppliesApproval officeSuppliesApproval)
@@ -184,7 +184,7 @@ public class RoutSetOfficesuppliesController {
 	 * @param: officeSuppliesApply
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertOfficeSuppliesApply",method=RequestMethod.POST)
 	public RetDataBean insertOfficeSuppliesApply(HttpServletRequest request,OfficeSuppliesApply officeSuppliesApply)
@@ -210,7 +210,7 @@ public class RoutSetOfficesuppliesController {
 	 * @param: officeSuppliesApply
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteOfficeSuppliesApply",method=RequestMethod.POST)
 	public RetDataBean deleteOfficeSuppliesApply(HttpServletRequest request,OfficeSuppliesApply officeSuppliesApply)
@@ -237,7 +237,7 @@ public class RoutSetOfficesuppliesController {
 	 * @param: officeSuppliesApply
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateOfficeSuppliesApply",method=RequestMethod.POST)
 	public RetDataBean updateOfficeSuppliesApply(HttpServletRequest request,OfficeSuppliesApply officeSuppliesApply)
@@ -266,7 +266,7 @@ public class RoutSetOfficesuppliesController {
 	 * @param: officeSuppliesUnit
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertOfficeSuppliesUnit",method=RequestMethod.POST)
 	public RetDataBean insertOfficeSuppliesUnit(HttpServletRequest request,OfficeSuppliesUnit officeSuppliesUnit)
@@ -381,7 +381,7 @@ public class RoutSetOfficesuppliesController {
 	 * @param: officeSupplies
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertOfficeSupplies",method=RequestMethod.POST)
 	public RetDataBean insertOfficeSupplies(HttpServletRequest request,OfficeSupplies officeSupplies)
@@ -407,7 +407,7 @@ public class RoutSetOfficesuppliesController {
 	 * @param: officeSupplies
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteOfficeSupplies",method=RequestMethod.POST)
 	public RetDataBean deleteOfficeSupplies(HttpServletRequest request,OfficeSupplies officeSupplies)
@@ -434,7 +434,7 @@ public class RoutSetOfficesuppliesController {
 	 * @param: officeSupplies
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateOfficeSupplies",method=RequestMethod.POST)
 	public RetDataBean updateOfficeSupplies(HttpServletRequest request,OfficeSupplies officeSupplies)

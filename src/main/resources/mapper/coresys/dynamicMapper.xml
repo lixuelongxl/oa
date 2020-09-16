@@ -4,7 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core136.mapper.im.DynamicMapper">
 <resultMap id="Dynamic" type="com.core136.bean.im.Dynamic" >
-    <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="DYNAMIC_ID" property="dynamicId" jdbcType="VARCHAR" />
     <result column="ACCOUNT_ID" property="accountId" jdbcType="VARCHAR" />
     <result column="ATTACH" property="attach" jdbcType="VARCHAR" />
@@ -14,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   </resultMap>
 
 <select id="getAllDynamicList" resultType="java.util.HashMap">
-SELECT D.ID AS id,D.DYNAMIC_ID AS dynamicId,D.ACCOUNT_ID AS accountId,D.ATTACH AS attach,D.CONTENT AS content,D.CREATE_TIME AS createTime,D.ORG_ID AS orgId
+SELECT D.ID AS id,D.DYNAMIC_ID AS dynamicId,D.ACCOUNT_ID AS accountId,D.ATTACH AS "attach",D.CONTENT AS content,D.CREATE_TIME AS createTime,D.ORG_ID AS orgId
 FROM DYNAMIC D
 WHERE D.ORG_ID = #{orgId}
 <if test="list!=null">

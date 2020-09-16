@@ -52,7 +52,7 @@ public class HrRecruitNeedsService {
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getHrRecruitNeedsList(String orgId,String accountId,String occupation,String highsetShool,String status,String beginTime,String endTime,String search)
 	{
@@ -70,7 +70,7 @@ public class HrRecruitNeedsService {
 	 * @param endTime
 	 * @return
 	 * PageInfo<Map<String,String>>    
-	 * @throws
+
 	 */
 	public PageInfo<Map<String, String>> getHrRecruitNeedsList(PageParam pageParam,String occupation,String highsetShool,String status,String beginTime,String endTime) 
 	{
@@ -93,7 +93,7 @@ public class HrRecruitNeedsService {
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getApprovedHrRecruitNeedsList(String orgId,String accountId,String occupation,String highsetShool,String beginTime,String endTime,String search)
 			{
@@ -110,7 +110,7 @@ public class HrRecruitNeedsService {
 	 * @param endTime
 	 * @return
 	 * PageInfo<Map<String,String>>    
-	 * @throws
+
 	 */
 	public PageInfo<Map<String, String>> getApprovedHrRecruitNeedsList(PageParam pageParam,String occupation,String highsetShool,String beginTime,String endTime) 
 	{
@@ -133,7 +133,7 @@ public class HrRecruitNeedsService {
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getOldApprovedHrRecruitNeedsList(String orgId,String accountId,String status,String occupation,String highsetShool,String beginTime,String endTime,String search)
 	{
@@ -152,7 +152,7 @@ public class HrRecruitNeedsService {
 	 * @param endTime
 	 * @return
 	 * PageInfo<Map<String,String>>    
-	 * @throws
+
 	 */
 	public PageInfo<Map<String, String>> getOldApprovedHrRecruitNeedsList(PageParam pageParam,String status,String occupation,String highsetShool,String beginTime,String endTime) 
 	{

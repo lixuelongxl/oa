@@ -4,7 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core136.mapper.fixedassets.FixedAssetsRepairMapper">
 <resultMap id="FixedAssetsRepair" type="com.core136.bean.fixedassets.FixedAssetsRepair" >
-    <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="REPAIR_ID" property="repairId" jdbcType="VARCHAR" />
     <result column="ASSETS_ID" property="assetsId" jdbcType="INTEGER" />
     <result column="PROBLEM_DESCRIPTION" property="problemDescription" jdbcType="VARCHAR" />

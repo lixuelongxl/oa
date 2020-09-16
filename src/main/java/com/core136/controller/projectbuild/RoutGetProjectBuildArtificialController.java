@@ -38,7 +38,7 @@ public class RoutGetProjectBuildArtificialController {
 	 * @param: sortId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getProjectBuildArtificialSortTree",method=RequestMethod.POST)
 	public List<Map<String,String>> getProjectBuildArtificialSortTree(HttpServletRequest request,String sortId)
@@ -65,7 +65,7 @@ public class RoutGetProjectBuildArtificialController {
 	 * @param: projectBuildArtificialSort
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getProjectArtificialSortById",method=RequestMethod.POST)
 	public RetDataBean getProjectArtificialSortById(HttpServletRequest request,ProjectBuildArtificialSort projectBuildArtificialSort)

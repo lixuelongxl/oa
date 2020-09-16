@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<title>${session.SOFT_NAME }_智能办公系统</title>
+<meta name="description" content="Dashboard" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<%include("../../resapi/style.html"){}%>
+<link rel="stylesheet" href="/module/zTree_v3/css/bootstrapStyle/bootstrapStyle.css" type="text/css">
+<link href="/module/jeDate/jedate.css" rel="stylesheet" />
+<style type="text/css">
+.table>tbody>tr>td {
+	vertical-align: middle;
+}
+</style>
+</head>
+<body style="overflow-y: auto;">
+	<div class="page-body" style="padding: 0px">
+		<div class="page-container">
+				<div class="col-md-offset-2 col-md-8 col-sm-12 col-xs-12" style="padding: 0px">
+					<div class="widget-header bordered-bottom bordered-blue">
+						<span class="widget-caption">办公用品详情</span>
+					</div>
+					<div class="widget-body">
+					<form class="form-horizontal form-bordered" id="form">
+						<div class="form-group">
+							<label class="col-sm-1 control-label no-padding-right">排序号：</label>
+							<div class="col-sm-2" id="sortNo" style="line-height: 34px"></div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label no-padding-right">办公用品名称：</label>
+							<div class="col-sm-5" id="suppliesName" style="line-height: 34px"></div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label no-padding-right">办公用品编号：</label>
+							<div class="col-sm-5" id="suppliesCode" style="line-height: 34px"></div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label no-padding-right">所属分类：</label>
+							<div class="col-sm-5" style="position: relative; line-height: 34px" id="sortId"></div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label no-padding-right">产品品牌：</label>
+							<div class="col-sm-5" id="brand" style="line-height: 34px"></div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label no-padding-right">规格型号：</label>
+							<div class="col-sm-5" id="model" style="line-height: 34px"></div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label no-padding-right">计量单位：</label>
+							<div class="col-sm-3" id="unit" style="line-height: 34px"></div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label no-padding-right">物品数量：</label>
+							<div class="col-sm-3" id="quantity" style="line-height: 34px"></div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label no-padding-right">可领用部门：</label>
+							<div class="col-sm-5" id="ownDept"></div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label no-padding-right">备注：</label>
+							<div class="col-sm-5" id="remark" style="line-height: 34px"></div>
+						</div>
+						<div class="form-group" align="center">
+								<a id="createbut" href="javascript:void(0);window.close();" class="btn btn-primary">关&nbsp;&nbsp;闭</a>
+						</div>
+					</form>
+				</div>
+				</div>
+			</div>
+		</div>
+</body>
+<%include("../../resapi/sysjs.html"){}%>
+<script type="text/javascript">
+	var suppliesId = "${parameter.suppliesId}";
+</script>
+<script type="text/javascript" src="/module/fileupload/pageoffice.js" id="po_js_main"></script>
+<script type="text/javascript" src="/module/fileupload/ajaxfileupload.js"></script>
+<script type="text/javascript" src="/module/fileupload/fileupload.js"></script>
+<script type="text/javascript" src="/gobal/js/page/officesuplies/officesuppliesdetails.js"></script>
+</html>

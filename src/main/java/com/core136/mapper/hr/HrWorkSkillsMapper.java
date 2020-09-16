@@ -24,7 +24,7 @@ public interface HrWorkSkillsMapper extends MyMapper<HrWorkSkills>{
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getHrWorkSkillsList(@Param(value="orgId")String orgId,
 			@Param(value="userId")String userId,

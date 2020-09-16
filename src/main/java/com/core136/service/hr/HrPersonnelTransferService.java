@@ -50,7 +50,7 @@ public HrPersonnelTransfer selectOneHrPersonnelTransfer(HrPersonnelTransfer hrPe
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getHrPersonnelTransferList(String orgId,String userId,String beginTime,String endTime,String transferType,String search)
 {
@@ -65,7 +65,7 @@ public List<Map<String, String>>getHrPersonnelTransferList(String orgId,String u
  * @param accountId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getMyHrPersonnelTransferList(String orgId,String accountId)
 {
@@ -79,7 +79,7 @@ public List<Map<String, String>>getMyHrPersonnelTransferList(String orgId,String
  * @param pageParam
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getMyHrPersonnelTransferList(PageParam pageParam) 
 {
@@ -100,7 +100,7 @@ public PageInfo<Map<String, String>> getMyHrPersonnelTransferList(PageParam page
  * @param transferType
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getHrPersonnelTransferList(PageParam pageParam,String userId,String beginTime,String endTime,String transferType) 
 {

@@ -218,7 +218,7 @@ public RetDataBean sendWebMail(Account account,String to,String subject,String c
 
 public List<Map<String, Object>> getMyCrmLinkManAllList(String orgId, String keepUser, String search) {
 	// TODO Auto-generated method stub
-	return crmLinkManMapper.getMyCrmLinkManAllList(orgId, keepUser, search);
+	return crmLinkManMapper.getMyCrmLinkManAllList(orgId, keepUser, "%"+search+"%");
 }
 
 /**
@@ -236,7 +236,7 @@ public List<Map<String, Object>> getMyCrmLinkManAllList(String orgId, String kee
  */
 public PageInfo<Map<String, Object>> getMyCrmLinkManAllList(int pageNumber,int pageSize,String orderBy,String orgId,String keepUser, String search) {
 	PageHelper.startPage(pageNumber, pageSize,orderBy);
-	List<Map<String,Object>> datalist= crmLinkManMapper.getMyCrmLinkManAllList(orgId, keepUser,search);
+	List<Map<String,Object>> datalist= getMyCrmLinkManAllList(orgId, keepUser,search);
 	PageInfo<Map<String, Object>> pageInfo = new PageInfo<Map<String,Object>>(datalist);
 	return pageInfo;
 }

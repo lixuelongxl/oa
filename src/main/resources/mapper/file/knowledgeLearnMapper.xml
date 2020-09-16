@@ -4,7 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core136.mapper.file.KnowledgeLearnMapper">
 <resultMap id="KnowledgeLearn" type="com.core136.bean.file.KnowledgeLearn" >
-    <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="LEARN_ID" property="learnId" jdbcType="VARCHAR" />
     <result column="SORT_NO" property="sortNo" jdbcType="INTEGER" />
     <result column="TYPE" property="type" jdbcType="VARCHAR" />
@@ -17,13 +16,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   </resultMap>
 
 <select id="getKnowledgeLearnList" resultType="java.util.HashMap">
-SELECT L.LEARN_ID AS learnId,L.KNOWLEDGE_ID AS knowledgeId,K.TITLE AS title,
-L.CREATE_USER AS createUser,L.CREATE_TIME AS createTime,
+SELECT L.LEARN_ID AS learnId,L.KNOWLEDGE_ID AS knowledgeId,K.TITLE AS title,K.LEVEL_STAR AS levelStar,
+L.CREATE_USER AS createUser,L.CREATE_TIME AS createTime,K.CREATE_TIME AS fileCreateTime,
+(SELECT S.SORT_NAME FROM KNOWLEDGE_SORT S WHERE S.ORG_ID=#{orgId} AND K.SORT_ID=S.SORT_ID) AS sortName,
+(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=#{orgId} AND U.ACCOUNT_ID=K.CREATE_USER) AS fileCreateName,
 (SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=#{orgId} AND U.ACCOUNT_ID=L.CREATE_USER) AS createUserName
 FROM KNOWLEDGE_LEARN L,KNOWLEDGE K
 WHERE 
 L.ORG_ID=#{orgId}
-<if test="opFlag!='1'.toString()">
+<if test="accountId !=''.toString() and accountId!=null">
 AND L.CREATE_USER=#{accountId}
 </if>
 <if test="search !='%%' and search !=''.toString() and search!=null">

@@ -47,11 +47,28 @@ private BiSortMapper biSortMapper;
 	}
 
 	/**
-	 * 获取BI分类树结构
+	 * 
+	 * @Title: getBiSortTree   
+	 * @Description: TODO 获取BI分类树结构
+	 * @param levelId
+	 * @param orgId
+	 * @return
+	 * List<Map<String,Object>>
 	 */
-	
 	public List<Map<String, Object>> getBiSortTree(String levelId, String orgId) {
-		// TODO Auto-generated method stub
 		return biSortMapper.getBiSortTree(levelId, orgId);
+	}
+	
+	/**
+	 * 
+	 * @Title: getBiSortTreeForParent   
+	 * @Description: TODO 获取BI分类树结构
+	 * @param levelId
+	 * @param orgId
+	 * @return
+	 * List<Map<String,Object>>
+	 */
+	public List<Map<String, Object>> getBiSortTreeForParent(String levelId, String orgId) {
+		return biSortMapper.getBiSortTreeForParent(levelId, orgId);
 	}
 }

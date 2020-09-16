@@ -21,7 +21,7 @@ public interface ArchivesDestroyRecordMapper extends MyMapper<ArchivesDestroyRec
  * @param endTime
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 	public List<Map<String, String>>getArchivesDestoryFileList(
 			@Param(value="orgId")String orgId,
@@ -40,7 +40,7 @@ public interface ArchivesDestroyRecordMapper extends MyMapper<ArchivesDestroyRec
  * @param endTime
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 	public List<Map<String, String>>getArchivesDestoryVolumeList(
 			@Param(value="orgId")String orgId,

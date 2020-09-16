@@ -47,7 +47,7 @@ public ProjectBuildContract selectOneProjectBuildContract(ProjectBuildContract p
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,String>> getcontractlist(String orgId,String sortId,String search){
 	return projectBuildContractMapper.getcontractlist(orgId, sortId, "%"+search+"%");
@@ -70,7 +70,7 @@ public PageInfo<Map<String, String>> getcontractlist(PageParam pageParam,String 
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>querycontractlist(String orgId,String beginTime,String endTime,String signUser,String type,String search)
 {
@@ -87,7 +87,7 @@ public List<Map<String, String>>querycontractlist(String orgId,String beginTime,
  * @param: signUser
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> querycontractlist(PageParam pageParam,String beginTime,String endTime,String signUser,String type) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());

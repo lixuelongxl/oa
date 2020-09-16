@@ -58,7 +58,7 @@ private AccountService accountService;
  * @param createUer
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getArchivesDestoryVolumeList",method=RequestMethod.POST)
 public RetDataBean getArchivesDestoryVolumeList(HttpServletRequest request,PageParam pageParam,String beginTime,String endTime,String createUer)
@@ -96,7 +96,7 @@ public RetDataBean getArchivesDestoryVolumeList(HttpServletRequest request,PageP
  * @param createUer
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getArchivesDestoryFileList",method=RequestMethod.POST)
 public RetDataBean getArchivesDestoryFileList(HttpServletRequest request,PageParam pageParam,String beginTime,String endTime,String createUer)
@@ -132,7 +132,7 @@ public RetDataBean getArchivesDestoryFileList(HttpServletRequest request,PagePar
  * @param archivesFile
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getApprovalVolumeFile",method=RequestMethod.POST)
 public RetDataBean getApprovalVolumeFile(HttpServletRequest request,ArchivesBorrowVolume archivesBorrowVolume,ArchivesFile archivesFile)
@@ -158,7 +158,7 @@ public RetDataBean getApprovalVolumeFile(HttpServletRequest request,ArchivesBorr
  * @param volumeId
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getBorrowArchivesFileList",method=RequestMethod.POST)
 public RetDataBean getBorrowArchivesFileList(HttpServletRequest request,PageParam pageParam,String volumeId)
@@ -190,7 +190,7 @@ public RetDataBean getBorrowArchivesFileList(HttpServletRequest request,PagePara
  * @param archivesBorrowFile
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getApprovalFile",method=RequestMethod.POST)
 public RetDataBean getApprovalFile(HttpServletRequest request,ArchivesBorrowFile archivesBorrowFile)
@@ -214,7 +214,7 @@ public RetDataBean getApprovalFile(HttpServletRequest request,ArchivesBorrowFile
  * @param pageParam
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getArchivesBorrowVolumeApprovalList",method=RequestMethod.POST)
 public RetDataBean getArchivesBorrowVolumeApprovalList(HttpServletRequest request,PageParam pageParam)
@@ -249,7 +249,7 @@ public RetDataBean getArchivesBorrowVolumeApprovalList(HttpServletRequest reques
  * @param pageParam
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getArchivesBorrowFileApprovalList",method=RequestMethod.POST)
 public RetDataBean getArchivesBorrowFileApprovalList(HttpServletRequest request,PageParam pageParam)
@@ -288,7 +288,7 @@ public RetDataBean getArchivesBorrowFileApprovalList(HttpServletRequest request,
  * @param secretLevel
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getArchivesFileQueryList",method=RequestMethod.POST)
 public RetDataBean getArchivesFileQueryList(HttpServletRequest request,PageParam pageParam,String repositoryId,String volumeId,String fileType,String secretLevel)
@@ -323,7 +323,7 @@ public RetDataBean getArchivesFileQueryList(HttpServletRequest request,PageParam
  * @param approvalStatus
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getArchivesBorrowVolumeList",method=RequestMethod.POST)
 public RetDataBean getArchivesBorrowVolumeList(HttpServletRequest request,PageParam pageParam,String approvalStatus)
@@ -358,7 +358,7 @@ public RetDataBean getArchivesBorrowVolumeList(HttpServletRequest request,PagePa
  * @param archivesBorrowVolume
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getArchivesBorrowVolumeById",method=RequestMethod.POST)
 public RetDataBean getArchivesBorrowVolumeById(HttpServletRequest request,ArchivesBorrowVolume archivesBorrowVolume)
@@ -382,7 +382,7 @@ public RetDataBean getArchivesBorrowVolumeById(HttpServletRequest request,Archiv
  * @param approvalStatus
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getArchivesBorrowFileList",method=RequestMethod.POST)
 public RetDataBean getArchivesBorrowFileList(HttpServletRequest request,PageParam pageParam,String approvalStatus)
@@ -417,7 +417,7 @@ public RetDataBean getArchivesBorrowFileList(HttpServletRequest request,PagePara
  * @param archivesBorrow
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getArchivesBorrowFileById",method=RequestMethod.POST)
 public RetDataBean getArchivesBorrowById(HttpServletRequest request,ArchivesBorrowFile archivesBorrowFile)
@@ -441,7 +441,7 @@ public RetDataBean getArchivesBorrowById(HttpServletRequest request,ArchivesBorr
  * @param pageParam
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getArchivesFileList",method=RequestMethod.POST)
 public RetDataBean getArchivesFileList(HttpServletRequest request,PageParam pageParam,String volumeId,String fileType,String secretLevel)
@@ -475,7 +475,7 @@ public RetDataBean getArchivesFileList(HttpServletRequest request,PageParam page
  * @param request
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getArchivesVolumeListForSelect",method=RequestMethod.POST)
 public RetDataBean getArchivesVolumeListForSelect(HttpServletRequest request)
@@ -497,7 +497,7 @@ public RetDataBean getArchivesVolumeListForSelect(HttpServletRequest request)
  * @param repositoryId
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getArchivesVolumeByRepositoryId",method=RequestMethod.POST)
 public RetDataBean getArchivesVolumeByRepositoryId(HttpServletRequest request,String repositoryId)
@@ -519,7 +519,7 @@ public RetDataBean getArchivesVolumeByRepositoryId(HttpServletRequest request,St
  * @param archivesFile
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getArchivesFileById",method=RequestMethod.POST)
 public RetDataBean getArchivesFileById(HttpServletRequest request,ArchivesFile archivesFile)
@@ -542,7 +542,7 @@ public RetDataBean getArchivesFileById(HttpServletRequest request,ArchivesFile a
  * @param archivesVolume
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getArchivesVolumeById",method=RequestMethod.POST)
 public RetDataBean getArchivesVolumeById(HttpServletRequest request,ArchivesVolume archivesVolume)
@@ -565,7 +565,7 @@ public RetDataBean getArchivesVolumeById(HttpServletRequest request,ArchivesVolu
  * @param pageParam
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getArchivesVolumeList",method=RequestMethod.POST)
 public RetDataBean getArchivesVolumeList(HttpServletRequest request,PageParam pageParam)
@@ -600,7 +600,7 @@ public RetDataBean getArchivesVolumeList(HttpServletRequest request,PageParam pa
  * @param archivesRepository
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getArchivesRepositoryById",method=RequestMethod.POST)
 public RetDataBean getArchivesRepositoryById(HttpServletRequest request,ArchivesRepository archivesRepository)
@@ -623,7 +623,7 @@ public RetDataBean getArchivesRepositoryById(HttpServletRequest request,Archives
  * @param request
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getArchivesRepositoryList",method=RequestMethod.POST)
 public RetDataBean getArchivesRepositoryList(HttpServletRequest request)

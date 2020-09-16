@@ -20,7 +20,7 @@ public interface NewsCommentsMapper extends MyMapper<NewsComments>{
 	 * @param: newsId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getCommentsList(@Param(value="orgId") String orgId,@Param(value="newsId") String newsId);
 	

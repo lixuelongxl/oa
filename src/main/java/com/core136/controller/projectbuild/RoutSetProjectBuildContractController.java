@@ -37,7 +37,7 @@ private AccountService accountService;
  * @param: projectBuildContractSort
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/delProjectBuildContractSort",method=RequestMethod.POST)
 public RetDataBean delProjectBuildContractSort(HttpServletRequest request,ProjectBuildContractSort projectBuildContractSort)
@@ -63,7 +63,7 @@ public RetDataBean delProjectBuildContractSort(HttpServletRequest request,Projec
  * @param: projectBuildContractSort
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/insertProjectBuildContractSort",method=RequestMethod.POST)
 public RetDataBean insertProjectBuildContractSort(HttpServletRequest request,ProjectBuildContractSort projectBuildContractSort)
@@ -94,7 +94,7 @@ public RetDataBean insertProjectBuildContractSort(HttpServletRequest request,Pro
  * @param: projectBuildContractSort
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/updateProjectBuildContractSort",method=RequestMethod.POST)
 public RetDataBean updateProjectBuildContractSort(HttpServletRequest request,ProjectBuildContractSort projectBuildContractSort)
@@ -121,7 +121,7 @@ public RetDataBean updateProjectBuildContractSort(HttpServletRequest request,Pro
  * @param: projectBuildContract
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/delProjectBuildContract",method=RequestMethod.POST)
 public RetDataBean delProjectBuildContract(HttpServletRequest request,ProjectBuildContract projectBuildContract)
@@ -148,7 +148,7 @@ public RetDataBean delProjectBuildContract(HttpServletRequest request,ProjectBui
  * @param: projectBuildContract
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/insertProjectBuildContract",method=RequestMethod.POST)
 public RetDataBean insertProjectBuildContract(HttpServletRequest request,ProjectBuildContract projectBuildContract)
@@ -174,7 +174,7 @@ public RetDataBean insertProjectBuildContract(HttpServletRequest request,Project
  * @param: projectBuildContract
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/updateProjectBuildContract",method=RequestMethod.POST)
 public RetDataBean updateProjectBuildContract(HttpServletRequest request,ProjectBuildContract projectBuildContract)

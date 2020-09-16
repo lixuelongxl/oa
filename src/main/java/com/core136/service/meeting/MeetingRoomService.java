@@ -60,7 +60,7 @@ public class MeetingRoomService {
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String, String>> getMeetingRoomList(String orgId,String search)
 	{
@@ -73,7 +73,7 @@ public class MeetingRoomService {
 	 * @param: pageParam
 	 * @param: @return      
 	 * @return: PageInfo<Map<String,String>>      
-	 * @throws
+
 	 */
 	public PageInfo<Map<String, String>> getMeetingRoomList(PageParam pageParam) {
 		PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -90,7 +90,7 @@ public class MeetingRoomService {
 	 * @param: deptId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String, String>> getCanUseMeetingRoomList(String orgId,String deptId,String search)
 	{

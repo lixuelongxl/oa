@@ -25,7 +25,7 @@ public interface VehicleApplyMapper extends MyMapper<VehicleApply>{
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 public List<Map<String, String>>getVehicleApplyList(
 		@Param(value="orgId")String orgId,
@@ -51,7 +51,7 @@ public List<Map<String, String>>getVehicleApplyList(
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getVehicleApprovedList(
 		@Param(value="orgId")String orgId,

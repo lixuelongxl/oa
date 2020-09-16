@@ -28,7 +28,7 @@ public class HrPageController {
 	 * @Description: TODO 基本档案查询
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/query")
 	public ModelAndView  goBaseQuery()
@@ -50,7 +50,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/analysis")
 	public ModelAndView  goAnalysis(String view)
@@ -107,7 +107,7 @@ public class HrPageController {
 	 * @Description: TODO 人员评价查询
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/evaluatequery")
 	public ModelAndView  goEvaluateQuery()
@@ -130,7 +130,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/evaluate")
 	public ModelAndView  goEvaluate()
@@ -152,7 +152,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/welfare")
 	public ModelAndView  goWelfare(String view)
@@ -186,7 +186,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/salary")
 	public ModelAndView  goSalary(String view)
@@ -220,7 +220,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/kpi/kpiplan")
 	public ModelAndView  goKpiPlan(String view)
@@ -251,7 +251,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/planapproved")
 	public ModelAndView  goPlanApproved(String view)
@@ -282,7 +282,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/kpi/kpiitem")
 	public ModelAndView  goKpiItem(String view)
@@ -312,7 +312,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/recruitplan")
 	public ModelAndView  goRecruitplan(String view)
@@ -342,7 +342,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/requirements")
 	public ModelAndView  goRequirements(String view)
@@ -376,7 +376,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/trainapproved")
 	public ModelAndView  goTrainApproved(String view)
@@ -406,7 +406,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/train")
 	public ModelAndView  goTrain(String view)
@@ -437,7 +437,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/care")
 	public ModelAndView  goCare(String view)
@@ -468,7 +468,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/titleevaluation")
 	public ModelAndView  goTitleEvaluation(String view)
@@ -500,7 +500,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/reinstatement")
 	public ModelAndView  goReinstatement(String view)
@@ -530,7 +530,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/leave")
 	public ModelAndView  goLeave(String view)
@@ -560,7 +560,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/transfer")
 	public ModelAndView  goTranSfer(String view)
@@ -590,7 +590,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/laborskills")
 	public ModelAndView  goLaborSkills(String view)
@@ -625,7 +625,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/workexperience")
 	public ModelAndView  goWorkExperience(String view)
@@ -659,7 +659,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/learn")
 	public ModelAndView  goLearn(String view)
@@ -693,7 +693,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/licence")
 	public ModelAndView  goLicense(String view)
@@ -727,7 +727,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/contract")
 	public ModelAndView  contract(String view)
@@ -761,7 +761,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/incentive")
 	public ModelAndView  incentive(String view)
@@ -796,7 +796,7 @@ public class HrPageController {
 	 * @param: view
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/baseinfo")
 	public ModelAndView  setBaseinfo(String view)
@@ -830,7 +830,7 @@ public class HrPageController {
  * @param: view
  * @param: @return      
  * @return: ModelAndView      
- * @throws
+
  */
 	@RequestMapping("/userinfodetails")
 	public ModelAndView  goUserInfoDetails(String view)
@@ -850,7 +850,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/reinstatementdetails")
 	public ModelAndView  goReinstatementDetails(String view)
@@ -870,7 +870,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/hrrecruitplandetails")
 	public ModelAndView  goHrRecruitPlandetails(String view)
@@ -891,7 +891,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/leavedetails")
 	public ModelAndView  goLeaveDetails(String view)
@@ -911,7 +911,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/kpi/kpiitemdetails")
 	public ModelAndView  goKpiItemDetails(String view)
@@ -932,7 +932,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/traindetails")
 	public ModelAndView  goTrainDetails(String view)
@@ -952,7 +952,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/transferdetails")
 	public ModelAndView  goTransferDetails(String view)
@@ -972,7 +972,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/learndetails")
 	public ModelAndView  goLearnetails(String view)
@@ -992,7 +992,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/licencedetails")
 	public ModelAndView  goLicencedetails(String view)
@@ -1012,7 +1012,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/incentivedetails")
 	public ModelAndView  goIncentivedetails(String view)
@@ -1033,7 +1033,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/contractdetails")
 	public ModelAndView  goContractDetails()
@@ -1052,7 +1052,7 @@ public class HrPageController {
 	 * @Description: TODO 员工关怀详情页
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/caredetails")
 	public ModelAndView  goCareDetails()
@@ -1071,7 +1071,7 @@ public class HrPageController {
 	 * @Description: TODO 工作经历详情
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/workdetails")
 	public ModelAndView  goWorkDetails()
@@ -1091,7 +1091,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/skillsdetails")
 	public ModelAndView  goSkillsDetails(String view)
@@ -1111,7 +1111,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/evaluationdetails")
 	public ModelAndView  goEvaluationDetails(String view)
@@ -1131,7 +1131,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/requirementsdetails")
 	public ModelAndView  goRequirementsDetails(String view)
@@ -1153,7 +1153,7 @@ public class HrPageController {
 	 * @param: view
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/wageslevel")
 	public ModelAndView  goWagesLevel(String view)
@@ -1173,7 +1173,7 @@ public class HrPageController {
 	 * @Description: TODO 添加HR人员部门
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/hrdept")
 	public ModelAndView  addhrdept()
@@ -1194,7 +1194,7 @@ public class HrPageController {
  * @Description: TODO 人员录入
  * @param: @return      
  * @return: ModelAndView      
- * @throws
+
  */
 	@RequestMapping("/hruserinfo")
 	public ModelAndView  addhruserinfo()
@@ -1215,7 +1215,7 @@ public class HrPageController {
 	 * @Description: TODO 人员薪资详情
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/salarydetails")
 	public ModelAndView  goSalarydetails()
@@ -1236,7 +1236,7 @@ public class HrPageController {
 	 * @Description: TODO 人员福利详情
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/welfaredetails")
 	public ModelAndView  goWelfaredetails()
@@ -1257,7 +1257,7 @@ public class HrPageController {
  * @Description: TODO 行政职务
  * @param: @return      
  * @return: ModelAndView      
- * @throws
+
  */
 	@RequestMapping("/hruserlevel")
 	public ModelAndView  addhruserlevel()
@@ -1279,7 +1279,7 @@ public class HrPageController {
 	 * @Description: TODO 设置HR系统编码
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/hrclasscode")
 	public ModelAndView  setClassCode()
@@ -1301,7 +1301,7 @@ public class HrPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/myhrinfo")
 	public ModelAndView  goMyHrInfo(String view)

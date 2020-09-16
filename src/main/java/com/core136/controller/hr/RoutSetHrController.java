@@ -29,6 +29,7 @@ import com.core136.bean.hr.HrEvaluate;
 import com.core136.bean.hr.HrIncentive;
 import com.core136.bean.hr.HrKpiItem;
 import com.core136.bean.hr.HrKpiPlan;
+import com.core136.bean.hr.HrKpiPlanItem;
 import com.core136.bean.hr.HrLearnRecord;
 import com.core136.bean.hr.HrLeaveRecord;
 import com.core136.bean.hr.HrLicence;
@@ -53,6 +54,8 @@ import com.core136.service.hr.HrDepartmentService;
 import com.core136.service.hr.HrEvaluateService;
 import com.core136.service.hr.HrIncentiveService;
 import com.core136.service.hr.HrKpiItemService;
+import com.core136.service.hr.HrKpiPlanItemService;
+import com.core136.service.hr.HrKpiPlanRecordService;
 import com.core136.service.hr.HrKpiPlanService;
 import com.core136.service.hr.HrLearnRecordService;
 import com.core136.service.hr.HrLeaveRecordService;
@@ -123,8 +126,6 @@ public class RoutSetHrController {
 	@Autowired
 	private HrKpiItemService hrKpiItemService;
 	@Autowired
-	private HrKpiPlanService hrKpiPlanService;
-	@Autowired
 	private HrRecruitPlanService hrRecruitPlanService;
 	@Autowired
 	private HrSalaryRecordService hrSalaryRecordService;
@@ -134,6 +135,91 @@ public class RoutSetHrController {
 	private HrEvaluateService hrEvaluateService;
 	@Autowired
 	private AccountService accountService;
+	@Autowired
+	private HrKpiPlanService hrKpiPlanService;
+	@Autowired
+	private HrKpiPlanItemService hrKpiPlanItemService;
+	@Autowired
+	private HrKpiPlanRecordService hrKpiPlanRecordService;
+	
+	/**
+	 * 
+	 * @Title: insertHrKpiPlanItem   
+	 * @Description: TODO 创建考核指标集
+	 * @param request
+	 * @param hrKpiPlanItem
+	 * @return
+	 * RetDataBean
+	 */
+	@RequestMapping(value="/insertHrKpiPlanItem",method=RequestMethod.POST)
+	public RetDataBean insertHrKpiPlanItem (HttpServletRequest request,HrKpiPlanItem hrKpiPlanItem)
+	{
+		try
+		{
+			Account account=accountService.getRedisAccount(request);
+			hrKpiPlanItem.setItemId(SysTools.getGUID());
+			hrKpiPlanItem.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
+			hrKpiPlanItem.setCreateUser(account.getAccountId());
+			hrKpiPlanItem.setOrgId(account.getOrgId());
+			return RetDataTools.Ok("添加成功!",hrKpiPlanItemService.insertHrKpiPlanItem(hrKpiPlanItem));
+		}catch (Exception e) {
+			return RetDataTools.Error(e.getMessage());
+		}
+	}
+	
+	/**
+	 * 
+	 * @Title: deleteHrKpiPlanItem   
+	 * @Description: TODO 删除子指标集
+	 * @param request
+	 * @param hrKpiPlanItem
+	 * @return
+	 * RetDataBean
+	 */
+	@RequestMapping(value="/deleteHrKpiPlanItem",method=RequestMethod.POST)
+	public RetDataBean deleteHrKpiPlanItem(HttpServletRequest request,HrKpiPlanItem hrKpiPlanItem)
+	{
+		try
+		{
+			if(StringUtils.isBlank(hrKpiPlanItem.getItemId()))
+			{
+				return RetDataTools.NotOk("请求参数有问题,请检查!");
+			}
+			Account account=accountService.getRedisAccount(request);
+			hrKpiPlanItem.setOrgId(account.getOrgId());
+			return RetDataTools.Ok("删除成功!",hrKpiPlanItemService.deleteHrKpiPlanItem(hrKpiPlanItem));
+		}catch (Exception e) {
+			return RetDataTools.Error(e.getMessage());
+		}
+	}
+	
+	/**
+	 * 
+	 * @Title: updateHrKpiPlanItem   
+	 * @Description: TODO 更新考核指标集
+	 * @param request
+	 * @param hrKpiPlanItem
+	 * @return
+	 * RetDataBean
+	 */
+	@RequestMapping(value="/updateHrKpiPlanItem",method=RequestMethod.POST)
+	public RetDataBean updateHrKpiPlanItem(HttpServletRequest request,HrKpiPlanItem hrKpiPlanItem)
+	{
+		try
+		{
+			if(StringUtils.isBlank(hrKpiPlanItem.getItemId()))
+			{
+				return RetDataTools.NotOk("请求参数有问题,请检查!");
+			}
+			Account account=accountService.getRedisAccount(request);
+			Example example = new Example(HrKpiPlanItem.class);
+			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("itemId",hrKpiPlanItem.getItemId());
+			return RetDataTools.Ok("更新成功!",hrKpiPlanItemService.updateHrKpiPlanItem(example, hrKpiPlanItem));
+		}catch (Exception e) {
+			return RetDataTools.Error(e.getMessage());
+		}
+	}
+	
 	/**
 	 * 
 	 * @Title: insertHrKpiPlan
@@ -142,7 +228,7 @@ public class RoutSetHrController {
 	 * @param hrKpiPlan
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertHrKpiPlan",method=RequestMethod.POST)
 	public RetDataBean insertHrKpiPlan (HttpServletRequest request,HrKpiPlan hrKpiPlan)
@@ -167,7 +253,7 @@ public class RoutSetHrController {
 	 * @param hrKpiPlan
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteHrKpiPlan",method=RequestMethod.POST)
 	public RetDataBean deleteHrKpiPlan(HttpServletRequest request,HrKpiPlan hrKpiPlan)
@@ -194,7 +280,7 @@ public class RoutSetHrController {
 	 * @param hrKpiPlan
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateHrKpiPlan",method=RequestMethod.POST)
 	public RetDataBean updateHrKpiPlan(HttpServletRequest request,HrKpiPlan hrKpiPlan)
@@ -222,7 +308,7 @@ public class RoutSetHrController {
 	 * @param hrEvaluate
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertHrEvaluate",method=RequestMethod.POST)
 	public RetDataBean insertHrEvaluate (HttpServletRequest request,HrEvaluate hrEvaluate)
@@ -247,7 +333,7 @@ public class RoutSetHrController {
 	 * @param hrEvaluate
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteHrEvaluate",method=RequestMethod.POST)
 	public RetDataBean deleteHrEvaluate(HttpServletRequest request,HrEvaluate hrEvaluate)
@@ -274,7 +360,7 @@ public class RoutSetHrController {
 	 * @param hrEvaluate
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateHrEvaluate",method=RequestMethod.POST)
 	public RetDataBean updateHrEvaluate(HttpServletRequest request,HrEvaluate hrEvaluate)
@@ -303,7 +389,7 @@ public class RoutSetHrController {
 	 * @param file
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/importHrWelfareRecord",method=RequestMethod.POST)
 	public ModelAndView importHrWelfareRecord(HttpServletRequest request,MultipartFile file)
@@ -330,7 +416,7 @@ public class RoutSetHrController {
 	 * @param hrWelfareRecord
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertHrWelfareRecord",method=RequestMethod.POST)
 	public RetDataBean insertHrWelfareRecord (HttpServletRequest request,HrWelfareRecord hrWelfareRecord)
@@ -355,7 +441,7 @@ public class RoutSetHrController {
 	 * @param hrWelfareRecord
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteHrWelfareRecord",method=RequestMethod.POST)
 	public RetDataBean deleteHrWelfareRecord(HttpServletRequest request,HrWelfareRecord hrWelfareRecord)
@@ -382,7 +468,7 @@ public class RoutSetHrController {
 	 * @param hrWelfareRecord
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateHrWelfareRecord",method=RequestMethod.POST)
 	public RetDataBean updateHrWelfareRecord(HttpServletRequest request,HrWelfareRecord hrWelfareRecord)
@@ -410,7 +496,7 @@ public class RoutSetHrController {
 	 * @param file
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/importHrSalaryRecord",method=RequestMethod.POST)
 	public ModelAndView importHrSalaryRecord(HttpServletRequest request,MultipartFile file)
@@ -437,7 +523,7 @@ public class RoutSetHrController {
 	 * @param hrSalaryRecord
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertHrSalaryRecord",method=RequestMethod.POST)
 	public RetDataBean insertHrSalaryRecord (HttpServletRequest request,HrSalaryRecord hrSalaryRecord)
@@ -462,7 +548,7 @@ public class RoutSetHrController {
 	 * @param hrSalaryRecord
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteHrSalaryRecord",method=RequestMethod.POST)
 	public RetDataBean deleteHrSalaryRecord(HttpServletRequest request,HrSalaryRecord hrSalaryRecord)
@@ -489,7 +575,7 @@ public class RoutSetHrController {
 	 * @param hrSalaryRecord
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateHrSalaryRecord",method=RequestMethod.POST)
 	public RetDataBean updateHrSalaryRecord(HttpServletRequest request,HrSalaryRecord hrSalaryRecord)
@@ -518,7 +604,7 @@ public class RoutSetHrController {
 	 * @param hrKpiItem
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertHrKpiItem",method=RequestMethod.POST)
 	public RetDataBean insertHrKpiItem (HttpServletRequest request,HrKpiItem hrKpiItem)
@@ -543,7 +629,7 @@ public class RoutSetHrController {
 	 * @param hrKpiItem
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteHrKpiItem",method=RequestMethod.POST)
 	public RetDataBean deleteHrKpiItem(HttpServletRequest request,HrKpiItem hrKpiItem)
@@ -570,7 +656,7 @@ public class RoutSetHrController {
 	 * @param hrKpiItem
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateHrKpiItem",method=RequestMethod.POST)
 	public RetDataBean updateHrKpiItem(HttpServletRequest request,HrKpiItem hrKpiItem)
@@ -598,7 +684,7 @@ public class RoutSetHrController {
 	 * @param hrRecruitPlan
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertHrRecruitPlan",method=RequestMethod.POST)
 	public RetDataBean insertHrRecruitPlan (HttpServletRequest request,HrRecruitPlan hrRecruitPlan)
@@ -623,7 +709,7 @@ public class RoutSetHrController {
 	 * @param hrRecruitPlan
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteHrRecruitPlan",method=RequestMethod.POST)
 	public RetDataBean deleteHrRecruitPlan(HttpServletRequest request,HrRecruitPlan hrRecruitPlan)
@@ -650,7 +736,7 @@ public class RoutSetHrController {
 	 * @param hrRecruitPlan
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateHrRecruitPlan",method=RequestMethod.POST)
 	public RetDataBean updateHrRecruitPlan(HttpServletRequest request,HrRecruitPlan hrRecruitPlan)
@@ -677,7 +763,7 @@ public class RoutSetHrController {
 	 * @param file
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/importHrWorkSkills",method=RequestMethod.POST)
 	public ModelAndView importHrWorkSkills(HttpServletRequest request,MultipartFile file)
@@ -705,7 +791,7 @@ public class RoutSetHrController {
 	 * @param file
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/importHrWorkRecord",method=RequestMethod.POST)
 	public ModelAndView importHrWorkRecord(HttpServletRequest request,MultipartFile file)
@@ -732,7 +818,7 @@ public class RoutSetHrController {
 	 * @param file
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/importHrLearnRecord",method=RequestMethod.POST)
 	public ModelAndView importHrLearnRecord(HttpServletRequest request,MultipartFile file)
@@ -760,7 +846,7 @@ public class RoutSetHrController {
 	 * @param file
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/importHrLicence",method=RequestMethod.POST)
 	public ModelAndView importHrLicence(HttpServletRequest request,MultipartFile file)
@@ -788,7 +874,7 @@ public class RoutSetHrController {
 	 * @param file
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/importHrIncentive",method=RequestMethod.POST)
 	public ModelAndView importHrIncentive(HttpServletRequest request,MultipartFile file)
@@ -816,7 +902,7 @@ public class RoutSetHrController {
 	 * @param file
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/importHrContract",method=RequestMethod.POST)
 	public ModelAndView importHrContract(HttpServletRequest request,MultipartFile file)
@@ -844,7 +930,7 @@ public class RoutSetHrController {
 	 * @param file
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/importHrUserInfo",method=RequestMethod.POST)
 	public ModelAndView importHrUserInfo(HttpServletRequest request,MultipartFile file)
@@ -872,7 +958,7 @@ public class RoutSetHrController {
 	 * @param hrRecruitNeeds
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertHrRecruitNeeds",method=RequestMethod.POST)
 	public RetDataBean insertHrRecruitNeeds (HttpServletRequest request,HrRecruitNeeds hrRecruitNeeds)
@@ -898,7 +984,7 @@ public class RoutSetHrController {
 	 * @param hrRecruitNeeds
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteHrRecruitNeeds",method=RequestMethod.POST)
 	public RetDataBean deleteHrRecruitNeeds(HttpServletRequest request,HrRecruitNeeds hrRecruitNeeds)
@@ -924,7 +1010,7 @@ public class RoutSetHrController {
 	 * @param hrRecruitNeeds
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/approvedHrRecruitNeeds",method=RequestMethod.POST)
 	public RetDataBean approvedHrRecruitNeeds(HttpServletRequest request,HrRecruitNeeds hrRecruitNeeds)
@@ -953,7 +1039,7 @@ public class RoutSetHrController {
 	 * @param hrRecruitNeeds
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateHrRecruitNeeds",method=RequestMethod.POST)
 	public RetDataBean updateHrRecruitNeeds(HttpServletRequest request,HrRecruitNeeds hrRecruitNeeds)
@@ -980,7 +1066,7 @@ public class RoutSetHrController {
 	 * @param hrTrainRecord
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertHrTrainRecord",method=RequestMethod.POST)
 	public RetDataBean insertHrTrainRecord (HttpServletRequest request,HrTrainRecord hrTrainRecord)
@@ -1005,7 +1091,7 @@ public class RoutSetHrController {
 	 * @param hrTrainRecord
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteHrTrainRecord",method=RequestMethod.POST)
 	public RetDataBean deleteHrTrainRecord(HttpServletRequest request,HrTrainRecord hrTrainRecord)
@@ -1032,7 +1118,7 @@ public class RoutSetHrController {
 	 * @param hrTrainRecord
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateHrTrainRecord",method=RequestMethod.POST)
 	public RetDataBean updateHrTrainRecord(HttpServletRequest request,HrTrainRecord hrTrainRecord)
@@ -1059,7 +1145,7 @@ public class RoutSetHrController {
 	 * @param hrTrainRecord
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/approvedHrTrainRecord",method=RequestMethod.POST)
 	public RetDataBean approvedHrTrainRecord(HttpServletRequest request,HrTrainRecord hrTrainRecord)
@@ -1089,7 +1175,7 @@ public class RoutSetHrController {
 	 * @param hrCareRecord
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertHrCareRecord",method=RequestMethod.POST)
 	public RetDataBean insertHrCareRecord (HttpServletRequest request,HrCareRecord hrCareRecord)
@@ -1114,7 +1200,7 @@ public class RoutSetHrController {
 	 * @param hrCareRecord
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteHrCareRecord",method=RequestMethod.POST)
 	public RetDataBean deleteHrCareRecord(HttpServletRequest request,HrCareRecord hrCareRecord)
@@ -1141,7 +1227,7 @@ public class RoutSetHrController {
 	 * @param hrCareRecord
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateHrCareRecord",method=RequestMethod.POST)
 	public RetDataBean updateHrCareRecord(HttpServletRequest request,HrCareRecord hrCareRecord)
@@ -1169,7 +1255,7 @@ public class RoutSetHrController {
 	 * @param hrTitleEvaluation
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertHrTitleEvaluation",method=RequestMethod.POST)
 	public RetDataBean insertHrTitleEvaluation (HttpServletRequest request,HrTitleEvaluation hrTitleEvaluation)
@@ -1194,7 +1280,7 @@ public class RoutSetHrController {
 	 * @param hrTitleEvaluation
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteHrTitleEvaluation",method=RequestMethod.POST)
 	public RetDataBean deleteHrTitleEvaluation(HttpServletRequest request,HrTitleEvaluation hrTitleEvaluation)
@@ -1221,7 +1307,7 @@ public class RoutSetHrController {
 	 * @param hrTitleEvaluation
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateHrTitleEvaluation",method=RequestMethod.POST)
 	public RetDataBean updateHrTitleEvaluation(HttpServletRequest request,HrTitleEvaluation hrTitleEvaluation)
@@ -1250,7 +1336,7 @@ public class RoutSetHrController {
 	 * @param HrReinstatement
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertHrReinstatement",method=RequestMethod.POST)
 	public RetDataBean insertHrReinstatement (HttpServletRequest request,HrReinstatement hrReinstatement)
@@ -1275,7 +1361,7 @@ public class RoutSetHrController {
 	 * @param HrReinstatement
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteHrReinstatement",method=RequestMethod.POST)
 	public RetDataBean deleteHrReinstatement(HttpServletRequest request,HrReinstatement hrReinstatement)
@@ -1302,7 +1388,7 @@ public class RoutSetHrController {
 	 * @param HrReinstatement
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateHrReinstatement",method=RequestMethod.POST)
 	public RetDataBean updateHrReinstatement(HttpServletRequest request,HrReinstatement hrReinstatement)
@@ -1331,7 +1417,7 @@ public class RoutSetHrController {
 	 * @param HrLeaveRecord
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertHrLeaveRecord",method=RequestMethod.POST)
 	public RetDataBean insertHrLeaveRecord (HttpServletRequest request,HrLeaveRecord hrLeaveRecord)
@@ -1356,7 +1442,7 @@ public class RoutSetHrController {
 	 * @param HrLeaveRecord
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteHrLeaveRecord",method=RequestMethod.POST)
 	public RetDataBean deleteHrLeaveRecord(HttpServletRequest request,HrLeaveRecord hrLeaveRecord)
@@ -1383,7 +1469,7 @@ public class RoutSetHrController {
 	 * @param HrLeaveRecord
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateHrLeaveRecord",method=RequestMethod.POST)
 	public RetDataBean updateHrLeaveRecord(HttpServletRequest request,HrLeaveRecord hrLeaveRecord)
@@ -1412,7 +1498,7 @@ public class RoutSetHrController {
 	 * @param HrPersonnelTransfer
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertHrPersonnelTransfer",method=RequestMethod.POST)
 	public RetDataBean insertHrPersonnelTransfer (HttpServletRequest request,HrPersonnelTransfer hrPersonnelTrans)
@@ -1437,7 +1523,7 @@ public class RoutSetHrController {
 	 * @param HrPersonnelTransfer
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteHrPersonnelTransfer",method=RequestMethod.POST)
 	public RetDataBean deleteHrPersonnelTransfer(HttpServletRequest request,HrPersonnelTransfer hrPersonnelTrans)
@@ -1464,7 +1550,7 @@ public class RoutSetHrController {
 	 * @param HrPersonnelTransfer
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateHrPersonnelTransfer",method=RequestMethod.POST)
 	public RetDataBean updateHrPersonnelTransfer(HttpServletRequest request,HrPersonnelTransfer hrPersonnelTrans)
@@ -1492,7 +1578,7 @@ public class RoutSetHrController {
 	 * @param HrWorkSkills
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertHrWorkSkills",method=RequestMethod.POST)
 	public RetDataBean insertHrWorkSkills (HttpServletRequest request,HrWorkSkills hrWorkSkills)
@@ -1517,7 +1603,7 @@ public class RoutSetHrController {
 	 * @param HrWorkSkills
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteHrWorkSkills",method=RequestMethod.POST)
 	public RetDataBean deleteHrWorkSkills(HttpServletRequest request,HrWorkSkills hrWorkSkills)
@@ -1544,7 +1630,7 @@ public class RoutSetHrController {
 	 * @param HrWorkSkills
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateHrWorkSkills",method=RequestMethod.POST)
 	public RetDataBean updateHrWorkSkills(HttpServletRequest request,HrWorkSkills hrWorkSkills)
@@ -1572,7 +1658,7 @@ public class RoutSetHrController {
 	 * @param HrWorkRecord
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertHrWorkRecord",method=RequestMethod.POST)
 	public RetDataBean insertHrWorkRecord (HttpServletRequest request,HrWorkRecord hrWorkRecord)
@@ -1597,7 +1683,7 @@ public class RoutSetHrController {
 	 * @param HrWorkRecord
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteHrWorkRecord",method=RequestMethod.POST)
 	public RetDataBean deleteHrWorkRecord(HttpServletRequest request,HrWorkRecord hrWorkRecord)
@@ -1624,7 +1710,7 @@ public class RoutSetHrController {
 	 * @param HrWorkRecord
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateHrWorkRecord",method=RequestMethod.POST)
 	public RetDataBean updateHrWorkRecord(HttpServletRequest request,HrWorkRecord hrWorkRecord)
@@ -1653,7 +1739,7 @@ public class RoutSetHrController {
 	 * @param HrLearnRecord
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertHrLearnRecord",method=RequestMethod.POST)
 	public RetDataBean insertHrLearnRecord (HttpServletRequest request,HrLearnRecord hrLearnRecord)
@@ -1678,7 +1764,7 @@ public class RoutSetHrController {
 	 * @param HrLearnRecord
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteHrLearnRecord",method=RequestMethod.POST)
 	public RetDataBean deleteHrLearnRecord(HttpServletRequest request,HrLearnRecord hrLearnRecord)
@@ -1705,7 +1791,7 @@ public class RoutSetHrController {
 	 * @param HrLearnRecord
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateHrLearnRecord",method=RequestMethod.POST)
 	public RetDataBean updateHrLearnRecord(HttpServletRequest request,HrLearnRecord hrLearnRecord)
@@ -1733,7 +1819,7 @@ public class RoutSetHrController {
 	 * @param HrLicence
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertHrLicence",method=RequestMethod.POST)
 	public RetDataBean insertHrLicence(HttpServletRequest request,HrLicence hrLicence)
@@ -1758,7 +1844,7 @@ public class RoutSetHrController {
 	 * @param HrLicence
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteHrLicence",method=RequestMethod.POST)
 	public RetDataBean deleteHrLicence(HttpServletRequest request,HrLicence hrLicence)
@@ -1785,7 +1871,7 @@ public class RoutSetHrController {
 	 * @param HrLicence
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateHrLicence",method=RequestMethod.POST)
 	public RetDataBean updateHrLicence(HttpServletRequest request,HrLicence hrLicence)
@@ -1814,7 +1900,7 @@ public class RoutSetHrController {
 	 * @param hrContract
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertHrIncentive",method=RequestMethod.POST)
 	public RetDataBean insertHrIncentive(HttpServletRequest request,HrIncentive hrIncentive)
@@ -1839,7 +1925,7 @@ public class RoutSetHrController {
 	 * @param hrContract
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteHrIncentive",method=RequestMethod.POST)
 	public RetDataBean deleteHrIncentive(HttpServletRequest request,HrIncentive hrIncentive)
@@ -1866,7 +1952,7 @@ public class RoutSetHrController {
 	 * @param hrContract
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateHrIncentive",method=RequestMethod.POST)
 	public RetDataBean updateHrIncentive(HttpServletRequest request,HrIncentive hrIncentive)
@@ -1896,7 +1982,7 @@ public class RoutSetHrController {
 	 * @param hrContract
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertHrContract",method=RequestMethod.POST)
 	public RetDataBean insertHrContract(HttpServletRequest request,HrContract hrContract)
@@ -1921,7 +2007,7 @@ public class RoutSetHrController {
 	 * @param hrContract
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteHrContract",method=RequestMethod.POST)
 	public RetDataBean deleteHrContract(HttpServletRequest request,HrContract hrContract)
@@ -1948,7 +2034,7 @@ public class RoutSetHrController {
 	 * @param hrContract
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateHrContract",method=RequestMethod.POST)
 	public RetDataBean updateHrContract(HttpServletRequest request,HrContract hrContract)
@@ -1976,7 +2062,7 @@ public class RoutSetHrController {
 	 * @param: hrWorkType
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertHrWagesLevel",method=RequestMethod.POST)
 	public RetDataBean insertHrWagesLevel(HttpServletRequest request,HrWagesLevel hrWagesLevel)
@@ -2003,7 +2089,7 @@ public class RoutSetHrController {
 	 * @param: hrWorkType
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteHrWagesLevel",method=RequestMethod.POST)
 	public RetDataBean deleteHrWagesLevel(HttpServletRequest request,HrWagesLevel hrWagesLevel)
@@ -2030,7 +2116,7 @@ public class RoutSetHrController {
 	 * @param: hrWorkType
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateHrWagesLevel",method=RequestMethod.POST)
 	public RetDataBean updateHrWagesLevel(HttpServletRequest request,HrWagesLevel hrWagesLevel)
@@ -2058,7 +2144,7 @@ public class RoutSetHrController {
 	 * @param: hrUserInfo
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertHrUserInfo",method=RequestMethod.POST)
 	public RetDataBean insertHrUserInfo(HttpServletRequest request,HrUserInfo hrUserInfo)
@@ -2084,7 +2170,7 @@ public class RoutSetHrController {
 	 * @param: hrUserInfo
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteHrUserInfo",method=RequestMethod.POST)
 	public RetDataBean deleteHrUserInfo(HttpServletRequest request,HrUserInfo hrUserInfo)
@@ -2111,7 +2197,7 @@ public class RoutSetHrController {
 	 * @param: hrUserInfo
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateHrUserInfo",method=RequestMethod.POST)
 	public RetDataBean updateHrUserInfo(HttpServletRequest request,HrUserInfo hrUserInfo)
@@ -2139,7 +2225,7 @@ public class RoutSetHrController {
 	 * @param: hrDepartment
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertHrDepartment",method=RequestMethod.POST)
 	public RetDataBean insertHrDepartment(HttpServletRequest request,HrDepartment hrDepartment)
@@ -2163,7 +2249,7 @@ public class RoutSetHrController {
 	 * @param: hrDepartment
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteHrDepartment",method=RequestMethod.POST)
 	public RetDataBean deleteHrDepartment(HttpServletRequest request,HrDepartment hrDepartment)
@@ -2190,7 +2276,7 @@ public class RoutSetHrController {
 	 * @param: hrDepartment
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateHrDepartment",method=RequestMethod.POST)
 	public RetDataBean updateHrDepartment(HttpServletRequest request,HrDepartment hrDepartment)
@@ -2219,7 +2305,7 @@ public class RoutSetHrController {
 	 * @param: hrUserLevel
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertHrUserLevel",method=RequestMethod.POST)
 	public RetDataBean insertHrUserLevel(HttpServletRequest request,HrUserLevel hrUserLevel)
@@ -2249,7 +2335,7 @@ public class RoutSetHrController {
 	 * @param: hrUserLevel
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteHrUserLevel",method=RequestMethod.POST)
 	public RetDataBean deleteHrUserLevel(HttpServletRequest request,HrUserLevel hrUserLevel)
@@ -2276,7 +2362,7 @@ public class RoutSetHrController {
 	 * @param: hrUserLevel
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateHrUserLevel",method=RequestMethod.POST)
 	public RetDataBean updateHrUserLevel(HttpServletRequest request,HrUserLevel hrUserLevel)
@@ -2304,7 +2390,7 @@ public class RoutSetHrController {
 	 * @param hrClassCode
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertHrClassCode",method=RequestMethod.POST)
 	public RetDataBean insertHrClassCode(HttpServletRequest request,HrClassCode hrClassCode)
@@ -2335,7 +2421,7 @@ public class RoutSetHrController {
 	 * @param hrClassCode
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateHrClassCode",method=RequestMethod.POST)
 	public RetDataBean updateHrClassCode(HttpServletRequest request,HrClassCode hrClassCode)
@@ -2363,7 +2449,7 @@ public class RoutSetHrController {
 	 * @param hrClassCode
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteHrClassCode",method=RequestMethod.POST)
 	public RetDataBean deleteHrClassCode(HttpServletRequest request,HrClassCode hrClassCode)

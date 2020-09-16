@@ -17,7 +17,7 @@ public interface EchartsHrMapper {
 	 * @param orgId
 	 * @return
 	 * List<Map<String,Object>>    
-	 * @throws
+
 	 */
 	public List<Map<String, Object>>getHighsetShoolPie(@Param(value="orgId")String orgId);
 	
@@ -28,7 +28,7 @@ public interface EchartsHrMapper {
 	 * @param orgId
 	 * @return
 	 * List<Map<String,Object>>    
-	 * @throws
+
 	 */
 	public List<Map<String, Object>>getWorkTypeBar(@Param(value="orgId")String orgId);
 	
@@ -39,7 +39,7 @@ public interface EchartsHrMapper {
 	 * @param orgId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getNativePlacePie(@Param(value="orgId")String orgId);
 	
@@ -53,7 +53,7 @@ public interface EchartsHrMapper {
 	 * @param groupBy
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String,String>>getBaseInfoAnalysis(
 			@Param(value="orgId")String orgId,
@@ -71,7 +71,7 @@ public interface EchartsHrMapper {
 	 * @param groupBy
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getContractAnalysis(
 			@Param(value="orgId")String orgId,
@@ -89,7 +89,7 @@ public interface EchartsHrMapper {
 	 * @param groupBy
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getIncentiveAnalysis(
 			@Param(value="orgId")String orgId,
@@ -106,7 +106,7 @@ public interface EchartsHrMapper {
 	 * @param groupBy
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getLicenceAnalysis(
 			@Param(value="orgId")String orgId,
@@ -123,7 +123,7 @@ public interface EchartsHrMapper {
 	 * @param groupBy
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getLearnAnalysis(
 			@Param(value="orgId")String orgId,
@@ -140,7 +140,7 @@ public interface EchartsHrMapper {
 	 * @param groupBy
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getSkillsAnalysis(
 			@Param(value="orgId")String orgId,
@@ -157,7 +157,7 @@ public interface EchartsHrMapper {
 	 * @param groupBy
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getTransferAnalysis(
 			@Param(value="orgId")String orgId,
@@ -174,7 +174,7 @@ public interface EchartsHrMapper {
 	 * @param groupBy
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getLeaveAnalysis(
 			@Param(value="orgId")String orgId,
@@ -191,7 +191,7 @@ public interface EchartsHrMapper {
 	 * @param groupBy
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getReinstatAnalysis(
 			@Param(value="orgId")String orgId,
@@ -208,7 +208,7 @@ public interface EchartsHrMapper {
 	 * @param groupBy
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getEvaluationAnalysis(
 			@Param(value="orgId")String orgId,
@@ -225,7 +225,7 @@ public interface EchartsHrMapper {
 	 * @param groupBy
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getCareAnalysis(
 			@Param(value="orgId")String orgId,

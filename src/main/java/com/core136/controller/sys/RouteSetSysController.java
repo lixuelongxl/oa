@@ -88,7 +88,7 @@ private AccountService accountService;
  * @param: appConfig
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/updateAppConfig",method=RequestMethod.POST)
 public RetDataBean updateAppConfig(HttpServletRequest request,AppConfig appConfig)
@@ -120,7 +120,7 @@ public RetDataBean updateAppConfig(HttpServletRequest request,AppConfig appConfi
  * @param: appConfig
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/deleteAppConfig",method=RequestMethod.POST)
 public RetDataBean deleteAppConfig(HttpServletRequest request,AppConfig appConfig)
@@ -151,7 +151,7 @@ public RetDataBean deleteAppConfig(HttpServletRequest request,AppConfig appConfi
  * @param: appConfig
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/insertAppConfig",method=RequestMethod.POST)
 public RetDataBean insertAppConfig(HttpServletRequest request,AppConfig appConfig)
@@ -179,7 +179,7 @@ public RetDataBean insertAppConfig(HttpServletRequest request,AppConfig appConfi
  * @param: sysInterface
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/setInterface",method=RequestMethod.POST)
 public RetDataBean setInterface(HttpServletRequest request,SysInterface sysInterface)
@@ -201,7 +201,7 @@ public RetDataBean setInterface(HttpServletRequest request,SysInterface sysInter
  * @param: sysOrgConfig
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/addOrgConfig",method=RequestMethod.POST)
 public RetDataBean addOrgConfig(HttpServletRequest request,SysOrgConfig sysOrgConfig,String orgName,String password)
@@ -380,7 +380,7 @@ public RetDataBean addOrgConfig(HttpServletRequest request,SysOrgConfig sysOrgCo
 	 * @param: codeClass
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteCodeClassBatch",method=RequestMethod.POST)
 	public RetDataBean deleteCodeClassBatch(HttpServletRequest request,@RequestParam(value = "classCodeArr[]") String[] classCodeArr)
@@ -606,7 +606,7 @@ public RetDataBean addOrgConfig(HttpServletRequest request,SysOrgConfig sysOrgCo
 	 * @param: shortcut
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/setShortcut",method=RequestMethod.POST)
 	public RetDataBean setShortcut(HttpServletRequest request,Shortcut shortcut)
@@ -644,7 +644,7 @@ public RetDataBean addOrgConfig(HttpServletRequest request,SysOrgConfig sysOrgCo
 	 * @param: sysTimingTask
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertSysTimingTask",method=RequestMethod.POST)
 	public RetDataBean insertSysTimingTask(HttpServletRequest request,SysTimingTask sysTimingTask)
@@ -670,7 +670,7 @@ public RetDataBean addOrgConfig(HttpServletRequest request,SysOrgConfig sysOrgCo
 	 * @param: sysTimingTask
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/delSysTimingTask",method=RequestMethod.POST)
 	public RetDataBean delSysTimingTask(HttpServletRequest request,SysTimingTask sysTimingTask)
@@ -703,7 +703,7 @@ public RetDataBean addOrgConfig(HttpServletRequest request,SysOrgConfig sysOrgCo
 	 * @param: sysTimingTask
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateSysTimingTask",method=RequestMethod.POST)
 	public RetDataBean updateSysTimingTask(HttpServletRequest request,SysTimingTask sysTimingTask)
@@ -740,7 +740,7 @@ public RetDataBean addOrgConfig(HttpServletRequest request,SysOrgConfig sysOrgCo
 	 * @param: sysProfile
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateSysProfile",method=RequestMethod.POST)
 	public RetDataBean updateSysProfile(HttpServletRequest request,SysProfile sysProfile)

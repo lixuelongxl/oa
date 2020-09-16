@@ -54,7 +54,7 @@ public ProjectBuildMaterial selectOneProjectBuildMaterial(ProjectBuildMaterial p
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,String>>getmateriallist(String orgId,String sortId,String search)
 {
@@ -77,7 +77,7 @@ public PageInfo<Map<String, String>> getmateriallist(PageParam pageParam,String 
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,String>> getMaterialListForSelet2(String orgId,String search)
 {

@@ -52,7 +52,7 @@ public ArchivesBorrowFile selectOneArchivesBorrowFile(ArchivesBorrowFile archive
  * @param accountId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getArchivesBorrowFileList(String orgId,String approvalStatus,String opFlag,String accountId)
 {
@@ -66,7 +66,7 @@ public List<Map<String, String>>getArchivesBorrowFileList(String orgId,String ap
  * @param approvalStatus
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getArchivesBorrowFileList(PageParam pageParam,String approvalStatus) 
 {
@@ -85,7 +85,7 @@ public PageInfo<Map<String, String>> getArchivesBorrowFileList(PageParam pagePar
  * @param accountId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getArchivesBorrowFileApprovalList(String orgId,String opFlag,String accountId)
 {
@@ -99,7 +99,7 @@ public List<Map<String, String>>getArchivesBorrowFileApprovalList(String orgId,S
  * @param pageParam
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getArchivesBorrowFileApprovalList(PageParam pageParam) 
 {
@@ -110,7 +110,7 @@ public PageInfo<Map<String, String>> getArchivesBorrowFileApprovalList(PageParam
 }
 
 /**
- * @throws ParseException 
+ ParseException 
  * 
  * @Title: getApprovalFile   
  * @Description: TODO 获取借阅文件详情
@@ -118,7 +118,7 @@ public PageInfo<Map<String, String>> getArchivesBorrowFileApprovalList(PageParam
  * @param archivesBorrowFile
  * @return
  * ArchivesFile    
- * @throws
+
  */
 public ArchivesFile getApprovalFile(Account account,ArchivesBorrowFile archivesBorrowFile) throws ParseException
 {

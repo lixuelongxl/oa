@@ -19,7 +19,7 @@ public interface ProjectBuildContractSortMapper extends MyMapper<ProjectBuildCon
 	 * @param: sortLeave
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>>getProjectBuildContractSortTree(@Param(value="orgId") String orgId,@Param(value="sortLeave") String sortLeave);
 	/**
@@ -30,7 +30,7 @@ public interface ProjectBuildContractSortMapper extends MyMapper<ProjectBuildCon
 	 * @param: sortId
 	 * @param: @return      
 	 * @return: int      
-	 * @throws
+
 	 */
 	public int isExistChild(@Param(value="orgId") String orgId,@Param(value="sortId") String sortId);
 }

@@ -4,7 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core136.mapper.crm.CrmContractInfoMapper">
 <resultMap id="CrmContractInfo" type="com.core136.bean.crm.CrmContractInfo" >
-    <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="CONTRACT_INFO_ID" property="contractInfoId" jdbcType="VARCHAR" />
     <result column="SORT_NO" property="sortNo" jdbcType="INTEGER" />
     <result column="CUSTOMER_ID" property="customerId" jdbcType="VARCHAR" />

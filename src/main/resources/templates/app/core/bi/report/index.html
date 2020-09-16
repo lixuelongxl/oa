@@ -1,54 +1,46 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Head -->
 <head>
 <meta charset="utf-8" />
 <title>${session.SOFT_NAME }_智能办公系统</title>
 <meta name="description" content="Dashboard" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<% include("../../../resapi/style.html"){}%>
-<link href="/module/handsontable/handsontable.full.min.css" rel="stylesheet" />
+<% include("../../../resapi/style.html"){} %>
+<link rel="stylesheet" href="/module/zTree_v3/css/bootstrapStyle/bootstrapStyle.css" type="text/css">
+<link href="/module/bootstrap-table/bootstrap-table.css" rel="stylesheet" />
 </head>
-<body style="overflow-y:auto;">
-<div class="page-body">
-<div id="exmple"></div>
-
-<a href="javascript:void(0);" class="btn btn-palegreen" onclick="showmodal();">Pale Green</a>
-
-
-
-
-</div>
-<% include("../../../resapi/sysjs.html"){}%>
-<script src="/module/handsontable/handsontable.full.min.js"></script>
-<script type="text/javascript" src="/module/handsontable/languages/all.min.js"></script>
-<script type="text/javascript">
-function showmodal()
-{
-	$("#xlistmodal").modal("show");
-	}
-
-
-$(document).ready(function () {
-	 var data = [
-		    ["",  "Kia", "Nissan", "Toyota", "Honda"],
-		    ["2008",  10, 11, 12, 13],
-		    ["2009",  20, 11, 14, 13],
-		    ["2010",  30, 15, 12, 13]
-		  ];
-		  $("#exmple").handsontable({
-		    data:  data,
-		    startRows:  6,
-		    startCols:  8,
-		    width: 400,
-		    height: 300,
-		    contextMenu: true,
-		    language: 'zh-CN'
-		  });
-})
-
-
-
-</script>
-</body> 
+<body style="overflow-y: auto;height: 100%;">
+	<div class="page-body" style="padding: 0px;height: 100%;">
+		<div class="main-container container-fluid" style="height: 100%;">
+			<div class="page-container" style="height: 100%;">
+				<div class="col-md-2 col-sm-2 col-xs-12" style="padding: 0px;">
+					<div class="widget flat radius-bordered">
+						<div class="widget-header bg-lightred">
+							<span class="widget-caption">BI分类列表</span>
+						</div>
+						<div class="widget-body">
+							<ul id="tree" class="ztree"></ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-10 col-sm-10 col-xs-12" style="padding: 0px; height: 100%;">
+					<iframe width="100%" height="100%" src="" id="reportiframe"> </iframe>
+				</div>
+			</div>
+		</div>
+	</div>
+	<% include("../../../resapi/sysjs.html"){} %>
+	<script type="text/javascript" src="/module/zTree_v3/js/jquery.ztree.core.js"></script>
+	<script type="text/javascript" src="/module/zTree_v3/js/jquery.ztree.excheck.js"></script>
+	<script type="text/javascript" src="/module/zTree_v3/js/jquery.ztree.exedit.js"></script>
+	<script type="text/javascript" src="/module/bootstrap-table/bootstrap-table.js"></script>
+	<script type="text/javascript" src="/module/bootstrap-table/bootstrap-table-zh-CN.js"></script>
+	<script type="text/javascript" src="/module/fileupload/ajaxfileupload.js"></script>
+	<script type="text/javascript" src="/module/fileupload/fileupload.js"></script>
+	<script type="text/javascript" src="/module/orgselect/orgselect.js"></script>
+	<script type="text/javascript" src="/gobal/js/page/bi/bi.js"></script>
+	<script type="text/javascript" src="/gobal/js/page/bi/report.js"></script>
+</body>
 </html>

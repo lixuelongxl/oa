@@ -50,7 +50,7 @@ public HrTitleEvaluation selectOneHrTitleEvaluation(HrTitleEvaluation hrTitleEva
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getHrTitleEvaluationList(String orgId,String userId,String beginTime,String endTime,String getType,String search)
 {
@@ -67,7 +67,7 @@ public List<Map<String, String>>getHrTitleEvaluationList(String orgId,String use
  * @param getType
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getHrTitleEvaluationList(PageParam pageParam,String userId,String beginTime,String endTime,String getType) 
 {

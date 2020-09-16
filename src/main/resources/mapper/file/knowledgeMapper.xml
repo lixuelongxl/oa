@@ -4,7 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core136.mapper.file.KnowledgeMapper">
 <resultMap id="Knowledge" type="com.core136.bean.file.Knowledge" >
-    <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="KNOWLEDGE_ID" property="knowledgeId" jdbcType="VARCHAR" />
     <result column="SORT_NO" property="sortNo" jdbcType="INTEGER" />
     <result column="TITLE" property="title" jdbcType="VARCHAR" />
@@ -20,7 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   </resultMap>
 
 <select id="getKnowledgeStudyList" resultType="java.util.HashMap">
-SELECT K.KNOWLEDGE_ID AS knowledgeId,K.TITLE AS title,K.ATTACH AS attach,K.VERSION AS version,K.LEVEL_STAR AS levelStar,
+SELECT K.KNOWLEDGE_ID AS knowledgeId,K.TITLE AS title,TO_CHAR(K.ATTACH) AS "attach",K.VERSION AS version,K.LEVEL_STAR AS levelStar,
 K.KEYWORDS AS keyWords,K.CREATE_TIME AS createTime,K.CREATE_USER AS createUser,
 (SELECT S.SORT_NAME FROM KNOWLEDGE_SORT S WHERE S.ORG_ID=#{orgId} AND S.SORT_ID=K.SORT_ID) AS sortName
 FROM KNOWLEDGE K
@@ -42,7 +41,7 @@ WHERE K.ORG_ID=#{orgId}
 
 
 <select id="getMyCreateKnowledgeList" resultType="java.util.HashMap">
-SELECT K.KNOWLEDGE_ID AS knowledgeId,K.TITLE AS title,K.ATTACH AS attach,K.VERSION AS version,K.LEVEL_STAR AS levelStar,
+SELECT K.KNOWLEDGE_ID AS knowledgeId,K.TITLE AS title,TO_CHAR(K.ATTACH) AS "attach",K.VERSION AS version,K.LEVEL_STAR AS levelStar,
 K.KEYWORDS AS keyWords,K.CREATE_TIME AS createTime,K.CREATE_USER AS createUser,S.SORT_NAME AS sortName
 FROM
 KNOWLEDGE K LEFT JOIN KNOWLEDGE_SORT S ON K.ORG_ID=S.ORG_ID AND K.SORT_ID=S.SORT_ID
@@ -69,7 +68,7 @@ AND K.CREATE_TIME &lt;=#{endTime}
 
 
 <select id="getAllKnowledgeList" resultType="java.util.HashMap">
-SELECT K.KNOWLEDGE_ID AS knowledgeId,K.TITLE AS title,K.ATTACH AS attach,K.VERSION AS version,K.LEVEL_STAR AS levelStar,
+SELECT K.KNOWLEDGE_ID AS knowledgeId,K.TITLE AS title,TO_CHAR(K.ATTACH) AS "attach",K.VERSION AS version,K.LEVEL_STAR AS levelStar,
 K.KEYWORDS AS keyWords,K.CREATE_TIME AS createTime,K.CREATE_USER AS createUser,S.SORT_NAME AS sortName
 FROM
 KNOWLEDGE K LEFT JOIN KNOWLEDGE_SORT S ON K.ORG_ID=S.ORG_ID AND K.SORT_ID=S.SORT_ID

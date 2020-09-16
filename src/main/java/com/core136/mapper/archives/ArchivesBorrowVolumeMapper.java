@@ -22,7 +22,7 @@ public interface ArchivesBorrowVolumeMapper extends MyMapper<ArchivesBorrowVolum
 	 * @param accountId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getArchivesBorrowVolumeList(@Param(value="orgId")String orgId,
 			@Param(value="approvalStatus") String approvalStatus,
@@ -37,7 +37,7 @@ public interface ArchivesBorrowVolumeMapper extends MyMapper<ArchivesBorrowVolum
 	 * @param accountId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getArchivesBorrowVolumeApprovalList(@Param(value="orgId")String orgId,
 			@Param(value="opFlag")String opFlag,

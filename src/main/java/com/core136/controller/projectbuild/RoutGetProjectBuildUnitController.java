@@ -34,7 +34,7 @@ private AccountService accountService;
  * @param: request
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getAllUnit",method=RequestMethod.POST)
 public RetDataBean getAllUnit(HttpServletRequest request)
@@ -56,7 +56,7 @@ public RetDataBean getAllUnit(HttpServletRequest request)
  * @param: projectBuildUnit
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getunitbyid",method=RequestMethod.POST)
 public RetDataBean getunit(HttpServletRequest request,ProjectBuildUnit projectBuildUnit)
@@ -81,7 +81,7 @@ public RetDataBean getunit(HttpServletRequest request,ProjectBuildUnit projectBu
  * @param: pageParam
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getProjectBuildUnitList",method=RequestMethod.POST)
 public RetDataBean getProjectBuildUnitList(

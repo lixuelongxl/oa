@@ -46,7 +46,7 @@ public ProjectBuildMaterialMx selectOneProjectBuildMaterialMx(ProjectBuildMateri
  * @param: purchaseId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,String>> getPurchaseMaterialMxList(String orgId,String purchaseId,String search)
 {
@@ -60,7 +60,7 @@ public List<Map<String,String>> getPurchaseMaterialMxList(String orgId,String pu
  * @param: stageId
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getPurchaseMaterialMxList(PageParam pageParam,String stageId) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());

@@ -34,7 +34,7 @@ public interface HrUserLevelMapper extends MyMapper<HrUserLevel>{
 	 * @param: leaveId
 	 * @param: @return      
 	 * @return: List<Map<String,Object>>      
-	 * @throws
+
 	 */
 	public List<Map<String,Object>> getHrUserLevelChart(@Param(value="orgId") String orgId,@Param(value="leaveId") String leaveId);
 
@@ -46,7 +46,7 @@ public interface HrUserLevelMapper extends MyMapper<HrUserLevel>{
 	 * @param list
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getHrUserLevelByStr(@Param(value="orgId")String orgId,@Param(value="list")List<String>list);
 }

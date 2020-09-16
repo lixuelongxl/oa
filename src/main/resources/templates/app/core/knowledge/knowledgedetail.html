@@ -44,8 +44,9 @@
 					<label> <input name="commType" type="radio" class="colored-success" value="1"> <span class="text">实名</span>
 					</label>
 				</div>
-				<span class="input-icon icon-right"> <textarea rows="5" class="form-control" placeholder="发表您的评论" id="commContent" name="commContent"></textarea>
-				</span> <input id="input-21b" value="4" type="text" class="rating" data-min=0 data-max=5 data-step=0.5 required title="">
+				<span class="input-icon icon-right"> <textarea rows="5" class="form-control" placeholder="发表您的评论" id="remark" name="remark"></textarea>
+				</span> 
+				<input id="input-21b" value="4" type="text" class="rating" data-min=0 data-max=5 data-step=0.5 required title="">
 				<div class="clearfix"></div>
 				<div class="padding-top-10 text-align-right">
 					<a class="btn btn-sm btn-primary js-send"> 发表评论 </a>
@@ -58,6 +59,7 @@
 	<script type="text/javascript" src="/module/fileupload/pageoffice.js" id="po_js_main"></script>
 	<script type="text/javascript">
 		var knowledgeId = "${parameter.knowledgeId}";
+		var accountId = "${accountId}";
 	</script>
 	<script type="text/javascript" src="/module/fileupload/ajaxfileupload.js"></script>
 	<script type="text/javascript" src="/module/fileupload/fileupload.js"></script>

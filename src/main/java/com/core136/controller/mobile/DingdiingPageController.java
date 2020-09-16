@@ -37,7 +37,7 @@ public class DingdiingPageController {
 	 * @param: ddConfig
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/index")
 	public ModelAndView goDingDingIndex(HttpServletRequest request,DdConfig ddConfig)
@@ -56,7 +56,7 @@ public class DingdiingPageController {
 	 * @param: request
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/indexdd")
 	public ModelAndView goDingdingPcIndex(HttpServletRequest request,DdConfig ddConfig)
@@ -74,7 +74,7 @@ public class DingdiingPageController {
  * @param: ddConfig
  * @param: @return      
  * @return: ModelAndView      
- * @throws
+
  */
 	@RequestMapping("/ddlogin")
 	public ModelAndView goDingdingAutoLogin(HttpServletRequest request,DdConfig ddConfig)

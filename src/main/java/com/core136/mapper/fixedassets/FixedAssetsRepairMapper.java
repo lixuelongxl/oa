@@ -24,7 +24,7 @@ public interface FixedAssetsRepairMapper extends MyMapper<FixedAssetsRepair>{
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getFixedAssetsRepairList(
 		@Param(value="orgId")String orgId,

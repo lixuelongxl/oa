@@ -4,7 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core136.mapper.crm.CrmInquiryMapper">
 <resultMap id="CrmInquiry" type="com.core136.bean.crm.CrmInquiry" >
-    <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="INQUIRY_ID" property="inquiryId" jdbcType="VARCHAR" />
     <result column="INQUIRY_CODE" property="inquiryCode" jdbcType="VARCHAR" />
     <result column="CUSTOMER_ID" property="customerId" jdbcType="VARCHAR" />
@@ -32,7 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <select id="getCrmInquiryList" resultType="java.util.HashMap">
 SELECT I.INQUIRY_ID AS inquiryId,I.TITLE AS title,(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=I.ORG_ID AND U.ACCOUNT_ID=I.CREATE_USER) AS createUserName,
 I.CREATE_TIME AS createTime,I.CUSTOMER_TYPE AS customerType,I.END_TIME AS endTime,
-I.CUSTOMER_ID AS customerId,I.ATTACH AS attach,I.INQUIRY_CODE AS inquiryCode,I.STATUS AS status
+I.CUSTOMER_ID AS customerId,TO_CHAR(I.ATTACH) AS "attach",I.INQUIRY_CODE AS inquiryCode,I.STATUS AS "status"
 FROM CRM_INQUIRY I
 WHERE 
 I.ORG_ID=#{orgId}
@@ -56,6 +55,13 @@ I.ORG_ID=#{orgId}
 </if>
 </select>
 
+<select id="getCrmInquiryListForSelect" resultType="java.util.HashMap">
+SELECT INQUIRY_ID AS inquiryId,INQUIRY_CODE AS inquiryCode,CUSTOMER_ID AS customerId,TITLE AS title
+FROM
+CRM_INQUIRY
+WHERE ORG_ID=#{orgId} AND CREATE_USER=#{accountId}
+ORDER BY CREATE_TIME DESC LIMIT 0,200
+</select>
 
 </mapper>
 

@@ -37,7 +37,7 @@ public interface MeetingMapper extends MyMapper<Meeting>{
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 public List<Map<String, String>>getMeetingList(@Param(value="orgId") String orgId,@Param(value="opFlag") String opFlag,
 		@Param(value="createUser") String createUser,@Param(value="roomId") String roomId,
@@ -55,7 +55,7 @@ public List<Map<String, String>>getMeetingList(@Param(value="orgId") String orgI
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getApplyMeetingList(@Param(value="orgId") String orgId,@Param(value="opFlag") String opFlag,
 		@Param(value="accountId") String accountId,@Param(value="beginTime") String beginTime,@Param(value="endTime") String endTime,@Param(value="search") String search);
@@ -68,7 +68,7 @@ public List<Map<String, String>>getApplyMeetingList(@Param(value="orgId") String
  * @param accountId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getNotNotesMeetingList(@Param(value="orgId")String orgId,String accountId);
 /**
@@ -80,7 +80,7 @@ public List<Map<String, String>>getNotNotesMeetingList(@Param(value="orgId")Stri
  * @param endTime
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getMeetingByDay(@Param(value="orgId")String orgId,@Param(value="deptId")String deptId,@Param(value="beginTime")String beginTime,@Param(value="endTime")String endTime);
 
@@ -97,7 +97,7 @@ public List<Map<String, String>>getMeetingByDay(@Param(value="orgId")String orgI
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getMyApplyMeetingList(
 		@Param(value="orgId")String orgId,
@@ -122,7 +122,7 @@ public List<Map<String, String>>getMyApplyMeetingList(
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getMyMeetingList(
 		@Param(value="orgId")String orgId,
@@ -148,7 +148,7 @@ public List<Map<String, String>>getMyMeetingList(
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getMyMeetingOldList(
 		@Param(value="orgId")String orgId,
@@ -174,7 +174,7 @@ public List<Map<String, String>>getMyMeetingOldList(
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getOldApplyMeetingList(@Param(value="orgId") String orgId,
 		@Param(value="opFlag") String opFlag,@Param(value="status")String status,
@@ -192,7 +192,7 @@ public List<Map<String, String>>getOldApplyMeetingList(@Param(value="orgId") Str
  * @param endTime
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getMyMeetingListForDesk(@Param(value="orgId")String orgId,@Param(value="accountId")String accountId,
 		@Param(value="deptId")String deptId,@Param(value="levelId")String levelId,@Param(value="nowTime")String nowTime);
@@ -209,7 +209,7 @@ public List<Map<String, String>>getMyMeetingListForDesk(@Param(value="orgId")Str
  * @param page
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getMobileMyMeetingList(@Param(value="orgId")String orgId,@Param(value="accountId")String accountId,
 		@Param(value="deptId")String deptId,@Param(value="levelId")String levelId,@Param(value="nowTime")String nowTime,@Param(value="page")Integer page);

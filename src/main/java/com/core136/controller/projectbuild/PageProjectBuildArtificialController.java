@@ -14,7 +14,7 @@ public class PageProjectBuildArtificialController {
  * @Description: TODO 工种分类
  * @param: @return      
  * @return: ModelAndView      
- * @throws
+
  */
 	@RequestMapping("/addSort")
 	public ModelAndView  goAddArtificialSort()

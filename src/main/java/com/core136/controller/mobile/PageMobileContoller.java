@@ -1,8 +1,6 @@
 package com.core136.controller.mobile;
 
 import java.util.List;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSONObject;
 import com.core136.bean.account.Account;
-import com.core136.bean.sys.DdConfig;
 import com.core136.service.account.AccountService;
 import com.core136.service.sys.AppConfigService;
 
@@ -29,7 +26,7 @@ public class PageMobileContoller {
 	 * @Description: TODO 跳转到移动端首页
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/main/index")
 	public ModelAndView  goToMobileIndex(HttpServletRequest request)
@@ -58,7 +55,7 @@ public class PageMobileContoller {
 	 * @param: unit
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/bpm/mybpmlist")
 	public ModelAndView getMobileMyBpmList(HttpServletRequest request)
@@ -83,7 +80,7 @@ public class PageMobileContoller {
 	 * @param request
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/document/mydocumentlist")
 	public ModelAndView getMobileMyDocumentList(HttpServletRequest request)
@@ -149,7 +146,7 @@ public class PageMobileContoller {
 	 * @param: unit
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/bpm/create")
 	public ModelAndView getMobileBpmCreate()
@@ -170,7 +167,7 @@ public class PageMobileContoller {
 	 * @Description: TODO BPM查询
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/bpm/bpmquery")
 	public ModelAndView getMobileBpmQuery()
@@ -192,7 +189,7 @@ public class PageMobileContoller {
 	 * @param: unit
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/bpm/bpmbegin")
 	public ModelAndView getMobileBpmBegin()
@@ -213,7 +210,7 @@ public class PageMobileContoller {
 	 * @Description: TODO 抄送给我的BPM流程
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/bpm/sendto")
 	public ModelAndView getMobileBpmSendTo()
@@ -249,7 +246,7 @@ public class PageMobileContoller {
 	 * @Description: TODO 移动端通知公告应用
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/notice/index")
 	public ModelAndView getMobileMyNotice()
@@ -270,7 +267,7 @@ public class PageMobileContoller {
 	 * @Description: TODO个人电子邮件
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/email/index")
 	public ModelAndView getMobileMyEmail()
@@ -291,7 +288,7 @@ public class PageMobileContoller {
 	 * @Description: TODO个人工作日志
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/diary/index")
 	public ModelAndView getMobileMyDiary()
@@ -313,7 +310,7 @@ public class PageMobileContoller {
 	 * @param: unit
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/notice/details")
 	public ModelAndView getMobileMyNoticeDetails()
@@ -336,7 +333,7 @@ public class PageMobileContoller {
 	 * @param: unit
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/news/index")
 	public ModelAndView getMobileMyNews()
@@ -359,7 +356,7 @@ public class PageMobileContoller {
 	 * @param: unit
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/news/details")
 	public ModelAndView getMobileMyNewsDetails()
@@ -381,7 +378,7 @@ public class PageMobileContoller {
 	 * @Description: TODO 我的会议
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/meeting/mymeeting")
 	public ModelAndView getMobileMyMeeting()

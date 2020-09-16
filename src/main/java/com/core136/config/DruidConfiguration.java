@@ -1,6 +1,4 @@
 package com.core136.config;
-import java.sql.SQLException;
-
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -132,8 +130,14 @@ public class DruidConfiguration {
 	     datasource.setMaxPoolPreparedStatementPerConnectionSize(maxPoolPreparedStatementPerConnectionSize);
 	     datasource.setUseGlobalDataSourceStat(useGlobalDataSourceStat);
 	     try {
-	         datasource.setFilters(filters);
-	     } catch (SQLException e) {
+	    	 if(!driverClassName.equals("dm.jdbc.driver.DmDriver"))
+	    	 {
+	    		 datasource.setFilters(filters);
+	    	 }else
+	    	 {
+	    		 datasource.setFilters("stat,log4j");
+	    	 }
+	     } catch (Exception e) {
 	         System.err.println("druid configuration initialization filter: "+ e);
 	     }
 	     datasource.setConnectionProperties(connectionProperties);

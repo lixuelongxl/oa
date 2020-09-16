@@ -8,7 +8,6 @@ import org.apache.ibatis.annotations.Param;
 import org.core136.common.dbutils.MyMapper;
 
 import com.core136.bean.hr.HrWorkRecord;
-import com.fasterxml.jackson.annotation.JacksonInject.Value;
 
 @Mapper
 public interface HrWorkRecordMapper extends MyMapper<HrWorkRecord>{
@@ -23,7 +22,7 @@ public interface HrWorkRecordMapper extends MyMapper<HrWorkRecord>{
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getHrWorkRecordList(@Param(value="orgId")String orgId,@Param(value="userId")String userId,
 			@Param(value="beginTime")String beginTime,@Param(value="endTime")String endTime,@Param(value="nature") String nature,
@@ -37,7 +36,7 @@ public interface HrWorkRecordMapper extends MyMapper<HrWorkRecord>{
 	 * @param accountId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getMyHrWorkRecordList(@Param(value="orgId")String orgId,@Param(value="accountId")String accountId);
 	

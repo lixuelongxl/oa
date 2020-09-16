@@ -72,7 +72,7 @@ public int updateProjectBuildUnit(Example example,ProjectBuildUnit projectBuildU
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>> getProjectBuildUnitList(String orgId,String type,String search)
 {
@@ -86,7 +86,7 @@ public List<Map<String, String>> getProjectBuildUnitList(String orgId,String typ
  * @param: type
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getProjectBuildUnitList(PageParam pageParam,String type) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());

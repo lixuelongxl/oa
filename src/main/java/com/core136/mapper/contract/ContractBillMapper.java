@@ -25,7 +25,7 @@ public interface ContractBillMapper extends MyMapper<ContractBill>{
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getContractBillList(
 			@Param(value="orgId")String orgId,
@@ -45,7 +45,7 @@ public interface ContractBillMapper extends MyMapper<ContractBill>{
 	 * @param orgId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getDeskBillList(@Param(value="orgId")String orgId);
 	
@@ -56,7 +56,7 @@ public interface ContractBillMapper extends MyMapper<ContractBill>{
 	 * @param orgId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getContractBillTop(@Param(value="orgId")String orgId);
 }

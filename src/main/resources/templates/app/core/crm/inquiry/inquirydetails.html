@@ -7,8 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%include("../../../resapi/style.html"){}%>
-<link rel="stylesheet" href="/module/zTree_v3/css/bootstrapStyle/bootstrapStyle.css" type="text/css">
-<link href="/module/jeDate/jedate.css" rel="stylesheet" />
+<link href="/module/bootstrap-table/bootstrap-table.css" rel="stylesheet" />
 <style type="text/css">
 .table>tbody>tr>td {
 	vertical-align: middle;
@@ -65,7 +64,7 @@
 							</div>
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<label class="col-sm-2 control-label no-padding-right">电话:</label>
-								<div class="col-sm-10" id="tel"></div>
+								<div class="col-sm-10" id="tel" style="line-height: 34px"></div>
 							</div>
 						</div>
 						<div class="form-group row">
@@ -83,6 +82,7 @@
 
 						<div class="form-group row">
 							<div class="col-md-12 col-sm-12 col-xs-12">
+							<div id="toobar"><span style="font-size:18px;">询价产品清单</span></div>
 								<table id="myTable"></table>
 							</div>
 						</div>
@@ -141,6 +141,8 @@
 		var inquiryId = "${parameter.inquiryId}";
 	</script>
 <script type="text/javascript" src="/module/fileupload/pageoffice.js" id="po_js_main"></script>
+<script type="text/javascript" src="/module/bootstrap-table/bootstrap-table.js"></script>
+<script type="text/javascript" src="/module/bootstrap-table/bootstrap-table-zh-CN.js"></script>
 <script type="text/javascript" src="/module/fileupload/ajaxfileupload.js"></script>
 <script type="text/javascript" src="/module/fileupload/fileupload.js"></script>
 <script type="text/javascript" src="/gobal/js/page/crm/inquirydetails.js"></script>

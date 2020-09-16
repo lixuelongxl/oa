@@ -3,7 +3,6 @@ package com.core136.service.vehicle;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,7 +50,7 @@ public VehicleRepairRecord selectOneVehicleRepairRecord(VehicleRepairRecord vehi
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getVehicleRepairRecordList(String orgId,String repairUser,String repairType,String beginTime,String endTime,String search)
 {
@@ -68,7 +67,7 @@ public List<Map<String, String>>getVehicleRepairRecordList(String orgId,String r
  * @param endTime
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getVehicleRepairRecordList(PageParam pageParam,String repairUser,String repairType,String beginTime,String endTime) 
 {

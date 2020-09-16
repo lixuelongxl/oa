@@ -53,4 +53,19 @@ public PageInfo<Map<String, Object>> getBiTemplateList(int pageNumber,int pageSi
 	return pageInfo;
 }
 
+/**
+ * 
+ * @Title: getBiTemplateTree   
+ * @Description: TODO 获取权限内的报表
+ * @param orgId
+ * @param levelId
+ * @param accountId
+ * @return
+ * List<Map<String,Object>>
+ */
+public List<Map<String, Object>>getBiTemplateTree(String orgId,String levelId,String accountId)
+{
+	return biTemplateMapper.getBiTemplateTree(orgId, levelId, accountId);
+}
+
 }

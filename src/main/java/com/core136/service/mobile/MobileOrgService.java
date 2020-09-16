@@ -37,7 +37,7 @@ public class MobileOrgService {
 	 * @param deptId
 	 * @return
 	 * JSONArray    
-	 * @throws
+
 	 */
 	public JSONArray getDeptAndUserInfoForMobile(String orgId,String deptId)
 	{

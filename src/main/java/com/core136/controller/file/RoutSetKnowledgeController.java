@@ -10,10 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.core136.bean.account.Account;
 import com.core136.bean.file.Knowledge;
+import com.core136.bean.file.KnowledgeComment;
 import com.core136.bean.file.KnowledgeLearn;
 import com.core136.bean.file.KnowledgeSort;
-import com.core136.bean.fixedassets.FixedAssetsRepair;
 import com.core136.service.account.AccountService;
+import com.core136.service.file.KnowledgeCommentService;
 import com.core136.service.file.KnowledgeLearnService;
 import com.core136.service.file.KnowledgeSearchService;
 import com.core136.service.file.KnowledgeService;
@@ -37,9 +38,89 @@ public class RoutSetKnowledgeController {
 	private KnowledgeSearchService knowledgeSearchService;
 	@Autowired
 	private AccountService accountService;
+	@Autowired
+	private KnowledgeCommentService knowledgeCommentService;
+	/**
+	 * 
+	 * @Title: insertKnowledgeComment   
+	 * @Description: TODO 添加评论
+	 * @param request
+	 * @param knowledgeComment
+	 * @return
+	 * RetDataBean
+	 */
+	@RequestMapping(value="/insertKnowledgeComment",method=RequestMethod.POST)
+	public RetDataBean insertKnowledgeComment(HttpServletRequest request,KnowledgeComment knowledgeComment)
+	{
+		try
+		{
+			Account account=accountService.getRedisAccount(request);
+			knowledgeComment.setCommentId(SysTools.getGUID());
+			knowledgeComment.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
+			knowledgeComment.setCreateUser(account.getAccountId());
+			knowledgeComment.setOrgId(account.getOrgId());
+			return RetDataTools.Ok("添加评论成功！", knowledgeCommentService.addKnowledgeComment(knowledgeComment));
+		}catch (Exception e) {
+			// TODO: handle exception
+			return RetDataTools.Error(e.getMessage());
+		}
+	}
 	
+	/**
+	 * 
+	 * @Title: deleteKnowledgeComment   
+	 * @Description: TODO 删除评论
+	 * @param request
+	 * @param knowledgeComment
+	 * @return
+	 * RetDataBean
+	 */
+	@RequestMapping(value="/deleteKnowledgeComment",method=RequestMethod.POST)
+	public RetDataBean deleteKnowledgeComment(HttpServletRequest request,KnowledgeComment knowledgeComment)
+	{
+		try
+		{
+			Account account=accountService.getRedisAccount(request);
+			if(StringUtils.isBlank(knowledgeComment.getCommentId()))
+			{
+				return RetDataTools.NotOk("请求有参数有问题，请检查参数！");
+			}
+			knowledgeComment.setCreateUser(account.getAccountId());
+			knowledgeComment.setOrgId(account.getOrgId());
+			return RetDataTools.Ok("删除评论成功！", knowledgeCommentService.deleteKnowledgeComment(knowledgeComment));
+		}catch (Exception e) {
+			// TODO: handle exception
+			return RetDataTools.Error(e.getMessage());
+		}
+	}
 	
-	
+	/**
+	 * 
+	 * @Title: updateKnowledgeComment   
+	 * @Description: TODO更新评论
+	 * @param request
+	 * @param knowledgeComment
+	 * @return
+	 * RetDataBean
+	 */
+	@RequestMapping(value="/updateKnowledgeComment",method=RequestMethod.POST)
+	public RetDataBean updateKnowledgeComment(HttpServletRequest request,KnowledgeComment knowledgeComment)
+	{
+		try
+		{
+			Account account=accountService.getRedisAccount(request);
+			if(StringUtils.isBlank(knowledgeComment.getCommentId()))
+			{
+				return RetDataTools.NotOk("请求有参数有问题，请检查参数！");
+			}
+			Example example = new Example(KnowledgeComment.class);
+			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("commentId",knowledgeComment.getCommentId());
+			return RetDataTools.Ok("更新评论成功！", knowledgeCommentService.updateKnowledgeComment(example, knowledgeComment));
+		}catch (Exception e) {
+			// TODO: handle exception
+			return RetDataTools.Error(e.getMessage());
+		}
+	}
 	
 	/**
 	 * 
@@ -49,7 +130,7 @@ public class RoutSetKnowledgeController {
 	 * @param: knowledgeLearn
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertKnowledgeLearn",method=RequestMethod.POST)
 	public RetDataBean insertKnowledgeLearn(HttpServletRequest request,KnowledgeLearn knowledgeLearn)
@@ -81,7 +162,7 @@ public class RoutSetKnowledgeController {
 	 * @param: knowledgeSort
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertKnowledgeSort",method=RequestMethod.POST)
 	public RetDataBean insertKnowledgeSort(HttpServletRequest request,KnowledgeSort knowledgeSort)
@@ -92,6 +173,10 @@ public class RoutSetKnowledgeController {
 			if(!account.getOpFlag().equals("1"))
 			{
 				return RetDataTools.NotOk("您不是系统管理员,请与管理员联系!");
+			}
+			if(StringUtils.isBlank(knowledgeSort.getSortLeave()))
+			{
+				knowledgeSort.setSortLeave("0");
 			}
 			knowledgeSort.setSortId(SysTools.getGUID());
 			knowledgeSort.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
@@ -112,7 +197,7 @@ public class RoutSetKnowledgeController {
 	 * @param: knowledgeSort
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteKnowledgeSort",method=RequestMethod.POST)
 	public RetDataBean deleteKnowledgeSort(HttpServletRequest request,KnowledgeSort knowledgeSort)
@@ -144,7 +229,7 @@ public class RoutSetKnowledgeController {
 	 * @param: knowledgeSort
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateKnowledgeSort",method=RequestMethod.POST)
 	public RetDataBean updateKnowledgeSort(HttpServletRequest request,KnowledgeSort knowledgeSort)
@@ -171,13 +256,38 @@ public class RoutSetKnowledgeController {
 	
 	/**
 	 * 
+	 * @Title: resetKnowledgeindex   
+	 * @Description: TODO  重建知识文档索引
+	 * @param request
+	 * @param knowledge
+	 * @return
+	 * RetDataBean
+	 */
+	@RequestMapping(value="/resetKnowledgeindex",method=RequestMethod.POST)
+	public RetDataBean resetKnowledgeindex(HttpServletRequest request,Knowledge knowledge)
+	{
+		try
+		{
+			Account account=accountService.getRedisAccount(request);
+			knowledge.setOrgId(account.getOrgId());
+			knowledgeService.resetKnowledgeindex(knowledge);
+			return RetDataTools.Ok("重建知识文档索引成功！");
+		}catch (Exception e) {
+			// TODO: handle exception
+			return RetDataTools.Error(e.getMessage());
+		}
+	}
+	
+	
+	/**
+	 * 
 	 * @Title: insertKnowledge   
 	 * @Description: TODO 添加知识
 	 * @param: request
 	 * @param: knowledge
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertKnowledge",method=RequestMethod.POST)
 	public RetDataBean insertKnowledge(HttpServletRequest request,Knowledge knowledge)
@@ -204,7 +314,7 @@ public class RoutSetKnowledgeController {
 	 * @param knowledge
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateKnowledge",method=RequestMethod.POST)
 	public RetDataBean updateKnowledge(HttpServletRequest request,Knowledge knowledge)
@@ -227,13 +337,45 @@ public class RoutSetKnowledgeController {
 	
 	/**
 	 * 
+	 * @Title: deleteIndex   
+	 * @Description: TODO 删除知识文档的索引
+	 * @param request
+	 * @param knowledge
+	 * @return
+	 * RetDataBean
+	 */
+	@RequestMapping(value="/deleteKnowledgeindex",method=RequestMethod.POST)
+	public RetDataBean deleteKnowledgeindex(HttpServletRequest request,Knowledge knowledge)
+	{
+		try
+		{
+			Account account=accountService.getRedisAccount(request);
+			if(!account.getOpFlag().equals("1"))
+			{
+				knowledge.setCreateUser(account.getAccountId());
+			}
+			if(StringUtils.isBlank(knowledge.getKnowledgeId()))
+			{
+				return RetDataTools.NotOk("请求有参数有问题，请检查参数！");
+			}
+			knowledge.setOrgId(account.getOrgId());
+			knowledgeService.deleteIndexByAttachId(knowledge);
+			return RetDataTools.Ok("删除知识文档成功！");
+		}catch (Exception e) {
+			// TODO: handle exception
+			return RetDataTools.Error(e.getMessage());
+		}
+	}
+	
+	/**
+	 * 
 	 * @Title: deleteKnowledge   
 	 * @Description: TODO 删除知识文档
 	 * @param: request
 	 * @param: knowledge
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteKnowledge",method=RequestMethod.POST)
 	public RetDataBean deleteKnowledge(HttpServletRequest request,Knowledge knowledge)

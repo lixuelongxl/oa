@@ -25,7 +25,6 @@ import com.core136.service.file.AttachService;
 import com.core136.service.sys.MessageUnitService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.sun.corba.se.impl.protocol.giopmsgheaders.Message;
 
 import tk.mybatis.mapper.entity.Example;
 /**
@@ -61,7 +60,7 @@ private AttachService attachService;
  * @param: diary
  * @param: @return      
  * @return: int      
- * @throws
+
  */
 public int insertDiary(Diary diary)
 {
@@ -128,7 +127,7 @@ public int createDiary(Account account,UserInfo userInfo,Diary diary,DiaryPriv d
  * @param: diary
  * @param: @return      
  * @return: int      
- * @throws
+
  */
 public int delDiary(Diary diary)
 {
@@ -200,7 +199,7 @@ public int updateDiary(Account account,UserInfo userInfo,Example example,Diary d
  * @param: search
  * @param: @return      
  * @return: List<Map<String,Object>>      
- * @throws
+
  */
 public List<Map<String, Object>>getMyDiaryList(String orgId,String accountId,String search,String diaryDay)
 {
@@ -215,7 +214,7 @@ public List<Map<String, Object>>getMyDiaryList(String orgId,String accountId,Str
  * @param: createTime
  * @param: @return      
  * @return: PageInfo<Map<String,Object>>      
- * @throws
+
  */
 public PageInfo<Map<String, Object>> getMyDiaryList(PageParam pageParam,String diaryDay)
 {
@@ -259,7 +258,7 @@ public PageInfo<Map<String, Object>> getOtherDiaryList(int pageNumber,int pageSi
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getMySubordinatesDiaryList(String orgId,List<String> list,String beginTime,String endTime,String search )
 {
@@ -275,7 +274,7 @@ public List<Map<String, String>>getMySubordinatesDiaryList(String orgId,List<Str
  * @param: endTime
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getMySubordinatesDiaryList(PageParam pageParam,List<String> list,String beginTime,String endTime)
 {
@@ -292,7 +291,7 @@ public PageInfo<Map<String, String>> getMySubordinatesDiaryList(PageParam pagePa
  * @param: accountId
  * @param: @return      
  * @return: int      
- * @throws
+
  */
 public int getMyDiaryCount(String orgId,String accountId)
 {
@@ -306,7 +305,7 @@ public int getMyDiaryCount(String orgId,String accountId)
  * @param: accountId
  * @param: @return      
  * @return: Integer      
- * @throws
+
  */
 public int getDiaryCommentCount(String orgId,String accountId)
 {
@@ -321,7 +320,7 @@ public int getDiaryCommentCount(String orgId,String accountId)
  * @param: accountId
  * @param: @return      
  * @return: Map<String,Object>      
- * @throws
+
  */
 public Map<String,Object> getMyDiaryInfo(String orgId,String accountId)
 {
@@ -345,7 +344,7 @@ public Map<String,Object> getMyDiaryInfo(String orgId,String accountId)
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getShowDiaryList(String orgId,String accountId,String deptId,String leaveId,String beginTime,String endTime,String search)
 {
@@ -361,7 +360,7 @@ public List<Map<String, String>>getShowDiaryList(String orgId,String accountId,S
  * @param: endTime
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getShowDiaryList(PageParam pageParam,String beginTime,String endTime)
 {
@@ -378,7 +377,7 @@ public PageInfo<Map<String, String>> getShowDiaryList(PageParam pageParam,String
  * @param: accountId
  * @param: @return      
  * @return: JSONObject      
- * @throws
+
  */
 public JSONObject getHomePageByAccountId(String orgId,String accountId)
 {

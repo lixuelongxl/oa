@@ -67,7 +67,7 @@ public class RoutSetFixedAssetsController {
 	 * @param: fixedAssetsRepair
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertFixedAssetsRepair",method=RequestMethod.POST)
 	public RetDataBean insertFixedAssetsRepair(HttpServletRequest request,FixedAssetsRepair fixedAssetsRepair)
@@ -92,7 +92,7 @@ public class RoutSetFixedAssetsController {
 	 * @param: fixedAssetsRepair
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteFixedAssetsRepair",method=RequestMethod.POST)
 	public RetDataBean deleteFixedAssetsRepair(HttpServletRequest request,FixedAssetsRepair fixedAssetsRepair)
@@ -119,7 +119,7 @@ public class RoutSetFixedAssetsController {
 	 * @param: fixedAssetsRepair
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateFixedAssetsRepair",method=RequestMethod.POST)
 	public RetDataBean updateFixedAssetsRepair(HttpServletRequest request,FixedAssetsRepair fixedAssetsRepair)
@@ -147,7 +147,7 @@ public class RoutSetFixedAssetsController {
 	 * @param: fixedAssetsApply
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateFixedAssetsApproval",method=RequestMethod.POST)
 	public RetDataBean updateFixedAssetsApproval(HttpServletRequest request,FixedAssetsApproval fixedAssetsApproval)
@@ -175,7 +175,7 @@ public class RoutSetFixedAssetsController {
 	 * @param: fixedAssetsApply
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteFixedAssetsApproval",method=RequestMethod.POST)
 	public RetDataBean deleteFixedAssetsApproval(HttpServletRequest request,FixedAssetsApproval fixedAssetsApproval)
@@ -206,7 +206,7 @@ public class RoutSetFixedAssetsController {
 	 * @param: fixedAssetsApply
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertFixedAssetsApproval",method=RequestMethod.POST)
 	public RetDataBean insertFixedAssetsApproval(HttpServletRequest request,FixedAssetsApproval fixedAssetsApproval)
@@ -233,7 +233,7 @@ public class RoutSetFixedAssetsController {
 	 * @param: fixedAssetsApply
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateFixedAssetsApply",method=RequestMethod.POST)
 	public RetDataBean updateFixedAssetsApply(HttpServletRequest request,FixedAssetsApply fixedAssetsApply)
@@ -261,7 +261,7 @@ public class RoutSetFixedAssetsController {
 	 * @param: fixedAssetsApply
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteFixedAssetsApply",method=RequestMethod.POST)
 	public RetDataBean deleteFixedAssetsApply(HttpServletRequest request,FixedAssetsApply fixedAssetsApply)
@@ -289,7 +289,7 @@ public class RoutSetFixedAssetsController {
 	 * @param: fixedAssetsApply
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertFixedAssetsApply",method=RequestMethod.POST)
 	public RetDataBean insertFixedAssetsApply(HttpServletRequest request,FixedAssetsApply fixedAssetsApply)
@@ -316,7 +316,7 @@ public class RoutSetFixedAssetsController {
 	 * @param: fixedAssetsStorage
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertFixedAssetsStorage",method=RequestMethod.POST)
 	public RetDataBean insertFixedAssetsStorage(HttpServletRequest request,FixedAssetsStorage fixedAssetsStorage)
@@ -341,7 +341,7 @@ public class RoutSetFixedAssetsController {
 	 * @param: fixedAssetsStorage
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteFixedAssetsStorage",method=RequestMethod.POST)
 	public RetDataBean deleteFixedAssetsStorage(HttpServletRequest request,FixedAssetsStorage fixedAssetsStorage)
@@ -367,7 +367,7 @@ public class RoutSetFixedAssetsController {
 	 * @param: fixedAssetsStorage
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateFixedAssetsStorage",method=RequestMethod.POST)
 	public RetDataBean updateFixedAssetsStorage(HttpServletRequest request,FixedAssetsStorage fixedAssetsStorage)

@@ -105,7 +105,7 @@ public RetDataBean getSuperversionDelayById(HttpServletRequest request,Supervers
  * @param: superversionConfig
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getSuperversionConfigById",method=RequestMethod.POST)
 public RetDataBean getSuperversionConfigById(HttpServletRequest request,SuperversionConfig superversionConfig)
@@ -128,7 +128,7 @@ public RetDataBean getSuperversionConfigById(HttpServletRequest request,Superver
  * @param: superversion
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getSuperversionById",method=RequestMethod.POST)
 public RetDataBean getSuperversionById(HttpServletRequest request,Superversion superversion)
@@ -151,7 +151,7 @@ public RetDataBean getSuperversionById(HttpServletRequest request,Superversion s
  * @param: superversion
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getAllSuperversionConfigList",method=RequestMethod.POST)
 public RetDataBean getSuperversionConfigList(HttpServletRequest request)
@@ -171,7 +171,7 @@ public RetDataBean getSuperversionConfigList(HttpServletRequest request)
  * @param: request
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getMySuperversionConfigList",method=RequestMethod.POST)
 public RetDataBean getMySuperversionConfigList(HttpServletRequest request)
@@ -193,7 +193,7 @@ public RetDataBean getMySuperversionConfigList(HttpServletRequest request)
  * @param: pageParam
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getSuperversionConfigList",method=RequestMethod.POST)
 public RetDataBean getSuperversionConfigList(
@@ -237,7 +237,7 @@ public RetDataBean getSuperversionConfigList(
  * @param: pageParam
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getLeadManageSupperversionList",method=RequestMethod.POST)
 public RetDataBean getLeadManageSupperversionList(
@@ -288,7 +288,7 @@ public RetDataBean getLeadManageSupperversionList(
  * @param: pageParam
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getSupperversionList",method=RequestMethod.POST)
 public RetDataBean getSupperversionList(
@@ -338,7 +338,7 @@ public RetDataBean getSupperversionList(
  * @param: pageParam
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getDelayApplyList",method=RequestMethod.POST)
 public RetDataBean getDelayApplyList(
@@ -388,7 +388,7 @@ public RetDataBean getDelayApplyList(
  * @param: pageParam
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getSupperversionPorcessList",method=RequestMethod.POST)
 public RetDataBean getSupperversionPorcessList(
@@ -434,7 +434,7 @@ public RetDataBean getSupperversionPorcessList(
  * @param: pageParam
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getMyCompleteProcessList",method=RequestMethod.POST)
 public RetDataBean getMyCompleteProcessList(
@@ -482,7 +482,7 @@ public RetDataBean getMyCompleteProcessList(
  * @param: pageParam
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getControlProcessList",method=RequestMethod.POST)
 public RetDataBean getControlProcessList(
@@ -525,7 +525,7 @@ public RetDataBean getControlProcessList(
  * @param: request
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getQuerySuperversionForDept",method=RequestMethod.POST)
 public RetDataBean getQuerySuperversionForDept(HttpServletRequest request)
@@ -546,7 +546,7 @@ public RetDataBean getQuerySuperversionForDept(HttpServletRequest request)
  * @param: request
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getQuerySuperversionForType",method=RequestMethod.POST)
 public RetDataBean getQuerySuperversionForType(HttpServletRequest request)

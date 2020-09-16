@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +39,7 @@ private EchartsSuperversionMapper echartsSuperversionMapper;
  * @param account
  * @return
  * OptionConfig    
- * @throws
+
  */
 public OptionConfig getBiSuperversionByMonthLine(Account account)
 {
@@ -71,7 +71,7 @@ public OptionConfig getBiSuperversionByMonthLine(Account account)
 	 * @param account
 	 * @return
 	 * OptionConfig    
-	 * @throws
+
 	 */
 	public OptionConfig getBiSuperversionStatusTypePie(Account account)
 	{
@@ -138,7 +138,7 @@ public OptionConfig getBiSuperversionByMonthLine(Account account)
 	 * @param account
 	 * @return
 	 * OptionConfig    
-	 * @throws
+
 	 */
 	public OptionConfig getBiSuperversionTypePie(Account account)
 	{
@@ -204,7 +204,7 @@ public OptionConfig getBiSuperversionByMonthLine(Account account)
 	 * @param account
 	 * @return
 	 * OptionConfig    
-	 * @throws
+
 	 */
 	public OptionConfig getBiSuperversionByLeadPie(Account account)
 	{

@@ -32,7 +32,7 @@ public interface AttendConfigMapper extends MyMapper<AttendConfig>{
  * @param: orgId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,String>> getAllAttendConfigList(@Param(value = "orgId") String orgId);	
 
@@ -43,7 +43,7 @@ public List<Map<String,String>> getAllAttendConfigList(@Param(value = "orgId") S
  * @param: orgId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,String>> getMyAttendConfigList(@Param(value = "orgId") String orgId);	
 

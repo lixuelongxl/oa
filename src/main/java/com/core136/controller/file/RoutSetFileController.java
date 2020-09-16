@@ -81,7 +81,7 @@ private  String notallow;
  * @param: photo
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/insertPhoto",method=RequestMethod.POST)
 public RetDataBean insertPhoto(HttpServletRequest request,Photo photo)
@@ -108,7 +108,7 @@ public RetDataBean insertPhoto(HttpServletRequest request,Photo photo)
  * @param: photo
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/updatePhoto",method=RequestMethod.POST)
 public RetDataBean updatePhoto(HttpServletRequest request,Photo photo)
@@ -829,7 +829,7 @@ public RetDataBean createPublicFile(HttpServletRequest request,PublicFile public
  * @param: publicFile
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/deletePublicFile",method=RequestMethod.POST)
 public RetDataBean deletePublicFile(HttpServletRequest request,PublicFile publicFile)
@@ -897,7 +897,7 @@ public RetDataBean createPublicFileFolder(HttpServletRequest request,PublicFileF
  * @param: publicFileFolder
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/setPublicFilePriv",method=RequestMethod.POST)
 public RetDataBean setPublicFilePriv(HttpServletRequest request,PublicFileFolder publicFileFolder)

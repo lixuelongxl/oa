@@ -25,7 +25,6 @@ import com.core136.bean.sys.SysMenu;
 import com.core136.bean.sys.SysProfile;
 import com.core136.bean.sys.SysTimingTask;
 import com.core136.service.account.AccountService;
-import com.core136.service.account.UserGroupService;
 import com.core136.service.account.UserPrivService;
 import com.core136.service.oa.ShortcutService;
 import com.core136.service.sys.AppConfigService;
@@ -102,7 +101,7 @@ private SysProfileService sysProfileService;
  * @param: request
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getAllAppList",method=RequestMethod.POST)
 public RetDataBean getAllAppList(HttpServletRequest request)
@@ -125,7 +124,7 @@ public RetDataBean getAllAppList(HttpServletRequest request)
  * @param: appConfig
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getAppConfigById",method=RequestMethod.POST)
 public RetDataBean getAppConfigById(HttpServletRequest request,AppConfig appConfig)
@@ -151,7 +150,7 @@ public RetDataBean getAppConfigById(HttpServletRequest request,AppConfig appConf
  * @param: sortOrder
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getAppConfigList",method=RequestMethod.POST)
 public RetDataBean getAppConfigList(
@@ -208,7 +207,7 @@ public RetDataBean getAppConfigList(
  * @param: request
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getSysInterface",method=RequestMethod.POST)
 public RetDataBean getSysInterface(HttpServletRequest request)
@@ -230,7 +229,7 @@ public RetDataBean getSysInterface(HttpServletRequest request)
  * @param: pageParam
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getOrgConfigLsit",method=RequestMethod.POST)
 public RetDataBean getOrgConfigLsit(
@@ -272,7 +271,7 @@ public RetDataBean getOrgConfigLsit(
  * @param: accountId
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getAllSysLogList",method=RequestMethod.POST)
 public RetDataBean getAllSysLogList(
@@ -320,7 +319,7 @@ public RetDataBean getAllSysLogList(
  * @param: endTime
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getMySysLogList",method=RequestMethod.POST)
 public RetDataBean getMySysLogList(
@@ -443,7 +442,7 @@ public RetDataBean getMySysLogList(
 	 * @param: pageParam
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getAllSysProfileList",method=RequestMethod.POST)
 	public RetDataBean getAllSysProfileList(
@@ -691,7 +690,7 @@ public RetDataBean getMySysLogList(
 	 * @param: request
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getDeskConfigList",method=RequestMethod.POST)
 	public RetDataBean getDeskConfigList(HttpServletRequest request)
@@ -766,7 +765,7 @@ public RetDataBean getMySysLogList(
 	 * @param: request
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMemoryStatus",method=RequestMethod.POST)
 	public RetDataBean getMemoryStatus(HttpServletRequest request)
@@ -791,7 +790,7 @@ public RetDataBean getMySysLogList(
 	 * @param: request
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getDiskStatus",method=RequestMethod.POST)
 	public RetDataBean getDiskStatus(HttpServletRequest request)
@@ -816,7 +815,7 @@ public RetDataBean getMySysLogList(
 	 * @param: request
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getCpuInfo",method=RequestMethod.POST)
 	public RetDataBean getCpuInfo(HttpServletRequest request)
@@ -841,7 +840,7 @@ public RetDataBean getMySysLogList(
 	 * @param: request
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getCpuStatus",method=RequestMethod.POST)
 	public RetDataBean getCpuStatus(HttpServletRequest request)
@@ -867,7 +866,7 @@ public RetDataBean getMySysLogList(
 	 * @param: request
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping("/getMyMenuInPriv")
 	public RetDataBean getMyMenuInPriv(HttpServletRequest request)
@@ -907,7 +906,7 @@ public RetDataBean getMySysLogList(
 	 * @param: request
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMyShortcutMenu",method=RequestMethod.POST)
 	public RetDataBean getMyShortcutMenu(HttpServletRequest request)
@@ -932,7 +931,7 @@ public RetDataBean getMySysLogList(
 	 * @param: pageParam
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getSysTimingTaskList",method=RequestMethod.POST)
 	public RetDataBean getSysTimingTaskList(
@@ -971,7 +970,7 @@ public RetDataBean getMySysLogList(
 	 * @param: sysTimingTask
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getSysTimingTaskById",method=RequestMethod.POST)
 	public RetDataBean getSysTimingTaskById(HttpServletRequest request,SysTimingTask sysTimingTask)
@@ -993,7 +992,7 @@ public RetDataBean getMySysLogList(
 	 * @param: sysProfile
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getSysProfileById",method=RequestMethod.POST)
 	public RetDataBean getSysProfileById(HttpServletRequest request,SysProfile sysProfile)

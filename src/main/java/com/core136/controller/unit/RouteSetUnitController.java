@@ -85,7 +85,7 @@ private RedisUtil redisUtil;
  * @param userGroup
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/insertUserGroup",method=RequestMethod.POST)
 public RetDataBean insertUserGroup(HttpServletRequest request,UserGroup userGroup)
@@ -110,7 +110,7 @@ public RetDataBean insertUserGroup(HttpServletRequest request,UserGroup userGrou
  * @param userGroup
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/deleteUserGroup",method=RequestMethod.POST)
 public RetDataBean deleteUserGroup(HttpServletRequest request,UserGroup userGroup)
@@ -137,7 +137,7 @@ public RetDataBean deleteUserGroup(HttpServletRequest request,UserGroup userGrou
  * @param userGroup
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/updateUserGroup",method=RequestMethod.POST)
 public RetDataBean updateUserGroup(HttpServletRequest request,UserGroup userGroup)
@@ -167,7 +167,7 @@ public RetDataBean updateUserGroup(HttpServletRequest request,UserGroup userGrou
  * @param: ddConfig
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/updateWxConfig",method=RequestMethod.POST)
 public RetDataBean updateWxConfig(HttpServletRequest request,WxConfig wxConfig)
@@ -199,7 +199,7 @@ public RetDataBean updateWxConfig(HttpServletRequest request,WxConfig wxConfig)
  * @param: ddConfig
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/updateDdConfig",method=RequestMethod.POST)
 public RetDataBean updateDdConfig(HttpServletRequest request,DdConfig ddConfig)
@@ -231,7 +231,7 @@ public RetDataBean updateDdConfig(HttpServletRequest request,DdConfig ddConfig)
  * @param accountId
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/deleteWeiXinAccount",method=RequestMethod.POST)
 public RetDataBean deleteWeiXinAccount(HttpServletRequest request,String accountId)
@@ -258,7 +258,7 @@ public RetDataBean deleteWeiXinAccount(HttpServletRequest request,String account
  * @param: accountId
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/deleteDingDingAccount",method=RequestMethod.POST)
 public RetDataBean deleteDingDingAccount(HttpServletRequest request,String accountId)
@@ -284,7 +284,7 @@ public RetDataBean deleteDingDingAccount(HttpServletRequest request,String accou
  * @param accountId
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/createWeiXinAccount",method=RequestMethod.POST)
 public RetDataBean createWeiXinAccount(HttpServletRequest request,String accountId)
@@ -319,7 +319,7 @@ public RetDataBean createWeiXinAccount(HttpServletRequest request,String account
  * @param: request
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/createDingDingAccount",method=RequestMethod.POST)
 public RetDataBean createDingDingAccount(HttpServletRequest request,String accountId)
@@ -385,7 +385,7 @@ public RetDataBean updateUnit(HttpServletRequest request, Unit unit)
  * @param: accountId
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/stopAccount",method=RequestMethod.POST)
 public RetDataBean stopAccount(HttpServletRequest request,String accountId)
@@ -443,7 +443,7 @@ public RetDataBean openAccount(HttpServletRequest request,String accountId)
  * @param unitDept
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/weixinsync",method=RequestMethod.POST)
 public RetDataBean goWeiXinSyncUnitDept(HttpServletRequest request,UnitDept unitDept)
@@ -468,7 +468,7 @@ public RetDataBean goWeiXinSyncUnitDept(HttpServletRequest request,UnitDept unit
  * @param: unitDept
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/dingdingsync",method=RequestMethod.POST)
 public RetDataBean goDingDingSyncUnitDept(HttpServletRequest request,UnitDept unitDept)
@@ -492,7 +492,7 @@ public RetDataBean goDingDingSyncUnitDept(HttpServletRequest request,UnitDept un
  * @param: unitDept
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/dingdingupdate",method=RequestMethod.POST)
 public RetDataBean goDingDingUpdateUnitDept(HttpServletRequest request,UnitDept unitDept)
@@ -515,7 +515,7 @@ public RetDataBean goDingDingUpdateUnitDept(HttpServletRequest request,UnitDept 
  * @param unitDept
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/weixinupdate",method=RequestMethod.POST)
 public RetDataBean goWxUpdateUnitDept(HttpServletRequest request,UnitDept unitDept)
@@ -566,7 +566,7 @@ public RetDataBean addUnitDept(HttpServletRequest request,UnitDept unitDept)
  * @param: request
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/importUnitDept",method=RequestMethod.POST)
 public RetDataBean importUnitDept(HttpServletRequest request,MultipartFile file)
@@ -588,7 +588,7 @@ public RetDataBean importUnitDept(HttpServletRequest request,MultipartFile file)
  * @param: file
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/importUserInfo",method=RequestMethod.POST)
 public RetDataBean importUserInfo(HttpServletRequest request,MultipartFile file)
@@ -915,7 +915,7 @@ public RetDataBean copyPriv (HttpServletRequest request,UserPriv userPriv)
  * @param accountIds
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/deleteUserInfos",method=RequestMethod.POST)
 public RetDataBean deleteUserInfos (HttpServletRequest request,String accountIds)
@@ -1027,7 +1027,7 @@ public RetDataBean insertAccountAndUserInfo (HttpServletRequest request,UserInfo
  * @param: uAccount
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/updateMyUserInfo",method=RequestMethod.POST)
 public RetDataBean updateMyUserInfo (HttpServletRequest request,UserInfo userInfo,Account uAccount)
@@ -1227,7 +1227,7 @@ public RetDataBean resetPassWord (HttpServletRequest request,String firstPassWor
  * @param: homePage
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/setDeskConfig",method=RequestMethod.POST)
 public RetDataBean setDeskConfig (HttpServletRequest request,String homePage)

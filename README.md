@@ -5,7 +5,7 @@
 
 #### 软件架构
 本项目JDK8x64+SpringBoot+MyBatis+Redis+Durid+Beetl的框架组合，自研工作流引擎，支持可视化表单设计与流程设计。支技分布式部署。功能完善能够满足中大型企业办公需要。
-本项目自2020-08-17日起，为全面支持mysql8以上版本，启用SpringBoot 2.3x的版本。同时由于多数兄弟反应，代码编译时间太长，故重新设计了新的代码结构，望大家理解，若有需要的源代码被打到了jar中，可与我们联系，我们可以视情况提供。
+本项目自2020-08-17日起，为全面支持mysql8以上版本，启用SpringBoot 2.3x的版本。支持jasperreport报表系统。
 
 目前系统已全面支持国产达梦数据库8.0，要需者可加群索取。
 
@@ -28,6 +28,8 @@
 		mvn install:install-file -DgroupId=cyunsoft.coreservice -DartifactId=cyunsoft-coreservice -Dversion=0.0.1-SNAPSHOT -Dpackaging=jar -Dfile=d:/cyunsoft-coreservice-0.0.1-SNAPSHOT.jar  
 		mvn install:install-file -DgroupId=cyunsoft.bi -DartifactId=cyunsoft-bi -Dversion=0.0.1-SNAPSHOT -Dpackaging=jar -Dfile=d:/cyunsoft-bi-0.0.1-SNAPSHOT.jar  
 		mvn install:install-file -DgroupId=cyunsoft.imservice -DartifactId=cyunsoft-imservice -Dversion=0.0.1-SNAPSHOT -Dpackaging=jar  -Dfile=d:/cyunsoft-imservice-0.0.1-SNAPSHOT.jar  
+
+		开发环境正常启动后用jasperreports-6.12.2.jar 替换仓库中的jasperreports-6.12.2.jar，否则BI报表会出现中文乱码
 2.  安装MYSQL8.0.21版本 后导入lib/mysql.sql
 3.  运行cyunsoft-appservice中的AppGo.java 即可启动项目。
 注：sigar-x86-winnt.dll文件拷贝到工程所用的jdk和jre的bin目录。

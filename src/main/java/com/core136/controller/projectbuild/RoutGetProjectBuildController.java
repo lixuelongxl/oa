@@ -53,7 +53,7 @@ public class RoutGetProjectBuildController {
 	 * @param: sortId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getProjectBuildSortTree",method=RequestMethod.POST)
 	public List<Map<String,String>> getProjectBuildSortTree(HttpServletRequest request,String sortId)
@@ -79,7 +79,7 @@ public class RoutGetProjectBuildController {
 	 * @param: sortId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getProjectBuildListForTree",method=RequestMethod.POST)
 	public List<Map<String,String>> getProjectBuildListForTree(HttpServletRequest request,String sortId)
@@ -105,7 +105,7 @@ public class RoutGetProjectBuildController {
 	 * @param: sortId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getProjectBuildSortAllParentTree",method=RequestMethod.POST)
 	public List<Map<String,String>> getProjectBuildSortAllParentTree(HttpServletRequest request,String sortId)
@@ -132,7 +132,7 @@ public class RoutGetProjectBuildController {
 	 * @param: projectBuildSort
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getProjectBuildSortById",method=RequestMethod.POST)
 	public RetDataBean getProjectBuildSortById(HttpServletRequest request,ProjectBuildSort projectBuildSort)
@@ -155,7 +155,7 @@ public class RoutGetProjectBuildController {
 	 * @param: pageParam
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getprojectbuilddetailslist",method=RequestMethod.POST)
 	public RetDataBean getprojectbuilddetailslist(
@@ -196,7 +196,7 @@ public class RoutGetProjectBuildController {
 	 * @param: projectBuildDetails
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getProjectBuildDetailsById",method=RequestMethod.POST)
 	public RetDataBean getProjectBuildDetailsById(HttpServletRequest request,ProjectBuildDetails projectBuildDetails)
@@ -238,7 +238,7 @@ public class RoutGetProjectBuildController {
 	 * @param: projectId
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getprojectbuildStageOpenlist",method=RequestMethod.POST)
 	public RetDataBean getprojectbuildStageOpenlist(HttpServletRequest request,String projectId)
@@ -261,7 +261,7 @@ public class RoutGetProjectBuildController {
 	 * @param: pageParam
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getprojectbuildStagelist",method=RequestMethod.POST)
 	public RetDataBean getprojectbuildStagelist(
@@ -302,7 +302,7 @@ public class RoutGetProjectBuildController {
 	 * @param: projectTitle
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/selectProjectBuild2ByTitle",method=RequestMethod.POST)
 	public RetDataBean selectProjectBuild2ByTitle(HttpServletRequest request,String projectTitle)

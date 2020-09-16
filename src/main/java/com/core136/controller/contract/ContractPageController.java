@@ -37,7 +37,7 @@ public class ContractPageController {
 	 * @param: request
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/contract/contracttotal")
 	public ModelAndView goContracttotal(HttpServletRequest request)
@@ -59,7 +59,7 @@ public class ContractPageController {
 	 * @param request
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/contract/receivablesdetails")
 	public ModelAndView goReceivablesdetails(HttpServletRequest request)
@@ -81,7 +81,7 @@ public class ContractPageController {
 	 * @param request
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/contract/payablesdetails")
 	public ModelAndView goPayablesdetails(HttpServletRequest request)
@@ -103,7 +103,7 @@ public class ContractPageController {
 	 * @param request
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/contract/billdetails")
 	public ModelAndView goBilldetails(HttpServletRequest request)
@@ -126,7 +126,7 @@ public class ContractPageController {
 	 * @param: view
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/contract/bill")
 	public ModelAndView goContractBill(HttpServletRequest request,String view)
@@ -161,7 +161,7 @@ public class ContractPageController {
 	 * @param: view
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/contract/payable")
 	public ModelAndView goContractPayable(HttpServletRequest request,String view)
@@ -194,7 +194,7 @@ public class ContractPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/contract/sendgoods")
 	public ModelAndView goSendGoods(HttpServletRequest request,String view)
@@ -227,7 +227,7 @@ public class ContractPageController {
 	 * @param: view
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/contract/receivables")
 	public ModelAndView goContractReceviables(HttpServletRequest request,String view)
@@ -259,7 +259,7 @@ public class ContractPageController {
 	 * @param: request
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/contract/contractdetails")
 	public ModelAndView goContractdetails(HttpServletRequest request)
@@ -282,7 +282,7 @@ public class ContractPageController {
 	 * @param: request
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/contract/query")
 	public ModelAndView goQuery(HttpServletRequest request)
@@ -303,7 +303,7 @@ public class ContractPageController {
 	 * @param request
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/contract/sendgoodsdetails")
 	public ModelAndView goSendGoodsDetails(HttpServletRequest request)

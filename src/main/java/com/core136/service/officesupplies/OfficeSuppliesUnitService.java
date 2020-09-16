@@ -59,7 +59,7 @@ public OfficeSuppliesUnit selectOneOfficeSuppliesUnit(OfficeSuppliesUnit officeS
  * @param: orgId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>> getAllUnit(String orgId)
 {
@@ -73,7 +73,7 @@ public List<Map<String, String>> getAllUnit(String orgId)
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>> getOfficeSuppliesUnitList(String orgId, String search)
 {
@@ -87,7 +87,7 @@ public List<Map<String, String>> getOfficeSuppliesUnitList(String orgId, String 
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getOfficeSuppliesUnitList(PageParam pageParam) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());

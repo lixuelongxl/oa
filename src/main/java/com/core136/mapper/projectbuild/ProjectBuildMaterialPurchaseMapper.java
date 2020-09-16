@@ -27,7 +27,7 @@ public interface ProjectBuildMaterialPurchaseMapper extends MyMapper<ProjectBuil
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>> getMaterialPurchaseList(@Param(value = "orgId") String orgId,@Param(value="search") String search);
 	/**
@@ -42,7 +42,7 @@ public interface ProjectBuildMaterialPurchaseMapper extends MyMapper<ProjectBuil
 	 * @param: companyName
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>> getQueryPurchaseList(@Param(value="orgId") String orgId,@Param(value="createUser") String createUser,@Param(value="projectTitle") String projectTitle,
 			@Param(value="beginTime") String beginTime,@Param(value="endTime") String endTime,@Param(value="companyName") String companyName);

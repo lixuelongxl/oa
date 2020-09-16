@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core136.mapper.contract.ContractBillMapper">
 <resultMap id="ContractBill" type="com.core136.bean.contract.ContractBill" >
-    <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="BILL_ID" property="billId" jdbcType="VARCHAR" />
     <result column="BILL_CODE" property="billCode" jdbcType="VARCHAR" />
     <result column="CONTRACT_ID" property="contractId" jdbcType="DOUBLE" />

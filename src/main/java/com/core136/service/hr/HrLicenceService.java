@@ -78,7 +78,7 @@ public HrLicence selectOneHrLicence(HrLicence hrLicence)
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getHrLicenceList(String orgId,String userId,String beginTime,String endTime,String licenceType,String search)
 {
@@ -92,7 +92,7 @@ public List<Map<String, String>>getHrLicenceList(String orgId,String userId,Stri
  * @param accountId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getMyHrLicenceList(String orgId,String accountId)
 {
@@ -110,7 +110,7 @@ public List<Map<String, String>>getMyHrLicenceList(String orgId,String accountId
  * @param licenceType
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getHrLicenceList(PageParam pageParam,String userId,String beginTime,String endTime,String licenceType) 
 {
@@ -127,7 +127,7 @@ public PageInfo<Map<String, String>> getHrLicenceList(PageParam pageParam,String
  * @param pageParam
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getMyHrLicenceList(PageParam pageParam) 
 {
@@ -144,9 +144,9 @@ public PageInfo<Map<String, String>> getMyHrLicenceList(PageParam pageParam)
  * @param account
  * @param file
  * @return
- * @throws IOException
+ IOException
  * RetDataBean    
- * @throws
+
  */
 @Transactional(value="generalTM")
 public RetDataBean importHrLicence(Account account,MultipartFile file) throws IOException

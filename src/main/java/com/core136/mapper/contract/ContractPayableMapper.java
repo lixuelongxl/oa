@@ -21,7 +21,7 @@ public interface ContractPayableMapper extends MyMapper<ContractPayable>{
  * @param: status
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 	public List<Map<String,String>>getContractPayableList(
 			@Param(value="orgId") String orgId,

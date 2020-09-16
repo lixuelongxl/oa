@@ -100,7 +100,7 @@ public class EmailService{
 	 * @param: accountId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String, String>> getEmailListForDesk(String orgId,String accountId)
 	{
@@ -506,7 +506,7 @@ public List<Map<String, Object>> getMyDelEmailAll(String orgId, String accountId
 	 * @param page
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getMyEmailAllForMobile(String orgId,String accountId,Integer page)
 	{

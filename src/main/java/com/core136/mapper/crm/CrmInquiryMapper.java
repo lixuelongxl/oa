@@ -54,5 +54,15 @@ public List<Map<String,String>> getCrmInquiryList(
 		@Param(value="customerType") String customerType,
 		@Param(value="status")String status,
 		@Param(value="search") String search);	
-	
+/**
+ * 
+ * @Title: getCrmInquiryListForSelect   
+ * @Description: TODO 获取询价单列表
+ * @param orgId
+ * @param accountId
+ * @return
+ * List<Map<String,String>>
+ */
+public List<Map<String, String>>getCrmInquiryListForSelect(@Param(value="orgId")String orgId,@Param(value="accountId")String accountId);
+
 }

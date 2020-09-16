@@ -54,7 +54,7 @@ public class ArchivesDestroyRecordService {
 	 * @param archivesDestroyRecord
 	 * @return
 	 * int    
-	 * @throws
+
 	 */
 	@Transactional(value="generalTM")
 	public int destroyArchives(ArchivesDestroyRecord archivesDestroyRecord)
@@ -92,7 +92,7 @@ public class ArchivesDestroyRecordService {
 	 * @param endTime
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>> getArchivesDestoryFileList(String orgId,String accountId,String beginTime,String endTime,String search)
 	{
@@ -108,7 +108,7 @@ public class ArchivesDestroyRecordService {
 	 * @param endTime
 	 * @return
 	 * PageInfo<Map<String,String>>    
-	 * @throws
+
 	 */
 	public PageInfo<Map<String, String>> getArchivesDestoryFileList(PageParam pageParam,String beginTime,String endTime) 
 	{
@@ -127,7 +127,7 @@ public class ArchivesDestroyRecordService {
 	 * @param endTime
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>> getArchivesDestoryVolumeList(String orgId,String accountId,String beginTime,String endTime,String search)
 	{
@@ -142,7 +142,7 @@ public class ArchivesDestroyRecordService {
 	 * @param endTime
 	 * @return
 	 * PageInfo<Map<String,String>>    
-	 * @throws
+
 	 */
 	public PageInfo<Map<String, String>> getArchivesDestoryVolumeList(PageParam pageParam,String beginTime,String endTime) 
 	{

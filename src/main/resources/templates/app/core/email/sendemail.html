@@ -142,7 +142,7 @@
 <script type="text/javascript">
 var runId = "${parameter.runId}";
 var flowId = "${parameter.flowId}";
-var isDocument=${parameter.isDocument};
+var isDocument="${parameter.isDocument}";
 </script>
 <!--Bootstrap  wysiwig Scripts-->
 <script type="text/javascript" src="/module/fileupload/pageoffice.js" id="po_js_main"></script>
@@ -166,7 +166,7 @@ var isDocument=${parameter.isDocument};
         	$(".js-saveemail").unbind("click").click(function(){
         		saveEmail();
         	});
-        	if(isDocument)
+        	if(isDocument=="true")
         	{
         		if(runId!=null&&runId!=""&&flowId!=null&&flowId!="")
             	{

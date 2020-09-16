@@ -20,6 +20,8 @@ public class RouteGetBiBpmController {
 private EchartsBpmService echartsBpmService;
 @Autowired
 private AccountService accountService;
+
+
 /**
  * 
  * @Title: getBiBpmFlowByMonthLine   
@@ -27,7 +29,7 @@ private AccountService accountService;
  * @param request
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getBiBpmFLowByMonthLine", method = RequestMethod.POST)
 public RetDataBean getBiBpmFlowByMonthLine(HttpServletRequest request) {
@@ -47,7 +49,7 @@ public RetDataBean getBiBpmFlowByMonthLine(HttpServletRequest request) {
  * @param request
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getBiBpmFlowByAccountPie", method = RequestMethod.POST)
 public RetDataBean getBiBpmFlowByAccountPie(HttpServletRequest request) {
@@ -67,7 +69,7 @@ public RetDataBean getBiBpmFlowByAccountPie(HttpServletRequest request) {
  * @param request
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getBiBpmFlowPie", method = RequestMethod.POST)
 public RetDataBean getBiBpmFlowPie(HttpServletRequest request) {
@@ -87,7 +89,7 @@ public RetDataBean getBiBpmFlowPie(HttpServletRequest request) {
  * @param request
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getBiBpmFlowByDeptPie", method = RequestMethod.POST)
 public RetDataBean getBiBpmFlowByDeptPie(HttpServletRequest request) {

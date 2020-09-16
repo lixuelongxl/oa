@@ -102,7 +102,7 @@ private AccountService accountService;
  * @param leader
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getLeadActivityLsit",method=RequestMethod.POST)
 public RetDataBean getLeadActivityLsit(
@@ -147,7 +147,7 @@ public RetDataBean getLeadActivityLsit(
  * @param leadActivity
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getLeadActivityById",method=RequestMethod.POST)
 public RetDataBean getLeadActivityById(HttpServletRequest request,LeadActivity leadActivity)
@@ -168,7 +168,7 @@ public RetDataBean getLeadActivityById(HttpServletRequest request,LeadActivity l
  * @param: request
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getMyDiaryInfo",method=RequestMethod.POST)
 public RetDataBean getMyDiaryInfo(HttpServletRequest request)
@@ -190,7 +190,7 @@ public RetDataBean getMyDiaryInfo(HttpServletRequest request)
  * @param: diaryId
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getDiaryCommentsList",method=RequestMethod.POST)
 public RetDataBean getDiaryCommentsList(HttpServletRequest request,String diaryId)
@@ -214,7 +214,7 @@ public RetDataBean getDiaryCommentsList(HttpServletRequest request,String diaryI
  * @param: newsId
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getCommentsList",method=RequestMethod.POST)
 public RetDataBean getCommentsList(HttpServletRequest request,String newsId)
@@ -241,7 +241,7 @@ public RetDataBean getCommentsList(HttpServletRequest request,String newsId)
  * @param: createUser
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getTotalAttendList",method=RequestMethod.POST)
 public RetDataBean getTotalAttendList(
@@ -290,7 +290,7 @@ public RetDataBean getTotalAttendList(
  * @param endTime
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getMyTravelList",method=RequestMethod.POST)
 public RetDataBean getMyTravelList(
@@ -336,7 +336,7 @@ public RetDataBean getMyTravelList(
  * @param endTime
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getMyOutattendList",method=RequestMethod.POST)
 public RetDataBean getMyOutattendList(
@@ -383,7 +383,7 @@ public RetDataBean getMyOutattendList(
  * @param endTime
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getMyOverTimeList",method=RequestMethod.POST)
 public RetDataBean getMyOverTimeList(
@@ -430,7 +430,7 @@ public RetDataBean getMyOverTimeList(
  * @param endTime
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getMyDutyList",method=RequestMethod.POST)
 public RetDataBean getMyDutyList(
@@ -477,7 +477,7 @@ public RetDataBean getMyDutyList(
  * @param endTime
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getMyLeaveList",method=RequestMethod.POST)
 public RetDataBean getMyLeaveList(
@@ -526,7 +526,7 @@ public RetDataBean getMyLeaveList(
  * @param: endTime
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getShowDiaryList",method=RequestMethod.POST)
 public RetDataBean getShowDiaryList(
@@ -624,7 +624,7 @@ public RetDataBean getMySubordinatesDiaryList(
  * @param: request
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getAttendYearList",method=RequestMethod.POST)
 public RetDataBean getAttendYearList(HttpServletRequest request)
@@ -647,7 +647,7 @@ public RetDataBean getAttendYearList(HttpServletRequest request)
  * @param: year
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getMonthList",method=RequestMethod.POST)
 public RetDataBean getMonthList(HttpServletRequest request,String year)
@@ -670,7 +670,7 @@ public RetDataBean getMonthList(HttpServletRequest request,String year)
  * @param: year
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getMyAllAttendList",method=RequestMethod.POST)
 public RetDataBean getMyAllAttendList(HttpServletRequest request,String year,String type)
@@ -692,7 +692,7 @@ public RetDataBean getMyAllAttendList(HttpServletRequest request,String year,Str
  * @param: request
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getMyNewsListForDesk",method=RequestMethod.POST)
 public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
@@ -763,7 +763,7 @@ public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
  * @param: beginTime
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 	@RequestMapping(value="/getMyNewsList",method=RequestMethod.POST)
 	public RetDataBean getMyNewsList(
@@ -851,7 +851,7 @@ public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
 	 * @param: request
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMyCalendarListForDesk",method=RequestMethod.POST)
 	public RetDataBean getMyCalendarListForDesk(HttpServletRequest request)
@@ -879,7 +879,7 @@ public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
 	 * @param: calendar
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getCalendarById",method=RequestMethod.POST)
 	public RetDataBean getCalendarById(HttpServletRequest request,Calendar calendar)
@@ -906,7 +906,7 @@ public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
 	 * @param: type
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getAllCalendarList",method=RequestMethod.POST)
 	public RetDataBean getAllCalendarList(
@@ -921,7 +921,7 @@ public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
 		{
 			if(StringUtils.isBlank(pageParam.getSort()))
 			{
-				pageParam.setSort("START");
+				pageParam.setSort("START_TIME");
 			}
 			if(StringUtils.isBlank(pageParam.getSortOrder()))
 			{
@@ -969,7 +969,7 @@ public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
 	 * @param: orgId
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value = "/getMobileNewsInfo", method = RequestMethod.POST)
 	public RetDataBean getMobileNewsInfo(HttpServletRequest request, News news) {
@@ -999,7 +999,7 @@ public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
  * @param: pageParam
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 	@RequestMapping(value="/getMySms",method=RequestMethod.POST)
 	public RetDataBean getMySms(
@@ -1046,7 +1046,7 @@ public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
 	 * @param: endTime
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMySendMoblieSms",method=RequestMethod.POST)
 	public RetDataBean getMySendMoblieSms(
@@ -1245,7 +1245,7 @@ public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
 	 * @param: attendConfig
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getAttendConfigById",method=RequestMethod.POST)
 	public RetDataBean getAttendConfigById(HttpServletRequest request,AttendConfig attendConfig)
@@ -1267,7 +1267,7 @@ public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
 	 * @param: request
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getAllAttendConfigList",method=RequestMethod.POST)
 	public RetDataBean getAllAttendConfigList(HttpServletRequest request)
@@ -1289,7 +1289,7 @@ public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
 	 * @param: request
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMyAttendConfigList",method=RequestMethod.POST)
 	public RetDataBean getMyAttendConfigList(HttpServletRequest request)
@@ -1312,7 +1312,7 @@ public RetDataBean getMyNewsListForDesk(HttpServletRequest request)
 	 * @param: pageParam
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getAttendConfigList",method=RequestMethod.POST)
 	public RetDataBean getAttendConfigList(

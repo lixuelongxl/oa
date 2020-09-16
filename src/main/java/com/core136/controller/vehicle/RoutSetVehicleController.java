@@ -49,7 +49,7 @@ public class RoutSetVehicleController {
 	 * @param vehicleRepairRecord
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertVehicleRepairRecord",method=RequestMethod.POST)
 	public RetDataBean insertVehicleRepairRecord(HttpServletRequest request,VehicleRepairRecord vehicleRepairRecord)
@@ -74,7 +74,7 @@ public class RoutSetVehicleController {
 	 * @param vehicleOilCard
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteVehicleRepairRecord",method=RequestMethod.POST)
 	public RetDataBean deleteVehicleRepairRecord(HttpServletRequest request,VehicleRepairRecord vehicleRepairRecord)
@@ -101,7 +101,7 @@ public class RoutSetVehicleController {
 	 * @param vehicleRepairRecord
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateVehicleRepairRecord",method=RequestMethod.POST)
 	public RetDataBean updateVehicleRepairRecord(HttpServletRequest request,VehicleRepairRecord vehicleRepairRecord)
@@ -130,7 +130,7 @@ public class RoutSetVehicleController {
 	 * @param vehicleOilCard
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertVehicleOilCard",method=RequestMethod.POST)
 	public RetDataBean insertVehicleOilCard(HttpServletRequest request,VehicleOilCard vehicleOilCard)
@@ -157,7 +157,7 @@ public class RoutSetVehicleController {
 	 * @param vehicleOilCard
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteVehicleOilCard",method=RequestMethod.POST)
 	public RetDataBean deleteVehicleOilCard(HttpServletRequest request,VehicleOilCard vehicleOilCard)
@@ -185,7 +185,7 @@ public class RoutSetVehicleController {
 	 * @param vehicleOilCard
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateVehicleOilCard",method=RequestMethod.POST)
 	public RetDataBean updateVehicleOilCard(HttpServletRequest request,VehicleOilCard vehicleOilCard)
@@ -215,7 +215,7 @@ public class RoutSetVehicleController {
 	 * @param optUser
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/setVehicleOperator",method=RequestMethod.POST)
 	public RetDataBean setVehicleOperator(HttpServletRequest request,String optUser)
@@ -237,7 +237,7 @@ public class RoutSetVehicleController {
 	 * @param vehicleApply
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertVehicleApply",method=RequestMethod.POST)
 	public RetDataBean insertVehicleInfo(HttpServletRequest request,VehicleApply vehicleApply)
@@ -264,7 +264,7 @@ public class RoutSetVehicleController {
 	 * @param vehicleApply
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteVehicleApply",method=RequestMethod.POST)
 	public RetDataBean deleteVehicleApply(HttpServletRequest request,VehicleApply vehicleApply)
@@ -292,7 +292,7 @@ public class RoutSetVehicleController {
 	 * @param vehicleApply
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateVehicleApply",method=RequestMethod.POST)
 	public RetDataBean updateVehicleApply(HttpServletRequest request,VehicleApply vehicleApply)
@@ -323,7 +323,7 @@ public class RoutSetVehicleController {
 	 * @param vehicleInfo
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertVehicleInfo",method=RequestMethod.POST)
 	public RetDataBean insertVehicleInfo(HttpServletRequest request,VehicleInfo vehicleInfo)
@@ -349,7 +349,7 @@ public class RoutSetVehicleController {
 	 * @param vehicleInfo
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteVehicleInfo",method=RequestMethod.POST)
 	public RetDataBean deleteVehicleInfo(HttpServletRequest request,VehicleInfo vehicleInfo)
@@ -377,7 +377,7 @@ public class RoutSetVehicleController {
 	 * @param vehicleInfo
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateVehicleInfo",method=RequestMethod.POST)
 	public RetDataBean updateVehicleInfo(HttpServletRequest request,VehicleInfo vehicleInfo)

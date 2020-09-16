@@ -30,6 +30,7 @@ import com.core136.bean.hr.HrEvaluate;
 import com.core136.bean.hr.HrIncentive;
 import com.core136.bean.hr.HrKpiItem;
 import com.core136.bean.hr.HrKpiPlan;
+import com.core136.bean.hr.HrKpiPlanItem;
 import com.core136.bean.hr.HrLearnRecord;
 import com.core136.bean.hr.HrLeaveRecord;
 import com.core136.bean.hr.HrLicence;
@@ -55,6 +56,8 @@ import com.core136.service.hr.HrDepartmentService;
 import com.core136.service.hr.HrEvaluateService;
 import com.core136.service.hr.HrIncentiveService;
 import com.core136.service.hr.HrKpiItemService;
+import com.core136.service.hr.HrKpiPlanItemService;
+import com.core136.service.hr.HrKpiPlanRecordService;
 import com.core136.service.hr.HrKpiPlanService;
 import com.core136.service.hr.HrLearnRecordService;
 import com.core136.service.hr.HrLeaveRecordService;
@@ -77,6 +80,7 @@ import org.core136.common.retdataunit.RetDataBean;
 import org.core136.common.retdataunit.RetDataTools;
 import com.github.pagehelper.PageInfo;
 
+import dm.jdbc.a.h;
 import tk.mybatis.mapper.entity.Example;
 
 /**
@@ -125,8 +129,6 @@ private HrRecruitNeedsService hrRecruitNeedsService;
 @Autowired
 private HrKpiItemService hrKpiItemService;
 @Autowired
-private HrKpiPlanService hrKpiPlanService;
-@Autowired
 private HrRecruitPlanService hrRecruitPlanService;
 @Autowired
 private HrSalaryRecordService hrSalaryRecordService;
@@ -136,7 +138,12 @@ private HrWelfareRecordService hrWelfareRecordService;
 private HrEvaluateService hrEvaluateService;
 @Autowired
 private AccountService accountService;
-
+@Autowired
+private HrKpiPlanService hrKpiPlanService;
+@Autowired
+private HrKpiPlanItemService hrKpiPlanItemService;
+@Autowired
+private HrKpiPlanRecordService hrKpiPlanRecordService;
 
 /**
  * 
@@ -146,7 +153,7 @@ private AccountService accountService;
  * @param pageParam
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getMyHrSalaryRecordList",method=RequestMethod.POST)
 public RetDataBean getMyHrSalaryRecordList(HttpServletRequest request,PageParam pageParam)
@@ -179,7 +186,7 @@ public RetDataBean getMyHrSalaryRecordList(HttpServletRequest request,PageParam 
  * @param pageParam
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getMyHrPersonnelTransferList",method=RequestMethod.POST)
 public RetDataBean getMyHrPersonnelTransferList(HttpServletRequest request,PageParam pageParam)
@@ -212,7 +219,7 @@ public RetDataBean getMyHrPersonnelTransferList(HttpServletRequest request,PageP
  * @param pageParam
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getMyHrWorkRecordList",method=RequestMethod.POST)
 public RetDataBean getMyHrWorkRecordList(HttpServletRequest request,PageParam pageParam)
@@ -246,7 +253,7 @@ public RetDataBean getMyHrWorkRecordList(HttpServletRequest request,PageParam pa
  * @param pageParam
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getMyHrLearnRecordList",method=RequestMethod.POST)
 public RetDataBean getMyHrLearnRecordList(HttpServletRequest request,PageParam pageParam)
@@ -280,7 +287,7 @@ public RetDataBean getMyHrLearnRecordList(HttpServletRequest request,PageParam p
  * @param pageParam
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getMyHrLicenceList",method=RequestMethod.POST)
 public RetDataBean getMyHrLicenceList(HttpServletRequest request,PageParam pageParam)
@@ -314,7 +321,7 @@ public RetDataBean getMyHrLicenceList(HttpServletRequest request,PageParam pageP
  * @param pageParam
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getMyHrIncentiveList",method=RequestMethod.POST)
 public RetDataBean getMyHrIncentiveList(HttpServletRequest request,PageParam pageParam
@@ -349,7 +356,7 @@ public RetDataBean getMyHrIncentiveList(HttpServletRequest request,PageParam pag
  * @param pageParam
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getMyHrContractList",method=RequestMethod.POST)
 public RetDataBean getMyHrContractList(HttpServletRequest request,PageParam pageParam
@@ -382,7 +389,7 @@ public RetDataBean getMyHrContractList(HttpServletRequest request,PageParam page
  * @param request
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getDeskHrContractList",method=RequestMethod.POST)
 public RetDataBean getDeskHrContractList(HttpServletRequest request)
@@ -403,7 +410,7 @@ public RetDataBean getDeskHrContractList(HttpServletRequest request)
  * @param request
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getDeskHrUserInfo",method=RequestMethod.POST)
 public RetDataBean getDeskHrUserInfo(HttpServletRequest request)
@@ -425,7 +432,7 @@ public RetDataBean getDeskHrUserInfo(HttpServletRequest request)
  * @param hrKpiPlan
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrKpiPlanById",method=RequestMethod.POST)
 public RetDataBean getHrKpiPlanById(HttpServletRequest request,HrKpiPlan hrKpiPlan)
@@ -449,7 +456,7 @@ public RetDataBean getHrKpiPlanById(HttpServletRequest request,HrKpiPlan hrKpiPl
  * @param hrEvaluate
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrEvaluateById",method=RequestMethod.POST)
 public RetDataBean getHrEvaluateById(HttpServletRequest request,HrEvaluate hrEvaluate)
@@ -472,7 +479,7 @@ public RetDataBean getHrEvaluateById(HttpServletRequest request,HrEvaluate hrEva
  * @param hrWelfareRecord
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrWelfareRecordById",method=RequestMethod.POST)
 public RetDataBean getHrWelfareRecordById(HttpServletRequest request,HrWelfareRecord hrWelfareRecord)
@@ -495,7 +502,7 @@ public RetDataBean getHrWelfareRecordById(HttpServletRequest request,HrWelfareRe
  * @param hrSalaryRecord
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrSalaryRecordById",method=RequestMethod.POST)
 public RetDataBean getHrSalaryRecordById(HttpServletRequest request,HrSalaryRecord hrSalaryRecord)
@@ -517,7 +524,7 @@ public RetDataBean getHrSalaryRecordById(HttpServletRequest request,HrSalaryReco
  * @param hrRecruitPlan
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrRecruitPlanById",method=RequestMethod.POST)
 public RetDataBean getHrRecruitPlanById(HttpServletRequest request,HrRecruitPlan hrRecruitPlan)
@@ -540,7 +547,7 @@ public RetDataBean getHrRecruitPlanById(HttpServletRequest request,HrRecruitPlan
  * @param hrRecruitPlan
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrRecruitPlanForSelect",method=RequestMethod.POST)
 public RetDataBean getHrRecruitPlanForSelect(HttpServletRequest request,HrRecruitPlan hrRecruitPlan)
@@ -561,7 +568,7 @@ public RetDataBean getHrRecruitPlanForSelect(HttpServletRequest request,HrRecrui
  * @param hrKpiItem
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrKpiItemById",method=RequestMethod.POST)
 public RetDataBean getHrKpiItemById(HttpServletRequest request,HrKpiItem hrKpiItem)
@@ -584,7 +591,7 @@ public RetDataBean getHrKpiItemById(HttpServletRequest request,HrKpiItem hrKpiIt
  * @param hrRecruitNeeds
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrRecruitNeedsById",method=RequestMethod.POST)
 public RetDataBean getHrRecruitNeedsById(HttpServletRequest request,HrRecruitNeeds hrRecruitNeeds)
@@ -607,7 +614,7 @@ public RetDataBean getHrRecruitNeedsById(HttpServletRequest request,HrRecruitNee
  * @param hrTrainRecord
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrTrainRecordById",method=RequestMethod.POST)
 public RetDataBean getHrTrainRecordById(HttpServletRequest request,HrTrainRecord hrTrainRecord)
@@ -630,7 +637,7 @@ public RetDataBean getHrTrainRecordById(HttpServletRequest request,HrTrainRecord
  * @param hrCareRecord
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrCareRecordById",method=RequestMethod.POST)
 public RetDataBean getHrCareRecordById(HttpServletRequest request,HrCareRecord hrCareRecord)
@@ -652,7 +659,7 @@ public RetDataBean getHrCareRecordById(HttpServletRequest request,HrCareRecord h
  * @param hrTitleEvaluation
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrTitleEvaluationById",method=RequestMethod.POST)
 public RetDataBean getHrTitleEvaluationById(HttpServletRequest request,HrTitleEvaluation hrTitleEvaluation)
@@ -676,7 +683,7 @@ public RetDataBean getHrTitleEvaluationById(HttpServletRequest request,HrTitleEv
  * @param hrReinstatement
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrReinstatementById",method=RequestMethod.POST)
 public RetDataBean getHrReinstatementById(HttpServletRequest request,HrReinstatement hrReinstatement)
@@ -699,7 +706,7 @@ public RetDataBean getHrReinstatementById(HttpServletRequest request,HrReinstate
  * @param hrLeaveRecord
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrLeaveRecordById",method=RequestMethod.POST)
 public RetDataBean getHrLeaveRecordById(HttpServletRequest request,HrLeaveRecord hrLeaveRecord)
@@ -722,7 +729,7 @@ public RetDataBean getHrLeaveRecordById(HttpServletRequest request,HrLeaveRecord
  * @param hrPersonnelTransfer
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrPersonnelTransferById",method=RequestMethod.POST)
 public RetDataBean getHrPersonnelTransferById(HttpServletRequest request,HrPersonnelTransfer hrPersonnelTransfer)
@@ -745,7 +752,7 @@ public RetDataBean getHrPersonnelTransferById(HttpServletRequest request,HrPerso
  * @param hrWorkSkills
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrWorkSkillsById",method=RequestMethod.POST)
 public RetDataBean getHrWorkSkillsById(HttpServletRequest request,HrWorkSkills hrWorkSkills)
@@ -768,7 +775,7 @@ public RetDataBean getHrWorkSkillsById(HttpServletRequest request,HrWorkSkills h
  * @param hrWorkRecord
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrWorkRecordById",method=RequestMethod.POST)
 public RetDataBean getHrWorkRecordById(HttpServletRequest request,HrWorkRecord hrWorkRecord)
@@ -791,7 +798,7 @@ public RetDataBean getHrWorkRecordById(HttpServletRequest request,HrWorkRecord h
  * @param hrLearnRecord
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrLearnRecordById",method=RequestMethod.POST)
 public RetDataBean getHrLearnRecordById(HttpServletRequest request,HrLearnRecord hrLearnRecord)
@@ -814,7 +821,7 @@ public RetDataBean getHrLearnRecordById(HttpServletRequest request,HrLearnRecord
  * @param hrLicence
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrLicenceById",method=RequestMethod.POST)
 public RetDataBean getHrLicenceById(HttpServletRequest request,HrLicence hrLicence)
@@ -838,7 +845,7 @@ public RetDataBean getHrLicenceById(HttpServletRequest request,HrLicence hrLicen
  * @param hrIncentive
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrIncentiveById",method=RequestMethod.POST)
 public RetDataBean getHrIncentiveById(HttpServletRequest request,HrIncentive hrIncentive)
@@ -861,7 +868,7 @@ public RetDataBean getHrIncentiveById(HttpServletRequest request,HrIncentive hrI
  * @param hrContract
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrContractById",method=RequestMethod.POST)
 public RetDataBean getHrContractById(HttpServletRequest request,HrContract hrContract)
@@ -884,7 +891,7 @@ public RetDataBean getHrContractById(HttpServletRequest request,HrContract hrCon
  * @param searchuser
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrUserInfoBySearchuser",method=RequestMethod.POST)
 public RetDataBean getHrUserInfoBySearchuser(HttpServletRequest request,String searchuser)
@@ -905,7 +912,7 @@ public RetDataBean getHrUserInfoBySearchuser(HttpServletRequest request,String s
  * @param userIds
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getUserNamesByUserIds",method=RequestMethod.POST)
 public RetDataBean getUserNamesByUserIds(HttpServletRequest request,String userIds)
@@ -926,7 +933,7 @@ public RetDataBean getUserNamesByUserIds(HttpServletRequest request,String userI
  * @param request
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getWagesLevelListForSelect",method=RequestMethod.POST)
 public RetDataBean getWagesLevelListForSelect(HttpServletRequest request)
@@ -949,7 +956,7 @@ public RetDataBean getWagesLevelListForSelect(HttpServletRequest request)
  * @param: pageParam
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getWagesLevelList",method=RequestMethod.POST)
 public RetDataBean getWagesLevelList(HttpServletRequest request,PageParam pageParam)
@@ -983,7 +990,7 @@ public RetDataBean getWagesLevelList(HttpServletRequest request,PageParam pagePa
  * @param deptId
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrUserInfoByBeptIdInWorkList",method=RequestMethod.POST)
 public RetDataBean getHrUserInfoByBeptIdInWorkList(HttpServletRequest request,PageParam pageParam,String deptId,
@@ -1018,7 +1025,7 @@ public RetDataBean getHrUserInfoByBeptIdInWorkList(HttpServletRequest request,Pa
  * @param: hrWorkType
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getHrWagesLevelById",method=RequestMethod.POST)
 public RetDataBean getHrWagesLevelById(HttpServletRequest request,HrWagesLevel hrWagesLevel)
@@ -1042,7 +1049,7 @@ public RetDataBean getHrWagesLevelById(HttpServletRequest request,HrWagesLevel h
  * @param: deptId
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getHrUserInfoByDeptId",method=RequestMethod.POST)
 public RetDataBean getHrUserInfoByDeptId(HttpServletRequest request,String deptId)
@@ -1063,7 +1070,7 @@ public RetDataBean getHrUserInfoByDeptId(HttpServletRequest request,String deptI
  * @param: deptId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 @RequestMapping(value="/getHrUserInfoDepartmentTree",method=RequestMethod.POST)
 public List<Map<String,String>> getHrUserInfoDepartmentTree(HttpServletRequest request,String deptId)
@@ -1092,7 +1099,7 @@ public List<Map<String,String>> getHrUserInfoDepartmentTree(HttpServletRequest r
  * @param: deptId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 @RequestMapping(value="/getHrDepartmentTree",method=RequestMethod.POST)
 public List<Map<String,String>> getHrDepartmentTree(HttpServletRequest request,String deptId)
@@ -1120,7 +1127,7 @@ public List<Map<String,String>> getHrDepartmentTree(HttpServletRequest request,S
  * @param: hrDepartment
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getHrDepartmentById",method=RequestMethod.POST)
 public RetDataBean getHrDepartmentById(HttpServletRequest request,HrDepartment hrDepartment)
@@ -1142,7 +1149,7 @@ public RetDataBean getHrDepartmentById(HttpServletRequest request,HrDepartment h
  * @param: hrUserInfo
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getHrUserInfoById",method=RequestMethod.POST)
 public RetDataBean getHrUserInfoById(HttpServletRequest request,HrUserInfo hrUserInfo)
@@ -1164,7 +1171,7 @@ public RetDataBean getHrUserInfoById(HttpServletRequest request,HrUserInfo hrUse
  * @param request
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getMyHrUserInfo",method=RequestMethod.POST)
 public RetDataBean getMyHrUserInfo(HttpServletRequest request)
@@ -1191,7 +1198,7 @@ public RetDataBean getMyHrUserInfo(HttpServletRequest request)
  * @param: deptId
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getHrUserInfoForTree",method=RequestMethod.POST)
 public RetDataBean getHrUserInfoForTree(HttpServletRequest request,String deptId)
@@ -1214,7 +1221,7 @@ public RetDataBean getHrUserInfoForTree(HttpServletRequest request,String deptId
  * @param: hrUserLevel
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getHrUserLevelById",method=RequestMethod.POST)
 public RetDataBean getHrUserLevelById(HttpServletRequest request,HrUserLevel hrUserLevel)
@@ -1237,7 +1244,7 @@ public RetDataBean getHrUserLevelById(HttpServletRequest request,HrUserLevel hrU
  * @param: leaveId
  * @param: @return      
  * @return: Object      
- * @throws
+
  */
 @RequestMapping(value="/getHrUserLevelChart",method=RequestMethod.POST)
 public Object getHrUserLevelChart(HttpServletRequest request,String leaveId)
@@ -1272,7 +1279,7 @@ public Object getHrUserLevelChart(HttpServletRequest request,String leaveId)
  * @param: request
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getHrUserLevelList",method=RequestMethod.POST)
 public RetDataBean getHrUserLevelList(HttpServletRequest request)
@@ -1298,7 +1305,7 @@ public RetDataBean getHrUserLevelList(HttpServletRequest request)
  * @param hrWorkType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getAllParentCodeList",method=RequestMethod.POST)
 public RetDataBean getAllParentCodeList(HttpServletRequest request)
@@ -1319,7 +1326,7 @@ public RetDataBean getAllParentCodeList(HttpServletRequest request)
  * @param hrClassCode
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getCodeListByModule",method=RequestMethod.POST)
 public RetDataBean getCodeListByModule(HttpServletRequest request,String module)
@@ -1341,7 +1348,7 @@ public RetDataBean getCodeListByModule(HttpServletRequest request,String module)
  * @param hrClassCode
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrClassCodeById",method=RequestMethod.POST)
 public RetDataBean getHrClassCodeById(HttpServletRequest request,HrClassCode hrClassCode)
@@ -1363,7 +1370,7 @@ public RetDataBean getHrClassCodeById(HttpServletRequest request,HrClassCode hrC
  * @param hrDepartment
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrDeptList",method=RequestMethod.POST)
 public RetDataBean getHrDeptList(HttpServletRequest request,HrDepartment hrDepartment)
@@ -1386,7 +1393,7 @@ public RetDataBean getHrDeptList(HttpServletRequest request,HrDepartment hrDepar
  * @param deptIds
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrDeptNameByStr",method=RequestMethod.POST)
 public RetDataBean getHrDeptNameByStr(HttpServletRequest request,String deptIds)
@@ -1408,7 +1415,7 @@ public RetDataBean getHrDeptNameByStr(HttpServletRequest request,String deptIds)
  * @param levelIds
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrUserLevelByStr",method=RequestMethod.POST)
 public RetDataBean getHrUserLevelByStr(HttpServletRequest request,String levelIds)
@@ -1429,7 +1436,7 @@ public RetDataBean getHrUserLevelByStr(HttpServletRequest request,String levelId
  * @param searchdept
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrDeptBySearchdept",method=RequestMethod.POST)
 public RetDataBean getHrDeptBySearchdept(HttpServletRequest request,String searchdept)
@@ -1456,7 +1463,7 @@ public RetDataBean getHrDeptBySearchdept(HttpServletRequest request,String searc
  * @param contractType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrContractList",method=RequestMethod.POST)
 public RetDataBean getHrContractList(HttpServletRequest request,PageParam pageParam,String userId,String beginTime,String endTime,
@@ -1496,7 +1503,7 @@ public RetDataBean getHrContractList(HttpServletRequest request,PageParam pagePa
  * @param incentiveItem
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrIncentiveList",method=RequestMethod.POST)
 public RetDataBean getHrIncentiveList(HttpServletRequest request,PageParam pageParam,String userId,String beginTime,String endTime,
@@ -1531,7 +1538,7 @@ public RetDataBean getHrIncentiveList(HttpServletRequest request,PageParam pageP
  * @param codeValue
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrClassCodeName",method=RequestMethod.POST)
 public RetDataBean getHrClassCodeName(HttpServletRequest request,String module,String codeValue)
@@ -1556,7 +1563,7 @@ public RetDataBean getHrClassCodeName(HttpServletRequest request,String module,S
  * @param licenceType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrLicenceList",method=RequestMethod.POST)
 public RetDataBean getHrLicenceList(HttpServletRequest request,PageParam pageParam,String userId,String beginTime,String endTime,
@@ -1593,7 +1600,7 @@ public RetDataBean getHrLicenceList(HttpServletRequest request,PageParam pagePar
  * @param endTime
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrLearnRecordList",method=RequestMethod.POST)
 public RetDataBean getHrLearnRecordList(HttpServletRequest request,PageParam pageParam,String userId,String beginTime,String endTime
@@ -1630,7 +1637,7 @@ public RetDataBean getHrLearnRecordList(HttpServletRequest request,PageParam pag
  * @param endTime
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrWorkRecordList",method=RequestMethod.POST)
 public RetDataBean getHrWorkRecordList(HttpServletRequest request,PageParam pageParam,String userId,String beginTime,
@@ -1669,7 +1676,7 @@ public RetDataBean getHrWorkRecordList(HttpServletRequest request,PageParam page
  * @param reinstatementType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrReinstatementList",method=RequestMethod.POST)
 public RetDataBean getHrReinstatementList(HttpServletRequest request,PageParam pageParam,String userId,String beginTime,
@@ -1707,7 +1714,7 @@ public RetDataBean getHrReinstatementList(HttpServletRequest request,PageParam p
  * @param skillsLevel
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrWorkSkillsList",method=RequestMethod.POST)
 public RetDataBean getHrWorkSkillsList(HttpServletRequest request,PageParam pageParam,String userId,String beginTime,String endTime,
@@ -1746,7 +1753,7 @@ public RetDataBean getHrWorkSkillsList(HttpServletRequest request,PageParam page
  * @param transferType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrPersonnelTransferList",method=RequestMethod.POST)
 public RetDataBean getHrPersonnelTransferList(HttpServletRequest request,PageParam pageParam,String userId,String beginTime,String endTime,
@@ -1785,7 +1792,7 @@ public RetDataBean getHrPersonnelTransferList(HttpServletRequest request,PagePar
  * @param month
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrSalaryRecordList",method=RequestMethod.POST)
 public RetDataBean getHrSalaryRecordList(HttpServletRequest request,PageParam pageParam,String userId,String year,String month
@@ -1822,7 +1829,7 @@ public RetDataBean getHrSalaryRecordList(HttpServletRequest request,PageParam pa
  * @param type
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrWelfareRecordList",method=RequestMethod.POST)
 public RetDataBean getHrWelfareRecordList(HttpServletRequest request,PageParam pageParam,String userId,String beginTime,
@@ -1861,7 +1868,7 @@ public RetDataBean getHrWelfareRecordList(HttpServletRequest request,PageParam p
  * @param leaveType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrLeaveRecordList",method=RequestMethod.POST)
 public RetDataBean getHrLeaveRecordList(HttpServletRequest request,PageParam pageParam,String userId,String beginTime,
@@ -1900,7 +1907,7 @@ public RetDataBean getHrLeaveRecordList(HttpServletRequest request,PageParam pag
  * @param getType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrTitleEvaluationList",method=RequestMethod.POST)
 public RetDataBean getHrTitleEvaluationList(HttpServletRequest request,PageParam pageParam,String userId,String beginTime,
@@ -1938,7 +1945,7 @@ public RetDataBean getHrTitleEvaluationList(HttpServletRequest request,PageParam
  * @param careType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrCareRecordList",method=RequestMethod.POST)
 public RetDataBean getHrCareRecordList(HttpServletRequest request,PageParam pageParam,String userId,String beginTime,String endTime,
@@ -1979,7 +1986,7 @@ public RetDataBean getHrCareRecordList(HttpServletRequest request,PageParam page
  * @param endTime
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrTrainRecordList",method=RequestMethod.POST)
 public RetDataBean getHrTrainRecordList(HttpServletRequest request,PageParam pageParam,
@@ -2018,7 +2025,7 @@ public RetDataBean getHrTrainRecordList(HttpServletRequest request,PageParam pag
  * @param endTime
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrTrainRecordApprovedList",method=RequestMethod.POST)
 public RetDataBean getHrTrainRecordApprovedList(HttpServletRequest request,PageParam pageParam,
@@ -2058,7 +2065,7 @@ public RetDataBean getHrTrainRecordApprovedList(HttpServletRequest request,PageP
  * @param endTime
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrTrainRecordApprovedOldList",method=RequestMethod.POST)
 public RetDataBean getHrTrainRecordApprovedOldList(HttpServletRequest request,PageParam pageParam,
@@ -2099,7 +2106,7 @@ public RetDataBean getHrTrainRecordApprovedOldList(HttpServletRequest request,Pa
  * @param endTime
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrRecruitNeedsList",method=RequestMethod.POST)
 public RetDataBean getHrRecruitNeedsList(HttpServletRequest request,PageParam pageParam,
@@ -2138,7 +2145,7 @@ public RetDataBean getHrRecruitNeedsList(HttpServletRequest request,PageParam pa
  * @param endTime
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getApprovedHrRecruitNeedsList",method=RequestMethod.POST)
 public RetDataBean getApprovedHrRecruitNeedsList(HttpServletRequest request,PageParam pageParam,
@@ -2178,7 +2185,7 @@ public RetDataBean getApprovedHrRecruitNeedsList(HttpServletRequest request,Page
  * @param endTime
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getOldApprovedHrRecruitNeedsList",method=RequestMethod.POST)
 public RetDataBean getOldApprovedHrRecruitNeedsList(HttpServletRequest request,PageParam pageParam,String status,
@@ -2216,7 +2223,7 @@ public RetDataBean getOldApprovedHrRecruitNeedsList(HttpServletRequest request,P
  * @param endTime
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrRecruitPlanList",method=RequestMethod.POST)
 public RetDataBean getHrRecruitPlanList(HttpServletRequest request,PageParam pageParam,String beginTime,String endTime
@@ -2253,7 +2260,7 @@ public RetDataBean getHrRecruitPlanList(HttpServletRequest request,PageParam pag
  * @param kpiType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrKpiItemList",method=RequestMethod.POST)
 public RetDataBean getHrKpiItemList(HttpServletRequest request,PageParam pageParam,String createUser,String kpiType
@@ -2288,7 +2295,7 @@ public RetDataBean getHrKpiItemList(HttpServletRequest request,PageParam pagePar
  * @param deptId
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrUserInfoListByDeptId",method=RequestMethod.POST)
 public RetDataBean getHrUserInfoListByDeptId(HttpServletRequest request,PageParam pageParam,String deptId)
@@ -2322,7 +2329,7 @@ public RetDataBean getHrUserInfoListByDeptId(HttpServletRequest request,PagePara
  * @param userId
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrEvaluateByUserIdList",method=RequestMethod.POST)
 public RetDataBean getHrEvaluateByUserIdList(HttpServletRequest request,PageParam pageParam,String userId)
@@ -2358,7 +2365,7 @@ public RetDataBean getHrEvaluateByUserIdList(HttpServletRequest request,PagePara
  * @param status
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getHrEvaluateQueryList",method=RequestMethod.POST)
 public RetDataBean getHrEvaluateQueryList(HttpServletRequest request,PageParam pageParam,String userId,String beginTime,String endTime,String status)

@@ -52,7 +52,7 @@ public FixedAssetsRepair selectOneFixedAssetsRepair(FixedAssetsRepair fixedAsset
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getFixedAssetsRepairList(String orgId,String accountId,String beginTime,String endTime,String opFlag,String assetsSortId,String status,String search)
 {
@@ -70,7 +70,7 @@ public List<Map<String, String>>getFixedAssetsRepairList(String orgId,String acc
  * @param: status
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getFixedAssetsRepairList(PageParam pageParam,String beginTime,String endTime,String assetsSortId,String status) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());

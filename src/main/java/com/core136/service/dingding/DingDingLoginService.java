@@ -19,11 +19,13 @@ import com.core136.bean.account.Account;
 import com.core136.bean.account.Unit;
 import com.core136.bean.account.UserInfo;
 import com.core136.bean.account.UserPriv;
+import com.core136.bean.platform.PlatformPriv;
 import com.core136.bean.sys.SysMenu;
 import com.core136.service.account.AccountService;
 import com.core136.service.account.UnitService;
 import com.core136.service.account.UserInfoService;
 import com.core136.service.account.UserPrivService;
+import com.core136.service.platform.PlatformPrivService;
 import com.core136.service.sys.OnLineUser;
 import com.core136.service.sys.SysLogService;
 import com.core136.service.sys.SysMenuService;
@@ -48,7 +50,8 @@ public class DingDingLoginService {
 	private UserPrivService userPrivService;
 	@Autowired
 	private RedisUtil redisUtil;
-
+	@Autowired
+	private PlatformPrivService platformPrivService;
 /**
  * 
  * @Title: dingDingLogin   
@@ -56,9 +59,9 @@ public class DingDingLoginService {
  * @param: request
  * @param: dAccountId
  * @param: orgId
- * @param: @throws ApiException      
+ ApiException      
  * @return: void      
- * @throws
+
  */
 	public void dingDingLogin(HttpServletRequest request,String dAccountId,String orgId) throws ApiException
 	{
@@ -86,7 +89,9 @@ public class DingDingLoginService {
 				}
 				List<String> sysMenuIdList = StrTools.strToList(sysMenuIds);
 				List<String> mobilePrivList = StrTools.strToList(mobilePrivIds);
-				List<SysMenu> sysMenuList = sysMenuService.getSysMenuByAccount(sysMenuIdList, account.getOrgId());
+				List<PlatformPriv> platformPrivList = platformPrivService.getMyPlatformPrivList(account.getOrgId(), account.getAccountId());
+				List<String> platformMenuIdList = platformPrivService.getMyPlatformMenuList(platformPrivList);
+				List<SysMenu> sysMenuList = sysMenuService.getSysMenuByAccount(sysMenuIdList,platformMenuIdList, account.getOrgId());
 				loginAccountInfo.setSysMenuList(sysMenuList);
 				loginAccountInfo.setMobilePrivList(mobilePrivList);
 				}
@@ -127,9 +132,9 @@ public class DingDingLoginService {
 	 * @param: dingDeviceId
 	 * @param: orgId
 	 * @param: @return
-	 * @param: @throws ApiException      
+ ApiException      
 	 * @return: Account      
-	 * @throws
+
 	 */
 	public Account getDAccount(HttpServletRequest request,String dAccountId,String orgId) throws ApiException
 	{
@@ -154,9 +159,9 @@ public class DingDingLoginService {
 	 * @param: dingDeviceId
 	 * @param: orgId
 	 * @param: @return
-	 * @param: @throws ApiException      
+ ApiException      
 	 * @return: UserInfo      
-	 * @throws
+
 	 */
 	public UserInfo getDUserinfo(HttpServletRequest request,String dAccountId,String orgId) throws ApiException
 	{

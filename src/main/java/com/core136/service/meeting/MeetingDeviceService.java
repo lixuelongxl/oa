@@ -63,7 +63,7 @@ public class MeetingDeviceService {
 	 * @param: orgId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String, String>> getMeetingDeviceList(String orgId,String search)
 	{
@@ -77,7 +77,7 @@ public class MeetingDeviceService {
 	 * @param: pageParam
 	 * @param: @return      
 	 * @return: PageInfo<Map<String,String>>      
-	 * @throws
+
 	 */
 	public PageInfo<Map<String, String>> getMeetingDeviceList(PageParam pageParam) {
 		PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -94,7 +94,7 @@ public class MeetingDeviceService {
 	 * @param: deptId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getCanUseDeviceList(String orgId,String deptId)
 	{
@@ -109,7 +109,7 @@ public class MeetingDeviceService {
 	 * @param deviceId
 	 * @return
 	 * String    
-	 * @throws
+
 	 */
 	public String getDeviceListName(String orgId,String deviceIds)
 	{

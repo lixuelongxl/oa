@@ -23,7 +23,7 @@ public interface ContractReceivablesMapper extends MyMapper<ContractReceivables>
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,Object>>      
-	 * @throws
+
 	 */	
 	public List<Map<String, Object>>getContractReceivablesList(
 			@Param(value="orgId") String orgId,

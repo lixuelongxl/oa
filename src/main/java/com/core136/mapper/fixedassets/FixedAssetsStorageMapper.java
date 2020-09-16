@@ -33,7 +33,7 @@ public interface FixedAssetsStorageMapper extends MyMapper<FixedAssetsStorage>{
 	 * @param: orgId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>> getFixedAssetsStorageList(@Param(value = "orgId") String orgId,@Param(value = "search") String search);
 
@@ -44,7 +44,7 @@ public interface FixedAssetsStorageMapper extends MyMapper<FixedAssetsStorage>{
 	 * @param: orgId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getAllFixedAssetsStorageList(@Param(value="orgId") String orgId);
 

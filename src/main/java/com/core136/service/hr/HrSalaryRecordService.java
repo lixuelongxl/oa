@@ -62,7 +62,7 @@ public HrSalaryRecord selectOneHrSalaryRecord(HrSalaryRecord hrSalaryRecord)
  * @param month
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String,String>>getHrSalaryRecordList(String orgId,String userId,String year,String month)
 {
@@ -77,7 +77,7 @@ public List<Map<String,String>>getHrSalaryRecordList(String orgId,String userId,
  * @param accountId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getMyHrSalaryRecordList(String orgId,String accountId)
 {
@@ -94,7 +94,7 @@ public List<Map<String, String>>getMyHrSalaryRecordList(String orgId,String acco
  * @param month
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getHrSalaryRecordList(PageParam pageParam,String userId,String year,String month) 
 {
@@ -110,7 +110,7 @@ public PageInfo<Map<String, String>> getHrSalaryRecordList(PageParam pageParam,S
  * @param pageParam
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getMyHrSalaryRecordList(PageParam pageParam) 
 {
@@ -127,9 +127,9 @@ public PageInfo<Map<String, String>> getMyHrSalaryRecordList(PageParam pageParam
  * @param account
  * @param file
  * @return
- * @throws IOException
+ IOException
  * RetDataBean    
- * @throws
+
  */
 @Transactional(value="generalTM")
 public RetDataBean importHrSalaryRecord(Account account,MultipartFile file) throws IOException

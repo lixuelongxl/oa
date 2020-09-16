@@ -17,7 +17,7 @@ public interface SuperversionConfigMapper extends MyMapper<SuperversionConfig>{
  * @param: orgId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 	public List<Map<String,String>>getAllSuperversionConfigList(@Param(value="orgId") String orgId);
 	/**
@@ -28,7 +28,7 @@ public interface SuperversionConfigMapper extends MyMapper<SuperversionConfig>{
 	 * @param: accountId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>>getMySuperversionConfigList(@Param(value="orgId") String orgId,@Param(value="accountId") String accountId);
 	
@@ -39,7 +39,7 @@ public interface SuperversionConfigMapper extends MyMapper<SuperversionConfig>{
 	 * @param: orgId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getQuerySuperversionForType(@Param(value="orgId")String orgId);
 }

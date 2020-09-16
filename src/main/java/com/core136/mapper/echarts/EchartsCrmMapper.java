@@ -15,7 +15,7 @@ public interface EchartsCrmMapper {
 	 * @param orgId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 public List<Map<String,String>>getBiCustomerIndustryPie(@Param(value="orgId")String orgId);
 /**
@@ -25,7 +25,7 @@ public List<Map<String,String>>getBiCustomerIndustryPie(@Param(value="orgId")Str
  * @param orgId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String,String>>getBiCustomerKeepUserPie(@Param(value="orgId")String orgId);
 
@@ -36,7 +36,7 @@ public List<Map<String,String>>getBiCustomerKeepUserPie(@Param(value="orgId")Str
  * @param orgId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String,String>>getBiCustomerAreaPie(@Param(value="orgId")String orgId);
 
@@ -47,8 +47,94 @@ public List<Map<String,String>>getBiCustomerAreaPie(@Param(value="orgId")String 
  * @param orgId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String,String>>getBiCustomerLevelPie(@Param(value="orgId")String orgId);
 
+/**
+ * 
+ * @Title: getBiInquiryByAccountPie   
+ * @Description: TODO 获取询价单人员占比
+ * @param orgId
+ * @return
+ * List<Map<String,String>>
+ */
+public List<Map<String, String>>getBiInquiryByAccountPie(@Param(value="orgId")String orgId);
+
+/**
+ * 
+ * @Title: getBiInquiryByMonthLine   
+ * @Description: TODO 按月份统计工作量
+ * @param orgId
+ * @param beginTime
+ * @param endTime
+ * @return
+ * List<Map<String,String>>    
+
+ */
+public List<Map<String,Object>>getBiInquiryByMonthLine(@Param(value="orgId")String orgId,@Param(value="beginTime")String beginTime,@Param(value="endTime")String endTime); 
+
+/**
+ * 
+ * @Title: getBiInquiryByProductPie   
+ * @Description: TODO 获取产品占比
+ * @param orgId
+ * @return
+ * List<Map<String,String>>
+ */
+public List<Map<String, String>>getBiInquiryByProductPie(@Param(value="orgId")String orgId);
+
+/**
+ * 
+ * @Title: getBiInquiryByDeptPie   
+ * @Description: TODO 部门询价单占比前10的占比
+ * @param orgId
+ * @return
+ * List<Map<String,String>>
+ */
+public List<Map<String, String>>getBiInquiryByDeptPie(@Param(value="orgId")String orgId);
+
+
+/**
+ * 
+ * @Title: getBiQuotationByAccountPie   
+ * @Description: TODO 获取报价单人员占比
+ * @param orgId
+ * @return
+ * List<Map<String,String>>
+ */
+public List<Map<String, String>>getBiQuotationByAccountPie(@Param(value="orgId")String orgId);
+
+/**
+ * 
+ * @Title: getBiQuotationByMonthLine   
+ * @Description: TODO 按月份统计报价单
+ * @param orgId
+ * @param beginTime
+ * @param endTime
+ * @return
+ * List<Map<String,String>>    
+
+ */
+public List<Map<String,Object>>getBiQuotationByMonthLine(@Param(value="orgId")String orgId,@Param(value="beginTime")String beginTime,@Param(value="endTime")String endTime); 
+
+/**
+ * 
+ * @Title: getBiQuotationByProductPie   
+ * @Description: TODO 获取产品占比
+ * @param orgId
+ * @return
+ * List<Map<String,String>>
+ */
+public List<Map<String, String>>getBiQuotationByProductPie(@Param(value="orgId")String orgId);
+
+/**
+ * 
+ * @Title: getBiQuotationByDeptPie   
+ * @Description: TODO 部门报价单占比前10的占比
+ * @param orgId
+ * @return
+ * List<Map<String,String>>
+ */
+public List<Map<String, String>>getBiQuotationByDeptPie(@Param(value="orgId")String orgId);
 }

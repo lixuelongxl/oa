@@ -4,7 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core136.mapper.task.TaskGanttDataMapper">
 <resultMap id="TaskGanttData" type="com.core136.bean.task.TaskGanttData" >
-    <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="TASK_DATA_ID" property="taskDataId" jdbcType="VARCHAR" />
     <result column="TASK_ID" property="taskId" jdbcType="VARCHAR" />
     <result column="SORT_NO" property="sortNo" jdbcType="INTEGER" />
@@ -20,14 +19,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
   </resultMap>
   <select id="getGanttDataList" resultType="java.util.HashMap">
-   	 SELECT TASK_DATA_ID AS id,TEXT AS text,START_DATE AS start_date,DURATION AS duration,OPEN AS open,TASK_ID AS taskId,PROGRESS AS progress,
-   	 PARENT AS parent,USER_PRIV AS userPriv
+   	 SELECT TASK_DATA_ID AS id,TEXT AS "text",START_DATE AS start_date,DURATION AS duration,OPEN AS open,TASK_ID AS taskId,
+   	 PROGRESS AS progress,PARENT AS parent,USER_PRIV AS userPriv
    	 FROM TASK_GANTT_DATA
    	 WHERE ORG_ID=#{orgId} AND TASK_ID=#{taskId}
   </select>
   
    <select id="getAllUserPrivList" resultType="java.util.HashMap">
-   	   SELECT D.TASK_DATA_ID AS taskDataId,T.TASK_NAME AS taskName,D.TEXT AS text,D.DURATION AS duration,
+   	   SELECT D.TASK_DATA_ID AS taskDataId,T.TASK_NAME AS taskName,D.TEXT AS "text",D.DURATION AS duration,
 		D.START_DATE AS startDate,D.USER_PRIV AS userPriv,T.TASK_TYPE AS taskType,D.PROGRESS AS progress,
 		(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=D.ORG_ID AND U.ACCOUNT_ID=D.USER_PRIV) AS userPrivName 
 		FROM
@@ -59,7 +58,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 <select id="getMyTaskWorkList" resultType="java.util.HashMap">
-   	   SELECT T.TASK_ID AS taskId,D.TASK_DATA_ID AS taskDataId,T.TASK_NAME AS taskName,D.TEXT AS text,D.DURATION AS duration,
+   	   SELECT T.TASK_ID AS taskId,D.TASK_DATA_ID AS taskDataId,T.TASK_NAME AS taskName,D.TEXT AS "text",D.DURATION AS duration,
 		D.START_DATE AS startDate,D.USER_PRIV AS userPriv,T.TASK_TYPE AS taskType,D.PROGRESS AS progress,
 		(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=D.ORG_ID AND U.ACCOUNT_ID=D.CREATE_USER) AS createUserName 
 		FROM
@@ -86,7 +85,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   </select> 
 
 <select id="getTaskListForDesk" resultType="java.util.HashMap">
-   	   SELECT D.TASK_DATA_ID AS taskDataId,D.TEXT AS text,D.DURATION AS duration,
+   	   SELECT D.TASK_DATA_ID AS taskDataId,D.TEXT AS text1,D.DURATION AS duration,
 		D.START_DATE AS startDate,D.PROGRESS AS progress
 		FROM
 		TASK_GANTT_DATA D
@@ -98,7 +97,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 <select id="getTaskListForDesk2" resultType="java.util.HashMap">
-   	   SELECT D.TASK_DATA_ID AS taskDataId,D.TEXT AS text,T.TASK_NAME AS taskName,D.DURATION AS duration,
+   	   SELECT D.TASK_DATA_ID AS taskDataId,D.TEXT AS text1,T.TASK_NAME AS taskName,D.DURATION AS duration,
 		D.START_DATE AS startDate,D.PROGRESS AS progress
 		FROM
 		TASK_GANTT_DATA D LEFT JOIN TASK T ON D.ORG_ID=#{orgId} AND D.TASK_ID=T.TASK_ID

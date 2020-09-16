@@ -66,7 +66,7 @@ public class RoutGetFileController {
 	 * @param request
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMyPublicFolderInPrivForDesk",method=RequestMethod.POST)
 	public RetDataBean getMyPublicFolderInPrivForDesk(HttpServletRequest request)
@@ -165,7 +165,7 @@ public class RoutGetFileController {
 	 * @param: photo
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getPhotoFileList",method=RequestMethod.POST)
 	public RetDataBean getPhotoFileList(HttpServletRequest request,Photo photo)
@@ -190,7 +190,7 @@ public class RoutGetFileController {
 	 * @param: photo
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getPhotoById",method=RequestMethod.POST)
 	public RetDataBean getPhotoById(HttpServletRequest request,Photo photo)
@@ -212,7 +212,7 @@ public class RoutGetFileController {
 	 * @param: request
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMyPhotoList",method=RequestMethod.POST)
 	public RetDataBean getMyPhotoList(HttpServletRequest request)
@@ -235,7 +235,7 @@ public class RoutGetFileController {
 	 * @param: photo
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMyPhotoFileList",method=RequestMethod.POST)
 	public RetDataBean getMyPhotoFileList(HttpServletRequest request,Photo photo)
@@ -261,7 +261,7 @@ public class RoutGetFileController {
 	 * @param: pageParam
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getPhotoList",method=RequestMethod.POST)
 	public RetDataBean getPhotoList(
@@ -430,7 +430,7 @@ public RetDataBean getNetDiskFileInfo(HttpServletRequest request,String sourcePa
  * @param: folderId
  * @param: @return      
  * @return: List<Map<String,Object>>      
- * @throws
+
  */
 @RequestMapping(value="/getPersonalFolderForSelect",method=RequestMethod.POST)
 public List<Map<String,Object>> getPersonalFolderForSelect(HttpServletRequest request,String folderId)
@@ -505,7 +505,7 @@ public RetDataBean getPublicFilelist(HttpServletRequest request,String folderId)
  * @param: folderId
  * @param: @return      
  * @return: List<Map<String,Object>>      
- * @throws
+
  */
 @RequestMapping(value="/getMyPublicFolderInPrivForSelect",method=RequestMethod.POST)
 public List<Map<String,Object>> getMyPublicFolderInPrivForSelect(HttpServletRequest request,String folderId)
@@ -527,7 +527,7 @@ public List<Map<String,Object>> getMyPublicFolderInPrivForSelect(HttpServletRequ
  * @param: folderId
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getPublicFileByFolderId",method=RequestMethod.POST)
 public RetDataBean getPublicFileByFolderId(HttpServletRequest request,String folderId)
@@ -570,7 +570,7 @@ public RetDataBean getfilelist(HttpServletRequest request,String folderId)
  * @param: folderId
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getFileListForSelect",method=RequestMethod.POST)
 public RetDataBean getFileListForSelect(HttpServletRequest request,String folderId)
@@ -612,7 +612,7 @@ public List<Map<String,Object>> getPublicFileFolderTree(HttpServletRequest reque
  * @param: publicFileFolder
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getPublicFileFolderById",method=RequestMethod.POST)
 public RetDataBean getPublicFileFolderById(HttpServletRequest request,PublicFileFolder publicFileFolder)
@@ -738,7 +738,7 @@ public void getFileDown(HttpServletResponse response,HttpServletRequest request,
  * @param createAccount
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getAttachManageList",method=RequestMethod.POST)
 public RetDataBean getAttachManageList(

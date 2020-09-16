@@ -64,7 +64,7 @@ public FixedAssetsApply selectOneFixedAssetsApply(FixedAssetsApply fixedAssetsAp
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getFixedAssetsApplyList(String orgId,String accountId,String status,String beginTime,String endTime,String assetsSortId,String search,String opFlag)
 {
@@ -81,7 +81,7 @@ public List<Map<String, String>>getFixedAssetsApplyList(String orgId,String acco
  * @param: endTime
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getFixedAssetsApplyList(PageParam pageParam,String status,String beginTime,String endTime,String assetsSortId) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -98,7 +98,7 @@ public PageInfo<Map<String, String>> getFixedAssetsApplyList(PageParam pageParam
  * @param: applyId
  * @param: @return      
  * @return: Map<String,String>      
- * @throws
+
  */
 public Map<String, String>getApplyAndApproveInfo(String orgId,String applyId)
 {

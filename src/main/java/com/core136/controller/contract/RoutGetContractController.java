@@ -91,7 +91,7 @@ private AccountService accountService;
  * @param request
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getContractTop", method = RequestMethod.POST)
 public RetDataBean getContractTop(HttpServletRequest request) {
@@ -110,7 +110,7 @@ public RetDataBean getContractTop(HttpServletRequest request) {
  * @param request
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getContractBillTop", method = RequestMethod.POST)
 public RetDataBean getContractBillTop(HttpServletRequest request) {
@@ -130,7 +130,7 @@ public RetDataBean getContractBillTop(HttpServletRequest request) {
  * @param request
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getPayableRecordTop", method = RequestMethod.POST)
 public RetDataBean getPayableRecordTop(HttpServletRequest request) {
@@ -149,7 +149,7 @@ public RetDataBean getPayableRecordTop(HttpServletRequest request) {
  * @param request
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getReceivRecordTop", method = RequestMethod.POST)
 public RetDataBean getReceivRecordTop(HttpServletRequest request) {
@@ -169,7 +169,7 @@ public RetDataBean getReceivRecordTop(HttpServletRequest request) {
  * @param request
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getDeskBillList", method = RequestMethod.POST)
 public RetDataBean getDeskBillList(HttpServletRequest request) {
@@ -189,7 +189,7 @@ public RetDataBean getDeskBillList(HttpServletRequest request) {
  * @param request
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getDeskPayableList",method=RequestMethod.POST)
 public RetDataBean getDeskPayableList(HttpServletRequest request)
@@ -210,7 +210,7 @@ public RetDataBean getDeskPayableList(HttpServletRequest request)
  * @param request
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getDeskReceivablesList",method=RequestMethod.POST)
 public RetDataBean getDeskReceivablesList(HttpServletRequest request)
@@ -233,7 +233,7 @@ public RetDataBean getDeskReceivablesList(HttpServletRequest request)
  * @param contractPayableRecord
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getContractPayableRecordById",method=RequestMethod.POST)
 public RetDataBean getContractPayableRecordById(HttpServletRequest request,ContractPayableRecord contractPayableRecord)
@@ -256,7 +256,7 @@ public RetDataBean getContractPayableRecordById(HttpServletRequest request,Contr
  * @param contractReceivablesRecord
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getContractReceivablesRecordById",method=RequestMethod.POST)
 public RetDataBean getContractReceivablesRecordById(HttpServletRequest request,ContractReceivablesRecord contractReceivablesRecord)
@@ -281,7 +281,7 @@ public RetDataBean getContractReceivablesRecordById(HttpServletRequest request,C
  * @param contractType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getContractSendgoodsList",method=RequestMethod.POST)
 public RetDataBean getContractSendgoodsList(
@@ -326,7 +326,7 @@ public RetDataBean getContractSendgoodsList(
  * @param receivablesId
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getContractReceivablesRecordList",method=RequestMethod.POST)
 public RetDataBean getContractReceivablesRecordList(
@@ -369,7 +369,7 @@ public RetDataBean getContractReceivablesRecordList(
  * @param receivablesId
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getContractPayableRecordList",method=RequestMethod.POST)
 public RetDataBean getContractPayableRecordList(
@@ -413,7 +413,7 @@ public RetDataBean getContractPayableRecordList(
  * @param contractSendgoods
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getContractSendgoodsById",method=RequestMethod.POST)
 public RetDataBean getContractSendgoodsById(HttpServletRequest request,ContractSendgoods contractSendgoods)
@@ -439,7 +439,7 @@ public RetDataBean getContractSendgoodsById(HttpServletRequest request,ContractS
  * @param: isOpen
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getContractBillList",method=RequestMethod.POST)
 public RetDataBean getContractBillList(
@@ -487,7 +487,7 @@ public RetDataBean getContractBillList(
  * @param: contractBill
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getContractBillById",method=RequestMethod.POST)
 public RetDataBean getContractBillById(HttpServletRequest request,ContractBill contractBill)
@@ -514,7 +514,7 @@ public RetDataBean getContractBillById(HttpServletRequest request,ContractBill c
  * @param: status
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getContractPayableList",method=RequestMethod.POST)
 public RetDataBean getContractPayableList(
@@ -560,7 +560,7 @@ public RetDataBean getContractPayableList(
  * @param: contractPayable
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getContractPayableById",method=RequestMethod.POST)
 public RetDataBean getContractPayableById(HttpServletRequest request,ContractPayable contractPayable)
@@ -588,7 +588,7 @@ public RetDataBean getContractPayableById(HttpServletRequest request,ContractPay
  * @param: userPriv
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getContractReceivablesList",method=RequestMethod.POST)
 public RetDataBean getContractReceivablesList(
@@ -634,7 +634,7 @@ public RetDataBean getContractReceivablesList(
  * @param: search
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getSelect2ContractList",method=RequestMethod.POST)
 public RetDataBean getSelect2ContractList(HttpServletRequest request,String search)
@@ -656,7 +656,7 @@ public RetDataBean getSelect2ContractList(HttpServletRequest request,String sear
  * @param: contractReceivables
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getContractReceivablesById",method=RequestMethod.POST)
 public RetDataBean getContractReceivablesById(HttpServletRequest request,ContractReceivables contractReceivables)
@@ -683,7 +683,7 @@ public RetDataBean getContractReceivablesById(HttpServletRequest request,Contrac
  * @param: contractType
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getContractManageList",method=RequestMethod.POST)
 public RetDataBean getContractManageList(
@@ -734,7 +734,7 @@ public RetDataBean getContractManageList(
  * @param: contractType
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/queryContract",method=RequestMethod.POST)
 public RetDataBean queryContract(
@@ -831,7 +831,7 @@ public RetDataBean getContractSortById(HttpServletRequest request,ContractSort c
  * @param: pageParam
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getContractDetailsList",method=RequestMethod.POST)
 public RetDataBean getContractDetailsList(

@@ -47,7 +47,7 @@ public ProjectBuildDetails selectOneProjectBuildDetails(ProjectBuildDetails proj
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,String>> getprojectbuilddetailslist(String orgId,String sortId,String search)
 {
@@ -68,7 +68,7 @@ public PageInfo<Map<String, String>> getprojectbuilddetailslist(PageParam pagePa
  * @param: sortId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,String>>getProjectBuildListForTree(String orgId,String sortId)
 {
@@ -82,7 +82,7 @@ public List<Map<String,String>>getProjectBuildListForTree(String orgId,String so
  * @param: orgId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,String>> selectProjectBuild2ByTitle(String orgId,String projectTitle)
 {

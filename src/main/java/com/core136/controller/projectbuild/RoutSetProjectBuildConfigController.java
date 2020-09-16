@@ -47,7 +47,7 @@ public class RoutSetProjectBuildConfigController {
 	 * @param: projectBuildBpmConfig
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertProjectBuildBpmConfig",method=RequestMethod.POST)
 	public RetDataBean insertProjectBuildBpmConfig(HttpServletRequest request,ProjectBuildBpmConfig projectBuildBpmConfig)
@@ -86,7 +86,7 @@ public class RoutSetProjectBuildConfigController {
 	 * @param: projectBuildBpmConfig
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteProjectBuildBpmConfig",method=RequestMethod.POST)
 	public RetDataBean deleteProjectBuildBpmConfig(HttpServletRequest request,ProjectBuildBpmConfig projectBuildBpmConfig)

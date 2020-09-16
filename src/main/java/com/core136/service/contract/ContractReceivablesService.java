@@ -48,7 +48,7 @@ public ContractReceivables selectOneContractReceivables(ContractReceivables cont
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,Object>>getContractReceivablesList(String orgId,String userPriv,String beginTime,String endTime,String status,String search)
 {
@@ -66,7 +66,7 @@ public List<Map<String,Object>>getContractReceivablesList(String orgId,String us
  * @param: endTime
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, Object>> getContractReceivablesList(PageParam pageParam,String userPriv,String beginTime, String endTime,String status) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());

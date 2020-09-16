@@ -108,7 +108,7 @@ public DataUploadInfo selectOneDataUploadInfo(DataUploadInfo dataUploadInfo)
  * @param dataUploadInfo
  * @return
  * int    
- * @throws
+
  */
 public int dataUploadInfo(Account account,UserInfo userInfo,DataUploadInfo dataUploadInfo)
 {
@@ -170,7 +170,7 @@ public int dataUploadInfo(Account account,UserInfo userInfo,DataUploadInfo dataU
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getDataUploadInfoList(String orgId,String deptId,String fromAccountId,String beginTime,String endTime,String dataType,String approvedType,String search)
 {
@@ -190,7 +190,7 @@ public List<Map<String, String>>getDataUploadInfoList(String orgId,String deptId
  * @param approvedType
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getDataUploadInfoList(PageParam pageParam,String deptId,String fromAccountId,String beginTime,String endTime,String dataType,String approvedType) 
 {
@@ -214,7 +214,7 @@ public PageInfo<Map<String, String>> getDataUploadInfoList(PageParam pageParam,S
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getToProcessInfoList(String orgId,String accountId,String deptId,String fromAccountId,String beginTime,String endTime,String dataType,String approvedType,String search)
 {
@@ -234,7 +234,7 @@ public List<Map<String, String>>getToProcessInfoList(String orgId,String account
  * @param approvedType
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getToProcessInfoList(PageParam pageParam,String deptId,String fromAccountId,String beginTime,String endTime,String dataType,String approvedType) 
 {
@@ -258,7 +258,7 @@ public PageInfo<Map<String, String>> getToProcessInfoList(PageParam pageParam,St
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getOldProcessInfoList(String orgId,String accountId,String deptId,String fromAccountId,String beginTime,String endTime,String dataType,String approvedType,String search)
 {
@@ -277,7 +277,7 @@ public List<Map<String, String>>getOldProcessInfoList(String orgId,String accoun
  * @param approvedType
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getOldProcessInfoList(PageParam pageParam,String deptId,String fromAccountId,String beginTime,String endTime,String dataType,String approvedType) 
 {

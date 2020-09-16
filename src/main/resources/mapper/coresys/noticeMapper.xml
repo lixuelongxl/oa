@@ -4,7 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core136.mapper.notice.NoticeMapper">
 	<resultMap id="Notice" type="com.core136.bean.notice.Notice">
-		<id column="ID" property="id" jdbcType="BIGINT" />
 		<result column="NOTICE_ID" property="noticeId"
 			jdbcType="VARCHAR" />
 		<result column="NOTICE_TITLE" property="noticeTitle" jdbcType="VARCHAR" />

@@ -24,7 +24,7 @@ public interface HrRecruitPlanMapper extends MyMapper<HrRecruitPlan>{
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getHrRecruitPlanList(@Param(value="orgId")String orgId,@Param(value="opFlag")String opFlag,
 			@Param(value="accountId")String accountId,@Param(value="beginTime")String beginTime,@Param(value="endTime")String endTime,
@@ -38,7 +38,7 @@ public interface HrRecruitPlanMapper extends MyMapper<HrRecruitPlan>{
 	 * @param endTime
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getHrRecruitPlanForSelect(@Param(value="orgId")String orgId,@Param(value="endTime")String endTime);
 

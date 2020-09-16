@@ -49,7 +49,7 @@ public class RoutGetVehicleController {
 	 * @param request
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getAllVehicleList",method=RequestMethod.POST)
 	public RetDataBean getAllVehicleList(HttpServletRequest request)
@@ -73,7 +73,7 @@ public class RoutGetVehicleController {
 	 * @param request
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getCanUsedVehicleList",method=RequestMethod.POST)
 	public RetDataBean getCanUsedVehicleList(HttpServletRequest request)
@@ -96,7 +96,7 @@ public class RoutGetVehicleController {
 	 * @param vehicleRepairRecord
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getVehicleRepairRecordById",method=RequestMethod.POST)
 	public RetDataBean getVehicleRepairRecordById(HttpServletRequest request,VehicleRepairRecord vehicleRepairRecord)
@@ -118,7 +118,7 @@ public class RoutGetVehicleController {
 	 * @param vehicleOilCard
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getVehicleOilCardById",method=RequestMethod.POST)
 	public RetDataBean getVehicleOilCardById(HttpServletRequest request,VehicleOilCard vehicleOilCard)
@@ -139,7 +139,7 @@ public class RoutGetVehicleController {
 	 * @param request
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getCanUsedOilCardList",method=RequestMethod.POST)
 	public RetDataBean getCanUsedOilCardList(HttpServletRequest request)
@@ -159,7 +159,7 @@ public class RoutGetVehicleController {
 	 * @param request
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getVehicleOperatorByOrgId",method=RequestMethod.POST)
 	public RetDataBean getVehicleOperatorByOrgId(HttpServletRequest request)
@@ -183,7 +183,7 @@ public class RoutGetVehicleController {
 	 * @param vehicleApply
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getVehicleApplyById",method=RequestMethod.POST)
 	public RetDataBean getVehicleApplyById(HttpServletRequest request,VehicleApply vehicleApply)
@@ -206,7 +206,7 @@ public class RoutGetVehicleController {
 	 * @param vehicleInfo
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getVehicleInfoById",method=RequestMethod.POST)
 	public RetDataBean getVehicleInfoById(HttpServletRequest request,VehicleInfo vehicleInfo)
@@ -237,7 +237,7 @@ public class RoutGetVehicleController {
 	 * @param endTime1
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getManageVehicleInfoList",method=RequestMethod.POST)
 	public RetDataBean getManageVehicleInfoList(HttpServletRequest request,PageParam pageParam,
@@ -277,7 +277,7 @@ public class RoutGetVehicleController {
 	 * @param endTime
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getVehicleRepairRecordList",method=RequestMethod.POST)
 	public RetDataBean getVehicleRepairRecordList(HttpServletRequest request,PageParam pageParam,
@@ -316,7 +316,7 @@ public class RoutGetVehicleController {
 	 * @param endTime
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getVehicleApplyList",method=RequestMethod.POST)
 	public RetDataBean getVehicleApplyList(HttpServletRequest request,PageParam pageParam,String status,
@@ -355,7 +355,7 @@ public class RoutGetVehicleController {
 	 * @param endTime
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getVehicleApprovedList",method=RequestMethod.POST)
 	public RetDataBean getVehicleApprovedList(HttpServletRequest request,PageParam pageParam,
@@ -394,7 +394,7 @@ public class RoutGetVehicleController {
 	 * @param endTime
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getVehicleOilCardList",method=RequestMethod.POST)
 	public RetDataBean getVehicleOilCardList(HttpServletRequest request,PageParam pageParam,

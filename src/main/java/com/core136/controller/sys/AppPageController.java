@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,8 +37,6 @@ import com.core136.service.sys.SysConfigService;
 import com.core136.service.sys.SysInterfaceService;
 import com.core136.service.sys.SysProfileService;
 import com.core136.service.sys.WxConfigService;
-import com.core136.unit.SpringUtils;
-
 import org.apache.commons.lang.StringUtils;
 import org.core136.common.auth.LoginAccountInfo;
 import org.core136.common.utils.SysTools;
@@ -93,7 +90,7 @@ private String attach;
  * @param request
  * @return
  * ModelAndView    
- * @throws
+
  */
 @RequestMapping("/oa/wxconfig")
 public ModelAndView goWxConfig(HttpServletRequest request)
@@ -134,7 +131,7 @@ public ModelAndView goWxConfig(HttpServletRequest request)
  * @param: request
  * @param: @return      
  * @return: ModelAndView      
- * @throws
+
  */
 @RequestMapping("/oa/ddconfig")
 public ModelAndView goDdConfig(HttpServletRequest request)
@@ -175,7 +172,7 @@ public ModelAndView goDdConfig(HttpServletRequest request)
  * @param: request
  * @param: @return      
  * @return: ModelAndView      
- * @throws
+
  */
 @RequestMapping("/oa/mobilesms")
 public ModelAndView goMobilesms(HttpServletRequest request)
@@ -191,7 +188,7 @@ public ModelAndView goMobilesms(HttpServletRequest request)
  * @param: request
  * @param: @return      
  * @return: ModelAndView      
- * @throws
+
  */
 @RequestMapping("/syslog")
 public ModelAndView goSysLog(HttpServletRequest request)
@@ -207,7 +204,7 @@ public ModelAndView goSysLog(HttpServletRequest request)
  * @param: request
  * @param: @return      
  * @return: ModelAndView      
- * @throws
+
  */
 @RequestMapping("/setorg")
 public ModelAndView goSetOrg(HttpServletRequest request)
@@ -315,7 +312,7 @@ public ModelAndView goSetOrg(HttpServletRequest request)
 	 * @param: request
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/sys/setprofile")
 	public ModelAndView goSetProfile(HttpServletRequest request)
@@ -338,7 +335,7 @@ public ModelAndView goSetOrg(HttpServletRequest request)
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/wxset")
 	public ModelAndView goWeiXinSet(HttpServletRequest request,String view)
@@ -371,7 +368,7 @@ public ModelAndView goSetOrg(HttpServletRequest request)
 	 * @param: request
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/dingdingset")
 	public ModelAndView goDingDingUser(HttpServletRequest request,String view)
@@ -403,7 +400,7 @@ public ModelAndView goSetOrg(HttpServletRequest request)
 	 * @param: request
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/sysmonitor")
 	public ModelAndView goSysMonitor(HttpServletRequest request)
@@ -496,7 +493,7 @@ public ModelAndView goSetOrg(HttpServletRequest request)
 	 * @Description: TODO 领导查看下属的工作日志
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/diary/leaddiary")
 	public ModelAndView leaddiary(String view) 
@@ -633,7 +630,7 @@ public ModelAndView goSetOrg(HttpServletRequest request)
 	 * @param: request
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws Exception 
+ Exception 
 
 	 */
 	@RequestMapping("/sysinfo")
@@ -1143,7 +1140,7 @@ public ModelAndView goSetOrg(HttpServletRequest request)
 	 * @param request
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/oa/calendardetails")
 	public ModelAndView goCalendardetails(HttpServletRequest request)
@@ -1159,7 +1156,7 @@ public ModelAndView goSetOrg(HttpServletRequest request)
 	 * @param: request
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/oa/mycalendarlist")
 	public ModelAndView goMycalendarList(HttpServletRequest request)
@@ -1326,7 +1323,7 @@ public ModelAndView goSetOrg(HttpServletRequest request)
 	 * @Description: TODO 设置app
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/mobile/setAppConfig")
 	public ModelAndView  setAppConfig()
@@ -1347,7 +1344,7 @@ public ModelAndView goSetOrg(HttpServletRequest request)
 	 * @Description: TODO 系统定时任务
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/systimingtask")
 	public ModelAndView  setSysTimingTask()
@@ -1368,7 +1365,7 @@ public ModelAndView goSetOrg(HttpServletRequest request)
 	 * @Description: TODO 附件管理
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/attach/manage")
 	public ModelAndView  goAttachManage()
@@ -1389,7 +1386,7 @@ public ModelAndView goSetOrg(HttpServletRequest request)
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/leadactivity/manage")
 	public ModelAndView  goLeadActivityMange(String view)
@@ -1417,7 +1414,7 @@ public ModelAndView goSetOrg(HttpServletRequest request)
 	 * @Description: TODO 领导行程详情
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/leadactivity/details")
 	public ModelAndView  goLeadActivityDetails()
@@ -1437,7 +1434,7 @@ public ModelAndView goSetOrg(HttpServletRequest request)
 	 * @Description: TODO 领导行程查询
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/leadactivity/query")
 	public ModelAndView  goLeadActivityquery()
@@ -1445,6 +1442,25 @@ public ModelAndView goSetOrg(HttpServletRequest request)
 		try
 		{
 		ModelAndView mv = new ModelAndView("app/core/leadactivity/query");
+		return mv;
+		}catch (Exception e) {
+		ModelAndView mv = new ModelAndView("titps");
+		return mv;
+	}
+	}
+	/**
+	 * 
+	 * @Title: goMemo   
+	 * @Description: TODO 个人便签
+	 * @return
+	 * ModelAndView
+	 */
+	@RequestMapping("/oa/memo")
+	public ModelAndView  goMemo()
+	{
+		try
+		{
+		ModelAndView mv = new ModelAndView("app/core/sms/memo");
 		return mv;
 		}catch (Exception e) {
 		ModelAndView mv = new ModelAndView("titps");

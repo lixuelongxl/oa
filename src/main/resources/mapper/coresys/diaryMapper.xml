@@ -4,7 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core136.mapper.oa.DiaryMapper">
 	<resultMap id="Diary" type="com.core136.bean.oa.Diary">
-		<id column="ID" property="id" jdbcType="BIGINT" />
 		<result column="DIARY_ID" property="diaryId" jdbcType="VARCHAR" />
 		<result column="DIARY_DAY" property="diaryDay" jdbcType="VARCHAR" />
 		<result column="TITLE" property="title" jdbcType="VARCHAR" />
@@ -24,7 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="getMyDiaryList" resultType="java.util.HashMap">
 		SELECT ID AS id,DIARY_DAY AS diaryDay,DIARY_ID AS diaryId,TITLE AS title,CREATE_TIME AS createTime,CREATE_USER AS createUser,
-		ATTACH AS attach,DIARY_TYPE AS diaryType,CONTENT AS content
+		TO_CHAR(ATTACH) AS "attach",DIARY_TYPE AS diaryType,TO_CHAR(CONTENT) AS content
 		FROM DIARY
 		WHERE ORG_ID = #{orgId}
 		AND CREATE_USER = #{accountId}
@@ -38,7 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="getShowDiaryList" resultType="java.util.HashMap">
 		SELECT ID AS id,DIARY_DAY AS diaryDay,DIARY_ID AS diaryId,TITLE AS title,CREATE_TIME AS createTime,CREATE_USER AS createUser,
-		ATTACH AS attach,DIARY_TYPE AS diaryType,CONTENT AS content
+		TO_CHAR(ATTACH) AS "attach",DIARY_TYPE AS diaryType,TO_CHAR(CONTENT) AS content
 		FROM DIARY
 		WHERE ORG_ID = #{orgId}
 		AND CREATE_USER != #{accountId}
@@ -68,7 +67,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<select id="getMySubordinatesDiaryList" resultType="java.util.HashMap">
-		SELECT D.ID AS id,D.DIARY_ID AS diaryId,D.TITLE AS title,D.CREATE_TIME AS createTime,D.ATTACH AS attach,D.DIARY_TYPE AS diaryType,
+		SELECT D.ID AS id,D.DIARY_ID AS diaryId,D.TITLE AS title,D.CREATE_TIME AS createTime,TO_CHAR(D.ATTACH) AS "attach",D.DIARY_TYPE AS diaryType,
 		(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=#{orgId} AND U.ACCOUNT_ID = D.CREATE_USER) AS createUserName,DIARY_DAY AS diaryDay
 		FROM DIARY D
 		WHERE D.ORG_ID = #{orgId}
@@ -92,7 +91,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="getOtherDiaryList" resultType="java.util.HashMap">
 		SELECT ID AS id,DIARY_DAY AS diaryDay,DIARY_ID AS diaryId,TITLE AS title,CREATE_TIME AS createTime,CREATE_USER AS createUser,
-		ATTACH AS attach,DIARY_TYPE AS diaryType,CONTENT AS content,DIARY_TYPE AS diaryType,ATTACH_PRIV AS attachPriv
+		TO_CHAR(ATTACH) AS "attach",DIARY_TYPE AS diaryType,TO_CHAR(CONTENT) AS content,DIARY_TYPE AS diaryType,ATTACH_PRIV AS attachPriv
 		FROM DIARY
 		WHERE ORG_ID = #{orgId}
 		AND CREATE_USER = #{accountId}

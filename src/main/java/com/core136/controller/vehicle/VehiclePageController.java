@@ -14,7 +14,7 @@ public class VehiclePageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/vehicle/repair")
 	public ModelAndView  goRepair(String view)
@@ -46,7 +46,7 @@ public class VehiclePageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/vehicle/approved")
 	public ModelAndView  goApproved(String view)
@@ -77,7 +77,7 @@ public class VehiclePageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/vehicle/oilmange")
 	public ModelAndView  goOilmange(String view)
@@ -108,7 +108,7 @@ public class VehiclePageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/vehicle/applyvehicle")
 	public ModelAndView  goApplyvehicle(String view)
@@ -140,7 +140,7 @@ public class VehiclePageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/vehicle/vehicleinfo")
 	public ModelAndView  goVehicleinfo(String view)
@@ -170,7 +170,7 @@ public class VehiclePageController {
 	 * @Description: TODO 车辆详情
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/vehicle/vehicleinfodetails")
 	public ModelAndView  goVehicleInfoDetails()
@@ -189,7 +189,7 @@ public class VehiclePageController {
 	 * @Description: TODO 申请记录详情
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/vehicle/applyvehicledetails")
 	public ModelAndView  goApplyVehicleDetails()
@@ -209,7 +209,7 @@ public class VehiclePageController {
 	 * @Description: TODO 维修详情
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/vehicle/vehicleRepairdetails")
 	public ModelAndView  goVehicleRepairdetails()
@@ -228,7 +228,7 @@ public class VehiclePageController {
 	 * @Description: TODO油卡详情
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/vehicle/oilcarddetails")
 	public ModelAndView  goOilCardDetails()
@@ -247,7 +247,7 @@ public class VehiclePageController {
 	 * @Description: TODO 调度人员设置
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/vehicle/operator")
 	public ModelAndView  goOperator()

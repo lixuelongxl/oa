@@ -4,7 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core136.mapper.projectbuild.ProjectBuildStageMapper">
 <resultMap id="ProjectBuildStage" type="com.core136.bean.projectbuild.ProjectBuildStage" >
-    <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="STAGE_ID" property="stageId" jdbcType="VARCHAR" />
     <result column="SORT_NO" property="sortNo" jdbcType="INTEGER" />
     <result column="PROJECT_ID" property="projectId" jdbcType="VARCHAR" />

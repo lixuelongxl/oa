@@ -67,7 +67,7 @@ public class RoutGetProjectBuildMaterialController {
 	 * @param: sortId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMaterialSortTree",method=RequestMethod.POST)
 	public List<Map<String,String>> getMaterialSortTree(HttpServletRequest request,String sortId)
@@ -94,7 +94,7 @@ public class RoutGetProjectBuildMaterialController {
 	 * @param: projectBuildMaterialSort
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMaterialSortById",method=RequestMethod.POST)
 	public RetDataBean getMaterialSortById(HttpServletRequest request,ProjectBuildMaterialSort projectBuildMaterialSort)
@@ -117,7 +117,7 @@ public class RoutGetProjectBuildMaterialController {
 	 * @param: pageParam
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getmateriallist",method=RequestMethod.POST)
 	public RetDataBean getmateriallist(
@@ -159,7 +159,7 @@ public class RoutGetProjectBuildMaterialController {
 	 * @param: search
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getselect2materiallist",method=RequestMethod.POST)
 	public RetDataBean getselect2materiallist(HttpServletRequest request,String search)
@@ -180,7 +180,7 @@ public class RoutGetProjectBuildMaterialController {
 	 * @param: projectBuildMaterial
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMaterialById",method=RequestMethod.POST)
 	public RetDataBean getMaterialById(HttpServletRequest request,ProjectBuildMaterial projectBuildMaterial)
@@ -203,7 +203,7 @@ public class RoutGetProjectBuildMaterialController {
 	 * @param: projectBuildMaterialStage
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMaterialStageById",method=RequestMethod.POST)
 	public RetDataBean getMaterialStageById(HttpServletRequest request,ProjectBuildMaterialStage projectBuildMaterialStage)
@@ -227,7 +227,7 @@ public class RoutGetProjectBuildMaterialController {
 	 * @param: search
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMaterialListInStage",method=RequestMethod.POST)
 	public RetDataBean getMaterialListInStage(HttpServletRequest request,String stageId,String search)
@@ -250,7 +250,7 @@ public class RoutGetProjectBuildMaterialController {
 	 * @param: pageParam
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getmaterialStagelist",method=RequestMethod.POST)
 	public RetDataBean getmaterialStagelist(
@@ -291,7 +291,7 @@ public class RoutGetProjectBuildMaterialController {
 	 * @param: projectBuildMaterialPurchase
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMaterialPurchaseById",method=RequestMethod.POST)
 	public RetDataBean getMaterialPurchaseById(HttpServletRequest request,ProjectBuildMaterialPurchase projectBuildMaterialPurchase)
@@ -315,7 +315,7 @@ public class RoutGetProjectBuildMaterialController {
 	 * @param: pageParam
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMaterialPurchaseList",method=RequestMethod.POST)
 	public RetDataBean getMaterialPurchaseList(HttpServletRequest request,String search)
@@ -339,7 +339,7 @@ public class RoutGetProjectBuildMaterialController {
 	 * @param: pageParam
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getPurchaseMaterialMxList",method=RequestMethod.POST)
 	public RetDataBean getPurchaseMaterialMxList(
@@ -380,7 +380,7 @@ public class RoutGetProjectBuildMaterialController {
 	 * @param: projectBuildMaterialMx
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMaterialMxById",method=RequestMethod.POST)
 	public RetDataBean getMaterialMxById(HttpServletRequest request,ProjectBuildMaterialMx projectBuildMaterialMx)
@@ -404,7 +404,7 @@ public class RoutGetProjectBuildMaterialController {
 	 * @param: materialId
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/sumMaterialById",method=RequestMethod.POST)
 	public RetDataBean sumMaterialById(HttpServletRequest request,String purchaseId,String materialId)
@@ -427,7 +427,7 @@ public class RoutGetProjectBuildMaterialController {
 	 * @param: pageParam
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMaterialByProjectId",method=RequestMethod.POST)
 	public RetDataBean getMaterialByProjectId(
@@ -470,7 +470,7 @@ public class RoutGetProjectBuildMaterialController {
 	 * @param: pageParam
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMaterialInList",method=RequestMethod.POST)
 	public RetDataBean getMaterialInList(
@@ -517,7 +517,7 @@ public class RoutGetProjectBuildMaterialController {
 	 * @param: companyName
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getQueryPurchaseList",method=RequestMethod.POST)
 	public RetDataBean getQueryPurchaseList(
@@ -565,7 +565,7 @@ public class RoutGetProjectBuildMaterialController {
 	 * @param: purchaseTitle
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getQueryMaterialInList",method=RequestMethod.POST)
 	public RetDataBean getQueryMaterialInList(
@@ -611,7 +611,7 @@ public class RoutGetProjectBuildMaterialController {
 	 * @param: projectTitle
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getQueryMaterialOutList",method=RequestMethod.POST)
 	public RetDataBean getQueryMaterialOutList(

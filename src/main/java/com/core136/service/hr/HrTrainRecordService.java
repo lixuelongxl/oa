@@ -13,7 +13,6 @@ package com.core136.service.hr;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -69,7 +68,7 @@ public HrTrainRecord selectOneHrTrainRecord(HrTrainRecord hrTrainRecord)
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getHrTrainRecordList(String orgId,String createUser,String channel,String courseType,String status,String beginTime,String endTime,String search)
 {
@@ -87,7 +86,7 @@ public List<Map<String, String>>getHrTrainRecordList(String orgId,String createU
  * @param endTime
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getHrTrainRecordList(PageParam pageParam,String channel,String courseType,String status,String beginTime,String endTime) 
 {
@@ -110,7 +109,7 @@ public PageInfo<Map<String, String>> getHrTrainRecordList(PageParam pageParam,St
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getHrTrainRecordApprovedList(String orgId,String accountId,String channel,String courseType,String beginTime,String endTime,String search)
 {
@@ -127,7 +126,7 @@ public List<Map<String, String>>getHrTrainRecordApprovedList(String orgId,String
  * @param endTime
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getHrTrainRecordApprovedList(PageParam pageParam,String channel,String courseType,String beginTime,String endTime) 
 {
@@ -150,7 +149,7 @@ public PageInfo<Map<String, String>> getHrTrainRecordApprovedList(PageParam page
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getHrTrainRecordApprovedOldList(String orgId,String accountId,String channel,String courseType,String status,String beginTime,String endTime,String search)
 {
@@ -168,7 +167,7 @@ public List<Map<String, String>>getHrTrainRecordApprovedOldList(String orgId,Str
  * @param endTime
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getHrTrainRecordApprovedOldList(PageParam pageParam,String channel,String courseType,String status,String beginTime,String endTime) 
 {

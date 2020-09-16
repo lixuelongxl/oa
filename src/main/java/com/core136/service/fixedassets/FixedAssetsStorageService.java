@@ -60,7 +60,7 @@ public FixedAssetsStorage selectOneFixedAssetsStorage(FixedAssetsStorage fixedAs
  * @param: orgId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,String>> getFixedAssetsStorageList(String orgId,String search)
 {
@@ -74,7 +74,7 @@ public List<Map<String,String>> getFixedAssetsStorageList(String orgId,String se
  * @param: pageParam
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getFixedAssetsStorageList(PageParam pageParam) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -90,7 +90,7 @@ public PageInfo<Map<String, String>> getFixedAssetsStorageList(PageParam pagePar
  * @param: orgId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getAllFixedAssetsStorageList(String orgId)
 {

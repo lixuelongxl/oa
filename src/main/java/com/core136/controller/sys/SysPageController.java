@@ -3,6 +3,7 @@ package com.core136.controller.sys;
 import org.apache.commons.lang.StringUtils;
 import org.core136.common.enums.AppGobalConstant;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,6 +20,10 @@ public class SysPageController {
 	private SysInterfaceService sysInterfaceService;
 	@Autowired
 	private AccountService accountService;
+	@Value("${app.isdev}")
+	private String isDev;
+	@Value("${app.verifycode}")	
+	private String verifyCode;
 	
 	/**
 	 * 
@@ -57,6 +62,8 @@ public class SysPageController {
 		}
 		mv.addObject("SOFT_NAME", AppGobalConstant.SOFT_NAME);
 		mv.addObject("sysInterface", sysInterface);
+		mv.addObject("isDev",isDev);
+		mv.addObject("verifyCode",verifyCode);
 		return mv;
 		}catch (Exception e) {
 			e.printStackTrace();

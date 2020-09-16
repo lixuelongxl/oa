@@ -4,7 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core136.mapper.notice.NoticeTemplateMapper">
 <resultMap id="NoticeTemplate" type="com.core136.bean.notice.NoticeTemplate" >
-    <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="SORT_NO" property="sortNo" jdbcType="INTEGER" />
     <result column="TEMPLATE_ID" property="templateId" jdbcType="VARCHAR" />
     <result column="NOTICE_TYPE" property="noticeType" jdbcType="VARCHAR" />
@@ -16,7 +15,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   </resultMap>
 <select id="getNoticeTemplateList" resultType="java.util.HashMap">
 SELECT ID AS id,TEMPLATE_ID AS templateId,NOTICE_TYPE AS noticeType,TEMPLATE_NAME AS templateName,
-ATTACH AS attach,CREATE_TIME AS createTime,CREATE_USER AS createUser,ATTACH AS attach,
+ATTACH AS "attach",CREATE_TIME AS createTime,CREATE_USER AS createUser,ATTACH AS attach,
 (SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID = ORG_ID AND U.ACCOUNT_ID = CREATE_USER ) AS createUserName
 FROM NOTICE_TEMPLATE
 WHERE ORG_ID = #{orgId}
@@ -26,7 +25,7 @@ AND TEMPLATE_NAME LIKE #{search}
 </select>
 
 <select id="getRedHeadListByType" resultType="java.util.HashMap">
-SELECT ID AS id,TEMPLATE_ID AS templateId,TEMPLATE_NAME AS templateName,ATTACH AS attach
+SELECT ID AS id,TEMPLATE_ID AS templateId,TEMPLATE_NAME AS templateName,ATTACH AS "attach"
 FROM NOTICE_TEMPLATE
 WHERE ORG_ID = #{orgId}
 AND NOTICE_TYPE = #{noticeType}

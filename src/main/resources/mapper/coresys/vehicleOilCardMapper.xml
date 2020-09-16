@@ -4,7 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core136.mapper.vehicle.VehicleOilCardMapper">
 <resultMap id="VehicleOilCard" type="com.core136.bean.vehicle.VehicleOilCard" >
-    <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="CARD_ID" property="cardId" jdbcType="VARCHAR" />
     <result column="CARD_CODE" property="cardCode" jdbcType="VARCHAR" />
     <result column="CARD_NO" property="cardNo" jdbcType="VARCHAR" />

@@ -34,7 +34,7 @@ public interface OfficeSuppliesSortMapper extends MyMapper<OfficeSuppliesSort>{
 	 * @param: parentId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>> getOfficeSuppliesSortTree(@Param(value="orgId") String orgId,@Param(value="parentId") String parentId);
 	/**
@@ -45,7 +45,7 @@ public interface OfficeSuppliesSortMapper extends MyMapper<OfficeSuppliesSort>{
 	 * @param: parentId
 	 * @param: @return      
 	 * @return: int      
-	 * @throws
+
 	 */
 	public int isExistChild(@Param(value="orgId") String orgId,@Param(value="parentId") String parentId);
 }

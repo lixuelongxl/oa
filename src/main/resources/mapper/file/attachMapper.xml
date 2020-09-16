@@ -4,7 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core136.mapper.file.AttachMapper">
 <resultMap id="Attach" type="com.core136.bean.file.Attach" >
-    <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="ATTACH_ID" property="attachId" jdbcType="VARCHAR" />
     <result column="CREATE_ACCOUNT" property="createAccount" jdbcType="VARCHAR" />
     <result column="UP_TIME" property="upTime" jdbcType="VARCHAR" />
@@ -22,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <select id="getAttachManageList" resultType="java.util.HashMap">
  SELECT ID AS id,ATTACH_ID AS attachId,UP_TIME AS upTime,CREATE_ACCOUNT AS createAccount,OLD_NAME AS oldName,
  NEW_NAME AS newName,EXT_NAME AS extName,PATH AS path,MODULES AS modules,DEL_FLAG AS delFlag,PRIV AS priv,
- FILE_SIZE AS fileSize,(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=#{orgId} AND U.ACCOUNT_ID=CREATE_ACCOUNT) AS createUserName
+ FILE_SIZE AS "fileSize",(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=#{orgId} AND U.ACCOUNT_ID=CREATE_ACCOUNT) AS createUserName
  FROM ATTACH
  WHERE ORG_ID=#{orgId}
  <if test="modules!=''.toString() and modules!=null">

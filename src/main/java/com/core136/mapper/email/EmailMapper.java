@@ -39,7 +39,7 @@ public interface EmailMapper extends MyMapper<Email>{
  * @param: accountId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getEmailListForDesk(@Param(value="orgId") String orgId,@Param(value="accountId") String accountId);
 			
@@ -171,7 +171,7 @@ public int setMyEmailBox(@Param(value="boxId") String boxId,@Param(value="orgId"
  * @param page
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getMyEmailAllForMobile(@Param(value="orgId")String orgId,@Param(value="accountId")String accountId,@Param(value="page")Integer page);
 }

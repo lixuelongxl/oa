@@ -99,7 +99,7 @@ public List<News> selectNewsList(Example example)
  * @param: news
  * @param: @return      
  * @return: int      
- * @throws
+
  */
 public int sendNews(News news,UserInfo userInfo)
 {
@@ -158,7 +158,7 @@ public PageInfo<Map<String, Object>> getNewsManageList(PageParam pageParam) {
  * @param: endTime
  * @param: @return      
  * @return: PageInfo<Map<String,Object>>      
- * @throws
+
  */
 public PageInfo<Map<String, Object>> getMyNewsList(PageParam pageParam,String deptId, String levelId,String newsType,String status,String beginTime,String endTime) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -249,7 +249,7 @@ public Map<String, Object> getReadNewsById(String orgId, String newsId) {
  * @param: levelId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,String>> getMyNewsListForDesk(String orgId,String endTime,String accountId,String deptId,String levelId)
 {
@@ -267,7 +267,7 @@ public List<Map<String,String>> getMyNewsListForDesk(String orgId,String endTime
  * @param: page
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,String>>getMobileMyNewsList(String orgId,String accountId,String deptId,String levelId,Integer page)
 {

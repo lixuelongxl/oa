@@ -91,7 +91,7 @@ public int updateContract(Contract contract,Example example)
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>>queryContract(String orgId,String beginTime, String endTime, String contractType,String mySignUser, String search)
 	{
@@ -107,7 +107,7 @@ public int updateContract(Contract contract,Example example)
 	 * @param: contractType
 	 * @param: @return      
 	 * @return: PageInfo<Map<String,String>>      
-	 * @throws
+
 	 */
 	public PageInfo<Map<String, String>> queryContract(PageParam pageParam,String beginTime, String endTime, String contractType,String mySignUser) {
 		PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -129,7 +129,7 @@ public int updateContract(Contract contract,Example example)
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>>getContractManageList(String orgId,String opFlag,String accountId,String beginTime, String endTime, String contractType, String search)
 	{
@@ -146,7 +146,7 @@ public int updateContract(Contract contract,Example example)
 	 * @param: contractType
 	 * @param: @return      
 	 * @return: PageInfo<Map<String,String>>      
-	 * @throws
+
 	 */
 	public PageInfo<Map<String, String>> getContractManageList(PageParam pageParam,String beginTime, String endTime, String contractType) {
 		PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -162,7 +162,7 @@ public int updateContract(Contract contract,Example example)
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getSelect2ContractList(String orgId,String search)
 	{
@@ -175,7 +175,7 @@ public int updateContract(Contract contract,Example example)
  * @param orgId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 	public List<Map<String, String>>getContractTop(String orgId)
 	{

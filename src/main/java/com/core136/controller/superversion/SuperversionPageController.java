@@ -42,7 +42,7 @@ public class SuperversionPageController {
 	 * @Description: TODO 办理步骤详情
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/superversionprocessdetails")
 	public ModelAndView  goSuperversionprocessdetails()
@@ -62,7 +62,7 @@ public class SuperversionPageController {
 	 * @Description: TODO 领导管控
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/leadmanage")
 	public ModelAndView  goLeadmanage(String view)
@@ -95,7 +95,7 @@ public class SuperversionPageController {
 	 * @Description: TODO 督查查询
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/query")
 	public ModelAndView  goQuery(String view)
@@ -129,7 +129,7 @@ public class SuperversionPageController {
 	 * @Description: TODO 设置相关的领导
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/setsuperversionconfig")
 	public ModelAndView  setSuperversionConfig()
@@ -150,7 +150,7 @@ public class SuperversionPageController {
 	 * @Description: TODO 发起督查项目
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/createsuperverion")
 	public ModelAndView  goCreatesuperverion(String view,String superversionId)
@@ -183,7 +183,7 @@ public class SuperversionPageController {
 	 * @Description: TODO 督查督办事件处理
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/process")
 	public ModelAndView  goProcess(String view)
@@ -212,7 +212,7 @@ public class SuperversionPageController {
 	 * @Description: TODO 查看详情 
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/superversiondetails")
 	public ModelAndView  goSuperversionDetails()

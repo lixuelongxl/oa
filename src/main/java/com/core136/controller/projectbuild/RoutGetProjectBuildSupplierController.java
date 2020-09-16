@@ -31,7 +31,7 @@ public class RoutGetProjectBuildSupplierController {
 	 * @param: request
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getSupplierList",method=RequestMethod.POST)
 	public RetDataBean getSupplierList(HttpServletRequest request,PageParam pageParam)
@@ -67,7 +67,7 @@ public class RoutGetProjectBuildSupplierController {
 	 * @param: projectBuildSupplier
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getProjectBuildSupplierById",method=RequestMethod.POST)
 	public RetDataBean getProjectBuildSupplierById(HttpServletRequest request,ProjectBuildSupplier projectBuildSupplier)
@@ -89,7 +89,7 @@ public class RoutGetProjectBuildSupplierController {
 	 * @param: search
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getSelect2SupplierList",method=RequestMethod.POST)
 	public RetDataBean getSelect2SupplierList(HttpServletRequest request,String search)

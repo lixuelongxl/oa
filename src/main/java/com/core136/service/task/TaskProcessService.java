@@ -51,7 +51,7 @@ public class TaskProcessService {
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getMyTaskProcessList(String orgId,String accountId,String createUser,String taskType,String beginTime,String endTime,String search)
 	{
@@ -69,7 +69,7 @@ public class TaskProcessService {
 	 * @param endTime
 	 * @return
 	 * PageInfo<Map<String,String>>    
-	 * @throws
+
 	 */
 	public PageInfo<Map<String, String>> getMyTaskProcessList(PageParam pageParam,String createUser,String taskType,String beginTime,String endTime) {
 		PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -85,7 +85,7 @@ public class TaskProcessService {
 	 * @param processId
 	 * @return
 	 * Map<String,String>    
-	 * @throws
+
 	 */
 	public Map<String, String>getProcessInfo(String orgId,String processId,String accountId)
 	{

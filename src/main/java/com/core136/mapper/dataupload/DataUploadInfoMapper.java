@@ -25,7 +25,7 @@ public interface DataUploadInfoMapper extends MyMapper<DataUploadInfo>{
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 public List<Map<String, String>>getDataUploadInfoList(@Param(value="orgId")String orgId,
 		@Param(value="deptId")String deptId,@Param(value="fromAccountId")String fromAccountId,
@@ -47,7 +47,7 @@ public List<Map<String, String>>getDataUploadInfoList(@Param(value="orgId")Strin
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getToProcessInfoList(@Param(value="orgId")String orgId,@Param(value="accountId")String accountId,
 		@Param(value="deptId")String deptId,@Param(value="fromAccountId")String fromAccountId,
@@ -70,7 +70,7 @@ public List<Map<String, String>>getToProcessInfoList(@Param(value="orgId")String
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getOldProcessInfoList(@Param(value="orgId")String orgId,@Param(value="accountId")String accountId,
 		@Param(value="deptId")String deptId,@Param(value="fromAccountId")String fromAccountId,

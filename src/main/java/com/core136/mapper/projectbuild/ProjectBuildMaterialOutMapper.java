@@ -21,7 +21,7 @@ public interface ProjectBuildMaterialOutMapper extends MyMapper<ProjectBuildMate
 	 * @param: materialId
 	 * @param: @return      
 	 * @return: int      
-	 * @throws
+
 	 */
 	public int sumMaterialById(@Param(value="orgId") String orgId,@Param(value="projectId") String projectId,@Param(value="materialId") String materialId);
 /**
@@ -33,7 +33,7 @@ public interface ProjectBuildMaterialOutMapper extends MyMapper<ProjectBuildMate
  * @param: materialId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 	public List<Map<String, String>> getMaterialOutList(@Param(value="orgId") String orgId,@Param(value="projectId") String projectId,@Param(value="materialId") String materialId);
 
@@ -49,7 +49,7 @@ public interface ProjectBuildMaterialOutMapper extends MyMapper<ProjectBuildMate
  * @param: outUser
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 	public List<Map<String, String>> getQueryMaterialOutList(@Param(value="orgId") String orgId,@Param(value="beginTime") String beginTime,@Param(value="endTime") String endTime,
 			@Param(value="materialName") String materialName,@Param(value="projectTitle") String projectTitle,@Param(value="outUser") String outUser);

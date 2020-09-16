@@ -20,7 +20,7 @@ public interface ProjectBuildMaterialInMapper extends MyMapper<ProjectBuildMater
 	 * @param: materialId
 	 * @param: @return      
 	 * @return: int      
-	 * @throws
+
 	 */
 	public int sumMaterialById(@Param(value="orgId") String orgId,@Param(value="purchaseId") String purchaseId,@Param(value="materialId") String materialId);
 
@@ -32,7 +32,7 @@ public interface ProjectBuildMaterialInMapper extends MyMapper<ProjectBuildMater
 	 * @param: projectId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>> getMaterialByProjectId(@Param(value="orgId") String orgId,@Param(value="projectId") String projectId,@Param(value="search") String search);
 /**
@@ -44,7 +44,7 @@ public interface ProjectBuildMaterialInMapper extends MyMapper<ProjectBuildMater
  * @param: materialId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 	public List<Map<String, String>> getMaterialInList(@Param(value="orgId") String orgId,@Param(value="projectId") String projectId,@Param(value="materialId") String materialId);
 	
@@ -60,7 +60,7 @@ public interface ProjectBuildMaterialInMapper extends MyMapper<ProjectBuildMater
 	 * @param: purchaseTitle
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String, String>> getQueryMaterialInList(@Param(value="orgId") String orgId,@Param(value="inUser") String inUser,@Param(value="beginTime") String beginTime,
 			@Param(value="endTime") String endTime,@Param(value="materialName") String materialName,@Param(value="purchaseTitle") String purchaseTitle);

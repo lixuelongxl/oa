@@ -62,7 +62,7 @@ public HrWorkRecord selectOneHrWorkRecord(HrWorkRecord hrWorkRecord)
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getHrWorkRecordList(String orgId,String userId,String beginTime,String endTime,String nature,String search)
 {
@@ -76,7 +76,7 @@ public List<Map<String, String>>getHrWorkRecordList(String orgId,String userId,S
  * @param accountId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getMyHrWorkRecordList(String orgId,String accountId)
 {
@@ -93,7 +93,7 @@ public List<Map<String, String>>getMyHrWorkRecordList(String orgId,String accoun
  * @param endTime
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getHrWorkRecordList(PageParam pageParam,String userId,String beginTime,String endTime,String nature) 
 {
@@ -109,7 +109,7 @@ public PageInfo<Map<String, String>> getHrWorkRecordList(PageParam pageParam,Str
  * @param pageParam
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getMyHrWorkRecordList(PageParam pageParam) 
 {
@@ -125,9 +125,9 @@ public PageInfo<Map<String, String>> getMyHrWorkRecordList(PageParam pageParam)
  * @param account
  * @param file
  * @return
- * @throws IOException
+ IOException
  * RetDataBean    
- * @throws
+
  */
 @Transactional(value="generalTM")
 public RetDataBean importHrWorkRecord(Account account,MultipartFile file) throws IOException

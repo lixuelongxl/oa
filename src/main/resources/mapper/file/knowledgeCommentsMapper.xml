@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core136.mapper.file.KnowledgeCommentMapper">
+	<resultMap id="KnowledgeComment" type="com.core136.bean.file.KnowledgeComment">
+		<result column="COMMENT_ID" property="commentId" jdbcType="VARCHAR" />
+		<result column="KNOWLEDGE_ID" property="knowledgeId" jdbcType="VARCHAR" />
+		<result column="LEVEL_STAR" property="levelStar" jdbcType="DOUBLE" />
+		<result column="REMARK" property="remark" jdbcType="VARCHAR" />
+		<result column="COMM_TYPE" property="commType" jdbcType="VARCHAR" />
+		<result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+		<result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
+		<result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+	</resultMap>
+	<select id="getCommentsList" resultType="java.util.HashMap">
+		SELECT N.COMMENT_ID AS commentId, N.KNOWLEDGE_ID AS knowledgeId,N.LEVEL_STAR AS levelStar,TO_CHAR(N.REMARK) AS
+		remark,N.CREATE_TIME AS createTime,N.CREATE_USER AS createUser,N.COMM_TYPE AS commType,
+		(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=N.ORG_ID AND U.ACCOUNT_ID=N.CREATE_USER) AS createUserName,
+		(SELECT A.HEAD_IMG FROM ACCOUNT A WHERE A.ORG_ID=#{orgId} AND A.ACCOUNT_ID=N.CREATE_USER) AS headImg
+		FROM KNOWLEDGE_COMMENT N
+		WHERE
+		N.ORG_ID=#{orgId} AND N.KNOWLEDGE_ID=#{knowledgeId}
+		ORDER BY N.CREATE_TIME DESC
+	</select>
+
+	<select id="getStarValue" resultType="Double">
+		SELECT SUM(LEVEL_STAR) FROM KNOWLEDGE_COMMENT WHERE ORG_ID=#{orgId} AND KNOWLEDGE_ID = #{knowledgeId}
+	</select>
+
+
+</mapper>
+

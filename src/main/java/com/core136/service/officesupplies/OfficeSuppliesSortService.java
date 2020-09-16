@@ -58,7 +58,7 @@ public OfficeSuppliesSort selectOneOfficeSuppliesSort(OfficeSuppliesSort officeS
  * @param: parentId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>> getOfficeSuppliesSortTree(String orgId,String parentId)
 {
@@ -72,7 +72,7 @@ public List<Map<String, String>> getOfficeSuppliesSortTree(String orgId,String p
  * @param: parentId
  * @param: @return      
  * @return: int      
- * @throws
+
  */
 public int isExistChild(String orgId,String parentId)
 {

@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.ibatis.annotations.Param;
 import org.core136.common.enums.GobalConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,7 +51,7 @@ public int insertTask(Task task)
  * @param task
  * @return
  * int    
- * @throws
+
  */
 public int addTask(Account account,UserInfo userInfo,Task task)
 {
@@ -125,7 +124,7 @@ public int updateTask(Task task,Example example)
  * @param example
  * @return
  * int    
- * @throws
+
  */
 public int updateTask(Account account,UserInfo userInfo,Task task,Example example)
 {
@@ -192,7 +191,7 @@ public int deleteTask(Task task)
  * @param: opFlag
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,String>> getManageTaskList(String orgId,String accountId,String opFlag,String status,String taksType,String beginTime,String endTime,String search)
 {
@@ -206,7 +205,7 @@ public List<Map<String,String>> getManageTaskList(String orgId,String accountId,
  * @param: pageParam
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getManageTaskList(PageParam pageParam,String status,String taskType,String beginTime,String endTime) {
 PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -227,7 +226,7 @@ return pageInfo;
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,String>> getAssignmentTaskList(String orgId,String accountId,String opFlag,String taksType,String beginTime,String endTime,String search)
 {
@@ -243,7 +242,7 @@ public List<Map<String,String>> getAssignmentTaskList(String orgId,String accoun
  * @param: endTime
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getAssignmentTaskList(PageParam pageParam,String taskType,String beginTime,String endTime) {
 PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -259,7 +258,7 @@ return pageInfo;
  * @param: task
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getParticipantUserList(String orgId,String taskId)
 {
@@ -294,7 +293,7 @@ public List<Map<String, String>>getParticipantUserList(String orgId,String taskI
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getMyChargeTaskList(String orgId,String accountId,String createUser,String status,String taskType,String beginTime,String endTime,String search)
 {
@@ -312,7 +311,7 @@ public List<Map<String, String>>getMyChargeTaskList(String orgId,String accountI
  * @param endTime
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getMyChargeTaskList(PageParam pageParam,String createUser,String status,String taskType,String beginTime,String endTime) {
 PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -336,7 +335,7 @@ return pageInfo;
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getMySupervisorTaskList(String orgId,String accountId,String createUser,String status,String taskType,String beginTime,String endTime,String search)
 {
@@ -354,7 +353,7 @@ public List<Map<String, String>>getMySupervisorTaskList(String orgId,String acco
  * @param endTime
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getMySupervisorTaskList(PageParam pageParam,String createUser,String status,String taskType,String beginTime,String endTime) {
 PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());

@@ -48,7 +48,7 @@ public ContractPayable selectOneContractPayable(ContractPayable contractPayable)
  * @param: status
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getContractPayableList(String orgId,String opFlag,String accountId,String beginTime,String endTime,String status,String search)
 {
@@ -65,7 +65,7 @@ public List<Map<String, String>>getContractPayableList(String orgId,String opFla
  * @param: status
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getContractPayableList(PageParam pageParam,String beginTime, String endTime,String status) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -84,7 +84,7 @@ public PageInfo<Map<String, String>> getContractPayableList(PageParam pageParam,
  * @param accountId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getDeskPayableList(String orgId,String beginTime,String opFlag,String accountId)
 {

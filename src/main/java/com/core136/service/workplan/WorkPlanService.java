@@ -8,10 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.ibatis.annotations.Param;
 import org.core136.common.enums.GobalConstant;
-import org.eclipse.jdt.internal.compiler.lookup.ReductionResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +19,6 @@ import com.core136.bean.sys.PageParam;
 import com.core136.bean.workplan.WorkPlan;
 import com.core136.mapper.workplan.WorkPlanMapper;
 import com.core136.service.account.AccountService;
-import com.core136.service.account.UserInfoService;
 import com.core136.service.sys.MessageUnitService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -64,7 +60,7 @@ public WorkPlan selectOneWorkPlan(WorkPlan workPlan)
  * @param workPlan
  * @return
  * int    
- * @throws
+
  */
 public int createWorkPlan(Account account,UserInfo userInfo,WorkPlan workPlan)
 {
@@ -132,7 +128,7 @@ public int createWorkPlan(Account account,UserInfo userInfo,WorkPlan workPlan)
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getManageWorkPlanList(String orgId,String opFlag,String createUser,String beginTime,String endTime,String status,String planType,String search)
 {
@@ -150,7 +146,7 @@ public List<Map<String, String>>getManageWorkPlanList(String orgId,String opFlag
  * @param planType
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getManageWorkPlanList(PageParam pageParam,String beginTime,String endTime,String status,String planType) 
 {
@@ -168,7 +164,7 @@ public PageInfo<Map<String, String>> getManageWorkPlanList(PageParam pageParam,S
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getTodayWorkPlanList(String orgId,String search)
 {
@@ -182,7 +178,7 @@ public List<Map<String, String>>getTodayWorkPlanList(String orgId,String search)
  * @param pageParam
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getTodayWorkPlanList(PageParam pageParam) 
 {
@@ -200,7 +196,7 @@ public PageInfo<Map<String, String>> getTodayWorkPlanList(PageParam pageParam)
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getMonthWorkPlanList(String orgId,String search)
 {
@@ -214,7 +210,7 @@ public List<Map<String, String>>getMonthWorkPlanList(String orgId,String search)
  * @param pageParam
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getMonthWorkPlanList(PageParam pageParam) 
 {
@@ -238,7 +234,7 @@ public PageInfo<Map<String, String>> getMonthWorkPlanList(PageParam pageParam)
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getHoldWorkPlanList(String orgId,String opFlag,String accountId,String beginTime,String endTime,String status,String planType,String search)
 {
@@ -255,7 +251,7 @@ public List<Map<String, String>>getHoldWorkPlanList(String orgId,String opFlag,S
  * @param planType
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getHoldWorkPlanList(PageParam pageParam,String beginTime,String endTime,String status,String planType) 
 {
@@ -278,7 +274,7 @@ public PageInfo<Map<String, String>> getHoldWorkPlanList(PageParam pageParam,Str
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getSupWorkPlanList(String orgId,String opFlag,String accountId,String beginTime,String endTime,String status,String planType,String search)
 {
@@ -296,7 +292,7 @@ public List<Map<String, String>>getSupWorkPlanList(String orgId,String opFlag,St
  * @param planType
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getSupWorkPlanList(PageParam pageParam,String beginTime,String endTime,String status,String planType) 
 {
@@ -319,7 +315,7 @@ public PageInfo<Map<String, String>> getSupWorkPlanList(PageParam pageParam,Stri
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getMyWorkPlanList(String orgId,String opFlag,String accountId,String beginTime,String endTime,String status,String planType,String search)
 {
@@ -336,7 +332,7 @@ public List<Map<String, String>>getMyWorkPlanList(String orgId,String opFlag,Str
  * @param planType
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getMyWorkPlanList(PageParam pageParam,String beginTime,String endTime,String status,String planType) 
 {
@@ -361,7 +357,7 @@ public PageInfo<Map<String, String>> getMyWorkPlanList(PageParam pageParam,Strin
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getShareWorkPlanList(String orgId,String opFlag,String accountId,String deptId,String levelId,String beginTime,String endTime,String status,String planType,String search)
 {
@@ -378,7 +374,7 @@ public List<Map<String, String>>getShareWorkPlanList(String orgId,String opFlag,
  * @param planType
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getShareWorkPlanList(PageParam pageParam,String beginTime,String endTime,String status,String planType) 
 {

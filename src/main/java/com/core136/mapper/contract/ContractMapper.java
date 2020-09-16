@@ -53,7 +53,7 @@ public int getContractCount(@Param(value="orgId") String orgId);
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,String>>queryContract(
 		@Param(value="orgId") String orgId,
@@ -76,7 +76,7 @@ public List<Map<String,String>>queryContract(
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,String>>getContractManageList(
 		@Param(value="orgId") String orgId,
@@ -95,7 +95,7 @@ public List<Map<String,String>>getContractManageList(
  * @param: orgId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getSelect2ContractList(@Param(value="orgId") String orgId,@Param(value="search") String search);
 
@@ -106,7 +106,7 @@ public List<Map<String, String>>getSelect2ContractList(@Param(value="orgId") Str
  * @param orgId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getContractTop(@Param(value="orgId")String orgId);
 

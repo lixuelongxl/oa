@@ -3,7 +3,6 @@ package com.core136.service.hr;
 import java.util.List;
 import java.util.Map;
 
-import org.core136.common.utils.SysTools;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,7 +43,7 @@ public HrClassCode selectOneHrClassCode(HrClassCode hrClassCode)
  * @param module
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getCodeListByModule(String orgId,String module)
 {
@@ -58,7 +57,7 @@ public List<Map<String, String>>getCodeListByModule(String orgId,String module)
  * @param orgId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String,String>>getAllParentCodeList(String orgId)
 {
@@ -74,7 +73,7 @@ public List<Map<String,String>>getAllParentCodeList(String orgId)
  * @param codeValue
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getHrClassCodeName(String orgId,String module,String codeValue)
 {

@@ -24,7 +24,7 @@ public interface HrIncentiveMapper extends MyMapper<HrIncentive>{
 	 * @param incentiveItem
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getHrIncentiveList(@Param(value="orgId")String orgId,
 			@Param(value="userId")String userId,@Param(value="beginTime")String beginTime,
@@ -39,7 +39,7 @@ public interface HrIncentiveMapper extends MyMapper<HrIncentive>{
 	 * @param accountId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getMyHrIncentiveList(@Param(value="orgId")String orgId,@Param(value="accountId")String accountId);
 }

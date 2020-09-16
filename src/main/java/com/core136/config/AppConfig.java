@@ -46,7 +46,7 @@ public class AppConfig implements WebMvcConfigurer{
  * @Description: TODO 延时加载拦截器
  * @return
  * AuthInterceptor    
- * @throws
+
  */
     @Bean
 	public AuthInterceptor getAuthInterceptor() {
@@ -98,7 +98,8 @@ public class AppConfig implements WebMvcConfigurer{
 		}
 
 		/**
-		 * 一般事务只管在两个表或两个表以前更新时需要 在@Service类的方法上添加 @Transactional(value="事务名") 例如：
+		 * 一般事务只管在两个表或两个表以前更新时需要 在@Service类的方法上添加
+		 *  @Transactional(value="事务名") 例如：
 		 * 
 		 * @Transactional(value="generalTM") 
 		 * @Override public Integer

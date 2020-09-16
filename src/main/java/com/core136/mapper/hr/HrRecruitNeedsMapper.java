@@ -25,7 +25,7 @@ public interface HrRecruitNeedsMapper extends MyMapper<HrRecruitNeeds>{
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getHrRecruitNeedsList(@Param(value="orgId")String orgId,@Param(value="accountId")String accountId,
 			@Param(value="occupation") String occupation,@Param(value="highsetShool") String highsetShool,
@@ -47,7 +47,7 @@ public interface HrRecruitNeedsMapper extends MyMapper<HrRecruitNeeds>{
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getApprovedHrRecruitNeedsList(
 			@Param(value="orgId")String orgId,@Param(value="accountId")String accountId,
@@ -69,7 +69,7 @@ public interface HrRecruitNeedsMapper extends MyMapper<HrRecruitNeeds>{
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getOldApprovedHrRecruitNeedsList(
 			@Param(value="orgId")String orgId,@Param(value="accountId")String accountId,@Param(value="status")String status,

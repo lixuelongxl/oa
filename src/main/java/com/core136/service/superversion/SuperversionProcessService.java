@@ -58,7 +58,7 @@ public SuperversionProcess selectOneSuperversionProcess(SuperversionProcess supe
  * @param: orgId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getMyCompleteProcessList(String orgId,String accountId,String beginTime,String endTime,String type,String search)
 {
@@ -77,7 +77,7 @@ public List<Map<String, String>>getMyCompleteProcessList(String orgId,String acc
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getControlProcessList(String orgId,String accountId,String beginTime,String endTime,String type,String search)
 {
@@ -92,7 +92,7 @@ public List<Map<String, String>>getControlProcessList(String orgId,String accoun
  * @param: pageParam
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getMyCompleteProcessList(PageParam pageParam,String beginTime,String endTime,String type) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -110,7 +110,7 @@ public PageInfo<Map<String, String>> getMyCompleteProcessList(PageParam pagePara
  * @param: type
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getControlProcessList(PageParam pageParam,String beginTime,String endTime,String type) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());

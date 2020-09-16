@@ -4,7 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core136.mapper.fixedassets.FixedAssetsMapper">
 <resultMap id="FixedAssets" type="com.core136.bean.fixedassets.FixedAssets" >
-    <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="ASSETS_ID" property="assetsId" jdbcType="VARCHAR" />
     <result column="SORT_ID" property="sortId" jdbcType="VARCHAR" />
     <result column="SORT_NO" property="sortNo" jdbcType="INTEGER" />
@@ -25,7 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
   </resultMap>
 <select id="getFixedAssetsList" resultType="java.util.HashMap">
-SELECT F.ASSETS_ID AS assetsId,F.ASSETS_NAME AS assetsName,F.OWN_DEPT AS ownDept,F.BRAND AS brand,F.MODEL AS model,
+SELECT F.ASSETS_ID AS assetsId,F.ASSETS_NAME AS assetsName,TO_CHAR(F.OWN_DEPT) AS ownDept,F.BRAND AS brand,F.MODEL AS model,
 F.ASSETS_CODE AS assetsCode,F.PURCHASE_PRICE AS purchasePrice,F.CREATE_TIME AS createTime,F.SORT_ID AS sortId,
 (SELECT S.SORT_NAME FROM FIXED_ASSETS_SORT S WHERE S.ORG_ID=#{orgId} AND F.SORT_ID=S.SORT_ID) AS sortName,
 (SELECT D.DEPT_NAME FROM UNIT_DEPT D WHERE D.ORG_ID=#{orgId} AND D.DEPT_ID=F.OWN_DEPT) AS ownDeptName,F.STATUS AS status 
@@ -47,7 +46,7 @@ F.ORG_ID=#{orgId}
 </select>
 
 <select id="queryFixedAssetsList" resultType="java.util.HashMap">
-SELECT F.ASSETS_ID AS assetsId,F.ASSETS_NAME AS assetsName,F.OWN_DEPT AS ownDept,F.BRAND AS brand,F.MODEL AS model,
+SELECT F.ASSETS_ID AS assetsId,F.ASSETS_NAME AS assetsName,TO_CHAR(F.OWN_DEPT) AS ownDept,F.BRAND AS brand,F.MODEL AS model,
 F.ASSETS_CODE AS assetsCode,F.PURCHASE_PRICE AS purchasePrice,F.CREATE_TIME AS createTime,F.SORT_ID AS sortId,
 (SELECT S.SORT_NAME FROM FIXED_ASSETS_SORT S WHERE S.ORG_ID=#{orgId} AND F.SORT_ID=S.SORT_ID) AS sortName,
 (SELECT D.DEPT_NAME FROM UNIT_DEPT D WHERE D.ORG_ID=#{orgId} AND D.DEPT_ID=F.OWN_DEPT) AS ownDeptName,F.STATUS AS status
@@ -76,7 +75,7 @@ F.ORG_ID=#{orgId}
 
 
 <select id="getApplyFixedAssetsList" resultType="java.util.HashMap">
-SELECT F.ASSETS_ID AS assetsId,F.ASSETS_NAME AS assetsName,F.OWN_DEPT AS ownDept,F.BRAND AS brand,F.MODEL AS model,
+SELECT F.ASSETS_ID AS assetsId,F.ASSETS_NAME AS assetsName,TO_CHAR(F.OWN_DEPT) AS ownDept,F.BRAND AS brand,F.MODEL AS model,
 F.ASSETS_CODE AS assetsCode,F.PURCHASE_PRICE AS purchasePrice,F.CREATE_TIME AS createTime,F.SORT_ID AS sortId,
 (SELECT S.SORT_NAME FROM FIXED_ASSETS_SORT S WHERE S.ORG_ID=#{orgId} AND F.SORT_ID=S.SORT_ID) AS sortName,
 (SELECT D.DEPT_NAME FROM UNIT_DEPT D WHERE D.ORG_ID=#{orgId} AND D.DEPT_ID=F.OWN_DEPT) AS ownDeptName,F.STATUS AS status
@@ -93,7 +92,7 @@ F.ORG_ID=#{orgId}
 </select>
 
 <select id="getAllocationList" resultType="java.util.HashMap">
-SELECT A.APPLY_ID AS applyId,F.ASSETS_ID AS assetsId,F.ASSETS_NAME AS assetsName,F.OWN_DEPT AS ownDept,F.BRAND AS brand,F.MODEL AS model,
+SELECT A.APPLY_ID AS applyId,F.ASSETS_ID AS assetsId,F.ASSETS_NAME AS assetsName,TO_CHAR(F.OWN_DEPT) AS ownDept,F.BRAND AS brand,F.MODEL AS model,
 F.ASSETS_CODE AS assetsCode,F.PURCHASE_PRICE AS purchasePrice,A.CREATE_TIME AS createTime,F.SORT_ID AS sortId,
 (SELECT S.SORT_NAME FROM FIXED_ASSETS_SORT S WHERE S.ORG_ID=#{orgId} AND F.SORT_ID=S.SORT_ID) AS sortName,
 (SELECT D.DEPT_NAME FROM UNIT_DEPT D WHERE D.ORG_ID=#{orgId} AND D.DEPT_ID=F.OWN_DEPT) AS ownDeptName,F.STATUS AS status 

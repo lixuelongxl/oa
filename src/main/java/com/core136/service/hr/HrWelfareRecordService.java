@@ -65,7 +65,7 @@ public HrWelfareRecord selectOneHrWelfareRecord(HrWelfareRecord hrWelfareRecord)
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getHrWelfareRecordList(String orgId,String beginTime,String endTime,String userId,String type,String search)
 {
@@ -83,7 +83,7 @@ public List<Map<String, String>>getHrWelfareRecordList(String orgId,String begin
  * @param type
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getHrWelfareRecordList(PageParam pageParam,String beginTime,String endTime,String userId,String type) 
 {
@@ -100,9 +100,9 @@ public PageInfo<Map<String, String>> getHrWelfareRecordList(PageParam pageParam,
  * @param account
  * @param file
  * @return
- * @throws IOException
+ IOException
  * RetDataBean    
- * @throws
+
  */
 @Transactional(value="generalTM")
 public RetDataBean importHrWelfareRecord(Account account,MultipartFile file) throws IOException

@@ -61,7 +61,7 @@ public Attend selectOneAttend(Attend attend)
  * @param: accountId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getAttendYearList(String orgId,String accountId)
 {
@@ -76,7 +76,7 @@ public List<Map<String, String>>getAttendYearList(String orgId,String accountId)
  * @param: accountId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getMonthList(String orgId,String year,String accountId)
 {
@@ -93,7 +93,7 @@ public List<Map<String, String>>getMonthList(String orgId,String year,String acc
  * @param: accountId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getMyAttendList(String orgId,String year,String month,String accountId,String type)
 {
@@ -111,7 +111,7 @@ public List<Map<String, String>>getMyAttendList(String orgId,String year,String 
  * @param: createUser
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getTotalAttendList(String orgId,String type,String beginTime,String endTime,String deptId,String createUser)
 {
@@ -130,7 +130,7 @@ public List<Map<String, String>>getTotalAttendList(String orgId,String type,Stri
  * @param: createUser
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getTotalAttendList(PageParam pageParam,String type,String beginTime,String endTime,String deptId,String createUser)
 {
@@ -150,7 +150,7 @@ public PageInfo<Map<String, String>> getTotalAttendList(PageParam pageParam,Stri
  * @param endTime
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getMyLeaveList(String orgId,String accountId,String beginTime,String endTime,String type)
 {
@@ -166,7 +166,7 @@ public List<Map<String, String>>getMyLeaveList(String orgId,String accountId,Str
  * @param endTime
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getMyLeaveList(PageParam pageParam,String beginTime,String endTime,String type)
 {
@@ -185,7 +185,7 @@ public PageInfo<Map<String, String>> getMyLeaveList(PageParam pageParam,String b
  * @param endTime
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getMyTravelList(String orgId,String accountId,String beginTime,String endTime)
 {
@@ -201,7 +201,7 @@ public List<Map<String, String>>getMyTravelList(String orgId,String accountId,St
  * @param endTime
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getMyTravelList(PageParam pageParam,String beginTime,String endTime)
 {
@@ -221,7 +221,7 @@ public PageInfo<Map<String, String>> getMyTravelList(PageParam pageParam,String 
  * @param endTime
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getMyOutattendList(String orgId,String accountId,String beginTime,String endTime)
 {
@@ -236,7 +236,7 @@ public List<Map<String, String>>getMyOutattendList(String orgId,String accountId
  * @param endTime
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getMyOutattendList(PageParam pageParam,String beginTime,String endTime)
 {
@@ -255,7 +255,7 @@ public PageInfo<Map<String, String>> getMyOutattendList(PageParam pageParam,Stri
  * @param endTime
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getMyOverTimeList(String orgId,String accountId,String beginTime,String endTime)
 {
@@ -271,7 +271,7 @@ public List<Map<String, String>>getMyOverTimeList(String orgId,String accountId,
  * @param endTime
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getMyOverTimeList(PageParam pageParam,String beginTime,String endTime)
 {
@@ -291,7 +291,7 @@ public PageInfo<Map<String, String>> getMyOverTimeList(PageParam pageParam,Strin
  * @param endTime
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getMyDutyList(String orgId,String accountId,String beginTime,String endTime)
 {
@@ -306,7 +306,7 @@ public List<Map<String, String>>getMyDutyList(String orgId,String accountId,Stri
  * @param endTime
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getMyDutyList(PageParam pageParam,String beginTime,String endTime)
 {
@@ -325,7 +325,7 @@ public PageInfo<Map<String, String>> getMyDutyList(PageParam pageParam,String be
  * @param: accountId
  * @param: @return      
  * @return: JSONObject      
- * @throws
+
  */
 public JSONObject getMyAllAttendList(String orgId,String year,String accountId,String type)
 {

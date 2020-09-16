@@ -41,7 +41,7 @@ private ArchivesRepositoryMapper archivesRepositoryMapper;
 	 * @param orgId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getArchivesRepositoryList(String orgId,String opFlag,String accountId)
 	{

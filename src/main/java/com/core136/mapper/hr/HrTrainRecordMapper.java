@@ -41,7 +41,7 @@ public interface HrTrainRecordMapper extends MyMapper<HrTrainRecord>{
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getHrTrainRecordList(@Param(value="orgId")String orgId,@Param(value="createUser")String createUser,
 			@Param(value="channel")String channel,@Param(value="courseType")String courseType,@Param(value="status")String status,
@@ -61,7 +61,7 @@ public interface HrTrainRecordMapper extends MyMapper<HrTrainRecord>{
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getHrTrainRecordApprovedList(@Param(value="orgId")String orgId,@Param(value="accountId")String accountId,
 			@Param(value="channel")String channel,@Param(value="courseType")String courseType,
@@ -81,7 +81,7 @@ public interface HrTrainRecordMapper extends MyMapper<HrTrainRecord>{
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getHrTrainRecordApprovedOldList(@Param(value="orgId")String orgId,@Param(value="accountId")String accountId,
 			@Param(value="channel")String channel,@Param(value="courseType")String courseType,@Param(value="status")String status,

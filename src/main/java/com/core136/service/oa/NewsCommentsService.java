@@ -40,7 +40,7 @@ public NewsComments selectOneNewsComments(NewsComments newsComments)
  * @param: newsId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getCommentsList(String orgId,String newsId)
 {

@@ -44,7 +44,7 @@ public VehicleOperator selectOneVehicleOperator(VehicleOperator vehicleOperator)
  * @param optUser
  * @return
  * RetDataBean    
- * @throws
+
  */
 public RetDataBean setVehicleOperator(Account account,String optUser)
 {

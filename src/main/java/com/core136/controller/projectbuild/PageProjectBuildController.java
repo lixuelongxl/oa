@@ -13,7 +13,7 @@ public class PageProjectBuildController {
 	 * @Description: TODO 工程项目分类 
 	 * @param: @return 
 	 * @return:
-	 * ModelAndView @throws
+
 	 */
 	@RequestMapping("/addSort")
 	public ModelAndView goAddProjectsort() {
@@ -32,7 +32,7 @@ public class PageProjectBuildController {
  * @Description: TODO 工程项目立项 
  * @param: @return      
  * @return: ModelAndView      
- * @throws
+
  */
 	@RequestMapping("/approval")
 	public ModelAndView goapproval() {
@@ -51,7 +51,7 @@ public class PageProjectBuildController {
 	 * @Description: TODO 工程项目详情
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/detalis")
 	public ModelAndView goDetalis() {
@@ -101,7 +101,7 @@ public class PageProjectBuildController {
 	 * @Description: TODO 项目日报
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/projectdaily")
 	public ModelAndView goProjectdaily() {

@@ -60,7 +60,7 @@ public HrWagesLevel selectOneHrWagesLevel(HrWagesLevel hrWagesLevel)
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getWagesLevelList(String orgId,String search)
 {
@@ -73,7 +73,7 @@ public List<Map<String, String>>getWagesLevelList(String orgId,String search)
  * @param: pageParam
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getWagesLevelList(PageParam pageParam) 
 {

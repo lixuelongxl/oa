@@ -17,7 +17,7 @@ public interface EchartsSuperversionMapper {
 	 * @param orgId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getBiSuperversionByLeadPie(@Param(value="orgId")String orgId);
 
@@ -28,7 +28,7 @@ public interface EchartsSuperversionMapper {
 	 * @param orgId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getBiSuperversionTypePie(@Param(value="orgId")String orgId);
 	
@@ -40,7 +40,7 @@ public interface EchartsSuperversionMapper {
 	 * @param orgId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getBiSuperversionStatusTypePie(@Param(value="orgId")String orgId);
 	
@@ -53,7 +53,7 @@ public interface EchartsSuperversionMapper {
 	 * @param endTime
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String,Object>>getBiSuperversionByMonthLine(@Param(value="orgId")String orgId,@Param(value="beginTime")String beginTime,@Param(value="endTime")String endTime);
 	

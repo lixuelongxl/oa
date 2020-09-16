@@ -20,7 +20,7 @@ public interface HrEvaluateMapper extends MyMapper<HrEvaluate>{
 	 * @param userId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getHrEvaluateByUserIdList(@Param(value="orgId") String orgId,@Param(value="userId")String userId);
 	/**
@@ -35,7 +35,7 @@ public interface HrEvaluateMapper extends MyMapper<HrEvaluate>{
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getHrEvaluateQueryList(@Param(value="orgId")String orgId,@Param(value="userId")String userId,
 			@Param(value="beginTime")String beginTime,@Param(value="endTime")String endTime,@Param(value="status")String status,

@@ -5,7 +5,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper
 	namespace="com.core136.mapper.superversion.SuperversionMapper">
 	<resultMap id="Superversion" type="com.core136.bean.superversion.Superversion">
-		<id column="ID" property="id" jdbcType="BIGINT" />
 		<result column="SORT_NO" property="sortNo" jdbcType="INTEGER" />
 		<result column="SUPERVERSION_ID" property="superversionId" jdbcType="VARCHAR" />
 		<result column="LEAD_ID" property="leadId" jdbcType="VARCHAR" />
@@ -26,7 +25,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="getSupperversionList" resultType="java.util.HashMap">
 		SELECT TMP.SUPERVERSION_ID AS superversionId,TMP.LEAD_ID AS leadId,TMP.TITLE AS title,TMP.BEGIN_TIME AS beginTime,TMP.END_TIME AS endTime,TMP.HANDED_USER AS handedUser,
-		TMP.CREATE_TIME AS createTime,TMP.TYPE AS type,TMP.JOIN_USER AS joinUser,TMP.STATUS AS status,
+		TMP.CREATE_TIME AS createTime,TMP.TYPE AS type,TO_CHAR(TMP.JOIN_USER) AS joinUser,TMP.STATUS AS status,
 		(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=#{orgId} AND U.ACCOUNT_ID=TMP.HANDED_USER) AS handedUserName,
 		(SELECT S.USER_NAME FROM USER_INFO S WHERE S.ORG_ID=#{orgId} AND S.ACCOUNT_ID=TMP.LEAD_ID) AS leadUserName,
 		(SELECT T.TYPE_NAME FROM SUPERVERSION_CONFIG T WHERE T.ORG_ID=#{orgId} AND T.CONFIG_ID=TMP.TYPE) AS typeName
@@ -56,7 +55,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="getSupperversionPorcessList" resultType="java.util.HashMap">
 		SELECT TMP.SUPERVERSION_ID AS superversionId,TMP.LEAD_ID AS leadId,TMP.TITLE AS title,TMP.BEGIN_TIME AS beginTime,TMP.END_TIME AS endTime,TMP.HANDED_USER AS handedUser,
-		TMP.CREATE_TIME AS createTime,TMP.TYPE AS type,TMP.JOIN_USER AS joinUser,TMP.STATUS AS status,
+		TMP.CREATE_TIME AS createTime,TMP.TYPE AS type,TO_CHAR(TMP.JOIN_USER) AS joinUser,TMP.STATUS AS status,
 		(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=#{orgId} AND U.ACCOUNT_ID=TMP.HANDED_USER) AS handedUserName,
 		(SELECT S.USER_NAME FROM USER_INFO S WHERE S.ORG_ID=#{orgId} AND S.ACCOUNT_ID=TMP.LEAD_ID) AS leadUserName,
 		(SELECT T.TYPE_NAME FROM SUPERVERSION_CONFIG T WHERE T.ORG_ID=#{orgId} AND T.CONFIG_ID=TMP.TYPE) AS typeName,
@@ -89,7 +88,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 		<select id="getLeadManageSupperversionList" resultType="java.util.HashMap">
 		SELECT TMP.SUPERVERSION_ID AS superversionId,TMP.LEAD_ID AS leadId,TMP.TITLE AS title,TMP.BEGIN_TIME AS beginTime,TMP.END_TIME AS endTime,TMP.HANDED_USER AS handedUser,
-		TMP.CREATE_TIME AS createTime,TMP.TYPE AS type,TMP.JOIN_USER AS joinUser,TMP.STATUS AS status,
+		TMP.CREATE_TIME AS createTime,TMP.TYPE AS type,TO_CHAR(TMP.JOIN_USER) AS joinUser,TMP.STATUS AS status,
 		(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=#{orgId} AND U.ACCOUNT_ID=TMP.HANDED_USER) AS handedUserName,
 		(SELECT S.USER_NAME FROM USER_INFO S WHERE S.ORG_ID=#{orgId} AND S.ACCOUNT_ID=TMP.LEAD_ID) AS leadUserName,
 		(SELECT T.TYPE_NAME FROM SUPERVERSION_CONFIG T WHERE T.ORG_ID=#{orgId} AND T.CONFIG_ID=TMP.TYPE) AS typeName

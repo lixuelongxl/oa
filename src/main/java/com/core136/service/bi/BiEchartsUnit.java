@@ -23,13 +23,13 @@ private BiTypeService biTypeService;
  * @param biTemplate
  * @return
  * OptionConfig    
- * @throws
+
  */
 	public OptionConfig getEchartsOptConfig(Account account,BiTemplate biTemplate)
 	{
 		OptionConfig optionConfig = new OptionConfig();
 		BiType biType = new BiType();
-		biType.setBiTypeId(biTemplate.getBiType());
+		//biType.setBiTypeId(biTemplate.getBiType());
 		biType.setOrgId(account.getOrgId());
 		biType = biTypeService.selectOneBiType(biType);
 		String key = biType.getBiFlag();

@@ -76,7 +76,7 @@ public HrUserInfo selectOneHrUserInfo(HrUserInfo hrUserInfo)
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>> getHrUserInfoByDeptId(String orgId,String deptId)
 {
@@ -91,7 +91,7 @@ public List<Map<String, String>> getHrUserInfoByDeptId(String orgId,String deptI
  * @param deptId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>> getHrUserInfoByBeptIdInWorkList(String orgId,String deptId,String workStatus,String employedTime,String staffCardNo,String search)
 {
@@ -106,7 +106,7 @@ public List<Map<String, String>> getHrUserInfoByBeptIdInWorkList(String orgId,St
  * @param pageParam
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getHrUserInfoByBeptIdInWorkList(PageParam pageParam,String workStatus,String employedTime,String staffCardNo) 
 {
@@ -125,7 +125,7 @@ public PageInfo<Map<String, String>> getHrUserInfoByBeptIdInWorkList(PageParam p
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>> getHrUserInfoListByDeptId(String orgId,String deptId,String search)
 {
@@ -138,7 +138,7 @@ public List<Map<String, String>> getHrUserInfoListByDeptId(String orgId,String d
  * @param pageParam
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getHrUserInfoListByDeptId(PageParam pageParam) 
 {
@@ -155,7 +155,7 @@ public PageInfo<Map<String, String>> getHrUserInfoListByDeptId(PageParam pagePar
  * @param: deptId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>> getHrUserInfoForTree(String orgId,String deptId)
 {
@@ -169,7 +169,7 @@ public List<Map<String, String>> getHrUserInfoForTree(String orgId,String deptId
  * @param userIds
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String,String>>getUserNamesByUserIds(String orgId,String userIds)
 {
@@ -192,7 +192,7 @@ public List<Map<String,String>>getUserNamesByUserIds(String orgId,String userIds
  * @param searchuser
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getHrUserInfoBySearchuser(String orgId,String searchuser)
 {
@@ -206,7 +206,7 @@ public List<Map<String, String>>getHrUserInfoBySearchuser(String orgId,String se
  * @param orgId
  * @return
  * Map<String,String>    
- * @throws
+
  */
 public Map<String, String>getDeskHrUserInfo(String orgId)
 {
@@ -221,9 +221,9 @@ public Map<String, String>getDeskHrUserInfo(String orgId)
  * @param account
  * @param file
  * @return
- * @throws IOException
+ IOException
  * RetDataBean    
- * @throws
+
  */
 @Transactional(value="generalTM")
 public RetDataBean importHrUserInfo(Account account,MultipartFile file) throws IOException

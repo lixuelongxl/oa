@@ -58,7 +58,7 @@ public HrDepartment selectOneHrDepartment(HrDepartment hrDepartment)
  * @param: orgLevelId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getHrDepartmentTree(String orgId,String orgLevelId)
 {
@@ -72,7 +72,7 @@ public List<Map<String, String>>getHrDepartmentTree(String orgId,String orgLevel
  * @param: orgLevelId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getHrUserInfoDepartmentTree(String orgId,String orgLevelId)
 {
@@ -85,7 +85,7 @@ public List<Map<String, String>>getHrUserInfoDepartmentTree(String orgId,String 
  * @param example
  * @return
  * List<HrDepartment>    
- * @throws
+
  */
 public List<HrDepartment> getHrDeptList(Example example)
 {
@@ -99,7 +99,7 @@ public List<HrDepartment> getHrDeptList(Example example)
  * @param deptStrs
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getHrDeptNameByStr(String orgId,String deptStrs)
 {
@@ -122,7 +122,7 @@ public List<Map<String, String>>getHrDeptNameByStr(String orgId,String deptStrs)
  * @param searchdept
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getHrDeptBySearchdept(String orgId,String searchdept)
 {

@@ -127,7 +127,7 @@ public void sendCancelMeetingMsg(UserInfo userInfo,Meeting meeting)
  * @param userInfo
  * @param meeting
  * void    
- * @throws
+
  */
 public void sendMeetingMsg(UserInfo userInfo,Meeting meeting)
 {
@@ -188,7 +188,7 @@ public void sendMeetingMsg(UserInfo userInfo,Meeting meeting)
  * @param userInfo
  * @param meeting
  * void    
- * @throws
+
  */
 public void sendApplyMeeingMsg(UserInfo userInfo,Meeting meeting)
 {
@@ -233,7 +233,7 @@ public void sendApplyMeeingMsg(UserInfo userInfo,Meeting meeting)
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>> getMeetingList(String orgId,String opFlag,String createUser,String roomId,String beginTime,String endTime,String search)
 {
@@ -249,7 +249,7 @@ public List<Map<String, String>> getMeetingList(String orgId,String opFlag,Strin
  * @param: endTime
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getMeetingList(PageParam pageParam,String roomId,String beginTime,String endTime) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -270,7 +270,7 @@ public PageInfo<Map<String, String>> getMeetingList(PageParam pageParam,String r
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>> getApplyMeetingList(String orgId,String opFlag,String accountId,String beginTime,String endTime,String search)
 {
@@ -285,7 +285,7 @@ public List<Map<String, String>> getApplyMeetingList(String orgId,String opFlag,
  * @param endTime
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getApplyMeetingList(PageParam pageParam,String beginTime,String endTime) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -304,7 +304,7 @@ public PageInfo<Map<String, String>> getApplyMeetingList(PageParam pageParam,Str
  * @param leaveId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String,String>>getMyMeetingListForDesk(String orgId,String accountId,String deptId,String levelId)
 {
@@ -323,7 +323,7 @@ public List<Map<String,String>>getMyMeetingListForDesk(String orgId,String accou
  * @param page
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String,String>>getMobileMyMeetingList(String orgId,String accountId,String deptId,String levelId,Integer page)
 {
@@ -343,7 +343,7 @@ public List<Map<String,String>>getMobileMyMeetingList(String orgId,String accoun
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String,String>>getMyMeetingList(String orgId,String accountId,String deptId,String leaveId,String beginTime,String endTime,String search)
 {
@@ -360,7 +360,7 @@ public List<Map<String,String>>getMyMeetingList(String orgId,String accountId,St
  * @param endTime
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getMyMeetingList(PageParam pageParam,String beginTime,String endTime) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -383,7 +383,7 @@ public PageInfo<Map<String, String>> getMyMeetingList(PageParam pageParam,String
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String,String>>getMyMeetingOldList(String orgId,String accountId,String deptId,String leaveId,String beginTime,String endTime,String search)
 {
@@ -399,7 +399,7 @@ public List<Map<String,String>>getMyMeetingOldList(String orgId,String accountId
  * @param endTime
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getMyMeetingOldList(PageParam pageParam,String beginTime,String endTime) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -420,7 +420,7 @@ public PageInfo<Map<String, String>> getMyMeetingOldList(PageParam pageParam,Str
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>> getOldApplyMeetingList(String orgId,String opFlag,String status,String accountId,String beginTime,String endTime,String search)
 {
@@ -437,7 +437,7 @@ public List<Map<String, String>> getOldApplyMeetingList(String orgId,String opFl
  * @param endTime
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getOldApplyMeetingList(PageParam pageParam,String status,String beginTime,String endTime) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -453,7 +453,7 @@ public PageInfo<Map<String, String>> getOldApplyMeetingList(PageParam pageParam,
  * @param accountId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String,String>>getNotNotesMeetingList(String orgId,String accountId)
 {
@@ -468,7 +468,7 @@ public List<Map<String,String>>getNotNotesMeetingList(String orgId,String accoun
  * @param dayStr
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getMeetingByDay(String orgId,String deptId,String dayStr)
 {
@@ -486,7 +486,7 @@ public List<Map<String, String>>getMeetingByDay(String orgId,String deptId,Strin
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getMyApplyMeetingList(String orgId,String accountId,String chair,String roomId,String beginTime,String endTime,String search)
 {
@@ -504,7 +504,7 @@ public List<Map<String, String>>getMyApplyMeetingList(String orgId,String accoun
  * @param endTime
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getMyApplyMeetingList(PageParam pageParam,String chair,String roomId,String beginTime,String endTime) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());

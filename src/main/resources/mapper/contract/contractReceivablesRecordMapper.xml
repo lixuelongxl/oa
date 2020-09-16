@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core136.mapper.contract.ContractReceivablesRecordMapper">
 <resultMap id="ContractReceivablesRecord" type="com.core136.bean.contract.ContractReceivablesRecord" >
-    <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="RECROD_ID" property="recordId" jdbcType="VARCHAR" />
     <result column="RECEIVABLES_ID" property="receivablesId" jdbcType="VARCHAR" />
     <result column="AMOUNT" property="amount" jdbcType="DOUBLE" />
@@ -14,7 +13,7 @@
     <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
   </resultMap>
 <select id="getContractReceivablesRecordList" resultType="java.util.HashMap">
-SELECT RECORD_ID AS recordId, RECEIVABLES_ID AS receivablesId,AMOUNT AS amount,PAYEE AS payee,PAYEE_TIME AS payeeTime,REMARK AS remark
+SELECT RECORD_ID AS recordId, RECEIVABLES_ID AS receivablesId,AMOUNT AS amount,PAYEE AS payee,PAYEE_TIME AS payeeTime,TO_CHAR(REMARK) AS remark
 FROM CONTRACT_RECEIVABLES_RECORD
 WHERE ORG_ID=#{orgId}
 AND RECEIVABLES_ID = #{receivablesId}

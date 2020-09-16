@@ -34,7 +34,7 @@ public interface HrWagesLevelMapper extends MyMapper<HrWagesLevel>{
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 	public List<Map<String, String>>getWagesLevelList(@Param(value="orgId") String orgId,@Param(value="search") String search);
 	

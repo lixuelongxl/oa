@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<title>${session.SOFT_NAME }_智能办公系统</title>
+<meta name="description" content="Dashboard" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<% include("../../../resapi/style.html"){}%>
+<link href="/module/handsontable/handsontable.full.min.css" rel="stylesheet" />
+<style>
+.divfixed {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background: #eee;
+        z-index: 10;
+    }
+</style>
+</head>
+<body style="overflow-y: auto;">
+	<div class="page-body" style="padding: 0px;">
+		<div class="row divfixed" style="background-color: white;">
+			<div class="buttons-preview" style="margin-right: 10px; margin-top: 10px; display: inline-block; float: right">
+				<a href="javascript:void(0);location.reload();" class="btn btn-darkorange">刷新</a>
+				<a href="javascript:void(0);" class="btn btn-blue js-printbtn" style="">打印预览</a>
+				<div class="btn-group dropdown">
+					<a class="btn btn-sky shiny"> 更多操作 </a> <a class="btn btn-sky dropdown-toggle shiny" data-toggle="dropdown" aria-expanded="false"> <i class="fa fa-angle-down"></i>
+					</a>
+					<ul class="dropdown-menu dropdown-sky">
+						<li><a href="/ret/biget/getJasReportForPdf?templateId=${parameter.templateId}">导出PDF</a></li>
+<!-- 						<li><a href="">导出Excel</a></li> -->
+<!-- 						<li><a href="">导出Html</a></li> -->
+					</ul>
+				</div>
+			</div>
+
+		</div>
+		<div class="row" style="padding-top: 60px;" id="printdiv">${jascontent}</div>
+	</div>
+	<% include("../../../resapi/sysjs.html"){}%>
+	<script>
+var templateId = "${parameter.templateId}";
+</script>
+<script type="text/javascript" src="/module/print/jquery-migrate-1.1.0.js"></script>
+<script type="text/javascript" src="/module/print/jquery.jqprint-0.3.js"></script>
+	<script type="text/javascript" src="/gobal/js/page/bi/reportpage.js"></script>
+</body>
+</html>

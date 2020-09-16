@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.ibatis.annotations.Param;
 import org.core136.common.retdataunit.RetDataBean;
 import org.core136.common.retdataunit.RetDataTools;
 import org.core136.common.utils.ExcelUtil;
@@ -69,7 +68,7 @@ public HrContract selectOneHrContract(HrContract hrContract)
  * @param contractType
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getHrContractList(String orgId,String userId,String beginTime,String endTime,String enterpries,String contractType)
 {
@@ -84,7 +83,7 @@ public List<Map<String, String>>getHrContractList(String orgId,String userId,Str
  * @param accountId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>> getMyHrContractList(String orgId,String accountId)
 {
@@ -102,7 +101,7 @@ public List<Map<String, String>> getMyHrContractList(String orgId,String account
  * @param contractType
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getHrContractList(PageParam pageParam,String userId,String beginTime,String endTime,String enterpries,String contractType) 
 {
@@ -119,7 +118,7 @@ public PageInfo<Map<String, String>> getHrContractList(PageParam pageParam,Strin
  * @param pageParam
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getMyHrContractList(PageParam pageParam) 
 {
@@ -136,9 +135,9 @@ public PageInfo<Map<String, String>> getMyHrContractList(PageParam pageParam)
  * @param account
  * @param file
  * @return
- * @throws IOException
+ IOException
  * RetDataBean    
- * @throws
+
  */
 @Transactional(value="generalTM")
 public RetDataBean importHrContract(Account account,MultipartFile file) throws IOException
@@ -206,7 +205,7 @@ public RetDataBean importHrContract(Account account,MultipartFile file) throws I
  * @param orgId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getDeskHrContractList(String orgId)
 {

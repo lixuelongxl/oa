@@ -25,7 +25,7 @@ public interface VehicleRepairRecordMapper extends MyMapper<VehicleRepairRecord>
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getVehicleRepairRecordList(
 			@Param(value="orgId")String orgId,@Param(value="repairUser")String repairUser,

@@ -32,7 +32,7 @@ public interface OfficeSuppliesUnitMapper extends MyMapper<OfficeSuppliesUnit>{
 	 * @param: orgId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>> getAllUnit(@Param(value="orgId") String orgId);
 	
@@ -44,7 +44,7 @@ public interface OfficeSuppliesUnitMapper extends MyMapper<OfficeSuppliesUnit>{
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String, String>>  
-	 * @throws
+
 	 */
 	public List<Map<String, String>> getOfficeSuppliesUnitList(@Param(value="orgId") String orgId,@Param(value="search") String search);
 	

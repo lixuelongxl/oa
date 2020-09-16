@@ -22,7 +22,7 @@ public interface HrSalaryRecordMapper extends MyMapper<HrSalaryRecord>{
 	 * @param month
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getHrSalaryRecordList(
 			@Param(value="orgId")String orgId,
@@ -38,7 +38,7 @@ public interface HrSalaryRecordMapper extends MyMapper<HrSalaryRecord>{
 	 * @param accountId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getMyHrSalaryRecordList(@Param(value="orgId")String orgId,@Param(value="accountId")String accountId);
 }

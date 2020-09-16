@@ -26,7 +26,7 @@ public interface WorkPlanMapper extends MyMapper<WorkPlan>{
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getManageWorkPlanList(
 			@Param(value="orgId")String orgId,@Param(value="createUser")String createUser,
@@ -49,7 +49,7 @@ public interface WorkPlanMapper extends MyMapper<WorkPlan>{
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getHoldWorkPlanList(
 			@Param(value="orgId")String orgId,@Param(value="accountId")String accountId,
@@ -71,7 +71,7 @@ public interface WorkPlanMapper extends MyMapper<WorkPlan>{
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getSupWorkPlanList(
 			@Param(value="orgId")String orgId,@Param(value="accountId")String accountId,
@@ -93,7 +93,7 @@ public interface WorkPlanMapper extends MyMapper<WorkPlan>{
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getMyWorkPlanList(
 			@Param(value="orgId")String orgId,@Param(value="accountId")String accountId,
@@ -117,7 +117,7 @@ public interface WorkPlanMapper extends MyMapper<WorkPlan>{
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getShareWorkPlanList(
 			@Param(value="orgId")String orgId,@Param(value="accountId")String accountId,
@@ -133,7 +133,7 @@ public interface WorkPlanMapper extends MyMapper<WorkPlan>{
 	 * @param orgId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getTodayWorkPlanList(@Param(value="orgId")String orgId,@Param(value="search")String search);
 	/**
@@ -144,7 +144,7 @@ public interface WorkPlanMapper extends MyMapper<WorkPlan>{
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getMonthWorkPlanList(@Param(value="orgId")String orgId,@Param(value="search")String search);
 	

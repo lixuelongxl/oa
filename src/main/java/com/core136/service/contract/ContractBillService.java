@@ -51,7 +51,7 @@ public class ContractBillService {
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getContractBillList(String orgId,String opFlag,String accountId,String isOpen,String status,String billType,String beginTime,String endTime,String search)
 	{
@@ -68,7 +68,7 @@ public class ContractBillService {
 	 * @param: endTime
 	 * @param: @return      
 	 * @return: PageInfo<Map<String,String>>      
-	 * @throws
+
 	 */
 	public PageInfo<Map<String, String>> getContractBillList(PageParam pageParam,String isOpen,String status,String billType,String beginTime, String endTime) {
 		PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -84,7 +84,7 @@ public class ContractBillService {
 	 * @param orgId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>> getDeskBillList(String orgId)
 	{
@@ -98,7 +98,7 @@ public class ContractBillService {
 	 * @param orgId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getContractBillTop(String orgId)
 	{

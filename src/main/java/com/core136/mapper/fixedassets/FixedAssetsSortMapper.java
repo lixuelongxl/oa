@@ -35,7 +35,7 @@ public interface FixedAssetsSortMapper extends MyMapper<FixedAssetsSort>{
 	 * @param: parentId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>> getFixedAssetSortTree(@Param(value="orgId") String orgId,@Param(value="parentId") String parentId);
 	/**
@@ -46,7 +46,7 @@ public interface FixedAssetsSortMapper extends MyMapper<FixedAssetsSort>{
 	 * @param: parentId
 	 * @param: @return      
 	 * @return: int      
-	 * @throws
+
 	 */
 	public int isExistChild(@Param(value="orgId") String orgId,@Param(value="parentId") String parentId);
 	

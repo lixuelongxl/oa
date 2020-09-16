@@ -64,7 +64,7 @@ public int updateProjectBuildArtificialSort(Example example,ProjectBuildArtifici
  * @param: sortLeave
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,String>> getProjectBuildArtificialSortTree(String orgId,String sortLeave)
 {
@@ -78,7 +78,7 @@ public List<Map<String,String>> getProjectBuildArtificialSortTree(String orgId,S
  * @param: sortId
  * @param: @return      
  * @return: int      
- * @throws
+
  */
 public int isExistChild(String orgId, String sortId) {
 	// TODO Auto-generated method stub

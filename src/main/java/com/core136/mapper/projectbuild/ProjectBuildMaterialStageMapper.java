@@ -19,7 +19,7 @@ public interface ProjectBuildMaterialStageMapper extends MyMapper<ProjectBuildMa
 	 * @param: stageId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 public List<Map<String,String>> getMaterialStageList(@Param(value="orgId") String orgId,@Param(value="stageId")String stageId,@Param(value="search") String search);
 
@@ -32,7 +32,7 @@ public List<Map<String,String>> getMaterialStageList(@Param(value="orgId") Strin
  * @param: marerialId
  * @param: @return      
  * @return: int      
- * @throws
+
  */
 public int isExistChild(@Param(value="orgId") String orgId,@Param(value="stageId") String stageId,@Param(value="materialId") String materialId);
 
@@ -45,7 +45,7 @@ public int isExistChild(@Param(value="orgId") String orgId,@Param(value="stageId
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public  List<Map<String,String>>getMaterialListInStage(@Param(value="orgId")String orgId,@Param(value="stageId") String stageId,@Param(value="search") String search);
 }

@@ -22,7 +22,7 @@ public interface HrLeaveRecordMapper extends MyMapper<HrLeaveRecord>{
  * @param leaveType
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 	public List<Map<String, String>>getHrLeaveRecordList(@Param(value="orgId")String orgId,@Param(value="userId")String userId,
 			@Param(value="beginTime")String beginTime,@Param(value="endTime")String endTime,@Param(value="leaveType")String leaveType);

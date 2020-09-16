@@ -21,7 +21,7 @@ public interface HrKpiItemMapper extends MyMapper<HrKpiItem>{
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getHrKpiItemList(@Param(value="orgId")String orgId,@Param(value="createUser")String createUser,@Param(value="kpiType")String kpiType,@Param(value="search")String search);
 	

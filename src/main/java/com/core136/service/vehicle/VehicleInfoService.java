@@ -43,7 +43,7 @@ public VehicleInfo selectOneVehicleInfo(VehicleInfo vehicleInfo)
  * @param vehicleInfo
  * @return
  * List<VehicleInfo>    
- * @throws
+
  */
 public List<VehicleInfo>getAllVehicleList(VehicleInfo vehicleInfo)
 {
@@ -65,7 +65,7 @@ public List<VehicleInfo>getAllVehicleList(VehicleInfo vehicleInfo)
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getManageVehicleInfoList(String orgId,String onwer,String type,String nature,String beginTime,String endTime,String beginTime1,String endTime1,String search)
 {
@@ -86,7 +86,7 @@ public List<Map<String, String>>getManageVehicleInfoList(String orgId,String onw
  * @param endTime1
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getManageVehicleInfoList(PageParam pageParam,String onwer,String type,String nature,String beginTime,String endTime,String beginTime1,String endTime1) 
 {
@@ -102,7 +102,7 @@ public PageInfo<Map<String, String>> getManageVehicleInfoList(PageParam pagePara
  * @param orgId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getCanUsedVehicleList(String orgId)
 {

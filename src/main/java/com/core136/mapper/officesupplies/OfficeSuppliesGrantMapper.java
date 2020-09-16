@@ -15,7 +15,7 @@ public interface OfficeSuppliesGrantMapper extends MyMapper<OfficeSuppliesGrant>
 	 * @param: applyId
 	 * @param: @return      
 	 * @return: int      
-	 * @throws
+
 	 */
 public int getGrantCount(@Param(value="orgId") String orgId,@Param(value="applyId") String applyId);
 }

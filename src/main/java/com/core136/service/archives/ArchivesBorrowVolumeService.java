@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.core136.bean.account.Account;
-import com.core136.bean.archives.ArchivesBorrowFile;
 import com.core136.bean.archives.ArchivesBorrowVolume;
 import com.core136.bean.archives.ArchivesFile;
 import com.core136.bean.sys.PageParam;
@@ -57,7 +56,7 @@ public ArchivesBorrowVolume selectOneArchivesBorrowVolume(ArchivesBorrowVolume a
  * @param accountId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getArchivesBorrowVolumeList(String orgId,String approvalStatus,String opFlag,String accountId)
 {
@@ -72,7 +71,7 @@ public List<Map<String, String>>getArchivesBorrowVolumeList(String orgId,String 
  * @param approvalStatus
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getArchivesBorrowVolumeList(PageParam pageParam,String approvalStatus) 
 {
@@ -91,7 +90,7 @@ public PageInfo<Map<String, String>> getArchivesBorrowVolumeList(PageParam pageP
  * @param accountId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getArchivesBorrowVolumeApprovalList(String orgId,String opFlag,String accountId)
 {
@@ -104,7 +103,7 @@ public List<Map<String, String>>getArchivesBorrowVolumeApprovalList(String orgId
  * @param pageParam
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getArchivesBorrowVolumeApprovalList(PageParam pageParam) 
 {
@@ -122,9 +121,9 @@ public PageInfo<Map<String, String>> getArchivesBorrowVolumeApprovalList(PagePar
  * @param archivesBorrowVolume
  * @param archivesFile
  * @return
- * @throws ParseException
+ ParseException
  * ArchivesFile    
- * @throws
+
  */
 public ArchivesFile getApprovalVolumeFile(Account account,ArchivesBorrowVolume archivesBorrowVolume,ArchivesFile archivesFile) throws ParseException
 {

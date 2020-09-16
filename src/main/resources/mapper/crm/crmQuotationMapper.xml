@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.core136.mapper.crm.CrmQuotationMapper">
+<resultMap id="CrmQuotation" type="com.core136.bean.crm.CrmQuotation" >
+    <result column="QUOTATION_ID" property="quotationId" jdbcType="VARCHAR" />
+    <result column="QUOTATION_CODE" property="quotationCode" jdbcType="VARCHAR" />
+    <result column="INQUIRY_ID" property="inquiryId" jdbcType="VARCHAR" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="TOTAL_PRICE" property="totalPrice" jdbcType="DOUBLE" />
+    <result column="TAX" property="tax" jdbcType="DOUBLE" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="APPROVED_USER" property="approvedUser" jdbcType="VARCHAR" />
+    <result column="APPROVED_TIME" property="approvedTime" jdbcType="VARCHAR" />
+    <result column="COLSING_TIME" property="colsingTime" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+    <result column="CREATE_USER" property="createUser" jdbcType="VARCHAR" />
+    <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+</resultMap>
+
+<select id="getMyCrmQuotationList" resultType="java.util.HashMap">
+SELECT I.QUOTATION_ID AS quotationId,I.INQUIRY_ID AS inquiryId,I.TITLE AS title,I.COLSING_TIME AS colsingTime,I.QUOTATION_CODE AS quotationCode,
+I.TAX AS tax,I.TOTAL_PRICE AS totalPrice,I.STATUS AS "status",I.CREATE_TIME AS createTime,
+(SELECT Q.TITLE FROM CRM_INQUIRY Q WHERE Q.ORG_ID=#{orgId} AND Q.INQUIRY_ID=I.INQUIRY_ID) AS inquiryTitle
+FROM CRM_QUOTATION I 
+WHERE 
+I.ORG_ID=#{orgId}
+AND I.CREATE_USER=#{accountId}
+<if test = "beginTime!=''.toString() and beginTime!=null">
+	AND I.COLSING_TIME &gt;=#{beginTime}
+</if>
+<if test = "endTime!=''.toString() and endTime!=null">
+	AND I.COLSING_TIME &lt;=#{endTime}
+</if>
+<if test = "status!=''.toString() and status!=null">
+	AND I.STATUS=#{status}
+</if>
+<if test = "approvedUser!=''.toString() and approvedUser!=null">
+	AND I.APPROVED_USER=#{approvedUser}
+</if>
+<if test="search !='%%' and search !=''.toString() and search!=null">
+	AND (I.TITLE LIKE #{search} OR  I.QUOTATION_CODE LIKE #{search})
+</if>
+</select>
+
+<select id="getMyApprovedList" resultType="java.util.HashMap">
+SELECT I.QUOTATION_ID AS quotationId,I.INQUIRY_ID AS inquiryId,I.TITLE AS title,I.COLSING_TIME AS colsingTime,I.QUOTATION_CODE AS quotationCode,
+I.TAX AS tax,I.TOTAL_PRICE AS totalPrice,I.STATUS AS "status",I.CREATE_TIME AS createTime,
+(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=#{orgId} AND U.ACCOUNT_ID=I.CREATE_USER) AS createUserName,
+(SELECT Q.TITLE FROM CRM_INQUIRY Q WHERE Q.ORG_ID=#{orgId} AND Q.INQUIRY_ID=I.INQUIRY_ID) AS inquiryTitle
+FROM CRM_QUOTATION I 
+WHERE 
+I.ORG_ID=#{orgId}
+AND I.APPROVED_USER=#{accountId}
+AND I.STATUS='0'
+<if test="search !='%%' and search !=''.toString() and search!=null">
+	AND (I.TITLE LIKE #{search} OR  I.QUOTATION_CODE LIKE #{search})
+</if>
+</select>
+
+
+<select id="getApprovedQueryList" resultType="java.util.HashMap">
+SELECT I.QUOTATION_ID AS quotationId,I.INQUIRY_ID AS inquiryId,I.TITLE AS title,I.COLSING_TIME AS colsingTime,I.QUOTATION_CODE AS quotationCode,
+I.TAX AS tax,I.TOTAL_PRICE AS totalPrice,I.STATUS AS "status",I.CREATE_TIME AS createTime,I.APPROVED_TIME AS approvedTime,
+(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=#{orgId} AND U.ACCOUNT_ID=I.CREATE_USER) AS createUserName,
+(SELECT T.USER_NAME FROM USER_INFO T WHERE T.ORG_ID=#{orgId} AND T.ACCOUNT_ID=I.APPROVED_USER) AS approvedUserName,
+(SELECT Q.TITLE FROM CRM_INQUIRY Q WHERE Q.ORG_ID=#{orgId} AND Q.INQUIRY_ID=I.INQUIRY_ID) AS inquiryTitle
+FROM CRM_QUOTATION I 
+WHERE
+I.ORG_ID=#{orgId}
+<if test="opFlag!='1'.toString()">
+	AND I.APPROVED_USER=#{accountId}
+</if> 
+<if test = "beginTime!=''.toString() and beginTime!=null">
+	AND I.COLSING_TIME &gt;=#{beginTime}
+</if>
+<if test = "endTime!=''.toString() and endTime!=null">
+	AND I.COLSING_TIME &lt;=#{endTime}
+</if>
+<if test = "status!=''.toString() and status!=null">
+	AND I.STATUS=#{status}
+</if>
+<if test = "createUser!=''.toString() and createUser!=null">
+	AND I.CREATE_USER=#{createUser}
+</if>
+<if test="search !='%%' and search !=''.toString() and search!=null">
+	AND (I.TITLE LIKE #{search} OR  I.QUOTATION_CODE LIKE #{search})
+</if>
+</select>
+
+
+<select id="getQuotationQueryList" resultType="java.util.HashMap">
+SELECT I.QUOTATION_ID AS quotationId,I.INQUIRY_ID AS inquiryId,I.TITLE AS title,I.COLSING_TIME AS colsingTime,I.QUOTATION_CODE AS quotationCode,
+I.TAX AS tax,I.TOTAL_PRICE AS totalPrice,I.STATUS AS "status",I.CREATE_TIME AS createTime,I.APPROVED_TIME AS approvedTime,
+(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=#{orgId} AND U.ACCOUNT_ID=I.CREATE_USER) AS createUserName,
+(SELECT T.USER_NAME FROM USER_INFO T WHERE T.ORG_ID=#{orgId} AND T.ACCOUNT_ID=I.APPROVED_USER) AS approvedUserName,
+(SELECT Q.TITLE FROM CRM_INQUIRY Q WHERE Q.ORG_ID=#{orgId} AND Q.INQUIRY_ID=I.INQUIRY_ID) AS inquiryTitle
+FROM CRM_QUOTATION I 
+WHERE
+I.ORG_ID=#{orgId}
+<if test="approvedUser!=''.toString() and approvedUser!=null">
+	AND I.APPROVED_USER=#{approvedUser}
+</if> 
+<if test = "beginTime!=''.toString() and beginTime!=null">
+	AND I.COLSING_TIME &gt;=#{beginTime}
+</if>
+<if test = "endTime!=''.toString() and endTime!=null">
+	AND I.COLSING_TIME &lt;=#{endTime}
+</if>
+<if test = "status!=''.toString() and status!=null">
+	AND I.STATUS=#{status}
+</if>
+<if test = "createUser!=''.toString() and createUser!=null">
+	AND I.CREATE_USER=#{createUser}
+</if>
+<if test="search !='%%' and search !=''.toString() and search!=null">
+	AND (I.TITLE LIKE #{search} OR  I.QUOTATION_CODE LIKE #{search})
+</if>
+</select>
+
+
+
+</mapper>
+

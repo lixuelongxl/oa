@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.sun.glass.ui.View;
 
 
 @Controller
@@ -18,7 +17,7 @@ public class MeetingPageController {
 	 * @Description: TODO 会议详情
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/meetingdetails")
 	public ModelAndView  goMeetingDetails()
@@ -40,7 +39,7 @@ public class MeetingPageController {
 	 * @Description: TODO 会议记要详情
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/summarydetails")
 	public ModelAndView  summarydetails()
@@ -63,7 +62,7 @@ public class MeetingPageController {
 	 * @param: view
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/summary")
 	public ModelAndView  goSummary(String view)
@@ -97,7 +96,7 @@ public class MeetingPageController {
 	 * @Description: TODO 会议纪要查询
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/summaryquery")
 	public ModelAndView  goSummaryQuery()
@@ -119,7 +118,7 @@ public class MeetingPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/mymeeting")
 	public ModelAndView  goMyMeeting(String view)
@@ -167,7 +166,7 @@ public class MeetingPageController {
 	 * @Description: TODO 设置会议室设备
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/setmeetingdevice")
 	public ModelAndView  setmeetingdevice()
@@ -189,7 +188,7 @@ public class MeetingPageController {
 	 * @Description: TODO 申请会议
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/applymeeting")
 	public ModelAndView  goApplymeeting(String view)
@@ -220,7 +219,7 @@ public class MeetingPageController {
 	 * @Description: TODO 会议管理
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/manage")
 	public ModelAndView manage(String view)

@@ -34,7 +34,7 @@ public interface HrDepartmentMapper extends MyMapper<HrDepartment>{
 	 * @param: orgId
 	 * @param: @return      
 	 * @return: List<Map<String,Object>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>> getHrDepartmentTree(@Param(value="orgId") String orgId,@Param(value="orgLevelId") String orgLevelId);
 
@@ -46,7 +46,7 @@ public interface HrDepartmentMapper extends MyMapper<HrDepartment>{
 	 * @param: orgLevelId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>> getHrUserInfoDepartmentTree(@Param(value="orgId") String orgId,@Param(value="orgLevelId") String orgLevelId);
 	
@@ -58,7 +58,7 @@ public interface HrDepartmentMapper extends MyMapper<HrDepartment>{
 	 * @param list
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getHrDeptNameByStr(@Param(value="orgId")String orgId,@Param(value="list")List<String> list);
 	/**
@@ -69,7 +69,7 @@ public interface HrDepartmentMapper extends MyMapper<HrDepartment>{
 	 * @param searchdept
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getHrDeptBySearchdept(@Param(value="orgId")String orgId,@Param(value="searchdept") String searchdept);
 	

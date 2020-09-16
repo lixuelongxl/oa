@@ -15,7 +15,7 @@ public class PageProjectBuildContractController {
  * @param: request
  * @param: @return      
  * @return: ModelAndView      
- * @throws
+
  */
 	@RequestMapping("/setsort")
 	public ModelAndView goSetsort(HttpServletRequest request)
@@ -36,7 +36,7 @@ public class PageProjectBuildContractController {
 	 * @param: request
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/addcontract")
 	public ModelAndView goAddcontract(HttpServletRequest request)
@@ -58,7 +58,7 @@ public class PageProjectBuildContractController {
 	 * @param: request
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/details")
 	public ModelAndView goDetails(HttpServletRequest request)

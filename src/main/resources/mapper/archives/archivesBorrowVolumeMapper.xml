@@ -4,7 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core136.mapper.archives.ArchivesBorrowVolumeMapper">
 <resultMap id="ArchivesBorrowVolume" type="com.core136.bean.archives.ArchivesBorrowVolume" >
-    <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="RECORD_ID" property="recordId" jdbcType="VARCHAR"/>
     <result column="VOLUME_ID" property="volumeId" jdbcType="VARCHAR" />
     <result column="BEGIN_TIME" property="beginTime" jdbcType="VARCHAR"/>
@@ -19,7 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   </resultMap>
 
 <select id="getArchivesBorrowVolumeList" resultType="java.util.HashMap">
-	SELECT B.RECORD_ID AS recordId, B.VOLUME_ID AS volumeId,V.VOLUME_TITLE AS volumeTitle,V.VOLUME_CODE AS volumeCode,V.CREATE_ORG AS createOrg,B.REMARK AS remark,
+	SELECT B.RECORD_ID AS recordId, B.VOLUME_ID AS volumeId,V.VOLUME_TITLE AS volumeTitle,V.VOLUME_CODE AS volumeCode,V.CREATE_ORG AS createOrg,TO_CHAR(B.REMARK) AS remark,
 	B.BEGIN_TIME AS beginTime,B.END_TIME AS endTime,B.APPROVAL_STATUS AS approvalStatus,B.APPROVAL_USER AS approvalUser,B.APPROVAL_TIME AS approvalTime
 	FROM ARCHIVES_BORROW_VOLUME B LEFT JOIN ARCHIVES_VOLUME V ON B.ORG_ID=V.ORG_ID AND B.VOLUME_ID=V.VOLUME_ID
 	WHERE B.ORG_ID=#{orgId}

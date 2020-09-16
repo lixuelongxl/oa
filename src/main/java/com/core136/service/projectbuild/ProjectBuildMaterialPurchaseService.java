@@ -84,7 +84,7 @@ public ProjectBuildMaterialPurchase selectOneProjectBuildMaterialPurchase(Projec
  * @param: orgId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>> getMaterialPurchaseList(String orgId,String search)
 {
@@ -103,7 +103,7 @@ public List<Map<String, String>> getMaterialPurchaseList(String orgId,String sea
  * @param: companyName
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getQueryPurchaseList(String orgId, String createUser, String projectTitle, String beginTime, String endTime, String companyName)
 {
@@ -121,7 +121,7 @@ public List<Map<String, String>>getQueryPurchaseList(String orgId, String create
  * @param: companyName
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getQueryPurchaseList(PageParam pageParam,String projectTitle, String beginTime, String endTime, String companyName) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -137,7 +137,7 @@ public PageInfo<Map<String, String>> getQueryPurchaseList(PageParam pageParam,St
  * @param: projectBuildSupplier
  * @param: @return      
  * @return: int      
- * @throws
+
  */
 @Transactional(value = "generalTM")
 public RetDataBean purchaseAndSendBpm(ProjectBuildMaterialPurchase projectBuildMaterialPurchase,String materialMx)

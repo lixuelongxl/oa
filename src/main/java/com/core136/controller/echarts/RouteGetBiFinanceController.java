@@ -27,7 +27,7 @@ private AccountService accountService;
  * @param request
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getARAPOptionConfig", method = RequestMethod.POST)
 public RetDataBean getARAPOptionConfig(HttpServletRequest request) {
@@ -48,7 +48,7 @@ public RetDataBean getARAPOptionConfig(HttpServletRequest request) {
  * @param request
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getPayReceivTotalData", method = RequestMethod.POST)
 public RetDataBean getPayReceivTotalData(HttpServletRequest request) {

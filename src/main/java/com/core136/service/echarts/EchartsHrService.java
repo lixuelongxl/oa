@@ -3,7 +3,7 @@ package com.core136.service.echarts;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,7 +43,7 @@ private EchartsHrMapper echartsHrMapper;
  * @param dataType
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>> getCareTableForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -66,7 +66,7 @@ public List<Map<String, String>> getCareTableForAnalysis(String orgId,String dep
  * @param dataType
  * @return
  * OptionConfig    
- * @throws
+
  */
 public OptionConfig getCareBarForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -92,7 +92,7 @@ public OptionConfig getCareBarForAnalysis(String orgId,String deptId,String data
  * @param dataType
  * @return
  * OptionConfig    
- * @throws
+
  */
 public OptionConfig getCarePieForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -122,7 +122,7 @@ public OptionConfig getCarePieForAnalysis(String orgId,String deptId,String data
  * @param dataType
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>> getEvaluationTableForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -153,7 +153,7 @@ public List<Map<String, String>> getEvaluationTableForAnalysis(String orgId,Stri
  * @param dataType
  * @return
  * OptionConfig    
- * @throws
+
  */
 public OptionConfig getEvaluationBarForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -189,7 +189,7 @@ public OptionConfig getEvaluationBarForAnalysis(String orgId,String deptId,Strin
  * @param dataType
  * @return
  * OptionConfig    
- * @throws
+
  */
 public OptionConfig getEvaluationPieForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -233,7 +233,7 @@ public OptionConfig getEvaluationPieForAnalysis(String orgId,String deptId,Strin
  * @param dataType
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>> getReinstatTableForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -264,7 +264,7 @@ public List<Map<String, String>> getReinstatTableForAnalysis(String orgId,String
  * @param dataType
  * @return
  * OptionConfig    
- * @throws
+
  */
 public OptionConfig getReinstatBarForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -300,7 +300,7 @@ public OptionConfig getReinstatBarForAnalysis(String orgId,String deptId,String 
  * @param dataType
  * @return
  * OptionConfig    
- * @throws
+
  */
 public OptionConfig getReinstatPieForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -345,7 +345,7 @@ public OptionConfig getReinstatPieForAnalysis(String orgId,String deptId,String 
  * @param dataType
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>> getLeaveTableForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -372,7 +372,7 @@ public List<Map<String, String>> getLeaveTableForAnalysis(String orgId,String de
  * @param dataType
  * @return
  * OptionConfig    
- * @throws
+
  */
 public OptionConfig getLeaveBarForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -403,7 +403,7 @@ public OptionConfig getLeaveBarForAnalysis(String orgId,String deptId,String dat
  * @param dataType
  * @return
  * OptionConfig    
- * @throws
+
  */
 public OptionConfig getLeavePieForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -440,7 +440,7 @@ public OptionConfig getLeavePieForAnalysis(String orgId,String deptId,String dat
  * @param dataType
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>> getTransferTableForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -463,7 +463,7 @@ public List<Map<String, String>> getTransferTableForAnalysis(String orgId,String
  * @param dataType
  * @return
  * OptionConfig    
- * @throws
+
  */
 public OptionConfig getTransferBarForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -489,7 +489,7 @@ public OptionConfig getTransferBarForAnalysis(String orgId,String deptId,String 
  * @param dataType
  * @return
  * OptionConfig    
- * @throws
+
  */
 public OptionConfig getTransferPieForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -519,7 +519,7 @@ public OptionConfig getTransferPieForAnalysis(String orgId,String deptId,String 
  * @param dataType
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>> getSkillsTableForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -542,7 +542,7 @@ public List<Map<String, String>> getSkillsTableForAnalysis(String orgId,String d
  * @param dataType
  * @return
  * OptionConfig    
- * @throws
+
  */
 public OptionConfig getSkillsBarForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -568,7 +568,7 @@ public OptionConfig getSkillsBarForAnalysis(String orgId,String deptId,String da
  * @param dataType
  * @return
  * OptionConfig    
- * @throws
+
  */
 public OptionConfig getSkillsPieForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -598,7 +598,7 @@ public OptionConfig getSkillsPieForAnalysis(String orgId,String deptId,String da
  * @param dataType
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>> getLearnTableForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -621,7 +621,7 @@ public List<Map<String, String>> getLearnTableForAnalysis(String orgId,String de
  * @param dataType
  * @return
  * OptionConfig    
- * @throws
+
  */
 public OptionConfig getLearnBarForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -647,7 +647,7 @@ public OptionConfig getLearnBarForAnalysis(String orgId,String deptId,String dat
  * @param dataType
  * @return
  * OptionConfig    
- * @throws
+
  */
 public OptionConfig getLearnPieForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -676,7 +676,7 @@ public OptionConfig getLearnPieForAnalysis(String orgId,String deptId,String dat
  * @param dataType
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>> getLicenceTableForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -699,7 +699,7 @@ public List<Map<String, String>> getLicenceTableForAnalysis(String orgId,String 
  * @param dataType
  * @return
  * OptionConfig    
- * @throws
+
  */
 public OptionConfig getLicenceBarForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -725,7 +725,7 @@ public OptionConfig getLicenceBarForAnalysis(String orgId,String deptId,String d
  * @param dataType
  * @return
  * OptionConfig    
- * @throws
+
  */
 public OptionConfig getLicencePieForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -755,7 +755,7 @@ public OptionConfig getLicencePieForAnalysis(String orgId,String deptId,String d
  * @param dataType
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>> getIncentiveTableForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -782,7 +782,7 @@ public List<Map<String, String>> getIncentiveTableForAnalysis(String orgId,Strin
  * @param dataType
  * @return
  * OptionConfig    
- * @throws
+
  */
 public OptionConfig getIncentiveBarForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -813,7 +813,7 @@ public OptionConfig getIncentiveBarForAnalysis(String orgId,String deptId,String
  * @param dataType
  * @return
  * OptionConfig    
- * @throws
+
  */
 public OptionConfig getIncentivePieForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -853,7 +853,7 @@ public OptionConfig getIncentivePieForAnalysis(String orgId,String deptId,String
  * @param dataType
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>> getContractTableForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -888,7 +888,7 @@ public List<Map<String, String>> getContractTableForAnalysis(String orgId,String
  * @param dataType
  * @return
  * OptionConfig    
- * @throws
+
  */
 public OptionConfig getContractBarForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -929,7 +929,7 @@ public OptionConfig getContractBarForAnalysis(String orgId,String deptId,String 
  * @param dataType
  * @return
  * OptionConfig    
- * @throws
+
  */
 public OptionConfig getContractPieForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -980,7 +980,7 @@ public OptionConfig getContractPieForAnalysis(String orgId,String deptId,String 
  * @param dataType
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>> getBaseInfoTableForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -1023,7 +1023,7 @@ public List<Map<String, String>> getBaseInfoTableForAnalysis(String orgId,String
  * @param dataType
  * @return
  * OptionConfig    
- * @throws
+
  */
 public OptionConfig getBaseInfoBarForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -1074,7 +1074,7 @@ public OptionConfig getBaseInfoBarForAnalysis(String orgId,String deptId,String 
  * @param dataType
  * @return
  * OptionConfig    
- * @throws
+
  */
 public OptionConfig getBaseInfoPieForAnalysis(String orgId,String deptId,String dataType)
 {
@@ -1138,7 +1138,7 @@ public OptionConfig getBaseInfoPieForAnalysis(String orgId,String deptId,String 
  * @param seriesDataName
  * @return
  * OptionConfig    
- * @throws
+
  */
 public OptionConfig getBarForAnalysis(List<Map<String, String>> resdataList,String seriesDataName)
 {
@@ -1196,7 +1196,7 @@ public OptionConfig getBarForAnalysis(List<Map<String, String>> resdataList,Stri
  * @param optionTitleSubtext
  * @return
  * OptionConfig    
- * @throws
+
  */
 public OptionConfig getPieForAnalysis(List<Map<String, String>> resdataList,String optionSeriesName,String optionTitleText,String optionTitleSubtext)
 {
@@ -1264,7 +1264,7 @@ public OptionConfig getPieForAnalysis(List<Map<String, String>> resdataList,Stri
  * @param account
  * @return
  * OptionConfig    
- * @throws
+
  */
 public OptionConfig getNativePlacePie(Account account)
 {
@@ -1330,7 +1330,7 @@ public OptionConfig getNativePlacePie(Account account)
  * @param account
  * @return
  * OptionConfig    
- * @throws
+
  */
 public OptionConfig getWorkTypeBar(Account account)
 {
@@ -1367,7 +1367,7 @@ public OptionConfig getWorkTypeBar(Account account)
  * @param account
  * @return
  * OptionConfig    
- * @throws
+
  */
 public OptionConfig getHighsetShoolPie(Account account)
 {

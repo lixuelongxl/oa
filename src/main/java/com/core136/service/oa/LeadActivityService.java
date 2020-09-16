@@ -49,7 +49,7 @@ public LeadActivity selectOneLeadActivity(LeadActivity leadActivity)
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getLeadActivityLsit(String orgId,String beginTime,String endTime,String leader,String search)
 {
@@ -64,7 +64,7 @@ public List<Map<String, String>>getLeadActivityLsit(String orgId,String beginTim
  * @param endTime
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getLeadActivityLsit(PageParam pageParam,String beginTime,String endTime,String leader) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());

@@ -31,7 +31,7 @@ private ContractPayableService contractPayableService;
  * @param contractPayableRecord
  * @return
  * RetDataBean    
- * @throws
+
  */
 @Transactional(value="generalTM")
 public RetDataBean payableAmount(ContractPayableRecord contractPayableRecord)
@@ -93,7 +93,7 @@ public List<Map<String,String>>getContractPayableRecordList(String orgId,String 
  * @param receivablesId
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getContractPayableRecordList(PageParam pageParam,String payableId) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -108,7 +108,7 @@ public PageInfo<Map<String, String>> getContractPayableRecordList(PageParam page
  * @param orgId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String,String>>getPayableRecordTop(String orgId)
 {

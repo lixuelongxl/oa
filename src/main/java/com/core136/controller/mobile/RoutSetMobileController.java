@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.core136.bean.account.Account;
 import com.core136.bean.im.Dynamic;
-import com.core136.bean.im.Inquiry;
 import com.core136.bean.im.UserFriends;
 import com.core136.bean.file.Attach;
 import com.core136.service.account.AccountService;
@@ -31,8 +30,6 @@ import com.core136.service.im.DynamicService;
 import com.core136.service.im.InquiryService;
 import com.core136.service.im.UserFriendsService;
 import com.core136.unit.fileutils.UploadUtils;
-import com.dingtalk.api.response.OapiCalendarListResponse.User;
-
 import org.core136.common.retdataunit.RetDataBean;
 import org.core136.common.retdataunit.RetDataTools;
 import org.core136.common.utils.SysTools;
@@ -72,7 +69,7 @@ public class RoutSetMobileController {
 	 * @param userFriends
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value = "/addUserFriends", method = RequestMethod.POST)
 	public RetDataBean addUserFriends(HttpServletRequest request, UserFriends userFriends) {
@@ -97,7 +94,7 @@ public class RoutSetMobileController {
  * @param: module
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 	@RequestMapping(value = "/sendDynamic", method = RequestMethod.POST)
 	public RetDataBean sendDynamic(HttpServletRequest request, Dynamic dynamic,String accountId,String passWord,String module) {

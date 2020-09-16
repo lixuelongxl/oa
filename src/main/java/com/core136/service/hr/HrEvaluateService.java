@@ -45,7 +45,7 @@ public HrEvaluate selectOneHrEvaluate(HrEvaluate hrEvaluate)
  * @param userId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getHrEvaluateByUserIdList(String orgId,String userId)
 {
@@ -59,7 +59,7 @@ public List<Map<String, String>>getHrEvaluateByUserIdList(String orgId,String us
  * @param userId
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getHrEvaluateByUserIdList(PageParam pageParam,String userId) 
 {
@@ -80,7 +80,7 @@ public PageInfo<Map<String, String>> getHrEvaluateByUserIdList(PageParam pagePar
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getHrEvaluateQueryList(String orgId,String userId,String beginTime,String endTime,String status,String search)
 {
@@ -98,7 +98,7 @@ public List<Map<String, String>>getHrEvaluateQueryList(String orgId,String userI
  * @param status
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getHrEvaluateQueryList(PageParam pageParam,String userId,String beginTime,String endTime,String status) 
 {

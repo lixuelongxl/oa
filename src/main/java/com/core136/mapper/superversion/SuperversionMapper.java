@@ -38,7 +38,7 @@ public interface SuperversionMapper extends MyMapper<Superversion>{
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 	public List<Map<String, String>> getSupperversionList(@Param(value="orgId") String orgId,@Param(value="accountId") String accountId,
 			@Param(value="type") String type,@Param(value="handedUser") String handedUser,@Param(value="beginTime") String beginTime,
@@ -56,7 +56,7 @@ public interface SuperversionMapper extends MyMapper<Superversion>{
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String, String>> getSupperversionPorcessList(@Param(value="orgId") String orgId,@Param(value="accountId") String accountId,
 			@Param(value="type") String type,@Param(value="handedUser") String handedUser,@Param(value="beginTime") String beginTime,
@@ -76,7 +76,7 @@ public interface SuperversionMapper extends MyMapper<Superversion>{
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String, String>> getLeadManageSupperversionList(@Param(value="orgId") String orgId,@Param(value="accountId") String accountId,
 			@Param(value="type") String type,@Param(value="handedUser") String handedUser,@Param(value="beginTime") String beginTime,
@@ -89,7 +89,7 @@ public interface SuperversionMapper extends MyMapper<Superversion>{
 	 * @param: orgId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>>getQuerySuperversionForDept(@Param(value="orgId")String orgId);
 	

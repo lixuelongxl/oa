@@ -112,7 +112,7 @@ public class RoutGetMobileController {
 	 * @param deptId
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getDeptAndUserInfoForMobile",method=RequestMethod.POST)
 	public RetDataBean getDeptAndUserInfoForMobile(HttpServletRequest request,String orgId,String deptId)
@@ -136,7 +136,7 @@ public class RoutGetMobileController {
 	 * @param code
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public RetDataBean doMobileLogin(HttpServletRequest request,String code)
@@ -203,7 +203,7 @@ public class RoutGetMobileController {
 	 * @param page
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMyEmailAllForMobile",method=RequestMethod.POST)
 	public RetDataBean getMyEmailAllForMobile(HttpServletRequest request,Integer page)
@@ -226,7 +226,7 @@ public class RoutGetMobileController {
 	 * @param page
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getSendToMeBpmListForMobile",method=RequestMethod.POST)
 	public RetDataBean getSendToMeBpmListForMobile(HttpServletRequest request,Integer page)
@@ -270,7 +270,7 @@ public class RoutGetMobileController {
 	 * @param title
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/searchBpmListForMobile",method=RequestMethod.POST)
 	public RetDataBean searchBpmListForMobile(HttpServletRequest request,Integer page,String flowId,Integer id,String createUser,String status,String managePriv,String title)
@@ -311,7 +311,7 @@ public class RoutGetMobileController {
 	 * @param: orgId
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMobileMyNewsList",method=RequestMethod.POST)
 	public RetDataBean getMobileMyNewsList(HttpServletRequest request,Integer page)
@@ -334,7 +334,7 @@ public class RoutGetMobileController {
 * @param: page
 * @param: @return      
 * @return: RetDataBean      
-* @throws
+
 */
 @RequestMapping(value="/getMobileMyNoticeList",method=RequestMethod.POST)
 public RetDataBean getMobileMyNoticeList(HttpServletRequest request,Integer page)
@@ -356,7 +356,7 @@ public RetDataBean getMobileMyNoticeList(HttpServletRequest request,Integer page
  * @param: request
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value = "/getMobileMyBpmFlowList", method = RequestMethod.POST)
 public RetDataBean getMobileMyBpmFlowList(HttpServletRequest request,Integer page) {
@@ -379,7 +379,7 @@ public RetDataBean getMobileMyBpmFlowList(HttpServletRequest request,Integer pag
 	 * @param: page
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value = "/getGoMobileBpmProcessList", method = RequestMethod.POST)
 	public RetDataBean getMobileProcessList(HttpServletRequest request,Integer page) {
@@ -402,7 +402,7 @@ public RetDataBean getMobileMyBpmFlowList(HttpServletRequest request,Integer pag
 	 * @param page
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value = "/getMobileMyMeetingList", method = RequestMethod.POST)
 	public RetDataBean getMobileMyMeetingList(HttpServletRequest request,Integer page) {
@@ -426,7 +426,7 @@ public RetDataBean getMobileMyBpmFlowList(HttpServletRequest request,Integer pag
 	 * @param page
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value = "/getGoMobileDocumentProcessList", method = RequestMethod.POST)
 	public RetDataBean getGoMobileDocumentProcessList(HttpServletRequest request,Integer page) {

@@ -4,7 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core136.mapper.vehicle.VehicleInfoMapper">
 <resultMap id="VehicleInfo" type="com.core136.bean.vehicle.VehicleInfo" >
-    <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="VEHICLE_ID" property="vehicleId" jdbcType="VARCHAR" />
     <result column="SORT_NO" property="sortNo" jdbcType="INTEGER" />
     <result column="VEHICLE_NUMBER" property="vehicleNumber" jdbcType="VARCHAR" />

@@ -70,7 +70,7 @@ public class RoutGetOfficesuppliesController {
 	 * @param: pageParam
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getApplyOfficeSuppliesList",method=RequestMethod.POST)
 	public RetDataBean getApplyOfficeSuppliesList(
@@ -114,7 +114,7 @@ public class RoutGetOfficesuppliesController {
  * @param: pageParam
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 	@RequestMapping(value="/getGrantOfficeSuppliesList",method=RequestMethod.POST)
 	public RetDataBean getGrantOfficeSuppliesList(
@@ -157,7 +157,7 @@ public class RoutGetOfficesuppliesController {
 	 * @param: pageParam
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMyApplyOfficeSuppliesList",method=RequestMethod.POST)
 	public RetDataBean getMyApplyOfficeSuppliesList(
@@ -200,7 +200,7 @@ public class RoutGetOfficesuppliesController {
 	 * @param: officeSuppliesApply
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getOfficeSuppliesApplyServiceById",method=RequestMethod.POST)
 	public RetDataBean getOfficeSuppliesApplyServiceById(HttpServletRequest request,OfficeSuppliesApply officeSuppliesApply)
@@ -223,7 +223,7 @@ public class RoutGetOfficesuppliesController {
 	 * @param: officeSuppliesApproval
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getOfficeSuppliesApprovalById",method=RequestMethod.POST)
 	public RetDataBean getOfficeSuppliesApprovalById(HttpServletRequest request,OfficeSuppliesApproval officeSuppliesApproval)
@@ -247,7 +247,7 @@ public class RoutGetOfficesuppliesController {
 	 * @param: pageParam
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getApplyOfficeSupplieslist",method=RequestMethod.POST)
 	public RetDataBean getApplyOfficeSupplieslist(
@@ -287,7 +287,7 @@ public class RoutGetOfficesuppliesController {
 	 * @param: pageParam
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getOfficeSupplieslistBySortId",method=RequestMethod.POST)
 	public RetDataBean getOfficeSupplieslistBySortId(
@@ -328,7 +328,7 @@ public class RoutGetOfficesuppliesController {
 	 * @param: pageParam
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getOfficeSuppliesUnitList",method=RequestMethod.POST)
 	public RetDataBean getOfficeSuppliesUnitList(
@@ -369,7 +369,7 @@ public class RoutGetOfficesuppliesController {
 	 * @param: officeSuppliesUnit
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getofficeSuppliesUnitById",method=RequestMethod.POST)
 	public RetDataBean getofficeSuppliesUnitById(HttpServletRequest request,OfficeSuppliesUnit officeSuppliesUnit)
@@ -391,7 +391,7 @@ public class RoutGetOfficesuppliesController {
 	 * @param: request
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getAllUnit",method=RequestMethod.POST)
 	public RetDataBean getAllUnit(HttpServletRequest request)
@@ -413,7 +413,7 @@ public class RoutGetOfficesuppliesController {
 	 * @param: sortId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getOfficeSuppliesSortTree",method=RequestMethod.POST)
 	public List<Map<String,String>> getOfficeSuppliesSortTree(HttpServletRequest request,String sortId)
@@ -440,7 +440,7 @@ public class RoutGetOfficesuppliesController {
 	 * @param: officeSupplies
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getofficeSuppliesById",method=RequestMethod.POST)
 	public RetDataBean getofficeSuppliesById(HttpServletRequest request,OfficeSupplies officeSupplies)
@@ -462,7 +462,7 @@ public class RoutGetOfficesuppliesController {
 	 * @param: officeSuppliesSort
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getofficeSuppliesSortById",method=RequestMethod.POST)
 	public RetDataBean getofficeSuppliesSortById(HttpServletRequest request,OfficeSuppliesSort officeSuppliesSort)

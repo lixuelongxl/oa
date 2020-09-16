@@ -23,7 +23,7 @@ public interface ContractSendgoodsMapper extends MyMapper<ContractSendgoods>{
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getContractSendgoodsList(
 			@Param(value="orgId")String orgId,@Param(value="contractType")String contractType,

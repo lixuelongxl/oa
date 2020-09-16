@@ -33,7 +33,7 @@ public interface ProjectBuildBpmConfigMapper extends MyMapper<ProjectBuildBpmCon
 	 * @param: orgId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>>getAllProjectBuildBpmConfig(@Param(value="orgId") String orgId);
 }

@@ -64,7 +64,7 @@ public HrIncentive selectOneHrIncentive(HrIncentive hrIncentive)
  * @param incentiveItem
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getHrIncentiveList(String orgId,String userId,String beginTime,String endTime,String incentiveType,String incentiveItem)
 {
@@ -79,7 +79,7 @@ public List<Map<String, String>>getHrIncentiveList(String orgId,String userId,St
  * @param accountId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getMyHrIncentiveList(String orgId,String accountId)
 {
@@ -97,7 +97,7 @@ public List<Map<String, String>>getMyHrIncentiveList(String orgId,String account
  * @param incentiveItem
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getHrIncentiveList(PageParam pageParam,String userId,String beginTime,String endTime,String incentiveType,String incentiveItem) 
 {
@@ -114,7 +114,7 @@ public PageInfo<Map<String, String>> getHrIncentiveList(PageParam pageParam,Stri
  * @param pageParam
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getMyHrIncentiveList(PageParam pageParam) 
 {
@@ -132,9 +132,9 @@ public PageInfo<Map<String, String>> getMyHrIncentiveList(PageParam pageParam)
  * @param account
  * @param file
  * @return
- * @throws IOException
+ IOException
  * RetDataBean    
- * @throws
+
  */
 @Transactional(value="generalTM")
 public RetDataBean importHrIncentive(Account account,MultipartFile file) throws IOException

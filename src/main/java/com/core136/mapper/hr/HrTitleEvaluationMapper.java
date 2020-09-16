@@ -25,7 +25,7 @@ public interface HrTitleEvaluationMapper extends MyMapper<HrTitleEvaluation>{
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getHrTitleEvaluationList(
 			@Param(value="orgId")String orgId,

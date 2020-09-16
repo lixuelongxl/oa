@@ -66,7 +66,7 @@ public NoticeTemplate selectOneNoticeTemplate(NoticeTemplate noticeTemplate)
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getNoticeTemplateList(String orgId,String search)
 {

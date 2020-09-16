@@ -20,7 +20,7 @@ public interface TaskGanttDataMapper extends MyMapper<TaskGanttData>{
 	 * @param: taskId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>>getGanttDataList(@Param(value="orgId") String orgId,@Param(value="taskId") String taskId);
 	
@@ -40,7 +40,7 @@ public interface TaskGanttDataMapper extends MyMapper<TaskGanttData>{
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>>getAllUserPrivList(
 	@Param(value="orgId") String orgId,
@@ -66,7 +66,7 @@ public interface TaskGanttDataMapper extends MyMapper<TaskGanttData>{
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>>getMyTaskWorkList(
 			@Param(value="orgId") String orgId,
@@ -85,7 +85,7 @@ public interface TaskGanttDataMapper extends MyMapper<TaskGanttData>{
 	 * @param: accountId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getTaskListForDesk(
 			@Param(value="orgId")String orgId,

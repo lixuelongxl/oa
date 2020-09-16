@@ -78,7 +78,7 @@ public Superversion selectOneSuperversion(Superversion superversion)
  * @param superversion
  * @return
  * int    
- * @throws
+
  */
 public int createSuperversion(Account account,UserInfo userInfo,Superversion superversion)
 {
@@ -197,7 +197,7 @@ public int updateSuperversion(Account account,UserInfo userInfo,Example example,
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getSupperversionList(String orgId,String accountId,String type,String handedUser,String beginTime,String endTime,String status,String search)
 {
@@ -217,7 +217,7 @@ public List<Map<String, String>>getSupperversionList(String orgId,String account
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getLeadManageSupperversionList(String orgId,String accountId,String type,String handedUser,String beginTime,String endTime,String status,String search)
 {
@@ -236,7 +236,7 @@ public List<Map<String, String>>getLeadManageSupperversionList(String orgId,Stri
  * @param: status
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getLeadManageSupperversionList(PageParam pageParam,String type,String handedUser,String beginTime,String endTime,String status) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -256,7 +256,7 @@ public PageInfo<Map<String, String>> getLeadManageSupperversionList(PageParam pa
  * @param: endTime
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getSupperversionList(PageParam pageParam,String type,String handedUser,String beginTime,String endTime,String status) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -279,7 +279,7 @@ public PageInfo<Map<String, String>> getSupperversionList(PageParam pageParam,St
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getSupperversionPorcessList(String orgId,String accountId,String type,String handedUser,String beginTime,String endTime,String status,String search)
 {
@@ -297,7 +297,7 @@ public List<Map<String, String>>getSupperversionPorcessList(String orgId,String 
  * @param: endTime
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getSupperversionPorcessList(PageParam pageParam,String type,String handedUser,String beginTime,String endTime,String status) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -312,7 +312,7 @@ public PageInfo<Map<String, String>> getSupperversionPorcessList(PageParam pageP
  * @param: orgId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getQuerySuperversionForDept(String orgId)
 {

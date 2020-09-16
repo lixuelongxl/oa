@@ -54,7 +54,7 @@ public ProjectBuildSupplier selectOneProjectBuildSupplier(ProjectBuildSupplier p
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,String>> getSupplierList(String orgId,String search)
 {
@@ -70,7 +70,7 @@ public List<Map<String,String>> getSupplierList(String orgId,String search)
  * @param: search
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getSupplierList(PageParam pageParam)
 {
@@ -87,7 +87,7 @@ public PageInfo<Map<String, String>> getSupplierList(PageParam pageParam)
  * @param: companyName
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,String>> getSelect2SupplierList(String orgId,String companyName)
 {

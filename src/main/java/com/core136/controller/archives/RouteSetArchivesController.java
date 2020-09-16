@@ -54,7 +54,7 @@ public class RouteSetArchivesController {
 	 * @param archivesBorrow
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/destroyArchives",method=RequestMethod.POST)
 	public RetDataBean destroyArchives(HttpServletRequest request,ArchivesDestroyRecord archivesDestroyRecord)
@@ -80,7 +80,7 @@ public class RouteSetArchivesController {
 	 * @param status
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/doApprovalvolume",method=RequestMethod.POST)
 	public RetDataBean doApprovalvolume(HttpServletRequest request,ArchivesBorrowVolume archivesBorrowVolume,String status)
@@ -116,7 +116,7 @@ public class RouteSetArchivesController {
 	 * @param archivesBorrowVolume
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/doApprovalfile",method=RequestMethod.POST)
 	public RetDataBean doApprovalfile(HttpServletRequest request,ArchivesBorrowFile archivesBorrowFile,String status)
@@ -149,7 +149,7 @@ public class RouteSetArchivesController {
 	 * @param archivesBorrow
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertArchivesBorrowVolume",method=RequestMethod.POST)
 	public RetDataBean insertArchivesBorrowVolume(HttpServletRequest request,ArchivesBorrowVolume archivesBorrowVolume)
@@ -176,7 +176,7 @@ public class RouteSetArchivesController {
 	 * @param archivesBorrow
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteArchivesBorrowVolume",method=RequestMethod.POST)
 	public RetDataBean deleteArchivesBorrowVolume(HttpServletRequest request,ArchivesBorrowVolume archivesBorrowVolume)
@@ -205,7 +205,7 @@ public class RouteSetArchivesController {
 	 * @param archivesBorrow
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateArchivesBorrowVolume",method=RequestMethod.POST)
 	public RetDataBean updateArchivesBorrowVolume(HttpServletRequest request,ArchivesBorrowVolume archivesBorrowVolume)
@@ -236,7 +236,7 @@ public class RouteSetArchivesController {
 	 * @param archivesBorrow
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertArchivesBorrowFile",method=RequestMethod.POST)
 	public RetDataBean insertArchivesBorrowFile(HttpServletRequest request,ArchivesBorrowFile archivesBorrowFile)
@@ -263,7 +263,7 @@ public class RouteSetArchivesController {
 	 * @param archivesBorrow
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteArchivesBorrowFile",method=RequestMethod.POST)
 	public RetDataBean deleteArchivesBorrowFile(HttpServletRequest request,ArchivesBorrowFile archivesBorrowFile)
@@ -292,7 +292,7 @@ public class RouteSetArchivesController {
 	 * @param archivesBorrow
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateArchivesBorrowFile",method=RequestMethod.POST)
 	public RetDataBean updateArchivesBorrowFile(HttpServletRequest request,ArchivesBorrowFile archivesBorrowFile)
@@ -322,7 +322,7 @@ public class RouteSetArchivesController {
 	 * @param archivesVolume
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertArchivesFile",method=RequestMethod.POST)
 	public RetDataBean insertArchivesFile(HttpServletRequest request,ArchivesFile archivesFile)
@@ -349,7 +349,7 @@ public class RouteSetArchivesController {
 	 * @param archivesVolume
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteArchivesFile",method=RequestMethod.POST)
 	public RetDataBean deleteArchivesFile(HttpServletRequest request,ArchivesFile archivesFile)
@@ -379,7 +379,7 @@ public class RouteSetArchivesController {
 	 * @param archivesVolume
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateArchivesFile",method=RequestMethod.POST)
 	public RetDataBean updateArchivesFile(HttpServletRequest request,ArchivesFile archivesFile)
@@ -409,7 +409,7 @@ public class RouteSetArchivesController {
 	 * @param archivesVolume
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertArchivesVolume",method=RequestMethod.POST)
 	public RetDataBean insertArchivesVolume(HttpServletRequest request,ArchivesVolume archivesVolume)
@@ -436,7 +436,7 @@ public class RouteSetArchivesController {
 	 * @param archivesVolume
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteArchivesVolume",method=RequestMethod.POST)
 	public RetDataBean deleteArchivesVolume(HttpServletRequest request,ArchivesVolume archivesVolume)
@@ -475,7 +475,7 @@ public class RouteSetArchivesController {
 	 * @param archivesVolume
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateArchivesVolume",method=RequestMethod.POST)
 	public RetDataBean updateArchivesVolume(HttpServletRequest request,ArchivesVolume archivesVolume)
@@ -505,7 +505,7 @@ public class RouteSetArchivesController {
 	 * @param archivesRepository
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertArchivesRepository",method=RequestMethod.POST)
 	public RetDataBean insertArchivesRepository(HttpServletRequest request,ArchivesRepository archivesRepository)
@@ -531,7 +531,7 @@ public class RouteSetArchivesController {
 	 * @param archivesRepository
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteArchivesRepository",method=RequestMethod.POST)
 	public RetDataBean deleteArchivesRepository(HttpServletRequest request,ArchivesRepository archivesRepository)
@@ -570,7 +570,7 @@ public class RouteSetArchivesController {
 	 * @param archivesRepository
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateArchivesRepository",method=RequestMethod.POST)
 	public RetDataBean updateArchivesRepository(HttpServletRequest request,ArchivesRepository archivesRepository)

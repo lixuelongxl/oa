@@ -72,7 +72,7 @@ public ProjectBuildSort selectOneProjectBuildSort(ProjectBuildSort projectBuildS
  * @param: sortLeave
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,String>> getProjectBuildSortTree(String orgId,String sortLeave)
 {
@@ -92,7 +92,7 @@ public List<Map<String,String>> getProjectBuildSortAllParentTree(String orgId,St
  * @param: sortId
  * @param: @return      
  * @return: int      
- * @throws
+
  */
 public int isExistChild(String orgId,String sortId)
 {

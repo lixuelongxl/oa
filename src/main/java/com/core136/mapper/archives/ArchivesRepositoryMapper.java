@@ -19,7 +19,7 @@ public interface ArchivesRepositoryMapper extends MyMapper<ArchivesRepository>{
 	 * @param orgId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getArchivesRepositoryList(@Param(value="orgId")String orgId,@Param(value="opFlag") String opFlag,@Param(value="accountId")String accountId);
 	

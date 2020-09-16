@@ -34,7 +34,7 @@ public interface OfficeSuppliesMapper extends MyMapper<OfficeSupplies>{
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>> getOfficeSupplieslistBySortId(@Param(value="orgId") String orgId,@Param(value="sortId") String sortId,@Param(value="search") String search);
 	
@@ -47,7 +47,7 @@ public interface OfficeSuppliesMapper extends MyMapper<OfficeSupplies>{
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>> getApplyOfficeSupplieslist(@Param(value="orgId") String orgId,@Param(value="sortId") String sortId,
 			@Param(value="deptId") String deptId,@Param(value="search") String search);

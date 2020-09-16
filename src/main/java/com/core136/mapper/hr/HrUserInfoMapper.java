@@ -16,7 +16,6 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import com.beust.jcommander.Parameter;
 import com.core136.bean.hr.HrUserInfo;
 import org.core136.common.dbutils.MyMapper;
 
@@ -35,7 +34,7 @@ public interface HrUserInfoMapper extends MyMapper<HrUserInfo>{
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 public List<Map<String,String>> getHrUserInfoByDeptId(@Param(value="orgId") String orgId,@Param(value="deptId") String deptId);
 /**
@@ -46,7 +45,7 @@ public List<Map<String,String>> getHrUserInfoByDeptId(@Param(value="orgId") Stri
  * @param deptId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String,String>> getHrUserInfoByBeptIdInWorkList(@Param(value="orgId") String orgId,
 		@Param(value="deptId") String deptId,@Param(value="workStatus") String workStatus,
@@ -61,7 +60,7 @@ public List<Map<String,String>> getHrUserInfoByBeptIdInWorkList(@Param(value="or
  * @param: deptId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,String>> getHrUserInfoForTree(@Param(value="orgId") String orgId,@Param(value="deptId") String deptId);
 /**
@@ -72,7 +71,7 @@ public List<Map<String,String>> getHrUserInfoForTree(@Param(value="orgId") Strin
  * @param list
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getUserNamesByUserIds(@Param(value="orgId")String orgId,@Param(value="list")List<String>list);
 
@@ -84,7 +83,7 @@ public List<Map<String, String>>getUserNamesByUserIds(@Param(value="orgId")Strin
  * @param searchuser
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String,String>>getHrUserInfoBySearchuser(@Param(value="orgId")String orgId,@Param(value="searchuser") String searchuser);
 
@@ -97,7 +96,7 @@ public List<Map<String,String>>getHrUserInfoBySearchuser(@Param(value="orgId")St
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getHrUserInfoListByDeptId(@Param(value="orgId")String orgId,@Param(value="deptId")String deptId,@Param(value="search")String search);
 
@@ -108,7 +107,7 @@ public List<Map<String, String>>getHrUserInfoListByDeptId(@Param(value="orgId")S
  * @param orgId
  * @return
  * Map<String,String>    
- * @throws
+
  */
 public Map<String, String>getDeskHrUserInfo(@Param(value="orgId")String orgId);
 

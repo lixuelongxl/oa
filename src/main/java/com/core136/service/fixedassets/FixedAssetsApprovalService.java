@@ -58,7 +58,7 @@ public class FixedAssetsApprovalService {
 	 * @param: fixedAssetsApproval
 	 * @param: @return      
 	 * @return: int      
-	 * @throws
+
 	 */
 	public int approveFixedAssets(FixedAssetsApproval fixedAssetsApproval)
 	{

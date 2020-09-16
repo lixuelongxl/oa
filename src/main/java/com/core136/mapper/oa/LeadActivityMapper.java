@@ -22,7 +22,7 @@ public interface LeadActivityMapper extends MyMapper<LeadActivity>{
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String,String>>getLeadActivityLsit(
 			@Param(value="orgId")String orgId,@Param(value="beginTime")String beginTime,

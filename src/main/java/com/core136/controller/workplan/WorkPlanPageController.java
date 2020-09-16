@@ -15,7 +15,7 @@ public class WorkPlanPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/planquery")
 	public ModelAndView  goPlanquery(String view)
@@ -49,7 +49,7 @@ public class WorkPlanPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/myworkplan")
 	public ModelAndView  goMyWorkPlan(String view)
@@ -81,7 +81,7 @@ public class WorkPlanPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/planmange")
 	public ModelAndView  goPlanMange(String view)
@@ -111,7 +111,7 @@ public class WorkPlanPageController {
 	 * @Description: TODO 我负责的计划
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/holdworkplan")
 	public ModelAndView  goHoldWorkPlan()
@@ -133,7 +133,7 @@ public class WorkPlanPageController {
 	 * @Description: TODO 我督查计划
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/supworkplan")
 	public ModelAndView  goSupWorkPlan()
@@ -155,7 +155,7 @@ public class WorkPlanPageController {
 	 * @Description: TODO 工作计划详情
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/workplandetails")
 	public ModelAndView  goWorkPlandetails()

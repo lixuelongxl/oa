@@ -20,7 +20,7 @@ public interface HrClassCodeMapper extends MyMapper<HrClassCode>{
 	 * @param module
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getCodeListByModule(@Param(value="orgId")String orgId,@Param(value="module") String module);
 	/**
@@ -30,7 +30,7 @@ public interface HrClassCodeMapper extends MyMapper<HrClassCode>{
 	 * @param orgId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getAllParentCodeList(@Param(value="orgId")String orgId);
 	/**
@@ -42,7 +42,7 @@ public interface HrClassCodeMapper extends MyMapper<HrClassCode>{
 	 * @param codeValue
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getHrClassCodeName(@Param(value="orgId")String orgId,@Param(value="module")String module,@Param(value="codeValue")String codeValue);
 }

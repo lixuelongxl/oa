@@ -34,7 +34,7 @@ public interface FixedAssetsMapper extends MyMapper<FixedAssets>{
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>> getFixedAssetsList(@Param(value="orgId") String orgId,@Param(value="beginTime") String beginTime,
 			@Param(value="endTime") String endTime,@Param(value="sortId") String sortId,@Param(value="search") String search);
@@ -50,7 +50,7 @@ public interface FixedAssetsMapper extends MyMapper<FixedAssets>{
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 	public List<Map<String,String>> queryFixedAssetsList(@Param(value="orgId") String orgId,@Param(value="beginTime") String beginTime,
 			@Param(value="endTime") String endTime,@Param(value="sortId") String sortId,@Param(value="ownDept") String ownDept,
@@ -65,7 +65,7 @@ public interface FixedAssetsMapper extends MyMapper<FixedAssets>{
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>> getApplyFixedAssetsList(@Param(value="orgId") String orgId,@Param(value="sortId") String sortI,@Param(value="search") String search);
 	
@@ -80,7 +80,7 @@ public interface FixedAssetsMapper extends MyMapper<FixedAssets>{
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>> getAllocationList(@Param(value="orgId") String orgId,@Param(value="beginTime") String beginTime,
 			@Param(value="endTime") String endTime,@Param(value="sortId") String sortId,@Param(value="search") String search);

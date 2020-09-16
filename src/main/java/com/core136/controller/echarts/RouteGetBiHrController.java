@@ -30,7 +30,7 @@ private AccountService accountService;
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getCareTableForAnalysis", method = RequestMethod.POST)
 public RetDataBean getCareTableForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -51,7 +51,7 @@ public RetDataBean getCareTableForAnalysis(HttpServletRequest request,String dep
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getCareBarForAnalysis", method = RequestMethod.POST)
 public RetDataBean getCareBarForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -74,7 +74,7 @@ public RetDataBean getCareBarForAnalysis(HttpServletRequest request,String deptI
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getCarePieForAnalysis", method = RequestMethod.POST)
 public RetDataBean getCarePieForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -96,7 +96,7 @@ public RetDataBean getCarePieForAnalysis(HttpServletRequest request,String deptI
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getReinstatTableForAnalysis", method = RequestMethod.POST)
 public RetDataBean getReinstatTableForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -117,7 +117,7 @@ public RetDataBean getReinstatTableForAnalysis(HttpServletRequest request,String
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getReinstatBarForAnalysis", method = RequestMethod.POST)
 public RetDataBean getReinstatBarForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -140,7 +140,7 @@ public RetDataBean getReinstatBarForAnalysis(HttpServletRequest request,String d
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getReinstatPieForAnalysis", method = RequestMethod.POST)
 public RetDataBean getReinstatPieForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -161,7 +161,7 @@ public RetDataBean getReinstatPieForAnalysis(HttpServletRequest request,String d
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getEvaluationTableForAnalysis", method = RequestMethod.POST)
 public RetDataBean getEvaluationTableForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -182,7 +182,7 @@ public RetDataBean getEvaluationTableForAnalysis(HttpServletRequest request,Stri
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getEvaluationBarForAnalysis", method = RequestMethod.POST)
 public RetDataBean getEvaluationBarForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -205,7 +205,7 @@ public RetDataBean getEvaluationBarForAnalysis(HttpServletRequest request,String
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getEvaluationPieForAnalysis", method = RequestMethod.POST)
 public RetDataBean getEvaluationPieForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -228,7 +228,7 @@ public RetDataBean getEvaluationPieForAnalysis(HttpServletRequest request,String
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getLeaveTableForAnalysis", method = RequestMethod.POST)
 public RetDataBean getLeaveTableForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -249,7 +249,7 @@ public RetDataBean getLeaveTableForAnalysis(HttpServletRequest request,String de
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getLeaveBarForAnalysis", method = RequestMethod.POST)
 public RetDataBean getLeaveBarForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -272,7 +272,7 @@ public RetDataBean getLeaveBarForAnalysis(HttpServletRequest request,String dept
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getLeavePieForAnalysis", method = RequestMethod.POST)
 public RetDataBean getLeavePieForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -294,7 +294,7 @@ public RetDataBean getLeavePieForAnalysis(HttpServletRequest request,String dept
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getTransferTableForAnalysis", method = RequestMethod.POST)
 public RetDataBean getTransferTableForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -315,7 +315,7 @@ public RetDataBean getTransferTableForAnalysis(HttpServletRequest request,String
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getTransferBarForAnalysis", method = RequestMethod.POST)
 public RetDataBean getTransferBarForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -338,7 +338,7 @@ public RetDataBean getTransferBarForAnalysis(HttpServletRequest request,String d
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getTransferPieForAnalysis", method = RequestMethod.POST)
 public RetDataBean getTransferPieForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -362,7 +362,7 @@ public RetDataBean getTransferPieForAnalysis(HttpServletRequest request,String d
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getSkillsTableForAnalysis", method = RequestMethod.POST)
 public RetDataBean getSkillsTableForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -383,7 +383,7 @@ public RetDataBean getSkillsTableForAnalysis(HttpServletRequest request,String d
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getSkillsBarForAnalysis", method = RequestMethod.POST)
 public RetDataBean getSkillsBarForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -406,7 +406,7 @@ public RetDataBean getSkillsBarForAnalysis(HttpServletRequest request,String dep
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getSkillsPieForAnalysis", method = RequestMethod.POST)
 public RetDataBean getSkillsPieForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -428,7 +428,7 @@ public RetDataBean getSkillsPieForAnalysis(HttpServletRequest request,String dep
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getLearnTableForAnalysis", method = RequestMethod.POST)
 public RetDataBean getLearnTableForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -449,7 +449,7 @@ public RetDataBean getLearnTableForAnalysis(HttpServletRequest request,String de
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getLearnBarForAnalysis", method = RequestMethod.POST)
 public RetDataBean getLearnBarForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -472,7 +472,7 @@ public RetDataBean getLearnBarForAnalysis(HttpServletRequest request,String dept
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getLearnPieForAnalysis", method = RequestMethod.POST)
 public RetDataBean getLearnPieForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -496,7 +496,7 @@ public RetDataBean getLearnPieForAnalysis(HttpServletRequest request,String dept
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getLicenceTableForAnalysis", method = RequestMethod.POST)
 public RetDataBean getLicenceTableForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -517,7 +517,7 @@ public RetDataBean getLicenceTableForAnalysis(HttpServletRequest request,String 
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getLicenceBarForAnalysis", method = RequestMethod.POST)
 public RetDataBean getLicenceBarForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -540,7 +540,7 @@ public RetDataBean getLicenceBarForAnalysis(HttpServletRequest request,String de
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getLicencePieForAnalysis", method = RequestMethod.POST)
 public RetDataBean getLicencePieForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -562,7 +562,7 @@ public RetDataBean getLicencePieForAnalysis(HttpServletRequest request,String de
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getIncentiveTableForAnalysis", method = RequestMethod.POST)
 public RetDataBean getIncentiveTableForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -583,7 +583,7 @@ public RetDataBean getIncentiveTableForAnalysis(HttpServletRequest request,Strin
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getIncentiveBarForAnalysis", method = RequestMethod.POST)
 public RetDataBean getIncentiveBarForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -606,7 +606,7 @@ public RetDataBean getIncentiveBarForAnalysis(HttpServletRequest request,String 
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getIncentivePieForAnalysis", method = RequestMethod.POST)
 public RetDataBean getIncentivePieForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -628,7 +628,7 @@ public RetDataBean getIncentivePieForAnalysis(HttpServletRequest request,String 
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getContractTableForAnalysis", method = RequestMethod.POST)
 public RetDataBean getContractTableForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -649,7 +649,7 @@ public RetDataBean getContractTableForAnalysis(HttpServletRequest request,String
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getContractBarForAnalysis", method = RequestMethod.POST)
 public RetDataBean getContractBarForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -672,7 +672,7 @@ public RetDataBean getContractBarForAnalysis(HttpServletRequest request,String d
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getContractPieForAnalysis", method = RequestMethod.POST)
 public RetDataBean getContractPieForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -695,7 +695,7 @@ public RetDataBean getContractPieForAnalysis(HttpServletRequest request,String d
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getBaseInfoTableForAnalysis", method = RequestMethod.POST)
 public RetDataBean getBaseInfoTableForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -717,7 +717,7 @@ public RetDataBean getBaseInfoTableForAnalysis(HttpServletRequest request,String
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getBaseInfoBarForAnalysis", method = RequestMethod.POST)
 public RetDataBean getBaseInfoBarForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -740,7 +740,7 @@ public RetDataBean getBaseInfoBarForAnalysis(HttpServletRequest request,String d
  * @param dataType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getBaseInfoPieForAnalysis", method = RequestMethod.POST)
 public RetDataBean getBaseInfoPieForAnalysis(HttpServletRequest request,String deptId,String dataType) {
@@ -760,7 +760,7 @@ public RetDataBean getBaseInfoPieForAnalysis(HttpServletRequest request,String d
  * @param request
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getNativePlacePie", method = RequestMethod.POST)
 public RetDataBean getNativePlacePie(HttpServletRequest request) {
@@ -780,7 +780,7 @@ public RetDataBean getNativePlacePie(HttpServletRequest request) {
  * @param request
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getWorkTypeBar", method = RequestMethod.POST)
 public RetDataBean getWorkTypeBar(HttpServletRequest request) {
@@ -799,7 +799,7 @@ public RetDataBean getWorkTypeBar(HttpServletRequest request) {
  * @param request
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getHighsetShoolPie", method = RequestMethod.POST)
 public RetDataBean getHighsetShoolPie(HttpServletRequest request) {

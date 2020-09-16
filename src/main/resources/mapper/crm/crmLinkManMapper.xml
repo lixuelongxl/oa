@@ -4,7 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core136.mapper.crm.CrmLinkManMapper">
 <resultMap id="CrmLinkMan" type="com.core136.bean.crm.CrmLinkMan" >
-    <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="LINK_MAN_ID" property="linkManId" jdbcType="VARCHAR" />
     <result column="SORT_NO" property="sortNo" jdbcType="INTEGER" />
     <result column="CUSTOMER_ID" property="customerId" jdbcType="VARCHAR" />
@@ -109,12 +108,9 @@ L.POSTION AS postion,
 L.SEX AS sex,
 L.MOBILE AS mobile,
 L.EMAIL AS email
-FROM CRM_LINK_MAN L,CRM_CUSTOMER C
+FROM CRM_LINK_MAN L LEFT JOIN CRM_CUSTOMER C ON L.ORG_ID = C.ORG_ID AND L.CUSTOMER_ID=C.CUSTOMER_ID AND C.KEEP_USER=#{keepUser}
 WHERE 
-C.ORG_ID = L.ORG_ID
-AND C.CUSTOMER_ID=L.CUSTOMER_ID
-AND L.ORG_ID=#{orgId}
-AND C.KEEP_USER = #{keepUser}
+L.ORG_ID=#{orgId}
 <if test="search !='%%' and search !=''.toString() and search!=null">
 AND (C.CN_NAME LIKE #{search} OR C.EN_NAME LIKE #{search} OR L.LINK_NAME LIKE #{search} OR L.MOBILE LIKE #{search})
 </if>

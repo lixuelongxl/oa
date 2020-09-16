@@ -33,7 +33,7 @@ public interface MeetingDeviceMapper extends MyMapper<MeetingDevice>{
 	 * @param: orgId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>>getMeetingDeviceList(@Param(value="orgId")String orgId,@Param(value="search") String search);
 	
@@ -45,7 +45,7 @@ public interface MeetingDeviceMapper extends MyMapper<MeetingDevice>{
 	 * @param: deptId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>>getCanUseDeviceList(@Param(value="orgId")String orgId,@Param(value="deptId") String deptId);
 	/**
@@ -56,7 +56,7 @@ public interface MeetingDeviceMapper extends MyMapper<MeetingDevice>{
 	 * @param list
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getDeviceListName(@Param(value="orgId") String orgId,@Param(value="list") List<String> list);
 }

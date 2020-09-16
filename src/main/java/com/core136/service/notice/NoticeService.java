@@ -140,7 +140,7 @@ public List<Map<String, Object>> getNoticeApproverList(String orgId,String accou
  * @param: pageParam
  * @param: @return      
  * @return: PageInfo<Map<String,Object>>      
- * @throws
+
  */
 public PageInfo<Map<String, Object>> getNoticeApproverList(PageParam pageParam) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -158,7 +158,7 @@ public PageInfo<Map<String, Object>> getNoticeApproverList(PageParam pageParam) 
  * @param: endTime
  * @param: @return      
  * @return: PageInfo<Map<String,Object>>      
- * @throws
+
  */
 	public PageInfo<Map<String, Object>> getNoticeManageList(PageParam pageParam,String noticeType,String beginTime,String endTime) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -414,7 +414,7 @@ public PageInfo<Map<String, String>> getMyNoticeList(PageParam pageParam,String 
  * @param: leaveId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,String>> getMyNoticeListForDesk(String orgId,String endTime,String accountId,String deptId,String leaveId)
 {
@@ -431,7 +431,7 @@ public List<Map<String,String>> getMyNoticeListForDesk(String orgId,String endTi
  * @param: leaveId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,String>> getMobileMyNoticeList(String orgId,String accountId,String deptId,String leaveId,Integer page)
 {

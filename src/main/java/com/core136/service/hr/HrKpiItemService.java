@@ -49,7 +49,7 @@ public class HrKpiItemService {
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getHrKpiItemList(String orgId,String createUser,String kpiType,String search)
 	{
@@ -63,7 +63,7 @@ public class HrKpiItemService {
 	 * @param kpiType
 	 * @return
 	 * PageInfo<Map<String,String>>    
-	 * @throws
+
 	 */
 	public PageInfo<Map<String, String>> getHrKpiItemList(PageParam pageParam,String createUser,String kpiType) 
 	{

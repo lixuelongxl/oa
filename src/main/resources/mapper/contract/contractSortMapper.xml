@@ -4,7 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core136.mapper.contract.ContractSortMapper">
 <resultMap id="ContractSort" type="com.core136.bean.contract.ContractSort" >
-    <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="SORT_ID" property="sortId" jdbcType="VARCHAR" />
     <result column="SORT_NO" property="sortNo" jdbcType="INTEGER" />
     <result column="SORT_NAME" property="sortName" jdbcType="VARCHAR" />
@@ -16,10 +15,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   </resultMap>
 
 <select id="getContractSortTree" resultType="java.util.HashMap">
-SELECT SORT_ID AS sortId, SORT_NAME AS sortName,
-CASE WHEN (SELECT COUNT(1) FROM CONTRACT_SORT TMP WHERE TMP.SORT_LEAVE=sortId)=0 then 'false' else 'true' END
+SELECT S.SORT_ID AS sortId, S.SORT_NAME AS sortName,
+CASE WHEN (SELECT COUNT(1) FROM CONTRACT_SORT TMP WHERE TMP.SORT_LEAVE=S.SORT_ID)=0 then 'false' else 'true' END
 AS  isParent
-FROM CONTRACT_SORT WHERE SORT_LEAVE=#{sortLeave} AND ORG_ID=#{orgId}
+FROM CONTRACT_SORT S WHERE S.SORT_LEAVE=#{sortLeave} AND S.ORG_ID=#{orgId}
 </select>
 
 <select id="isExistChild" resultType="Integer">

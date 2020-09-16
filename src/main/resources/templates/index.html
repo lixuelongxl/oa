@@ -51,8 +51,14 @@
 	%>
 		
 		<form action="">
-			<input type="text" name="accountId" class="username" placeholder="系统账号" value="admin"> <input type="password" name="passWord" class="password" placeholder="密码"
-				value="123456">
+			<input type="text" name="accountId" class="username" placeholder="系统账号" value="<% if(isDev=='1') {%>admin<%}%>">
+			<input type="password" name="passWord" class="password" placeholder="密码" value="<% if(isDev=='1') {%>123456<%}%>">
+			<%if(verifyCode=='1'){%>
+			<div>
+			<input type="text" name="verifyCode" class="verifyCode" placeholder="验证码" style="width:50%;display: inline-block;float: left;" value="">
+			<img  class="js-verifyCodeImage" style="width:100px;float:right;display: inline-block;margin-top: 25px;" height="40px" alt="" src="/sys/file/getVerifyCodeImage">
+			</div>
+			<%}%>
 			<button type="button" onclick="login();" id="loginbtn">登&nbsp;&nbsp;录</button>
 		</form>
 			 <div class="connect">
@@ -69,6 +75,10 @@
 	<script src="/gobal/js/assets/js/scripts.js"></script>
 	<script src="/module/layer/layer.js"></script>
 	<script type="text/javascript">
+	 $(".js-verifyCodeImage").click(function () {
+		 $(this).attr("src","/sys/file/getVerifyCodeImage?"+ new Date().getTime())
+	    });
+
 	var dimg=[ 
         {image : '/gobal/js/assets/img/backgrounds/1.jpg'},
         {image : '/gobal/js/assets/img/backgrounds/2.jpg'},
@@ -127,7 +137,8 @@
             dataType:"json",
             data:{
             	accountId:$(".username").val(),
-            	passWord:$(".password").val()
+            	passWord:$(".password").val(),
+            	code:$(".verifyCode").val()
             },
             success:function(data){
  				if(data.status=="200"&&data.redirect!=null)

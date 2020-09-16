@@ -42,7 +42,7 @@ public class RoutGetProjectBuildConfigController {
 	 * @param: sortId
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getAllProjectBuildBpmConfig",method=RequestMethod.POST)
 	public RetDataBean getAllProjectBuildBpmConfig(HttpServletRequest request,String sortId)

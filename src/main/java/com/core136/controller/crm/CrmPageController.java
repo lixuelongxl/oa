@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.core136.bean.account.Account;
 import com.core136.service.account.AccountService;
 
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.core136.common.utils.SysTools;
 
 @Controller
@@ -22,11 +22,106 @@ public class CrmPageController {
 	
 	/**
 	 * 
+	 * @Title: goInquiryBi   
+	 * @Description: TODO 询价分析
+	 * @return
+	 * ModelAndView
+	 */
+	@RequestMapping("/quotebi")
+	public ModelAndView goQuoteBi()
+	{
+		ModelAndView mv = null;
+		try
+		{
+			mv = new ModelAndView("app/core/crm/bi/quotationbi");
+		return mv;
+		}catch (Exception e) {
+		mv = new ModelAndView("titps");
+		return mv;
+	}
+	}
+	
+	/**
+	 * 
+	 * @Title: goInquiryBi   
+	 * @Description: TODO 询价分析
+	 * @return
+	 * ModelAndView
+	 */
+	@RequestMapping("/inquirybi")
+	public ModelAndView goInquiryBi()
+	{
+		ModelAndView mv = null;
+		try
+		{
+			mv = new ModelAndView("app/core/crm/bi/inquirybi");
+		return mv;
+		}catch (Exception e) {
+		mv = new ModelAndView("titps");
+		return mv;
+	}
+	}
+	
+	/**
+	 * 
+	 * @Title: goQuotationapproved   
+	 * @Description: TODO 报价审批
+	 * @param request
+	 * @param view
+	 * @return
+	 * ModelAndView
+	 */
+	@RequestMapping("/quotationapproved")
+	public ModelAndView  goQuotationapproved(HttpServletRequest request,String view)
+	{
+		ModelAndView mv = null;
+		try
+		{
+		if(StringUtils.isBlank(view))
+		{
+			mv = new ModelAndView("app/core/crm/quotation/quotationapproved");
+		}else
+		{
+			if(view.equals("manage"))
+			{
+				mv = new ModelAndView("app/core/crm/quotation/quotationapprovedmanage");
+			}
+		}
+		return mv;
+		}catch (Exception e) {
+		mv = new ModelAndView("titps");
+		return mv;
+	}
+	}
+	
+	/**
+	 * 
+	 * @Title: goQuotationquery   
+	 * @Description: TODO 询价单查询
+	 * @return
+	 * ModelAndView
+	 */
+	@RequestMapping("/quotationquery")
+	public ModelAndView goQuotationquery()
+	{
+		ModelAndView mv = null;
+		try
+		{
+			mv = new ModelAndView("app/core/crm/quotation/quotationquery");
+		return mv;
+		}catch (Exception e) {
+		mv = new ModelAndView("titps");
+		return mv;
+	}
+	}
+	
+	/**
+	 * 
 	 * @Title: goQuotationDetails   
 	 * @Description: TODO 报价单详情
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/quotationdetails")
 	public ModelAndView  goQuotationDetails()
@@ -49,10 +144,10 @@ public class CrmPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/quotation")
-	public ModelAndView  goQuotationManage(String view)
+	public ModelAndView  goQuotationManage(HttpServletRequest request,String view)
 	{
 		ModelAndView mv = null;
 		try
@@ -64,7 +159,13 @@ public class CrmPageController {
 		{
 			if(view.equals("input"))
 			{
+				Account account=accountService.getRedisAccount(request);
 				mv = new ModelAndView("app/core/crm/quotation/quotation");
+				String code = SysTools.getCode(account, "报[yyyy][MM][dd]-[R]");
+				mv.addObject("code",code);
+			}else if(view.equals("edit"))
+			{
+				mv = new ModelAndView("app/core/crm/quotation/quotationedit");
 			}
 		}
 		return mv;
@@ -402,7 +503,7 @@ public ModelAndView  goInquiryManage()
  * @Description: TODO 询价单详情
  * @return
  * ModelAndView    
- * @throws
+
  */
 @RequestMapping("/inquirydetails")
 public ModelAndView  goInquiryDetails()

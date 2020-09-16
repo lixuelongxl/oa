@@ -73,7 +73,7 @@ public SuperversionDelay selectOneSuperversionDelay(SuperversionDelay superversi
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getDelayApplyList(String orgId,String accountId,String status,String type,String beginTime,String endTime,String createUser,String search)
 {
@@ -91,7 +91,7 @@ public List<Map<String, String>>getDelayApplyList(String orgId,String accountId,
  * @param: createUser
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getDelayApplyList(PageParam pageParam,String status,String type,String beginTime,String endTime,String createUser) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());

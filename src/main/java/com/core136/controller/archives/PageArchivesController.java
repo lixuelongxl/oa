@@ -15,7 +15,7 @@ public class PageArchivesController {
 	 * @Description: TODO 借阅案卷详情
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/volumelistdetails")
 	public ModelAndView  goVolumeListDetails()
@@ -37,7 +37,7 @@ public class PageArchivesController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/approval")
 	public ModelAndView  goApproval(String view)
@@ -68,7 +68,7 @@ public class PageArchivesController {
  * @param view
  * @return
  * ModelAndView    
- * @throws
+
  */
 	@RequestMapping("/destroy")
 	public ModelAndView  goDestroy()
@@ -91,7 +91,7 @@ public class PageArchivesController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/query")
 	public ModelAndView  goQuery()
@@ -114,7 +114,7 @@ public class PageArchivesController {
  * @param view
  * @return
  * ModelAndView    
- * @throws
+
  */
 	@RequestMapping("/borrow")
 	public ModelAndView  goBorrow(String view)
@@ -148,7 +148,7 @@ public class PageArchivesController {
  * @param view
  * @return
  * ModelAndView    
- * @throws
+
  */
 	@RequestMapping("/files")
 	public ModelAndView  goFiles(String view)
@@ -179,7 +179,7 @@ public class PageArchivesController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/volume")
 	public ModelAndView  goVolume(String view)
@@ -210,7 +210,7 @@ public class PageArchivesController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/repository")
 	public ModelAndView  goRepository(String view)
@@ -240,7 +240,7 @@ public class PageArchivesController {
 	 * @Description: TODO 卷库详情
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/repositorydetails")
 	public ModelAndView  goRepositoryDetails()
@@ -262,7 +262,7 @@ public class PageArchivesController {
 	 * @Description: TODO 档案查询详情
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/borrowfiledetails")
 	public ModelAndView  goBorrowFileDetails()
@@ -284,7 +284,7 @@ public class PageArchivesController {
 	 * @Description: TODO 文件详情
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/filedetails")
 	public ModelAndView  goFileDetails()
@@ -306,7 +306,7 @@ public class PageArchivesController {
 	 * @Description: TODO 文件详情
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/filedetailsforborrow")
 	public ModelAndView  goFileDetails2()
@@ -327,7 +327,7 @@ public class PageArchivesController {
 	 * @Description: TODO 案卷文件借阅详情
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/volumefiledetails")
 	public ModelAndView  goVolumeFileDetails()
@@ -349,7 +349,7 @@ public class PageArchivesController {
 	 * @Description: TODO 案卷详情
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/volumedetails")
 	public ModelAndView  goVolumeDetails()

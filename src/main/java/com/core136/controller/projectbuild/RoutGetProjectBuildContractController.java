@@ -40,7 +40,7 @@ private AccountService accountService;
  * @param: sortId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 @RequestMapping(value="/getProjectBuildContractSortTree",method=RequestMethod.POST)
 public List<Map<String,String>> getProjectBuildContractSortTree(HttpServletRequest request,String sortId)
@@ -67,7 +67,7 @@ public List<Map<String,String>> getProjectBuildContractSortTree(HttpServletReque
  * @param: projectBuildPontractSort
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getProjectBuildContractSortById",method=RequestMethod.POST)
 public RetDataBean getProjectBuildContractSortById(HttpServletRequest request,ProjectBuildContractSort projectBuildPontractSort)
@@ -89,7 +89,7 @@ public RetDataBean getProjectBuildContractSortById(HttpServletRequest request,Pr
  * @param: projectBuildPontract
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getProjectBuildContractById",method=RequestMethod.POST)
 public RetDataBean getProjectBuildContractById(HttpServletRequest request,ProjectBuildContract projectBuildPontract)
@@ -114,7 +114,7 @@ public RetDataBean getProjectBuildContractById(HttpServletRequest request,Projec
  * @param: pageParam
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getcontractlist",method=RequestMethod.POST)
 public RetDataBean getcontractlist(
@@ -159,7 +159,7 @@ public RetDataBean getcontractlist(
  * @param: pageParam
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/querycontractlist",method=RequestMethod.POST)
 public RetDataBean querycontractlist(

@@ -4,7 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core136.mapper.erp.ErpBomDetailMapper">
 <resultMap id="ErpBomDetail" type="com.core136.bean.erp.ErpBomDetail" >
-    <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="BOM_DETAIL_ID" property="bomDetailId" jdbcType="VARCHAR" />
     <result column="BOM_ID" property="bomId" jdbcType="VARCHAR" />
     <result column="MATERIEL_CODE" property="materielCode" jdbcType="VARCHAR" />
@@ -18,7 +17,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- 数据量大的时候会慢，后面再处理 -->
 <select id="getBomDetailList" resultType="java.util.HashMap">
-        SELECT A.BOM_DETAIL_ID AS bomDetailId,A.PARAM AS param,A.MATERIEL_CODE AS materielCode,B.MATERIEL_NAME AS materielName,B.TYPE AS type,A.USE_COUNT AS useCount,B.UNIT AS unit,A.CREATE_TIME as createTime,A.REMARK AS remark 
+        SELECT A.BOM_DETAIL_ID AS bomDetailId,A.PARAM AS param,A.MATERIEL_CODE AS materielCode,B.MATERIEL_NAME AS materielName,B.TYPE AS type,A.USE_COUNT AS useCount,B.UNIT AS unit,A.CREATE_TIME as createTime,
+        TO_CHAR(A.REMARK) AS remark 
         FROM ERP_BOM_DETAIL A LEFT JOIN ERP_MATERIEL B ON A.MATERIEL_CODE=B.MATERIEL_CODE AND A.ORG_ID=B.ORG_ID
 		WHERE A.BOM_ID=#{bomId} AND A.MATERIEL_CODE LIKE #{materielCode} AND A.ORG_ID=#{orgId} AND (A.CHILD_BOM_ID IS NULL OR A.CHILD_BOM_ID='')
 </select>
@@ -34,14 +34,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 <select id="getBomDetailByDetailId" resultType="java.util.HashMap">
-        SELECT A.BOM_DETAIL_ID AS bomDetailId,A.MATERIEL_CODE AS materielCode,A.PARAM AS param,B.MATERIEL_NAME AS materielName,B.TYPE AS type,A.USE_COUNT AS useCount,B.UNIT AS unit,A.CREATE_TIME as createTime,A.REMARK AS remark 
+        SELECT A.BOM_DETAIL_ID AS bomDetailId,A.MATERIEL_CODE AS materielCode,A.PARAM AS param,B.MATERIEL_NAME AS materielName,B.TYPE AS type,A.USE_COUNT AS useCount,B.UNIT AS unit,A.CREATE_TIME as createTime,
+        TO_CHAR(A.REMARK) AS remark 
         FROM ERP_BOM_DETAIL A LEFT JOIN ERP_MATERIEL B ON A.MATERIEL_CODE=B.MATERIEL_CODE AND A.ORG_ID=B.ORG_ID
 		WHERE A.BOM_ID=#{bomId} AND A.BOM_DETAIL_ID = #{bomDetailId} AND A.ORG_ID=#{orgId}
 </select>
 
 
 <select id="getErpBomByBomIdList" resultType="java.util.HashMap">
-        SELECT A.BOM_DETAIL_ID AS bomDetailId,A.BOM_ID AS bomId,B.BOM_NAME AS bomName,B.VERSION AS version,B.MAP_NUMBER AS mapNumber,B.PRODUCT_NUMBER AS productNumber,A.USE_COUNT AS useCount,A.REMARK AS remark 
+        SELECT A.BOM_DETAIL_ID AS bomDetailId,A.BOM_ID AS bomId,B.BOM_NAME AS bomName,B.VERSION AS version,B.MAP_NUMBER AS mapNumber,B.PRODUCT_NUMBER AS productNumber,A.USE_COUNT AS useCount,
+        TO_CHAR(A.REMARK) AS remark 
         FROM ERP_BOM_DETAIL A LEFT JOIN ERP_BOM B ON A.CHILD_BOM_ID=B.BOM_ID AND A.ORG_ID=B.ORG_ID
 		WHERE A.BOM_ID=#{bomId} AND B.BOM_NAME LIKE #{bomName} AND A.ORG_ID=#{orgId}
 </select>
@@ -57,7 +59,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	'' AS unit,
 	'' AS price,
 	'b' AS type,
-	C.REMARK AS remark
+	TO_CHAR(C.REMARK) AS remark
 FROM
 	erp_bom_detail C
 JOIN erp_bom D ON C.CHILD_BOM_ID = D.BOM_ID
@@ -72,7 +74,7 @@ UNION
 	B.UNIT AS unit,
 	B.PRICE AS price,
 	B.TYPE AS type,
-	A.REMARK AS remark
+	TO_CHAR(A.REMARK) AS remark
 FROM
 	erp_bom_detail A
 JOIN erp_materiel B ON A.MATERIEL_CODE = B.MATERIEL_CODE

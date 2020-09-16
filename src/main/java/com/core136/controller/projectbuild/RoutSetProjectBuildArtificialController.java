@@ -39,7 +39,7 @@ public class RoutSetProjectBuildArtificialController {
 	 * @param: projectBuildArtificialSort
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/delProjectBuildArtificialSort",method=RequestMethod.POST)
 	public RetDataBean delProjectBuildArtificialSort(HttpServletRequest request,ProjectBuildArtificialSort projectBuildArtificialSort)
@@ -66,7 +66,7 @@ public class RoutSetProjectBuildArtificialController {
 	 * @param: projectBuildArtificialSort
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertProjectBuildArtificialSort",method=RequestMethod.POST)
 	public RetDataBean insertProjectBuildArtificialSort(HttpServletRequest request,ProjectBuildArtificialSort projectBuildArtificialSort)
@@ -98,7 +98,7 @@ public class RoutSetProjectBuildArtificialController {
 	 * @param: projectBuildArtificialSort
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateProjectBuildArtificialSort",method=RequestMethod.POST)
 	public RetDataBean updateProjectBuildArtificialSort(HttpServletRequest request,ProjectBuildArtificialSort projectBuildArtificialSort)

@@ -41,7 +41,7 @@ public class TaskGanttLinkService {
 	 * @param: taskId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getGanttLinkList(String orgId,String taskId)
 	{

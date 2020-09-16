@@ -47,7 +47,7 @@ public ProjectBuildMaterialIn selectOneProjectBuildMaterialIn(ProjectBuildMateri
  * @param: materialId
  * @param: @return      
  * @return: int      
- * @throws
+
  */
 public int sumMaterialById(String orgId,String purchaseId,String materialId)
 {
@@ -61,7 +61,7 @@ public int sumMaterialById(String orgId,String purchaseId,String materialId)
  * @param: projectId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,String>> getMaterialByProjectId(String orgId,String projectId,String search)
 {
@@ -76,7 +76,7 @@ public List<Map<String,String>> getMaterialByProjectId(String orgId,String proje
  * @param: projectId
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getMaterialByProjectId(PageParam pageParam,String projectId) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -94,7 +94,7 @@ public PageInfo<Map<String, String>> getMaterialByProjectId(PageParam pageParam,
  * @param: materialId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getMaterialInList(String orgId,String projectId,String materialId)
 {
@@ -120,7 +120,7 @@ public PageInfo<Map<String, String>> getMaterialInList(PageParam pageParam,Strin
  * @param: purchaseTitle
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getQueryMaterialInList(String orgId, String inUser, String beginTime,String endTime, String materialName, String purchaseTitle)
 {
@@ -140,7 +140,7 @@ public List<Map<String, String>>getQueryMaterialInList(String orgId, String inUs
  * @param: purchaseTitle
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getQueryMaterialInList(PageParam pageParam,String inUser, String beginTime,String endTime, String materialName, String purchaseTitle) 
 {

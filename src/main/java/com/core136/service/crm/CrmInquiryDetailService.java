@@ -65,7 +65,7 @@ public int updateCrmInquiryDetail(CrmInquiryDetail crmInquiryDetail,Example exam
  * @param inquiryId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getCrmInquiryDetailList(String orgId,String inquiryId)
 {
@@ -79,7 +79,7 @@ public List<Map<String, String>>getCrmInquiryDetailList(String orgId,String inqu
  * @param inquiryId
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getCrmInquiryDetailList(PageParam pageParam,String inquiryId) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());

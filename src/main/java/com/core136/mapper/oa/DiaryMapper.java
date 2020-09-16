@@ -41,7 +41,7 @@ public interface DiaryMapper extends MyMapper<Diary>{
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>> getMySubordinatesDiaryList(@Param (value="orgId") String orgId,@Param (value="list") List<String> list,
 			@Param(value="beginTime") String beginTime,@Param(value="endTime") String endTime,@Param (value="search") String search);
@@ -74,7 +74,7 @@ public interface DiaryMapper extends MyMapper<Diary>{
 	 * @param: accountId
 	 * @param: @return      
 	 * @return: int      
-	 * @throws
+
 	 */
 	public Integer getMyDiaryCount(@Param(value="orgId")String orgId,@Param(value="accountId") String accountId);
 	
@@ -86,7 +86,7 @@ public interface DiaryMapper extends MyMapper<Diary>{
 	 * @param: accountId
 	 * @param: @return      
 	 * @return: Integer      
-	 * @throws
+
 	 */
 	public Integer getDiaryCommentCount(@Param(value="orgId")String orgId,@Param(value="accountId") String accountId);
 	
@@ -103,7 +103,7 @@ public interface DiaryMapper extends MyMapper<Diary>{
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getShowDiaryList(@Param(value="orgId")String orgId,@Param(value="accountId") String accountId,
 			@Param(value="deptId") String deptId,@Param(value="leaveId")String leaveId,@Param(value="beginTime") String beginTime,

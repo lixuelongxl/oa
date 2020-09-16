@@ -23,7 +23,7 @@ public interface VehicleOilCardMapper extends MyMapper<VehicleOilCard>{
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getVehicleOilCardList(@Param(value="orgId")String orgId,
 			@Param(value="oilType")String oilType,
@@ -38,7 +38,7 @@ public interface VehicleOilCardMapper extends MyMapper<VehicleOilCard>{
 	 * @param orgId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getCanUsedOilCardList(@Param(value="orgId")String orgId);
 }

@@ -49,7 +49,7 @@ public TaskGanttData selectOneTaskGanttData(TaskGanttData taskGanttData)
  * @param: taskId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getGanttDataList(String orgId,String taskId)
 {
@@ -64,7 +64,7 @@ public List<Map<String, String>>getGanttDataList(String orgId,String taskId)
  * @param: taskId
  * @param: @return      
  * @return: Map<String,List<Map<String,String>>>      
- * @throws
+
  */
 public Map<String,List<Map<String, String>>> getTaskGantInfo(String orgId,String taskId)
 {
@@ -89,7 +89,7 @@ public Map<String,List<Map<String, String>>> getTaskGantInfo(String orgId,String
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getAllUserPrivList(String orgId,String opFlag,String accountId,String status,String userPriv,String taskType,String beginTime,String endTime,String search)
 {
@@ -108,7 +108,7 @@ public List<Map<String, String>>getAllUserPrivList(String orgId,String opFlag,St
  * @param: endTime
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getAllUserPrivList(PageParam pageParam,String status,String userPriv,String taskType,String beginTime,String endTime) {
 PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -129,7 +129,7 @@ return pageInfo;
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,String>>getMyTaskWorkList(String orgId,String accountId,String createUser,String taskType,String beginTime,String endTime,String search)
 {
@@ -147,7 +147,7 @@ public List<Map<String,String>>getMyTaskWorkList(String orgId,String accountId,S
  * @param: endTime
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getMyTaskWorkList(PageParam pageParam,String createUser,String taskType,String beginTime,String endTime) {
 PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -164,7 +164,7 @@ return pageInfo;
  * @param: accountId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,String>>getTaskListForDesk(String orgId,String accountId)
 {
@@ -182,7 +182,7 @@ public List<Map<String,String>>getTaskListForDesk2(String orgId,String accountId
  * @param: pageParam
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getTaskListForDesk(PageParam pageParam) {
 PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());

@@ -40,7 +40,7 @@ public interface CrmInquiryDetailMapper extends MyMapper<CrmInquiryDetail>{
 	 * @param inquiryId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getCrmInquiryDetailList(@Param(value="orgId")String orgId,@Param(value="inquiryId")String inquiryId );
 	

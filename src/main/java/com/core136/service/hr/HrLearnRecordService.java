@@ -63,7 +63,7 @@ public HrLearnRecord selectOneHrLearnRecord(HrLearnRecord hrLearnRecord)
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getHrLearnRecordList(String orgId,String userId,String beginTime,String endTime,String search)
 {
@@ -78,7 +78,7 @@ public List<Map<String, String>>getHrLearnRecordList(String orgId,String userId,
  * @param accountId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getMyHrLearnRecordList(String orgId,String accountId)
 {
@@ -95,7 +95,7 @@ public List<Map<String, String>>getMyHrLearnRecordList(String orgId,String accou
  * @param endTime
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getHrLearnRecordList(PageParam pageParam,String userId,String beginTime,String endTime) 
 {
@@ -111,7 +111,7 @@ public PageInfo<Map<String, String>> getHrLearnRecordList(PageParam pageParam,St
  * @param pageParam
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getMyHrLearnRecordList(PageParam pageParam) 
 {
@@ -128,9 +128,9 @@ public PageInfo<Map<String, String>> getMyHrLearnRecordList(PageParam pageParam)
  * @param account
  * @param file
  * @return
- * @throws IOException
+ IOException
  * RetDataBean    
- * @throws
+
  */
 @Transactional(value="generalTM")
 public RetDataBean importHrLearnRecord(Account account,MultipartFile file) throws IOException

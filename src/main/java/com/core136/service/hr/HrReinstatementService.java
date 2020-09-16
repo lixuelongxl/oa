@@ -49,7 +49,7 @@ public HrReinstatement selectOneHrReinstatement(HrReinstatement hrReinstatement)
  * @param reinstatementType
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getHrReinstatementList(String orgId,String userId,String beginTime,String endTime,String reinstatementType)
 {
@@ -66,7 +66,7 @@ public List<Map<String, String>>getHrReinstatementList(String orgId,String userI
  * @param reinstatementType
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getHrReinstatementList(PageParam pageParam,String userId,String beginTime,String endTime,String reinstatementType) 
 {

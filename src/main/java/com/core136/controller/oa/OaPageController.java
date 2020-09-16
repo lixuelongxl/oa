@@ -31,7 +31,7 @@ public class OaPageController {
 	 * @param: request
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/setconfig")
 	public ModelAndView goSetAttendConfig(HttpServletRequest request)
@@ -53,7 +53,7 @@ public class OaPageController {
 	 * @param: request
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/statistics")
 	public ModelAndView goStatistics(HttpServletRequest request)
@@ -76,7 +76,7 @@ public class OaPageController {
 	 * @param: request
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/myattend")
 	public ModelAndView goMyattend(HttpServletRequest request,String view)

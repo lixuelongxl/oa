@@ -68,7 +68,7 @@ public ProjectBuildStage selectOneProjectBuildStage(ProjectBuildStage projectBui
  * @param: projectId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,String>> getprojectbuildStagelist(String orgId,String projectId)
 {
@@ -92,7 +92,7 @@ public PageInfo<Map<String, String>> getprojectbuildStagelist(PageParam pagePara
  * @param: stageId
  * @param: @return      
  * @return: int      
- * @throws
+
  */
 public int openStage(String orgId,String projectId,String stageId)
 {
@@ -111,7 +111,7 @@ public int openStage(String orgId,String projectId,String stageId)
  * @param: stageId
  * @param: @return      
  * @return: int      
- * @throws
+
  */
 public int closeStage(String orgId,String projectId,String stageId)
 {
@@ -131,7 +131,7 @@ public int closeStage(String orgId,String projectId,String stageId)
  * @param: projectId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,String>> getprojectbuildStageOpenlist(String orgId,String projectId)
 {

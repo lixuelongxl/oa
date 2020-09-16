@@ -24,7 +24,7 @@ public class DataPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/queryinfo")
 	public ModelAndView  goQueryInfo(HttpServletRequest request,String view)
@@ -46,7 +46,7 @@ public class DataPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/handle")
 	public ModelAndView  goHandle(String view)
@@ -77,7 +77,7 @@ public class DataPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/uploadinfo")
 	public ModelAndView  goUploadInfo(HttpServletRequest request,String view)
@@ -110,7 +110,7 @@ public class DataPageController {
 	 * @param view
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/uploadinfodetails")
 	public ModelAndView  goUploadInfoDetails(HttpServletRequest request,String view)

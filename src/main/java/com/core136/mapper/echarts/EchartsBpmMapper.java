@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 
 @Mapper
 public interface EchartsBpmMapper {
@@ -17,7 +16,7 @@ public interface EchartsBpmMapper {
 	 * @param orgId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getBiBpmFlowPie(@Param(value="orgId")String orgId);
 	
@@ -28,7 +27,7 @@ public interface EchartsBpmMapper {
 	 * @param orgId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getBiBpmFlowByDeptPie(@Param(value="orgId")String orgId);
 	
@@ -39,7 +38,7 @@ public interface EchartsBpmMapper {
 	 * @param orgId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getBiBpmFlowByAccountPie(@Param(value="orgId")String orgId);
 	
@@ -52,7 +51,7 @@ public interface EchartsBpmMapper {
 	 * @param endTime
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String,Object>>getBiBpmFlowByMonthLine(@Param(value="orgId")String orgId,@Param(value="beginTime")String beginTime,@Param(value="endTime")String endTime); 
 	

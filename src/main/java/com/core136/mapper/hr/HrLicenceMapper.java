@@ -36,7 +36,7 @@ public interface HrLicenceMapper extends MyMapper<HrLicence>{
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 public List<Map<String, String>>getHrLicenceList(@Param(value="orgId")String orgId,
 		@Param(value="userId")String userId,@Param(value="beginTime")String beginTime,@Param(value="endTime")String endTime,
@@ -51,7 +51,7 @@ public List<Map<String, String>>getHrLicenceList(@Param(value="orgId")String org
  * @param accountId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getMyHrLicenceList(@Param(value="orgId")String orgId,@Param(value="accountId")String accountId);
 

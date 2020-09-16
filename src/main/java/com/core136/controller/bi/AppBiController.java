@@ -1,12 +1,53 @@
 package com.core136.controller.bi;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.core136.bean.account.Account;
+import com.core136.bean.bi.BiTemplate;
+import com.core136.service.account.AccountService;
+import com.core136.service.bi.JasperreportsUnit;
+
+
 @Controller
 @RequestMapping("/app/core")
 public class AppBiController {
+	@Autowired
+	private JasperreportsUnit jasperreportsUnit;
+	@Autowired
+	private AccountService accountService;
+	/**
+	 * 
+	 * @Title: goGetreportpage   
+	 * @Description: TODO 查看报表
+	 * @param response
+	 * @param request
+	 * @param biTemplate
+	 * @return
+	 * ModelAndView
+	 */
+	@RequestMapping("/getreportpage")
+	public ModelAndView  goGetreportpage(HttpServletResponse response,HttpServletRequest request,BiTemplate biTemplate)
+	{
+		try
+		{
+		ModelAndView mv = new ModelAndView("app/core/bi/report/reportpage");
+		Account account=accountService.getRedisAccount(request);
+		biTemplate.setOrgId(account.getOrgId());
+		mv.addObject("jascontent",jasperreportsUnit.getRepHtml(biTemplate));
+		return mv;
+		}catch (Exception e) {
+		//e.printStackTrace();
+		ModelAndView mv = new ModelAndView("titps");
+		return mv;
+	}
+	}
+	
 	/**
 	 * 
 	 * @Title gobisort   
@@ -68,4 +109,6 @@ public class AppBiController {
 		return mv;
 	}
 	}
+	
+	
 }

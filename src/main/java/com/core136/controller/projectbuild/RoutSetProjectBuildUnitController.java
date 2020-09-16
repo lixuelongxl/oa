@@ -66,7 +66,7 @@ private AccountService accountService;
 	 * @param: projectBuildUnit
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteProjectBuildUnit",method=RequestMethod.POST)
 	public RetDataBean deleteProjectBuildUnit(HttpServletRequest request,ProjectBuildUnit projectBuildUnit)
@@ -93,7 +93,7 @@ private AccountService accountService;
 	 * @param: projectBuildUnit
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateProjectBuildUnit",method=RequestMethod.POST)
 	public RetDataBean updateProjectBuildUnit(HttpServletRequest request,ProjectBuildUnit projectBuildUnit)

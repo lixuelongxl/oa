@@ -22,7 +22,7 @@ public interface HrLearnRecordMapper extends MyMapper<HrLearnRecord>{
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 public List<Map<String, String>>getHrLearnRecordList(@Param(value="orgId")String orgId,@Param(value="userId")String userId,
 		@Param(value="beginTime")String beginTime,@Param(value="endTime")String endTime,@Param(value="search")String search);
@@ -35,7 +35,7 @@ public List<Map<String, String>>getHrLearnRecordList(@Param(value="orgId")String
  * @param accountId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getMyHrLearnRecordList(@Param(value="orgId")String orgId,@Param(value="accountId")String accountId);
 

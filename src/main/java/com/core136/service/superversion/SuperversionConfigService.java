@@ -59,7 +59,7 @@ public PageInfo<SuperversionConfig> getSuperversionConfigList(PageParam pagePara
  * @param: orgId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getAllSuperversionConfigList(String orgId)
 {
@@ -73,7 +73,7 @@ public List<Map<String, String>>getAllSuperversionConfigList(String orgId)
  * @param: accountId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getMySuperversionConfigList(String orgId,String accountId)
 {
@@ -86,7 +86,7 @@ public List<Map<String, String>>getMySuperversionConfigList(String orgId,String 
  * @param: orgId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getQuerySuperversionForType(String orgId)
 {

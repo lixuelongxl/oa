@@ -67,7 +67,7 @@ public class RoutGetTaskController {
 	 * @param processId
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getTaskProcessInfo",method=RequestMethod.POST)
 	public RetDataBean getTaskProcessInfo(HttpServletRequest request,String processId)
@@ -93,7 +93,7 @@ public class RoutGetTaskController {
 	 * @param: taskProcess
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getTaskProcess",method=RequestMethod.POST)
 	public RetDataBean getTaskProcess(HttpServletRequest request,TaskProcess taskProcess)
@@ -119,7 +119,7 @@ public class RoutGetTaskController {
 	 * @param: request
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getTaskListForDesk",method=RequestMethod.POST)
 	public RetDataBean getTaskListForDesk(HttpServletRequest request)
@@ -167,7 +167,7 @@ public class RoutGetTaskController {
 	 * @param: endTime
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMyTaskWorkList",method=RequestMethod.POST)
 	public RetDataBean getMyTaskWorkList(
@@ -213,7 +213,7 @@ public class RoutGetTaskController {
 	 * @param endTime
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMyTaskProcessList",method=RequestMethod.POST)
 	public RetDataBean getMyTaskProcessList(
@@ -259,7 +259,7 @@ public class RoutGetTaskController {
 	 * @param: userPriv
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getAllUserPrivList",method=RequestMethod.POST)
 	public RetDataBean getAllUserPrivList(
@@ -303,7 +303,7 @@ public class RoutGetTaskController {
 	 * @param: taskId
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getParticipantUserList",method=RequestMethod.POST)
 	public RetDataBean getParticipantUserList(HttpServletRequest request,String taskId)
@@ -329,7 +329,7 @@ public class RoutGetTaskController {
 	 * @param: taskId
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getTaskGantInfo",method=RequestMethod.POST)
 	public RetDataBean getTaskGantInfo(HttpServletRequest request,String taskId)
@@ -357,7 +357,7 @@ public class RoutGetTaskController {
 	 * @param: taskGanttLink
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getTaskGanttLinkById",method=RequestMethod.POST)
 	public RetDataBean getTaskGanttLinkById(HttpServletRequest request,TaskGanttLink taskGanttLink)
@@ -385,7 +385,7 @@ public class RoutGetTaskController {
 	 * @param: taskGanttData
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getTaskGanttDataById",method=RequestMethod.POST)
 	public RetDataBean getTaskGanttDataById(HttpServletRequest request,TaskGanttData taskGanttData)
@@ -413,7 +413,7 @@ public class RoutGetTaskController {
 	 * @param: task
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getTaskById",method=RequestMethod.POST)
 	public RetDataBean getTaskById(HttpServletRequest request,Task task)
@@ -440,7 +440,7 @@ public class RoutGetTaskController {
 	 * @param: pageParam
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getManageTaskList",method=RequestMethod.POST)
 	public RetDataBean getManageTaskList(
@@ -487,7 +487,7 @@ public class RoutGetTaskController {
 	 * @param endTime
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMyChargeTaskList",method=RequestMethod.POST)
 	public RetDataBean getMyChargeTaskList(
@@ -533,7 +533,7 @@ public class RoutGetTaskController {
 	 * @param endTime
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMySupervisorTaskList",method=RequestMethod.POST)
 	public RetDataBean getMySupervisorTaskList(
@@ -577,7 +577,7 @@ public class RoutGetTaskController {
  * @param: endTime
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 	@RequestMapping(value="/getAssignmentTaskList",method=RequestMethod.POST)
 	public RetDataBean getAssignmentTaskList(

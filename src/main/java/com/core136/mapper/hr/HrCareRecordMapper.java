@@ -23,7 +23,7 @@ public interface HrCareRecordMapper extends MyMapper<HrCareRecord>{
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 	public List<Map<String,String>>getHrCareRecordList(@Param(value="orgId")String orgId,
 			@Param(value="userId")String userId,@Param(value="beginTime")String beginTime,

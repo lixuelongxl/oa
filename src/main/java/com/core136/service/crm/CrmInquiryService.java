@@ -75,7 +75,7 @@ public int updateCrmInquiry(CrmInquiry crmInquiry,Example example)
  * @param jsonArr
  * @return
  * int    
- * @throws
+
  */
 @Transactional(value="generalTM")
 public int updateInquiryAndDetail(CrmInquiry crmInquiry,Example example,JSONArray jsonArr)
@@ -154,9 +154,23 @@ public List<Map<String, String>> getCrmInquiryList(String orgId, String opFlag, 
  */
 public PageInfo<Map<String, String>> getCrmInquiryList(PageParam pageParam,String beginTime,String endTime,String customerType,String status) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
-	List<Map<String,String>> datalist= crmInquiryMapper.getCrmInquiryList(pageParam.getOrgId(),pageParam.getOpFlag(),pageParam.getAccountId(), beginTime,endTime,customerType,status,pageParam.getSearch());
+	List<Map<String,String>> datalist= getCrmInquiryList(pageParam.getOrgId(),pageParam.getOpFlag(),pageParam.getAccountId(), beginTime,endTime,customerType,status,pageParam.getSearch());
 	PageInfo<Map<String, String>> pageInfo = new PageInfo<Map<String,String>>(datalist);
 	return pageInfo;
+}
+
+/**
+ * 
+ * @Title: getCrmInquiryListForSelect   
+ * @Description: TODO 获取询价单列表
+ * @param orgId
+ * @param accountId
+ * @return
+ * List<Map<String,String>>
+ */
+public List<Map<String, String>>getCrmInquiryListForSelect(String orgId,String accountId)
+{
+	return crmInquiryMapper.getCrmInquiryListForSelect(orgId, accountId);
 }
 
 }

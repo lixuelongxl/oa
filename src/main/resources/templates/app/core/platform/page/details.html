@@ -23,21 +23,25 @@
 					<div class="widget-header bordered-bottom bordered-blue">
 						<span class="widget-caption">记录详情</span>
 					</div>
-					<div>
-					${formHtml}
+					<div class="widget-body">
+					${platformPageDetailsBean.htmlCode}
+					<div align="center">
+						${platformPageDetailsBean.optBtn}
+					</div>
 					</div>
 				</div>
-				<div align="center">
-					<a href="javascript:void(0);window.close();" class="btn btn-primary">关&nbsp;&nbsp;闭</a>
-				</div>
+				
 			</div>
 		</div>
 	</div>
 </body>
 <%include("../../../resapi/sysjs.html"){}%>
+
 <script type="text/javascript">
-		var recordId = "${parameter.recordId}";
-	</script>
+	var recordId = "${parameter.recordId}";
+	var pageId="${platformPageDetailsBean.pageId}";
+	var menuId = "${platformPageDetailsBean.menuId}";
+</script>
 <script type="text/javascript" src="/module/fileupload/pageoffice.js" id="po_js_main"></script>
 <script type="text/javascript" src="/module/fileupload/ajaxfileupload.js"></script>
 <script type="text/javascript" src="/module/fileupload/fileupload.js"></script>

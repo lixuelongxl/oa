@@ -7,7 +7,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.core136.common.dbutils.MyMapper;
 
-import com.beust.jcommander.Parameter;
 import com.core136.bean.archives.ArchivesVolume;
 
 @Mapper
@@ -22,7 +21,7 @@ public interface ArchivesVolumeMapper extends MyMapper<ArchivesVolume>{
 	 * @param accountId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getArchivesVolumeList(
 			@Param(value="orgId")String orgId,
@@ -39,7 +38,7 @@ public interface ArchivesVolumeMapper extends MyMapper<ArchivesVolume>{
 	 * @param accountId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getArchivesVolumeListForSelect(@Param(value="orgId")String orgId,@Param(value="opFlag")String opFlag,@Param(value="accountId") String accountId);
 
@@ -51,7 +50,7 @@ public interface ArchivesVolumeMapper extends MyMapper<ArchivesVolume>{
 	 * @param repositoryId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getArchivesVolumeByRepositoryId(@Param(value="orgId")String orgId,@Param(value="repositoryId") String repositoryId);
 

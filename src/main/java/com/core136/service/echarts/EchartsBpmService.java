@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,7 +36,7 @@ public class EchartsBpmService {
 	 * @param account
 	 * @return
 	 * OptionConfig    
-	 * @throws
+
 	 */
 	public OptionConfig getBiBpmFlowByMonthLine(Account account)
 	{
@@ -49,7 +49,7 @@ public class EchartsBpmService {
         c.add(Calendar.YEAR, -1);
         y = c.getTime();
         String beginTime = format.format(y);
-		List<Map<String, Object>> resList = echartsBpmMapper.getBiBpmFlowByMonthLine(account.getOrgId(), beginTime, endTime);
+		List<Map<String, Object>> resList = getBiBpmFlowByMonthLine(account.getOrgId(), beginTime, endTime);
 		String [] xAxisData = new String[resList.size()];
 		Double[] resData = new Double[resList.size()];
 		for(int i=0;i<resList.size();i++)
@@ -60,7 +60,10 @@ public class EchartsBpmService {
 		optionConfig = lineOption.getBasicLineChartOption(xAxisData, resData);
 		return optionConfig;
 	}
-	
+	public List<Map<String, Object>> getBiBpmFlowByMonthLine(String orgId,String beginTime, String endTime)
+	{
+		return echartsBpmMapper.getBiBpmFlowByMonthLine(orgId,beginTime, endTime);
+	}
 	/**
 	 * 
 	 * @Title: getBiBpmFlowByAccountPie   
@@ -68,12 +71,12 @@ public class EchartsBpmService {
 	 * @param account
 	 * @return
 	 * OptionConfig    
-	 * @throws
+
 	 */
 	public OptionConfig getBiBpmFlowByAccountPie(Account account)
 	{
 		OptionConfig optionConfig = new OptionConfig();
-		List<Map<String, String>> resdataList = echartsBpmMapper.getBiBpmFlowByAccountPie(account.getOrgId());
+		List<Map<String, String>> resdataList = getBiBpmFlowByAccountPie(account.getOrgId());
 		OptionSeries[] optionSeriesArr = new OptionSeries[1];
 		SeriesData[] dataArr = new SeriesData[resdataList.size()];
 		int selectedLeng=0;
@@ -126,6 +129,11 @@ public class EchartsBpmService {
 		optionConfig.setTitle(optionTitle);
 		return optionConfig;
 	}
+	
+	public List<Map<String, String>> getBiBpmFlowByAccountPie(String orgId)
+	{
+		return echartsBpmMapper.getBiBpmFlowByAccountPie(orgId);
+	}
 	/**
 	 * 
 	 * @Title: getBiBpmFlowByDeptPie   
@@ -133,12 +141,12 @@ public class EchartsBpmService {
 	 * @param account
 	 * @return
 	 * OptionConfig    
-	 * @throws
+
 	 */
 	public OptionConfig getBiBpmFlowByDeptPie(Account account)
 	{
 		OptionConfig optionConfig = new OptionConfig();
-		List<Map<String, String>> resdataList = echartsBpmMapper.getBiBpmFlowByDeptPie(account.getOrgId());
+		List<Map<String, String>> resdataList = getBiBpmFlowByDeptPie(account.getOrgId());
 		OptionSeries[] optionSeriesArr = new OptionSeries[1];
 		SeriesData[] dataArr = new SeriesData[resdataList.size()];
 		int selectedLeng=0;
@@ -191,6 +199,10 @@ public class EchartsBpmService {
 		optionConfig.setTitle(optionTitle);
 		return optionConfig;
 	}
+	public List<Map<String, String>> getBiBpmFlowByDeptPie(String orgId)
+	{
+		return echartsBpmMapper.getBiBpmFlowByDeptPie(orgId);
+	}
 	
 	/**
 	 * 
@@ -199,12 +211,12 @@ public class EchartsBpmService {
 	 * @param account
 	 * @return
 	 * OptionConfig    
-	 * @throws
+
 	 */
 	public OptionConfig getBiBpmFlowPie(Account account)
 	{
 		OptionConfig optionConfig = new OptionConfig();
-		List<Map<String, String>> resdataList = echartsBpmMapper.getBiBpmFlowPie(account.getOrgId());
+		List<Map<String, String>> resdataList = getBiBpmFlowPie(account.getOrgId());
 		OptionSeries[] optionSeriesArr = new OptionSeries[1];
 		SeriesData[] dataArr = new SeriesData[resdataList.size()];
 		int selectedLeng=0;
@@ -256,6 +268,11 @@ public class EchartsBpmService {
 		optionTitle.setLeft("center");
 		optionConfig.setTitle(optionTitle);
 		return optionConfig;
+	}
+	
+	public List<Map<String, String>> getBiBpmFlowPie(String orgId)
+	{
+		return echartsBpmMapper.getBiBpmFlowPie(orgId);
 	}
 	
 }

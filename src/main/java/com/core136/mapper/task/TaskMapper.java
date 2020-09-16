@@ -21,7 +21,7 @@ public interface TaskMapper extends MyMapper<Task>{
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 public List<Map<String, String>>getManageTaskList(
 		@Param(value="orgId") String orgId,
@@ -46,7 +46,7 @@ public List<Map<String, String>>getManageTaskList(
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getMyChargeTaskList(
 		@Param(value="orgId") String orgId,
@@ -71,7 +71,7 @@ public List<Map<String, String>>getMyChargeTaskList(
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getMySupervisorTaskList(
 		@Param(value="orgId") String orgId,
@@ -96,7 +96,7 @@ public List<Map<String, String>>getMySupervisorTaskList(
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getAssignmentTaskList(
 		@Param(value="orgId") String orgId,

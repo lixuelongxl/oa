@@ -33,7 +33,7 @@ private AccountService accountService;
  * @param: projectBuildSupplier
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/delSupplier",method=RequestMethod.POST)
 public RetDataBean delSupplier(HttpServletRequest request,ProjectBuildSupplier projectBuildSupplier)
@@ -60,7 +60,7 @@ public RetDataBean delSupplier(HttpServletRequest request,ProjectBuildSupplier p
  * @param: projectBuildSupplier
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/insertSupplier",method=RequestMethod.POST)
 public RetDataBean insertSupplier(HttpServletRequest request,ProjectBuildSupplier projectBuildSupplier)
@@ -86,7 +86,7 @@ public RetDataBean insertSupplier(HttpServletRequest request,ProjectBuildSupplie
  * @param: projectBuildSupplier
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/updateSupplier",method=RequestMethod.POST)
 public RetDataBean updateSupplier(HttpServletRequest request,ProjectBuildSupplier projectBuildSupplier)

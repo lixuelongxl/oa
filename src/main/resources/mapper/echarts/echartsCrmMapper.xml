@@ -5,27 +5,142 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.core136.mapper.echarts.EchartsCrmMapper">
 
 <select id="getBiCustomerIndustryPie" resultType="java.util.HashMap">
-SELECT I.INDUSTRY_NAME as name,count(c.industry) AS value
-FROM CRM_CUSTOMER C LEFT JOIN CRM_INDUSTRY I ON C.ORG_ID=I.ORG_ID AND C.INDUSTRY=I.INDUSTRY_ID
-WHERE C.ORG_ID=#{orgId} GROUP BY C.INDUSTRY ORDER BY value desc
+SELECT
+(SELECT I.INDUSTRY_NAME FROM CRM_INDUSTRY I WHERE I.ORG_ID=#{orgId} AND C.INDUSTRY=I.INDUSTRY_ID) AS "name",
+COUNT(C.INDUSTRY) AS "value",
+C.INDUSTRY AS INDUSTRY
+FROM CRM_CUSTOMER C 
+WHERE C.ORG_ID=#{orgId} GROUP BY INDUSTRY ORDER BY "value" DESC
 </select>
 
 
 <select id="getBiCustomerKeepUserPie" resultType="java.util.HashMap">
-SELECT U.USER_NAME as name,count(c.KEEP_USER) as value
-FROM CRM_CUSTOMER C LEFT JOIN USER_INFO U ON C.ORG_ID=U.ORG_ID AND C.KEEP_USER=U.ACCOUNT_ID
-WHERE C.ORG_ID=#{orgId} GROUP BY C.KEEP_USER ORDER BY value desc
+SELECT 
+(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=#{orgId} AND C.KEEP_USER=U.ACCOUNT_ID) AS "name",
+COUNT(C.KEEP_USER) as "value",
+C.KEEP_USER AS KEEP_USER
+FROM CRM_CUSTOMER C
+WHERE C.ORG_ID=#{orgId} GROUP BY KEEP_USER ORDER BY "value" DESC
 </select>
 
 <select id="getBiCustomerAreaPie" resultType="java.util.HashMap">
-SELECT PROVINCE AS name,COUNT(PROVINCE) as value
-FROM CRM_CUSTOMER GROUP BY PROVINCE ORDER BY value desc
+SELECT PROVINCE AS "name",COUNT(PROVINCE) as "value"
+FROM CRM_CUSTOMER GROUP BY PROVINCE ORDER BY "value" DESC
 </select>
 
 <select id="getBiCustomerLevelPie" resultType="java.util.HashMap">
-SELECT CASE LEVEL WHEN 1 THEN '公司重点客户'  WHEN 2 THEN '公司主要客户' WHEN 3 THEN '公司一般客户'  WHEN 4 THEN '潜在重点客户'  WHEN 5 THEN '潜在主要客户'  WHEN 6 THEN '黑名单客户'  WHEN 7 THEN '公司主要客户' ELSE '信息池客户' END AS name,count(level) as value
-FROM CRM_CUSTOMER GROUP BY LEVEL ORDER BY value desc
+SELECT CASE "LEVEL" WHEN 1 THEN '公司重点客户'  WHEN 2 THEN '公司主要客户' WHEN 3 THEN '公司一般客户'  WHEN 4 THEN '潜在重点客户'  WHEN 5 THEN '潜在主要客户'  WHEN 6 THEN '黑名单客户'  WHEN 7 THEN '公司主要客户' ELSE '信息池客户' END AS "name",count(level) AS "value"
+FROM CRM_CUSTOMER GROUP BY "LEVEL" ORDER BY "value" DESC
 </select>
+
+
+<select id="getBiInquiryByAccountPie" resultType="java.util.HashMap">
+SELECT
+	C.CREATE_USER,
+	count(1) AS "value",
+	(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=#{orgId} AND U.ACCOUNT_ID=C.CREATE_USER) AS "name"
+FROM
+	CRM_INQUIRY C
+WHERE 
+C.ORG_ID = #{orgId} 
+GROUP BY C.CREATE_USER 
+ORDER BY value DESC LIMIT 0,10
+</select>
+
+
+<select id="getBiInquiryByMonthLine" resultType="java.util.HashMap">
+SELECT COUNT(1) AS total,createTime
+FROM
+(SELECT LEFT(CREATE_TIME, 7) AS createTime
+FROM CRM_INQUIRY WHERE ORG_ID=#{orgId}) TEMP
+WHERE TEMP.createTime&gt;#{beginTime} AND TEMP.createTime&lt;=#{endTime} GROUP BY TEMP.createTime
+</select>
+
+
+<select id="getBiInquiryByProductPie" resultType="java.util.HashMap">
+ SELECT
+ D.PRODUCT_ID AS PRODUCT_ID,
+ (SELECT P.PRODUCT_NAME FROM ERP_PRODUCT P WHERE P.ORG_ID=#{orgId} AND P.PRODUCT_ID=D.PRODUCT_ID) AS "name",
+ COUNT(1) AS "value"
+ FROM
+ CRM_INQUIRY_DETAIL D 
+ WHERE 
+	D.ORG_ID=#{orgId}
+GROUP BY
+	PRODUCT_ID
+ORDER BY "value"
+	DESC
+LIMIT 0,10
+</select>
+
+
+<select id="getBiInquiryByDeptPie" resultType="java.util.HashMap">
+SELECT 
+P.DEPT_ID,
+COUNT(1) AS "value",
+(SELECT D.DEPT_NAME FROM UNIT_DEPT D WHERE D.ORG_ID=#{orgId} AND D.DEPT_ID=P.DEPT_ID) AS "name"
+ FROM
+CRM_INQUIRY B LEFT JOIN USER_INFO P ON B.ORG_ID=P.ORG_ID AND B.CREATE_USER=P.ACCOUNT_ID
+WHERE B.ORG_ID=#{orgId}
+GROUP BY P.DEPT_ID
+ORDER BY "value" DESC
+LIMIT 0,10
+</select>
+
+
+<select id="getBiQuotationByAccountPie" resultType="java.util.HashMap">
+SELECT
+	C.CREATE_USER,
+	count(1) AS "value",
+	(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=#{orgId} AND U.ACCOUNT_ID=C.CREATE_USER) AS "name"
+FROM
+	CRM_QUOTATION C
+WHERE 
+C.ORG_ID = #{orgId} 
+GROUP BY C.CREATE_USER 
+ORDER BY value DESC LIMIT 0,10
+</select>
+
+
+<select id="getBiQuotationByMonthLine" resultType="java.util.HashMap">
+SELECT COUNT(1) AS total,createTime
+FROM
+(SELECT LEFT(CREATE_TIME, 7) AS createTime
+FROM CRM_QUOTATION WHERE ORG_ID=#{orgId}) TEMP
+WHERE TEMP.createTime&gt;#{beginTime} AND TEMP.createTime&lt;=#{endTime} GROUP BY TEMP.createTime
+</select>
+
+
+<select id="getBiQuotationByProductPie" resultType="java.util.HashMap">
+ SELECT
+ D.PRODUCT_ID AS PRODUCT_ID,
+ (SELECT P.PRODUCT_NAME FROM ERP_PRODUCT P WHERE P.ORG_ID=#{orgId} AND P.PRODUCT_ID=D.PRODUCT_ID) AS "name",
+ COUNT(1) AS "value"
+ FROM
+ CRM_QUOTATION_MX D 
+ WHERE 
+	D.ORG_ID=#{orgId}
+GROUP BY
+	PRODUCT_ID
+ORDER BY "value"
+	DESC
+LIMIT 0,10
+</select>
+
+
+<select id="getBiQuotationByDeptPie" resultType="java.util.HashMap">
+SELECT 
+P.DEPT_ID,
+COUNT(1) AS "value",
+(SELECT D.DEPT_NAME FROM UNIT_DEPT D WHERE D.ORG_ID=#{orgId} AND D.DEPT_ID=P.DEPT_ID) AS "name"
+ FROM
+CRM_QUOTATION B LEFT JOIN USER_INFO P ON B.ORG_ID=P.ORG_ID AND B.CREATE_USER=P.ACCOUNT_ID
+WHERE B.ORG_ID=#{orgId}
+GROUP BY P.DEPT_ID
+ORDER BY "value" DESC
+LIMIT 0,10
+</select>
+
 
 
 </mapper>

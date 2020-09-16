@@ -49,7 +49,7 @@ public HrLeaveRecord selectOneHrLeaveRecord(HrLeaveRecord hrLeaveRecord)
  * @param leaveType
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getHrLeaveRecordList(String orgId,String userId,String beginTime,String endTime,String leaveType)
 {
@@ -66,7 +66,7 @@ public List<Map<String, String>>getHrLeaveRecordList(String orgId,String userId,
  * @param leaveType
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getHrLeaveRecordList(PageParam pageParam,String userId,String beginTime,String endTime,String leaveType) 
 {

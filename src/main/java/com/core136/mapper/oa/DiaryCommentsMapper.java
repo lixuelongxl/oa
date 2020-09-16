@@ -20,7 +20,7 @@ public interface DiaryCommentsMapper extends MyMapper<DiaryComments>{
 	 * @param: diaryId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getDiaryCommentsList(@Param(value="orgId") String orgId,@Param(value="diaryId") String diaryId);
 	
@@ -32,7 +32,7 @@ public interface DiaryCommentsMapper extends MyMapper<DiaryComments>{
 	 * @param: accountId
 	 * @param: @return      
 	 * @return: Integer      
-	 * @throws
+
 	 */
 	public Integer getMyDiaryCommentsCount(@Param(value="orgId") String orgId,@Param(value="accountId")String accountId);
 	

@@ -16,15 +16,15 @@ public class LineEchartsService {
 	
 	public OptionConfig getLineOptionConfig(BiTemplate biTemplate,BiType biType)
 	{
-		String key = biTemplate.getBiType();
-		switch (key) {
-		case "line001":
-			
-			break;
-
-		default:
-			break;
-		}
+		//String key = biTemplate.getBiType();
+//		switch (key) {
+//		case "line001":
+//			
+//			break;
+//
+//		default:
+//			break;
+//		}
 		return null;
 	}
 	

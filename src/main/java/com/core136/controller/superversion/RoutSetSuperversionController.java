@@ -64,7 +64,7 @@ public class RoutSetSuperversionController {
 	 * @param superversionScore
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertSuperversionScore",method=RequestMethod.POST)
 	public RetDataBean insertSuperversionScore(HttpServletRequest request,SuperversionScore superversionScore)
@@ -177,7 +177,7 @@ public class RoutSetSuperversionController {
 	 * @param: superversionDelay
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertSuperversionDelay",method=RequestMethod.POST)
 	public RetDataBean insertSuperversionDelay(HttpServletRequest request,SuperversionDelay superversionDelay)
@@ -262,7 +262,7 @@ public class RoutSetSuperversionController {
 	 * @param: superversionConfig
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertSuperversionConfig",method=RequestMethod.POST)
 	public RetDataBean insertSuperversionConfig(HttpServletRequest request,SuperversionConfig superversionConfig)
@@ -287,7 +287,7 @@ public class RoutSetSuperversionController {
 	 * @param: superversionConfig
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteSuperversionConfig",method=RequestMethod.POST)
 	public RetDataBean deleteSuperversionConfig(HttpServletRequest request,SuperversionConfig superversionConfig)
@@ -314,7 +314,7 @@ public class RoutSetSuperversionController {
 	 * @param: superversionConfig
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateSuperversionConfig",method=RequestMethod.POST)
 	public RetDataBean updateSuperversionConfig(HttpServletRequest request,SuperversionConfig superversionConfig)
@@ -343,7 +343,7 @@ public class RoutSetSuperversionController {
 	 * @param: superversion
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertSuperversion",method=RequestMethod.POST)
 	public RetDataBean insertSuperversion(HttpServletRequest request,Superversion superversion)
@@ -370,7 +370,7 @@ public class RoutSetSuperversionController {
 	 * @param: superversion
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteSuperversion",method=RequestMethod.POST)
 	public RetDataBean deleteSuperversion(HttpServletRequest request,Superversion superversion)
@@ -396,7 +396,7 @@ public class RoutSetSuperversionController {
 	 * @param: superversion
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateSuperversion",method=RequestMethod.POST)
 	public RetDataBean updateSuperversion(HttpServletRequest request,Superversion superversion)

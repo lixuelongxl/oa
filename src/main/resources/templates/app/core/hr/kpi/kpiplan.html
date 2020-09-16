@@ -33,54 +33,79 @@
 										<table class="table table-hover table-striped table-bordered">
 											<tr>
 												<td width="20%">排序号：</td>
-												<td width="80%"><input style="width:150px" placeholder="排序号" type="number" name="sortNo" id="sortNo" maxlength="50" value="" class="form-control"></td>
+												<td width="80%" colspan="2"><input style="width:150px" placeholder="排序号" type="number" name="sortNo" id="sortNo" maxlength="50" value="" class="form-control"></td>
 												</tr>
 											<tr>
-												<td width="20%">考核指标标题：</td>
-												<td width="80%"><input placeholder="考核指标标题" type="text" name="title" id="title" class="form-control"></td>
+												<td width="20%">考核计划标题：</td>
+												<td width="80%" colspan="2"><input placeholder="考核计划标题" type="text" name="title" id="title" class="form-control"></td>
+											</tr>
+											
+											<tr>
+												<td width="20%">考核时间段：</td>
+												<td width="80%" colspan="2">
+												<input placeholder="开始时间" type="text" name="beginTime" id="beginTime" class="form-control" style="display: inline-block;width: 150px">
+												<span style="display: inline-block;">-</span>
+												<input placeholder="结束时间" type="text" name="endTime" id="endTime" class="form-control" style="display: inline-block;width: 150px">
+												</td>
 											</tr>
 											<tr>
-												<td width="20%">指标类型：</td>
-												<td width="80%">
-													<select style="width:150px;border-radius: 0px;" id="kpiType" name="kpiType" class="form-control">
+												<td width="20%">考核负责人：</td>
+												<td width="80%" colspan="2"><input placeholder="考核负责人" type="text" name="chargeUser" id="chargeUser" class="form-control" style="width: 150px"></td>
+											</tr>
+											<tr>
+												<td width="20%">指标规则：</td>
+												<td width="80%" colspan="2">
+													<select style="width:150px;border-radius: 0px;" id="kpiRule" name="kpiRule" class="form-control">
+														<option value="1">指定考核人</option>
+														<option value="2">部门主管考核</option>
+														<option value="3">逐级考核</option>
 													</select>
 												</td>
 											</tr>
 											<tr>
-												<td width="20%">考核方式：</td>
-												<td width="80%">
-													<select style="width:150px;border-radius: 0px;" id="optType" name="optType" class="form-control">
-														<option value="1">单选</option>
-														<option value="2">多选</option>
-														<option value="3">简述</option>
-													</select>
+												<td width="20%">被考核人：</td>
+												<td width="60%">
+													<textarea rows="4" cols="" class="form-control" id="userPriv" name="userPriv"></textarea>
 												</td>
+												<td width="20%"></td>
 											</tr>
 											<tr>
-												<td colspan="4">考核指标子项<div style="float: right;"><a href="javascript:void(0);" class="btn btn-sky btn-xs js-child-item">添加子项</a></div></td>
+												<td width="20%">被考核部门：</td>
+												<td width="60%">
+													<textarea rows="4" cols="" class="form-control" id="deptPriv" name="deptPriv"></textarea>
+												</td>
+												<td width="20%"></td>
+											</tr><tr>
+												<td width="20%">被考核职务：</td>
+												<td width="60%">
+													<textarea rows="4" cols="" class="form-control" id="levelPriv" name="levelPriv"></textarea>
+												</td>
+												<td width="20%"></td>
 											</tr>
 											<tr>
-												<td colspan="4">
+												<td colspan="3">考核指标集<div style="float: right;"><a href="javascript:void(0);" class="btn btn-sky btn-xs js-child-item">添加指标</a></div></td>
+											</tr>
+											<tr>
+												<td colspan="3">
 													<table class="table table-hover table-striped table-bordered" id="child-item-table">
 													<tr>
 													<td width="100px">排序号</td>
-													<td>子项</td>
-													<td width="150px">分值</td>
+													<td>指标标题</td>
 													<td width="100px">操作</td>
 													</tr>
 													</table>
 												</td>
 											</tr>
 											<tr>
-												<td colspan="4">备注说明</td>
+												<td colspan="3">备注说明</td>
 											</tr>
 											<tr>
-												<td colspan="4">
+												<td colspan="3">
 													<textarea rows="5" cols="" class="form-control" id="remark" name="remark"></textarea>
 												</td>
 											</tr>
 											<tr>
-												<td colspan="4" align="center"><a href="javascript:void(0);" class="btn btn-primary js-add-save">新&nbsp;&nbsp;建</a></td>
+												<td colspan="3" align="center"><a href="javascript:void(0);" class="btn btn-primary js-add-save">新&nbsp;&nbsp;建</a></td>
 											</tr>
 										</table>
 									</form>
@@ -106,6 +131,6 @@
 <script type="text/javascript" src="/module/hrorgselect/hrorgselect.js"></script>
 <script type="text/javascript" src="/module/orgselect/orgselect.js"></script>
 <script type="text/javascript" src="/gobal/js/page/hr/hrapi.js"></script>
-<script type="text/javascript" src="/gobal/js/page/hr/kpi/kpiitem.js"></script>
+<script type="text/javascript" src="/gobal/js/page/hr/kpi/kpiplan.js"></script>
 </body>
 </html>

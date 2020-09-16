@@ -14,7 +14,7 @@ public class PageTaskContoller {
 	 * @Description: TODO 任务处理详情
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/taskdatadetails")
 	public ModelAndView  goTaskDataDetails()
@@ -35,7 +35,7 @@ public class PageTaskContoller {
 	 * @Description: TODO 整体进度甘特图
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/ganttdetails")
 	public ModelAndView  goGanttDetails()
@@ -56,7 +56,7 @@ public class PageTaskContoller {
 	 * @Description: TODO 处理事件详情
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/processdetails")
 	public ModelAndView  goProcessDetails()
@@ -77,7 +77,7 @@ public class PageTaskContoller {
 	 * @Description: TODO 领导管控 
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/taskmonitor")
 	public ModelAndView  goTaskMonitor(String view)
@@ -110,7 +110,7 @@ public class PageTaskContoller {
 	 * @param: view
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/myTask")
 	public ModelAndView  goMyTask(String view)
@@ -144,7 +144,7 @@ public class PageTaskContoller {
 	 * @Description: TODO 创建任务
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/createtask")
 	public ModelAndView  goCreatetask(String view)
@@ -178,7 +178,7 @@ public class PageTaskContoller {
 	 * @Description: TODO 任务详情
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/taskdetails")
 	public ModelAndView  goTaskDetails()
@@ -199,7 +199,7 @@ public class PageTaskContoller {
 	 * @Description: TODO 任务分解
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/assignmentTask")
 	public ModelAndView  goAssignmentTask(String view)

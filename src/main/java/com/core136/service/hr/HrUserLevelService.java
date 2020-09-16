@@ -67,7 +67,7 @@ public List<HrUserLevel> selectByExample(Example example)
  * @param: leaveId
  * @param: @return      
  * @return: List<Map<String,Object>>      
- * @throws
+
  */
 public List<Map<String, Object>> getHrUserLevelChart(String orgId, String leaveId) {
 	// TODO Auto-generated method stub
@@ -82,7 +82,7 @@ public List<Map<String, Object>> getHrUserLevelChart(String orgId, String leaveI
  * @param: leaveId
  * @param: @return      
  * @return: List<Map<String,Object>>      
- * @throws
+
  */
 public List<Map<String, Object>> getAllHrUserLevelChart(String orgId,String leaveId)
 {
@@ -106,7 +106,7 @@ public List<Map<String, Object>> getAllHrUserLevelChart(String orgId,String leav
  * @param leaveIds
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getHrUserLevelByStr(String orgId,String levelIds)
 {

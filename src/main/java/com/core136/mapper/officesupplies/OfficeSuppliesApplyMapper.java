@@ -36,7 +36,7 @@ public interface OfficeSuppliesApplyMapper extends MyMapper<OfficeSuppliesApply>
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 	public List<Map<String, String>>getMyApplyOfficeSuppliesList(@Param(value="orgId") String orgId,@Param(value="accountId") String accountId,
 			@Param(value="beginTime") String beginTime,@Param(value="endTime") String endTime,@Param(value="status") String status,@Param(value="search") String search);
@@ -52,7 +52,7 @@ public interface OfficeSuppliesApplyMapper extends MyMapper<OfficeSuppliesApply>
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getApplyOfficeSuppliesList(@Param(value="orgId") String orgId,@Param(value="accountId") String accountId,
 			@Param(value="beginTime") String beginTime,@Param(value="endTime") String endTime,@Param(value="status") String status,@Param(value="search") String search);
@@ -69,7 +69,7 @@ public interface OfficeSuppliesApplyMapper extends MyMapper<OfficeSuppliesApply>
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getGrantOfficeSuppliesList(@Param(value="orgId") String orgId,@Param(value="accountId") String accountId,
 			@Param(value="beginTime") String beginTime,@Param(value="endTime") String endTime,@Param(value="search") String search);

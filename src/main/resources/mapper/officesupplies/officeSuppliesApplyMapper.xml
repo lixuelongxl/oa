@@ -4,7 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core136.mapper.officesupplies.OfficeSuppliesApplyMapper">
 <resultMap id="OfficeSuppliesApply" type="com.core136.bean.officesupplies.OfficeSuppliesApply" >
-    <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="APPLY_ID" property="applyId" jdbcType="VARCHAR" />
     <result column="TITLE" property="title" jdbcType="VARCHAR" />
     <result column="SUPPLIES_ID" property="suppliesId" jdbcType="VARCHAR" />
@@ -18,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
   </resultMap>
   <select id="getMyApplyOfficeSuppliesList" resultType="java.util.HashMap">
-  SELECT A.APPLY_ID AS applyId,A.TITLE AS title,A.SUPPLIES_ID AS suppliesId,A.QUANTITY AS quantity,A.USED_USER,A.REMARK AS remark,
+  SELECT A.APPLY_ID AS applyId,A.TITLE AS title,A.SUPPLIES_ID AS suppliesId,A.QUANTITY AS quantity,A.USED_USER,TO_CHAR(A.REMARK) AS remark,
   A.CREATE_TIME AS createTime,P.SUPPLIES_NAME AS suppliesName,P.UNIT AS unit,P.BRAND AS brand,P.MODEL AS model,A.STATUS AS status
   FROM 
   OFFICE_SUPPLIES_APPLY A LEFT JOIN OFFICE_SUPPLIES P ON P.ORG_ID=A.ORG_ID AND A.SUPPLIES_ID =P.SUPPLIES_ID
@@ -39,7 +38,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   </select>
 	
 <select id="getApplyOfficeSuppliesList" resultType="java.util.HashMap">
-  SELECT A.APPLY_ID AS applyId,A.TITLE AS title,A.SUPPLIES_ID AS suppliesId,A.QUANTITY AS quantity,A.USED_USER,A.REMARK AS remark,
+  SELECT A.APPLY_ID AS applyId,A.TITLE AS title,A.SUPPLIES_ID AS suppliesId,A.QUANTITY AS quantity,A.USED_USER,TO_CHAR(A.REMARK) AS remark,
   A.CREATE_TIME AS createTime,P.SUPPLIES_NAME AS suppliesName,P.UNIT AS unit,P.BRAND AS brand,P.MODEL AS model,A.STATUS AS status
   FROM 
   OFFICE_SUPPLIES_APPLY A LEFT JOIN OFFICE_SUPPLIES P ON P.ORG_ID=A.ORG_ID AND A.SUPPLIES_ID =P.SUPPLIES_ID
@@ -62,7 +61,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   </select>
   
   <select id="getGrantOfficeSuppliesList" resultType="java.util.HashMap">
-  SELECT A.APPLY_ID AS applyId,A.TITLE AS title,A.SUPPLIES_ID AS suppliesId,A.QUANTITY AS quantity,A.USED_USER,A.REMARK AS remark,
+  SELECT A.APPLY_ID AS applyId,A.TITLE AS title,A.SUPPLIES_ID AS suppliesId,A.QUANTITY AS quantity,A.USED_USER,TO_CHAR(A.REMARK) AS remark,
   A.CREATE_TIME AS createTime,P.SUPPLIES_NAME AS suppliesName,P.UNIT AS unit,P.BRAND AS brand,P.MODEL AS model,A.STATUS AS status
   FROM 
   OFFICE_SUPPLIES_APPLY A LEFT JOIN OFFICE_SUPPLIES P ON P.ORG_ID=A.ORG_ID AND A.SUPPLIES_ID =P.SUPPLIES_ID

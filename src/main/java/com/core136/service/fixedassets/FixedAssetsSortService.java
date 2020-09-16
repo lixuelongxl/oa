@@ -59,7 +59,7 @@ public FixedAssetsSort selectOneFixedAssetsSort(FixedAssetsSort fixedAssetsSort)
  * @param: parentId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>> getFixedAssetSortTree(String orgId,String parentId)
 {
@@ -73,7 +73,7 @@ public List<Map<String, String>> getFixedAssetSortTree(String orgId,String paren
  * @param: parentId
  * @param: @return      
  * @return: int      
- * @throws
+
  */
 public int isExistChild(String orgId,String parentId)
 {

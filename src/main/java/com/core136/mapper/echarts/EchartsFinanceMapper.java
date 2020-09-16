@@ -18,7 +18,7 @@ public interface EchartsFinanceMapper {
 	 * @param endTime
 	 * @return
 	 * List<Map<String,Double>>    
-	 * @throws
+
 	 */
 	public List<Map<String, Double>>getPayableListData(@Param(value="orgId")String orgId,@Param(value="beginTime")String beginTime,@Param(value="endTime")String endTime);
 	
@@ -31,7 +31,7 @@ public interface EchartsFinanceMapper {
 	 * @param endTime
 	 * @return
 	 * List<Map<String,Double>>    
-	 * @throws
+
 	 */
 	public List<Map<String, Double>>getReceviablesListData(@Param(value="orgId")String orgId,@Param(value="beginTime")String beginTime,@Param(value="endTime")String endTime);
 
@@ -42,7 +42,7 @@ public interface EchartsFinanceMapper {
 	 * @param orgId
 	 * @return
 	 * Map<String,String>  
-	 * @throws
+
 	 */
 	public Map<String, String>getPayReceivTotalData(@Param(value="orgId")String orgId);
 }

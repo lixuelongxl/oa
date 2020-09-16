@@ -85,6 +85,43 @@ public class RoutGetCrmController {
 	private CrmQuotationMxService crmQuotationMxService;
 	@Autowired
 	private AccountService accountService;
+	
+	
+	/**
+	 * 
+	 * @Title: getCrmApprovedUserList   
+	 * @Description: TODO 获取审批人员列表
+	 * @param request
+	 * @return
+	 * RetDataBean
+	 */
+	@RequestMapping(value="/getCrmApprovedUserList",method=RequestMethod.POST)
+	public RetDataBean getCrmApprovedUserList(HttpServletRequest request)
+	{
+		try
+		{
+			List<Map<String, String>> teMaps = new ArrayList<Map<String,String>>();
+			Account account=accountService.getRedisAccount(request);
+			CrmPriv crmPriv = new CrmPriv();
+			crmPriv.setOrgId(account.getOrgId());
+			crmPriv = crmPrivService.selectOneCrmPriv(crmPriv);
+			String manageStr = crmPriv.getManager();
+			if(StringUtils.isNotBlank(manageStr))
+			{
+				String[] accountArr = manageStr.split(",");
+				List<String> accountList = Arrays.asList(accountArr);
+				teMaps = accountService.getUserNamesByAccountIds(accountList, account.getOrgId());
+			}
+			
+			return RetDataTools.Ok("请求成功!", teMaps);
+		}catch (Exception e) {
+			
+			return RetDataTools.Error(e.getMessage());
+		}
+	}
+	
+	
+	
 	/**
 	 * 
 	 * @Title: getCrmQuotationMxById   
@@ -93,7 +130,7 @@ public class RoutGetCrmController {
 	 * @param crmQuotationMx
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getCrmQuotationMxById",method=RequestMethod.POST)
 	public RetDataBean getCrmQuotationMxById(HttpServletRequest request,CrmQuotationMx crmQuotationMx)
@@ -111,13 +148,34 @@ public class RoutGetCrmController {
 	
 	/**
 	 * 
+	 * @Title: getCrmInquiryListForSelect   
+	 * @Description: TODO 获取询价单列表
+	 * @param request
+	 * @return
+	 * RetDataBean
+	 */
+	@RequestMapping(value="/getCrmInquiryListForSelect",method=RequestMethod.POST)
+	public RetDataBean getCrmInquiryListForSelect(HttpServletRequest request)
+	{
+		try
+		{
+			Account account=accountService.getRedisAccount(request);
+			return RetDataTools.Ok("请求成功!", crmInquiryService.getCrmInquiryListForSelect(account.getOrgId(),account.getAccountId()));
+		}catch (Exception e) {
+			
+			return RetDataTools.Error(e.getMessage());
+		}
+	}
+	
+	/**
+	 * 
 	 * @Title: getCrmQuotationById   
 	 * @Description: TODO 获取报价单详情
 	 * @param request
 	 * @param crmQuotation
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getCrmQuotationById",method=RequestMethod.POST)
 	public RetDataBean getCrmQuotationById(HttpServletRequest request,CrmQuotation crmQuotation)
@@ -481,7 +539,7 @@ public class RoutGetCrmController {
 	 * @param inquiryId
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getCrmInquiryDetailList",method=RequestMethod.POST)
 	public RetDataBean getCrmInquiryDetailList(
@@ -516,6 +574,51 @@ public class RoutGetCrmController {
 		}
 	}
 
+	/**
+	 * 
+	 * @Title: getCrmInquiryDetailListForQuotation   
+	 * @Description: TODO 获取报价单明细
+	 * @param request
+	 * @param pageParam
+	 * @param inquiryId
+	 * @param quotationId
+	 * @return
+	 * RetDataBean
+	 */
+	@RequestMapping(value="/getCrmInquiryDetailListForQuotation",method=RequestMethod.POST)
+	public RetDataBean getCrmInquiryDetailListForQuotation(
+			HttpServletRequest request,
+			PageParam pageParam,
+			String inquiryId,
+			String quotationId
+			)
+	{
+		try
+		{
+			if(StringUtils.isBlank(pageParam.getSort()))
+			{
+				pageParam.setSort("D.CREATE_TIME");
+			}else
+			{
+				pageParam.setSort(StrTools.upperCharToUnderLine(pageParam.getSort()));
+			}
+			if(StringUtils.isBlank(pageParam.getSortOrder()))
+			{
+				pageParam.setSortOrder("DESC");
+			}
+			
+		Account account=accountService.getRedisAccount(request);
+		pageParam.setOpFlag(account.getOpFlag());
+		String orderBy = pageParam.getSort()+ " " + pageParam.getSortOrder();
+		pageParam.setOrderBy(orderBy);
+		pageParam.setOrgId(account.getOrgId());
+		PageInfo<Map<String, String>> pageInfo=crmQuotationMxService.getCrmInquiryDetailListForQuotation(pageParam,inquiryId,quotationId);
+		return RetDataTools.Ok("请求数据成功!", pageInfo);
+		}catch (Exception e) {
+			return RetDataTools.Error(e.getMessage());
+		}
+	}
+	
 	
 	/**
 	 * 
@@ -621,7 +724,7 @@ public class RoutGetCrmController {
 			
 			String orderBy = sort+ " " + sortOrder;
 		Account account=accountService.getRedisAccount(request);
-		return RetDataTools.Ok("请求数据成功!", crmLinkManService.getMyCrmLinkManAllList(pageNumber, pageSize, orderBy, account.getOrgId(),account.getAccountId() ,"%"+search+"%"));
+		return RetDataTools.Ok("请求数据成功!", crmLinkManService.getMyCrmLinkManAllList(pageNumber, pageSize, orderBy, account.getOrgId(),account.getAccountId() ,search));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
 		}
@@ -1393,4 +1496,173 @@ public class RoutGetCrmController {
 		}
 	}
 	
+	/**
+	 * 
+	 * @Title: getMyCrmQuotationList   
+	 * @Description: TODO 获取报价列表
+	 * @param request
+	 * @param pageParam
+	 * @param beginTime
+	 * @param endTime
+	 * @param customerType
+	 * @param status
+	 * @return
+	 * RetDataBean
+	 */
+	@RequestMapping(value="/getMyCrmQuotationList",method=RequestMethod.POST)
+	public RetDataBean getMyCrmQuotationList(
+			HttpServletRequest request,
+			PageParam pageParam,
+			String beginTime,
+			String endTime,
+			String approvedUser,
+			String status
+			)
+	{
+		try
+		{
+			if(StringUtils.isBlank(pageParam.getSort()))
+			{
+				pageParam.setSort("I.CREATE_TIME");
+			}
+			if(StringUtils.isBlank(pageParam.getSortOrder()))
+			{
+				pageParam.setSortOrder("desc");
+			}
+		Account account=accountService.getRedisAccount(request);
+		pageParam.setAccountId(account.getAccountId());
+		pageParam.setOrgId(account.getOrgId());
+		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
+		PageInfo<Map<String, String>> pageInfo=crmQuotationService.getMyCrmQuotationList(pageParam,beginTime,endTime,status,approvedUser);
+		return RetDataTools.Ok("请求数据成功!", pageInfo);
+		}catch (Exception e) {
+			return RetDataTools.Error(e.getMessage());
+		}
+	}
+	
+	/**
+	 * 
+	 * @Title: getMyApprovedList   
+	 * @Description: TODO 获取审批列表
+	 * @param request
+	 * @param pageParam
+	 * @return
+	 * RetDataBean
+	 */
+	@RequestMapping(value="/getMyApprovedList",method=RequestMethod.POST)
+	public RetDataBean getMyApprovedList(
+			HttpServletRequest request,
+			PageParam pageParam
+			)
+	{
+		try
+		{
+			if(StringUtils.isBlank(pageParam.getSort()))
+			{
+				pageParam.setSort("I.CREATE_TIME");
+			}
+			if(StringUtils.isBlank(pageParam.getSortOrder()))
+			{
+				pageParam.setSortOrder("desc");
+			}
+		Account account=accountService.getRedisAccount(request);
+		pageParam.setAccountId(account.getAccountId());
+		pageParam.setOrgId(account.getOrgId());
+		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
+		PageInfo<Map<String, String>> pageInfo=crmQuotationService.getMyApprovedList(pageParam);
+		return RetDataTools.Ok("请求数据成功!", pageInfo);
+		}catch (Exception e) {
+			return RetDataTools.Error(e.getMessage());
+		}
+	}
+	/**
+	 * 
+	 * @Title: getApprovedQueryList   
+	 * @Description: TODO 审批历史记录查询
+	 * @param request
+	 * @param pageParam
+	 * @param beginTime
+	 * @param endTime
+	 * @param createUser
+	 * @param status
+	 * @return
+	 * RetDataBean
+	 */
+	@RequestMapping(value="/getApprovedQueryList",method=RequestMethod.POST)
+	public RetDataBean getApprovedQueryList(
+			HttpServletRequest request,
+			PageParam pageParam,
+			String beginTime,
+			String endTime,
+			String createUser,
+			String status
+			)
+	{
+		try
+		{
+			if(StringUtils.isBlank(pageParam.getSort()))
+			{
+				pageParam.setSort("I.CREATE_TIME");
+			}
+			if(StringUtils.isBlank(pageParam.getSortOrder()))
+			{
+				pageParam.setSortOrder("desc");
+			}
+		Account account=accountService.getRedisAccount(request);
+		pageParam.setAccountId(account.getAccountId());
+		pageParam.setOpFlag(account.getOpFlag());
+		pageParam.setOrgId(account.getOrgId());
+		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
+		PageInfo<Map<String, String>> pageInfo=crmQuotationService.getApprovedQueryList(pageParam,createUser,beginTime,endTime,status);
+		return RetDataTools.Ok("请求数据成功!", pageInfo);
+		}catch (Exception e) {
+			return RetDataTools.Error(e.getMessage());
+		}
+	}
+	
+	
+	/**
+	 * 
+	 * @Title: getQuotationQueryList   
+	 * @Description: TODO 报价单查询列表
+	 * @param request
+	 * @param pageParam
+	 * @param beginTime
+	 * @param endTime
+	 * @param createUser
+	 * @param approvedUser
+	 * @param status
+	 * @return
+	 * RetDataBean
+	 */
+	@RequestMapping(value="/getQuotationQueryList",method=RequestMethod.POST)
+	public RetDataBean getQuotationQueryList(
+			HttpServletRequest request,
+			PageParam pageParam,
+			String beginTime,
+			String endTime,
+			String createUser,
+			String approvedUser,
+			String status
+			)
+	{
+		try
+		{
+			if(StringUtils.isBlank(pageParam.getSort()))
+			{
+				pageParam.setSort("I.CREATE_TIME");
+			}
+			if(StringUtils.isBlank(pageParam.getSortOrder()))
+			{
+				pageParam.setSortOrder("desc");
+			}
+		Account account=accountService.getRedisAccount(request);
+		pageParam.setOrgId(account.getOrgId());
+		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
+		PageInfo<Map<String, String>> pageInfo=crmQuotationService.getQuotationQueryList(pageParam,approvedUser,createUser,beginTime,endTime,status);
+		return RetDataTools.Ok("请求数据成功!", pageInfo);
+		}catch (Exception e) {
+			return RetDataTools.Error(e.getMessage());
+		}
+	}
 }

@@ -38,7 +38,7 @@ EchartsFinanceMapper echartsFinanceMapper;
  * @param account
  * @return
  * OptionConfig    
- * @throws
+
  */
 public OptionConfig getARAPOptionConfig(Account account)
 {
@@ -69,7 +69,9 @@ public OptionConfig getARAPOptionConfig(Account account)
 	 for(int i=0;i<data1.length;i++)
 	 {
 		 SeriesData seriesData = new SeriesData();
-		 seriesData.setValue(data1List.get(i).get("total"));
+		 String dvStr = String.valueOf(data1List.get(i).get("total"));
+		 double dv =  Double.valueOf(dvStr);
+		 seriesData.setValue(dv);
 		 data1[i]=seriesData;
 	 }
 	 
@@ -78,7 +80,9 @@ public OptionConfig getARAPOptionConfig(Account account)
 	 for(int i=0;i<data2.length;i++)
 	 {
 		 SeriesData seriesData = new SeriesData();
-		 seriesData.setValue(data2List.get(i).get("total"));
+		 String dvStr = String.valueOf(data2List.get(i).get("total"));
+		 double dv =  Double.valueOf(dvStr);
+		 seriesData.setValue(dv);
 		 data2[i]=seriesData;
 	 }
 	 
@@ -157,7 +161,7 @@ public OptionConfig getARAPOptionConfig(Account account)
 	 * @param orgId
 	 * @return
 	 * Map<String,String>  
-	 * @throws
+
 	 */
 public Map<String, String>getPayReceivTotalData(String orgId)
 {

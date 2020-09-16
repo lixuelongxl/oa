@@ -31,7 +31,7 @@ public interface ProjectBuildUnitMapper extends MyMapper<ProjectBuildUnit>{
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>> getProjectBuildUnitList(@Param (value="orgId") String orgId,@Param (value="type") String type,@Param (value="search") String search);
 }

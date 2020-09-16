@@ -61,7 +61,7 @@ private AccountService accountService;
  * @param isSendMsg
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/cancelmeeting",method=RequestMethod.POST)
 public RetDataBean cancelmeeting(HttpServletRequest request,Meeting meeting,String isSendMsg)
@@ -91,7 +91,7 @@ public RetDataBean cancelmeeting(HttpServletRequest request,Meeting meeting,Stri
  * @param meeting
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/sendMeetingMsg",method=RequestMethod.POST)
 public RetDataBean sendMeetingMsg(HttpServletRequest request,Meeting meeting)
@@ -117,7 +117,7 @@ public RetDataBean sendMeetingMsg(HttpServletRequest request,Meeting meeting)
  * @param: meetingRoom
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/insertMeetingRoom",method=RequestMethod.POST)
 public RetDataBean insertMeetingRoom(HttpServletRequest request,MeetingRoom meetingRoom)
@@ -145,7 +145,7 @@ public RetDataBean insertMeetingRoom(HttpServletRequest request,MeetingRoom meet
  * @param: meetingRoom
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/deleteMeetingRoom",method=RequestMethod.POST)
 public RetDataBean deleteMeetingRoom(HttpServletRequest request,MeetingRoom meetingRoom)
@@ -173,7 +173,7 @@ public RetDataBean deleteMeetingRoom(HttpServletRequest request,MeetingRoom meet
  * @param: meetingRoom
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/updateMeetingRoom",method=RequestMethod.POST)
 public RetDataBean updateMeetingRoom(HttpServletRequest request,MeetingRoom meetingRoom)
@@ -205,7 +205,7 @@ public RetDataBean updateMeetingRoom(HttpServletRequest request,MeetingRoom meet
  * @param: meetingRoom
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/insertMeetingDevice",method=RequestMethod.POST)
 public RetDataBean insertMeetingDevice(HttpServletRequest request,MeetingDevice meetingDevice)
@@ -233,7 +233,7 @@ public RetDataBean insertMeetingDevice(HttpServletRequest request,MeetingDevice 
  * @param: meetingRoom
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/deleteMeetingDevice",method=RequestMethod.POST)
 public RetDataBean deleteMeetingDevice(HttpServletRequest request,MeetingDevice meetingDevice)
@@ -261,7 +261,7 @@ public RetDataBean deleteMeetingDevice(HttpServletRequest request,MeetingDevice 
  * @param: meetingRoom
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/updateMeetingDevice",method=RequestMethod.POST)
 public RetDataBean updateMeetingDevice(HttpServletRequest request,MeetingDevice meetingDevice)
@@ -291,7 +291,7 @@ public RetDataBean updateMeetingDevice(HttpServletRequest request,MeetingDevice 
  * @param: meeting
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/insertMeeting",method=RequestMethod.POST)
 public RetDataBean insertMeeting(HttpServletRequest request,Meeting meeting)
@@ -319,7 +319,7 @@ public RetDataBean insertMeeting(HttpServletRequest request,Meeting meeting)
  * @param: meeting
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/deleteMeeting",method=RequestMethod.POST)
 public RetDataBean deleteMeeting(HttpServletRequest request,Meeting meeting)
@@ -346,7 +346,7 @@ public RetDataBean deleteMeeting(HttpServletRequest request,Meeting meeting)
  * @param: meeting
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/updateMeeting",method=RequestMethod.POST)
 public RetDataBean updateMeeting(HttpServletRequest request,Meeting meeting)
@@ -381,7 +381,7 @@ public RetDataBean updateMeeting(HttpServletRequest request,Meeting meeting)
  * @param: meetingNotes
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/insertMeetingNotes",method=RequestMethod.POST)
 public RetDataBean insertMeetingNotes(HttpServletRequest request,MeetingNotes meetingNotes)
@@ -408,7 +408,7 @@ public RetDataBean insertMeetingNotes(HttpServletRequest request,MeetingNotes me
  * @param: meetingNotes
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/deleteMeetingNotes",method=RequestMethod.POST)
 public RetDataBean deleteMeetingNotes(HttpServletRequest request,MeetingNotes meetingNotes)
@@ -436,7 +436,7 @@ public RetDataBean deleteMeetingNotes(HttpServletRequest request,MeetingNotes me
  * @param: meetingNotes
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/updateMeetingNotes",method=RequestMethod.POST)
 public RetDataBean updateMeetingNotes(HttpServletRequest request,MeetingNotes meetingNotes)

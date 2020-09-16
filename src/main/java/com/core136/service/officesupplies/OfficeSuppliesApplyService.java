@@ -63,7 +63,7 @@ public OfficeSuppliesApply selectOneOfficeSuppliesApply(OfficeSuppliesApply offi
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getMyApplyOfficeSuppliesList(String orgId,String accountId,String beginTime,String endTime,String status,String search)
 {
@@ -78,7 +78,7 @@ public List<Map<String, String>>getMyApplyOfficeSuppliesList(String orgId,String
  * @param: endTime
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getMyApplyOfficeSuppliesList(PageParam pageParam,String beginTime,String endTime,String status) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -98,7 +98,7 @@ public PageInfo<Map<String, String>> getMyApplyOfficeSuppliesList(PageParam page
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getApplyOfficeSuppliesList(String orgId,String accountId,String beginTime,String endTime,String status,String search)
 {
@@ -122,7 +122,7 @@ public PageInfo<Map<String, String>> getApplyOfficeSuppliesList(PageParam pagePa
  * @param: endTime
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getGrantOfficeSuppliesList(String orgId,String accountId,String beginTime,String endTime,String search)
 {
@@ -138,7 +138,7 @@ public List<Map<String, String>>getGrantOfficeSuppliesList(String orgId,String a
  * @param: endTime
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getGrantOfficeSuppliesList(PageParam pageParam,String beginTime,String endTime) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());

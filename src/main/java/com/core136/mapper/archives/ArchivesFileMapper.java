@@ -21,7 +21,7 @@ public interface ArchivesFileMapper extends MyMapper<ArchivesFile>{
 	 * @param accountId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getArchivesFileList(
 			@Param(value="orgId")String orgId,
@@ -44,7 +44,7 @@ public interface ArchivesFileMapper extends MyMapper<ArchivesFile>{
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getArchivesFileQueryList(
 			@Param(value="orgId")String orgId,
@@ -62,7 +62,7 @@ public interface ArchivesFileMapper extends MyMapper<ArchivesFile>{
 	 * @param volumeId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getBorrowArchivesFileList(@Param(value="orgId")String orgId,@Param(value="volumeId")String volumeId);
 }

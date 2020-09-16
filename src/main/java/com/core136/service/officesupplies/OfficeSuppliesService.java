@@ -62,7 +62,7 @@ public OfficeSupplies selectOneOfficeSupplies(OfficeSupplies officeSupplies)
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>> getOfficeSupplieslistBySortId(String orgId,String sortId,String search)
 {
@@ -85,7 +85,7 @@ public PageInfo<Map<String, String>> getOfficeSupplieslistBySortId(PageParam pag
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>> getApplyOfficeSupplieslist(String orgId,String sortId,String deptId,String search)
 {

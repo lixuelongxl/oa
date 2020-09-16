@@ -52,8 +52,7 @@
 										<div class="form-group">
 											<label class="col-sm-1 control-label no-padding-right">排序号 ：</label>
 											<div class="col-sm-2">
-												<input type="text" class="form-control" id="sortNo" name="sortNo" placeholder="排序号"> <input type="hidden" id="templateId" name="templateId">
-
+												<input type="text" class="form-control" id="sortNo" name="sortNo" placeholder="排序号"> 
 											</div>
 										</div>
 										<div class="form-group">
@@ -71,19 +70,32 @@
 										<div class="form-group">
 											<label class="col-sm-1 control-label no-padding-right">BI分类 ：</label>
 											<div class="col-sm-5">
-												<input type="text" class="form-control" id="levelId" name="levelId" placeholder="BI分类 ">
+												<input type="text" class="form-control" id="levelId" name="levelId" placeholder="BI分类 " readonly="readonly">
 												<div id="menuContent" class="menuContent">
 													<ul id="menuTree" class="ztree"></ul>
 												</div>
 											</div>
 										</div>
 										<div class="form-group">
-											<label class="col-sm-1 control-label no-padding-right">BI类型：</label>
+											<label class="col-sm-1 control-label no-padding-right">是否分页：</label>
 											<div class="col-sm-5">
-												<select class="form-control" id="biType" name="biType" style="border-radius: 0px;">
+												<select class="form-control" id="pagingType" name="pagingType" style="border-radius: 0px;">
+													<option value="0">不分页</option>
+													<option value="1">分页</option>
 												</select>
 											</div>
 										</div>
+<!-- 										<div class="form-group"> -->
+<!-- 											<label class="col-sm-1 control-label no-padding-right">展示方式：</label> -->
+<!-- 											<div class="col-sm-5"> -->
+<!-- 												<select class="form-control" id="showType" name="showType" style="border-radius: 0px;"> -->
+<!-- 													<option value="0">网页显示</option> -->
+<!-- 													<option value="1">导出pdf</option> -->
+<!-- 													<option value="2">导出Excel</option> -->
+<!-- 													<option value="3">图片</option> -->
+<!-- 												</select> -->
+<!-- 											</div> -->
+<!-- 										</div> -->
 										<div class="form-group">
 											<label class="col-sm-1 control-label no-padding-right">数据源：</label>
 											<div class="col-sm-5">
@@ -100,9 +112,14 @@
 											<a style="cursor: pointer;" onclick="clearSelect('userPriv')">清空</a>
 										</div>
 										<div class="form-group">
-											<label class="col-sm-1 control-label no-padding-right">SQL语句：</label>
+											<label class="col-sm-1 control-label no-padding-right">jasper模版：</label>
 											<div class="col-sm-5">
-												<textarea rows="20" cols="" class="form-control" id="sqlConfig" name="sqlConfig"></textarea>
+												<div style="padding-top: 4px;">
+													<div id="show_jasattach"></div>
+													<a class="addfile" href="javascript:void(0)">模版上传 
+													<input data_value="" type="file" onchange="fileUpLoad('jasreports','jasattach');" hidefocus="true" size="1" id="jasattach"
+														name="jasattach" class="addfile"  accept=".jrxml"></a>
+												</div>
 											</div>
 										</div>
 										<div class="form-group">
@@ -128,6 +145,8 @@
 	<script type="text/javascript" src="/module/zTree_v3/js/jquery.ztree.exedit.js"></script>
 	<script type="text/javascript" src="/module/bootstrap-table/bootstrap-table.js"></script>
 	<script type="text/javascript" src="/module/bootstrap-table/bootstrap-table-zh-CN.js"></script>
+	<script type="text/javascript" src="/module/fileupload/ajaxfileupload.js"></script>
+<script type="text/javascript" src="/module/fileupload/fileupload.js"></script>
 	<script type="text/javascript" src="/module/orgselect/orgselect.js"></script>
 	<script type="text/javascript" src="/gobal/js/page/bi/bi.js"></script>
 	<script type="text/javascript" src="/gobal/js/page/bi/createbi.js"></script>

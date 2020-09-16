@@ -4,7 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core136.mapper.task.TaskProcessMapper">
 <resultMap id="TaskProcess" type="com.core136.bean.task.TaskProcess" >
-    <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="PROCESS_ID" property="processId" jdbcType="VARCHAR" />
     <result column="TASK_DATA_ID" property="taskDataId" jdbcType="VARCHAR" />
     <result column="CONTENT" property="content" jdbcType="VARCHAR" />
@@ -16,8 +15,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
   </resultMap>
    <select id="getProcessInfo" resultType="java.util.HashMap">
-   	SELECT P.CONTENT AS content,P.REMARK AS remark,P.ATTACH AS attach,P.COMPLETE_TIME AS completeTime,P.PROGRESS AS pProgress,
-   	D.TEXT AS text,D.START_DATE AS startDate,D.PROGRESS AS progress, D.DURATION AS duration,P.ATTACH AS attach
+   	SELECT TO_CHAR(P.CONTENT) AS content,TO_CHAR(P.REMARK) AS remark,TO_CHAR(P.ATTACH) AS "attach",
+   	P.COMPLETE_TIME AS completeTime,P.PROGRESS AS pProgress,
+   	D.TEXT AS "text",D.START_DATE AS startDate,D.PROGRESS AS progress, D.DURATION AS duration,TO_CHAR(P.ATTACH) AS "attach"
    	FROM TASK_PROCESS P LEFT JOIN TASK_GANTT_DATA D ON P.ORG_ID=D.ORG_ID AND P.TASK_DATA_ID=D.TASK_DATA_ID
    	WHERE P.ORG_ID=#{orgId}
    	AND P.CREATE_USER=#{accountId}
@@ -26,7 +26,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   
   
   <select id="getMyTaskProcessList" resultType="java.util.HashMap">
-  	SELECT P.PROCESS_ID AS processId,D.TEXT AS text,P.PROGRESS AS progress,P.COMPLETE_TIME AS completeTime,D.START_DATE AS startDate,P.PROGRESS AS pProgress,D.DURATION AS duration,
+  	SELECT P.PROCESS_ID AS processId,D."TEXT" AS "text",P.PROGRESS AS progress,P.COMPLETE_TIME AS completeTime,
+  	D.START_DATE AS startDate,P.PROGRESS AS pProgress,D.DURATION AS duration,
   	(SELECT T5.TASK_TYPE FROM TASK T5 WHERE T5.ORG_ID=#{orgId} AND T5.TASK_ID=D.TASK_ID) AS taskType,
   	(SELECT T1.TASK_NAME FROM TASK T1 WHERE T1.ORG_ID=#{orgId} AND T1.TASK_ID=D.TASK_ID) AS taskName
   	FROM 
@@ -41,7 +42,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</if>
 	<if test="createUser!=''.toString() and createUser!=null">
 		AND D.TASK_ID IN(SELECT T3.TASK_ID FROM TASK T3 WHERE T3.ORG_ID=#{orgId} 
-		AND T3.CREATE_USER=#{createUser}
+		AND T3.CREATE_USER=#{createUser})
 	</if>
   	WHERE 
   	P.ORG_ID=#{orgId}

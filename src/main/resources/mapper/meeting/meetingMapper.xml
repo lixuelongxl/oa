@@ -4,7 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core136.mapper.meeting.MeetingMapper">
 	<resultMap id="Meeting" type="com.core136.bean.meeting.Meeting">
-		<id column="ID" property="id" jdbcType="BIGINT" />
 		<result column="MEETING_ID" property="meetingId" jdbcType="VARCHAR" />
 		<result column="SUBJECT" property="subject" jdbcType="VARCHAR" />
 		<result column="ROOM_ID" property="roomId" jdbcType="VARCHAR" />
@@ -29,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 	
 		<select id="getApplyMeetingList" resultType="java.util.HashMap">
-		SELECT M.MEETING_ID AS meetingId,M.SUBJECT AS subject,M.BEGIN_TIME AS beginTime,M.END_TIME AS endTime,M.REMARK AS remark,R.NAME AS name,
+		SELECT M.MEETING_ID AS meetingId,M.SUBJECT AS subject,M.BEGIN_TIME AS beginTime,M.END_TIME AS endTime,TO_CHAR(M.REMARK) AS remark,R.NAME AS name,
 		(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=#{orgId} AND U.ACCOUNT_ID=M.CREATE_USER) AS createUserName,
 		(SELECT U1.USER_NAME FROM USER_INFO U1 WHERE U1.ORG_ID=#{orgId} AND U1.ACCOUNT_ID=M.CHAIR) AS chairUserName,M.STATUS AS status
 		 FROM MEETING M LEFT JOIN MEETING_ROOM R ON M.ORG_ID=R.ORG_ID AND M.ROOM_ID=R.ROOM_ID
@@ -50,7 +49,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	<select id="getMyMeetingList" resultType="java.util.HashMap">
-		SELECT M.MEETING_ID AS meetingId,M.SUBJECT AS subject,M.BEGIN_TIME AS beginTime,M.END_TIME AS endTime,M.REMARK AS remark,R.NAME AS name,
+		SELECT M.MEETING_ID AS meetingId,M.SUBJECT AS subject,M.BEGIN_TIME AS beginTime,M.END_TIME AS endTime,TO_CHAR(M.REMARK) AS remark,R.NAME AS name,
 		(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=#{orgId} AND U.ACCOUNT_ID=M.CREATE_USER) AS createUserName,
 		(SELECT U1.USER_NAME FROM USER_INFO U1 WHERE U1.ORG_ID=#{orgId} AND U1.ACCOUNT_ID=M.CHAIR) AS chairUserName,M.STATUS AS status
 		 FROM MEETING M LEFT JOIN MEETING_ROOM R ON M.ORG_ID=R.ORG_ID AND M.ROOM_ID=R.ROOM_ID
@@ -83,7 +82,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	<select id="getMyMeetingOldList" resultType="java.util.HashMap">
-		SELECT M.MEETING_ID AS meetingId,M.SUBJECT AS subject,M.BEGIN_TIME AS beginTime,M.END_TIME AS endTime,M.REMARK AS remark,R.NAME AS name,
+		SELECT M.MEETING_ID AS meetingId,M.SUBJECT AS subject,M.BEGIN_TIME AS beginTime,M.END_TIME AS endTime,TO_CHAR(M.REMARK) AS remark,R.NAME AS name,
 		(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=#{orgId} AND U.ACCOUNT_ID=M.CREATE_USER) AS createUserName,
 		(SELECT U1.USER_NAME FROM USER_INFO U1 WHERE U1.ORG_ID=#{orgId} AND U1.ACCOUNT_ID=M.CHAIR) AS chairUserName,M.STATUS AS status
 		 FROM MEETING M LEFT JOIN MEETING_ROOM R ON M.ORG_ID=R.ORG_ID AND M.ROOM_ID=R.ROOM_ID
@@ -116,7 +115,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 		
 	<select id="getOldApplyMeetingList" resultType="java.util.HashMap">
-		SELECT M.MEETING_ID AS meetingId,M.SUBJECT AS subject,M.BEGIN_TIME AS beginTime,M.END_TIME AS endTime,M.REMARK AS remark,R.NAME AS name,
+		SELECT M.MEETING_ID AS meetingId,M.SUBJECT AS subject,M.BEGIN_TIME AS beginTime,M.END_TIME AS endTime,TO_CHAR(M.REMARK) AS remark,R.NAME AS name,
 		(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=#{orgId} AND U.ACCOUNT_ID=M.CREATE_USER) AS createUserName,
 		(SELECT U1.USER_NAME FROM USER_INFO U1 WHERE U1.ORG_ID=#{orgId} AND U1.ACCOUNT_ID=M.CHAIR) AS chairUserName,M.STATUS AS status
 		 FROM MEETING M LEFT JOIN MEETING_ROOM R ON M.ORG_ID=R.ORG_ID AND M.ROOM_ID=R.ROOM_ID
@@ -143,7 +142,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	<select id="getMeetingList" resultType="java.util.HashMap">
-		SELECT M.MEETING_ID AS meetingId,M.SUBJECT AS subject,M.BEGIN_TIME AS beginTime,M.END_TIME AS endTime,M.REMARK AS remark,
+		SELECT M.MEETING_ID AS meetingId,M.SUBJECT AS subject,M.BEGIN_TIME AS beginTime,M.END_TIME AS endTime,TO_CHAR(M.REMARK) AS remark,
 		(SELECT R.NAME FROM MEETING_ROOM R WHERE R.ORG_ID=#{orgId} AND R.ROOM_ID=M.ROOM_ID) AS name,
 		(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=#{orgId} AND U.ACCOUNT_ID=M.CHAIR) AS chairUserName
 		 FROM MEETING M
@@ -213,7 +212,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 		<select id="getMyMeetingListForDesk" resultType="java.util.HashMap">
-		SELECT M.MEETING_ID AS meetingId,M.SUBJECT AS subject,M.BEGIN_TIME AS beginTime,M.END_TIME AS endTime,M.REMARK AS remark,R.NAME AS name
+		SELECT M.MEETING_ID AS meetingId,M.SUBJECT AS subject,M.BEGIN_TIME AS beginTime,M.END_TIME AS endTime,TO_CHAR(M.REMARK) AS remark,R.NAME AS name
 		 FROM MEETING M LEFT JOIN MEETING_ROOM R ON M.ORG_ID=R.ORG_ID AND M.ROOM_ID=R.ROOM_ID
 		WHERE M.ORG_ID=#{orgId} AND M.STATUS='1'
 		AND(
@@ -236,7 +235,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 		
 		<select id="getMobileMyMeetingList" resultType="java.util.HashMap">
-		SELECT M.MEETING_ID AS meetingId,M.SUBJECT AS subject,M.BEGIN_TIME AS beginTime,M.END_TIME AS endTime,M.REMARK AS remark,R.NAME AS name
+		SELECT M.MEETING_ID AS meetingId,M.SUBJECT AS subject,M.BEGIN_TIME AS beginTime,M.END_TIME AS endTime,TO_CHAR(M.REMARK) AS remark,R.NAME AS name
 		 FROM MEETING M LEFT JOIN MEETING_ROOM R ON M.ORG_ID=R.ORG_ID AND M.ROOM_ID=R.ROOM_ID
 		WHERE M.ORG_ID=#{orgId} AND M.STATUS='1'
 		AND(

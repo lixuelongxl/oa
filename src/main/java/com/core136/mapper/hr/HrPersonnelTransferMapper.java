@@ -23,7 +23,7 @@ public interface HrPersonnelTransferMapper extends MyMapper<HrPersonnelTransfer>
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 public List<Map<String, String>>getHrPersonnelTransferList(@Param(value="orgId")String orgId,@Param(value="userId")String userId,
 		@Param(value="beginTime")String beginTime,@Param(value="endTime")String endTime,@Param(value="transferType")String transferType,
@@ -37,7 +37,7 @@ public List<Map<String, String>>getHrPersonnelTransferList(@Param(value="orgId")
  * @param accountId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getMyHrPersonnelTransferList(@Param(value="orgId")String orgId,@Param(value="accountId")String accountId);
 

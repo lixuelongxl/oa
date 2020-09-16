@@ -20,7 +20,7 @@ public interface TaskGanttLinkMapper extends MyMapper<TaskGanttLink>{
 	 * @param: taskId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getGanttLinkList(@Param(value="orgId") String orgId,@Param(value="taskId")String taskId);
 	

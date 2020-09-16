@@ -4,7 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core136.mapper.meeting.MeetingNotesMapper">
 	<resultMap id="MeetingNotes" type="com.core136.bean.meeting.MeetingNotes">
-		<id column="ID" property="id" jdbcType="BIGINT" />
 		<result column="NOTES_ID" property="notesId" jdbcType="VARCHAR" />
 		<result column="MEETING_ID" property="meetingId" jdbcType="VARCHAR" />
 		<result column="NOTES_TITLE" property="notesTitle" jdbcType="VARCHAR" />
@@ -21,9 +20,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 	
 	<select id="getMeetingNotesInfo" resultType="java.util.HashMap">
-		SELECT N.NOTES_TITLE AS notesTitle,N.MEETING_ID AS meetingId,N.ATTACH AS attach,M.SUBJECT AS subject,
+		SELECT N.NOTES_TITLE AS notesTitle,N.MEETING_ID AS meetingId,N.ATTACH AS "attach",M.SUBJECT AS subject,
 		(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=#{orgId} AND U.ACCOUNT_ID=M.CHAIR) AS chairName,
-		N.REMARK AS remark,N.ATTACH_PRIV AS attachPriv,
+		TO_CHAR(N.REMARK) AS remark,N.ATTACH_PRIV AS attachPriv,
 		(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=#{orgId} AND U.ACCOUNT_ID=N.CREATE_USER) AS createUserName,
 		(SELECT R.NAME FROM MEETING_ROOM R WHERE R.ORG_ID=#{orgId} AND R.ROOM_ID=M.ROOM_ID) AS roomName
 		FROM MEETING_NOTES N LEFT JOIN MEETING M ON M.ORG_ID=N.ORG_ID AND M.MEETING_ID = N.MEETING_ID
@@ -33,7 +32,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	<select id="getMeetingNotesList" resultType="java.util.HashMap">
-		SELECT N.NOTES_ID AS notesId,N.NOTES_TITLE AS notesTitle,N.MEETING_ID AS meetingId,N.ATTACH AS attach,M.SUBJECT AS subject,
+		SELECT N.NOTES_ID AS notesId,N.NOTES_TITLE AS notesTitle,N.MEETING_ID AS meetingId,N.ATTACH AS "attach",M.SUBJECT AS subject,
 		(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=#{orgId} AND U.ACCOUNT_ID=M.CHAIR) AS chairName,
 		(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=#{orgId} AND U.ACCOUNT_ID=N.CREATE_USER) AS createUserName,
 		(SELECT R.NAME FROM MEETING_ROOM R WHERE R.ORG_ID=#{orgId} AND R.ROOM_ID=M.ROOM_ID) AS roomName,N.CREATE_TIME AS createTime
@@ -55,7 +54,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<select id="queryMeetingNotesList" resultType="java.util.HashMap">
-		SELECT N.NOTES_ID AS notesId,N.NOTES_TITLE AS notesTitle,N.MEETING_ID AS meetingId,N.ATTACH AS attach,M.SUBJECT AS subject,
+		SELECT N.NOTES_ID AS notesId,N.NOTES_TITLE AS notesTitle,N.MEETING_ID AS meetingId,N.ATTACH AS "attach",M.SUBJECT AS subject,
 		(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=#{orgId} AND U.ACCOUNT_ID=M.CHAIR) AS chairName,
 		(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=#{orgId} AND U.ACCOUNT_ID=N.CREATE_USER) AS createUserName,
 		(SELECT R.NAME FROM MEETING_ROOM R WHERE R.ORG_ID=#{orgId} AND R.ROOM_ID=M.ROOM_ID) AS roomName,N.CREATE_TIME AS createTime

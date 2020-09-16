@@ -31,7 +31,7 @@ public interface ProjectBuildContractMapper extends MyMapper<ProjectBuildContrac
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>> getcontractlist(@Param(value="orgId") String orgId,@Param(value="sortId") String sortId,@Param(value="search") String search);
 
@@ -46,7 +46,7 @@ public interface ProjectBuildContractMapper extends MyMapper<ProjectBuildContrac
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 	public List<Map<String,String>> querycontractlist(@Param(value="orgId") String orgId,@Param(value="beginTime") String beginTime,@Param(value="endTime") String endTime,
 			@Param(value="signUser") String signUser,@Param(value="type") String type,@Param(value="search") String search);

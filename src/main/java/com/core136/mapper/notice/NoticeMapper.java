@@ -109,7 +109,7 @@ public interface NoticeMapper extends MyMapper<Notice>{
 	 * @param: leaveId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>> getMyNoticeListForDesk(
 			@Param (value="orgId") String orgId,
@@ -128,7 +128,7 @@ public interface NoticeMapper extends MyMapper<Notice>{
  * @param: leaveId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 	public List<Map<String, String>>getMobileMyNoticeList(
 			@Param (value="orgId") String orgId,

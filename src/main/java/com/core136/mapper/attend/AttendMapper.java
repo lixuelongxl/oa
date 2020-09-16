@@ -34,7 +34,7 @@ public interface AttendMapper extends MyMapper<Attend>{
 	 * @param: accountId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getAttendYearList(@Param(value="orgId") String orgId,@Param(value="accountId") String accountId);
 	
@@ -48,7 +48,7 @@ public interface AttendMapper extends MyMapper<Attend>{
 	 * @param: accountId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getMonthList(@Param(value="orgId") String orgId,@Param(value="year") String year,@Param(value="accountId") String accountId);
 	
@@ -62,7 +62,7 @@ public interface AttendMapper extends MyMapper<Attend>{
 	 * @param: accountId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getMyAttendList(@Param(value="orgId") String orgId,@Param(value="year") String year,@Param(value="month") String month, @Param(value="accountId") String accountId,@Param(value="type") String type);
 
@@ -77,7 +77,7 @@ public interface AttendMapper extends MyMapper<Attend>{
 	 * @param: deptId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getTotalAttendList(@Param(value = "orgId") String orgId,@Param(value="type") String type,@Param(value="beginTime") String beginTime,
 			@Param(value="endTime") String endTime,@Param(value="deptId") String deptId,@Param(value="createUser") String createUser);
@@ -94,7 +94,7 @@ public interface AttendMapper extends MyMapper<Attend>{
 	 * @param type
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getMyLeaveList(@Param(value="orgId")String orgId,@Param(value="accountId")String accountId,@Param(value="beginTime")String beginTime,@Param(value="endTime")String endTime,@Param(value="type")String type);
 	
@@ -108,7 +108,7 @@ public interface AttendMapper extends MyMapper<Attend>{
 	 * @param endTime
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getMyTravelList(@Param(value="orgId")String orgId,@Param(value="accountId")String accountId,@Param(value="beginTime")String beginTime,@Param(value="endTime")String endTime);
 
@@ -122,7 +122,7 @@ public interface AttendMapper extends MyMapper<Attend>{
 	 * @param endTime
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getMyOverTimeList(@Param(value="orgId")String orgId,@Param(value="accountId")String accountId,@Param(value="beginTime")String beginTime,@Param(value="endTime")String endTime);
 
@@ -136,7 +136,7 @@ public interface AttendMapper extends MyMapper<Attend>{
 	 * @param endTime
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getMyDutyList(@Param(value="orgId")String orgId,@Param(value="accountId")String accountId,@Param(value="beginTime")String beginTime,@Param(value="endTime")String endTime);
 
@@ -150,7 +150,7 @@ public interface AttendMapper extends MyMapper<Attend>{
 	 * @param endTime
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getMyOutattendList(@Param(value="orgId")String orgId,@Param(value="accountId")String accountId,@Param(value="beginTime")String beginTime,@Param(value="endTime")String endTime);
 

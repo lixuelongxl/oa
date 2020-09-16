@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.core136.bean.account.Account;
 import com.core136.bean.dataupload.DataUploadHandle;
 import com.core136.bean.dataupload.DataUploadInfo;
-import com.core136.bean.hr.HrRecruitPlan;
 import com.core136.bean.sys.PageParam;
 import com.core136.service.account.AccountService;
 import com.core136.service.dataupload.DataUploadHandleService;
@@ -39,7 +38,7 @@ private AccountService accountService;
  * @param dataUploadHandle
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getDataUploadHandleById",method=RequestMethod.POST)
 public RetDataBean getDataUploadHandleById(HttpServletRequest request,DataUploadHandle dataUploadHandle)
@@ -62,7 +61,7 @@ public RetDataBean getDataUploadHandleById(HttpServletRequest request,DataUpload
  * @param dataUploadInfo
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getDataUploadInfoById",method=RequestMethod.POST)
 public RetDataBean getDataUploadInfoById(HttpServletRequest request,DataUploadInfo dataUploadInfo)
@@ -90,7 +89,7 @@ public RetDataBean getDataUploadInfoById(HttpServletRequest request,DataUploadIn
  * @param approvedType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getDataUploadInfoList",method=RequestMethod.POST)
 public RetDataBean getDataUploadInfoList(HttpServletRequest request,PageParam pageParam,String deptId,String fromAccountId,
@@ -131,7 +130,7 @@ public RetDataBean getDataUploadInfoList(HttpServletRequest request,PageParam pa
  * @param approvedType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getToProcessInfoList",method=RequestMethod.POST)
 public RetDataBean getToProcessInfoList(HttpServletRequest request,PageParam pageParam,String deptId,String fromAccountId,
@@ -173,7 +172,7 @@ public RetDataBean getToProcessInfoList(HttpServletRequest request,PageParam pag
  * @param approvedType
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value="/getOldProcessInfoList",method=RequestMethod.POST)
 public RetDataBean getOldProcessInfoList(HttpServletRequest request,PageParam pageParam,String deptId,String fromAccountId,

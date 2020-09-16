@@ -51,7 +51,7 @@ private AccountService accountService;
  * @param: projectBuildDetails
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/insertProjectBuildDetails",method=RequestMethod.POST)
 public RetDataBean insertProjectBuildDetails(HttpServletRequest request,ProjectBuildDetails projectBuildDetails)
@@ -78,7 +78,7 @@ public RetDataBean insertProjectBuildDetails(HttpServletRequest request,ProjectB
  * @param: projectBuildDetails
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/delProjectBuildDetails",method=RequestMethod.POST)
 public RetDataBean delProjectBuildDetails(HttpServletRequest request,ProjectBuildDetails projectBuildDetails)
@@ -105,7 +105,7 @@ public RetDataBean delProjectBuildDetails(HttpServletRequest request,ProjectBuil
  * @param: projectBuildDetails
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/updateProjectBuildDetails",method=RequestMethod.POST)
 public RetDataBean updateProjectBuildDetails(HttpServletRequest request,ProjectBuildDetails projectBuildDetails)
@@ -134,7 +134,7 @@ public RetDataBean updateProjectBuildDetails(HttpServletRequest request,ProjectB
  * @param: projectBuildMaterialSort
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/delProjectBuildSort",method=RequestMethod.POST)
 public RetDataBean delProjectBuildSort(HttpServletRequest request,ProjectBuildSort projectBuildSort)
@@ -161,7 +161,7 @@ public RetDataBean delProjectBuildSort(HttpServletRequest request,ProjectBuildSo
  * @param: projectBuildSort
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/insertProjectBuildSort",method=RequestMethod.POST)
 public RetDataBean insertProjectBuildSort(HttpServletRequest request,ProjectBuildSort projectBuildSort)
@@ -192,7 +192,7 @@ public RetDataBean insertProjectBuildSort(HttpServletRequest request,ProjectBuil
  * @param: projectBuildSort
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/updateProjectBuildSort",method=RequestMethod.POST)
 public RetDataBean updateProjectBuildSort(HttpServletRequest request,ProjectBuildSort projectBuildSort)

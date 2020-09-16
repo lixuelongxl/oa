@@ -4,7 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core136.mapper.hr.HrCareRecordMapper">
 <resultMap id="HrCareRecord" type="com.core136.bean.hr.HrCareRecord" >
-    <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="RECORD_ID" property="recordId" jdbcType="VARCHAR" />
     <result column="SORT_NO" property="sortNo" jdbcType="INTEGER" />
     <result column="USER_ID" property="userId" jdbcType="VARCHAR" />
@@ -22,8 +21,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </resultMap>
 
 <select id="getHrCareRecordList" resultType="java.util.HashMap">
-	SELECT RECORD_ID AS recordId,USER_ID AS userId,SUBJECT AS subject,CARE_TYPE AS careType, CARE_TIME AS careTime,
-	JOIN_USER AS joinUser,CARE_FUNDS AS careFunds
+	SELECT RECORD_ID AS recordId,TO_CHAR(USER_ID) AS userId,SUBJECT AS subject,CARE_TYPE AS careType, CARE_TIME AS careTime,
+	TO_CHAR(JOIN_USER) AS joinUser,CARE_FUNDS AS careFunds
 	FROM HR_CARE_RECORD
 	WHERE ORG_ID=#{orgId}
 	<if test="userId!=null and userId!=''.toString()">

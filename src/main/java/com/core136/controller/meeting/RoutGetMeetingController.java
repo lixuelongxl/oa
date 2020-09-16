@@ -15,7 +15,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -64,7 +63,7 @@ public class RoutGetMeetingController {
 	 * @param request
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMyMeetingListForDesk",method=RequestMethod.POST)
 	public RetDataBean getMyMeetingListForDesk(HttpServletRequest request)
@@ -86,7 +85,7 @@ public class RoutGetMeetingController {
 	 * @param neetingNotes
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMeetingNotesInfo",method=RequestMethod.POST)
 	public RetDataBean getMeetingNotesInfo(HttpServletRequest request,MeetingNotes neetingNotes)
@@ -112,7 +111,7 @@ public class RoutGetMeetingController {
 	 * @param: roomId
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMeetingNotesList",method=RequestMethod.POST)
 	public RetDataBean getMeetingNotesList(HttpServletRequest request,
@@ -158,7 +157,7 @@ public class RoutGetMeetingController {
 	 * @param roomId
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/queryMeetingNotesList",method=RequestMethod.POST)
 	public RetDataBean queryMeetingNotesList(HttpServletRequest request,
@@ -202,7 +201,7 @@ public class RoutGetMeetingController {
 	 * @param: request
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getNotNotesMeetingList",method=RequestMethod.POST)
 	public RetDataBean getNotNotesMeetingList(HttpServletRequest request)
@@ -225,7 +224,7 @@ public class RoutGetMeetingController {
 	 * @param: meetingRoom
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMeetingRoomById",method=RequestMethod.POST)
 	public RetDataBean getMeetingRoomById(HttpServletRequest request,MeetingRoom meetingRoom)
@@ -248,7 +247,7 @@ public class RoutGetMeetingController {
 	 * @param: request
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getCanUseMeetingRoomList",method=RequestMethod.POST)
 	public RetDataBean getCanUseMeetingRoomList(HttpServletRequest request,String search)
@@ -270,7 +269,7 @@ public class RoutGetMeetingController {
 	 * @param: pageParam
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMeetingRoomList",method=RequestMethod.POST)
 	public RetDataBean getMeetingRoomList(HttpServletRequest request,PageParam pageParam)
@@ -307,7 +306,7 @@ public class RoutGetMeetingController {
 	 * @param: meetingDevice
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMeetingDeviceById",method=RequestMethod.POST)
 	public RetDataBean getMeetingRoomDeviceById(HttpServletRequest request,MeetingDevice meetingDevice)
@@ -330,7 +329,7 @@ public class RoutGetMeetingController {
 	 * @param deviceIds
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getDeviceListName",method=RequestMethod.POST)
 	public RetDataBean getDeviceListName(HttpServletRequest request,String deviceIds)
@@ -352,7 +351,7 @@ public class RoutGetMeetingController {
 	 * @param: request
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getCanUseDeviceList",method=RequestMethod.POST)
 	public RetDataBean getCanUseDeviceList(HttpServletRequest request)
@@ -382,7 +381,7 @@ public class RoutGetMeetingController {
 	 * @param: pageParam
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMeetingDeviceList",method=RequestMethod.POST)
 	public RetDataBean getMeetingDeviceList(HttpServletRequest request,PageParam pageParam)
@@ -419,7 +418,7 @@ public class RoutGetMeetingController {
 	 * @param: meeting
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMeetingById",method=RequestMethod.POST)
 	public RetDataBean getMeetingById(HttpServletRequest request,Meeting meeting)
@@ -446,7 +445,7 @@ public class RoutGetMeetingController {
 	 * @param: endTime
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMeetingList",method=RequestMethod.POST)
 	public RetDataBean getMeetingList(HttpServletRequest request,PageParam pageParam,
@@ -489,7 +488,7 @@ public class RoutGetMeetingController {
 	 * @param endTime
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getApplyMeetingList",method=RequestMethod.POST)
 	public RetDataBean getApplyMeetingList(HttpServletRequest request,PageParam pageParam,String beginTime,String endTime
@@ -531,7 +530,7 @@ public class RoutGetMeetingController {
 	 * @param endTime
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMyMeetingList",method=RequestMethod.POST)
 	public RetDataBean getMyMeetingList(HttpServletRequest request,PageParam pageParam,String beginTime,String endTime
@@ -574,7 +573,7 @@ public class RoutGetMeetingController {
 	 * @param endTime
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMyMeetingOldList",method=RequestMethod.POST)
 	public RetDataBean getMyMeetingOldList(HttpServletRequest request,PageParam pageParam,String beginTime,String endTime)
@@ -617,7 +616,7 @@ public class RoutGetMeetingController {
 	 * @param endTime
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getOldApplyMeetingList",method=RequestMethod.POST)
 	public RetDataBean getOldApplyMeetingList(HttpServletRequest request,PageParam pageParam,String status,String beginTime,String endTime
@@ -661,7 +660,7 @@ public class RoutGetMeetingController {
 	 * @param chair
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMyApplyMeetingList",method=RequestMethod.POST)
 	public RetDataBean getMyApplyMeetingList(HttpServletRequest request,PageParam pageParam,
@@ -702,7 +701,7 @@ public class RoutGetMeetingController {
 	 * @param: meetingNotes
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMeetingNotesById",method=RequestMethod.POST)
 	public RetDataBean getMeetingNotesById(HttpServletRequest request,MeetingNotes meetingNotes)
@@ -726,7 +725,7 @@ public class RoutGetMeetingController {
 	 * @param dayStr
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMeetingByDay",method=RequestMethod.POST)
 	public RetDataBean getMeetingByDay(HttpServletRequest request,String dayStr)

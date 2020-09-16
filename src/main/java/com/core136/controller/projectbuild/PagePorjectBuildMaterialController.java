@@ -13,7 +13,7 @@ public class PagePorjectBuildMaterialController {
 	 * @Description: TODO 设置工程材料分类
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/addsort")
 	public ModelAndView  goAddMaterialsort()
@@ -35,7 +35,7 @@ public class PagePorjectBuildMaterialController {
 	 * @Description: TODO 录入工程材料
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/addmaterial")
 	public ModelAndView  goAddmaterial()
@@ -57,7 +57,7 @@ public class PagePorjectBuildMaterialController {
 	 * @Description: TODO 材料详情  
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/materialdetails")
 	public ModelAndView  goAddMaterialdetails()
@@ -94,7 +94,7 @@ public class PagePorjectBuildMaterialController {
 	 * @Description: TODO 采购申请
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/purchase")
 	public ModelAndView  goPurchasematerialMaterialdetails()
@@ -116,7 +116,7 @@ public class PagePorjectBuildMaterialController {
 	 * @Description: TODO 领导审批
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/approval")
 	public ModelAndView  goApprovalMaterialdetails()
@@ -139,7 +139,7 @@ public class PagePorjectBuildMaterialController {
 	 * @Description: TODO 材料预警设置
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/warning")
 	public ModelAndView  goApprovalMaterialWarning()
@@ -161,7 +161,7 @@ public class PagePorjectBuildMaterialController {
 	 * @Description: TODO 材料入库
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/materialin")
 	public ModelAndView  goMaterialIn()
@@ -182,7 +182,7 @@ public class PagePorjectBuildMaterialController {
 	 * @Description: TODO 入库记录详情
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/materialinlist")
 	public ModelAndView  goMaterialInlist()
@@ -204,7 +204,7 @@ public class PagePorjectBuildMaterialController {
 	 * @Description: TODO 材料出库
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/materialout")
 	public ModelAndView  goMaterialOut()
@@ -226,7 +226,7 @@ public class PagePorjectBuildMaterialController {
 	 * @Description: TODO 出库记录详情
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/materialoutlist")
 	public ModelAndView  goMaterialoutlist()
@@ -248,7 +248,7 @@ public class PagePorjectBuildMaterialController {
 	 * @Description: TODO 出库查询 
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/querymaterialout")
 	public ModelAndView  goQueryMaterialOut()
@@ -270,7 +270,7 @@ public class PagePorjectBuildMaterialController {
 	 * @Description: TODO 入库查询
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/querymaterialin")
 	public ModelAndView  goQueryMaterialIn()
@@ -292,7 +292,7 @@ public class PagePorjectBuildMaterialController {
 	 * @Description: TODO 采购查询
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/querypurchase")
 	public ModelAndView  goQueryPurchase()
@@ -313,7 +313,7 @@ public class PagePorjectBuildMaterialController {
 	 * @Description: TODO 采购申请详情
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/purchasedetails")
 	public ModelAndView  goPurchasedetails()

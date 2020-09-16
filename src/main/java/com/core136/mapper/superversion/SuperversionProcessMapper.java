@@ -33,7 +33,7 @@ public interface SuperversionProcessMapper extends MyMapper<SuperversionProcess>
 	 * @param: orgId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>>getMyCompleteProcessList(@Param(value="orgId") String orgId,@Param(value="accountId")String accountId,@Param(value="beginTime") String beginTime,
 			@Param(value="endTime") String endTime,@Param(value="type") String type,@Param(value="search")String search);
@@ -49,7 +49,7 @@ public interface SuperversionProcessMapper extends MyMapper<SuperversionProcess>
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>>getControlProcessList(@Param(value="orgId") String orgId,@Param(value="accountId")String accountId,@Param(value="beginTime") String beginTime,
 			@Param(value="endTime") String endTime,@Param(value="type") String type,@Param(value="search")String search);

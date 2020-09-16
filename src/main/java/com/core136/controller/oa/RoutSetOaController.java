@@ -98,7 +98,7 @@ public class RoutSetOaController {
 	 * @param content
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/sendSms",method=RequestMethod.POST)
 	public RetDataBean sendSms (HttpServletRequest request,String toUser,String content)
@@ -120,7 +120,7 @@ public class RoutSetOaController {
 	 * @param hrKpiPlan
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertLeadActivity",method=RequestMethod.POST)
 	public RetDataBean insertLeadActivity (HttpServletRequest request,LeadActivity leadActivity)
@@ -145,7 +145,7 @@ public class RoutSetOaController {
 	 * @param hrKpiPlan
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteLeadActivity",method=RequestMethod.POST)
 	public RetDataBean deleteLeadActivity(HttpServletRequest request,LeadActivity leadActivity)
@@ -172,7 +172,7 @@ public class RoutSetOaController {
 	 * @param hrKpiPlan
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateLeadActivity",method=RequestMethod.POST)
 	public RetDataBean updateLeadActivity(HttpServletRequest request,LeadActivity leadActivity)
@@ -201,7 +201,7 @@ public class RoutSetOaController {
 	 * @param: diaryComments
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertDiaryComments",method=RequestMethod.POST)
 	public RetDataBean insertDiaryComments(HttpServletRequest request,DiaryComments diaryComments)
@@ -230,7 +230,7 @@ public class RoutSetOaController {
 	 * @param: diary
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/delDiary",method=RequestMethod.POST)
 	public RetDataBean delDiary(HttpServletRequest request,Diary diary)
@@ -260,7 +260,7 @@ public class RoutSetOaController {
 	 * @param: newsComments
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertNewsComments",method=RequestMethod.POST)
 	public RetDataBean insertNewsComments(HttpServletRequest request,NewsComments newsComments)
@@ -289,7 +289,7 @@ public class RoutSetOaController {
 	 * @param: attend
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertAttend",method=RequestMethod.POST)
 	public RetDataBean insertAttend(HttpServletRequest request,Attend attend)
@@ -532,7 +532,7 @@ public class RoutSetOaController {
 	 * @param sms
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateSms",method=RequestMethod.POST)
 	public RetDataBean updateSms(HttpServletRequest request,Sms sms)
@@ -576,7 +576,7 @@ public class RoutSetOaController {
 			calendar.setCreateUser(account.getAccountId());
 			String smsTime="";
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
-			String startTime=calendar.getStart();
+			String startTime=calendar.getStartTime();
 			Date date = sdf.parse(startTime); 
 			if(!calendar.getAdvance().equals("0"))
 			{
@@ -637,7 +637,7 @@ public class RoutSetOaController {
 			calendar.setOrgId(account.getOrgId());
 			String smsTime="";
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
-			String startTime=calendar.getStart();
+			String startTime=calendar.getStartTime();
 			Date date = sdf.parse(startTime); 
 			if(!calendar.getAdvance().equals("0"))
 			{
@@ -775,7 +775,7 @@ public class RoutSetOaController {
 	 * @param: diary
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateDiary",method=RequestMethod.POST)
 	public RetDataBean updateDiary(HttpServletRequest request,Diary diary)
@@ -811,7 +811,7 @@ public class RoutSetOaController {
 	 * @param: attendConfig
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertAttendConfig",method=RequestMethod.POST)
 	public RetDataBean insertAttendConfig(HttpServletRequest request,AttendConfig attendConfig)
@@ -838,7 +838,7 @@ public class RoutSetOaController {
 	 * @param: attendConfig
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateAttendConfig",method=RequestMethod.POST)
 	public RetDataBean updateAttendConfig(HttpServletRequest request,AttendConfig attendConfig)
@@ -868,7 +868,7 @@ public class RoutSetOaController {
 	 * @param: attendConfig
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteAttendConfig",method=RequestMethod.POST)
 	public RetDataBean deleteAttendConfig(HttpServletRequest request,AttendConfig attendConfig)

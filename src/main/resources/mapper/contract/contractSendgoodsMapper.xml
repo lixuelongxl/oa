@@ -4,7 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core136.mapper.contract.ContractSendgoodsMapper">
 <resultMap id="ContractSendgoods" type="com.core136.bean.contract.ContractSendgoods" >
-    <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="RECORD_ID" property="recordId" jdbcType="VARCHAR" />
     <result column="CONTRACT_ID" property="contractId" jdbcType="INTEGER" />
     <result column="TRACKING_NUMBER" property="trackingNumber" jdbcType="VARCHAR" />

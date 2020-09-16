@@ -4,7 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core136.mapper.projectbuild.ProjectBuildMaterialInMapper">
 <resultMap id="ProjectBuildMaterialIn" type="com.core136.bean.projectbuild.ProjectBuildMaterialIn" >
-    <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="IN_ID" property="inId" jdbcType="VARCHAR" />
     <result column="PROJECT_ID" property="projectId" jdbcType="VARCHAR" />
     <result column="MATERIAL_ID" property="materialId" jdbcType="VARCHAR" />
@@ -38,7 +37,7 @@ GROUP BY P.MATERIAL_ID
 </select>
 
 <select id="getMaterialInList"  resultType="java.util.HashMap">
-SELECT P.IN_ID AS inId,P.QUANTITY AS quantity,P.IN_USER AS inUser,P.REMARK AS remark,P.CREATE_TIME AS createTime,M.NAME AS materialName,M.MATERIAL_ID AS materialId,M.MATERIAL_CODE AS materialCode,M.UNIT AS unit,
+SELECT P.IN_ID AS inId,P.QUANTITY AS quantity,P.IN_USER AS inUser,TO_CHAR(P.REMARK) AS remark,P.CREATE_TIME AS createTime,M.NAME AS materialName,M.MATERIAL_ID AS materialId,M.MATERIAL_CODE AS materialCode,M.UNIT AS unit,
 M.BRAND AS brand,M.MODEL AS model,(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=#{orgId} AND U.ACCOUNT_ID=P.IN_USER) AS inUserName,
 (SELECT A.TITLE FROM PROJECT_BUILD_MATERIAL_PURCHASE A WHERE A.ORG_ID=#{orgId} AND A.PURCHASE_ID=P.PURCHASE_ID) AS title
 FROM PROJECT_BUILD_MATERIAL_IN P,PROJECT_BUILD_MATERIAL M

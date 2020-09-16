@@ -151,9 +151,16 @@ public class RoutSetEmailController {
 			emailBody.setFromId(account.getAccountId());
 			emailBody.setSendFlag("0");
 			emailBody.setDelFlag("0");
+			Document htmlDoc = Jsoup.parse(emailBody.getContent());
+			String subheading = htmlDoc.text();
+			if(subheading.length()>50)
+			{
+				subheading = subheading.substring(0,50)+"...";
+			}
+			emailBody.setSubheading(subheading);
 			emailBody.setBodyId(SysTools.getGUID());
 			emailBody.setOrgId(account.getOrgId());
-			return RetDataTools.Ok("邮件发送成功!", emailBodyService.insertEmailBody(emailBody));
+			return RetDataTools.Ok("邮件保存成功!", emailBodyService.insertEmailBody(emailBody));
 		}catch (Exception e) {
 			// TODO: handle exception
 			return RetDataTools.Error(e.getMessage());

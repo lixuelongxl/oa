@@ -20,7 +20,7 @@ public interface ContractReceivablesRecordMapper extends MyMapper<ContractReceiv
 	 * @param receivablesId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getContractReceivablesRecordList(@Param(value="orgId")String orgId,@Param(value="receivablesId")String receivablesId);
 	
@@ -31,7 +31,7 @@ public interface ContractReceivablesRecordMapper extends MyMapper<ContractReceiv
 	 * @param orgId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getReceivRecordTop(@Param(value="orgId")String orgId);
 }

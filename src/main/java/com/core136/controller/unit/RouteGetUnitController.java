@@ -89,7 +89,7 @@ public class RouteGetUnitController {
 	 * @param request
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getUserOnLineList",method=RequestMethod.POST)
 	public RetDataBean getUserOnLineList(HttpServletRequest request)
@@ -109,7 +109,7 @@ public class RouteGetUnitController {
 	 * @param request
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getUserOnLineCount",method=RequestMethod.POST)
 	public RetDataBean getUserOnLineCount(HttpServletRequest request)
@@ -130,7 +130,7 @@ public class RouteGetUnitController {
 	 * @param userGroup
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getSelectUserByGroupId",method=RequestMethod.POST)
 	public RetDataBean getSelectUserByGroupId(HttpServletRequest request,UserGroup userGroup)
@@ -153,7 +153,7 @@ public class RouteGetUnitController {
 	 * @param request
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getUserGroupListByAccountId",method=RequestMethod.POST)
 	public RetDataBean getUserGroupListByAccountId(HttpServletRequest request)
@@ -175,7 +175,7 @@ public class RouteGetUnitController {
 	 * @param levelId
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getSelectUserByLevelId",method=RequestMethod.POST)
 	public RetDataBean getSelectUserByLevelId(HttpServletRequest request,String levelId)
@@ -196,7 +196,7 @@ public class RouteGetUnitController {
 	 * @param request
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMyUserGroup",method=RequestMethod.POST)
 	public RetDataBean getMyUserGroup(HttpServletRequest request)
@@ -218,7 +218,7 @@ public class RouteGetUnitController {
 	 * @param userGroup
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getUserGroupById",method=RequestMethod.POST)
 	public RetDataBean getUserGroupById(HttpServletRequest request,UserGroup userGroup)
@@ -241,7 +241,7 @@ public class RouteGetUnitController {
 	 * @param: search
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getSearchUserForMobile",method=RequestMethod.POST)
 	public RetDataBean getSearchUserForMobile(HttpServletRequest request,String search)
@@ -263,7 +263,7 @@ public class RouteGetUnitController {
 	 * @param: accountId
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getHomePageByAccountId",method=RequestMethod.POST)
 	public RetDataBean getHomePageByAccountId(HttpServletRequest request,String accountId)
@@ -286,7 +286,7 @@ public class RouteGetUnitController {
 	 * @param: request
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getDeptTableTreeList",method=RequestMethod.POST)
 	public RetDataBean getDeptTableTreeList(HttpServletRequest request)
@@ -308,7 +308,7 @@ public class RouteGetUnitController {
 	 * @param: request
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMyHomePage",method=RequestMethod.POST)
 	public RetDataBean getMyHomePage(HttpServletRequest request)
@@ -330,7 +330,7 @@ public class RouteGetUnitController {
 	 * @param: request
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getAllUserInfoByAccountList",method=RequestMethod.POST)
 	public RetDataBean getAllUserInfoByAccountList(HttpServletRequest request,String accountStrs)
@@ -420,7 +420,7 @@ public class RouteGetUnitController {
 	 * @param: deptId
 	 * @param: @return      
 	 * @return: List<Map<String,Object>>      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getUnitDeptForUserInfoTree",method=RequestMethod.POST)
 	public List<Map<String,Object>> getUnitDeptForUserInfoTree(HttpServletRequest request,String deptId)
@@ -498,7 +498,7 @@ public RetDataBean getUserPrivNamesByIds(HttpServletRequest request,String userP
 	 * @param pageParam
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getLeaveUserInfo",method=RequestMethod.POST)
 	public RetDataBean getLeaveUserInfo(
@@ -592,7 +592,7 @@ public RetDataBean getUserPrivNamesByIds(HttpServletRequest request,String userP
 	 * @param: deptId
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getDingDingUserInfoByDeptId",method=RequestMethod.POST)
 	public RetDataBean getDingDingUserInfoByDeptId(
@@ -635,7 +635,7 @@ public RetDataBean getUserPrivNamesByIds(HttpServletRequest request,String userP
 	 * @param deptId
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getWeiXinUserInfoByDeptId",method=RequestMethod.POST)
 	public RetDataBean getWeiXinUserInfoByDeptId(
@@ -751,7 +751,7 @@ public RetDataBean getUserPrivNamesByIds(HttpServletRequest request,String userP
 	 * @param: request
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMyUserInfo",method=RequestMethod.POST)
 	public RetDataBean getMyUserInfo(HttpServletRequest request)
@@ -944,7 +944,7 @@ public RetDataBean getUserPrivNamesByIds(HttpServletRequest request,String userP
 	 * @param: pageParam
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getAllUserPriv",method=RequestMethod.POST)
 	public RetDataBean getAllUserPriv(HttpServletRequest request,PageParam pageParam)
@@ -1193,7 +1193,7 @@ public RetDataBean getUserPrivNamesByIds(HttpServletRequest request,String userP
 	 * @param: accountId
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getUserInfoDeatilsByAccountId",method=RequestMethod.POST)
 	public RetDataBean getUserInfoDeatilsByAccountId(HttpServletRequest request,String accountId)

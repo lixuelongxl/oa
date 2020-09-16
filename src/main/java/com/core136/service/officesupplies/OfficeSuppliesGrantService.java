@@ -49,7 +49,7 @@ public OfficeSuppliesGrant selectOneOfficeSuppliesGrant(OfficeSuppliesGrant offi
  * @param: applyId
  * @param: @return      
  * @return: int      
- * @throws
+
  */
 public int getGrantCount(String orgId,String applyId)
 {

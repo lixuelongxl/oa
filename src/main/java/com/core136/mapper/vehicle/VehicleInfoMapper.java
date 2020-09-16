@@ -27,7 +27,7 @@ public interface VehicleInfoMapper extends MyMapper<VehicleInfo>{
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getManageVehicleInfoList(
 			@Param(value="orgId")String orgId,
@@ -48,7 +48,7 @@ public interface VehicleInfoMapper extends MyMapper<VehicleInfo>{
 	 * @param orgId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getCanUsedVehicleList(@Param(value="orgId")String orgId);
 }

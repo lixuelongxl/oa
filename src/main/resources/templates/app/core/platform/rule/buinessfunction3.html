@@ -30,6 +30,17 @@ cursor: pointer;
 							<div class="col-sm-11" id="queryfields"></div>
 						</div>
 						<div class="form-group">
+							<label class="col-sm-1 control-label no-padding-right">执行SQL：</label>
+							<div class="col-sm-8">
+								<textarea id="opt3SqlScript" name="opt3SqlScript" rows="5" cols="" class="form-control"></textarea>
+							</div>
+							<div class="col-sm-3">
+								<span style="color:red">
+									注：使用SQL脚本时，列表显示字段设置蒋会失效。若不想使用SQL请清空SQL脚本。
+								</span>
+							</div>
+						</div>
+						<div class="form-group">
 							<label class="col-sm-1 control-label no-padding-right">列表显示字段：</label>
 							<div class="col-sm-11">
 								<div align="right">
@@ -39,8 +50,8 @@ cursor: pointer;
 									<table class="table table-hover table-striped table-bordered">
 										<thead>
 											<tr>
-												<th width="10%">表单字段</th>
 												<th width="10%">显示字段</th>
+												<th width="10%">表单字段</th>
 												<th width="10%">宽度</th>
 												<th width="5%">对齐方式</th>
 												<th width="55%">返回格式</th>
@@ -169,5 +180,5 @@ cursor: pointer;
 	var pageId = "${parameter.pageId}";
 </script>
 <script type="text/javascript" src="/gobal/js/page/platform/units/platformunits.js"></script>
-<script type="text/javascript" src="/gobal/js/page/platform/rule/buinessfunction.js"></script>
+<script type="text/javascript" src="/gobal/js/page/platform/rule/buinessfunction3.js"></script>
 </html>

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.core136.bean.contract.ContractSendgoods;
 import com.core136.bean.sys.PageParam;
-import com.core136.mapper.contract.ContractMapper;
 import com.core136.mapper.contract.ContractSendgoodsMapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -48,7 +47,7 @@ public ContractSendgoods selectOneContractSendgoods(ContractSendgoods contractSe
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getContractSendgoodsList(String orgId,String contractType,String beginTime,String endTime,String search)
 {
@@ -64,7 +63,7 @@ public List<Map<String, String>>getContractSendgoodsList(String orgId,String con
  * @param endTime
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getContractSendgoodsList(PageParam pageParam,String contractType,String beginTime, String endTime) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());

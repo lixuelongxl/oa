@@ -71,7 +71,7 @@ private AccountService accountService;
  * @param: applyId
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getApplyAndApproveInfo",method=RequestMethod.POST)
 public RetDataBean getApplyAndApproveInfo(HttpServletRequest request,String applyId)
@@ -96,7 +96,7 @@ public RetDataBean getApplyAndApproveInfo(HttpServletRequest request,String appl
  * @param: status
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getFixedAssetsApplyList",method=RequestMethod.POST)
 public RetDataBean getFixedAssetsApplyList(
@@ -143,7 +143,7 @@ public RetDataBean getFixedAssetsApplyList(
  * @param: status
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getFixedAssetsRepairList",method=RequestMethod.POST)
 public RetDataBean getFixedAssetsRepairList(
@@ -189,7 +189,7 @@ public RetDataBean getFixedAssetsRepairList(
  * @param: fixedAssetsRepair
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getFixedAssetsRepairById",method=RequestMethod.POST)
 public RetDataBean getFixedAssetsRepairById(HttpServletRequest request,FixedAssetsRepair fixedAssetsRepair)
@@ -212,7 +212,7 @@ public RetDataBean getFixedAssetsRepairById(HttpServletRequest request,FixedAsse
  * @param: fixedAssetsApproval
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getFixedAssetsApprovalById",method=RequestMethod.POST)
 public RetDataBean getFixedAssetsApprovalById(HttpServletRequest request,FixedAssetsApproval fixedAssetsApproval)
@@ -235,7 +235,7 @@ public RetDataBean getFixedAssetsApprovalById(HttpServletRequest request,FixedAs
  * @param: fixedAssetsApply
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getFixedAssetsApplyById",method=RequestMethod.POST)
 public RetDataBean getFixedAssetsApplyById(HttpServletRequest request,FixedAssetsApply fixedAssetsApply)
@@ -260,7 +260,7 @@ public RetDataBean getFixedAssetsApplyById(HttpServletRequest request,FixedAsset
  * @param: sortId
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getApplyFixedAssetsList",method=RequestMethod.POST)
 public RetDataBean getApplyFixedAssetsList(
@@ -306,7 +306,7 @@ public RetDataBean getApplyFixedAssetsList(
  * @param: ownDept
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/queryFixedAssetsList",method=RequestMethod.POST)
 public RetDataBean queryFixedAssetsList(
@@ -354,7 +354,7 @@ public RetDataBean queryFixedAssetsList(
  * @param: sortId
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getAllocationList",method=RequestMethod.POST)
 public RetDataBean getAllocationList(
@@ -400,7 +400,7 @@ public RetDataBean getAllocationList(
  * @param: endTime
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getFixedAssetsList",method=RequestMethod.POST)
 public RetDataBean getFixedAssetsList(
@@ -445,7 +445,7 @@ public RetDataBean getFixedAssetsList(
  * @param: fixedAssetsSort
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getFixedAssetsSortById",method=RequestMethod.POST)
 public RetDataBean getFixedAssetsSortById(HttpServletRequest request,FixedAssetsSort fixedAssetsSort)
@@ -468,7 +468,7 @@ public RetDataBean getFixedAssetsSortById(HttpServletRequest request,FixedAssets
  * @param: fixedAssetsStorage
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getFixedAssetsStorageById",method=RequestMethod.POST)
 public RetDataBean getFixedAssetsStorageById(HttpServletRequest request,FixedAssetsStorage fixedAssetsStorage)
@@ -490,7 +490,7 @@ public RetDataBean getFixedAssetsStorageById(HttpServletRequest request,FixedAss
  * @param: fixedAssetsStorage
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getAllFixedAssetsStorageList",method=RequestMethod.POST)
 public RetDataBean getAllFixedAssetsStorageList(HttpServletRequest request,FixedAssetsStorage fixedAssetsStorage)
@@ -512,7 +512,7 @@ public RetDataBean getAllFixedAssetsStorageList(HttpServletRequest request,Fixed
  * @param: fixedAssets
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getFixedAssetsById",method=RequestMethod.POST)
 public RetDataBean getFixedAssetsById(HttpServletRequest request,FixedAssets fixedAssets)
@@ -535,7 +535,7 @@ public RetDataBean getFixedAssetsById(HttpServletRequest request,FixedAssets fix
  * @param: sortId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 @RequestMapping(value="/getFixedAssetSortTree",method=RequestMethod.POST)
 public List<Map<String,String>> getFixedAssetSortTree(HttpServletRequest request,String sortId)
@@ -562,7 +562,7 @@ public List<Map<String,String>> getFixedAssetSortTree(HttpServletRequest request
  * @param: pageParam
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping(value="/getFixedAssetsStorageList",method=RequestMethod.POST)
 public RetDataBean getFixedAssetsStorageList(HttpServletRequest request,PageParam pageParam)

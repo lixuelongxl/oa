@@ -1,8 +1,6 @@
 package com.core136.controller.mobile;
 
 import java.util.List;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.core136.common.weixin.WXutils;
@@ -17,14 +15,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSONObject;
 import com.core136.bean.account.Account;
-import com.core136.bean.sys.DdConfig;
 import com.core136.bean.sys.WxConfig;
 import com.core136.service.account.AccountService;
 import com.core136.service.sys.AppConfigService;
 import com.core136.service.sys.WxConfigService;
 import com.core136.service.weixin.WeiXinLoginService;
-
-import bsh.Console;
 
 @Controller
 @RequestMapping("/weixin")
@@ -47,7 +42,7 @@ public class WxPageController {
 	 * @param: ddConfig
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/index")
 	public ModelAndView goWXIndex(HttpServletRequest request,WxConfig wxConfig)
@@ -67,7 +62,7 @@ public class WxPageController {
 	 * @param wxConfig
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/wxlogin")
 	public ModelAndView goWxAutoLogin(HttpServletRequest request,WxConfig wxConfig)
@@ -88,7 +83,7 @@ public class WxPageController {
 	 * @param orgId
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/main/index",method=RequestMethod.GET)
 	public ModelAndView goToMobileIndex(HttpServletRequest request,String code,String orgId)
@@ -126,7 +121,7 @@ public class WxPageController {
 	 * @param detailsUrl
 	 * @return
 	 * String    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/details",method=RequestMethod.GET)
 	public String goDetails(HttpServletRequest request,String code,String orgId,String detailsUrl)

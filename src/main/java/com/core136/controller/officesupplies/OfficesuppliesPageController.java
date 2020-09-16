@@ -36,7 +36,7 @@ public class OfficesuppliesPageController {
 	 * @Description: TODO(这里用一句话描述这个方法的作用)   
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/addofficesupplies")
 	public ModelAndView  goAddofficesupplies()
@@ -58,7 +58,7 @@ public class OfficesuppliesPageController {
 	 * @Description: TODO设置办公用品的计量单位
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/setofficesppliesunit")
 	public ModelAndView  setOfficesppliesunit()
@@ -80,7 +80,7 @@ public class OfficesuppliesPageController {
  * @Description: TODO 办公领用申请
  * @param: @return      
  * @return: ModelAndView      
- * @throws
+
  */
 	@RequestMapping("/applyofficesupplies")
 	public ModelAndView  goApplyofficesupplies(String view)
@@ -106,11 +106,34 @@ public class OfficesuppliesPageController {
 	
 	/**
 	 * 
+	 * @Title: goOfficesuppliesdetails   
+	 * @Description: TODO 办公用品详情
+	 * @param: @return      
+	 * @return: ModelAndView      
+
+	 */
+	@RequestMapping("/officesuppliesdetails")
+	public ModelAndView  goOfficesuppliesdetails()
+	{
+		try
+		{
+		ModelAndView mv = new ModelAndView("app/core/officesupplies/officesuppliesdetails");
+		return mv;
+		}catch (Exception e) {
+		// TODO: handle exception
+		ModelAndView mv = new ModelAndView("titps");
+		return mv;
+	}
+	}
+	
+	
+	/**
+	 * 
 	 * @Title: goApprovalofficesupplies   
 	 * @Description: TODO 办公用品领用审批
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/approvalofficesupplies")
 	public ModelAndView  goApprovalofficesupplies()
@@ -132,7 +155,7 @@ public class OfficesuppliesPageController {
 	 * @Description: TODO 办公用品统计
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/manageofficesupplies")
 	public ModelAndView  goManageofficesupplies()
@@ -155,7 +178,7 @@ public class OfficesuppliesPageController {
 	 * @Description: TODO 办公用品发放
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/grantofficesupplies")
 	public ModelAndView  goGrantofficesupplies()

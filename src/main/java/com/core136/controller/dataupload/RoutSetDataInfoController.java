@@ -38,7 +38,7 @@ public class RoutSetDataInfoController {
 	 * @param dataUploadHandle
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertDataUploadHandle",method=RequestMethod.POST)
 	public RetDataBean insertDataUploadHandle (HttpServletRequest request,DataUploadHandle dataUploadHandle)
@@ -63,7 +63,7 @@ public class RoutSetDataInfoController {
 	 * @param dataUploadHandle
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteDataUploadHandle",method=RequestMethod.POST)
 	public RetDataBean deletDataUploadHandle(HttpServletRequest request,DataUploadHandle dataUploadHandle)
@@ -90,7 +90,7 @@ public class RoutSetDataInfoController {
 	 * @param dataUploadHandle
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateDataUploadHandle",method=RequestMethod.POST)
 	public RetDataBean updateDataUploadHandle(HttpServletRequest request,DataUploadHandle dataUploadHandle)
@@ -118,7 +118,7 @@ public class RoutSetDataInfoController {
 	 * @param dataUploadInfo
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/insertDataUploadInfo",method=RequestMethod.POST)
 	public RetDataBean insertDataUploadInfo (HttpServletRequest request,DataUploadInfo dataUploadInfo)
@@ -145,7 +145,7 @@ public class RoutSetDataInfoController {
 	 * @param dataUploadInfo
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteDataUploadInfo",method=RequestMethod.POST)
 	public RetDataBean deleteDataUploadInfo(HttpServletRequest request,DataUploadInfo dataUploadInfo)
@@ -172,7 +172,7 @@ public class RoutSetDataInfoController {
 	 * @param dataUploadInfo
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateDataUploadInfo",method=RequestMethod.POST)
 	public RetDataBean updateDataUploadInfo(HttpServletRequest request,DataUploadInfo dataUploadInfo)

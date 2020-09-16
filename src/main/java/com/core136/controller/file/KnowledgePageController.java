@@ -12,10 +12,16 @@
 package com.core136.controller.file;
 
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.core136.bean.account.Account;
+import com.core136.service.account.AccountService;
 
 /**   
  * @ClassName:  AppKnowledgePageController   
@@ -29,13 +35,15 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/app/core")
 public class KnowledgePageController {
+@Autowired
+private AccountService accountService;
 	/**
 	 * 
 	 * @Title: goKnowledgestudylist   
 	 * @Description: TODO 跳转到知识分类清单
 	 * @return
 	 * ModelAndView    
-	 * @throws
+
 	 */
 	@RequestMapping("/file/knowledgestudylist")
 	public ModelAndView  goKnowledgestudylist()
@@ -56,14 +64,16 @@ public class KnowledgePageController {
 	 * @Description: TODO 知识详情
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/file/detailknowledge")
-	public ModelAndView  goDetailKnowledge()
+	public ModelAndView  goDetailKnowledge(HttpServletRequest request)
 	{
 		try
 		{
+		Account account=accountService.getRedisAccount(request);
 		ModelAndView mv = new ModelAndView("app/core/knowledge/knowledgedetail");
+		mv.addObject("accountId",account.getAccountId());
 		return mv;
 		}catch (Exception e) {
 		// TODO: handle exception
@@ -77,7 +87,7 @@ public class KnowledgePageController {
  * @Description: TODO知识积分
  * @param: @return      
  * @return: ModelAndView      
- * @throws
+
  */
 	@RequestMapping("/file/knowledgeintegral")
 	public ModelAndView  goKnowledgeIntegral()
@@ -98,7 +108,7 @@ public class KnowledgePageController {
  * @Description: TODO 知识学习
  * @param: @return      
  * @return: ModelAndView      
- * @throws
+
  */
 	@RequestMapping("/file/knowledgestudy")
 	public ModelAndView  goKnowledgestudy()
@@ -119,7 +129,7 @@ public class KnowledgePageController {
 	 * @Description: TODO 全文检索页面
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/file/indexsearch")
 	public ModelAndView  goIndexSearch()
@@ -161,7 +171,7 @@ public class KnowledgePageController {
 	 * @Description: TODO 知识记录管理
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/file/knowledgeinit")
 	public ModelAndView  goKnowledgeManage(String view)
@@ -176,10 +186,10 @@ public class KnowledgePageController {
 			{
 				if(view.equals("init"))
 				{
-					mv = new ModelAndView("app/core/knowledge/knowledgeintegral");
-				}else if(view.equals("total"))
+					mv = new ModelAndView("app/core/knowledge/knowledgemaintain");
+				}else if(view.equals("resetindex"))
 				{
-					mv = new ModelAndView("app/core/knowledge/knowledgetotal");
+					mv = new ModelAndView("app/core/knowledge/knowledgeresetindex");
 				}
 			}
 		return mv;
@@ -195,7 +205,7 @@ public class KnowledgePageController {
 	 * @Description: TODO 添加知识
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/file/knowledgecreate")
 	public ModelAndView  goKnowledgecreate(String view)

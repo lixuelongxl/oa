@@ -59,7 +59,7 @@ public interface NewsMapper extends MyMapper<News>{
 	 * @param: levelId
 	 * @param: @return      
 	 * @return: List<Map<String,Object>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>> getMyNewsListForDesk(
 			@Param (value="orgId") String orgId,
@@ -110,7 +110,7 @@ public interface NewsMapper extends MyMapper<News>{
 	 * @param: page
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getMobileMyNewsList(@Param (value="orgId") String orgId,
 			@Param (value="accountId") String accountId,

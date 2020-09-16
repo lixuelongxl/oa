@@ -61,7 +61,7 @@ public HrWorkSkills selectOneHrWorkSkills(HrWorkSkills hrWorkSkills)
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getHrWorkSkillsList(String orgId,String userId,String beginTime,String endTime,String skillsLevel,String search)
 {
@@ -79,7 +79,7 @@ public List<Map<String, String>>getHrWorkSkillsList(String orgId,String userId,S
  * @param skillsLevel
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getHrWorkSkillsList(PageParam pageParam,String userId,String beginTime,String endTime,String skillsLevel) 
 {
@@ -95,9 +95,9 @@ public PageInfo<Map<String, String>> getHrWorkSkillsList(PageParam pageParam,Str
  * @param account
  * @param file
  * @return
- * @throws IOException
+ IOException
  * RetDataBean    
- * @throws
+
  */
 @Transactional(value="generalTM")
 public RetDataBean importHrWorkSkills(Account account,MultipartFile file) throws IOException

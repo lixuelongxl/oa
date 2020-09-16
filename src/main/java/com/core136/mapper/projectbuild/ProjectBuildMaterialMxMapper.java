@@ -31,7 +31,7 @@ public interface ProjectBuildMaterialMxMapper extends MyMapper<ProjectBuildMater
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>> getPurchaseMaterialMxList(@Param(value="orgId") String orgId,@Param(value="purchaseId") String purchaseId,@Param(value="search") String search);
 	

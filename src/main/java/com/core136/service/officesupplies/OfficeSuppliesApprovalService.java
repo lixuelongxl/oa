@@ -58,7 +58,7 @@ public OfficeSuppliesApproval selectOneOfficeSuppliesApproval(OfficeSuppliesAppr
  * @param: officeSuppliesApproval
  * @param: @return      
  * @return: int      
- * @throws
+
  */
 @Transactional(value="generalTM")
 public int approvalOfficeSuppliesApply(OfficeSuppliesApproval officeSuppliesApproval)

@@ -1,9 +1,11 @@
 package com.core136.controller.bi;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.core136.bean.account.Account;
 import com.core136.bean.bi.BiSort;
 import com.core136.bean.bi.BiTemplate;
+import com.core136.bean.bpm.BpmList;
 import com.core136.service.account.AccountService;
 import com.core136.service.bi.BiSortService;
 import com.core136.service.bi.BiTemplateService;
 import com.core136.service.bi.BiTypeService;
+import com.core136.service.bi.JasperreportsUnit;
+
 import org.core136.common.retdataunit.RetDataBean;
 import org.core136.common.retdataunit.RetDataTools;
 import com.github.pagehelper.PageInfo;
@@ -33,6 +38,64 @@ private BiTypeService biTypeService;
 private BiTemplateService biTemplateService;
 @Autowired
 private AccountService accountService;
+@Autowired
+private JasperreportsUnit jasperreportsUnit;
+
+/**
+ * 
+ * @Title: getJasReportForPdf   
+ * @Description: TODO 获取pdf格式报表
+ * @param request
+ * @param response
+ * @param biTemplate
+ * void
+ */
+@RequestMapping(value="/getJasReportForPdf",method=RequestMethod.GET)
+public void getJasReportForPdf(HttpServletRequest request,HttpServletResponse response,BiTemplate biTemplate)
+{
+	try
+	{
+		Account account=accountService.getRedisAccount(request);
+		biTemplate.setOrgId(account.getOrgId());
+		jasperreportsUnit.getRepForPdf(request, response,biTemplate);
+	}catch (Exception e) {
+		
+		//e.printStackTrace();
+	}
+}
+
+/**
+ * 
+ * @Title: getBiSortTreeForParent   
+ * @Description: TODO 获取BI分类结构 
+ * @param request
+ * @param sortId
+ * @return
+ * List<Map<String,Object>>
+ */
+@RequestMapping(value = "/getBiSortTreeForParent", method = RequestMethod.POST)
+public List<Map<String, Object>> getBiSortTreeForParent(HttpServletRequest request, String sortId) {
+	String levelId = "0";
+	try {
+		List<Map<String, Object>> tmplist1 = new ArrayList<Map<String, Object>>();
+		List<Map<String, Object>> tmplist2 = new ArrayList<Map<String, Object>>();
+		Account account=accountService.getRedisAccount(request);
+		if (StringUtils.isNotBlank(sortId)) {
+			levelId = sortId;
+			if (!levelId.equals("0")) {
+				tmplist1 = biTemplateService.getBiTemplateTree(account.getOrgId(), levelId, account.getAccountId());
+			}
+		}
+		tmplist2 = biSortService.getBiSortTreeForParent(levelId, account.getOrgId());
+		tmplist2.addAll(tmplist1);
+		return tmplist2;
+	} catch (Exception e) {
+		e.printStackTrace();
+		return null;
+	}
+}
+
+
 
 /**
  * 

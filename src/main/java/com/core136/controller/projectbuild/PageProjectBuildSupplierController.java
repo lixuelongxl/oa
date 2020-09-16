@@ -13,7 +13,7 @@ public class PageProjectBuildSupplierController {
 	 * @Description: TODO 供应商录入
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/insertsupplier")
 	public ModelAndView insertsupplier() {
@@ -32,7 +32,7 @@ public class PageProjectBuildSupplierController {
 	 * @Description: TODO 供应商维护
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/manage")
 	public ModelAndView managesupplier() {
@@ -50,7 +50,7 @@ public class PageProjectBuildSupplierController {
 	 * @Description: TODO 供应商详情
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/supplierdetails")
 	public ModelAndView supplierdetails() {
@@ -68,7 +68,7 @@ public class PageProjectBuildSupplierController {
 	 * @Description: TODO 修改供应商信息
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/supplieredit")
 	public ModelAndView supplieredit() {

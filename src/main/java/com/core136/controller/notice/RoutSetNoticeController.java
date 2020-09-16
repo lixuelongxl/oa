@@ -266,7 +266,7 @@ public class RoutSetNoticeController {
 	 * @param: notice
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/delNotice",method=RequestMethod.POST)
 	public RetDataBean delNotice(HttpServletRequest request,Notice notice)

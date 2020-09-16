@@ -61,7 +61,7 @@ public FixedAssets selectOneFixedAssets(FixedAssets fixedAssets)
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,String>>getFixedAssetsList(String orgId,String beginTime,String endTime,String sortId,String search)
 {
@@ -79,7 +79,7 @@ public List<Map<String,String>>getFixedAssetsList(String orgId,String beginTime,
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,String>>getAllocationList(String orgId,String beginTime,String endTime,String sortId,String search)
 {
@@ -93,7 +93,7 @@ public List<Map<String,String>>getAllocationList(String orgId,String beginTime,S
  * @param: pageParam
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getFixedAssetsList(PageParam pageParam,String beginTime,String endTime,String sortId) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -112,7 +112,7 @@ public PageInfo<Map<String, String>> getFixedAssetsList(PageParam pageParam,Stri
  * @param: sortId
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getAllocationList(PageParam pageParam,String beginTime,String endTime,String sortId) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -133,7 +133,7 @@ public PageInfo<Map<String, String>> getAllocationList(PageParam pageParam,Strin
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,String>>queryFixedAssetsList(String orgId,String beginTime,String endTime,String sortId,String ownDept,String status,String search)
 {
@@ -150,7 +150,7 @@ public List<Map<String,String>>queryFixedAssetsList(String orgId,String beginTim
  * @param: ownDept
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> queryFixedAssetsList(PageParam pageParam,String beginTime,String endTime,String sortId,String ownDept,String status) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -168,7 +168,7 @@ public PageInfo<Map<String, String>> queryFixedAssetsList(PageParam pageParam,St
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String,String>>getApplyFixedAssetsList(String orgId,String sortId,String search)
 {
@@ -182,7 +182,7 @@ public List<Map<String,String>>getApplyFixedAssetsList(String orgId,String sortI
  * @param: sortId
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getApplyFixedAssetsList(PageParam pageParam,String sortId) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());

@@ -19,11 +19,13 @@ import com.core136.bean.account.Account;
 import com.core136.bean.account.Unit;
 import com.core136.bean.account.UserInfo;
 import com.core136.bean.account.UserPriv;
+import com.core136.bean.platform.PlatformPriv;
 import com.core136.bean.sys.SysMenu;
 import com.core136.service.account.AccountService;
 import com.core136.service.account.UnitService;
 import com.core136.service.account.UserInfoService;
 import com.core136.service.account.UserPrivService;
+import com.core136.service.platform.PlatformPrivService;
 import com.core136.service.sys.OnLineUser;
 import com.core136.service.sys.SysLogService;
 import com.core136.service.sys.SysMenuService;
@@ -48,6 +50,8 @@ public class WeiXinLoginService {
 	private UserPrivService userPrivService;
 	@Autowired
 	private RedisUtil redisUtil;
+	@Autowired
+	private PlatformPrivService platformPrivService;
 	/**
 	 * 
 	 * @Title: weiXinLogin   
@@ -55,9 +59,9 @@ public class WeiXinLoginService {
 	 * @param request
 	 * @param wAccountId
 	 * @param orgId
-	 * @throws ApiException
+ ApiException
 	 * void    
-	 * @throws
+
 	 */
 	public void weiXinLogin(HttpServletRequest request,String wAccountId,String orgId) throws ApiException
 	{
@@ -85,7 +89,9 @@ public class WeiXinLoginService {
 				}
 				List<String> sysMenuIdList = StrTools.strToList(sysMenuIds);
 				List<String> mobilePrivList = StrTools.strToList(mobilePrivIds);
-				List<SysMenu> sysMenuList = sysMenuService.getSysMenuByAccount(sysMenuIdList, account.getOrgId());
+				List<PlatformPriv> platformPrivList = platformPrivService.getMyPlatformPrivList(account.getOrgId(), account.getAccountId());
+				List<String> platformMenuIdList = platformPrivService.getMyPlatformMenuList(platformPrivList);
+				List<SysMenu> sysMenuList = sysMenuService.getSysMenuByAccount(sysMenuIdList,platformMenuIdList, account.getOrgId());
 				loginAccountInfo.setSysMenuList(sysMenuList);
 				loginAccountInfo.setMobilePrivList(mobilePrivList);
 				}

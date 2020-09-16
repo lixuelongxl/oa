@@ -48,7 +48,7 @@ public ProjectBuildMaterialOut selectOneProjectBuildMaterialOut(ProjectBuildMate
  * @param: materialId
  * @param: @return      
  * @return: int      
- * @throws
+
  */
 public int sumMaterialById(String orgId,String projectId,String materialId)
 {
@@ -63,7 +63,7 @@ public int sumMaterialById(String orgId,String projectId,String materialId)
  * @param: materialId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>> getMaterialOutList(String orgId,String projectId,String materialId)
 {
@@ -81,7 +81,7 @@ public List<Map<String, String>> getMaterialOutList(String orgId,String projectI
  * @param: outUser
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getQueryMaterialOutList(String orgId,String beginTime,String endTime,
 		String materialName,String projectTitle,String outUser)
@@ -101,7 +101,7 @@ public List<Map<String, String>>getQueryMaterialOutList(String orgId,String begi
  * @param: outUser
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getQueryMaterialOutList(PageParam pageParam,String beginTime,String endTime, String materialName, String projectTitle,String outUser) 
 {

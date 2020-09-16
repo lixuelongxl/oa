@@ -5,28 +5,48 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.core136.mapper.echarts.EchartsBpmMapper">
 
 <select id="getBiBpmFlowPie" resultType="java.util.HashMap">
-SELECT C.FLOW_NAME as name,count(I.flow_id) as value
-FROM BPM_FLOW C LEFT JOIN BPM_LIST I ON C.ORG_ID=I.ORG_ID AND C.FLOW_ID=I.FLOW_ID
-WHERE 
-C.ORG_ID=#{orgId} GROUP BY I.FLOW_ID ORDER BY value DESC LIMIT 0,10
+ SELECT
+ L.FLOW_ID AS FLOW_ID,
+ (SELECT F.FLOW_NAME FROM BPM_FLOW F WHERE F.ORG_ID=#{orgId} AND F.FLOW_ID=L.FLOW_ID) AS "name",
+ COUNT(1) AS "value"
+ FROM
+ BPM_LIST L 
+ WHERE 
+ L.ORG_ID=#{orgId}
+GROUP BY
+	FLOW_ID
+ORDER BY "value"
+	DESC
+LIMIT 0,10
 </select>
 
 
 
 <select id="getBiBpmFlowByDeptPie" resultType="java.util.HashMap">
-SELECT U.deptName as name,count(U.deptId) as value
-FROM BPM_RUN_PROCESS B LEFT JOIN (SELECT D.DEPT_NAME AS deptName,D.DEPT_ID AS deptId,D.ORG_ID as orgId,P.ACCOUNT_ID AS accountId FROM UNIT_DEPT D,USER_INFO P WHERE D.ORG_ID=P.ORG_ID AND D.DEPT_ID=P.DEPT_ID) U
-ON B.ORG_ID=U.orgId AND B.ACCOUNT_ID=U.accountId
-WHERE 
-B.ORG_ID=#{orgId} GROUP BY U.deptId ORDER BY value DESC LIMIT 0,10
+SELECT 
+P.DEPT_ID,
+COUNT(1) AS "value",
+(SELECT D.DEPT_NAME FROM UNIT_DEPT D WHERE D.ORG_ID=#{orgId} AND D.DEPT_ID=P.DEPT_ID) AS "name"
+ FROM
+BPM_RUN_PROCESS B LEFT JOIN USER_INFO P ON B.ORG_ID=P.ORG_ID AND B.ACCOUNT_ID=P.ACCOUNT_ID
+WHERE B.ORG_ID = #{orgId}
+GROUP BY P.DEPT_ID
+ORDER BY "value" DESC
+LIMIT 0,10
 </select>
 
 
 <select id="getBiBpmFlowByAccountPie" resultType="java.util.HashMap">
-SELECT U.USER_NAME AS name,count(C.ACCOUNT_ID) AS value
-FROM BPM_RUN_PROCESS C LEFT JOIN USER_INFO U ON C.ORG_ID=U.ORG_ID AND C.ACCOUNT_ID=U.ACCOUNT_ID
+SELECT
+	C.ACCOUNT_ID,
+	count(1) AS "value",
+	(SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=#{orgId} AND U.ACCOUNT_ID=C.ACCOUNT_ID) AS "name"
+FROM
+	BPM_RUN_PROCESS C
 WHERE 
-C.ORG_ID=#{orgId} GROUP BY C.ACCOUNT_ID ORDER BY value DESC LIMIT 0,10
+C.ORG_ID = #{orgId} 
+GROUP BY C.ACCOUNT_ID 
+ORDER BY value DESC LIMIT 0,10
 </select>
 
 <select id="getBiBpmFlowByMonthLine" resultType="java.util.HashMap">

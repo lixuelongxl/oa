@@ -53,7 +53,7 @@ public class HrCareRecordService {
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getHrCareRecordList(String orgId,String userId,String beginTime,String endTime,String careType,String search)
 	{
@@ -71,7 +71,7 @@ public class HrCareRecordService {
 	 * @param careType
 	 * @return
 	 * PageInfo<Map<String,String>>    
-	 * @throws
+
 	 */
 	public PageInfo<Map<String, String>> getHrCareRecordList(PageParam pageParam,String userId,String beginTime,String endTime,String careType) 
 	{

@@ -23,4 +23,15 @@ public interface BiTemplateMapper extends MyMapper<BiTemplate>{
 	 */
 	public List<Map<String,Object>> getBiTemplateList(@Param (value="orgId") String orgId,@Param(value="levelId") String levelId,@Param(value="search") String search);
 	
+	/**
+	 * 
+	 * @Title: getBiTemplateTree   
+	 * @Description: TODO 获取权限内的报表
+	 * @param orgId
+	 * @param levelId
+	 * @param accountId
+	 * @return
+	 * List<Map<String,Object>>
+	 */
+	public List<Map<String, Object>>getBiTemplateTree(@Param(value="orgId")String orgId,@Param(value="levelId")String levelId,@Param(value="accountId")String accountId);
 }

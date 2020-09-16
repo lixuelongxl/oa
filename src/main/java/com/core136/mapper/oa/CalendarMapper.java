@@ -45,7 +45,7 @@ public interface CalendarMapper extends MyMapper<Calendar>{
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getAllCalendarList(@Param(value="orgId") String orgId,@Param(value="accountId") String accountId,@Param(value="beginTime") String beginTime,
 			@Param(value="endTime") String endTime,@Param(value = "type") String type,@Param(value="search") String search);
@@ -59,7 +59,7 @@ public interface CalendarMapper extends MyMapper<Calendar>{
 	 * @param: endTime
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getMyCalendarListForDesk(@Param(value="orgId") String orgId,
 			@Param(value="accountId") String accountId,@Param(value="beginTime")String beginTime,@Param(value="endTime") String endTime
@@ -72,7 +72,7 @@ public interface CalendarMapper extends MyMapper<Calendar>{
 	 * @param nowTime
 	 * @return
 	 * List<Calendar>    
-	 * @throws
+
 	 */
 	public List<Calendar>getTimgingCalendarList(@Param(value="orgId")String orgId,@Param(value="nowTime")String nowTime);
 }

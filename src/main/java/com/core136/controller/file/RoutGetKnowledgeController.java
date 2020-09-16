@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,11 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.core136.bean.account.Account;
 import com.core136.bean.account.UserInfo;
 import com.core136.bean.file.Knowledge;
+import com.core136.bean.file.KnowledgeComment;
 import com.core136.bean.file.KnowledgeLearn;
 import com.core136.bean.file.KnowledgeSearch;
 import com.core136.bean.file.KnowledgeSort;
 import com.core136.bean.sys.PageParam;
 import com.core136.service.account.AccountService;
+import com.core136.service.file.KnowledgeCommentService;
 import com.core136.service.file.KnowledgeLearnService;
 import com.core136.service.file.KnowledgeSearchService;
 import com.core136.service.file.KnowledgeService;
@@ -42,6 +45,123 @@ public class RoutGetKnowledgeController {
 	private KnowledgeSearchService knowledgeSearchService;
 	@Autowired
 	private AccountService accountService;
+	@Autowired
+	private KnowledgeCommentService knowledgeCommentService;
+	
+	
+	
+	/**
+	 * 
+	 * @Title: getKnowledgeLearnList   
+	 * @Description: TODO 获取学习记录
+	 * @param request
+	 * @param pageParam
+	 * @param beginTime
+	 * @param endTime
+	 * @return
+	 * RetDataBean
+	 */
+	@RequestMapping(value="/getKnowledgeLearnList",method=RequestMethod.POST)
+	public RetDataBean getKnowledgeLearnList(
+			HttpServletRequest request,
+			PageParam pageParam,
+			String beginTime,
+			String endTime,
+			String createUser
+			)
+	{
+		try
+		{
+			if(StringUtils.isBlank(pageParam.getSort()))
+			{
+				pageParam.setSort("L.CREATE_TIME");
+			}else
+			{
+				pageParam.setSort(StrTools.upperCharToUnderLine(pageParam.getSort()));
+			}
+			if(StringUtils.isBlank(pageParam.getSortOrder()))
+			{
+				pageParam.setSortOrder("asc");
+			}
+			
+		Account account=accountService.getRedisAccount(request);
+		pageParam.setOrgId(account.getOrgId());
+		pageParam.setAccountId(createUser);
+		pageParam.setOrderBy(pageParam.getSort()+ " " + pageParam.getSortOrder());
+		PageInfo<Map<String, String>> pageInfo=knowledgeLearnService.getKnowledgeLearnList(pageParam, beginTime, endTime);
+		return RetDataTools.Ok("请求数据成功!", pageInfo);
+		}catch (Exception e) {
+			return RetDataTools.Error(e.getMessage());
+		}
+	}
+	
+	/**
+	 * 
+	 * @Title: getAllKnowledgeInfo   
+	 * @Description: TODO 获取知识管理概要信息
+	 * @param request
+	 * @param knowledgeComment
+	 * @return
+	 * RetDataBean
+	 */
+	@RequestMapping(value="/getAllKnowledgeInfo",method=RequestMethod.POST)
+	public RetDataBean getAllKnowledgeInfo(HttpServletRequest request, KnowledgeComment knowledgeComment)
+	{
+		try
+		{
+			Account account=accountService.getRedisAccount(request);
+			return  RetDataTools.Ok("请求数据成功!",knowledgeService.getAllKnowledgeInfo(account));
+		}catch (Exception e) {
+			return RetDataTools.Error(e.getMessage());
+		}
+	}
+	
+	/**
+	 * 
+	 * @Title: getCommentsList   
+	 * @Description: TODO 获取评论列表
+	 * @param request
+	 * @param knowledgeComment
+	 * @return
+	 * RetDataBean
+	 */
+	@RequestMapping(value="/getCommentsList",method=RequestMethod.POST)
+	public RetDataBean getCommentsList(HttpServletRequest request, KnowledgeComment knowledgeComment)
+	{
+		try
+		{
+			Account account=accountService.getRedisAccount(request);
+			return  RetDataTools.Ok("请求数据成功!",knowledgeCommentService.getCommentsList(account.getOrgId(),knowledgeComment.getKnowledgeId()));
+		}catch (Exception e) {
+			return RetDataTools.Error(e.getMessage());
+		}
+	}
+	
+	
+	
+	/**
+	 * 
+	 * @Title: getKnowledgeCommentById   
+	 * @Description: TODO 获取评论详情
+	 * @param request
+	 * @param knowledgeComment
+	 * @return
+	 * RetDataBean
+	 */
+	@RequestMapping(value="/getKnowledgeCommentById",method=RequestMethod.POST)
+	public RetDataBean getKnowledgeCommentById(HttpServletRequest request, KnowledgeComment knowledgeComment)
+	{
+		try
+		{
+			Account account=accountService.getRedisAccount(request);
+			knowledgeComment.setOrgId(account.getOrgId());
+			return  RetDataTools.Ok("请求数据成功!",knowledgeCommentService.selectOneKnowledgeComment(knowledgeComment));
+		}catch (Exception e) {
+			return RetDataTools.Error(e.getMessage());
+		}
+	}
+	
+	
 	
 	/**
 	 * 
@@ -51,7 +171,7 @@ public class RoutGetKnowledgeController {
 	 * @param knowledgeLearn
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getLearnCount",method=RequestMethod.POST)
 	public RetDataBean getLearnCount(HttpServletRequest request,KnowledgeLearn knowledgeLearn)
@@ -78,7 +198,7 @@ public class RoutGetKnowledgeController {
 	 * @param sortId
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getAllKnowledgeList",method=RequestMethod.POST)
 	public RetDataBean getAllKnowledgeList(
@@ -119,7 +239,7 @@ public class RoutGetKnowledgeController {
 	 * @param request
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getAllKnowledgeSortMap",method=RequestMethod.POST)
 	public RetDataBean getAllKnowledgeSortMap(HttpServletRequest request)
@@ -141,7 +261,7 @@ public class RoutGetKnowledgeController {
 	 * @param keywords
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getHostKeyWords",method=RequestMethod.POST)
 	public RetDataBean getHostKeyWords(HttpServletRequest request)
@@ -167,7 +287,7 @@ public class RoutGetKnowledgeController {
 	 * @param: sortId
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMyCreateKnowledgeList",method=RequestMethod.POST)
 	public RetDataBean getMyCreateKnowledgeList(
@@ -216,7 +336,7 @@ public class RoutGetKnowledgeController {
 	 * @param: endTime
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getKnowledgeStudyList",method=RequestMethod.POST)
 	public RetDataBean getKnowledgeStudyList(
@@ -265,7 +385,7 @@ public class RoutGetKnowledgeController {
 	 * @param: keywords
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/searchIndex",method=RequestMethod.POST)
 	public RetDataBean searchIndex(HttpServletRequest request,String keywords)
@@ -291,7 +411,7 @@ public class RoutGetKnowledgeController {
 	 * @param: knowledge
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getKnowledgeById",method=RequestMethod.POST)
 	public RetDataBean getKnowledgeById(HttpServletRequest request,Knowledge knowledge)
@@ -315,7 +435,7 @@ public class RoutGetKnowledgeController {
 	 * @param: sortId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getknowledgeSortTree",method=RequestMethod.POST)
 	public List<Map<String,String>> getknowledgeSortTree(HttpServletRequest request,String sortId)
@@ -343,7 +463,7 @@ public class RoutGetKnowledgeController {
 	 * @param: knowledgeSort
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getKnowledgeSortById",method=RequestMethod.POST)
 	public RetDataBean getKnowledgeSortById(HttpServletRequest request,KnowledgeSort knowledgeSort)

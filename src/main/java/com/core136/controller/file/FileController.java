@@ -2,6 +2,7 @@ package com.core136.controller.file;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -32,6 +33,8 @@ import com.core136.unit.fileutils.BarCodeUtils;
 import com.core136.unit.fileutils.DownUtils;
 import com.core136.unit.fileutils.UploadException;
 import com.core136.unit.fileutils.UploadUtils;
+
+
 import org.core136.common.retdataunit.RetDataBean;
 import org.core136.common.retdataunit.RetDataTools;
 
@@ -76,6 +79,28 @@ private String tmppath;
 @Value("${app.bpm.xhtmlpath}")	
 private String xhtmlpath;
 
+/**
+ * 
+ * @Title: getVerifyCodeImage   
+ * @Description: TODO 获取验证码
+ * @param response
+ * @param request
+ * @param attachId
+ * @param module
+ * void    
+
+ */
+@RequestMapping("/getVerifyCodeImage")
+public void getVerifyCodeImage(HttpServletResponse response,HttpServletRequest request,String attachId,String module)
+{
+	try
+	{
+		downUtils.getVerifyCodeImage(response, request);
+	}catch (Exception e) {
+		// TODO: handle exception
+		e.printStackTrace();
+	}
+}
 
 /**
  * 
@@ -83,9 +108,9 @@ private String xhtmlpath;
  * @Description: TODO 系统注册
  * @param request
  * @return
- * @throws UploadException
+ UploadException
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping("/sysRegist")
 public ModelAndView sysRegist(HttpServletRequest request) throws UploadException {
@@ -105,9 +130,9 @@ public ModelAndView sysRegist(HttpServletRequest request) throws UploadException
  * @Description: TODO 系统背影图上传
  * @param: request
  * @param: @return
- * @param: @throws UploadException      
+ UploadException      
  * @return: RetDataBean      
- * @throws
+
  */
 @RequestMapping("/uploadBackgroundImg")
 public RetDataBean uploadBackgroundImg(HttpServletRequest request) throws UploadException {
@@ -125,9 +150,9 @@ public RetDataBean uploadBackgroundImg(HttpServletRequest request) throws Upload
  * @Description: TODO 上传系统LOGO
  * @param request
  * @return
- * @throws UploadException
+ UploadException
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping("/uploadimglogo")
 public RetDataBean uploadimglogo(HttpServletRequest request) throws UploadException {
@@ -146,9 +171,9 @@ public RetDataBean uploadimglogo(HttpServletRequest request) throws UploadExcept
  * @param request
  * @param module
  * @return
- * @throws UploadException
+ UploadException
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping("/uploadimg")
 public RetDataBean uploadimg(HttpServletRequest request,String module) throws UploadException {
@@ -168,7 +193,7 @@ public RetDataBean uploadimg(HttpServletRequest request,String module) throws Up
  * @param module
  * @param fileName
  * void    
- * @throws
+
  */
 @RequestMapping("/getStaticImg")
 public void getStaticImg(HttpServletResponse response,HttpServletRequest request,String module,String fileName)
@@ -177,6 +202,26 @@ public void getStaticImg(HttpServletResponse response,HttpServletRequest request
 	{
 		String targetpath =  SysTools.greateAttachDir(attachpath, module)+File.separator+fileName;
 		downUtils.download(targetpath, response);
+	}catch (Exception e) {
+		// TODO: handle exception
+		e.printStackTrace();
+	}
+}
+/**
+ * 
+ * @Title: getJasreportImg   
+ * @Description: TODO 获取报表图片
+ * @param response
+ * @param request
+ * @param fileName
+ * void
+ */
+@RequestMapping("/getJasreportImg")
+public void getJasreportImg(HttpServletResponse response,HttpServletRequest request,String fileName)
+{
+	try
+	{
+		downUtils.getImg(fileName, response);
 	}catch (Exception e) {
 		// TODO: handle exception
 		e.printStackTrace();
@@ -191,7 +236,7 @@ public void getStaticImg(HttpServletResponse response,HttpServletRequest request
  * @param: request
  * @param: fileName      
  * @return: void      
- * @throws
+
  */
 @RequestMapping("/getBackgroundImg")
 public void getBackgroundImg(HttpServletResponse response,HttpServletRequest request,String fileName)
@@ -214,7 +259,7 @@ public void getBackgroundImg(HttpServletResponse response,HttpServletRequest req
  * @param: response
  * @param: codeStr      
  * @return: void      
- * @throws
+
  */
 @RequestMapping("/bpm/getBarcodeOne")
 public void  getBarcodeOne(HttpServletRequest request,HttpServletResponse response,String codeStr)
@@ -234,7 +279,7 @@ public void  getBarcodeOne(HttpServletRequest request,HttpServletResponse respon
  * @param: response
  * @param: codeStr      
  * @return: void      
- * @throws
+
  */
 @RequestMapping("/bpm/getQrcodeTwo")
 public void  getQrcodeTwo(HttpServletRequest request,HttpServletResponse response,String codeStr)
@@ -255,7 +300,7 @@ public void  getQrcodeTwo(HttpServletRequest request,HttpServletResponse respons
  * @param: request
  * @param: bpmSealSign      
  * @return: void      
- * @throws
+
  */
 @RequestMapping("/getBpmSealSign")
 public void getBpmSealSign(HttpServletResponse response,HttpServletRequest request,BpmSealSign bpmSealSign)
@@ -299,9 +344,9 @@ public void getBpmSealSign(HttpServletResponse response,HttpServletRequest reque
 	 * @Description: TODO BPM XHTML的文件上传
 	 * @param: request
 	 * @param: @return
-	 * @param: @throws UploadException      
+ UploadException      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping("/bpmTemplateFileUpLoad")
     public RetDataBean bpmTemplateFileUpLoad(HttpServletRequest request) throws UploadException {
@@ -596,14 +641,14 @@ public void getBpmSealSign(HttpServletResponse response,HttpServletRequest reque
 	* @param @param request
 	* @param @param module
 	* @param @return
-	* @param @throws UploadException 设定文件 
+ UploadException 设定文件 
 	* @return RetDataBean 返回类型
 	 */
 	@RequestMapping("/imUpload")
     public RetDataBean imUpload(HttpServletRequest request,String module,String accountId,String passWord) throws UploadException {
         String targetpath = SysTools.greateAttachDir(attachpath, module);
         try {
-        	Account account = accountService.getLoginAccount(accountId, passWord);
+        	Account account = accountService.getLoginAccount(accountId, Md5CaculateUtil.MD5(accountId+passWord));
             return RetDataTools.Ok("文件上传成功!", uploadUtils.ImUpload(request,account,notallow, targetpath));
         } catch (IOException e) {
             return RetDataTools.Error(e.getMessage());
@@ -621,7 +666,7 @@ public void getBpmSealSign(HttpServletResponse response,HttpServletRequest reque
 	* @param @param accountId
 	* @param @param passWord
 	* @param @return
-	* @param @throws UploadException 设定文件 
+ UploadException 设定文件 
 	* @return RetDataBean 返回类型
 	 */
 	@RequestMapping("/imAudioUpload")
@@ -671,7 +716,7 @@ public void getBpmSealSign(HttpServletResponse response,HttpServletRequest reque
 	 * @param: request
 	 * @param: imgName      
 	 * @return: void      
-	 * @throws
+
 	 */
 	@RequestMapping("/getImgByPath")
 	public void getImgByPath(HttpServletResponse response,HttpServletRequest request,String imgName,String filetage)
@@ -696,7 +741,7 @@ public void getBpmSealSign(HttpServletResponse response,HttpServletRequest reque
 	 * @param: fileName
 	 * @param: photo      
 	 * @return: void      
-	 * @throws
+
 	 */
 	@RequestMapping("/getPhotoImg")
 	public void getPhotoImg(HttpServletResponse response,HttpServletRequest request,String fileName,Photo photo)

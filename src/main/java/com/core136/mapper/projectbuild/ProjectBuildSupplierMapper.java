@@ -29,7 +29,7 @@ public interface ProjectBuildSupplierMapper extends MyMapper<ProjectBuildSupplie
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>>getSupplierList(@Param(value="orgId") String orgId,@Param(value="search") String search);
 	/**
@@ -40,7 +40,7 @@ public interface ProjectBuildSupplierMapper extends MyMapper<ProjectBuildSupplie
 	 * @param: companyName
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>>getSelect2SupplierList(@Param(value="orgId") String orgId,@Param(value="companyName") String companyName);
 }

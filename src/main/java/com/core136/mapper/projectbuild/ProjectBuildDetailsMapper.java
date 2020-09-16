@@ -41,7 +41,7 @@ public interface ProjectBuildDetailsMapper extends MyMapper<ProjectBuildDetails>
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>> getprojectbuilddetailslist(@Param(value="orgId") String orgId,@Param(value="sortId") String sortId,@Param(value="search") String search);
 	
@@ -54,7 +54,7 @@ public interface ProjectBuildDetailsMapper extends MyMapper<ProjectBuildDetails>
 	 * @param: orgId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>> selectProjectBuild2ByTitle(@Param(value="orgId") String orgId,@Param(value="projectTitle") String projectTitle);
 
@@ -67,7 +67,7 @@ public interface ProjectBuildDetailsMapper extends MyMapper<ProjectBuildDetails>
 	 * @param: sortId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>>getProjectBuildListForTree(@Param(value="orgId") String orgId,@Param(value="sortId") String sortId);
 

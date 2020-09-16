@@ -3,7 +3,6 @@ package com.core136.service.hr;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.annotations.Param;
 import org.core136.common.utils.SysTools;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,7 +52,7 @@ public HrRecruitPlan selectOneHrRecruitPlan(HrRecruitPlan hrRecruitPlan)
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getHrRecruitPlanList(String orgId,String opFlag,String accountId,String beginTime,String endTime,String search)
 {
@@ -68,7 +67,7 @@ public List<Map<String, String>>getHrRecruitPlanList(String orgId,String opFlag,
  * @param endTime
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getHrRecruitPlanList(PageParam pageParam,String beginTime,String endTime) 
 {
@@ -84,7 +83,7 @@ public PageInfo<Map<String, String>> getHrRecruitPlanList(PageParam pageParam,St
  * @param orgId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getHrRecruitPlanForSelect(String orgId)
 {

@@ -51,7 +51,7 @@ public class ProjectBuildMaterialStageService {
 	 * @param: stageId
 	 * @param: @return      
 	 * @return: PageInfo<Map<String,String>>      
-	 * @throws
+
 	 */
 	public PageInfo<Map<String, String>> getMaterialStageList(PageParam pageParam,String stageId) {
 		PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -69,7 +69,7 @@ public class ProjectBuildMaterialStageService {
 	 * @param: materialId
 	 * @param: @return      
 	 * @return: int      
-	 * @throws
+
 	 */
 	public int isExistChild(String orgId,String stageId,String materialId)
 	{
@@ -85,7 +85,7 @@ public class ProjectBuildMaterialStageService {
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>> getMaterialListInStage(String orgId,String stageId,String search)
 	{
@@ -103,7 +103,7 @@ public class ProjectBuildMaterialStageService {
 	 * @param: stageId
 	 * @param: @return      
 	 * @return: int      
-	 * @throws
+
 	 */
 	public int getSurplusQuantity(String orgId,String materialId,String stageId)
 	{

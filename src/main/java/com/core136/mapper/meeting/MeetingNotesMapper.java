@@ -39,7 +39,7 @@ public interface MeetingNotesMapper extends MyMapper<MeetingNotes>{
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 	public List<Map<String,String>> getMeetingNotesList(
 			@Param(value="orgId") String orgId,
@@ -64,7 +64,7 @@ public interface MeetingNotesMapper extends MyMapper<MeetingNotes>{
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String,String>> queryMeetingNotesList(
 			@Param(value="orgId") String orgId,
@@ -86,7 +86,7 @@ public interface MeetingNotesMapper extends MyMapper<MeetingNotes>{
 	 * @param notesId
 	 * @return
 	 * Map<String,String>    
-	 * @throws
+
 	 */
 	public Map<String, String>getMeetingNotesInfo(@Param(value="orgId")String orgId,@Param(value="notesId") String notesId);
 }

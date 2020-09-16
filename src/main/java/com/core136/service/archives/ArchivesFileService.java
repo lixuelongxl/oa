@@ -54,7 +54,7 @@ public ArchivesFile selectOneArchivesFile(ArchivesFile archivesFile)
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getArchivesFileList(String orgId,String opFlag,String accountId,String volumeId,String fileType,String secretLevel,String search)
 {
@@ -67,7 +67,7 @@ public List<Map<String, String>>getArchivesFileList(String orgId,String opFlag,S
  * @param pageParam
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getArchivesFileList(PageParam pageParam,String volumeId,String fileType,String secretLevel) 
 {
@@ -89,7 +89,7 @@ public PageInfo<Map<String, String>> getArchivesFileList(PageParam pageParam,Str
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getArchivesFileQueryList(String orgId,String repositoryId,String accountId,String volumeId,String fileType,String secretLevel,String search)
 {
@@ -106,7 +106,7 @@ public List<Map<String, String>>getArchivesFileQueryList(String orgId,String rep
  * @param secretLevel
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getArchivesFileQueryList(PageParam pageParam,String repositoryId,String volumeId,String fileType,String secretLevel) 
 {
@@ -122,7 +122,7 @@ public PageInfo<Map<String, String>> getArchivesFileQueryList(PageParam pagePara
  * @param archivesFile
  * @return
  * int    
- * @throws
+
  */
 public int isExist(ArchivesFile archivesFile)
 {
@@ -132,7 +132,7 @@ public int isExist(ArchivesFile archivesFile)
 }
 
 /**
- * @throws ParseException 
+ ParseException 
  * 
  * @Title: getApprovalFile   
  * @Description: TODO 审批通过后有附件信息
@@ -140,7 +140,7 @@ public int isExist(ArchivesFile archivesFile)
  * @param archivesBorrowFile
  * @return
  * ArchivesFile    
- * @throws
+
  */
 public ArchivesFile getApprovalFile(Account account,ArchivesBorrowFile archivesBorrowFile) throws ParseException
 {
@@ -183,7 +183,7 @@ public ArchivesFile getApprovalFile(Account account,ArchivesBorrowFile archivesB
  * @param volumeId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getBorrowArchivesFileList(String orgId,String volumeId)
 {
@@ -198,7 +198,7 @@ public List<Map<String, String>>getBorrowArchivesFileList(String orgId,String vo
  * @param volumeId
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getBorrowArchivesFileList(PageParam pageParam,String volumeId) 
 {

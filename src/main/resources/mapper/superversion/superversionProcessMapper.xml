@@ -5,7 +5,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper
 	namespace="com.core136.mapper.superversion.SuperversionProcessMapper">
 	<resultMap id="SuperversionProcess" type="com.core136.bean.superversion.SuperversionProcess">
-		<id column="ID" property="id" jdbcType="BIGINT" />
 		<result column="PROCESS_ID" property="processId" jdbcType="INTEGER" />
 		<result column="SUPERVERSION_ID" property="superversionId" jdbcType="VARCHAR" />
 		<result column="PRCS_VALUE" property="prcsValue" jdbcType="INTEGER" />
@@ -44,7 +43,7 @@ AND P.CREATE_USER = #{accountId}
 SELECT P.PROCESS_ID AS processId,P.SUPERVERSION_ID AS superversionId,P.FINISH_TIME AS finishTime,P.PRCS_VALUE AS prcsValue,
 S.BEGIN_TIME AS beginTime,S.END_TIME AS endTime,
 (SELECT U.USER_NAME FROM USER_INFO U WHERE U.ORG_ID=#{orgId} AND U.ACCOUNT_ID=S.CREATE_USER) AS createUserName,
-S.TITLE AS superversionTitle,P.CONTENT AS content,
+S.TITLE AS superversionTitle,TO_CHAR(P.CONTENT) AS content,
 (SELECT C.TYPE_NAME FROM SUPERVERSION_CONFIG C WHERE C.ORG_ID=#{orgId} AND C.CONFIG_ID=S.TYPE) AS typeName
 FROM 
 SUPERVERSION_PROCESS P LEFT JOIN SUPERVERSION S ON P.ORG_ID=S.ORG_ID AND P.SUPERVERSION_ID=S.SUPERVERSION_ID

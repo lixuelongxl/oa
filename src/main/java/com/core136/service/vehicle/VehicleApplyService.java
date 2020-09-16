@@ -53,7 +53,7 @@ public class VehicleApplyService {
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>> getVehicleApplyList(String orgId,String opFlag,String status,String accountId,String createUser,String beginTime,String endTime,String search)
 	{
@@ -72,7 +72,7 @@ public class VehicleApplyService {
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>> getVehicleApprovedList(String orgId,String opFlag,String accountId,String createUser,String beginTime,String endTime,String search)
 	{
@@ -89,7 +89,7 @@ public class VehicleApplyService {
 	 * @param endTime
 	 * @return
 	 * PageInfo<Map<String,String>>    
-	 * @throws
+
 	 */
 	public PageInfo<Map<String, String>> getVehicleApplyList(PageParam pageParam,String status,String createUser,String beginTime,String endTime) 
 	{
@@ -109,7 +109,7 @@ public class VehicleApplyService {
 	 * @param endTime
 	 * @return
 	 * PageInfo<Map<String,String>>    
-	 * @throws
+
 	 */
 	public PageInfo<Map<String, String>> getVehicleApprovedList(PageParam pageParam,String createUser,String beginTime,String endTime) 
 	{

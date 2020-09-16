@@ -1,8 +1,5 @@
 package com.core136.controller.mobile;
 
-import java.util.List;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
@@ -16,14 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.core136.bean.account.Account;
-import com.core136.bean.account.UserInfo;
 import com.core136.bean.sys.DdConfig;
 import com.core136.service.account.AccountService;
-import com.core136.service.bpm.BpmFlowService;
-import com.core136.service.bpm.BpmRunProcessService;
 import com.core136.service.dingding.DingDingLoginService;
-import com.core136.service.notice.NoticeService;
-import com.core136.service.oa.NewsService;
 import com.core136.service.sys.DdConfigService;
 
 /**
@@ -54,7 +46,7 @@ private AccountService accountService;
  * @param: unit
  * @param: @return      
  * @return: RetDataBean      
- * @throws
+
  */
 	@RequestMapping(value="/getUserInfo",method=RequestMethod.GET)
 	public RetDataBean getUserInfo(HttpServletRequest request,String code,String orgId)

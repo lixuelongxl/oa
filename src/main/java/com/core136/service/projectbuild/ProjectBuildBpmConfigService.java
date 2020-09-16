@@ -57,7 +57,7 @@ public ProjectBuildBpmConfig selectOneProjectBuildBpmConfig(ProjectBuildBpmConfi
  * @param: orgId
  * @param: @return      
  * @return: List<Map<String, String>>      
- * @throws
+
  */
 public List<Map<String, String>> getAllProjectBuildBpmConfig(String orgId)
 {

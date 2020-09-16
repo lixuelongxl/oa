@@ -39,7 +39,7 @@ public class RoutGetWorkPlanController {
 	 * @param workPlanProcess
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getWorkPlanProcessById",method=RequestMethod.POST)
 	public RetDataBean getWorkPlanProcessById(HttpServletRequest request,WorkPlanProcess workPlanProcess)
@@ -61,7 +61,7 @@ public class RoutGetWorkPlanController {
 	 * @param workPlan
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getWorkPlanById",method=RequestMethod.POST)
 	public RetDataBean getWorkPlanById(HttpServletRequest request,WorkPlan workPlan)
@@ -88,7 +88,7 @@ public class RoutGetWorkPlanController {
 	 * @param endTime
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getManageWorkPlanList",method=RequestMethod.POST)
 	public RetDataBean getManageWorkPlanList(HttpServletRequest request,PageParam pageParam,
@@ -129,7 +129,7 @@ public class RoutGetWorkPlanController {
 	 * @param endTime
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getHoldWorkPlanList",method=RequestMethod.POST)
 	public RetDataBean getHoldWorkPlanList(HttpServletRequest request,PageParam pageParam,
@@ -170,7 +170,7 @@ public class RoutGetWorkPlanController {
 	 * @param endTime
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getSupWorkPlanList",method=RequestMethod.POST)
 	public RetDataBean getSupWorkPlanList(HttpServletRequest request,PageParam pageParam,
@@ -211,7 +211,7 @@ public class RoutGetWorkPlanController {
 	 * @param endTime
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMyWorkPlanList",method=RequestMethod.POST)
 	public RetDataBean getMyWorkPlanList(HttpServletRequest request,PageParam pageParam,
@@ -248,7 +248,7 @@ public class RoutGetWorkPlanController {
 	 * @param pageParam
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getTodayWorkPlanList",method=RequestMethod.POST)
 	public RetDataBean getTodayWorkPlanList(HttpServletRequest request,PageParam pageParam
@@ -284,7 +284,7 @@ public class RoutGetWorkPlanController {
 	 * @param pageParam
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getMonthWorkPlanList",method=RequestMethod.POST)
 	public RetDataBean getMonthWorkPlanList(HttpServletRequest request,PageParam pageParam
@@ -324,7 +324,7 @@ public class RoutGetWorkPlanController {
 	 * @param endTime
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getShareWorkPlanList",method=RequestMethod.POST)
 	public RetDataBean getShareWorkPlanList(HttpServletRequest request,PageParam pageParam,

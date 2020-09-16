@@ -21,4 +21,16 @@ public interface BiSortMapper extends MyMapper<BiSort>{
 	 * List<Map<String,Object>>
 	 */
 	public List<Map<String,Object>> getBiSortTree (@Param(value="levelId") String levelId,@Param(value="orgId") String orgId);
+	
+	/**
+	 * 
+	 * @Title: getBiSortTreeForParent   
+	 * @Description: TODO 获取BI分类树结构
+	 * @param levelId
+	 * @param orgId
+	 * @return
+	 * List<Map<String,Object>>
+	 */
+	public List<Map<String,Object>> getBiSortTreeForParent(@Param(value="levelId") String levelId,@Param(value="orgId") String orgId);
+
 }

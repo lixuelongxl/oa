@@ -5,7 +5,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper
 	namespace="com.core136.mapper.superversion.SuperversionDelayMapper">
 	<resultMap id="SuperversionDelay" type="com.core136.bean.superversion.SuperversionDelay">
-		<id column="ID" property="id" jdbcType="BIGINT" />
 		<result column="DELAY_ID" property="delayId" jdbcType="VARCHAR" />
 		<result column="SUPERVERSION_ID" property="superversionId" jdbcType="VARCHAR" />
 		<result column="LEAD_ID" property="leadId" jdbcType="VARCHAR" />

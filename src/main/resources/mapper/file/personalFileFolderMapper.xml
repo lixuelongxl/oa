@@ -4,7 +4,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.core136.mapper.file.PersonalFileFolderMapper">
 	<resultMap id="PersonalFileFolder" type="com.core136.bean.file.PersonalFileFolder">
-		<id column="ID" property="id" jdbcType="BIGINT" />
 		<result column="FOLDER_ID" property="folderId" jdbcType="VARCHAR" />
 		<result column="SORT_NO" property="sortNo" jdbcType="INTEGER" />
 		<result column="FOLDER_NAME" property="folderName" jdbcType="VARCHAR" />
@@ -18,10 +17,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 
 	<select id="getPersonalDir" resultType="java.util.HashMap">
-		SELECT FOLDER_ID as folderId, FOLDER_NAME as folderName,FOLDER_LEAVE AS folderLeave,
-		CASE WHEN (SELECT COUNT(1) FROM PERSONAL_FILE_FOLDER TMP WHERE TMP.FOLDER_ID=folderId)=0 then 'false' else 'true' END
+		SELECT F.FOLDER_ID AS folderId, F.FOLDER_NAME AS folderName,F.FOLDER_LEAVE AS folderLeave,
+		CASE WHEN (SELECT COUNT(1) FROM PERSONAL_FILE_FOLDER TMP WHERE TMP.FOLDER_ID=F.FOLDER_ID)=0 then 'false' else 'true' END
 		AS  isParent
-		FROM PERSONAL_FILE_FOLDER WHERE FOLDER_LEAVE=#{folderLeave} AND CREATE_USER=#{accountId} AND ORG_ID=#{orgId} ORDER BY SORT_NO ASC
+		FROM PERSONAL_FILE_FOLDER F WHERE F.FOLDER_LEAVE=#{folderLeave} AND F.CREATE_USER=#{accountId} AND F.ORG_ID=#{orgId} ORDER BY F.SORT_NO ASC
 	</select>
 
 	<select id="isExistChild" resultType="Integer">

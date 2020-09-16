@@ -13,7 +13,7 @@ public class PageProjectBuildConfigController {
 	 * @Description: TODO 设置工程项目审批流程 
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/bpmseting")
 	public ModelAndView goBpmseting() {
@@ -32,7 +32,7 @@ public class PageProjectBuildConfigController {
  * @Description: TODO设置工程材料计量单位
  * @param: @return      
  * @return: ModelAndView      
- * @throws
+
  */
 	@RequestMapping("/unitseting")
 	public ModelAndView goUnitseting() {

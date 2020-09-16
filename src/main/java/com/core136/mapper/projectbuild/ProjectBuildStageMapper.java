@@ -40,7 +40,7 @@ public interface ProjectBuildStageMapper extends MyMapper<ProjectBuildStage>{
 	 * @param: projectId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>>getprojectbuildStagelist(@Param(value="orgId") String orgId,@Param(value="projectId") String projectId);
 	
@@ -52,7 +52,7 @@ public interface ProjectBuildStageMapper extends MyMapper<ProjectBuildStage>{
 	 * @param: projectId
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>>getprojectbuildStageOpenlist(@Param(value="orgId") String orgId,@Param(value="projectId") String projectId);
 	

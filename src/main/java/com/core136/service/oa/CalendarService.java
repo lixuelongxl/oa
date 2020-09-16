@@ -74,7 +74,7 @@ public class CalendarService{
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getAllCalendarList(String orgId,String accountId,String beginTime,String endTime,String type,String search){
 		return calendarMapper.getAllCalendarList(orgId, accountId, beginTime, endTime, type, "%"+search+"%");
@@ -91,7 +91,7 @@ public class CalendarService{
 	 * @param: search
 	 * @param: @return      
 	 * @return: PageInfo<Map<String,String>>      
-	 * @throws
+
 	 */
 	public PageInfo<Map<String, String>> getAllCalendarList(PageParam pageParam,String beginTime,String endTime,String type) {
 		PageHelper.startPage(pageParam.getPageNumber(),pageParam.getPageSize(),pageParam.getOrderBy());
@@ -110,7 +110,7 @@ public class CalendarService{
 	 * @param: endTime
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getMyCalendarListForDesk(String orgId,String accountId,String beginTime,String endTime)
 	{

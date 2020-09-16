@@ -57,8 +57,11 @@
 						},
 					dataType : "json",
 					success : function(data) {
-						console.log(data);
-						var ret = data.list;
+						var res = data.list;
+						var len = res.length;
+						var ret = $.map(res, function (v, i) {// map方法匿名函数传的值v是值、i是索引。
+						    return res[len - 1 - i];
+						});
 						if (ret) {
 							// 该示例使用了arttemplate模板引擎，当然你也可以用其他方式
 							$('#J_ListContent').prepend(template('J_ListHtml', {

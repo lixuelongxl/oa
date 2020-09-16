@@ -28,7 +28,7 @@ private AccountService accountService;
  * @param request
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getBiSuperversionByLeadPie", method = RequestMethod.POST)
 public RetDataBean getBiSuperversionByLeadPie(HttpServletRequest request) {
@@ -48,7 +48,7 @@ public RetDataBean getBiSuperversionByLeadPie(HttpServletRequest request) {
  * @param request
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getBiSuperversionByMonthLine", method = RequestMethod.POST)
 public RetDataBean getBiSuperversionByMonthLine(HttpServletRequest request) {
@@ -67,7 +67,7 @@ public RetDataBean getBiSuperversionByMonthLine(HttpServletRequest request) {
  * @param request
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getBiSuperversionTypePie", method = RequestMethod.POST)
 public RetDataBean getBiSuperversionTypePie(HttpServletRequest request) {
@@ -86,7 +86,7 @@ public RetDataBean getBiSuperversionTypePie(HttpServletRequest request) {
  * @param request
  * @return
  * RetDataBean    
- * @throws
+
  */
 @RequestMapping(value = "/getBiSuperversionStatusTypePie", method = RequestMethod.POST)
 public RetDataBean getBiSuperversionStatusTypePie(HttpServletRequest request) {

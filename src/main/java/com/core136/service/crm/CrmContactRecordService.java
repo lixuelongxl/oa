@@ -82,8 +82,8 @@ public int addRecordAndCalendar(CrmContactRecord crmContactRecord)
 		{
 			calendar.setContent("回访"+crmCustomer.getCnName());
 		}
-		calendar.setStart(crmContactRecord.getNextVisit()+" 08:00:00");
-		calendar.setEnd(crmContactRecord.getNextVisit()+" 23:59:59");
+		calendar.setStartTime(crmContactRecord.getNextVisit()+" 08:00:00");
+		calendar.setEndTime(crmContactRecord.getNextVisit()+" 23:59:59");
 		calendar.setType("1");
 		calendar.setAccountId(crmContactRecord.getCreateUser());
 		calendar.setUrl("/app/core/crm/customerdetails?customerId="+crmContactRecord.getCustomerId());

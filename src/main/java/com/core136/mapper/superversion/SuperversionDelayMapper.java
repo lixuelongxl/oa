@@ -38,7 +38,7 @@ public interface SuperversionDelayMapper extends MyMapper<SuperversionDelay>{
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 	public List<Map<String, String>>getDelayApplyList(
 			@Param(value="orgId")String orgId,

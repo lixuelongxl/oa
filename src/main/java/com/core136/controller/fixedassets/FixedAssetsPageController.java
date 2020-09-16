@@ -28,7 +28,7 @@ public class FixedAssetsPageController {
 	 * @Description: TODO 固定资产维修管理
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/repairmange")
 	public ModelAndView  goRepairmange()
@@ -48,7 +48,7 @@ public class FixedAssetsPageController {
 	 * @Description: TODO 领用审批
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/approve")
 	public ModelAndView  goApprove()
@@ -69,7 +69,7 @@ public class FixedAssetsPageController {
 	 * @Description: TODO 固定资产调拨
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/allocation")
 	public ModelAndView  goAllocation()
@@ -90,7 +90,7 @@ public class FixedAssetsPageController {
 	 * @Description: TODO 固定资产申请
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/applyfixedassets")
 	public ModelAndView  goApplyfixedassets()
@@ -110,7 +110,7 @@ public class FixedAssetsPageController {
 	 * @Description: TODO 固定资产分类设置
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/setsort")
 	public ModelAndView  goSetSort()
@@ -130,7 +130,7 @@ public class FixedAssetsPageController {
 	 * @Description: TODO 固定资产查询
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/query")
 	public ModelAndView  goQuery()
@@ -151,7 +151,7 @@ public class FixedAssetsPageController {
 	 * @Description: TODO 固定资产详情
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/detailsfixedassets")
 	public ModelAndView  goDetailsfixedassets()
@@ -171,7 +171,7 @@ public class FixedAssetsPageController {
 	 * @Description: TODO 调拨的产品与申请详情
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/detailsfixedassetsandapply")
 	public ModelAndView  goDetailsfixedassetsandapply()
@@ -191,7 +191,7 @@ public class FixedAssetsPageController {
 	 * @Description: TODO 设置仓库  
 	 * @param: @return      
 	 * @return: ModelAndView      
-	 * @throws
+
 	 */
 	@RequestMapping("/setstorage")
 	public ModelAndView  goSetstorage()
@@ -212,7 +212,7 @@ public class FixedAssetsPageController {
  * @param: view
  * @param: @return      
  * @return: ModelAndView      
- * @throws
+
  */
 	@RequestMapping("/manage")
 	public ModelAndView  goManage(String view)

@@ -22,7 +22,7 @@ public interface HrReinstatementMapper extends MyMapper<HrReinstatement>{
  * @param reinstatementType
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 	public List<Map<String, String>>getHrReinstatementList(@Param(value="orgId")String orgId,@Param(value="userId")String userId,
 			@Param(value="beginTime")String beginTime,@Param(value="endTime")String endTime,@Param(value="reinstatementType") String reinstatementType);

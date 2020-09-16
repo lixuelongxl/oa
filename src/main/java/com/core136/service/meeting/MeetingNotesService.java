@@ -62,7 +62,7 @@ public MeetingNotes selectOneMeetingNotes(MeetingNotes meetingNotes)
  * @param: search
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>> getMeetingNotesList(String orgId,String opFlag,String accountId,String beginTime,String endTime,String search)
 {
@@ -83,7 +83,7 @@ public List<Map<String, String>> getMeetingNotesList(String orgId,String opFlag,
  * @param search
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>> queryMeetingNotesList(String orgId,String opFlag,String accountId,String deptId,String leaveId,String beginTime,String endTime,String search)
 {
@@ -100,7 +100,7 @@ public List<Map<String, String>> queryMeetingNotesList(String orgId,String opFla
  * @param: endTime
  * @param: @return      
  * @return: PageInfo<Map<String,String>>      
- * @throws
+
  */
 public PageInfo<Map<String, String>> getMeetingNotesList(PageParam pageParam,String beginTime,String endTime) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -118,7 +118,7 @@ public PageInfo<Map<String, String>> getMeetingNotesList(PageParam pageParam,Str
  * @param roomId
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> queryMeetingNotesList(PageParam pageParam,String beginTime,String endTime) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -135,7 +135,7 @@ public PageInfo<Map<String, String>> queryMeetingNotesList(PageParam pageParam,S
  * @param notesId
  * @return
  * Map<String,String>    
- * @throws
+
  */
 public Map<String, String>getMeetingNotesInfo(String orgId,String notesId)
 {

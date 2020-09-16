@@ -23,7 +23,7 @@ public interface HrContractMapper extends MyMapper<HrContract>{
 	 * @param contractType
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getHrContractList(@Param(value="orgId")String orgId,
 			@Param(value="userId")String userId,
@@ -42,7 +42,7 @@ public interface HrContractMapper extends MyMapper<HrContract>{
  * @param endTime
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 	public List<Map<String, String>>getDeskHrContractList(@Param(value="orgId")String orgId,@Param(value="beginTime")String beginTime,@Param(value="endTime")String endTime);
 
@@ -54,7 +54,7 @@ public interface HrContractMapper extends MyMapper<HrContract>{
 	 * @param accountId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getMyHrContractList(@Param(value="orgId")String orgId,@Param(value="accountId")String accountId);
 }

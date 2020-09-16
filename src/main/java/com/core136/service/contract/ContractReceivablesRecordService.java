@@ -6,7 +6,6 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 import org.core136.common.retdataunit.RetDataBean;
 import org.core136.common.retdataunit.RetDataTools;
-import org.core136.common.utils.SysTools;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,7 +33,7 @@ private ContractReceivablesService contractReceivablesService;
  * @param contractReceivablesRecord
  * @return
  * RetDataBean    
- * @throws
+
  */
 @Transactional(value="generalTM") 
 public RetDataBean receivableAmount(ContractReceivablesRecord contractReceivablesRecord)
@@ -96,7 +95,7 @@ public ContractReceivablesRecord selectOneContractReceivablesRecord(ContractRece
  * @param receivablesId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getContractReceivablesRecordList(String orgId,String receivablesId)
 {
@@ -110,7 +109,7 @@ public List<Map<String, String>>getContractReceivablesRecordList(String orgId,St
  * @param receivablesId
  * @return
  * PageInfo<Map<String,String>>    
- * @throws
+
  */
 public PageInfo<Map<String, String>> getContractReceivablesRecordList(PageParam pageParam,String receivablesId) {
 	PageHelper.startPage(pageParam.getPageNumber(), pageParam.getPageSize(),pageParam.getOrderBy());
@@ -126,7 +125,7 @@ public PageInfo<Map<String, String>> getContractReceivablesRecordList(PageParam 
  * @param orgId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 public List<Map<String, String>>getReceivRecordTop(@Param(value="orgId")String orgId)
 {

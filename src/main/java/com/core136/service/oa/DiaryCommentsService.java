@@ -41,7 +41,7 @@ public int updateDiaryComments(Example example,DiaryComments diaryComments)
  * @param: diaryId
  * @param: @return      
  * @return: List<Map<String,String>>      
- * @throws
+
  */
 public List<Map<String, String>>getDiaryCommentsList(String orgId,String diaryId)
 {
@@ -55,7 +55,7 @@ public List<Map<String, String>>getDiaryCommentsList(String orgId,String diaryId
  * @param: accountId
  * @param: @return      
  * @return: Integer      
- * @throws
+
  */
 public Integer getMyDiaryCommentsCount(String orgId,String accountId)
 {

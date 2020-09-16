@@ -50,7 +50,7 @@ public class VehicleOilCardService {
 	 * @param search
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String,String>>getVehicleOilCardList(String orgId,String oilType,String beginTime,String endTime,String search)
 	{
@@ -66,7 +66,7 @@ public class VehicleOilCardService {
 	 * @param endTime
 	 * @return
 	 * PageInfo<Map<String,String>>    
-	 * @throws
+
 	 */
 	public PageInfo<Map<String, String>> getVehicleOilCardList(PageParam pageParam,String oilType,String beginTime,String endTime) 
 	{
@@ -82,7 +82,7 @@ public class VehicleOilCardService {
  * @param orgId
  * @return
  * List<Map<String,String>>    
- * @throws
+
  */
 	public List<Map<String,String>>getCanUsedOilCardList(String orgId)
 	{

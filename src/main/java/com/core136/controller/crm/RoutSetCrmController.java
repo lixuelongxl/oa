@@ -80,6 +80,32 @@ public class RoutSetCrmController {
 	
 	/**
 	 * 
+	 * @Title: approvedCrmQuotation   
+	 * @Description: TODO 报价单
+	 * @param request
+	 * @param crmQuotation
+	 * @return
+	 * RetDataBean
+	 */
+	@RequestMapping(value="/approvedCrmQuotation",method=RequestMethod.POST)
+	public RetDataBean approvedCrmQuotation(HttpServletRequest request,CrmQuotation crmQuotation)
+	{
+		try
+		{
+			Account account=accountService.getRedisAccount(request);
+			crmQuotation.setApprovedTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
+			crmQuotation.setOrgId(account.getOrgId());
+			Example example = new Example(CrmQuotation.class);
+			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("quotationId",crmQuotation.getQuotationId());
+			return RetDataTools.Ok("报价单审批成功!", crmQuotationService.updateCrmQuotation(example,crmQuotation));
+		}catch (Exception e) {
+			return RetDataTools.Error(e.getMessage());
+		}
+	}
+	
+	
+	/**
+	 * 
 	* @Title: insertCrmQuotation
 	* @Description: TODO 创建报价单
 	* @param @param request
@@ -89,16 +115,18 @@ public class RoutSetCrmController {
 
 	 */
 	@RequestMapping(value="/insertCrmQuotation",method=RequestMethod.POST)
-	public RetDataBean insertCrmQuotation(HttpServletRequest request,CrmQuotation crmQuotation)
+	public RetDataBean insertCrmQuotation(HttpServletRequest request,CrmQuotation crmQuotation,String detail)
 	{
 		try
 		{
+			JSONArray jsonArr = JSONObject.parseArray(detail);
 			Account account=accountService.getRedisAccount(request);
 			crmQuotation.setQuotationId(SysTools.getGUID());
 			crmQuotation.setCreateTime(SysTools.getTime("yyyy-MM-dd HH:mm:ss"));
 			crmQuotation.setCreateUser(account.getAccountId());
+			crmQuotation.setStatus("0");
 			crmQuotation.setOrgId(account.getOrgId());
-			return RetDataTools.Ok("创建成功!", crmQuotationService.insertCrmQuotation(crmQuotation));
+			return RetDataTools.Ok("创建成功!", crmQuotationService.saveCrmQuotation(crmQuotation,jsonArr));
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
 		}
@@ -146,19 +174,21 @@ public class RoutSetCrmController {
 
 	 */
 	@RequestMapping(value="/updateCrmQuotation",method=RequestMethod.POST)
-	public RetDataBean updateCrmQuotation(HttpServletRequest request,CrmQuotation crmQuotation)
+	public RetDataBean updateCrmQuotation(HttpServletRequest request,CrmQuotation crmQuotation,String detail)
 	{
 		try
 		{
+			JSONArray jsonArr = JSONObject.parseArray(detail);
 			if(StringUtils.isBlank(crmQuotation.getQuotationId()))
 			{
 				return RetDataTools.NotOk("请求参数有问题,请检查!");
 			}else
 			{
 			Account account=accountService.getRedisAccount(request);
+			crmQuotation.setOrgId(account.getOrgId());
 			Example example = new Example(CrmQuotation.class);
 			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("quotationId",crmQuotation.getQuotationId());
-			return RetDataTools.Ok("更新报价单成功!", crmQuotationService.updateCrmQuotation(example,crmQuotation));
+			return RetDataTools.Ok("更新报价单成功!", crmQuotationService.updateQuotationAndDetail(crmQuotation,example,jsonArr));
 			}
 		}catch (Exception e) {
 			return RetDataTools.Error(e.getMessage());
@@ -921,7 +951,7 @@ public class RoutSetCrmController {
 	 * @param crmInquiry
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/deleteCrmInquiry",method=RequestMethod.POST)
 	public RetDataBean deleteCrmInquiry(HttpServletRequest request,CrmInquiry crmInquiry)
@@ -935,13 +965,44 @@ public class RoutSetCrmController {
 			{
 			Account account=accountService.getRedisAccount(request);
 			crmInquiry.setOrgId(account.getOrgId());
-			return RetDataTools.Ok("删除银行信息成功!", crmInquiryService.deleteCrmInquiry(crmInquiry));
+			return RetDataTools.Ok("删除询价信息成功!", crmInquiryService.deleteCrmInquiry(crmInquiry));
 			}
 		}catch (Exception e) {
 			// TODO: handle exception
 			return RetDataTools.Error(e.getMessage());
 		}
 	}
+	/**
+	 * 
+	 * @Title: updateInquiryStatus   
+	 * @Description: TODO 更改询价单状态
+	 * @param request
+	 * @param crmInquiry
+	 * @return
+	 * RetDataBean
+	 */
+	@RequestMapping(value="/updateInquiryStatus",method=RequestMethod.POST)
+	public RetDataBean updateInquiryStatus(HttpServletRequest request,CrmInquiry crmInquiry)
+	{
+		try
+		{
+			if(StringUtils.isBlank(crmInquiry.getInquiryId()))
+			{
+				return RetDataTools.NotOk("请求参数有问题,请检查!");
+			}else
+			{
+			Account account=accountService.getRedisAccount(request);
+			crmInquiry.setOrgId(account.getOrgId());
+			Example example =  new Example(CrmInquiry.class);
+			example.createCriteria().andEqualTo("orgId",account.getOrgId()).andEqualTo("inquiryId",crmInquiry.getInquiryId());
+			return RetDataTools.Ok("更新询价单状态成功!", crmInquiryService.updateCrmInquiry(crmInquiry,example));
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			return RetDataTools.Error(e.getMessage());
+		}
+}
+	
 	
 	/**
 	 * 
@@ -951,7 +1012,7 @@ public class RoutSetCrmController {
 	 * @param crmInquiry
 	 * @return
 	 * RetDataBean    
-	 * @throws
+
 	 */
 	@RequestMapping(value="/updateCrmInquiry",method=RequestMethod.POST)
 	public RetDataBean updateCrmInquiry(HttpServletRequest request,CrmInquiry crmInquiry,String detail)

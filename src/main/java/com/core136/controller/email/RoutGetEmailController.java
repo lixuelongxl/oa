@@ -136,7 +136,7 @@ public class RoutGetEmailController {
 	 * @param: emailBox
 	 * @param: @return      
 	 * @return: RetDataBean      
-	 * @throws
+
 	 */
 	@RequestMapping(value="/getEmailListForDesk",method=RequestMethod.POST)
 	public RetDataBean getEmailListForDesk(HttpServletRequest request,EmailBox emailBox)

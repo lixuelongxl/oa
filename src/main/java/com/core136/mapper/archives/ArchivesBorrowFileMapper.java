@@ -21,7 +21,7 @@ public interface ArchivesBorrowFileMapper extends MyMapper<ArchivesBorrowFile>{
 	 * @param accountId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getArchivesBorrowFileList(@Param(value="orgId")String orgId,
 			@Param(value="approvalStatus") String approvalStatus,
@@ -36,7 +36,7 @@ public interface ArchivesBorrowFileMapper extends MyMapper<ArchivesBorrowFile>{
 	 * @param accountId
 	 * @return
 	 * List<Map<String,String>>    
-	 * @throws
+
 	 */
 	public List<Map<String, String>>getArchivesBorrowFileApprovalList(
 			@Param(value="orgId")String orgId,

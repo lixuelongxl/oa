@@ -20,7 +20,7 @@ public interface ProjectBuildMaterialMapper extends MyMapper<ProjectBuildMateria
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>> getmateriallist(@Param(value="orgId") String orgId,@Param(value="sortId") String sortId,@Param(value="search") String search);
 
@@ -33,7 +33,7 @@ public interface ProjectBuildMaterialMapper extends MyMapper<ProjectBuildMateria
 	 * @param: search
 	 * @param: @return      
 	 * @return: List<Map<String,String>>      
-	 * @throws
+
 	 */
 	public List<Map<String,String>> getMaterialListForSelet2(@Param(value="orgId") String orgId,@Param(value="search") String search);
 }
