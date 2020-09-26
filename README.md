@@ -9,7 +9,7 @@
 
 目前系统已全面支持国产达梦数据库8.0,人大金仓V8R3，要需者可加群索取。
 
-安装版测试下载地址：http://www.cyunsoft.com/cyunsoft_oa_v2.1_20200814_setup.exe
+安装版测试下载地址：http://www.cyunsoft.com/cyunsoft_oa_v2.1_20200814_setup.exe 最新版测试请加群索取！
 
 #### 国产化
 系统已全面支持国产化，中标麒麟操作系统+openJdk8x64bit+达梦8数据库或人大金仓V8R3+东方通tongWeb中间件。若项目需要可联系我们索取相关源代码。
