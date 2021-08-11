@@ -10,8 +10,8 @@
 
 目前系统已全面支持国产达梦数据库8.0,人大金仓V8R3,神州通用v7，要需者可加群索取。
 
-安装版测试DEMO下载地址：http://www.cyunsoft.com/cyunsoft_oa_v2.1_20200814_setup.exe （X86_MYSQL版） 最新版测试请加群索取！
-正式版演示地址：http://test.cyunsoft.com:8080 账户：admin 密码：123456
+安装最新版测试请加群索取或WX联系！
+正式版演示地址：http://oa.cyunsoft.com 账户：admin 密码：123456
 #### 国产化
 系统已全面支持国产化，统信UOS,中标麒麟操作系统+openJdk8x64bit+达梦8数据库、人大金仓V8R3、神州通用V7+东方通tongWeb中间件、中创中间件,金蝶天燕,宝兰德,文档支持在线WPS,OFFICE,福昕ofd,数科ofd,pdf等。若项目需要可联系我们索取相关源代码。
 ![image](http://www.cyunsoft.com/gc.jpg)
@@ -51,22 +51,22 @@
 
 #### 项目界面预览
 
-  ![image](http://www.cyunsoft.com/main0.png)
-  ![image](http://www.cyunsoft.com/main1.png)
-  ![image](http://www.cyunsoft.com/main2.png)
-  ![image](http://www.cyunsoft.com/main3.png)
-  ![image](http://www.cyunsoft.com/main4.png)
-  ![image](http://www.cyunsoft.com/main5.png)
+  ![image](https://www.cyunsoft.com/main0.png)
+  ![image](https://www.cyunsoft.com/main1.png)
+  ![image](https://www.cyunsoft.com/main2.png)
+  ![image](https://www.cyunsoft.com/main3.png)
+  ![image](https://www.cyunsoft.com/main4.png)
+  ![image](https://www.cyunsoft.com/main5.png)
 
 #### APP界面预览
-<img src="http://www.cyunsoft.com/app0.jpg" width="200"/>
-<img src="http://www.cyunsoft.com/app1.jpg" width="200"/>
-<img src="http://www.cyunsoft.com/app2.jpg" width="200"/>
-<img src="http://www.cyunsoft.com/app3.jpg" width="200"/>
-<img src="http://www.cyunsoft.com/app4.jpg" width="200"/>
-<img src="http://www.cyunsoft.com/app5.jpg" width="200"/>
-<img src="http://www.cyunsoft.com/app6.jpg" width="200"/>
-<img src="http://www.cyunsoft.com/app7.jpg" width="200"/>
+<img src="https://www.cyunsoft.com/app0.jpg" width="200"/>
+<img src="https://www.cyunsoft.com/app1.jpg" width="200"/>
+<img src="https://www.cyunsoft.com/app2.jpg" width="200"/>
+<img src="https://www.cyunsoft.com/app3.jpg" width="200"/>
+<img src="https://www.cyunsoft.com/app4.jpg" width="200"/>
+<img src="https://www.cyunsoft.com/app5.jpg" width="200"/>
+<img src="https://www.cyunsoft.com/app6.jpg" width="200"/>
+<img src="https://www.cyunsoft.com/app7.jpg" width="200"/>
 
 
 #### 开源宗旨
