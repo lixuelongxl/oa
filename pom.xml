@@ -7,7 +7,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.3.3.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>cyunsoft.appservice</groupId>
 	<artifactId>cyunsoft-appservice</artifactId>
@@ -118,7 +118,7 @@
 		<dependency>
 			<groupId>org.xerial</groupId>
 			<artifactId>sqlite-jdbc</artifactId>
-			<version>3.7.2</version>
+			<version>3.39.3.0</version>
 		</dependency>
 		<!-- 添加钉钉依赖（必须） -->
 		<dependency>
