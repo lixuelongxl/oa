@@ -7,7 +7,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.3.3.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>cyunsoft.appservice</groupId>
 	<artifactId>cyunsoft-appservice</artifactId>
@@ -196,7 +196,7 @@
 		<dependency>
 			<groupId>com.thoughtworks.xstream</groupId>
 			<artifactId>xstream</artifactId>
-			<version>1.4.11.1</version>
+			<version>1.4.20</version>
 		</dependency>
 		<!--spring工具包 -->
 		<dependency>
